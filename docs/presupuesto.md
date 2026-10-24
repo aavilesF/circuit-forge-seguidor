@@ -42,6 +42,21 @@ Candidatos para revisar (la disponibilidad hay que confirmarla):
 - En León: Electrónica Mara, Novedades Electrónicas PH.
 - En Irapuato: Electrónica Real, Jimsa Electrónicas.
 
+## Estimación de rangos (propuesta, sin cotizar)
+
+Estimación con ayuda de IA, no basada en precios verificados. Sirve solo para tener un orden de magnitud hasta que se cotice.
+
+| Concepto | Rango estimado (MXN) |
+|---|---|
+| Sensores, driver, microcontrolador, motores y repuestos | 700 a 1,200 |
+| Batería LiPo, cargador, regulador y cables | 500 a 800 |
+| Chasis impreso | 200 a 400 |
+| Pista de práctica (MDF, papel adhesivo, vinil) | 600 a 900 |
+| Donación de alimentos | 300 |
+| **Total** | **2,300 a 3,600** |
+
+Dividido entre tres integrantes serían unos $770 a $1,200 por persona. La parte baja cabe en el rango que mencionó el equipo ($600 a $1,000 por persona), pero la parte alta lo supera. Hay que cotizar antes de aprobar.
+
 ## Totales
 
 | Concepto | Valor |
