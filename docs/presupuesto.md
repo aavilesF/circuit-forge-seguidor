@@ -1,6 +1,8 @@
 # Presupuesto
 
-**Estado:** ningún componente está definido, cotizado ni comprado. Esta lista es una propuesta inicial para que el equipo la valide. No hay precios verificados todavía.
+**Estado:** ningún componente está definido ni comprado. Esta lista parte de la propuesta con ESP32 (ver `plan.md`), todavía sin aprobar.
+
+**Sobre los precios:** la columna de precios son cifras que citó la IA que armó la propuesta. **Nadie las ha verificado** (no traen enlaces) y no incluyen envío. Antes de aprobar el presupuesto, cada precio debe comprobarse en la página de la tienda y anotarse con su enlace.
 
 ## Datos confirmados
 
@@ -17,50 +19,45 @@
 | Alan Uzuel Vargas Zavala | Por definir |
 | Daniel Navarro Robledo | Por definir |
 
-## Lista propuesta (por cotizar)
+## Lista propuesta
 
-Los precios, tiendas y pesos se llenan con datos verificados en la página del proveedor o en la tienda. No se compra nada hasta confirmar compatibilidad (voltajes, corriente del driver, peso).
+| Componente | Cant. | Precio citado (MXN, sin verificar) | Subtotal | Estado |
+|---|---|---|---|---|
+| ESP32 de 38 pines (ESP-WROOM-32) | 1 | 150 | 150 | Por verificar |
+| Sensor QTR-8A (o equivalente) | 2 (1 + repuesto) | 280 | 560 | Por verificar |
+| Driver TB6612FNG | 2 (1 + repuesto) | 65 | 130 | Por verificar |
+| Motores N20 de 6 V (70 a 100 RPM, según la fuente) | 3 (2 + repuesto) | 207.93 | 623.79 | **Revisar: demasiado lentos** (ver `plan.md`) |
+| Ruedas para eje D de 3 mm | 2 | 25 | 50 | Por verificar |
+| Batería LiPo 2S, 450 a 600 mAh | 1 | 300 (estimado) | 300 | Por cotizar |
+| Cargador LiPo balanceador | 1 | 265 | 265 | Por verificar |
+| Buck de 5 V (>= 1 A) | 1 | 65 (estimado) | 65 | Por cotizar |
+| Buck de 6 V (>= 2 A) | 1 | 85 (estimado) | 85 | Por cotizar |
+| Pulsador de arranque | 1 | 30 (estimado) | 30 | Por cotizar |
+| Cables y conectores | - | 120 (estimado) | 120 | Por cotizar |
+| Multímetro | 1 | 150 | 150 | Por verificar |
+| Báscula de 1 g | 1 | 124 | 124 | Por verificar |
+| Chasis (impreso o corte láser) | 1 | 300 (estimado) | 300 | Por cotizar |
+| Pista de práctica (MDF, papel adhesivo, vinil) | 1 | 750 (estimado) | 750 | Por cotizar |
+| Donación de alimentos | 1 | 300 | 300 | Fijo |
 
-| Componente | Categoría | Proveedor | Precio unitario (MXN) | Cantidad | Peso unitario (g) | Alternativa | Estado | Responsable |
-|---|---|---|---|---|---|---|---|---|
-| Arreglo de sensores de reflectancia de 8 canales (tipo QTR-8A) | Sensor | Por definir | Por cotizar | 1 | Por medir | Otro arreglo equivalente | Por investigar | Por definir |
-| Motorreductores de metal tipo N20, 6 V | Motor | Por definir | Por cotizar | 2 (+2 de repuesto) | Por medir | Otra relación de reducción | Por investigar | Por definir |
-| Driver de motores (TB6612FNG o DRV8833) | Driver | Por definir | Por cotizar | 1 (+1 de repuesto) | Por medir | El otro modelo | Por investigar | Por definir |
-| Microcontrolador | Control | Por definir | Por cotizar | 1 | Por medir | ESP32 o Arduino Nano (por decidir) | Por investigar | Por definir |
-| Batería LiPo de 2 celdas con protección | Alimentación | Por definir | Por cotizar | 1 | Por medir | Otra capacidad | Por investigar | Por definir |
-| Regulador de 5 V (si hace falta) | Alimentación | Por definir | Por cotizar | 1 | Por medir | Por definir | Por investigar | Por definir |
-| Pulsador o interruptor de arranque | Control | Por definir | Por cotizar | 1 | Por medir | Por definir | Por investigar | Por definir |
-| Ruedas | Mecánica | Por definir | Por cotizar | 2 | Por medir | Por definir | Por investigar | Por definir |
-| Chasis (impreso en 3D o cortado en láser) | Mecánica | Servicio de la universidad o local | Por cotizar | 1 | Por medir | Por definir | Por investigar | Por definir |
-| Cables, conectores y fijaciones | Varios | Por definir | Por cotizar | Por definir | Por medir | Por definir | Por investigar | Por definir |
-
-## Dónde cotizar
-
-Candidatos para revisar (la disponibilidad hay que confirmarla):
-
-- En línea: UNIT Electronics, Geek Factory.
-- En León: Electrónica Mara, Novedades Electrónicas PH.
-- En Irapuato: Electrónica Real, Jimsa Electrónicas.
-
-## Estimación de rangos (propuesta, sin cotizar)
-
-Estimación con ayuda de IA, no basada en precios verificados. Sirve solo para tener un orden de magnitud hasta que se cotice.
-
-| Concepto | Rango estimado (MXN) |
-|---|---|
-| Sensores, driver, microcontrolador, motores y repuestos | 700 a 1,200 |
-| Batería LiPo, cargador, regulador y cables | 500 a 800 |
-| Chasis impreso | 200 a 400 |
-| Pista de práctica (MDF, papel adhesivo, vinil) | 600 a 900 |
-| Donación de alimentos | 300 |
-| **Total** | **2,300 a 3,600** |
-
-Dividido entre tres integrantes serían unos $770 a $1,200 por persona. La parte baja cabe en el rango que mencionó el equipo ($600 a $1,000 por persona), pero la parte alta lo supera. Hay que cotizar antes de aprobar.
+Tiendas que mencionó la fuente (sin comprobar): UNIT Electronics, Geek Factory, Kinetrónica, SIEEG, Practinet, Electrónica Cidea, La Resistencia, Aelectronics y Amazon México. Conviene concentrar la compra en una o dos para reducir envíos y retrasos.
 
 ## Totales
 
+Suma de la tabla, con las cifras citadas y sin envíos:
+
 | Concepto | Valor |
 |---|---|
-| Costo total estimado | Por calcular |
-| Peso total estimado del robot | Por calcular (debe quedar bajo 500 g con margen) |
-| Donación de alimentos | $300 MXN |
+| Total estimado | $4,002.79 MXN |
+| Por persona (tres integrantes) | $1,334.26 MXN |
+| Peso total estimado del robot | Entre 150 y 250 g, sin medir (límite: 500 g) |
+
+Corrección respecto a la versión anterior: el bloque de componentes electrónicos se había anotado en unos $2,200, pero los renglones suman $1,513.79, así que el total anterior de $4,689 estaba inflado en unos $686.
+
+El total por persona supera el rango que mencionó el equipo ($600 a $1,000). Una parte (multímetro, báscula, cargador y pista) es inversión única que se queda con el equipo. Recortes posibles: un solo buck de 5 V (ahorra unos $85, motores más lentos) o un solo sensor sin repuesto (ahorra $280, no recomendable).
+
+## Dónde cotizar en persona
+
+- En León: Electrónica Mara, Novedades Electrónicas PH.
+- En Irapuato: Electrónica Real, Jimsa Electrónicas.
+Datos de un directorio, la disponibilidad hay que confirmarla.

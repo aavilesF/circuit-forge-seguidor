@@ -32,14 +32,27 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 - **Falta:** fijar el monto total y lo que aporta cada integrante.
 
 ### P6. Arquitectura y plan propuestos
-- **Propuesta (no acordada):** Arduino Nano clásico, QTR-8A, TB6612FNG, motores N20 de 6 V y LiPo 2S, con congelamiento del diseño el 15 de noviembre. Detalle en [plan.md](plan.md).
-- **Propuesta de microcontrolador:** reemplaza la duda ESP32 o Nano de P2 por una recomendación de Nano, a validar con Alan.
+- **Propuesta (no acordada):** ESP32, QTR-8A, TB6612FNG, motores N20 de 6 V, LiPo 2S y dos reguladores buck, con congelamiento del diseño el 15 de noviembre. Detalle en [plan.md](plan.md). Una versión anterior proponía Arduino Nano; esta la reemplaza.
+- **Propuesta de microcontrolador:** la segunda propuesta usa ESP32 (con ello P2 pasa de "ESP32 o Nano" a "ESP32 propuesto"). Falta confirmar si el equipo lo decidió, sobre todo con Alan.
 - **Falta:** que el equipo valide cada elemento con fichas técnicas y lo apruebe.
 
 ### P7. Alimentación de los motores
 - **Problema:** con la batería conectada directo a motores de 6 V, la velocidad cambia con el nivel de carga.
-- **Opciones:** limitar el PWM y cargar completa la batería antes de cada intento, o regular a 6 V.
+- **Propuesta (no acordada):** buck de 6 V para los motores y buck de 5 V para el ESP32. Con ello la velocidad deja de depender de la carga. Alternativa más barata: un solo buck de 5 V, con motores más lentos.
 - **Falta:** decisión del equipo.
+
+### P10. Canales analógicos del sensor con ESP32
+- **Problema:** el QTR-8A tiene 8 salidas analógicas y en las placas de 38 pines el ADC1 normalmente solo expone unos 6 pines utilizables.
+- **Opciones:** usar pines del ADC2 sin iniciar el WiFi (por confirmar y probar), cambiar a QTR-8RC (digital) o usar 6 sensores.
+- **Falta:** confirmar el pinout de la placa y decidir.
+
+### P11. Voltaje de las entradas del ESP32
+- **Regla propuesta:** todo lo conectado a pines del ESP32 funciona a 3.3 V. El QTR-8A y la lógica del TB6612FNG se alimentan a 3.3 V, no a 5 V, porque la salida analógica del sensor llega hasta su voltaje de alimentación.
+- **Falta:** que Alan lo confirme con las fichas técnicas.
+
+### P12. RPM de los motores
+- **Problema:** los N20 de 70 a 100 RPM de la lista inicial son demasiado lentos (unos 0.17 m/s con rueda de 33 mm).
+- **Falta:** definir la velocidad objetivo y elegir las RPM y la relación de reducción en consecuencia, comprobando el par.
 
 ### P8. Chasis impreso por un servicio de la universidad
 - **Problema:** el reglamento exige chasis fabricado por los participantes.
