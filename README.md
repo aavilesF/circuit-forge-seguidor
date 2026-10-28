@@ -45,6 +45,7 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 | [docs/presupuesto.md](docs/presupuesto.md) | Lista de compra y presupuesto |
 | [docs/decisiones.md](docs/decisiones.md) | Registro de decisiones del equipo |
 | [docs/plan.md](docs/plan.md) | Plan de 4 semanas y arquitectura propuesta (aún sin aprobar) |
+| [docs/contexto-ia.md](docs/contexto-ia.md) | Resumen del proyecto y prompt de arranque para que cualquier IA o persona parta del mismo contexto |
 
 Las carpetas `firmware/` y `pruebas/` se agregarán cuando haya contenido real.
 
