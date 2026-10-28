@@ -20,7 +20,7 @@ Los detalles viven en los demás archivos: [README](../README.md), [requisitos](
 3. **Nada se da por decidido** hasta que esté marcado "Decidido" en `decisiones.md` o el equipo lo confirme por escrito.
 4. **Ningún precio, existencia o ficha técnica se da por verificado** salvo que se haya comprobado en la página de la tienda o del fabricante. No presentes cifras de memoria como hechos.
 5. **No afirmes que algo funciona sin evidencia** (medición, foto o registro de prueba).
-6. Los cambios al repositorio los hace quien tenga acceso de escritura. Propón texto y deja que el equipo decida.
+6. No edites `README.md` ni `docs/` directamente. Las propuestas de cambio se escriben como archivo nuevo en `modificaciones/` con su plantilla; quien administra el repositorio (hoy Alejandro) integra lo que el equipo acepte. Nunca marques una propuesta como aceptada.
 
 ---
 

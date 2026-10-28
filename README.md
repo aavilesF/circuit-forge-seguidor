@@ -46,11 +46,13 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 | [docs/decisiones.md](docs/decisiones.md) | Registro de decisiones del equipo |
 | [docs/plan.md](docs/plan.md) | Plan de 4 semanas y arquitectura propuesta (aún sin aprobar) |
 | [docs/contexto-ia.md](docs/contexto-ia.md) | Resumen del proyecto y prompt de arranque para que cualquier IA o persona parta del mismo contexto |
+| [modificaciones/](modificaciones/README.md) | Propuestas de cambio de cada integrante, sin tocar los documentos originales |
 
 Las carpetas `firmware/` y `pruebas/` se agregarán cuando haya contenido real.
 
 ## Forma de trabajo
 
 - Cambios pequeños con commits descriptivos.
+- Los cambios propuestos por los integrantes van en `modificaciones/` (ver su README), no directamente en `README.md` ni en `docs/`.
 - Toda decisión de hardware o de interfaces se anota en `docs/decisiones.md`.
 - Nada se da por terminado sin evidencia (foto, medición o registro de prueba).
