@@ -62,7 +62,7 @@ El equipo Circuit Forge (tres integrantes) construirá un robot seguidor de lín
 ### Repositorio
 - Existe, privado, cuenta aavilesF. Alan y Daniel **todavía no figuran como colaboradores** (no se ha confirmado que se les haya invitado).
 - Contiene `README.md`, `.gitignore`, `docs/` (requisitos, presupuesto, decisiones, plan, simulacion, electronica, mecanica, armado, diagramas), `firmware/seguidor/`, `pruebas/`, `sim/`, `herramientas/` y `modificaciones/`. Ver cada archivo en el repositorio.
-- Estado técnico (31 oct): la lógica del firmware está probada en computadora (60 pruebas) y hay un simulador; el código de hardware del ESP32 **solo se verificó de sintaxis contra un stub, no se compiló con el SDK real ni se probó en la placa**. Los parámetros del robot (distancias, RPM, tamaños) son nominales. Los resultados de simulación no incluyen derrape ni caída de batería.
+- Estado técnico (31 oct): la lógica del firmware está probada en computadora (93 pruebas) y hay un simulador; el código de hardware del ESP32 **solo se verificó de sintaxis contra un stub, no se compiló con el SDK real ni se probó en la placa**. Los parámetros del robot (distancias, RPM, tamaños) son nominales. Los resultados de simulación no incluyen derrape ni caída de batería.
 - Los commits aparecen con autor "Claude" (noreply@anthropic.com).
 
 ## 3. Estado de las propuestas (NINGUNA está aprobada por el equipo)

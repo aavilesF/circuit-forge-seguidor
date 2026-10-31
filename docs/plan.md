@@ -114,7 +114,7 @@ firmware/seguidor/
   control.h/.cpp    del error a las dos ruedas, búsqueda de línea
   hardware.h/.cpp   motores, sensores con multiplexor, botones, batería
 pruebas/
-  test_logica.cpp               60 pruebas con g++
+  test_logica.cpp               93 pruebas con g++
   verificar_sintaxis_esp32.sh   hardware contra un stub de Arduino
 sim/
   simular.cpp                   simulador en lazo cerrado

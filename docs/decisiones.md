@@ -24,12 +24,16 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 - En la simulación el arreglo curvo de 24 canales **no mejora** el seguimiento frente al QTR-8A en la pista de prueba. Esto no decide P10; solo dice que la elección debe basarse en disponibilidad, precio y tiempo de lectura.
 - Pines asignados en `firmware/seguidor/pines.h` (propuesta; verificar con la placa real). Multiplexores CD74HC4067 para 8 y 24 canales.
 
+- 31 oct 2026 (rama `engineering/final-prototype`): auditoría (`AUDITORIA.md`, 22 hallazgos), arquitectura con fichas técnicas (`ARQUITECTURA.md`), BOM con precios consultados (`BOM_FINAL.csv`), guía de instalación y protocolo de pruebas. Correcciones de firmware: antirrebote de START, máquina de estados probada, batería filtrada fuera del lazo, divisor 100k/33k, búsqueda de 0.25 s.
+- **Checkpoint C2 abierto:** alimentación de motores. Recomendado: motores directo de la batería con compensación (`MOTOR_DESDE_BATERIA = true`) y un solo MP1584 a 5 V para la lógica. Falta aprobación del equipo.
+- El "QTR-8A" de UNIT Electronics ($61) es un clon con TCRT5000 (65.7 × 16 mm, detección 8-12 mm), no el Pololu. Recomendado para P10 por disponibilidad; falta decisión.
+
 ## Pendientes
 
 ### P1. Entorno de firmware
 - **Opciones:** Arduino IDE o PlatformIO.
 - **Propuesta (no acordada):** Arduino IDE, con la matemática (posición de la línea y PID) escrita en C++ sin depender del hardware para poder probarla en computadora.
-- **Avance:** el código se escribió compatible con Arduino IDE y PlatformIO (`firmware/platformio.ini`). **No se pudo compilar con el SDK real de ESP32 desde el entorno donde se escribió**; la primera compilación real es la etapa 1 de `docs/armado.md`.
+- **Avance:** el código se escribió compatible con Arduino IDE y PlatformIO (`firmware/platformio.ini`). **No se pudo compilar con el SDK real de ESP32 desde el entorno donde se escribió**; la primera compilación real es el paso 6 de `docs/INSTALLATION_GUIDE.md`.
 - **Falta:** que el equipo decida, sobre todo Alan, que ya conoce Arduino.
 
 ### P2. Microcontrolador

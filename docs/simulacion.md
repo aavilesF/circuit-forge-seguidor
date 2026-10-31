@@ -6,7 +6,7 @@ Antes de comprar nada ya existe un robot virtual que corre **el mismo código de
 ## Cómo correrlo
 
 ```bash
-pruebas/ejecutar.sh                         # 60 pruebas de la lógica (deben dar 0 fallos)
+pruebas/ejecutar.sh                         # 93 pruebas de la lógica (deben dar 0 fallos)
 sim/ejecutar.sh                      # corrida con QTR-8A
 sim/ejecutar.sh sensores=24 geom=arco paso=4 radio_arco=80   # arreglo curvo de 24
 sim/ejecutar.sh vbase=0.6 kp=0.03 kd=0.001                   # cambiar cualquier parámetro
@@ -69,7 +69,7 @@ Todos los parámetros del robot son nominales (`parametros.h`, `simular.cpp`): h
 (`vmax` supuesto = 1.4 m/s con comando 1.0; hay que medirlo con el motor y la rueda reales.)
 
 Barrido de PID (63 combinaciones por sensor): todas completan la pista; el mejor error medio queda con **Kp = 0.04** (el borde del barrido) y Kd entre 0.0005 y 0.002,
-por eso ese es el valor por defecto. Con el robot real habrá que empezar más abajo (ver `docs/armado.md`).
+por eso ese es el valor por defecto. Con el robot real habrá que empezar más abajo (ver `docs/PROTOCOLO_PRUEBAS.md`, F8).
 
 ### Sensibilidad: lo que sí hace daño
 
@@ -88,6 +88,25 @@ Conclusiones honestas:
 2. **En este modelo el arreglo curvo de 24 no mejora el seguimiento** frente al QTR-8A: la pista de prueba es fácil para ambos. Su ventaja posible
    (más rango lateral, mejor lectura en cruces y esquinas) no está modelada. Decidir por disponibilidad, precio y tiempo de lectura, no por esta simulación.
 3. El ruido de lectura casi no importa; la calibración y el retardo sí.
+
+## Escenarios y comparación de controladores (31 oct 2026)
+
+`sim/ejecutar.sh modo=escenarios` corre 9 situaciones reproducibles; `modo=comparar` las corre con 5 controladores (P, PD, PID, PD sin freno, PD agresivo).
+Resultados en `sim/resultados/comparar_8.csv` y `comparar_24.csv` (vbase 0.6). Resumen con el PD por defecto, QTR-8A:
+
+| Escenario | Error máx. | Sobreimpulso | Pérdidas de línea | Nota |
+|---|---|---|---|---|
+| recta desplazada 20 mm | 20 mm (el inicial) | 1.2 mm | 0 | establece en 0.14 s |
+| curva 90° R 150 | 3.7 mm | — | 0 | |
+| U R 150 | 4.3 mm | — | 0 | |
+| S R 150 | 3.4 mm | — | 0 | |
+| huecos 5 mm | 1.5 mm | — | 0 | la retención de 60 ms los cubre |
+| empujón 30 mm izq./der. | 29.5 / 30.5 mm | 2.4 / 2.9 mm | 0 | |
+| fin de línea | — | — | 1 | se detiene a 0.32 s y ~12 cm |
+| pista completa | 4.2 mm | — | 0 | 5.2 s |
+
+Hallazgo: con 0.4 s o más de búsqueda, al acabarse la línea el robot gira, la reencuentra y la recorre **al revés** sin detenerse. Por eso la búsqueda quedó en 0.25 s.
+`pruebas/regresion.sh` verifica estos escenarios en cada cambio (error máx. ≤ 35 mm, 0 pérdidas, parada < 1 s).
 
 ## Gráficas
 
