@@ -7,10 +7,10 @@ Antes de comprar nada ya existe un robot virtual que corre **el mismo código de
 
 ```bash
 pruebas/ejecutar.sh                         # 60 pruebas de la lógica (deben dar 0 fallos)
-simulacion/ejecutar.sh                      # corrida con QTR-8A
-simulacion/ejecutar.sh sensores=24 geom=arco paso=4 radio_arco=80   # arreglo curvo de 24
-simulacion/ejecutar.sh vbase=0.6 kp=0.03 kd=0.001                   # cambiar cualquier parámetro
-simulacion/ejecutar.sh modo=barrido_vbase                           # tabla de velocidades
+sim/ejecutar.sh                      # corrida con QTR-8A
+sim/ejecutar.sh sensores=24 geom=arco paso=4 radio_arco=80   # arreglo curvo de 24
+sim/ejecutar.sh vbase=0.6 kp=0.03 kd=0.001                   # cambiar cualquier parámetro
+sim/ejecutar.sh modo=barrido_vbase                           # tabla de velocidades
 python3 herramientas/generar_diagramas.py   # regenera todas las gráficas
 ```
 
@@ -93,4 +93,4 @@ Conclusiones honestas:
 
 - `docs/diagramas/sim_base8.png` y `sim_base24.png`: trayectoria sobre la pista y error en el tiempo.
 - `docs/diagramas/sim_velocidad.png`: tiempo y error contra velocidad.
-- Datos crudos en `simulacion/resultados/`.
+- Datos crudos en `sim/resultados/`.

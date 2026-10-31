@@ -55,14 +55,14 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 | `docs/diagramas/` | Diagrama de bloques, cableado, vistas superiores a escala y gráficas de simulación |
 | `firmware/seguidor/` | Firmware (ESP32, Arduino IDE o PlatformIO): `pines.h` es la única fuente de los pines |
 | `pruebas/` | `ejecutar.sh` (lógica, g++) y `verificar_sintaxis_esp32.sh` (hardware contra un stub) |
-| `simulacion/` | Simulador en lazo cerrado que usa el mismo código de control; resultados en `resultados/` |
+| `sim/` | Simulador en lazo cerrado que usa el mismo código de control; resultados en `resultados/` |
 | `herramientas/generar_diagramas.py` | Regenera diagramas, tabla de pines y gráficas |
 
 ### Comandos rápidos
 
 ```bash
 pruebas/ejecutar.sh                    # pruebas de la lógica
-simulacion/ejecutar.sh                 # simulación con los parámetros por defecto
+sim/ejecutar.sh                 # simulación con los parámetros por defecto
 pruebas/verificar_sintaxis_esp32.sh    # sintaxis del código de hardware (no es compilación real)
 python3 herramientas/generar_diagramas.py
 ```

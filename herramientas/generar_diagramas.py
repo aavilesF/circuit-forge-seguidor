@@ -15,7 +15,7 @@ from matplotlib.patches import Rectangle, Circle, FancyBboxPatch
 RAIZ = Path(__file__).resolve().parent.parent
 OUT = RAIZ / "docs" / "diagramas"
 OUT.mkdir(parents=True, exist_ok=True)
-RES = RAIZ / "simulacion" / "resultados"
+RES = RAIZ / "sim" / "resultados"
 
 # Paleta sobria (azul/naranja distinguibles en daltonismo) + neutros
 AZUL, NARANJA, VERDE, GRIS, TINTA, ROJO = "#2a6fb0", "#d9792b", "#3a8f5c", "#9aa0a6", "#202124", "#c0392b"

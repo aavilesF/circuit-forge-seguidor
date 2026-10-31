@@ -116,7 +116,7 @@ firmware/seguidor/
 pruebas/
   test_logica.cpp               60 pruebas con g++
   verificar_sintaxis_esp32.sh   hardware contra un stub de Arduino
-simulacion/
+sim/
   simular.cpp                   simulador en lazo cerrado
 ```
 

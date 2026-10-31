@@ -120,6 +120,11 @@ struct Config {
   float offset_ini = 0.f;       // desplazamiento lateral inicial, mm
   unsigned semilla = 1;
   float mu = 0.9f;              // agarre supuesto de las llantas
+  // escenarios
+  bool  fin_es_meta = true;     // false: la línea se acaba y se mide cómo se detiene el robot
+  float perturb_t = -1.f;       // s; si >= 0, en ese instante se desplaza el robot de lado
+  float perturb_mm = 0.f;       // + a la izquierda de la línea
+  float tol_estab_mm = 3.f;     // banda para el tiempo de establecimiento
 };
 
 struct Resultado {
@@ -131,6 +136,12 @@ struct Resultado {
   float alat_max = 0.f;         // mm/s^2
   float frac_derrape = 0.f;     // fracción de tiempo con a_lat > mu*g
   float longitud = 0.f;
+  float sobreimpulso_mm = 0.f;  // máximo cruce al lado contrario del desplazamiento inicial
+  float t_estab = -1.f;         // s desde el inicio (o la perturbación) hasta quedar en ±tol
+  int   n_perdidas = 0;         // veces que pasó de ver la línea a no verla
+  float t_sin_linea = 0.f;      // s acumulados sin ver la línea
+  float t_parada = -1.f;        // s desde que se acaba la línea hasta que el control se rinde
+  float dist_parada = 0.f;      // mm recorridos después del final de la línea
 };
 
 struct Muestra { float t, x, y, th, err, pos_est, izq, der, v; };
@@ -151,7 +162,7 @@ Resultado correr(const Config& cfg, const Pista& pista, vector<Muestra>* traza =
   // calibración: barrido sobre blanco y negro con ruido
   Calibracion cal; cal.reiniciar(g.n);
   for (int k = 0; k < 50; ++k) {
-    float r[par::MAX_SENSORES];
+    float r[par::MAX_SENSORES] = {};
     for (int i = 0; i < g.n; ++i) r[i] = blanco[i] + cfg.ruido * gauss(rng);
     cal.muestrear(r);
     for (int i = 0; i < g.n; ++i) r[i] = negro[i] + cfg.ruido * gauss(rng);
@@ -174,13 +185,15 @@ Resultado correr(const Config& cfg, const Pista& pista, vector<Muestra>* traza =
 
   Resultado R;
   double suma_err = 0, suma_v = 0; long n_ctl = 0, n_der = 0;
+  bool visto_prev = false, perturbado = false, al_final = false;
+  float t_ref = 0.f, signo_ini = 0.f, t_fin = 0.f, x_fin = 0.f, y_fin = 0.f, t_fuera_banda = 0.f;
   float t = 0.f;
   const float g_mm = 9810.f;
 
   while (t < cfg.tmax) {
     // --- lectura de sensores (verdad física + modelo de ruido) ---
     float fx = std::cos(th), fy = std::sin(th), rx = std::sin(th), ry = -std::cos(th);
-    float refl[par::MAX_SENSORES], osc[par::MAX_SENSORES];
+    float refl[par::MAX_SENSORES] = {}, osc[par::MAX_SENSORES] = {};
     for (int i = 0; i < g.n; ++i) {
       float sx = X + g.y[i] * fx + g.x[i] * rx;
       float sy = Y + g.y[i] * fy + g.x[i] * ry;
@@ -204,7 +217,23 @@ Resultado correr(const Config& cfg, const Pista& pista, vector<Muestra>* traza =
       if (d2 < dmin) { dmin = d2; mejor = k; }
     }
     idx = mejor; float dist = std::sqrt(dmin);
-    suma_err += dist; R.error_max = std::max(R.error_max, dist); ++n_ctl;
+    // error con signo: + si la barra de sensores está a la izquierda de la línea
+    const float con_signo = -std::sin(pista.pth[idx]) * (Px - pista.px[idx]) + std::cos(pista.pth[idx]) * (Py - pista.py[idx]);
+    if (!al_final) { suma_err += dist; R.error_max = std::max(R.error_max, dist); ++n_ctl; }
+    if (signo_ini == 0.f && std::fabs(con_signo) > 1.f) signo_ini = con_signo > 0 ? 1.f : -1.f;
+    if (signo_ini != 0.f && !al_final) R.sobreimpulso_mm = std::max(R.sobreimpulso_mm, -signo_ini * con_signo);
+    if (dist > cfg.tol_estab_mm && !al_final) t_fuera_banda = t;
+    if (visto_prev && !usada.linea_visible) ++R.n_perdidas;
+    if (!usada.linea_visible) R.t_sin_linea += dt_ctl;
+    visto_prev = usada.linea_visible;
+    if (!cfg.fin_es_meta && !al_final && idx + 4 >= pista.px.size()) { al_final = true; t_fin = t; x_fin = X; y_fin = Y; }
+
+    // perturbación: empujón lateral al robot (choque, rebote, polvo)
+    if (cfg.perturb_t >= 0.f && !perturbado && t >= cfg.perturb_t) {
+      perturbado = true; t_ref = t;
+      X += -std::sin(th) * cfg.perturb_mm; Y += std::cos(th) * cfg.perturb_mm;
+      signo_ini = cfg.perturb_mm > 0 ? 1.f : -1.f; R.sobreimpulso_mm = 0.f;
+    }
 
     // --- física (4 subpasos) ---
     float alat = 0.f;
@@ -221,10 +250,15 @@ Resultado correr(const Config& cfg, const Pista& pista, vector<Muestra>* traza =
     t += dt_ctl;
     if (traza) traza->push_back({t, X, Y, th, dist, usada.pos_mm, cmdI, cmdD, v});
 
-    if (idx + 80 >= pista.px.size()) { R.completo = true; R.fin = "meta"; break; }
-    if (s.linea_perdida) { R.fin = "linea_perdida"; break; }
-    if (dist > 70.f) { R.fin = "salio"; break; }
+    if (cfg.fin_es_meta && idx + 80 >= pista.px.size()) { R.completo = true; R.fin = "meta"; break; }
+    if (s.linea_perdida) {
+      R.fin = "linea_perdida";
+      if (al_final) { R.completo = true; R.t_parada = t - t_fin; R.dist_parada = std::hypot(X - x_fin, Y - y_fin); }
+      break;
+    }
+    if (dist > 70.f && !al_final) { R.fin = "salio"; break; }
   }
+  R.t_estab = (t_fuera_banda > t_ref) ? t_fuera_banda - t_ref : 0.f;
   if (R.fin.empty()) R.fin = "tiempo";
   R.tiempo = t;
   R.error_medio = n_ctl ? float(suma_err / n_ctl) : 0.f;
@@ -232,6 +266,61 @@ Resultado correr(const Config& cfg, const Pista& pista, vector<Muestra>* traza =
   R.frac_derrape = n_ctl ? float(n_der) / n_ctl : 0.f;
   R.longitud = idx * pista.step;
   return R;
+}
+
+// ---------------------------------------------------------------- escenarios reproducibles
+// Cada escenario aísla una situación de la pista (reglamento: curvas < 90° de radio > 15 cm,
+// secciones en U, discontinuidades de hasta 5 mm). Mismas semillas = mismos resultados.
+struct Escenario { const char* nombre; const char* que_mide; };
+static const Escenario ESCENARIOS[] = {
+  {"recta_desplazado", "arranca 20 mm fuera de la línea: sobreimpulso y establecimiento"},
+  {"curva_90_r150",    "curva de 90 grados con el radio mínimo del reglamento"},
+  {"U_r150",           "sección en U de radio 150 mm"},
+  {"S_r150",           "S con radio 150 mm (cambio de sentido de giro)"},
+  {"huecos_5mm",       "tres discontinuidades de 5 mm en recta"},
+  {"empujon_izq",      "empujón lateral de 30 mm a la izquierda a mitad de recta"},
+  {"empujon_der",      "empujón lateral de 30 mm a la derecha a mitad de recta"},
+  {"fin_de_linea",     "la línea se acaba: tiempo y distancia hasta que el robot se detiene"},
+  {"pista_completa",   "pista de prueba de 4.4 m (todas las situaciones juntas)"},
+};
+
+static Pista pista_escenario(const std::string& n, Config& c) {
+  Pista p; p.inicio(100, 300, 0);
+  if (n == "recta_desplazado") { p.recta(1500); c.offset_ini = 20.f; }
+  else if (n == "curva_90_r150") { p.recta(400); p.arco(150, -90); p.recta(500); }
+  else if (n == "U_r150") { p.recta(400); p.arco(150, 180); p.recta(500); }
+  else if (n == "S_r150") { p.recta(300); p.arco(150, 80); p.arco(150, -80); p.recta(400); }
+  else if (n == "huecos_5mm") { for (int i = 0; i < 3; ++i) { p.recta(300); p.recta(5, true); } p.recta(300); }
+  else if (n == "empujon_izq") { p.recta(1800); c.perturb_t = 1.0f; c.perturb_mm = 30.f; }
+  else if (n == "empujon_der") { p.recta(1800); c.perturb_t = 1.0f; c.perturb_mm = -30.f; }
+  else if (n == "fin_de_linea") { p.recta(600); c.fin_es_meta = false; }
+  else { return pista_prueba(); }
+  p.construir_mapa(par::ANCHO_LINEA_MM);
+  return p;
+}
+
+struct Controlador { const char* nombre; void (*aplicar)(ParamControl&); };
+static const Controlador CONTROLADORES[] = {
+  {"P",            [](ParamControl& p) { p.kd = 0.f; p.ki = 0.f; }},
+  {"PD",           [](ParamControl&) {}},                                   // valores por defecto
+  {"PID",          [](ParamControl& p) { p.ki = 0.3f; }},
+  {"PD_sin_freno", [](ParamControl& p) { p.freno_error = 0.f; }},
+  {"PD_agresivo",  [](ParamControl& p) { p.kp = 0.08f; p.kd = 0.004f; }},
+};
+
+static void correr_escenarios(const Config& base, bool comparar) {
+  std::printf("escenario,controlador,sensores,fin,ok,tiempo_s,err_medio_mm,err_max_mm,sobreimpulso_mm,t_estab_s,perdidas,t_sin_linea_s,t_parada_s,dist_parada_mm,alat_max_g\n");
+  for (const auto& e : ESCENARIOS) {
+    for (const auto& k : CONTROLADORES) {
+      if (!comparar && std::string(k.nombre) != "PD") continue;
+      Config c = base; k.aplicar(c.pc);
+      Pista p = pista_escenario(e.nombre, c);
+      Resultado r = correr(c, p);
+      std::printf("%s,%s,%d,%s,%d,%.2f,%.2f,%.1f,%.1f,%.2f,%d,%.2f,%.2f,%.0f,%.2f\n", e.nombre, k.nombre, c.n_sens,
+                  r.fin.c_str(), int(r.completo), r.tiempo, r.error_medio, r.error_max, r.sobreimpulso_mm, r.t_estab,
+                  r.n_perdidas, r.t_sin_linea, r.t_parada, r.dist_parada, r.alat_max / 9810.f);
+    }
+  }
 }
 
 // ---------------------------------------------------------------- argumentos
@@ -262,6 +351,8 @@ static bool fijar(Config& c, const std::string& k, const std::string& v) {
   else if (k == "u_max") c.pc.u_max = f;
   else if (k == "rueda_min") c.pc.rueda_min = f;
   else if (k == "retencion") c.pc.t_retencion_s = f;
+  else if (k == "busqueda") c.pc.t_busqueda_s = f;
+  else if (k == "u_busqueda") c.pc.u_busqueda = f;
   else return false;
   return true;
 }
@@ -281,6 +372,7 @@ int main(int argc, char** argv) {
     if (k == "csv") csv = v; else if (k == "modo") modo = v;
     else if (!fijar(cfg, k, v)) { std::fprintf(stderr, "clave desconocida: %s\n", k.c_str()); return 2; }
   }
+  if (modo == "escenarios" || modo == "comparar") { correr_escenarios(cfg, modo == "comparar"); return 0; }
   Pista pista = pista_prueba();
   std::printf("# pista: %zu puntos, longitud %.0f mm\n", pista.px.size(), pista.px.size() * pista.step);
 

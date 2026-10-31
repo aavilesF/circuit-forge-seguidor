@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Compila el simulador. Uso: simulacion/ejecutar.sh [clave=valor ...]
+# Compila el simulador. Uso: sim/ejecutar.sh [clave=valor ...]
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p ../.build resultados
