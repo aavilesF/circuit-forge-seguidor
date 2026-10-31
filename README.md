@@ -30,12 +30,12 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 
 ## Estado actual
 
-- Repositorio creado.
-- Reglamento analizado (ver `docs/requisitos.md`).
-- Componentes: **sin definir ni comprados**.
-- Firmware: **sin empezar**.
+- Repositorio creado y reglamento analizado (ver `docs/requisitos.md`).
+- Microcontrolador: **ESP32** (decidido, D3). El resto de la arquitectura sigue como propuesta sin aprobar (`docs/plan.md`).
+- Componentes: **sin comprar** (compra prevista la semana del 2 de noviembre). El sensor (QTR-8A o curvo de 24) sigue sin decidir.
+- Firmware: **lógica probada en computadora** (60 pruebas) y **simulador** de la pista. Capa de hardware del ESP32 escrita pero **solo verificada de sintaxis**: no se ha compilado con el SDK real ni probado en la placa.
+- Diagramas y guía de armado listos; las medidas de las piezas son nominales hasta tenerlas en la mano.
 - Pista de práctica: **por construir**.
-- Plan y arquitectura: **propuesta en revisión, sin aprobar** (ver `docs/plan.md`).
 
 ## Contenido
 
@@ -48,7 +48,24 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 | [docs/contexto-ia.md](docs/contexto-ia.md) | Resumen del proyecto y prompt de arranque para que cualquier IA o persona parta del mismo contexto |
 | [modificaciones/](modificaciones/README.md) | Propuestas de cambio de cada integrante, sin tocar los documentos originales |
 
-Las carpetas `firmware/` y `pruebas/` se agregarán cuando haya contenido real.
+| [docs/simulacion.md](docs/simulacion.md) | Modelo virtual, matemáticas explicadas, resultados y límites del simulador |
+| [docs/electronica.md](docs/electronica.md) | Reglas eléctricas, pines (`docs/diagramas/pines.md`), batería y sensores |
+| [docs/mecanica.md](docs/mecanica.md) | Geometría, velocidades, distribución de peso |
+| [docs/armado.md](docs/armado.md) | Guía de armado y pruebas por etapas, con criterios de aprobado |
+| `docs/diagramas/` | Diagrama de bloques, cableado, vistas superiores a escala y gráficas de simulación |
+| `firmware/seguidor/` | Firmware (ESP32, Arduino IDE o PlatformIO): `pines.h` es la única fuente de los pines |
+| `pruebas/` | `ejecutar.sh` (lógica, g++) y `verificar_sintaxis_esp32.sh` (hardware contra un stub) |
+| `simulacion/` | Simulador en lazo cerrado que usa el mismo código de control; resultados en `resultados/` |
+| `herramientas/generar_diagramas.py` | Regenera diagramas, tabla de pines y gráficas |
+
+### Comandos rápidos
+
+```bash
+pruebas/ejecutar.sh                    # pruebas de la lógica
+simulacion/ejecutar.sh                 # simulación con los parámetros por defecto
+pruebas/verificar_sintaxis_esp32.sh    # sintaxis del código de hardware (no es compilación real)
+python3 herramientas/generar_diagramas.py
+```
 
 ## Forma de trabajo
 

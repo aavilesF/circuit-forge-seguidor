@@ -17,11 +17,19 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 - **Consecuencias:** todo lo conectado a sus pines trabaja a 3.3 V (P11). Hay que resolver los canales analógicos del sensor (P10). WiFi y Bluetooth deben quedar apagados en el firmware, porque el reglamento prohíbe la comunicación inalámbrica en competencia.
 - **Qué lo haría revisar:** que la lectura de los sensores resulte demasiado ruidosa o lenta en pruebas.
 
+## Registro de avance técnico (no son decisiones del equipo)
+
+- 31 oct 2026: se creó el firmware base, el simulador y la guía de armado. Los valores `kp=0.04`, `kd=0.002` son un punto de partida salido de simulación (modelo ideal), no de pruebas con el robot.
+- Hallazgo de la simulación: el **retardo entre lectura y actuación** pesa mucho más que el ruido o el tipo de sensor. Con 12 ms de retardo el error medio sube de 1.6 a 6.8 mm. Con 24 canales leídos dos veces (emisores encendidos y apagados) hay que medir el tiempo real de lectura en el ESP32 (guía de armado, etapa 6).
+- En la simulación el arreglo curvo de 24 canales **no mejora** el seguimiento frente al QTR-8A en la pista de prueba. Esto no decide P10; solo dice que la elección debe basarse en disponibilidad, precio y tiempo de lectura.
+- Pines asignados en `firmware/seguidor/pines.h` (propuesta; verificar con la placa real). Multiplexores CD74HC4067 para 8 y 24 canales.
+
 ## Pendientes
 
 ### P1. Entorno de firmware
 - **Opciones:** Arduino IDE o PlatformIO.
 - **Propuesta (no acordada):** Arduino IDE, con la matemática (posición de la línea y PID) escrita en C++ sin depender del hardware para poder probarla en computadora.
+- **Avance:** el código se escribió compatible con Arduino IDE y PlatformIO (`firmware/platformio.ini`). **No se pudo compilar con el SDK real de ESP32 desde el entorno donde se escribió**; la primera compilación real es la etapa 1 de `docs/armado.md`.
 - **Falta:** que el equipo decida, sobre todo Alan, que ya conoce Arduino.
 
 ### P2. Microcontrolador
@@ -49,6 +57,7 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 ### P10. Canales analógicos del sensor con ESP32
 - **Problema:** el QTR-8A tiene 8 salidas analógicas y en las placas de 38 pines el ADC1 normalmente solo expone unos 6 pines utilizables.
 - **Opciones:** usar pines del ADC2 sin iniciar el WiFi (por confirmar y probar), cambiar a QTR-8RC (digital), usar 6 sensores, o un multiplexor analógico de 16 canales (CD74HC4067, que aparece en la lista del profesor): una sola entrada analógica del ESP32 más 4 líneas de selección. Para 24 sensores harían falta dos multiplexores. Con un multiplexor hay que comprobar el tiempo de lectura de todos los canales y que a 3.3 V funcione bien.
+- **Avance:** `pines.h` implementa la opción de multiplexores (1 chip para 8 sensores, 2 para 24). Pendiente decidir el sensor y confirmar el pinout de la placa real.
 - **Falta:** confirmar el pinout de la placa y decidir.
 
 ### P11. Voltaje de las entradas del ESP32

@@ -1,0 +1,2 @@
+perfil 8: 85.0 x 191.5 mm, cabe=True
+perfil 24: 100.0 x 191.0 mm, cabe=True

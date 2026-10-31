@@ -57,11 +57,12 @@ El equipo Circuit Forge (tres integrantes) construirá un robot seguidor de lín
 - Presupuesto: sin definir; estimado de $600 a $1,000 MXN por persona, o más.
 - Compras: todo nuevo, en línea o en tienda física de León o Irapuato; prefieren México pero consideran importar; quieren rapidez sin perder estabilidad.
 - Disposición: dispuestos a una solución avanzada y a hacer cualquier tarea (soldar, imprimir, programar).
-- Entorno de firmware: sin definir.
+- Entorno de firmware: sin definir por el equipo (el código funciona en Arduino IDE y PlatformIO).
 
 ### Repositorio
 - Existe, privado, cuenta aavilesF. Alan y Daniel **todavía no figuran como colaboradores** (no se ha confirmado que se les haya invitado).
-- Contiene `README.md`, `.gitignore` (parece plantilla de C++, no revisado a fondo) y `docs/` con `requisitos.md`, `presupuesto.md`, `decisiones.md` y `plan.md`. Ver cada archivo en el repositorio.
+- Contiene `README.md`, `.gitignore`, `docs/` (requisitos, presupuesto, decisiones, plan, simulacion, electronica, mecanica, armado, diagramas), `firmware/seguidor/`, `pruebas/`, `simulacion/`, `herramientas/` y `modificaciones/`. Ver cada archivo en el repositorio.
+- Estado técnico (31 oct): la lógica del firmware está probada en computadora (60 pruebas) y hay un simulador; el código de hardware del ESP32 **solo se verificó de sintaxis contra un stub, no se compiló con el SDK real ni se probó en la placa**. Los parámetros del robot (distancias, RPM, tamaños) son nominales. Los resultados de simulación no incluyen derrape ni caída de batería.
 - Los commits aparecen con autor "Claude" (noreply@anthropic.com).
 
 ## 3. Estado de las propuestas (NINGUNA está aprobada por el equipo)

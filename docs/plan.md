@@ -106,16 +106,21 @@ Estructura propuesta, sin dependencias de la plataforma en la lógica:
 
 ```
 firmware/seguidor/
-  seguidor.ino      pines, setup y loop
-  posicion.h/.cpp   normalización y posición ponderada
+  seguidor.ino      estados, consola serie, calibración y guardado
+  pines.h           perfil de sensor y mapa de pines (única fuente)
+  parametros.h      constantes compartidas con el simulador
+  posicion.h/.cpp   calibración, normalización y posición ponderada
   pid.h/.cpp        PID discreto con saturación y anti-windup
-  motores.h/.cpp    PWM, sentido y límites
-  config.h          pines y constantes
+  control.h/.cpp    del error a las dos ruedas, búsqueda de línea
+  hardware.h/.cpp   motores, sensores con multiplexor, botones, batería
 pruebas/
-  test_posicion.cpp
-  test_pid.cpp
-  simulador.cpp     modelo diferencial simple
+  test_logica.cpp               60 pruebas con g++
+  verificar_sintaxis_esp32.sh   hardware contra un stub de Arduino
+simulacion/
+  simular.cpp                   simulador en lazo cerrado
 ```
+
+(Estructura implementada el 31 de octubre; sustituye a la propuesta inicial con `motores.*` y `config.h`.)
 
 Criterios de aceptación:
 
