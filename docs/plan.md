@@ -2,7 +2,7 @@
 
 **Estado:** propuesta generada con ayuda de IA (DeepSeek) y corregida con Claude. **El equipo todavía no la ha aprobado.** Nada de lo que sigue es una decisión hasta que se anote como "Decidido" en `decisiones.md`. Las tareas que mencionan a personas son sugerencias, no compromisos aceptados.
 
-Esta versión reemplaza la anterior (basada en Arduino Nano). La segunda propuesta usa ESP32; falta que el equipo confirme esa elección.
+Esta versión reemplaza la anterior (basada en Arduino Nano). El ESP32 ya está decidido (D3 en `decisiones.md`); el resto de la arquitectura sigue como propuesta.
 
 ## Idea central
 
@@ -36,7 +36,7 @@ Reglas eléctricas:
 
 | Bloque | Propuesta | Qué hay que validar |
 |---|---|---|
-| Microcontrolador | ESP32 de 38 pines (ESP-WROOM-32) | Que el equipo lo confirme. Compatibilidad con 3.3 V y canales analógicos (ver abajo) |
+| Microcontrolador | ESP32 de 38 pines (ESP-WROOM-32). **Decidido (D3)** | Compatibilidad con 3.3 V y canales analógicos (ver abajo) |
 | Sensor | QTR-8A (8 canales analógicos) o equivalente, 1 + 1 de repuesto | **Canales**: ver sección siguiente. Paso entre sensores y ancho de la barra (confirmar en la ficha) para que quepa en 10 cm |
 | Driver | TB6612FNG, 1 + 1 de repuesto | Corriente de bloqueo de los motores frente a 1.2 A continuos por canal |
 | Motores | 2 N20 de 6 V con engranes metálicos + 1 de repuesto | **RPM**: ver sección de velocidad. La opción de 70 a 100 RPM es demasiado lenta |
@@ -54,6 +54,7 @@ El QTR-8A entrega 8 señales analógicas, pero en las placas de 38 pines el ADC1
 - Usar también pines del ADC2. El ADC2 es incompatible con el WiFi encendido; si el firmware nunca lo inicia, debería poder usarse (evitar los GPIO 0, 2, 12 y 15, que afectan el arranque). Falta confirmarlo en la documentación de Espressif y probarlo en la placa real.
 - Cambiar a un QTR-8RC (digital, por tiempo de descarga), que funciona con cualquier GPIO, con lecturas más lentas.
 - Usar solo 6 sensores.
+- Usar un multiplexor analógico de 16 canales (CD74HC4067): una entrada analógica del ESP32 más 4 líneas de selección. Para 24 sensores harían falta dos. Hay que medir el tiempo de lectura de todos los canales y comprobar que funcione bien a 3.3 V.
 
 Decisión pendiente (P10 en `decisiones.md`).
 

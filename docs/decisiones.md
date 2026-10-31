@@ -11,6 +11,12 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 ### D2. Repositorio
 - **Decisión:** repositorio privado `circuit-forge-seguidor` en la cuenta aavilesF.
 
+### D3. Microcontrolador: ESP32
+- **Decisión:** el robot usa un ESP32 (placa de 38 pines). Confirmado por Alejandro el 30 de octubre de 2026, después de comparar con la lista de componentes del profesor (Arduino Nano, STM32 Blue Pill o ESP32 con la radio desactivada). Si Alan o Daniel no están de acuerdo, se reabre con una propuesta en `modificaciones/`.
+- **Justificación:** Alejandro conoce lo básico de Arduino y del ESP32, y Alan ya hizo un seguidor con Arduino. El ESP32 es mucho más rápido que un Nano (240 MHz frente a 16 MHz) y se puede programar desde Arduino IDE. La razón de fondo la dio Alejandro al decidir; esta justificación la redactó la IA a partir de los datos del equipo.
+- **Consecuencias:** todo lo conectado a sus pines trabaja a 3.3 V (P11). Hay que resolver los canales analógicos del sensor (P10). WiFi y Bluetooth deben quedar apagados en el firmware, porque el reglamento prohíbe la comunicación inalámbrica en competencia.
+- **Qué lo haría revisar:** que la lectura de los sensores resulte demasiado ruidosa o lenta en pruebas.
+
 ## Pendientes
 
 ### P1. Entorno de firmware
@@ -19,8 +25,7 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 - **Falta:** que el equipo decida, sobre todo Alan, que ya conoce Arduino.
 
 ### P2. Microcontrolador
-- **Opciones:** ESP32 o Arduino Nano, entre otras.
-- **Falta:** decisión del equipo tras revisar fichas técnicas.
+- **Resuelta:** ver D3 (ESP32).
 
 ### P3. Sensor, motores, driver y batería
 - **Falta:** validar la lista de `presupuesto.md` con datos de fichas técnicas.
@@ -33,7 +38,7 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 
 ### P6. Arquitectura y plan propuestos
 - **Propuesta (no acordada):** ESP32, QTR-8A, TB6612FNG, motores N20 de 6 V, LiPo 2S y dos reguladores buck, con congelamiento del diseño el 15 de noviembre. Detalle en [plan.md](plan.md). Una versión anterior proponía Arduino Nano; esta la reemplaza.
-- **Propuesta de microcontrolador:** la segunda propuesta usa ESP32 (con ello P2 pasa de "ESP32 o Nano" a "ESP32 propuesto"). Falta confirmar si el equipo lo decidió, sobre todo con Alan.
+- **Microcontrolador:** ya decidido, ver D3. El resto de la arquitectura sigue como propuesta.
 - **Falta:** que el equipo valide cada elemento con fichas técnicas y lo apruebe.
 
 ### P7. Alimentación de los motores
@@ -43,7 +48,7 @@ Aquí se anota cada decisión importante del equipo: problema, opciones, decisi�
 
 ### P10. Canales analógicos del sensor con ESP32
 - **Problema:** el QTR-8A tiene 8 salidas analógicas y en las placas de 38 pines el ADC1 normalmente solo expone unos 6 pines utilizables.
-- **Opciones:** usar pines del ADC2 sin iniciar el WiFi (por confirmar y probar), cambiar a QTR-8RC (digital) o usar 6 sensores.
+- **Opciones:** usar pines del ADC2 sin iniciar el WiFi (por confirmar y probar), cambiar a QTR-8RC (digital), usar 6 sensores, o un multiplexor analógico de 16 canales (CD74HC4067, que aparece en la lista del profesor): una sola entrada analógica del ESP32 más 4 líneas de selección. Para 24 sensores harían falta dos multiplexores. Con un multiplexor hay que comprobar el tiempo de lectura de todos los canales y que a 3.3 V funcione bien.
 - **Falta:** confirmar el pinout de la placa y decidir.
 
 ### P11. Voltaje de las entradas del ESP32

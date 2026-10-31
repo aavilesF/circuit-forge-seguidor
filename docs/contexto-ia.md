@@ -68,7 +68,7 @@ El equipo Circuit Forge (tres integrantes) construirá un robot seguidor de lín
 
 | Tema | Propuesta actual | Estado |
 |---|---|---|
-| Microcontrolador | ESP32 de 38 pines (la primera propuesta era Arduino Nano) | Propuesto. No se sabe si el equipo lo confirmó |
+| Microcontrolador | ESP32 de 38 pines | **Decidido** (D3, confirmado por Alejandro el 30 de octubre) |
 | Sensor | QTR-8A de 8 canales, 1 + 1 de repuesto | Propuesto. Problema de canales ADC abierto (P10) |
 | Driver | TB6612FNG, 1 + 1 de repuesto | Propuesto |
 | Motores | N20 de 6 V con engranes metálicos, 2 + 1 de repuesto | Propuesto. Las RPM de la lista inicial (70 a 100) son demasiado lentas; sin elegir (P12) |
@@ -79,7 +79,7 @@ El equipo Circuit Forge (tres integrantes) construirá un robot seguidor de lín
 | Herramientas | Multímetro (imprescindible) y báscula de 1 g | Propuesto |
 | Presupuesto | Total estimado $4,002.79 MXN (unos $1,334 por persona), con cifras sin verificar y sin envíos | Sin aprobar; supera el rango de $600 a $1,000 por persona |
 
-Decidido por el equipo: comprar todo nuevo (en línea o León/Irapuato) y usar el repositorio privado `circuit-forge-seguidor`. Nada más.
+Decidido: comprar todo nuevo (en línea o León/Irapuato), usar el repositorio privado `circuit-forge-seguidor` y usar un ESP32 como microcontrolador. Nada más.
 
 ### Calendario (fechas desde hoy)
 - Al 28 de octubre: la fecha sugerida para hacer el pedido (martes 27 oct) ya pasó; no hay registro de si se pidió algo.
@@ -103,7 +103,7 @@ Decidido por el equipo: comprar todo nuevo (en línea o León/Irapuato) y usar e
 9. Una propuesta asignaba tareas y una reunión a Alan y Daniel que ellos no han aceptado.
 
 ## 5. Preguntas abiertas
-- ¿El equipo confirmó ESP32? ¿Qué placa domina Alan?
+- ¿Qué placa ESP32 exacta se compra y con qué chip USB (CP2102 o CH340)? ¿Alan y Daniel están de acuerdo con el ESP32?
 - ¿Ya se hizo algún pedido? ¿Quién compra, en qué tiendas y con qué presupuesto total y aportaciones?
 - ¿Llegó la confirmación de inscripción? ¿El reglamento publicado coincide con `requisitos.md`? ¿Un chasis impreso por el servicio de la universidad cumple la regla? (Pendiente de escribir a camilo.duque@tec.mx.)
 - ¿Cuál es la velocidad objetivo, y por tanto las RPM y la reducción de los motores?
