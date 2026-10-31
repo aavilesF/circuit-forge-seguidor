@@ -6,6 +6,7 @@
 #include "../firmware/seguidor/posicion.h"
 #include "../firmware/seguidor/pid.h"
 #include "../firmware/seguidor/control.h"
+#include "../firmware/seguidor/estados.h"
 
 static int fallos = 0, total = 0;
 #define CHECK(cond, msg) do { ++total; if (!(cond)) { ++fallos; std::printf("FALLO: %s  (%s:%d)\n", msg, __FILE__, __LINE__); } } while (0)
@@ -139,6 +140,90 @@ int main() {
     if (ss.izq > 1.f + 1e-6f || ss.der > 1.f + 1e-6f || ss.izq < pc.rueda_min - 1e-6f || ss.der < pc.rueda_min - 1e-6f) ok = false;
   }
   CHECK(ok, "ruedas siempre dentro de [rueda_min, 1]");
+
+  // --- Lecturas imposibles ---
+  { int a[4] = {0, 3, 1, 0}; int b[4] = {4095, 4093, 4090, 4095}; int c[4] = {0, 4095, 2000, 300};
+    CHECK(lecturas_imposibles(a, 4, 4095), "todos en 0 -> falla");
+    CHECK(lecturas_imposibles(b, 4, 4095), "todos saturados -> falla");
+    CHECK(!lecturas_imposibles(c, 4, 4095), "lecturas mezcladas -> normal"); }
+
+  // --- Compensación de batería ---
+  CHECK(cerca(compensar_bateria(1.f, 8.4f, 6.f), 6.f / 8.4f, 1e-6f), "8.4 V -> PWM máximo 71 %");
+  CHECK(cerca(compensar_bateria(0.5f, 6.f, 6.f), 0.5f, 1e-6f), "batería = nominal -> sin cambio");
+  CHECK(cerca(compensar_bateria(-0.4f, 7.5f, 6.f), -0.32f, 1e-6f), "reversa también se escala");
+  CHECK(cerca(compensar_bateria(0.7f, 5.5f, 6.f), 0.7f, 1e-6f), "batería baja -> no se amplifica");
+
+  // --- Botón con antirrebote ---
+  { Boton b(30); int pulsos = 0; uint32_t t = 0;
+    // rebote: cambia cada 2 ms durante 10 ms, luego queda presionado
+    for (int i = 0; i < 5; ++i) { pulsos += b.actualizar(i % 2 == 0, t); t += 2; }
+    for (int i = 0; i < 50; ++i) { pulsos += b.actualizar(true, t); t += 2; }
+    CHECK(pulsos == 1, "rebote produce un solo pulso");
+    for (int i = 0; i < 50; ++i) { pulsos += b.actualizar(false, t); t += 2; }
+    for (int i = 0; i < 50; ++i) { pulsos += b.actualizar(true, t); t += 2; }
+    CHECK(pulsos == 2, "segunda pulsación, segundo pulso");
+    Boton c(30); int p2 = 0; t = 0;
+    for (int i = 0; i < 10; ++i) { p2 += c.actualizar(true, t); t += 2; }   // 20 ms < 30 ms
+    CHECK(p2 == 0, "pulso más corto que el antirrebote se ignora"); }
+
+  // --- Monitor de batería ---
+  { MonitorBateria m(6.8f, 6.4f, 300, 0.2f); uint32_t t = 0;
+    m.muestra(7.8f, t);
+    CHECK(m.permite_arranque() && !m.critica(), "7.8 V: arranca");
+    for (int i = 0; i < 5; ++i) { m.muestra(5.0f, t += 20); }       // caída breve de 100 ms
+    for (int i = 0; i < 50; ++i) { m.muestra(7.8f, t += 20); }
+    CHECK(!m.critica(), "caída breve no es crítica");
+    for (int i = 0; i < 40; ++i) { m.muestra(6.0f, t += 20); }      // 800 ms en 6.0 V
+    CHECK(m.critica() && !m.permite_arranque(), "6.0 V sostenido: crítica");
+    for (int i = 0; i < 60; ++i) { m.muestra(7.0f, t += 20); }
+    CHECK(!m.critica() && m.permite_arranque(), "se recupera al subir"); }
+
+  // --- Máquina de estados ---
+  { MaquinaEstados me(500); Eventos ev; uint32_t t = 0;
+    me.actualizar(ev, t);
+    CHECK(me.estado() == Estado::ESPERA, "INICIO -> ESPERA");
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    CHECK(me.estado() == Estado::ESPERA, "START sin calibración no arranca");
+    ev.cal = true; me.actualizar(ev, t += 10); ev.cal = false;
+    CHECK(me.estado() == Estado::CALIBRANDO, "CAL -> CALIBRANDO");
+    ev.cal_tiempo_agotado = true; ev.cal_suficiente = false; me.actualizar(ev, t += 10);
+    CHECK(me.estado() == Estado::ESPERA && me.motivo() == Motivo::CAL_INSUFICIENTE, "calibración mala -> ESPERA con motivo");
+    ev.cal_tiempo_agotado = false;
+    ev.cal = true; me.actualizar(ev, t += 10); ev.cal = false;
+    ev.cal = true; ev.cal_suficiente = true; me.actualizar(ev, t += 10); ev.cal = false;
+    CHECK(me.estado() == Estado::LISTO, "calibración buena -> LISTO");
+    ev.bateria_permite = false; ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    CHECK(me.estado() == Estado::LISTO && me.motivo() == Motivo::BATERIA_ARRANQUE, "batería baja: no arranca");
+    ev.bateria_permite = true; ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    CHECK(me.estado() == Estado::SIGUIENDO && me.recien_arrancado() && me.motores_habilitados(), "START -> SIGUIENDO");
+    ev.start = true; me.actualizar(ev, t += 100); ev.start = false;
+    CHECK(me.estado() == Estado::SIGUIENDO, "START a los 100 ms se ignora (rebote)");
+    ev.buscando = true; me.actualizar(ev, t += 10);
+    CHECK(me.estado() == Estado::RECUPERANDO, "sin línea -> RECUPERANDO");
+    ev.buscando = false; me.actualizar(ev, t += 10);
+    CHECK(me.estado() == Estado::SIGUIENDO, "la vuelve a ver -> SIGUIENDO");
+    ev.start = true; me.actualizar(ev, t += 1000); ev.start = false;
+    CHECK(me.estado() == Estado::PARADA && me.motivo() == Motivo::BOTON, "START después de 500 ms -> PARADA");
+    CHECK(!me.motores_habilitados(), "PARADA: motores deshabilitados");
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    CHECK(me.estado() == Estado::LISTO, "PARADA -> LISTO");
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    ev.linea_perdida = true; me.actualizar(ev, t += 10); ev.linea_perdida = false;
+    CHECK(me.estado() == Estado::PARADA && me.motivo() == Motivo::LINEA_PERDIDA, "línea perdida -> PARADA");
+    me.actualizar(ev, t += 10); ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    ev.bateria_critica = true; me.actualizar(ev, t += 10); ev.bateria_critica = false;
+    CHECK(me.estado() == Estado::PARADA && me.motivo() == Motivo::BATERIA, "batería crítica -> PARADA");
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    ev.falla_sensores = true; me.actualizar(ev, t += 10); ev.falla_sensores = false;
+    CHECK(me.estado() == Estado::ERROR && me.motivo() == Motivo::SENSORES, "falla de sensores -> ERROR");
+    ev.start = true; me.actualizar(ev, t += 10); ev.start = false;
+    CHECK(me.estado() == Estado::ERROR, "ERROR ignora START");
+    ev.cal = true; me.actualizar(ev, t += 10); ev.cal = false;
+    CHECK(me.estado() == Estado::ESPERA, "ERROR -> ESPERA con CAL");
+    MaquinaEstados m2; Eventos e2; e2.bateria_permite = false; m2.actualizar(e2, 0);
+    CHECK(m2.estado() == Estado::ERROR && m2.motivo() == Motivo::BATERIA_ARRANQUE, "batería mala al encender -> ERROR"); }
 
   std::printf("%d pruebas, %d fallos\n", total, fallos);
   return fallos ? 1 : 0;

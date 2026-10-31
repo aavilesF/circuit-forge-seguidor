@@ -46,6 +46,10 @@ struct Calibracion {
 // Oscuridad normalizada: 0 = blanco, 1 = negro (la línea).
 void normalizar(const Calibracion& cal, const float* refl, float* oscuridad);
 
+// Lecturas imposibles: todos los canales pegados a 0 o al máximo del ADC (sensor desconectado,
+// sin alimentación, multiplexor mal cableado o robot levantado). El .ino exige que dure un tiempo.
+bool lecturas_imposibles(const int* raw, int n, int adc_max, int margen = 8);
+
 // ---- Posición de la línea --------------------------------------------------
 struct Estimacion {
   float pos_mm;        // posición lateral de la línea respecto al centro; + si está a la derecha

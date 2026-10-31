@@ -17,10 +17,15 @@ ParamControl param_por_defecto() {
   p.rueda_min = -0.30f;
   p.tau_d_s = 0.010f;
   p.t_retencion_s = 0.060f;
-  p.t_busqueda_s = 1.500f;
+  p.t_busqueda_s = 0.250f;   // sim/: con 0.4 s o más el robot reencuentra la línea al revés (escenario fin_de_linea)
   p.u_busqueda = 0.35f;
   p.vbusqueda_rel = 0.40f;
   return p;
+}
+
+float compensar_bateria(float cmd, float v_bateria, float v_motor_nominal) {
+  if (!(v_bateria > v_motor_nominal) || v_motor_nominal <= 0.0f) return cmd;
+  return cmd * (v_motor_nominal / v_bateria);
 }
 
 ControladorLinea::ControladorLinea(const ParamControl& p) : p_(p) { fijar(p); }

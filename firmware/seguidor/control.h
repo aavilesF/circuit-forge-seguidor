@@ -27,6 +27,12 @@ struct ParamControl {
 
 ParamControl param_por_defecto();
 
+// Compensación de voltaje: si los motores se alimentan directo de la batería (más voltaje que
+// su nominal), se escala el PWM para que el voltaje promedio no pase de v_motor_nominal.
+// Además hace que la velocidad no dependa de la carga de la batería.
+//   cmd_pwm = cmd * v_motor_nominal / v_bateria   (solo si v_bateria > v_motor_nominal)
+float compensar_bateria(float cmd, float v_bateria, float v_motor_nominal);
+
 struct SalidaControl {
   float izq, der;       // órdenes de rueda, -1 a 1
   float error_mm;       // error usado en este ciclo

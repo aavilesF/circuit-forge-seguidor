@@ -38,7 +38,7 @@ void motores_apagar() {
 }
 
 // ---- Sensores --------------------------------------------------------------
-static inline void emisores(bool on) { digitalWrite(PIN_EMISORES, on ? HIGH : LOW); }
+static inline void emisores(bool on) { digitalWrite(PIN_EMISORES, (on == EMISOR_ACTIVO_ALTO) ? HIGH : LOW); }
 
 static inline void direccion(int a) {
   digitalWrite(PIN_MUX_S0, a & 1);
@@ -53,7 +53,7 @@ static void barrer(int* dst) {
   const int pasos = n < 16 ? n : 16;
   for (int a = 0; a < pasos; ++a) {
     direccion(a);
-    delayMicroseconds(4);                 // tiempo de establecimiento del multiplexor (VERIFICAR con osciloscopio o prueba)
+    delayMicroseconds(MUX_ESTABLECIMIENTO_US);   // ver pines.h (fuente de 47 kΩ + capacitancia del mux)
     dst[a] = analogRead(PIN_MUX_SIG1);
     if (a + 16 < n) dst[a + 16] = analogRead(PIN_MUX_SIG2);
   }
@@ -61,22 +61,23 @@ static void barrer(int* dst) {
 
 void leer_crudo(int* raw) {
   emisores(true);
-  delayMicroseconds(30);
+  delayMicroseconds(EMISOR_ESTABLECIMIENTO_US);
   barrer(raw);
 }
 
-void leer_reflectancia(float* refl) {
+void leer_reflectancia(float* refl, int* raw_on) {
   static const posicion::ModoSensor modo = {RESTA_AMBIENTE, ALTO_ES_NEGRO, par::ADC_MAX};
   int on[par::MAX_SENSORES], off[par::MAX_SENSORES];
   emisores(true);
-  delayMicroseconds(30);
+  delayMicroseconds(EMISOR_ESTABLECIMIENTO_US);
   barrer(on);
   if (RESTA_AMBIENTE) {
     emisores(false);
-    delayMicroseconds(30);
+    delayMicroseconds(EMISOR_ESTABLECIMIENTO_US);
     barrer(off);
   }
   for (int i = 0; i < NUM_SENSORES; ++i) refl[i] = posicion::reflectancia(modo, on[i], RESTA_AMBIENTE ? off[i] : 0);
+  if (raw_on) for (int i = 0; i < NUM_SENSORES; ++i) raw_on[i] = on[i];
 }
 
 // ---- Interfaz --------------------------------------------------------------

@@ -16,7 +16,8 @@ void motores_apagar();      // STBY a bajo: los motores quedan libres
 // ---- Sensores -----
 // Lee los n sensores. Si RESTA_AMBIENTE, mide con emisores encendidos y apagados.
 // Devuelve la reflectancia en cuentas ADC (más grande = más claro).
-void leer_reflectancia(float* refl);
+// raw_on (opcional): lecturas crudas con emisores encendidos, para detectar fallas.
+void leer_reflectancia(float* refl, int* raw_on = nullptr);
 // Lectura cruda con emisores encendidos (para diagnóstico).
 void leer_crudo(int* raw);
 

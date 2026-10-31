@@ -78,6 +78,16 @@ void normalizar(const Calibracion& cal, const float* refl, float* oscuridad) {
   }
 }
 
+bool lecturas_imposibles(const int* raw, int n, int adc_max, int margen) {
+  if (n <= 0) return true;
+  bool todos_bajos = true, todos_altos = true;
+  for (int i = 0; i < n; ++i) {
+    if (raw[i] > margen) todos_bajos = false;
+    if (raw[i] < adc_max - margen) todos_altos = false;
+  }
+  return todos_bajos || todos_altos;
+}
+
 Estimacion estimar_posicion(const Geometria& g, const float* oscuridad,
                             float umbral_ruido, float confianza_min) {
   float escala = 1.0f - umbral_ruido;

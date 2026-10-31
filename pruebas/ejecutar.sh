@@ -3,5 +3,5 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p ../.build
-g++ -std=c++17 -Wall -Wextra -O1 test_logica.cpp ../firmware/seguidor/posicion.cpp ../firmware/seguidor/pid.cpp ../firmware/seguidor/control.cpp -o ../.build/test_logica
+g++ -std=c++17 -Wall -Wextra -O1 test_logica.cpp ../firmware/seguidor/posicion.cpp ../firmware/seguidor/pid.cpp ../firmware/seguidor/control.cpp ../firmware/seguidor/estados.cpp -o ../.build/test_logica
 ../.build/test_logica
