@@ -4,7 +4,7 @@
 |---|---|---|---|
 | `PIN_LED` | 2 | LED de estado | Salida (pin de arranque: no forzar al encender) |
 | `PIN_START` | 4 | Botón START a GND | Pull-up interno |
-| `PIN_EMISORES` | 13 | Compuerta del MOSFET de los LED IR (con resistencia a GND) | Salida |
+| `PIN_EMISORES` | 13 | LEDON del QTR-8A (o compuerta de MOSFET si son sensores sueltos) | Salida |
 | `PIN_CAL` | 14 | Botón CAL a GND | Pull-up interno |
 | `PIN_STBY` | 16 | TB6612 STBY | Salida (bajo = motores libres) |
 | `PIN_PWMB` | 17 | TB6612 PWMB (rueda derecha) | PWM 20 kHz |
@@ -19,5 +19,5 @@
 | `PIN_MUX_S3` | 33 | Dirección S3 | Salida |
 | `PIN_MUX_SIG1` | 34 | SIG del multiplexor 1 (canales 0-15) | Solo entrada, ADC1 |
 | `PIN_MUX_SIG2` | 35 | SIG del multiplexor 2 (canales 16-23); sin conectar con 8 sensores | Solo entrada, ADC1 |
-| `PIN_BATERIA` | 36 | Divisor de batería 100k/47k (punto medio) | Solo entrada, ADC1 |
+| `PIN_BATERIA` | 36 | Divisor de batería 100k/33k (punto medio) | Solo entrada, ADC1 |
 | `PIN_PERFIL` | 39 | Perilla de perfil de velocidad (centro del potenciómetro, extremos a 3V3 y GND) | Solo entrada, ADC1 |

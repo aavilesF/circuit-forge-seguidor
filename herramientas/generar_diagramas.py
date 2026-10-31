@@ -36,14 +36,14 @@ DESTINO = {
  "PIN_MUX_S2": ("Dirección S2", "Salida"), "PIN_MUX_S3": ("Dirección S3", "Salida"),
  "PIN_MUX_SIG1": ("SIG del multiplexor 1 (canales 0-15)", "Solo entrada, ADC1"),
  "PIN_MUX_SIG2": ("SIG del multiplexor 2 (canales 16-23); sin conectar con 8 sensores", "Solo entrada, ADC1"),
- "PIN_EMISORES": ("Compuerta del MOSFET de los LED IR (con resistencia a GND)", "Salida"),
+ "PIN_EMISORES": ("LEDON del QTR-8A (o compuerta de MOSFET si son sensores sueltos)", "Salida"),
  "PIN_PWMA": ("TB6612 PWMA (rueda izquierda)", "PWM 20 kHz"), "PIN_AIN1": ("TB6612 AIN1", "Salida"),
  "PIN_AIN2": ("TB6612 AIN2", "Salida"), "PIN_PWMB": ("TB6612 PWMB (rueda derecha)", "PWM 20 kHz"),
  "PIN_BIN1": ("TB6612 BIN1", "Salida"), "PIN_BIN2": ("TB6612 BIN2", "Salida"), "PIN_STBY": ("TB6612 STBY", "Salida (bajo = motores libres)"),
  "PIN_START": ("Botón START a GND", "Pull-up interno"), "PIN_CAL": ("Botón CAL a GND", "Pull-up interno"),
  "PIN_LED": ("LED de estado", "Salida (pin de arranque: no forzar al encender)"),
  "PIN_PERFIL": ("Perilla de perfil de velocidad (centro del potenciómetro, extremos a 3V3 y GND)", "Solo entrada, ADC1"),
- "PIN_BATERIA": ("Divisor de batería 100k/47k (punto medio)", "Solo entrada, ADC1"),
+ "PIN_BATERIA": ("Divisor de batería 100k/33k (punto medio)", "Solo entrada, ADC1"),
 }
 ORDEN = list(DESTINO)
 faltan = [k for k in ORDEN if k not in PIN]
@@ -82,7 +82,7 @@ fig, ax = plt.subplots(figsize=(12, 6.2)); ax.set_xlim(0, 12); ax.set_ylim(0, 6.
 ax.set_title("Diagrama de bloques: energía (naranja) y señales (azul)", loc="left", fontsize=12, fontweight="bold")
 caja(ax, 0.2, 2.6, 1.8, 1.2, "Batería LiPo 2S", NARANJA, "7.4 V (6.6-8.4 V)")
 caja(ax, 2.5, 2.6, 1.5, 1.2, "Fusible\nreseteable", NARANJA, "en serie con +")
-caja(ax, 4.6, 3.6, 1.7, 1.0, "Buck 6 V", NARANJA, "motores")
+caja(ax, 4.6, 3.6, 1.7, 1.0, "Buck 6 V*", NARANJA, "*C2: o directo")
 caja(ax, 4.6, 1.4, 1.7, 1.0, "Buck 5 V", NARANJA, "VIN del ESP32")
 caja(ax, 7.0, 1.2, 2.0, 1.2, "ESP32 DevKit", AZUL, "3.3 V lógica")
 caja(ax, 7.0, 3.4, 2.0, 1.2, "TB6612FNG", AZUL, "VM=6 V, VCC=3.3 V")
@@ -98,7 +98,7 @@ flecha(ax, (9.0, 4.2), (10.1, 4.5), VERDE); flecha(ax, (9.0, 3.7), (10.1, 3.35),
 flecha(ax, (8.0, 1.2), (8.0, 0.6), AZUL); ax.text(8.1, 0.8, "S0-S3, SIG1/2", fontsize=7.5, color=AZUL)
 flecha(ax, (9.2, 0.1), (10.1, 0.1), AZUL); flecha(ax, (10.9, 1.3), (9.0, 1.8), GRIS)
 ax.set_ylim(-0.6, 6.2)
-ax.text(0.2, -0.5, "Regla: todo lo que toque un pin del ESP32 trabaja a 3.3 V\n(los sensores también se alimentan a 3.3 V).\nTierras (GND) unidas en un solo punto cerca de la batería.\nLos LED IR van por MOSFET, no directo de un pin.",
+ax.text(0.2, -0.5, "Regla: todo lo que toque un pin del ESP32 trabaja a 3.3 V\n(los sensores también se alimentan a 3.3 V).\nTierras (GND) unidas en un solo punto cerca de la batería.\nLEDON del QTR-8A directo al GPIO13 (sensores sueltos: MOSFET).",
         fontsize=8.5, color="#444", va="bottom")
 guardar(fig, "01_bloques")
 
