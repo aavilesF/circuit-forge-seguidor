@@ -13,7 +13,7 @@ Vista a escala: `docs/diagramas/03_vista_superior_8.png` y `03_vista_superior_24
 | Rueda | Ø 33 mm, 10 mm de ancho | medir la real |
 | Separación entre ruedas | 75 mm (centro a centro) | cinemática y ancho total |
 | Eje de ruedas a sensores | 100 mm | el profesor recomienda 80-120 mm |
-| Altura de sensores al piso | 8-10 mm | ajustar con el sensor real |
+| Altura de sensores al piso | Pololu QTR-8A: 3 mm (máx. 6 mm). Clon de UNIT: 8-12 mm según el vendedor | depende del sensor comprado (protocolo F5) |
 | Apoyo trasero | ball caster o patín de teflón | evita arrastre |
 
 Efecto de la distancia sensores-eje (simulación, vbase 0.6): 80 mm → 1.4 mm de error; 100 mm → 1.6 mm; 120 mm → 1.8 mm. Más cerca sigue mejor, más lejos anticipa más; 100 mm es un punto de partida razonable.
