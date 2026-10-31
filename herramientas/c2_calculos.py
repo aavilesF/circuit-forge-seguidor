@@ -6,8 +6,11 @@ Uso:  python3 herramientas/c2_calculos.py            (solo cálculos)
 
 Modelo de motor DC con escobillas (estado estable):  V = I·R + Ke·ω   ;   T = Kt·I
 Parámetros DOCUMENTADOS (fuente en docs/C2_ALIMENTACION.md):
-  TB6612FNG: Vsat(U+L) 0.5 V @ 1 A (=> 0.5 Ω), 0.15 V @ 0.3 A; IOUT abs 1.2 A; recomendado ≤ 1.0 A;
-             2 A pulsos 20 ms con ciclo ≤ 20 %; 3.2 A pulso único 10 ms; Pd 0.78 W (solo IC), 0.89 W (PCB 50x50), 1.36 W (PCB 76x114)
+  TB6612FNG (Toshiba): Vsat(U+L) 0.5 V típ./0.7 V máx. @ 1 A; 0.15 V típ./0.21 V máx. @ 0.3 A;
+             RECOMENDADO IOUT ≤ 1.0 A (VM ≥ 5 V); MÁXIMO ABSOLUTO 1.2 A (no es operación garantizada);
+             pico 2 A en pulsos de 20 ms con ciclo ≤ 20 %; 3.2 A en un solo pulso de 10 ms;
+             Pd (Ta 25 °C) 0.78 W solo IC (θj-a 160 °C/W), 0.89 W PCB 50x50 Cu≥40 %, 1.36 W PCB 76x114 Cu≥30 %;
+             apagado térmico 175 °C típ.; con PWM bajo el puente queda en FRENO CORTO (OUT1 = OUT2 = L)
   LiPo (celda de referencia GRP704230): 4.2 V máx., 3.7 V nominal, 3.0 V corte, ≤ 25 mΩ
   GA12-N20 6 V 1000 RPM (UNIT): sin carga ≤ 0.2 A, 1000 RPM ±10 %. CORRIENTE DE BLOQUEO NO PUBLICADA.
 Por eso la corriente de bloqueo a 6 V (Is6) se trata como PARÁMETRO DESCONOCIDO y se barre:
@@ -18,7 +21,9 @@ Por eso la corriente de bloqueo a 6 V (Is6) se trata como PARÁMETRO DESCONOCIDO
 import math, subprocess, sys
 
 V_NOM = 6.0
-RON = 0.5                       # Ω, TB6612 alto+bajo (0.5 V @ 1 A)
+RON = 0.5                       # Ω, TB6612 alto+bajo típico (0.5 V @ 1 A); máx. 0.7 Ω
+RON_MAX = 0.7
+THETA_JA = 160.0                # °C/W, solo IC (ficha); el módulo real es PENDIENTE de medir
 I_ABS, I_REC = 1.2, 1.0         # A por canal
 PD = {"solo IC": 0.78, "PCB 50x50": 0.89, "PCB 76x114": 1.36}
 R_CELDA = 0.025                 # Ω, celda de referencia (paquetes de hobby suelen ser mayores: PENDIENTE medir)
@@ -75,6 +80,28 @@ def main():
         p = 2 * is6 ** 2 * RON
         print(f"   ambos bloqueados, Is6 {k:26s} P = {p:4.2f} W  vs Pd 0.78-1.36 W -> {'EXCEDE' if p > 0.89 else 'dentro'} (PCB 50x50)")
 
+    print("   Elevación de temperatura de unión con θj-a = 160 °C/W (supuesto: módulo pequeño ≈ 'solo IC'):")
+    for etiqueta, p in (("crucero 0.09 W", 0.09), ("aceleración 0.36 W", 0.36), ("1.0 A c/u, 1.0 W", 1.0)):
+        print(f"      {etiqueta:22s} ΔT = {p * THETA_JA:5.0f} °C -> Tj ≈ {25 + p * THETA_JA:4.0f} °C a 25 °C ambiente (apagado a ~175 °C)")
+    print("   Con Ron máximo (0.7 Ω) la disipación sube 40 %.")
+
+    linea("=")
+    print("6b) RIZADO DE CORRIENTE POR PWM (modo freno corto, conducción continua)")
+    print("   Δi_pp ≈ Vbus·D·(1−D) / (L·f) = Vprom·(1−D)/(L·f);  f = 20 kHz.  L del motor: DESCONOCIDA (medir)")
+    f = 20e3
+    for vprom in (3.0, 6.0):
+        for L_mH in (0.1, 0.3, 1.0):
+            L = L_mH * 1e-3
+            fila = []
+            for etiqueta, vbus in (("A 6.0 V", 6.0), ("B 8.4 V", 8.4), ("B 7.4 V", 7.4)):
+                d = vprom / vbus
+                if d > 1: fila.append(f"{etiqueta}: n/a"); continue
+                fila.append(f"{etiqueta}: {vbus * d * (1 - d) / (L * f):5.2f} A")
+            print(f"   Vprom {vprom:.0f} V, L {L_mH:3.1f} mH | " + " | ".join(fila))
+    print("   Válido si L/R ≫ 50 µs. Con L = 0.1 mH y R ≈ 6 Ω, L/R ≈ 17 µs: la corriente sigue a los pulsos")
+    print("   (el promedio se conserva, pero el valor eficaz y el pico suben). El par promedio depende del")
+    print("   promedio de la corriente; el calentamiento depende del valor eficaz.")
+
     linea("=")
     print("7) VELOCIDAD SIN CARGA RELATIVA vs. BATERÍA (cmd = 1)")
     print("   A con step-down (p.ej. D24V22F6, entrada mínima 6.4-6.9 V): 100 % hasta ~6.9 V, luego sigue a la batería")
@@ -92,7 +119,26 @@ def main():
     print(f"   filtro EMA alfa=0.1 cada 20 ms: constante de tiempo ≈ {tau:.2f} s (no sigue caídas rápidas de < 0.2 s)")
 
     linea("=")
-    print("10) ENERGÍA DE FRENADO (cota superior: todo vuelve a la línea de motores)")
+    print("8b) ¿LA COMPENSACIÓN IGUALA A 'A'? Modelo promedio en conducción continua:")
+    print("   V_motor = D·(Vocv − I_tot·R_pack) − I·Ron   (Ron en fase ON: alto+bajo; en freno corto: bajo+bajo, SUPUESTO igual)")
+    print("   A:  V_motor = cmd·6 − I·Ron             B comp.: D = cmd·6/V_medida, V_medida = Vocv − I_tot·R_pack (filtrada)")
+    print("   En estado estable B = A (mismo término −I·Ron). Diferencias:")
+    for rpack in (0.05, 0.10, 0.20):
+        for di in (1.0, 2.0):
+            dv = di * rpack * 0.71
+            print(f"   R_pack {rpack:.2f} Ω (SUPUESTO), escalón de {di:.0f} A: déficit transitorio ≈ {dv:4.2f} V ({dv / 6 * 100:4.1f} %) durante ~0.2 s")
+    print("   Error del ADC/divisor ±ε → velocidad ±ε. Saturación: con cmd = 1 el ciclo llega a 100 % si V_medida ≤ 6 V.")
+
+    linea("=")
+    print("10) REGENERACIÓN HACIA VM (solo ocurre si D·VM < E en la fase ON; freno corto y contracorriente NO regeneran)")
+    E, vcmd, R = 5.4, 3.0, 6.0
+    i = (vcmd - E) / R
+    p = vcmd * abs(i)
+    print(f"   E = {E} V, D·VM = {vcmd} V, R = {R} Ω -> I = {i:.2f} A, potencia hacia VM ≈ {p:.1f} W")
+    for c_uF in (470, 1000):
+        dvdt = p / (c_uF * 1e-6 * 6.0)
+        print(f"   A3 (salida anti-reflujo), {c_uF} µF a 6 V sin otra carga: dV/dt ≈ {dvdt:.0f} V/s -> {dvdt * 0.01:.1f} V en 10 ms")
+    print("   Cota de energía total (irreal: supone que TODA la energía cinética vuelve a VM):")
     m, v = 0.30, 1.15
     e = 0.5 * m * v * v
     for c_uF in (100, 470, 1000):
