@@ -1,5 +1,9 @@
 # Presupuesto
 
+> **Actualización 31 oct 2026:** la lista vigente es [`BOM_FINAL.csv`](BOM_FINAL.csv) (presupuesto verificado y pendientes en `INFORME_FINAL.md` §G).
+> Este documento se conserva como **presupuesto preliminar histórico**: sus precios nunca se verificaron y algunas partes cambiaron
+> (sensor de UNIT a $61, un solo regulador si se aprueba C2-B, sin MOSFET para el QTR-8A).
+
 **Estado:** ningún componente está definido ni comprado. Esta lista parte de la propuesta con ESP32 (ver `plan.md`), todavía sin aprobar.
 
 **Sobre los precios:** la columna de precios son cifras que citó la IA que armó la propuesta. **Nadie las ha verificado** (no traen enlaces) y no incluyen envío. Antes de aprobar el presupuesto, cada precio debe comprobarse en la página de la tienda y anotarse con su enlace.
