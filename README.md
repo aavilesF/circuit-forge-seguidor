@@ -48,6 +48,7 @@ Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican po
 | [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) | Decisiones por bloque con fichas técnicas |
 | [docs/C2_ALIMENTACION.md](docs/C2_ALIMENTACION.md) | Análisis del checkpoint C2 (alimentación de motores) para decidir |
 | [docs/BOM_FINAL.csv](docs/BOM_FINAL.csv) | Lista de compra (abre en Excel/Sheets) |
+| [docs/PLAN_PRIMERA_COMPRA.md](docs/PLAN_PRIMERA_COMPRA.md) | Qué comprar primero, qué esperar, recepción e instrumentos |
 | [docs/INSTALLATION_GUIDE.md](docs/INSTALLATION_GUIDE.md) | Qué instalar en la laptop y cómo compilar |
 | [docs/PROTOCOLO_PRUEBAS.md](docs/PROTOCOLO_PRUEBAS.md) | Armado, calibración y pruebas físicas con criterios de aprobado |
 | [docs/simulacion.md](docs/simulacion.md) | Matemáticas, resultados y límites del simulador |
