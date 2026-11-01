@@ -1,80 +1,43 @@
 # circuit-forge-seguidor
 
-Robot seguidor de línea para **Robolympics RMX2026** (Tecnológico de Monterrey, Campus León).
-Equipo **Circuit Forge**: diseño, firmware, pruebas y registro de resultados.
+Speed Follower (seguidor de línea de velocidad) del equipo **Circuit Forge** para **Robolympics RMX2026**, categoría Seguidores de línea: sábado 21 de noviembre de 2026, Tec de Monterrey campus León.
 
-## Objetivo
+> **Una sola arquitectura vigente:** la de [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md), con todos sus parámetros en [`config/robot_maestro.yaml`](config/robot_maestro.yaml). Todo lo que está en [`legado/`](legado/README.md) es **histórico** (el robot básico descartado y la primera versión del Speed Follower) y no se debe usar para construir.
 
-Construir un robot autónomo, ligero y estable que recorra el circuito en el menor tiempo posible sin salirse de la línea. Prioridad del equipo: ganar; mínimo aceptable, completar la pista sin salirse. Se busca un buen equilibrio entre precisión de los sensores y velocidad.
+## Estado
 
-## Competencia
+Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura elegida con **simulación dinámica** (Fase 2); nada se ha construido ni medido; la PCB y el CAD definitivo **no** se han empezado; el firmware **no** se ha compilado con el toolchain real del microcontrolador.
 
-| Dato | Valor |
+## Estructura
+
+| Ruta | Contenido |
 |---|---|
-| Evento | Robolympics RMX2026, categoría Seguidores de línea |
-| Fecha | Sábado 21 de noviembre de 2026, 8:00 a 16:00 h |
-| Sede | Tec de Monterrey, Campus León |
-| Registro | Hasta el 17 de noviembre de 2026, 6:00 pm (confirmación por correo el 18 de noviembre) |
-| Donación | Alimentos por $300 MXN por robot, se entregan el 21 de noviembre al registrarse |
-| Reglamento | Ver [docs/requisitos.md](docs/requisitos.md) |
+| `config/robot_maestro.yaml` | **Única fuente de parámetros** (reglamento, componentes con posición y masa, motores, barra, MCU, control). Cada valor indica su origen |
+| `docs/REGLAMENTO_MATRIZ.md` | Reglas oficiales → requisitos de diseño → verificación; preguntas a los organizadores |
+| `docs/ARQUITECTURA.md` | Arquitectura vigente y su justificación con resultados de simulación |
+| `docs/SIMULACION_DINAMICA.md` | Modelo, pruebas, resultados, límites del simulador |
+| `docs/VERIFICACION_FASE1.md` | Verificación independiente de los cálculos de la Fase 1 |
+| `docs/CALCULOS_FISICOS.md` | Fase 1 (cálculos cuasiestáticos; evidencia histórica, ver su nota de estado) |
+| `docs/BOM_FINAL.csv` | Lista de materiales técnica: especificaciones, sin precios, tiendas ni enlaces |
+| `docs/ESTADO_PROYECTO.md` | Fases, decisiones, limitaciones, pendientes y evidencia reproducible |
+| `sim/` | Simulador dinámico (`nucleo.py`, `simulador.py`, `config.py`, `pistas.py`), experimentos, validación y pruebas; `sim/fase1/` cálculos de la Fase 1; `sim/resultados/` CSV y gráficas |
+| `firmware/sf/` | Firmware (lógica C++ pura + capa de hardware ESP32 + `sf.ino`). `config_maestra.h` se **genera** del YAML |
+| `herramientas/generar_config_firmware.py` | Genera `config_maestra.h`; `--verificar` falla si no está sincronizada |
+| `pruebas/` | `ejecutar_todo.sh` corre todas las pruebas; `pruebas/sf/` pruebas del firmware |
+| `legado/` | Diseños históricos (no vigentes) |
+| `modificaciones/` | Plantilla para registrar cambios hechos en el robot físico |
 
-Las reglas pueden modificarse a más tardar el 18 de noviembre y se comunican por correo a los equipos registrados.
+## Reproducir
+
+```bash
+pip install numpy numba pyyaml matplotlib      # Python ≥ 3.10; g++ con C++17
+pruebas/ejecutar_todo.sh                       # todas las pruebas (≈ 1 min)
+python3 sim/experimentos.py A B C D F          # optimización completa (≈ 1 h en 2 núcleos)
+python3 sim/validacion_final.py                # validación de la arquitectura vigente
+python3 sim/verificacion_fase1.py              # verificación de la Fase 1
+python3 herramientas/generar_config_firmware.py  # tras editar el YAML
+```
 
 ## Equipo
 
-| Integrante | Rol |
-|---|---|
-| Alejandro Avilés Flores | Por definir |
-| Alan Uzuel Vargas Zavala | Por definir |
-| Daniel Navarro Robledo | Por definir |
-
-## Estado actual (31 oct 2026, rama `engineering/final-prototype`)
-
-**Preparación: parcial.** Hay base de ingeniería lista para armar, pero faltan dos decisiones del equipo y la primera compilación real. Detalle en [docs/INFORME_FINAL.md](docs/INFORME_FINAL.md).
-
-- Microcontrolador: **ESP32** (decidido, D3).
-- Pendiente de decisión: **alimentación de motores** (checkpoint C2, recomendado: directo de batería con compensación) y **sensor** (recomendado: QTR-8A de UNIT, $61, disponible).
-- Firmware: 93 pruebas de lógica, sanitizers y cppcheck sin errores `[Probado en software]`. Código del ESP32 **solo verificado de sintaxis contra un stub**: `[PENDIENTE: compilar con el core real]` (INSTALLATION_GUIDE §6).
-- Simulador: 9 escenarios (curvas R 150, U, S, huecos, empujones, fin de línea) × 5 controladores; se eligió PD con freno por error.
-- Compras: 8 precios verificados en UNIT Electronics; batería, llantas, apoyo y consumibles **pendientes de cotización** ([docs/BOM_FINAL.csv](docs/BOM_FINAL.csv)).
-- Hardware: nada comprado ni medido. Pista de práctica por construir.
-
-## Contenido
-
-| Archivo | Para qué sirve |
-|---|---|
-| [docs/INFORME_FINAL.md](docs/INFORME_FINAL.md) | **Empieza aquí**: estado, pendientes y siguientes pasos |
-| [docs/AUDITORIA.md](docs/AUDITORIA.md) | Hallazgos del repositorio con severidad y evidencia |
-| [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) | Decisiones por bloque con fichas técnicas |
-| [docs/C2_ALIMENTACION.md](docs/C2_ALIMENTACION.md) | Análisis del checkpoint C2 (alimentación de motores) para decidir |
-| [docs/BOM_FINAL.csv](docs/BOM_FINAL.csv) | Lista de compra (abre en Excel/Sheets) |
-| [docs/PLAN_PRIMERA_COMPRA.md](docs/PLAN_PRIMERA_COMPRA.md) | Qué comprar primero, qué esperar, recepción e instrumentos |
-| [docs/INSTALLATION_GUIDE.md](docs/INSTALLATION_GUIDE.md) | Qué instalar en la laptop y cómo compilar |
-| [docs/PROTOCOLO_PRUEBAS.md](docs/PROTOCOLO_PRUEBAS.md) | Armado, calibración y pruebas físicas con criterios de aprobado |
-| [docs/simulacion.md](docs/simulacion.md) | Matemáticas, resultados y límites del simulador |
-| [docs/electronica.md](docs/electronica.md) · [docs/mecanica.md](docs/mecanica.md) | Reglas eléctricas, pines, geometría, peso |
-| [docs/requisitos.md](docs/requisitos.md) | Reglamento y convocatoria |
-| [docs/decisiones.md](docs/decisiones.md) | Registro de decisiones del equipo |
-| [docs/presupuesto.md](docs/presupuesto.md) · [docs/plan.md](docs/plan.md) · [docs/armado.md](docs/armado.md) | Históricos (reemplazados por BOM_FINAL, INFORME_FINAL y PROTOCOLO_PRUEBAS) |
-| [docs/contexto-ia.md](docs/contexto-ia.md) | Contexto para que cualquier IA o persona parta de lo mismo |
-| `docs/diagramas/` | Bloques, cableado, vistas a escala, gráficas de simulación |
-| `firmware/seguidor/` | Firmware (Arduino IDE o PlatformIO). `pines.h` es la única fuente de los pines |
-| `pruebas/` | `ejecutar.sh`, `regresion.sh`, `verificar_sintaxis_esp32.sh` |
-| `sim/` | Simulador en lazo cerrado con el mismo código de control |
-| `herramientas/generar_diagramas.py` | Regenera diagramas, tabla de pines y gráficas |
-| [modificaciones/](modificaciones/README.md) | Propuestas y registros de pruebas del equipo |
-
-### Comandos rápidos
-
-```bash
-pruebas/regresion.sh                   # todo: pruebas, sanitizers, cppcheck, sintaxis, escenarios
-sim/ejecutar.sh modo=comparar vbase=0.6 # escenarios × controladores (CSV)
-python3 herramientas/generar_diagramas.py
-```
-
-## Forma de trabajo
-
-- Cambios pequeños con commits descriptivos.
-- Los cambios propuestos por los integrantes van en `modificaciones/` (ver su README), no directamente en `README.md` ni en `docs/`.
-- Toda decisión de hardware o de interfaces se anota en `docs/decisiones.md`.
-- Nada se da por terminado sin evidencia (foto, medición o registro de prueba).
+Alejandro Avilés Flores · Alan Uzuel Vargas Zavala · Daniel Navarro Robledo. Contacto de la organización: camilo.duque@tec.mx.
