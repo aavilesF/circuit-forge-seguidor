@@ -232,6 +232,9 @@ def etapa_D(pool, kw):
     return arqs
 
 
+CTRL_F = "C2"
+
+
 def etapa_F(pool):
     """Finalistas con el motor elegido por criterio técnico (12 V 15:1: 0.6 A frente a 1.5 A de los de 6 V,
     con < 2 % de diferencia de tiempo en la etapa C) y control C2: barra × MCU × cuello."""
@@ -240,7 +243,7 @@ def etapa_F(pool):
         for mcu in ("esp32_analogread", "stm32g431"):
             for L in (0.100, 0.110):
                 nombre = f"{barra} + {mcu} + L{L*1000:.0f}"
-                kw = dict(control="C2", barra=barra, mcu=mcu, motor="pololu_hpcb12_15", succion=False, L=L)
+                kw = dict(control=CTRL_F, barra=barra, mcu=mcu, motor="pololu_hpcb12_15", succion=False, L=L)
                 a = ajustar(nombre, kw, pool, n_azar=64, n_local=36)
                 arqs.append(a)
                 print(f"  F {nombre}: E {a['val']['E']:.2f}, éxito {a['val']['p']:.2f}, t {a['val']['t']:.3f}")
@@ -288,7 +291,9 @@ def main():
             sel["L"] = m["kw"]["L"]
             sel["prm"] = m["prm"]
         if "F" in etapas:
-            print("Etapa F: finalistas (C2, 12 V 15:1)")
+            global CTRL_F
+            CTRL_F = sel.get("control", "C2")
+            print(f"Etapa F: finalistas ({CTRL_F}, 12 V 15:1)")
             F = etapa_F(pool)
             escribir("F_finalistas.csv", [fila_resumen("F", a) for a in F])
             escribir_corridas("F_corridas.csv", F)

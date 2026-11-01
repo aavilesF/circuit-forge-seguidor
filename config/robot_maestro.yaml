@@ -33,15 +33,15 @@ diseno:
   masa_limite_diseno: 0.450       # [D]
   margen_caja: 0.004              # [D] por lado
 
-arquitectura:                     # [D] selección vigente (ver docs/ARQUITECTURA.md)
-  motor: pololu_hpcb12_10
-  barra: arco16
-  mcu: stm32g431
-  control: C3m
+arquitectura:                     # [D] selección vigente, justificada en docs/ARQUITECTURA.md (Fase 2)
+  motor: pololu_hpcb12_15
+  barra: arco16c
+  mcu: esp32_analogread
+  control: C2
   succion: false                  # opción B; solo con autorización escrita de los organizadores
 
 geometria:
-  L_cuello: 0.100                 # [D] eje -> barra (radio de la barra en arco)
+  L_cuello: 0.110                 # [O] eje -> barra (radio de la barra en arco); etapas D y F
   W_via: 0.085                    # [D] entre centros de llanta
   D_llanta: 0.034                 # [E] llanta 34 x 7 (MEDIR)
   x_apoyo: 0.075                  # [D] rueda loca delante del eje
@@ -51,6 +51,10 @@ traccion:
   mu: 0.80                        # [S] llanta-fórmica; MEDIR (M1)
   c_rodadura: 0.015               # [S] fracción de la carga normal
   eps_deslizamiento: 0.02         # [S] m/s, regularización del modelo de Coulomb (ver docs/SIMULACION_DINAMICA.md)
+  mu_cinetico_rel: 0.80           # [S] μ al deslizar / μ estático (caucho típico 0.7-0.9); MEDIR con el plano inclinado (M1)
+  v_stribeck: 0.05                # [S] m/s de deslizamiento a la que μ baja hacia el valor cinético
+  desliz_valido: 0.40             # [D] m/s: una vuelta con más deslizamiento de llanta cuenta como FALLA (derrape:
+                                  #     el modelo de llanta no es confiable ahí y en la pista real es inestable)
 
 succion:                          # opción B, no adoptada
   F_down_gf: 100                  # [S] valor de estudio; MEDIR (M3)
@@ -73,7 +77,7 @@ componentes:                      # masa kg, x m, z m
   mcu:              {masa: 0.008,  x: 0.040, z: 0.026, origen: "[E] placa de desarrollo pequeña"}
   driver:           {masa: 0.002,  x: 0.020, z: 0.026, origen: "[E] módulo"}
   regulador:        {masa: 0.002,  x: 0.025, z: 0.026, origen: "[E] módulo"}
-  barra_sensores:   {masa: 0.007,  x: 0.095, z: 0.006, origen: "[E] PCB en arco, 16 sensores + mux"}
+  barra_sensores:   {masa: 0.007,  x: 0.105, z: 0.006, origen: "[E] PCB en arco de radio L = 110 mm, 16 sensores + mux"}
   apoyo:            {masa: 0.003,  x: 0.075, z: 0.005, origen: "[E] rueda loca genérica de bola"}
   chasis:           {masa: 0.030,  x: 0.035, z: 0.012, origen: "[E] placa/estructura 120 x 60 mm"}
   cableado:         {masa: 0.008,  x: 0.030, z: 0.020, origen: "[E] cables, conectores, tornillos"}
@@ -143,6 +147,7 @@ barras:                           # geometría de sensores (y = lateral, x = ade
   recta12: {tipo: recta, n: 12, paso: 0.008,    origen: "[D]"}
   arco13:  {tipo: arco,  n: 13, paso: 0.008,    origen: "[D] paso medido sobre el arco"}
   arco16:  {tipo: arco,  n: 16, paso: 0.00635,  origen: "[D] 16 canales de un multiplexor"}
+  arco16c: {tipo: arco,  n: 16, paso: 0.0060,   origen: "[D] arco16 con paso de 6.0 mm: con L = 110 mm deja los centros a ±43.7 mm (caja de 100 mm)"}
 
 optica:
   radio_mancha: 0.003             # [S] radio del área que ve cada sensor a ~3 mm del piso
@@ -161,11 +166,11 @@ mcu:
     t_calculo: 30.0e-6            # [E] Cortex-M4F a 170 MHz con FPU [F]
     origen: "[F] st.com STM32G431KB: 2 ADC, 0.25 µs, hasta 23 canales"
 
-control:                          # parámetros de los controladores (los C3m son [O]; ver sim/resultados/fase2)
+control:                          # parámetros de los controladores; C2 es el vigente ([O], sim/resultados/fase2/G_parametros_final.json)
   T_min: 0.001                    # [D] periodo mínimo; el real es max(T_min, lectura + cálculo)
   t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
   C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
-  C2:  {v_max: 1.6, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, piso: 0.0}
+  C2:  {v_max: 1.2012, a_lat: 4.7758, a_lon: 6.9268, k_pp: 1.2387, kp: 15.9363, kd: 10.0005, tau_d: 0.004, tau_k: 0.0754, piso: -0.3108}   # [O] ajuste final (G): arco16c + ESP32 + L110 + 12 V 15:1
   C3m: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: modelo, piso: 0.0}
   C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
 

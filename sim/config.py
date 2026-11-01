@@ -103,6 +103,9 @@ class Config:
     mu: float
     c_rr: float
     eps: float
+    mu_k_rel: float
+    v_str: float
+    desliz_valido: float
     J_eq: float
     V_oc: float
     R_int: float
@@ -155,6 +158,8 @@ def construir(cfg: dict | None = None, **cambios) -> Config:
         masa=m, x_cg=x, h_cg=z, Iz=Iz, L=L, W=geo["W_via"], r=r, x_apoyo=geo["x_apoyo"],
         x_succion=geo["x_succion"], F_succion=(cfg["succion"]["F_down_gf"] / 1000 * G if succ else 0.0),
         mu=cfg["traccion"]["mu"], c_rr=cfg["traccion"]["c_rodadura"], eps=cfg["traccion"]["eps_deslizamiento"],
+        mu_k_rel=cfg["traccion"]["mu_cinetico_rel"], v_str=cfg["traccion"]["v_stribeck"],
+        desliz_valido=cfg["traccion"]["desliz_valido"],
         J_eq=J, V_oc=cfg["bateria"]["V_nominal"], R_int=cfg["bateria"]["R_interna"],
         I_log=cfg["bateria"]["I_logica"], I_fan=(cfg["succion"]["I_media"] if succ else 0.0),
         sx=sx, sy=sy, mancha=op["radio_mancha"], ruido=op["ruido"], umbral=op["umbral"],

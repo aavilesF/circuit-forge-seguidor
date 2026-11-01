@@ -102,13 +102,13 @@ def graficas(kw, etiqueta):
     for ax, clave, col in zip(axs.flat, PI.ORDEN, cols):
         p = PI.construir(clave)
         r, T = S.correr(c, p, seed=7, traza=True)
-        ax.plot(p.x, p.y, color="#c3c2b7", lw=6, solid_capstyle="butt")
-        sc = ax.scatter(T[:, 1], T[:, 2], c=T[:, 4], s=2, cmap="viridis", vmin=0, vmax=max(2.0, T[:, 4].max()))
+        ax.plot(p.x, p.y, color="#c3c2b7", lw=1.2, zorder=1)
+        sc = ax.scatter(T[:, 1], T[:, 2], c=T[:, 4], s=3, cmap="viridis", vmin=0, vmax=1.4, zorder=3)
         ax.set_aspect("equal")
         ax.set_title(f"{p.nombre}: {r['t_vuelta']:.2f} s, media {r['v_media']:.2f} m/s", fontsize=9, loc="left")
         ax.set_xticks([]); ax.set_yticks([])
     fig.colorbar(sc, ax=axs, shrink=0.8, label="velocidad del eje (m/s)")
-    fig.suptitle(f"Trayectoria del eje sobre la línea (gris) — {etiqueta}", x=0.01, ha="left")
+    fig.suptitle(f"Trayectoria del eje (color = velocidad) y línea de la pista (gris) — {etiqueta}", x=0.01, ha="left")
     fig.savefig(os.path.join(SAL, "F5_trayectorias.png"), dpi=130, bbox_inches="tight")
     plt.close(fig)
 
@@ -186,7 +186,8 @@ def main():
                 tareas.append((nombre, kw, pt, sd, clave))
     # opción B: succión con su motor y sus parámetros de la etapa C
     filasC = list(csv.DictReader(open(os.path.join(SAL, "C_motores_succion.csv"), encoding="utf-8")))
-    con = [r for r in filasC if "con succión" in r["arquitectura"]]
+    # opción B: solo motores cuya corriente pico no dispara la protección del driver (OCP ≥ 2 A)
+    con = [r for r in filasC if "con succión" in r["arquitectura"] and float(r["I_max_A"]) < 2.0]
     mejorB = min(con, key=lambda r: float(r["E_s"]))
     motB = mejorB["arquitectura"].split()[0]
     kwB = dict(kw, motor=motB, succion=True, prm=json.loads(mejorB["parametros"]))
@@ -222,7 +223,7 @@ def main():
     print("gráficas F5-F8 escritas")
 
 
-if __name__ == "__main__" and not ({"perfiles", "cara"} & set(sys.argv)):
+if __name__ == "__main__" and not ({"perfiles", "cara", "desempate", "mu"} & set(sys.argv)):
     main()
 
 
@@ -269,7 +270,7 @@ def kw_de_fila(archivo, nombre):
         barra, mcu = nombre.split(" + ")
         kw = dict(X.BASE, control=sel["control"], barra=barra, mcu=mcu)
     elif archivo.startswith("C_"):
-        mot, _, succ, _ = nombre.split()
+        mot, succ = nombre.split()[0], nombre.split()[1]
         kw = dict(control=sel["control"], barra=sel["barra"], mcu=sel["mcu"], motor=mot, succion=(succ == "con"),
                   L=0.100)   # la etapa C corrió con L = 100 mm
     else:
@@ -300,3 +301,54 @@ if __name__ == "__main__" and "cara" in sys.argv:
     finalistas = [(f"F {r['arquitectura']}", "F_finalistas.csv", r["arquitectura"]) for r in filasF[:5]]
     finalistas.append(("C 12V 15:1 con succión (opción B)", "C_motores_succion.csv", "pololu_hpcb12_15 con succión"))
     cara_a_cara(finalistas)
+
+
+def desempate(finalistas, n=30):
+    """Escenarios desfavorables para los finalistas empatados en condiciones nominales."""
+    filas = []
+    with Pool(os.cpu_count() or 1) as pool:
+        for etiqueta, archivo, nombre in finalistas:
+            kw = kw_de_fila(archivo, nombre)
+            tareas = [(esc, kw, pt, sd, clave) for esc, pt in ESCENARIOS[1:] for clave in PI.ORDEN for sd in range(n)]
+            res = pool.map(tarea, tareas, chunksize=20)
+            for f in resumen(res, etiqueta):
+                if f["pista"] == "todas":
+                    filas.append(f)
+                    print(f"desempate {etiqueta:34s} {f['escenario']:26s} éxito {f['exito']:.3f} t {f['t_medio_s']} {f['fallas']}")
+    X.escribir("E_desempate_robustez.csv", filas)
+
+
+if __name__ == "__main__" and "desempate" in sys.argv:
+    desempate([("recta8 + ESP32 + L110", "F_finalistas.csv", "recta8 + esp32_analogread + L110"),
+               ("arco16 + ESP32 + L110", "F_finalistas.csv", "arco16 + esp32_analogread + L110"),
+               ("arco13 + ESP32 + L100", "F_finalistas.csv", "arco13 + esp32_analogread + L100"),
+               ("arco13 + STM32 + L110", "F_finalistas.csv", "arco13 + stm32g431 + L110")])
+
+
+def perfil_por_mu(n=30):
+    """Con los parámetros vigentes (YAML), ¿qué v_max (y a_lat proporcional) recupera el 100 % si μ es menor?"""
+    cfg = CF.cargar(); arq = cfg["arquitectura"]
+    base = dict(motor=arq["motor"], barra=arq["barra"], mcu=arq["mcu"], control=arq["control"], succion=False,
+                prm=dict(cfg["control"][arq["control"]]))
+    filas = []
+    with Pool(os.cpu_count() or 1) as pool:
+        for f_mu in (1.0, 0.875, 0.75, 0.625):
+            for esc in (1.0, 0.95, 0.9, 0.85, 0.8):
+                prm = dict(base["prm"], v_max=base["prm"]["v_max"] * esc, a_lat=base["prm"]["a_lat"] * f_mu)
+                kw = dict(base, prm=prm)
+                tareas = [("mu", kw, {"f_mu": f_mu}, sd, clave) for clave in PI.ORDEN for sd in range(n)]
+                res = pool.map(tarea, tareas, chunksize=20)
+                k = sum(r["completa"] for r in res)
+                ok = [r for r in res if r["completa"]]
+                t = float(np.mean([r["t_vuelta"] for r in ok])) if ok else float("nan")
+                p = k / len(res)
+                lo, hi = wilson(k, len(res))
+                filas.append(dict(mu=round(0.8 * f_mu, 3), v_max=round(prm["v_max"], 3), a_lat=round(prm["a_lat"], 2),
+                                  exito=round(p, 3), ic95_bajo=round(lo, 3), t_medio_s=round(t, 3) if ok else "",
+                                  E_s=round(p * t + (1 - p) * 300, 2) if ok else 300))
+                print(f"μ {0.8*f_mu:.2f} v_max {prm['v_max']:.3f}: éxito {p:.3f} t {t:.3f}")
+    X.escribir("E_perfil_por_mu.csv", filas)
+
+
+if __name__ == "__main__" and "mu" in sys.argv:
+    perfil_por_mu()

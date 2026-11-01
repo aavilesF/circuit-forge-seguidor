@@ -18,8 +18,8 @@ G = 9.81
 (I_M, I_XCG, I_H, I_IZ, I_L, I_W, I_R, I_XA, I_XS, I_FS, I_MU, I_CRR, I_EPS, I_J,
  I_VOC, I_RINT, I_ILOG, I_IFAN, I_RM, I_KE, I_KT, I_I0, I_LIMV,
  I_MANCHA, I_RUIDO, I_UMBRAL, I_TLECT, I_TCTRL, I_TPERD, I_IOCP, I_GRUIDO, I_GSESGO, I_ANCHO,
- I_KEL, I_KER, I_Y0, I_PSI0, I_TMAX, I_DT, I_VMEDIDO) = range(40)
-NP = 40
+ I_KEL, I_KER, I_Y0, I_PSI0, I_TMAX, I_DT, I_VMEDIDO, I_MUK, I_VSTR) = range(42)
+NP = 42
 
 # controladores
 C_LAZO_ABIERTO = 0  # pruebas: ciclos fijos (prm: izq, der, t_cambio, izq2, der2)
@@ -108,6 +108,7 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
     mancha = P[I_MANCHA]; ruido = P[I_RUIDO]; umbral = P[I_UMBRAL]; medio = P[I_ANCHO] / 2
     t_lect = P[I_TLECT]; Tc = P[I_TCTRL]; t_perd = P[I_TPERD]; Iocp = P[I_IOCP]
     dt = P[I_DT]; tmax = P[I_TMAX]
+    muk = P[I_MUK]; vstr = P[I_VSTR]
 
     # pose inicial: barra sobre la línea de salida (índice 0), eje detrás
     ia = (n_tr - int(round((L + 0.005) / DS))) % n_tr
@@ -271,8 +272,11 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
         sxl = vxl - wl * rw; sxr = vxr - wr * rw
         ml = math.sqrt(sxl * sxl + vyl * vyl + eps * eps)
         mr = math.sqrt(sxr * sxr + vyr * vyr + eps * eps)
-        FxL = -mu * NL * sxl / ml; FyL = -mu * NL * vyl / ml
-        FxR = -mu * NR * sxr / mr; FyR = -mu * NR * vyr / mr
+        # μ baja del estático al cinético cuando la llanta desliza (Stribeck simplificado)
+        mul = mu * (muk + (1.0 - muk) * math.exp(-math.sqrt(sxl * sxl + vyl * vyl) / vstr))
+        mur = mu * (muk + (1.0 - muk) * math.exp(-math.sqrt(sxr * sxr + vyr * vyr) / vstr))
+        FxL = -mul * NL * sxl / ml; FyL = -mul * NL * vyl / ml
+        FxR = -mur * NR * sxr / mr; FyR = -mur * NR * vyr / mr
         des = max(math.sqrt(sxl * sxl + vyl * vyl), math.sqrt(sxr * sxr + vyr * vyr))
         if des > deslmax:
             deslmax = des

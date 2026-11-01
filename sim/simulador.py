@@ -61,6 +61,7 @@ def vector_planta(c: Config, pt: Perturbacion = Perturbacion(), t_max: float = 1
     P[N.I_GRUIDO] = c.giro_ruido; P[N.I_GSESGO] = c.giro_sesgo; P[N.I_ANCHO] = c.ancho_linea
     P[N.I_KEL] = pt.f_keL; P[N.I_KER] = pt.f_keR; P[N.I_Y0] = pt.y0; P[N.I_PSI0] = pt.psi0
     P[N.I_TMAX] = t_max; P[N.I_DT] = paso_integracion(c); P[N.I_VMEDIDO] = pt.f_vmed
+    P[N.I_MUK] = c.mu_k_rel; P[N.I_VSTR] = c.v_str
     return P
 
 
@@ -81,4 +82,6 @@ def correr(c: Config, pista: Pista, seed: int = 0, pt: Perturbacion = Perturbaci
     res = dict(completa=bool(R[0]), t_vuelta=R[1], v_media=R[2], v_max=R[3], motivo=MOTIVOS[int(R[4])],
                avance=R[5], e_max=R[6], I_max=R[7], n_ocp=int(R[8]), mAh=R[9], J=R[10], V_min=R[11],
                frac_saturado=R[12], desliz_max=R[13], T_ctrl=R[14], parado=bool(R[15]))
+    if res["completa"] and res["desliz_max"] > c.desliz_valido:
+        res.update(completa=False, v_media=0.0, motivo="derrape")
     return (res, T) if traza else res
