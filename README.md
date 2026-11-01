@@ -6,7 +6,7 @@ Speed Follower (seguidor de línea de velocidad) del equipo **Circuit Forge** pa
 
 ## Estado
 
-Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura elegida con **simulación dinámica** (Fase 2); nada se ha construido ni medido; la PCB y el CAD definitivo **no** se han empezado; el firmware **no** se ha compilado con el toolchain real del microcontrolador.
+Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura de **$2,000 MXN** (Fase 3: Chihai N20 12 V + clon QTR-8A + ESP32 + TB6612), con un costo estimado de $1,511 con reserva. Simulada: 6.35 s por vuelta y 100 % de éxito en 200 salidas. Nada se ha comprado, construido ni medido; el firmware **no** se ha compilado con el toolchain real del ESP32; el CAD definitivo espera las piezas medidas.
 
 ## Estructura
 
@@ -15,10 +15,12 @@ Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura 
 | `config/robot_maestro.yaml` | **Única fuente de parámetros** (reglamento, componentes con posición y masa, motores, barra, MCU, control). Cada valor indica su origen |
 | `docs/REGLAMENTO_MATRIZ.md` | Reglas oficiales → requisitos de diseño → verificación; preguntas a los organizadores |
 | `docs/ARQUITECTURA.md` | Arquitectura vigente y su justificación con resultados de simulación |
-| `docs/SIMULACION_DINAMICA.md` | Modelo, pruebas, resultados, límites del simulador |
+| `docs/SIMULACION_DINAMICA.md` | Modelo, pruebas, resultados (Fase 2 y Fase 3) y límites del simulador |
+| `docs/AUDITORIA_ROBUSTEZ.md` | Escenarios desfavorables de la arquitectura vigente |
 | `docs/VERIFICACION_FASE1.md` | Verificación independiente de los cálculos de la Fase 1 |
 | `docs/CALCULOS_FISICOS.md` | Fase 1 (cálculos cuasiestáticos; evidencia histórica, ver su nota de estado) |
-| `docs/BOM_FINAL.csv` | Lista de materiales técnica: especificaciones, sin precios, tiendas ni enlaces |
+| `docs/BOM_FINAL.csv` | Lista de materiales con especificaciones y presupuesto (objetivo, estimado y máximo permitido; no son cotizaciones) |
+| `hardware/` | Conexiones y verificación eléctrica; disposición mecánica (no es CAD definitivo) |
 | `docs/ESTADO_PROYECTO.md` | Fases, decisiones, limitaciones, pendientes y evidencia reproducible |
 | `sim/` | Simulador dinámico (`nucleo.py`, `simulador.py`, `config.py`, `pistas.py`), experimentos, validación y pruebas; `sim/fase1/` cálculos de la Fase 1; `sim/resultados/` CSV y gráficas |
 | `firmware/sf/` | Firmware (lógica C++ pura + capa de hardware ESP32 + `sf.ino`). `config_maestra.h` se **genera** del YAML |
@@ -32,8 +34,9 @@ Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura 
 ```bash
 pip install numpy numba pyyaml matplotlib      # Python ≥ 3.10; g++ con C++17
 pruebas/ejecutar_todo.sh                       # todas las pruebas (≈ 1 min)
-python3 sim/experimentos.py A B C D F          # optimización completa (≈ 1 h en 2 núcleos)
-python3 sim/validacion_final.py                # validación de la arquitectura vigente
+python3 sim/fase3.py T G S M P                 # Fase 3: candidatos, ajuste final, sensibilidad, escenarios
+python3 sim/graficas_fase3.py                  # gráficas de la Fase 3
+python3 herramientas/presupuesto.py            # costo de la BOM contra $2,000
 python3 sim/verificacion_fase1.py              # verificación de la Fase 1
 python3 herramientas/generar_config_firmware.py  # tras editar el YAML
 ```

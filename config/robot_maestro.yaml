@@ -206,7 +206,7 @@ control:                          # parámetros de los controladores; C3m es el 
   t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
   C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
   C2:  {v_max: 0.709, a_lat: 7.2063, a_lon: 2.5446, k_pp: 1.2587, kp: 34.6271, kd: 1.6762, tau_d: 0.004, tau_k: 0.0248, piso: -0.1944}   # [O] respaldo: ajuste final (G) con la misma arquitectura
-  C3m: {v_max: 0.9588, a_lat: 9.692, a_lon: 2.0, k_pp: 1.5, kp: 48.7166, kd: 8.0461, tau_d: 0.004, tau_k: 0.0213, fuente_k: modelo, piso: -0.3531}   # [O] VIGENTE (Fase 3, etapa T): Chihai 12V i10 + recta8 TCRT + ESP32 + L110
+  C3m: {v_max: 0.66, a_lat: 8.7229, a_lon: 4.0369, k_pp: 1.1775, kp: 13.5366, kd: 11.7725, tau_d: 0.004, tau_k: 0.079, fuente_k: modelo, piso: -0.0737}   # [O] VIGENTE (Fase 3): ajuste con margen de derrape (0.30 m/s) + v_max 0.66 (G_barrido_vmax_robusto.csv)
   C3m_ga12: {v_max: 0.8089, a_lat: 7.2024, a_lon: 2.0, k_pp: 1.2222, kp: 38.5776, kd: 3.1796, tau_d: 0.004, tau_k: 0.0191, fuente_k: modelo, piso: -0.1868}   # [O] respaldo si se usa el GA12-N20 6 V local
   C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
 

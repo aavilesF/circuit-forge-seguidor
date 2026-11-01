@@ -123,11 +123,13 @@ def etapa_T(pool):
 
 def etapa_G(pool):
     """Ajuste final sobre la configuración vigente exacta del YAML (masa y CG definitivos) y escritura de los
-    parámetros en config/robot_maestro.yaml (control.C3m)."""
+    parámetros en config/robot_maestro.yaml (control.C3m). Después conviene barrer v_max con 200 salidas
+    (ver G_barrido_vmax_robusto.csv) y fijar la mayor con 100 % de éxito."""
     import re
     cfg = CF.cargar(); a = cfg["arquitectura"]
     kw = dict(control=a["control"], barra=a["barra"], mcu=a["mcu"], motor=a["motor"], succion=False)
-    r = X.ajustar("final", kw, pool, n_azar=96, n_local=48, sem_aj=(1, 2, 3, 4, 5, 6), seed=5)
+    # con margen: durante la búsqueda se exige deslizamiento ≤ 0.30 m/s (la validación usa 0.40 m/s)
+    r = X.ajustar("final", dict(kw, desliz_valido=0.30), pool, n_azar=96, n_local=48, sem_aj=tuple(range(1, 9)), seed=7)
     prm = r["prm"]
     with open(os.path.join(SAL, "G_parametros_final.json"), "w", encoding="utf-8") as fh:
         json.dump(dict(kw=kw, prm=prm, E=r["val"]["E"], exito=r["val"]["p"], t=r["val"]["t"]), fh, indent=1)

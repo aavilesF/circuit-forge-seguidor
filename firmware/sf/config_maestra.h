@@ -1,10 +1,10 @@
 // GENERADO por herramientas/generar_config_firmware.py — NO EDITAR A MANO.
-// Fuente: config/robot_maestro.yaml (versión 2, sha256 33129ce01581dca9).
+// Fuente: config/robot_maestro.yaml (versión 2, sha256 c7ae43ed16bd4f4f).
 // Para cambiar un valor: editar el YAML, regenerar y correr pruebas/ejecutar_todo.sh.
 #pragma once
 
 namespace cfg {
-constexpr const char* HUELLA_YAML = "33129ce01581dca9";
+constexpr const char* HUELLA_YAML = "c7ae43ed16bd4f4f";
 constexpr const char* MOTOR = "Chihai CHF-GM12-N20 12V 2200 RPM i10 (con encoder)";
 constexpr const char* BARRA = "recta8_tcrt";
 constexpr const char* MCU = "esp32_analogread";
@@ -34,17 +34,25 @@ constexpr float UMBRAL = 0.25f;
 // Control
 constexpr unsigned long PERIODO_MIN_US = 1000;
 constexpr float T_PERDIDA = 0.3f;
-constexpr float V_MAX = 0.9588f;
-constexpr float A_LAT = 9.692f;
-constexpr float A_LON = 2.0f;
-constexpr float K_PP = 1.5f;
-constexpr float KP = 48.7166f;
-constexpr float KD = 8.0461f;
+constexpr float V_MAX = 0.66f;
+constexpr float A_LAT = 8.7229f;
+constexpr float A_LON = 4.0369f;
+constexpr float K_PP = 1.1775f;
+constexpr float KP = 13.5366f;
+constexpr float KD = 11.7725f;
 constexpr float TAU_D = 0.004f;
-constexpr float TAU_K = 0.0213f;
-constexpr float PISO = -0.3531f;   // ciclo mínimo de la rueda interior
+constexpr float TAU_K = 0.079f;
+constexpr float PISO = -0.0737f;   // ciclo mínimo de la rueda interior
 constexpr int FUENTE_CURVATURA = 1;   // 0 error (C2), 1 modelo del motor (C3m), 2 giroscopio (C3g)
 
+// Hardware
+constexpr bool RESTA_AMBIENTE = false;   // sin pin de emisores: false
+}  // namespace cfg
+
+// Driver como macro (el preprocesador elige el bloque de pines): 1 = DRV8833, 2 = TB6612FNG
+#define CFG_DRIVER 2
+
+namespace cfg {
 // Batería
 constexpr float V_BATERIA_BAJA = 6.8f;
 }  // namespace cfg

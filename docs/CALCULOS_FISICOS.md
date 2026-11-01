@@ -228,3 +228,18 @@ Una vuelta dura ≈ 3-4 s; el peor caso del reglamento es un intento de 5 min. S
 | M4 | R interna + cableado | Voltaje en vacío y con carga conocida | Feed-forward |
 | M5 | Masas reales | Báscula de 0.1 g | Presupuesto |
 | M6 | Diámetro real de la llanta con carga | Vernier y rodada de 10 vueltas | Velocidad |
+
+
+## 14. Fase 3: compatibilidad de motores, driver y batería ([C] con los datos del YAML)
+
+Modelo de motor sin ficha: R = V/I_bl; Ke = (V − I0·R)/ω0; **Kt = η·Ke**, con η = 0.79 (la que resulta de la ficha del Pololu 12 V 15:1: Kt/Ke = 0.786; la del 10:1 es 0.826). El supuesto anterior del GA12-N20 (0.30 kg·cm con 0.67 A) implicaba η = 1.56: **físicamente imposible** y se descartó.
+
+| Motor | R | Ke | Kt | Par de bloqueo a V_nom | v libre en 2S (D 34) | I de bloqueo a 7.4 / 8.4 V | Aceleración por par (132 g) | I de frenado inverso |
+|---|---|---|---|---|---|---|---|---|
+| Pololu HPCB 12 V 15:1 [F] | 16.0 Ω | 0.0465 | 0.0366 | 0.25 kg·cm | 2.24 m/s | 0.46 / 0.53 A | 13 m/s² | 0.91 A |
+| GA12-N20 6 V 1000 rpm [F-vendedor + S] | 10.0 Ω | 0.0477 | 0.0377 | 0.19 kg·cm | 1.78 m/s (PWM ≤ 6 V) | 0.60 / 0.60 A | 17 m/s² | 1.10 A |
+| **Chihai N20 12 V i10 [F-vendedor + S]** | 24.0 Ω | 0.0469 | 0.0370 | 0.17 kg·cm | 2.25 m/s | 0.31 / 0.35 A | 8.5 m/s² | 0.65 A |
+
+En los tres, la aceleración que puede dar el par supera la que permite el agarre (μ·g·f = 5.6 m/s²), así que **el agarre limita** la aceleración. La velocidad libre (≥ 1.8 m/s) supera con margen la v_max segura (0.66 m/s). El GA12 queda con más par pero con menos velocidad libre y más corriente. El Chihai es el más suave para el driver y la batería.
+
+**Driver TB6612FNG:** bloqueo doble a 8.4 V = 0.70 A, menor a 1.0 A por canal. Pico de frenado inverso, 0.65 A, menor a 2 A. **Batería:** 0.44-0.46 mAh por vuelta [Sim]; un intento de 5 min a la corriente media simulada (≈ 0.25 A) consume ≈ 21 mAh. Una LiPo de 300 mAh alcanza para decenas de intentos entre cargas; lo que manda es la tensión: hay que cargar antes de cada ronda, porque v_max se ajustó con 7.6-8.3 V. **Regulador:** el MP1584 necesita ≈ 6 V de entrada para dar 5 V con carga; el corte por batería baja del firmware es de 6.8 V.

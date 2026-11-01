@@ -27,7 +27,7 @@ Etiquetas: **[Simulado]** sale del simulador dinámico · **[Calculado]** · **[
 
 ## 2. Pruebas del simulador (ejecutadas)
 
-`python3 sim/pruebas/test_fisica.py` compara la planta contra soluciones analíticas (configuración vigente, 12 V 15:1):
+`python3 sim/pruebas/test_fisica.py` compara la planta contra soluciones analíticas. Valores con la configuración de la Fase 2 (12 V 15:1); la prueba se ejecuta con la configuración vigente en cada corrida de `pruebas/ejecutar_todo.sh` y pasa:
 
 | Prueba | Simulado | Referencia | Error |
 |---|---|---|---|
@@ -50,7 +50,7 @@ Etiquetas: **[Simulado]** sale del simulador dinámico · **[Calculado]** · **[
 2. **Ronda 1** (`resultados/fase2/ronda1_sin_piso/`): sin ciclo negativo en la rueda interior, la autoridad de giro a ~1.2 m/s dependía del deslizamiento de la llanta; con más agarre (succión o μ alto) el robot perdía la curva R150. Se agregó el parámetro `piso` (sim y firmware).
 3. **Ronda 2** (`resultados/fase2/ronda2_sin_friccion_cinetica/`): el optimizador encontró parámetros que **bloqueaban la rueda interior y derrapaban** en R150 (deriva ≈ 40°, eje 0.69 m/s de lado). Solo funcionaba porque el modelo usaba μ estático al deslizar. Se agregó μ cinético y el criterio de derrape; todo se repitió (**ronda 3**, vigente).
 
-## 3. Resultados (ronda 3, vigente)
+## 3. Resultados de la Fase 2 (ronda 3; arquitectura anterior, ver §5 para la vigente)
 
 Criterio: **tiempo esperado por intento** E = p·t + (1 − p)·300 s (un intento perdido vale 5 min, reglamento C07), promedio de las 4 pistas. Dispersión normal en cada corrida (§1). Cada arquitectura se ajustó con la misma búsqueda (96 candidatos al azar + 48 de refinamiento, semillas comunes) y se validó con 60 salidas nuevas; las finalistas, con 200. Los tiempos son de una vuelta **desde parado**. Velocidad media = largo de la línea / tiempo.
 
@@ -106,7 +106,7 @@ El criterio geométrico de la Fase 1 (barra en arco: captura hasta 100 mm en el 
 | Recta8 + ESP32 + L110 | 100 % | 6.79 s |
 | Opción B: 12 V 10:1 con succión (parámetros de la etapa C) | 99.5 % | 4.65 s |
 
-**Validación de la arquitectura vigente** (C3m, arco16c, ESP32, 12 V 15:1, L 110 mm; 200 salidas por escenario; `E_validacion.csv`):
+**Validación de la arquitectura de la Fase 2** (C3m, arco16c, ESP32, 12 V 15:1, L 110 mm; 200 salidas por escenario; `fase2/E_validacion.csv`):
 
 | Escenario | Éxito (IC 95 %) | t medio | t percentil 95 | Fallas |
 |---|---|---|---|---|
@@ -146,3 +146,35 @@ Por pista (nominal): P1 5.70 s, P2 6.57 s, P3 5.78 s, P4 5.00 s; velocidad media
 6. Los criterios de falla son una interpretación del reglamento: el referee decide qué es "perder la pista". El umbral de derrape (0.4 m/s) es una decisión de diseño.
 7. Los ciclos de PWM oscilan rápido (F6): en el robot real eso significa ruido eléctrico y calor en el driver, a revisar en pruebas.
 8. La búsqueda de parámetros tiene varianza (≈ ±5 % en tiempo): las diferencias menores a eso entre arquitecturas no son significativas.
+
+
+## 5. Fase 3: arquitectura de $2,000 MXN
+
+La planta es la misma (no se cambió el modelo físico). Cambian los datos de la configuración maestra: motores Chihai N20 12 V i10 y GA12-N20 6 V con par estimado por **T = η·Ke·(I_bl − I0)**, η = 0.79 deducida de la ficha Pololu (el supuesto anterior del GA12 implicaba η = 1.56, imposible); masa del motor con encoder; barra clon de 8 TCRT5000 con mancha de 5 mm, ruido 0.04 y **sin resta de luz ambiente** (ciclo de 1.0 ms: 8 × 75 µs + 60 µs); ESP32 con 75 µs por canal (60 de analogRead + 15 de establecimiento del mux); masa y CG de la disposición definitiva (132 g, CG a 22.4 mm, f_motriz 0.72). Resultados en `sim/resultados/fase3/`.
+
+**Etapa T — motor × barra** (C3m, ESP32, L 110 mm; ajuste igual para todos; 200 salidas; disposición previa de 121-126 g; `T_candidatos.csv`, `F1_candidatos.png`):
+
+| Candidato | Éxito | t medio | I pico |
+|---|---|---|---|
+| Chihai 12 V i10 + recta8 TCRT | 100 % | **5.26 s** | 0.34 A |
+| Pololu 12 V 15:1 + recta8 TCRT | 95 % | 5.31 s | 0.46 A |
+| Chihai 12 V i10 + arco16c | 97.5 % | 5.50 s | 0.32 A |
+| GA12-N20 6 V + recta8 TCRT | 100 % | 5.64 s | 0.59 A |
+| Pololu 12 V 15:1 + arco16c (Fase 2) | 100 % | 5.70 s | 0.46 A |
+| GA12-N20 6 V + arco16c | 100 % | 5.96 s | 0.52 A |
+
+**Ajuste final sobre la disposición definitiva:** con la masa real (ESP32 de 11 g, motores con encoder), los parámetros de la etapa T bajan a 92 % (16 derrapes en 200) y un reajuste normal da 97.5 % (`G_T_vs_G.csv`). El ajuste estaba en el borde del criterio de derrape, así que se reajustó **con margen** (deslizamiento máximo de 0.30 m/s durante la búsqueda, validación con 0.40 m/s) y se barrió v_max (`G_barrido_vmax_robusto.csv`):
+
+| v_max | Éxito (200) | t medio | Tiempo esperado por intento |
+|---|---|---|---|
+| 0.62 | 100 % | 6.59 s | 6.59 s |
+| **0.66 (vigente)** | **100 %** | **6.35 s** | **6.35 s** |
+| 0.70 | 99.5 % | 6.14 s | 7.6 s |
+| 0.74 | 99.5 % | 5.93 s | 7.4 s |
+| 0.78 | 99 % | 5.74 s | 8.7 s |
+
+**Comparación justa con la Fase 2** (mismo ajuste robusto, misma disposición; `C_anterior_vs_nueva.csv`): Fase 2 (Pololu + arco16c) 6.22 s y 100 %; Fase 3 6.85 s y 100 % sin barrido, 6.35 s con v_max 0.66. Robustez: ver [AUDITORIA_ROBUSTEZ.md](AUDITORIA_ROBUSTEZ.md).
+
+![Candidatos](../sim/resultados/fase3/F1_candidatos.png)
+![Trayectorias Fase 3](../sim/resultados/fase3/F3_trayectorias.png)
+![Robustez](../sim/resultados/fase3/F2_robustez.png)

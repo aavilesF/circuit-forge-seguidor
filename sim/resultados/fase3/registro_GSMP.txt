@@ -1,0 +1,6 @@
+Etapa G: ajuste final de la configuración vigente
+  ajuste final: E 5.596, éxito 1.000, t 5.596; YAML actualizado
+Etapa S: sensibilidad del motor
+  nominal                                    éxito 0.983 [0.941] t 5.641 s  I_max 0.34 A  derrape: 2
+  I_bloqueo 0.35 A                           éxito 1.000 [0.969] t 7.025 s  I_max 0.24 A  
+  I_bloqueo 0.45 A                           éxito 1.000 [0.969] t 5.89 s  I_max 0.306 A  
