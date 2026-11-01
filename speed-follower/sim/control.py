@@ -27,7 +27,8 @@ class ParamSF:              # C2: perfil de velocidad por curvatura + FF de moto
     permitir_inversion: bool = False
     e_critico: float = 0.80  # fracción de la semibarra a partir de la cual se permite invertir
     d_inv: float = 0.30      # ciclo máximo de reversa de la rueda interior en emergencia
-    ff_acel: bool = True     # feed-forward de aceleración (freno activo: ciclo negativo con la rueda aún hacia adelante)
+    ff_acel: bool = True     # feed-forward de aceleración (al frenar baja el ciclo más rápido; con piso 0 = freno corto)
+    freno_activo: bool = False  # permite ciclo común negativo (contracorriente) para frenar; NO aprobado aún
 
 
 class ControlDuty:
@@ -97,6 +98,8 @@ class ControlSF:
         semibarra = (robot.n_sens - 1) * robot.paso / 2
         emergencia = p.permitir_inversion and borde and abs(e) > p.e_critico * semibarra
         piso = -p.d_inv if emergencia else 0.0
+        if p.freno_activo and base < 0:          # freno longitudinal: ambas ruedas reciben ciclo negativo
+            piso = min(piso, max(base, -lim))     # pero nunca más bajo que lo que pide el FF de aceleración
         bajo = min(dl, dr)
         if bajo < piso:                         # frenado diferencial antes que invertir
             dl, dr = dl - (bajo - piso), dr - (bajo - piso)

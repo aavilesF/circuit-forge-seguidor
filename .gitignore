@@ -70,3 +70,7 @@ Testing/
 # compilados locales
 .build/
 __pycache__/
+
+# Vectores dorados del Speed Follower: se regeneran en cada corrida de speed-follower/pruebas/ejecutar.sh
+speed-follower/pruebas/dorados_*.csv
+.build/

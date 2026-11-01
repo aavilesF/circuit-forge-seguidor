@@ -162,10 +162,14 @@ Diseño propuesto (C2):
 2. **Diferencia de velocidades controlada**: v_L = v + Δ/2, v_R = v − Δ/2. Δ = FF de persecución pura (2·v·e·W/L²) + PD (Kp·e + Kd·ė).
 3. **Feed-forward de motor** (sin encoders): ciclo = (Ke·ω + R·(I0 + m·a·r/(2·Kt)))/Vbat. Usa el modelo del motor y compensa la batería.
 4. **Sin inversión de la rueda interior:** si una rueda quedaría negativa, se baja el ciclo común conservando la diferencia (frenado diferencial). La reversa limitada solo se permite con |e| > 80 % de la semibarra y la línea en el borde. En simulación casi nunca se activa y no mejora: se puede dejar apagada.
-5. **Freno activo [requiere tu aprobación]:** el FF de aceleración puede pedir ciclo **negativo en ambas ruedas mientras siguen girando hacia adelante** para frenar antes de una curva (contracorriente). No invierte el sentido de giro ni sirve para girar. Sin él, el freno corto de un motor 10:1 solo da 2.1 m/s².
+5. **Freno activo: probado y descartado por ahora.**
+   - **Corrección (31 oct, 19:40):** la versión anterior de este punto decía que el freno activo estaba simulado. No lo estaba: el piso de 0 también recortaba el ciclo común, así que el "FF de aceleración" solo bajaba el ciclo a 0 más rápido (freno corto).
+   - Ahora el freno activo es una opción real (`freno_activo`). En `S9_freno_activo.csv` da **los mismos resultados** con el motor 15:1, que con freno corto ya frena ~4.7 m/s², y con el 10:1.
+   - Además, al entrar a una curva solo la rueda interior recibiría ciclo negativo, que es precisamente lo que pediste evitar.
+   - **Queda apagado** y no requiere aprobación.
 6. **Hallazgos:**
    - La persecución pura no aportó sobre el PD con estas ganancias; se conserva por ser barata y escalar con la velocidad.
-   - El FF de aceleración sí aporta un 11 % menos de tiempo.
+   - El FF de aceleración sí aporta un 11 % menos de tiempo, porque baja el ciclo antes al frenar (freno corto), no porque aplique ciclo negativo.
    - Ganancias usadas: Kp = 120 (ciclo/m), Kd = 4 (ciclo·s/m), a_lat = 4 m/s², a_lon = 4 m/s². **Todas requieren ajuste físico.**
 
 ## 8. Masa estimada [Doc donde se indica; resto Sup]
@@ -194,7 +198,7 @@ Diseño propuesto (C2):
 | SF-3 | Driver | **DRV8833 PWP** (OCP por hardware) | TB6612FNG (95 % de margen) | PCB/cableado |
 | SF-4 | Cuello | **L = 130 mm** | 120-140 | Chasis |
 | SF-5 | Barra | **8 sensores, paso 8-9.5 mm** (clon UNIT) para el MVP; 12 × ITR8307 en Plan A | 12-16 canales | Chasis, PCB |
-| SF-6 | Control | **C2** con freno activo y sin inversión de la rueda interior | C2 sin freno activo (más lento) | Firmware |
+| SF-6 | Control | **C2** sin inversión de la rueda interior y sin freno activo (S9: no aporta) | — | Firmware |
 | SF-7 | Energía | 2S directo a motores de 12 V; MP1584 a 5 V para la lógica (P3 pendiente) | — | Compra |
 | SF-8 | Fabricación | **Plan B primero**, Plan A en paralelo si hay tiempos | Solo Plan A | Calendario |
 
