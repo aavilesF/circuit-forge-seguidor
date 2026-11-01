@@ -21,7 +21,7 @@ inline sf::Robot robot_configurado() {
   r.motor = sf::motor_ga12_n20_6v_supuesto();
   r.v_max_motor = 6.0f;              // motor de 6 V en 2S: PWM limitado a 6 V promedio
 #endif
-  r.diam = 0.033f;                   // VERIFICAR con la llanta comprada
+  r.diam = 0.034f;                   // llanta N20 34 x 7 (chasis llanta34). VERIFICAR con vernier
   r.W = 0.085f;                      // VERIFICAR (centro a centro de llantas en el chasis impreso)
   r.masa = 0.20f;                    // VERIFICAR con báscula
   r.L = 0.130f;                      // cuello (SF-4)
