@@ -179,7 +179,7 @@ def escribir_corridas(nombre, arqs):
     escribir(nombre, filas)
 
 
-BASE = dict(motor="pololu_hpcb12_15", barra="arco16", mcu="stm32g431", succion=False)
+BASE = dict(motor="pololu_hpcb12_15", barra="arco16", mcu="stm32g431", succion=False, L=0.100)
 
 
 def etapa_A(pool):

@@ -257,6 +257,9 @@ if __name__ == "__main__" and "perfiles" in sys.argv:
 
 def kw_de_fila(archivo, nombre):
     """Reconstruye la configuración y los parámetros ajustados de una arquitectura de las etapas A-D."""
+    if archivo.startswith("F_"):
+        d = json.load(open(os.path.join(SAL, "F_parametros.json"), encoding="utf-8"))[nombre]
+        return dict(d["kw"], prm=d["prm"])
     sel = json.load(open(os.path.join(SAL, "seleccion.json")))
     fila = [r for r in csv.DictReader(open(os.path.join(SAL, archivo), encoding="utf-8")) if r["arquitectura"] == nombre][0]
     prm = json.loads(fila["parametros"])
@@ -267,7 +270,8 @@ def kw_de_fila(archivo, nombre):
         kw = dict(X.BASE, control=sel["control"], barra=barra, mcu=mcu)
     elif archivo.startswith("C_"):
         mot, _, succ, _ = nombre.split()
-        kw = dict(control=sel["control"], barra=sel["barra"], mcu=sel["mcu"], motor=mot, succion=(succ == "con"))
+        kw = dict(control=sel["control"], barra=sel["barra"], mcu=sel["mcu"], motor=mot, succion=(succ == "con"),
+                  L=0.100)   # la etapa C corrió con L = 100 mm
     else:
         L = float(nombre.split("=")[1].split()[0]) / 1000
         kw = dict(control=sel["control"], barra=sel["barra"], mcu=sel["mcu"], motor=sel["motor"], succion=False, L=L)
@@ -291,11 +295,8 @@ def cara_a_cara(finalistas, n=N_SEM):
 
 
 if __name__ == "__main__" and "cara" in sys.argv:
-    cara_a_cara([
-        ("A C2 (arco16, STM32, 12V 15:1)", "A_controles.csv", "C2"),
-        ("A C3g (arco16, STM32, 12V 15:1)", "A_controles.csv", "C3g"),
-        ("B arco16 + ESP32", "B_barras_mcu.csv", "arco16 + esp32_analogread"),
-        ("B arco16 + STM32", "B_barras_mcu.csv", "arco16 + stm32g431"),
-        ("B arco13 + ESP32", "B_barras_mcu.csv", "arco13 + esp32_analogread"),
-        ("B recta8 + ESP32", "B_barras_mcu.csv", "recta8 + esp32_analogread"),
-    ])
+    filasF = sorted(csv.DictReader(open(os.path.join(SAL, "F_finalistas.csv"), encoding="utf-8")),
+                    key=lambda r: (float(r["E_s"]), float(r["t_medio_s"] or 99)))
+    finalistas = [(f"F {r['arquitectura']}", "F_finalistas.csv", r["arquitectura"]) for r in filasF[:5]]
+    finalistas.append(("C 12V 15:1 con succión (opción B)", "C_motores_succion.csv", "pololu_hpcb12_15 con succión"))
+    cara_a_cara(finalistas)
