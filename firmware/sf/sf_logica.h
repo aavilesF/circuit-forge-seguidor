@@ -53,7 +53,8 @@ struct ParamSF {
   bool  ff_acel = true;
   bool  freno_activo = false; // probado en simulación (S9): no aporta; apagado
   float t_perdida = 0.30f;    // s sin ver la línea antes de declararla perdida
-  int   fuente_k = 0;         // curvatura del perfil: 0 = solo error (C2), 1 = + modelo del motor (C3m), 2 = + giroscopio (C3g)
+  int   fuente_k = 0;
+  float piso = 0.0f;          // ciclo mínimo de la rueda interior (0 = sin inversión; < 0 permite frenar con contracorriente)         // curvatura del perfil: 0 = solo error (C2), 1 = + modelo del motor (C3m), 2 = + giroscopio (C3g)
 };
 
 // Estimación de la línea a partir de lecturas normalizadas (0 blanco, 1 negro), igual que simular._estimar.

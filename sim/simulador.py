@@ -70,7 +70,7 @@ def vector_control(c: Config):
         return N.C_PD, np.array([p["b0"], p["k_freno"], p["e_ref"], p["kp"], p["kd"], p["rueda_min"]], float)
     fuente = {"error": 0, "modelo": 1, "giroscopio": 2}[p.get("fuente_k", "error")]
     return N.C_SF, np.array([p["v_max"], p["a_lat"], p["a_lon"], p["k_pp"], p["kp"], p["kd"],
-                             p["tau_d"], p["tau_k"], fuente], float)
+                             p["tau_d"], p["tau_k"], fuente, p.get("piso", 0.0)], float)
 
 
 def correr(c: Config, pista: Pista, seed: int = 0, pt: Perturbacion = Perturbacion(),

@@ -78,6 +78,7 @@ def generar() -> str:
     else:
         for k in ("v_max", "a_lat", "a_lon", "k_pp", "kp", "kd", "tau_d", "tau_k"):
             L.append(f"constexpr float {k.upper()} = {f(prm[k])};")
+        L.append(f"constexpr float PISO = {f(prm.get('piso', 0.0))};   // ciclo mínimo de la rueda interior")
         L.append(f"constexpr int FUENTE_CURVATURA = {fuente};   // 0 error (C2), 1 modelo del motor (C3m), 2 giroscopio (C3g)")
     L.append("")
     L.append("// Batería")

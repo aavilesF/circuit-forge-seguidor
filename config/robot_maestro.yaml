@@ -165,9 +165,9 @@ control:                          # parámetros de los controladores (los C3m so
   T_min: 0.001                    # [D] periodo mínimo; el real es max(T_min, lectura + cálculo)
   t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
   C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
-  C2:  {v_max: 1.6, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030}
-  C3m: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: modelo}
-  C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio}
+  C2:  {v_max: 1.6, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, piso: 0.0}
+  C3m: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: modelo, piso: 0.0}
+  C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
 
 giroscopio:
   ruido: 0.02                     # [S] rad/s RMS

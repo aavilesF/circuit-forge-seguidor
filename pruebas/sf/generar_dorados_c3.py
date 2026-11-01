@@ -24,6 +24,7 @@ with open(os.path.join(AQUI, "dorados_c3.csv"), "w", newline="") as f:
     for fuente in (0, 1, 2):
         prm = base.copy()
         prm[8] = fuente
+        prm[9] = -0.4      # piso de prueba (la prueba C++ usa el mismo valor) para cubrir el frenado con contracorriente
         ST = np.zeros(6); ST[5] = 1.0
         dl = dr = 0.0
         for k in range(3000):

@@ -28,7 +28,7 @@ inline sf::ParamSF parametros_maestros() {
   sf::ParamSF p;
   p.v_max = cfg::V_MAX; p.a_lat = cfg::A_LAT; p.a_lon = cfg::A_LON; p.k_pp = cfg::K_PP;
   p.kp = cfg::KP; p.kd = cfg::KD; p.tau_d = cfg::TAU_D; p.tau_k = cfg::TAU_K;
-  p.t_perdida = cfg::T_PERDIDA; p.fuente_k = cfg::FUENTE_CURVATURA;
+  p.t_perdida = cfg::T_PERDIDA; p.fuente_k = cfg::FUENTE_CURVATURA; p.piso = cfg::PISO;
   return p;
 }
 

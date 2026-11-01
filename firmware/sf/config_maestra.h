@@ -1,10 +1,10 @@
 // GENERADO por herramientas/generar_config_firmware.py — NO EDITAR A MANO.
-// Fuente: config/robot_maestro.yaml (versión 2, sha256 80478d453aac341b).
+// Fuente: config/robot_maestro.yaml (versión 2, sha256 f41089aaade14afb).
 // Para cambiar un valor: editar el YAML, regenerar y correr pruebas/ejecutar_todo.sh.
 #pragma once
 
 namespace cfg {
-constexpr const char* HUELLA_YAML = "80478d453aac341b";
+constexpr const char* HUELLA_YAML = "f41089aaade14afb";
 constexpr const char* MOTOR = "Pololu HPCB 12V 10:1";
 constexpr const char* BARRA = "arco16";
 constexpr const char* MCU = "stm32g431";
@@ -42,6 +42,7 @@ constexpr float KP = 30.0f;
 constexpr float KD = 1.0f;
 constexpr float TAU_D = 0.004f;
 constexpr float TAU_K = 0.03f;
+constexpr float PISO = 0.0f;   // ciclo mínimo de la rueda interior
 constexpr int FUENTE_CURVATURA = 1;   // 0 error (C2), 1 modelo del motor (C3m), 2 giroscopio (C3g)
 
 // Batería

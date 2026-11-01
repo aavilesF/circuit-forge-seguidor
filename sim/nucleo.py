@@ -87,9 +87,10 @@ def paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz):
     hi = max(nL, nR)
     if hi > lim:
         nL -= hi - lim; nR -= hi - lim
+    piso = prm[9] if prm.shape[0] > 9 else 0.0   # ciclo mínimo permitido en la rueda interior (0 = sin inversión)
     bajo = min(nL, nR)
-    if bajo < 0.0:
-        nL -= bajo; nR -= bajo
+    if bajo < piso:
+        nL -= bajo - piso; nR -= bajo - piso
     return _clamp(nL, -lim, lim), _clamp(nR, -lim, lim)
 
 

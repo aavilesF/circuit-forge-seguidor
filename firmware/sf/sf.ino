@@ -72,7 +72,7 @@ static bool poner(const String& k, float v) {
   else if (k == "tau_d") ps.tau_d = v; else if (k == "tau_k") ps.tau_k = v;
   else if (k == "inv") ps.permitir_inversion = v != 0; else if (k == "e_crit") ps.e_critico = v;
   else if (k == "d_inv") ps.d_inv = v; else if (k == "ff_acel") ps.ff_acel = v != 0;
-  else if (k == "t_perdida") ps.t_perdida = v; else if (k == "fuente_k") ps.fuente_k = (int)v; else return false;
+  else if (k == "t_perdida") ps.t_perdida = v; else if (k == "fuente_k") ps.fuente_k = (int)v; else if (k == "piso") ps.piso = v; else return false;
   ctl.fijar(ps);
   return true;
 }
@@ -84,7 +84,7 @@ static void consola() {
   if (l.length() == 0) return;
   if (l == "ayuda") {
     Serial.println("comandos: get | set <clave> <valor> | save | load | defecto | sens | crudo | bat | diag | tel 0/1 | m <izq> <der> [ms]");
-    Serial.println("claves: v_max a_lat a_lon k_pp kp kd tau_d tau_k inv e_crit d_inv ff_acel t_perdida fuente_k");
+    Serial.println("claves: v_max a_lat a_lon k_pp kp kd tau_d tau_k inv e_crit d_inv ff_acel t_perdida fuente_k piso");
   } else if (l == "get") imprimir_parametros();
   else if (l == "save") { guardar(); Serial.println("guardado"); }
   else if (l == "load") { cargar(); ctl.fijar(ps); imprimir_parametros(); }

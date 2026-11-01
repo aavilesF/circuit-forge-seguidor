@@ -73,7 +73,7 @@ Salida ControlSF::paso(float e, bool borde, float dt, float v_bat, float gz) {
   const float hi = fmaxf(dl, dr);
   if (hi > lim) { dl -= hi - lim; dr -= hi - lim; }
   const bool emergencia = p_.permitir_inversion && borde && fabsf(e) > p_.e_critico * r_.semibarra();
-  float piso = emergencia ? -p_.d_inv : 0.0f;
+  float piso = emergencia ? fminf(-p_.d_inv, p_.piso) : p_.piso;
   if (p_.freno_activo && base < 0.0f) piso = fminf(piso, fmaxf(base, -lim));
   const float bajo = fminf(dl, dr);
   if (bajo < piso) { dl -= bajo - piso; dr -= bajo - piso; }
