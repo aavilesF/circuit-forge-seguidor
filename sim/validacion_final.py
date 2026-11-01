@@ -237,7 +237,7 @@ def perfiles_por_radio():
     filas = []
     with Pool(os.cpu_count() or 1) as pool:
         for clave, rmin in (("P4", 0.15), ("P3", 0.20), ("P2", 0.40)):
-            for vmax in (1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2):
+            for vmax in (0.8, 0.9, 1.0, 1.1, 1.2, 1.3):
                 prm = dict(base, v_max=vmax)
                 tareas = [("perfil", dict(kw, prm=prm), {}, sd, clave) for sd in range(30)]
                 res = pool.map(tarea, tareas, chunksize=10)
@@ -299,7 +299,10 @@ if __name__ == "__main__" and "cara" in sys.argv:
     filasF = sorted(csv.DictReader(open(os.path.join(SAL, "F_finalistas.csv"), encoding="utf-8")),
                     key=lambda r: (float(r["E_s"]), float(r["t_medio_s"] or 99)))
     finalistas = [(f"F {r['arquitectura']}", "F_finalistas.csv", r["arquitectura"]) for r in filasF[:5]]
-    finalistas.append(("C 12V 15:1 con succión (opción B)", "C_motores_succion.csv", "pololu_hpcb12_15 con succión"))
+    filasC = list(csv.DictReader(open(os.path.join(SAL, "C_motores_succion.csv"), encoding="utf-8")))
+    conB = min([r for r in filasC if "con succión" in r["arquitectura"] and float(r["I_max_A"]) < 2.0],
+               key=lambda r: float(r["E_s"]))
+    finalistas.append((f"C {conB['arquitectura']} (opción B)", "C_motores_succion.csv", conB["arquitectura"]))
     cara_a_cara(finalistas)
 
 

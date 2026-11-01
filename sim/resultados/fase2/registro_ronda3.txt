@@ -1,0 +1,54 @@
+Etapa A: controles
+  A C1: E 20.62 s, éxito 0.95, t 5.901 s (77 s)
+  A C2: E 6.31 s, éxito 1.00, t 6.311 s (74 s)
+  A C3m: E 6.33 s, éxito 1.00, t 6.333 s (76 s)
+  A C3g: E 10.98 s, éxito 0.98, t 6.062 s (73 s)
+  -> sim/resultados/fase2/A_controles.csv
+  -> sim/resultados/fase2/A_corridas.csv
+Etapa B: barras y MCU
+  B recta8 + esp32_analogread: E 26.22, éxito 0.93, t 6.661, T_ctrl 1.22 ms
+  B recta8 + stm32g431: E 26.13, éxito 0.93, t 6.572, T_ctrl 1.00 ms
+  B recta12 + esp32_analogread: E 6.57, éxito 1.00, t 6.570, T_ctrl 1.70 ms
+  B recta12 + stm32g431: E 6.86, éxito 1.00, t 6.859, T_ctrl 1.00 ms
+  B arco13 + esp32_analogread: E 6.34, éxito 1.00, t 6.337, T_ctrl 1.82 ms
+  B arco13 + stm32g431: E 31.06, éxito 0.92, t 6.589, T_ctrl 1.00 ms
+  B arco16 + esp32_analogread: E 10.76, éxito 0.98, t 5.844, T_ctrl 2.18 ms
+  B arco16 + stm32g431: E 26.31, éxito 0.93, t 6.761, T_ctrl 1.00 ms
+  -> sim/resultados/fase2/B_barras_mcu.csv
+  -> sim/resultados/fase2/B_corridas.csv
+Etapa C: motores y succión
+  C pololu_hpcb12_10 sin succión: E 7.02, éxito 1.00, t 7.019, I_max 0.46 A
+  C pololu_hpcb12_10 con succión: E 4.66, éxito 1.00, t 4.661, I_max 0.48 A
+  C pololu_hpcb12_15 sin succión: E 6.19, éxito 1.00, t 6.186, I_max 0.42 A
+  C pololu_hpcb12_15 con succión: E 29.10, éxito 0.92, t 4.444, I_max 0.48 A
+  C pololu_hpcb6_15 sin succión: E 6.51, éxito 1.00, t 6.515, I_max 1.38 A
+  C pololu_hpcb6_15 con succión: E 4.88, éxito 1.00, t 4.884, I_max 1.28 A
+  C pololu_hpcb6_30 sin succión: E 6.19, éxito 1.00, t 6.194, I_max 1.46 A
+  C pololu_hpcb6_30 con succión: E 4.83, éxito 1.00, t 4.833, I_max 1.05 A
+  -> sim/resultados/fase2/C_motores_succion.csv
+  -> sim/resultados/fase2/C_corridas.csv
+Etapa D: cuello
+  D L = 80 mm: E 6.94, éxito 1.00, t 6.936
+  D L = 90 mm: E 45.78, éxito 0.87, t 6.670
+  D L = 100 mm: E 6.34, éxito 1.00, t 6.337
+  D L = 110 mm: E 6.19, éxito 1.00, t 6.186
+  D L = 120 mm: E 6.66, éxito 1.00, t 6.657
+  -> sim/resultados/fase2/D_cuello.csv
+  -> sim/resultados/fase2/D_corridas.csv
+Etapa F: finalistas (C2, 12 V 15:1)
+  F recta8 + esp32_analogread + L100: E 26.22, éxito 0.93, t 6.661
+  F recta8 + esp32_analogread + L110: E 6.78, éxito 1.00, t 6.785
+  F recta8 + stm32g431 + L100: E 26.13, éxito 0.93, t 6.572
+  F recta8 + stm32g431 + L110: E 27.14, éxito 0.93, t 7.647
+  F arco13 + esp32_analogread + L100: E 6.34, éxito 1.00, t 6.337
+  F arco13 + esp32_analogread + L110: E 6.19, éxito 1.00, t 6.186
+  F arco13 + stm32g431 + L100: E 31.06, éxito 0.92, t 6.589
+  F arco13 + stm32g431 + L110: E 6.48, éxito 1.00, t 6.479
+  F arco16 + esp32_analogread + L100: E 10.76, éxito 0.98, t 5.844
+  F arco16 + esp32_analogread + L110: E 6.29, éxito 1.00, t 6.293
+  F arco16 + stm32g431 + L100: E 26.31, éxito 0.93, t 6.761
+  F arco16 + stm32g431 + L110: E 25.93, éxito 0.93, t 6.354
+  -> sim/resultados/fase2/F_finalistas.csv
+  -> sim/resultados/fase2/F_corridas.csv
+Selección: {"control": "C2", "barra": "arco13", "mcu": "esp32_analogread", "motor": "pololu_hpcb12_15", "motor_con_succion": "pololu_hpcb12_10", "L": 0.11, "prm": {"v_max": 0.7369398667108535, "a_lat": 6.634766927183362, "a_lon": 2.0, "k_pp": 1.2098507621778867, "kp": 48.87477655815457, "kd": 1.2148020514366107, "tau_k": 0.0577927240249206, "piso": -0.1505490563480201, "tau_d": 0.004}}
+exit 0

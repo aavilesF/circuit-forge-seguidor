@@ -1,14 +1,14 @@
 // GENERADO por herramientas/generar_config_firmware.py — NO EDITAR A MANO.
-// Fuente: config/robot_maestro.yaml (versión 2, sha256 95d41c667e1ac062).
+// Fuente: config/robot_maestro.yaml (versión 2, sha256 bdf4c2fed3a65c15).
 // Para cambiar un valor: editar el YAML, regenerar y correr pruebas/ejecutar_todo.sh.
 #pragma once
 
 namespace cfg {
-constexpr const char* HUELLA_YAML = "95d41c667e1ac062";
+constexpr const char* HUELLA_YAML = "bdf4c2fed3a65c15";
 constexpr const char* MOTOR = "Pololu HPCB 12V 15:1";
 constexpr const char* BARRA = "arco16c";
 constexpr const char* MCU = "esp32_analogread";
-constexpr const char* CONTROL = "C2";
+constexpr const char* CONTROL = "C3m";
 
 // Motor (datos del fabricante a V_nom; ver YAML para el origen de cada valor)
 constexpr float MOTOR_V_NOM = 12.0f;
@@ -34,16 +34,16 @@ constexpr float UMBRAL = 0.25f;
 // Control
 constexpr unsigned long PERIODO_MIN_US = 1000;
 constexpr float T_PERDIDA = 0.3f;
-constexpr float V_MAX = 1.2012f;
-constexpr float A_LAT = 4.7758f;
-constexpr float A_LON = 6.9268f;
-constexpr float K_PP = 1.2387f;
-constexpr float KP = 15.9363f;
-constexpr float KD = 10.0005f;
+constexpr float V_MAX = 0.8089f;
+constexpr float A_LAT = 7.2024f;
+constexpr float A_LON = 2.0f;
+constexpr float K_PP = 1.2222f;
+constexpr float KP = 38.5776f;
+constexpr float KD = 3.1796f;
 constexpr float TAU_D = 0.004f;
-constexpr float TAU_K = 0.0754f;
-constexpr float PISO = -0.3108f;   // ciclo mínimo de la rueda interior
-constexpr int FUENTE_CURVATURA = 0;   // 0 error (C2), 1 modelo del motor (C3m), 2 giroscopio (C3g)
+constexpr float TAU_K = 0.0191f;
+constexpr float PISO = -0.1868f;   // ciclo mínimo de la rueda interior
+constexpr int FUENTE_CURVATURA = 1;   // 0 error (C2), 1 modelo del motor (C3m), 2 giroscopio (C3g)
 
 // Batería
 constexpr float V_BATERIA_BAJA = 6.8f;
