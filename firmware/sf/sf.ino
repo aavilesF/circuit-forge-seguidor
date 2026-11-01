@@ -16,7 +16,7 @@
 #include "sf_logica.h"
 #include "hardware_sf.h"
 
-static constexpr uint32_t VERSION_NVS = 1;              // subir si cambia ParamSF o Calibracion
+static constexpr uint32_t VERSION_NVS = 2;              // subir si cambia ParamSF o Calibracion (2: fuente_k)
 static constexpr uint32_t CAL_MAX_MS = 10000;           // reglamento: 15 s para calibrar y colocar
 static constexpr uint32_t BATERIA_PERIODO_MS = 20;
 static constexpr uint32_t FALLA_SENSORES_MS = 300;
@@ -24,7 +24,7 @@ static constexpr uint32_t TELEMETRIA_CADA = 20;         // 25 Hz a 500 Hz
 static constexpr float V_BAT_MIN_FF = 5.0f;             // si la lectura es absurda, no dividir entre ~0
 
 static const sf::Robot robot = robot_configurado();
-static sf::ParamSF ps;
+static sf::ParamSF ps = parametros_maestros();
 static sf::ControlSF ctl(ps, robot);
 static posicion::Calibracion cal;
 static MaquinaEstados maquina;
@@ -72,7 +72,7 @@ static bool poner(const String& k, float v) {
   else if (k == "tau_d") ps.tau_d = v; else if (k == "tau_k") ps.tau_k = v;
   else if (k == "inv") ps.permitir_inversion = v != 0; else if (k == "e_crit") ps.e_critico = v;
   else if (k == "d_inv") ps.d_inv = v; else if (k == "ff_acel") ps.ff_acel = v != 0;
-  else if (k == "t_perdida") ps.t_perdida = v; else return false;
+  else if (k == "t_perdida") ps.t_perdida = v; else if (k == "fuente_k") ps.fuente_k = (int)v; else return false;
   ctl.fijar(ps);
   return true;
 }
@@ -84,11 +84,11 @@ static void consola() {
   if (l.length() == 0) return;
   if (l == "ayuda") {
     Serial.println("comandos: get | set <clave> <valor> | save | load | defecto | sens | crudo | bat | diag | tel 0/1 | m <izq> <der> [ms]");
-    Serial.println("claves: v_max a_lat a_lon k_pp kp kd tau_d tau_k inv e_crit d_inv ff_acel t_perdida");
+    Serial.println("claves: v_max a_lat a_lon k_pp kp kd tau_d tau_k inv e_crit d_inv ff_acel t_perdida fuente_k");
   } else if (l == "get") imprimir_parametros();
   else if (l == "save") { guardar(); Serial.println("guardado"); }
   else if (l == "load") { cargar(); ctl.fijar(ps); imprimir_parametros(); }
-  else if (l == "defecto") { ps = sf::ParamSF(); ctl.fijar(ps); imprimir_parametros(); }
+  else if (l == "defecto") { ps = parametros_maestros(); ctl.fijar(ps); imprimir_parametros(); }
   else if (l == "bat") Serial.printf("bateria: %.2f V (filtrada)\n", bateria.voltaje());
   else if (l == "diag") {
     const uint32_t t0 = micros(); leer_normalizado(); const uint32_t t1 = micros();
@@ -102,7 +102,7 @@ static void consola() {
   } else if (l == "sens") {
     leer_normalizado();
     for (int i = 0; i < NUM_SENSORES; ++i) Serial.printf("%.2f ", osc[i]);
-    const sf::Lectura le = sf::estimar(osc, NUM_SENSORES, robot.paso);
+    const sf::Lectura le = sf::estimar_coord(osc, cfg::SENSOR_Y, NUM_SENSORES, cfg::UMBRAL);
     Serial.printf("| e=%.1f mm visible=%d borde=%d\n", le.e * 1000.0f, le.visible, le.borde);
   } else if (l.startsWith("tel ")) telemetria = l.substring(4).toInt() != 0;
   else if (l.startsWith("set ")) {
@@ -168,12 +168,12 @@ void loop() {
   sf::Lectura le{};
   if (maquina.motores_habilitados()) {
     const uint32_t ahora_us = micros();
-    if (ahora_us - t_prev_us >= par::PERIODO_CONTROL_US) {
+    if (ahora_us - t_prev_us >= cfg::PERIODO_MIN_US) {
       ciclo_control = true;
       const float dt = (ahora_us - t_prev_us) * 1e-6f;   // dt real
       t_prev_us = ahora_us;
       leer_normalizado();
-      le = sf::estimar(osc, NUM_SENSORES, robot.paso);
+      le = sf::estimar_coord(osc, cfg::SENSOR_Y, NUM_SENSORES, cfg::UMBRAL);
       s = ctl.actualizar(le, dt, v_bat_ff());
       if (posicion::lecturas_imposibles(raw_on, NUM_SENSORES, par::ADC_MAX)) {
         if (!falla_activa) { falla_activa = true; t_falla_ms = ahora; }

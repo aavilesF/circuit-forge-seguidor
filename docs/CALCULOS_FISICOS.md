@@ -1,7 +1,10 @@
 # Cálculos físicos — Fase 1
 
 Fecha: 1 nov 2026 · Rama `engineering/speed-follower`.
-**Reproducir:** `python3 sim/fase1/calculos_fisicos.py` (Python 3.13.17, numpy 2.5.3, PyYAML 6.0.3, matplotlib 3.11.2; tarda unos 15 s). Lee `config/robot_maestro.yaml` y escribe `sim/resultados/fase1/C0…C10.csv` y `F0…F4.png`.
+
+> **Estado (Fase 2):** este documento es la evidencia de la Fase 1 y **no** predice el rendimiento. La verificación independiente ([VERIFICACION_FASE1.md](VERIFICACION_FASE1.md)) encontró cuatro omisiones: la inercia de los rotores, la transferencia de carga (al frenar baja el agarre de 5.18 a 4.6 m/s²), el reparto de la succión (0.80, no 0.90) y la masa y el CG, ahora calculados de los componentes. Los tiempos de vuelta de aquí son cotas cuasiestáticas; los tiempos esperados están en [SIMULACION_DINAMICA.md](SIMULACION_DINAMICA.md).
+
+**Reproducir:** `python3 sim/fase1/calculos_fisicos.py` (Python 3.13.17, numpy 2.5.3, PyYAML 6.0.3, matplotlib 3.11.2; tarda unos 15 s). Lee la configuración v1 congelada en `sim/fase1/robot_maestro_v1.yaml` y escribe `sim/resultados/fase1/C0…C10.csv` y `F0…F4.png`.
 
 Etiquetas: **[Calculado]** sale de una ecuación con los parámetros del YAML · **[Fabricante]** hoja de datos · **[Fab.-extrapolado]** el propio fabricante extrapola el dato · **[Supuesto]** sin fuente, se debe medir · **[Pendiente de medición]**.
 Nada de este documento se ha medido en hardware. Las conclusiones dependen sobre todo de dos supuestos, μ = 0.80 y f_motriz = 0.66, y ambos hay que medirlos (§9).

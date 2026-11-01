@@ -53,6 +53,7 @@ struct ParamSF {
   bool  ff_acel = true;
   bool  freno_activo = false; // probado en simulación (S9): no aporta; apagado
   float t_perdida = 0.30f;    // s sin ver la línea antes de declararla perdida
+  int   fuente_k = 0;         // curvatura del perfil: 0 = solo error (C2), 1 = + modelo del motor (C3m), 2 = + giroscopio (C3g)
 };
 
 // Estimación de la línea a partir de lecturas normalizadas (0 blanco, 1 negro), igual que simular._estimar.
@@ -62,6 +63,9 @@ struct Lectura {
   bool borde;     // la línea toca un sensor extremo
 };
 Lectura estimar(const float* lect, int n, float paso, float umbral = 0.25f);
+// Igual, con la coordenada lateral real de cada sensor (barra en arco o paso no uniforme).
+// y[i] en m, positivo a la IZQUIERDA del robot; índice 0 = extremo derecho. e > 0 = línea a la derecha.
+Lectura estimar_coord(const float* lect, const float* y, int n, float umbral = 0.25f);
 
 struct Salida {
   float izq, der;     // ciclo de PWM con signo, -1..1 (relativo a Vbat)
@@ -73,20 +77,22 @@ struct Salida {
 class ControlSF {
  public:
   ControlSF(const ParamSF& p, const Robot& r) : p_(p), r_(r) {}
-  void reiniciar() { inicial_ = true; de_f_ = 0; k_f_ = 0; v_cmd_ = 0; e_ult_ = 0; t_sin_ = 0; }
+  void reiniciar() { inicial_ = true; de_f_ = 0; k_f_ = 0; km_f_ = 0; v_cmd_ = 0; e_ult_ = 0; t_sin_ = 0; dl_ant_ = 0; dr_ant_ = 0; }
   void fijar(const ParamSF& p) { p_ = p; }
   const ParamSF& param() const { return p_; }
-  // Núcleo idéntico al de Python: e ya decidido (último visto si no se ve la línea).
-  Salida paso(float e, bool borde, float dt, float v_bat);
+  // Núcleo idéntico al del simulador (sim/nucleo.py paso_sf): e ya decidido (último visto si no se ve la línea).
+  // gz = velocidad de guiñada medida (rad/s), solo con fuente_k = 2.
+  Salida paso(float e, bool borde, float dt, float v_bat, float gz = 0.0f);
   // Envoltura para el firmware: maneja la pérdida de línea.
-  Salida actualizar(const Lectura& l, float dt, float v_bat);
+  Salida actualizar(const Lectura& l, float dt, float v_bat, float gz = 0.0f);
 
  private:
   float ff(float v, float a, float v_bat) const;
   ParamSF p_;
   Robot r_;
   bool  inicial_ = true;
-  float e_f_ = 0, de_f_ = 0, k_f_ = 0, v_cmd_ = 0;
+  float e_f_ = 0, de_f_ = 0, k_f_ = 0, km_f_ = 0, v_cmd_ = 0;
+  float dl_ant_ = 0, dr_ant_ = 0;   // última salida (para la curvatura del modelo, C3m)
   float e_ult_ = 0, t_sin_ = 0;
 };
 

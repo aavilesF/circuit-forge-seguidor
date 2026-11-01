@@ -1,42 +1,45 @@
 // Configuración de hardware del Speed Follower. Única fuente de pines y de selección de piezas.
-// Todo lo marcado VERIFICAR depende de la pieza real (ver docs/speed-follower/ENTREGABLE_2.md).
+// Pines del prototipo ESP32. Todo lo marcado VERIFICAR depende de la pieza real.
 #pragma once
 #include "sf_logica.h"
 
-// ---- Selección de piezas (decisiones SF-2 y SF-3, pendientes de aprobación) ----------
+// ---- Robot y parámetros: vienen de config_maestra.h (generada de config/robot_maestro.yaml) ----------
+// No escribir aquí números de motor, geometría o control: se editan en el YAML y se regenera la cabecera.
+#include "config_maestra.h"
+
 #define DRIVER_DRV8833 1
 #define DRIVER_TB6612  2
-#define DRIVER DRIVER_DRV8833      // VERIFICAR: módulo DRV8833 en encapsulado PWP (1.5 A RMS); si es PW (0.5 A RMS), usar TB6612
-
-#define MOTOR_POLOLU_12V_15 1
-#define MOTOR_GA12_6V       2
-#define MOTOR MOTOR_POLOLU_12V_15
+#define DRIVER DRIVER_DRV8833      // VERIFICAR: módulo DRV8833 en encapsulado PWP (1.5 A RMS); el PW (0.5 A RMS) no sirve
 
 inline sf::Robot robot_configurado() {
   sf::Robot r;
-#if MOTOR == MOTOR_POLOLU_12V_15
-  r.motor = sf::motor_pololu_12v_15();
-  r.v_max_motor = 99.0f;             // 12 V nominal: en 2S siempre por debajo
-#else
-  r.motor = sf::motor_ga12_n20_6v_supuesto();
-  r.v_max_motor = 6.0f;              // motor de 6 V en 2S: PWM limitado a 6 V promedio
-#endif
-  r.diam = 0.034f;                   // llanta N20 34 x 7 (chasis llanta34). VERIFICAR con vernier
-  r.W = 0.085f;                      // VERIFICAR (centro a centro de llantas en el chasis impreso)
-  r.masa = 0.20f;                    // VERIFICAR con báscula
-  r.L = 0.130f;                      // cuello (SF-4)
-  r.n_sens = 8;
-  r.paso = 0.0095f;                  // VERIFICAR: paso real del sensor (clon UNIT no lo publica)
+  r.motor = sf::Motor{cfg::MOTOR_V_NOM, cfg::MOTOR_RPM, cfg::MOTOR_PAR_BLOQUEO, cfg::MOTOR_I_BLOQUEO, cfg::MOTOR_I_VACIO};
+  r.v_max_motor = cfg::MOTOR_LIMITE_V;
+  r.diam = cfg::D_LLANTA;
+  r.W = cfg::W_VIA;
+  r.masa = cfg::MASA;
+  r.L = cfg::L_CUELLO;
+  r.n_sens = cfg::N_SENSORES;
+  r.paso = 0.0f;                     // no se usa: la estimación usa cfg::SENSOR_Y (estimar_coord)
   return r;
 }
 
-// ---- Sensores: un CD74HC4067, 8 canales
-// Canal 0 del mux = sensor del extremo IZQUIERDO visto desde atrás (sf::estimar: e > 0 = línea a la derecha).
-// VERIFICAR con 'sens' moviendo una línea de izquierda a derecha: e debe crecer. ------------------------------------------------
-constexpr int NUM_SENSORES = 8;
+inline sf::ParamSF parametros_maestros() {
+  sf::ParamSF p;
+  p.v_max = cfg::V_MAX; p.a_lat = cfg::A_LAT; p.a_lon = cfg::A_LON; p.k_pp = cfg::K_PP;
+  p.kp = cfg::KP; p.kd = cfg::KD; p.tau_d = cfg::TAU_D; p.tau_k = cfg::TAU_K;
+  p.t_perdida = cfg::T_PERDIDA; p.fuente_k = cfg::FUENTE_CURVATURA;
+  return p;
+}
+
+// ---- Sensores: un CD74HC4067 (16 canales)
+// Canal i del mux = sensor i de cfg::SENSOR_Y (0 = extremo DERECHO visto desde atrás).
+// VERIFICAR con 'sens' moviendo una línea de izquierda a derecha: e debe BAJAR (e > 0 = línea a la derecha).
+constexpr int NUM_SENSORES = cfg::N_SENSORES;
+static_assert(NUM_SENSORES <= 16, "un solo multiplexor de 16 canales");
 constexpr int PIN_MUX_S0 = 25, PIN_MUX_S1 = 26, PIN_MUX_S2 = 27, PIN_MUX_S3 = 33;
 constexpr int PIN_MUX_SIG = 34;          // ADC1
-constexpr int PIN_EMISORES = 13;         // pin "IR" del sensor (VERIFICAR polaridad)
+constexpr int PIN_EMISORES = 13;         // compuerta del MOSFET de emisores (VERIFICAR polaridad)
 constexpr bool EMISOR_ACTIVO_ALTO = true;
 constexpr bool ALTO_ES_NEGRO = true;     // VERIFICAR con 'crudo'
 constexpr bool RESTA_AMBIENTE = true;

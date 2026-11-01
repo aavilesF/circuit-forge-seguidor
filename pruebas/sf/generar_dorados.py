@@ -2,7 +2,7 @@
 El test C++ (test_sf.cpp) debe reproducirlas. Uso: python3 generar_dorados.py"""
 import sys, math, csv
 import numpy as np
-sys.path.insert(0, "../sim")
+sys.path.insert(0, "../../legado/speed_follower_v1/sim")  # referencia Python histórica del C2
 from modelo import Robot, MOTORES
 from control import ControlSF, ParamSF
 from simular import _estimar

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Fase 1 - cálculos físicos del Speed Follower.
 
-Lee config/robot_maestro.yaml y escribe CSV y gráficas en sim/resultados/fase1/.
+Lee sim/fase1/robot_maestro_v1.yaml (copia congelada de la configuración v1, commit 0143148) y escribe
+CSV y gráficas en sim/resultados/fase1/. Es evidencia histórica: la configuración vigente es config/robot_maestro.yaml
+y la verificación de estos cálculos está en sim/verificacion_fase1.py.
 Todo lo que sale de aquí es CALCULADO a partir de la configuración: no es una
 medición. Los supuestos están marcados en el YAML.
 
@@ -24,7 +26,7 @@ KGCM = 0.0980665  # N·m por kg·cm
 
 
 def cargar():
-    with open(os.path.join(RAIZ, "config", "robot_maestro.yaml"), encoding="utf-8") as f:
+    with open(os.path.join(os.path.dirname(__file__), "robot_maestro_v1.yaml"), encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 

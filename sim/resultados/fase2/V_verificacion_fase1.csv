@@ -1,0 +1,25 @@
+tema,comprobacion,fase1,verificado,unidad,metodo,veredicto,nota
+Motor,corriente sin carga reproducida a 12 V,0.08,0.08,A,I = (V − Ke·ω0)/R con las constantes derivadas,CORRECTO,
+Motor,par de bloqueo reproducido a 12 V,0.02452,0.02452,N·m,T = Kt·(V/R − I0),CORRECTO,
+Motor,velocidad libre a 7.4 V (D 34 mm),2.171,2.236,m/s,escala lineal de la FEM sin carga ni caída; la de Fase 1 incluye rodadura y R interna,CORRECTO,diferencia esperada < 3 % por rodadura y caída de batería
+Motor,"velocidad final en recta (simulador dinámico, config v2)",2.171,2.19,m/s,integración de la planta completa,CORRECTO,masa v2 121 g; la velocidad libre casi no depende de la masa
+Motor,rango de velocidad libre con ±20 % de rpm,2.171,1.74-2.60,m/s,tolerancia del fabricante,LIMITACIÓN,la Fase 1 usó el valor nominal sin dispersión; el simulador incluye ±5 % entre motores
+Motor,masa equivalente de rotores y llantas,0.0,41.6,g,"2·(J_rotor·G² + J_llanta)/r², J_rotor supuesto",ERROR DE FASE 1,+34 % de inercia de traslación cuando acelera el motor; J_rotor no publicado (supuesto)
+Motor,tiempo de 0 a 1 m/s en recta,0.183,0.15,s,"simulador (con inercia y transferencia de carga) vs integración tipo Fase 1 (misma masa, μ y f)",DIFERENCIA,dos efectos omitidos se compensan en parte: la inercia de rotores frena la aceleración y la transferencia de carga hacia las ruedas sube el agarre al acelerar
+Cuello,radio del eje en R150 con L = 80 mm,126.9,130.6,mm,"simulador con control en un círculo a 0.35 m/s, ajuste de circunferencia",CORRECTO,error 3.0 %
+Cuello,radio del eje en R150 con L = 100 mm,111.8,116.2,mm,"simulador con control en un círculo a 0.35 m/s, ajuste de circunferencia",CORRECTO,error 3.9 %
+Cuello,radio del eje en R150 con L = 120 mm,90.0,96.5,mm,"simulador con control en un círculo a 0.35 m/s, ajuste de circunferencia",DIFERENCIA,error 7.2 %
+Captura,"desplazamiento en barra en arco, L = 90 mm",27.0,27.0,mm,intersección numérica por bisección,CORRECTO,
+Captura,"desplazamiento en barra en arco, L = 100 mm",33.33,33.33,mm,intersección numérica por bisección,CORRECTO,
+Captura,"desplazamiento en barra en arco, L = 110 mm",40.33,40.33,mm,intersección numérica por bisección,CORRECTO,
+Frenado,desaceleración máxima por agarre,5.18,4.61,m/s²,"μ·g·(1 − x_cg/b)/(1 + μ·h/b): al frenar, el peso pasa al apoyo, que no frena",ERROR DE FASE 1,sin transferencia (config v2) serían 5.62 m/s²
+Frenado,desaceleración media con inverso desde v libre (simulador),5.18,4.73,m/s²,planta dinámica,CORRECTO,incluye rodadura; coincide con la ecuación con transferencia
+Frenado,aceleración máxima por agarre (la transferencia ayuda),5.18,7.17,m/s²,μ·g·(1 − x_cg/b)/(1 − μ·h/b),ERROR DE FASE 1,asimetría acelerar/frenar no modelada en Fase 1
+Frenado,FEM máxima a la velocidad libre a 8.4 V,6.94,7.12,V,cota superior: Ke·ω_libre ≤ V − I0·R < V_bus,CORRECTO,no hay bombeo de voltaje al bus por FEM en 2S
+Masa,masa total,154.9,121.4,g,suma de componentes con posición (config v2),ACTUALIZADO,"v2 cambia chasis (30 g), MCU (8 g) y apoyo (3 g) por el rediseño; no es error de cálculo"
+Masa,fracción del peso en las ruedas f_motriz,0.66,0.716,,1 − x_cg/x_apoyo con el CG calculado de los componentes,ACTUALIZADO,"x_cg 21.3 mm, apoyo a 75 mm, h_cg 20.4 mm"
+Masa,fracción de la succión sobre las ruedas,0.9,0.8,,palanca: 1 − x_succión/x_apoyo,SUPUESTO REVISADO,0.90 exige el faldón a 7.5 mm del eje; con el faldón a 15 mm queda 0.80
+Masa,punto de equilibrio de la succión,22,26.8,gf,f_motriz·m_vent/f_succ con valores v2,ACTUALIZADO,
+Energía,corriente media de batería en una vuelta (P2),0.9,0.252,A,integral de la corriente del bus en el simulador / tiempo de vuelta,CORRECTO (conservador),0.33 mAh por vuelta; la Fase 1 suponía 0.6 A de motores + 0.3 A de lógica
+Energía,mAh por intento de 5 min sin ventilador,75.0,21.0,mAh,corriente media × 300 s,CORRECTO (conservador),"el caso de 5 min es un límite, no una vuelta real"
+Agarre,la fuerza lateral la dan solo las ruedas,sí,sí,,en la planta el apoyo solo tiene rodadura (sin fuerza lateral),CORRECTO,"además, el CG adelantado exige diferencia de fuerza longitudinal entre ruedas para girar"

@@ -1,88 +1,85 @@
-# Configuración maestra del Speed Follower (Circuit Forge, RMX2026).
-# ÚNICA fuente de parámetros para cálculos, simulador, firmware y CAD.
-# Cada valor lleva su origen:
-#   [R]  Reglamento oficial RMX2026 (consultado 1 nov 2026)
+# Configuración maestra del Speed Follower (Circuit Forge, RMX2026) — versión 2.
+# ÚNICA fuente de parámetros para la simulación (sim/), el firmware (firmware/sf/config_maestra.h,
+# generado con herramientas/generar_config_firmware.py) y el CAD.
+# La versión 1 (Fase 1) quedó congelada en sim/fase1/robot_maestro_v1.yaml como evidencia histórica.
+#
+# Origen de cada valor:
+#   [R]  Reglamento oficial RMX2026 (consultado 31 oct 2026)
 #   [F]  Fabricante / hoja de datos
 #   [FX] Fabricante, valor extrapolado por el propio fabricante
-#   [E]  Estimado (cálculo o geometría sin medir)
+#   [T]  Medición de terceros (foros, notas de aplicación); no oficial
+#   [E]  Estimado (cálculo o geometría, sin medir)
 #   [S]  Supuesto de diseño (sin fuente; debe medirse)
-#   [D]  Decisión de diseño (variable que elegimos)
-# Unidades SI salvo que se indique.
+#   [D]  Decisión de diseño
+#   [O]  Resultado de optimización por simulación (sim/resultados/fase2)
+# Unidades SI. Marco del cuerpo: x hacia adelante desde el centro del eje de ruedas, y a la izquierda, z hacia arriba.
 
-version: 1
+version: 2
 
-reglamento:                       # [R] reglamento-seguidor-linea.html
-  largo_max: 0.200                # caja 20 x 10 cm, sin límite de altura
+reglamento:                       # [R]
+  largo_max: 0.200
   ancho_max: 0.100
-  masa_max: 0.500                 # en ningún momento; exceder = descalificación
-  tablero: [2.44, 1.22]           # MDF + fórmica blanca mate
-  ancho_linea: 0.025              # vinil negro
-  radio_min_linea: 0.150          # "radio mayor de 15 cm"
-  hueco_max: 0.005                # discontinuidades de hasta 5 mm
-  separacion_min: 0.20            # entre líneas de la pista
-  t_preparacion: 15.0             # s para calibrar y colocar
-  t_max_intento: 300.0            # s
-  primer_metro: 1.0               # m: dentro de él se permite un reinicio
+  masa_max: 0.500
+  tablero: [2.44, 1.22]
+  ancho_linea: 0.025
+  radio_min_linea: 0.150
+  hueco_max: 0.005
+  separacion_min: 0.20
+  t_preparacion: 15.0
+  t_max_intento: 300.0
+  primer_metro: 1.0
 
 diseno:
-  masa_limite_diseno: 0.450       # [D] 50 g de margen bajo el límite del reglamento
-  margen_caja: 0.004              # [D] holgura por lado contra la caja de homologación
+  masa_limite_diseno: 0.450       # [D]
+  margen_caja: 0.004              # [D] por lado
 
-geometria:                        # [D] valores base; el barrido de CALCULOS los evalúa
-  L_cuello: 0.100                 # eje de ruedas -> centro de la barra
-  W_via: 0.085                    # separación entre centros de llanta
-  D_llanta: 0.034                 # [E] llanta 34 x 7 (medir)
-  ancho_llanta: 0.007
+arquitectura:                     # [D] selección vigente (ver docs/ARQUITECTURA.md)
+  motor: pololu_hpcb12_10
+  barra: arco16
+  mcu: stm32g431
+  control: C3m
+  succion: false                  # opción B; solo con autorización escrita de los organizadores
+
+geometria:
+  L_cuello: 0.100                 # [D] eje -> barra (radio de la barra en arco)
+  W_via: 0.085                    # [D] entre centros de llanta
+  D_llanta: 0.034                 # [E] llanta 34 x 7 (MEDIR)
+  x_apoyo: 0.075                  # [D] rueda loca delante del eje
+  x_succion: 0.015                # [D] centro del faldón (opción B)
 
 traccion:
-  mu: 0.80                        # [S] llanta-fórmica; MEDIR con plano inclinado
-  f_motriz: 0.66                  # [E] fracción del peso sobre las ruedas (auditoría H09)
-  c_rodadura: 0.015               # [S] resistencia de rodadura equivalente (fracción del peso)
-  apoyo_lateral: false            # apoyo de bola: no aporta fuerza lateral
+  mu: 0.80                        # [S] llanta-fórmica; MEDIR (M1)
+  c_rodadura: 0.015               # [S] fracción de la carga normal
+  eps_deslizamiento: 0.02         # [S] m/s, regularización del modelo de Coulomb (ver docs/SIMULACION_DINAMICA.md)
 
-succion:                          # opción, no decidida
-  F_down_gf: 0                    # [D] fuerza de succión en gramos-fuerza (MEDIR con báscula)
-  f_down_motriz: 0.90             # [S] fracción de la succión que cae sobre las ruedas
-  masa_extra: 0.030               # [S] ventilador + controlador + cableado (sin modelo elegido)
+succion:                          # opción B, no adoptada
+  F_down_gf: 100                  # [S] valor de estudio; MEDIR (M3)
+  masa: 0.030                     # [S] ventilador + controlador + cableado
+  I_media: 2.0                    # [S] A
 
 bateria:
-  celdas: 2                       # [D] LiPo 2S
-  V_llena: 8.40                   # [F] 4.20 V/celda
+  celdas: 2
+  V_llena: 8.40                   # [F]
   V_nominal: 7.40                 # [F]
-  V_baja: 6.80                    # [D] 3.40 V/celda: umbral de parada
-  R_interna: 0.20                 # [S] paquete + cableado + interruptor + fusible (MEDIR)
-  I_logica: 0.30                  # [E] ESP32 + sensores + regulador
+  V_baja: 6.80                    # [D] parada por batería baja
+  R_interna: 0.20                 # [S] paquete + cableado + interruptor + fusible (MEDIR M4)
+  I_logica: 0.12                  # [E] MCU + 16 emisores pulsados + regulador
 
-masa:                             # [E] presupuesto inicial (ENTREGABLE_2 §4); kg
-  mcu: 0.011
-  bateria: 0.036
-  motores: 0.022
-  llantas: 0.0064
-  apoyo: 0.010
-  barra_sensores: 0.0055
-  electronica_varios: 0.020
-  chasis: 0.044                   # peor caso del STL anterior, 100 % de relleno
+# Componentes con posición: la masa total, el centro de masa (x, z) y la inercia de guiñada se CALCULAN de aquí.
+componentes:                      # masa kg, x m, z m
+  motores:          {masa: 0.019,  x: 0.000, z: 0.017, origen: "[F] Pololu 9.5 g c/u (sin encoder)"}
+  llantas:          {masa: 0.0064, x: 0.000, z: 0.017, origen: "[E] 3.2 g c/u"}
+  bateria:          {masa: 0.036,  x: 0.000, z: 0.032, origen: "[E] LiPo 2S 450-500 mAh, sobre el eje"}
+  mcu:              {masa: 0.008,  x: 0.040, z: 0.026, origen: "[E] placa de desarrollo pequeña"}
+  driver:           {masa: 0.002,  x: 0.020, z: 0.026, origen: "[E] módulo"}
+  regulador:        {masa: 0.002,  x: 0.025, z: 0.026, origen: "[E] módulo"}
+  barra_sensores:   {masa: 0.007,  x: 0.095, z: 0.006, origen: "[E] PCB en arco, 16 sensores + mux"}
+  apoyo:            {masa: 0.003,  x: 0.075, z: 0.005, origen: "[E] rueda loca genérica de bola"}
+  chasis:           {masa: 0.030,  x: 0.035, z: 0.012, origen: "[E] placa/estructura 120 x 60 mm"}
+  cableado:         {masa: 0.008,  x: 0.030, z: 0.020, origen: "[E] cables, conectores, tornillos"}
 
-control:
-  T_ctrl: 0.002                   # [D] periodo del firmware actual (2 ms)
-  paso_sensor: 0.008              # [D]
-  n_sensores: 12                  # [D]
-
-conductor:                        # driver de motores
-  modelo: DRV8833                 # [D] alternativa TB6612FNG
-  VM_max_recomendado: 10.8        # [F] TI SLVSAR1E
-  VM_max_absoluto: 11.8           # [F]
-  I_rms_PWP: 1.5                  # [F] por puente, encapsulado PWP/RTY
-  I_rms_PW: 0.5                   # [F] encapsulado PW (TSSOP)
-  I_pico: 2.0                     # [F]
-  TB6612_VM_max_recomendado: 13.5 # [F]
-  TB6612_VM_max_absoluto: 15.0    # [F]
-  TB6612_I_canal: 1.0             # [F] promedio recomendado
-
-# Motores: datos tabulados por Pololu para micro metal gearmotors.
-# V_nom, rpm libre, par de bloqueo (kg·cm), I bloqueo, I sin carga, masa.
-# Pololu indica que los datos de bloqueo a 12 V son extrapolados ([FX]).
 motores:
+  # rpm, par e I de bloqueo a V_nom; relación exacta; J_rotor del motor sin reductora.
   pololu_hpcb12_10:
     nombre: "Pololu HPCB 12V 10:1"
     V_nom: 12.0
@@ -90,9 +87,10 @@ motores:
     par_kgcm: 0.17
     I_bloqueo: 0.75
     I_vacio: 0.08
+    relacion: 9.96
     masa: 0.0095
     limite_V: null
-    origen: "[F] rpm/I_vacio; [FX] par e I de bloqueo"
+    origen: "[F] rpm/I_vacio/relación; [FX] bloqueo"
   pololu_hpcb12_15:
     nombre: "Pololu HPCB 12V 15:1"
     V_nom: 12.0
@@ -100,19 +98,10 @@ motores:
     par_kgcm: 0.25
     I_bloqueo: 0.75
     I_vacio: 0.08
+    relacion: 15.25
     masa: 0.0095
     limite_V: null
-    origen: "[F] rpm/I_vacio; [FX] par e I de bloqueo"
-  pololu_hpcb6_10:
-    nombre: "Pololu HPCB 6V 10:1 (PWM limitado a 6 V)"
-    V_nom: 6.0
-    rpm: 3300
-    par_kgcm: 0.17
-    I_bloqueo: 1.5
-    I_vacio: 0.15
-    masa: 0.0095
-    limite_V: 6.0
-    origen: "[F] tabla Pololu"
+    origen: "[F] rpm/I_vacio/relación; [FX] bloqueo"
   pololu_hpcb6_15:
     nombre: "Pololu HPCB 6V 15:1 (PWM limitado a 6 V)"
     V_nom: 6.0
@@ -120,6 +109,7 @@ motores:
     par_kgcm: 0.25
     I_bloqueo: 1.5
     I_vacio: 0.17
+    relacion: 15.25
     masa: 0.0095
     limite_V: 6.0
     origen: "[F] tabla Pololu"
@@ -130,8 +120,55 @@ motores:
     par_kgcm: 0.45
     I_bloqueo: 1.5
     I_vacio: 0.17
+    relacion: 29.86
     masa: 0.0095
     limite_V: 6.0
     origen: "[F] tabla Pololu"
 
-motor_base: pololu_hpcb12_15      # [D] elección vigente (SF-2), se revisa con estos cálculos
+J_rotor: 2.4e-8                   # [S] kg·m² (rotor de ~3 g y 4 mm de radio); Pololu no lo publica
+J_llanta: 4.3e-7                  # [E] kg·m² (3.2 g, r 17 mm)
+
+conductor:
+  modelo: DRV8833                 # [D]
+  VM_max_recomendado: 10.8        # [F]
+  VM_max_absoluto: 11.8           # [F]
+  I_rms_PWP: 1.5                  # [F]
+  I_rms_PW: 0.5                   # [F]
+  I_ocp_min: 2.0                  # [F] la protección dispara a partir de 2 A
+  TB6612_VM_max_absoluto: 15.0    # [F]
+  TB6612_I_canal: 1.0             # [F]
+
+barras:                           # geometría de sensores (y = lateral, x = adelante del eje)
+  recta8:  {tipo: recta, n: 8,  paso: 0.009525, origen: "[F] paso de la QTR-8A (0.375 in)"}
+  recta12: {tipo: recta, n: 12, paso: 0.008,    origen: "[D]"}
+  arco13:  {tipo: arco,  n: 13, paso: 0.008,    origen: "[D] paso medido sobre el arco"}
+  arco16:  {tipo: arco,  n: 16, paso: 0.00635,  origen: "[D] 16 canales de un multiplexor"}
+
+optica:
+  radio_mancha: 0.003             # [S] radio del área que ve cada sensor a ~3 mm del piso
+  ruido: 0.03                     # [S] desviación estándar de la lectura normalizada
+  umbral: 0.25                    # [D] igual al firmware (estimar)
+  t_emisor: 100.0e-6              # [E] establecimiento del fototransistor al conmutar emisores
+  resta_ambiente: true            # [D] lectura con emisor encendido y apagado (R06)
+
+mcu:
+  esp32_analogread:
+    t_canal: 60.0e-6              # [T] 42-100 µs por analogRead (foros Arduino/ESP32); no oficial
+    t_calculo: 60.0e-6            # [E]
+    origen: "[T] forum.arduino.cc/t/esp32-analogread-very-slow/1028266"
+  stm32g431:
+    t_canal: 3.0e-6               # [E] 0.25 µs de conversión [F, st.com] + muestreo para fuente de ~47 kΩ
+    t_calculo: 30.0e-6            # [E] Cortex-M4F a 170 MHz con FPU [F]
+    origen: "[F] st.com STM32G431KB: 2 ADC, 0.25 µs, hasta 23 canales"
+
+control:                          # parámetros de los controladores (los C3m son [O]; ver sim/resultados/fase2)
+  T_min: 0.001                    # [D] periodo mínimo; el real es max(T_min, lectura + cálculo)
+  t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
+  C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
+  C2:  {v_max: 1.6, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030}
+  C3m: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: modelo}
+  C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio}
+
+giroscopio:
+  ruido: 0.02                     # [S] rad/s RMS
+  sesgo: 0.03                     # [S] rad/s
