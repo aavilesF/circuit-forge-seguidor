@@ -39,7 +39,7 @@ def main():
           f"máximo ${tot['maximo']:.0f} MXN")
     print(f"Reserva para imprevistos: ${reserva:.0f} MXN")
     print(f"Total estimado + reserva: ${tot['estimado'] + reserva:.0f} de ${lim:.0f} MXN")
-    print(f"Total máximo (peor precio de cada partida) + reserva: ${tot['maximo'] + reserva:.0f} MXN")
+    print(f"Total con el máximo permitido por partida + reserva: ${tot['maximo'] + reserva:.0f} MXN")
     print(f"Partidas con precio por verificar antes de comprar: ${por_verificar:.0f} MXN del estimado")
     fallas = []
     if tot["estimado"] + reserva > lim:

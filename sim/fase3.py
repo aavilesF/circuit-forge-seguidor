@@ -121,6 +121,26 @@ def etapa_T(pool):
         json.dump(prm_todos, fh, indent=1, ensure_ascii=False)
 
 
+def etapa_G(pool):
+    """Ajuste final sobre la configuración vigente exacta del YAML (masa y CG definitivos) y escritura de los
+    parámetros en config/robot_maestro.yaml (control.C3m)."""
+    import re
+    cfg = CF.cargar(); a = cfg["arquitectura"]
+    kw = dict(control=a["control"], barra=a["barra"], mcu=a["mcu"], motor=a["motor"], succion=False)
+    r = X.ajustar("final", kw, pool, n_azar=96, n_local=48, sem_aj=(1, 2, 3, 4, 5, 6), seed=5)
+    prm = r["prm"]
+    with open(os.path.join(SAL, "G_parametros_final.json"), "w", encoding="utf-8") as fh:
+        json.dump(dict(kw=kw, prm=prm, E=r["val"]["E"], exito=r["val"]["p"], t=r["val"]["t"]), fh, indent=1)
+    ruta = os.path.join(CF.RAIZ, "config", "robot_maestro.yaml")
+    txt = open(ruta, encoding="utf-8").read()
+    linea = ("  C3m: {" + ", ".join(f"{k}: {round(prm[k], 4)}" for k in ("v_max", "a_lat", "a_lon", "k_pp", "kp", "kd",
+             "tau_d", "tau_k")) + f", fuente_k: modelo, piso: {round(prm['piso'], 4)}}}   # [O] VIGENTE (Fase 3, etapa G): "
+             "Chihai 12V i10 + recta8 TCRT + ESP32 + L110, masa y CG definitivos")
+    txt = re.sub(r"  C3m: \{[^\n]*", linea, txt)
+    open(ruta, "w", encoding="utf-8").write(txt)
+    print(f"  ajuste final: E {r['val']['E']:.3f}, éxito {r['val']['p']:.3f}, t {r['val']['t']:.3f}; YAML actualizado")
+
+
 def vigente():
     cfg = CF.cargar()
     a = cfg["arquitectura"]
@@ -226,6 +246,9 @@ def main():
         if "T" in etapas:
             print("Etapa T: candidatos")
             etapa_T(pool)
+        if "G" in etapas:
+            print("Etapa G: ajuste final de la configuración vigente")
+            etapa_G(pool)
         if "S" in etapas:
             print("Etapa S: sensibilidad del motor")
             etapa_S(pool)

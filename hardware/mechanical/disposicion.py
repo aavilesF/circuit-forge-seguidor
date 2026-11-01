@@ -58,9 +58,9 @@ def main():
     xs = [p[1] - p[3] / 2 for p in P] + [p[1] + p[3] / 2 for p in P]
     ys = [p[2] - p[4] / 2 for p in P] + [p[2] + p[4] / 2 for p in P]
     largo, ancho = max(xs) - min(xs), max(ys) - min(ys)
-    ok(largo <= reg["largo_max"] - 2 * dis["margen_caja"], f"largo total {largo*1000:.1f} mm ≤ "
+    ok(largo <= reg["largo_max"] - 2 * dis["margen_caja"] + 1e-9, f"largo total {largo*1000:.1f} mm ≤ "
        f"{(reg['largo_max'] - 2 * dis['margen_caja'])*1000:.0f} mm")
-    ok(ancho <= reg["ancho_max"] - 2 * dis["margen_caja"], f"ancho total {ancho*1000:.1f} mm ≤ "
+    ok(ancho <= reg["ancho_max"] - 2 * dis["margen_caja"] + 1e-9, f"ancho total {ancho*1000:.1f} mm ≤ "
        f"{(reg['ancho_max'] - 2 * dis['margen_caja'])*1000:.0f} mm")
     # choques en el mismo nivel
     for i in range(len(P)):

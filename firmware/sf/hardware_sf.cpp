@@ -75,7 +75,8 @@ void leer_crudo(int* raw) { emisores(true); delayMicroseconds(EMISOR_ESTABLECIMI
 void leer_reflectancia(float* refl, int* raw_on) {
   static const posicion::ModoSensor modo = {RESTA_AMBIENTE, ALTO_ES_NEGRO, par::ADC_MAX};
   int on[par::MAX_SENSORES], off[par::MAX_SENSORES];
-  emisores(true); delayMicroseconds(EMISOR_ESTABLECIMIENTO_US); barrer(on);
+  if (RESTA_AMBIENTE) { emisores(true); delayMicroseconds(EMISOR_ESTABLECIMIENTO_US); }   // sin resta: emisores siempre encendidos
+  barrer(on);
   if (RESTA_AMBIENTE) { emisores(false); delayMicroseconds(EMISOR_ESTABLECIMIENTO_US); barrer(off); }
   for (int i = 0; i < NUM_SENSORES; ++i) refl[i] = posicion::reflectancia(modo, on[i], RESTA_AMBIENTE ? off[i] : 0);
   if (raw_on) for (int i = 0; i < NUM_SENSORES; ++i) raw_on[i] = on[i];
@@ -88,7 +89,7 @@ float voltaje_bateria() { return analogReadMilliVolts(PIN_BATERIA) * 0.001f * DI
 void iniciar() {
   iniciar_driver();
   pinMode(PIN_MUX_S0, OUTPUT); pinMode(PIN_MUX_S1, OUTPUT); pinMode(PIN_MUX_S2, OUTPUT); pinMode(PIN_MUX_S3, OUTPUT);
-  pinMode(PIN_EMISORES, OUTPUT); emisores(false);
+  pinMode(PIN_EMISORES, OUTPUT); emisores(!RESTA_AMBIENTE);   // sin resta de luz ambiente quedan encendidos
   pinMode(PIN_MUX_SIG, INPUT);
   pinMode(PIN_START, INPUT_PULLUP); pinMode(PIN_CAL, INPUT_PULLUP); pinMode(PIN_LED, OUTPUT);
   pinMode(PIN_BATERIA, INPUT);

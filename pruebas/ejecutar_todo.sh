@@ -22,4 +22,10 @@ spec = importlib.util.spec_from_file_location('f1', 'sim/fase1/calculos_fisicos.
 sys.modules['f1'] = m; spec.loader.exec_module(m)
 ok = all(m.validar_pista(p)['cumple'] for p in m.pistas())
 print('4/4 pistas cumplen el reglamento' if ok else 'PISTA FUERA DE REGLAMENTO'); sys.exit(0 if ok else 1)"
+echo "== 7. Verificación eléctrica (pines, dominios de voltaje, límites del driver)"
+python3 hardware/electronics/verificar_electrica.py
+echo "== 8. Disposición mecánica (caja del reglamento, choques, CG)"
+python3 hardware/mechanical/disposicion.py | tail -3
+echo "== 9. Presupuesto (BOM contra el límite del YAML)"
+python3 herramientas/presupuesto.py
 echo "TODO OK"

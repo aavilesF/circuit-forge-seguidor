@@ -9,7 +9,7 @@ for drv in DRIVER_DRV8833 DRIVER_TB6612; do
     for api in 2 3; do
       cp firmware/sf/*.h firmware/sf/*.cpp "$tmp/"
       cp firmware/sf/sf.ino "$tmp/sf_ino.cpp"
-      sed -i "s/^#define DRIVER DRIVER_DRV8833/#define DRIVER $drv/" "$tmp/pines_sf.h"
+      sed -i "s/^#define DRIVER CFG_DRIVER/#define DRIVER $drv/" "$tmp/pines_sf.h"
       for f in "$tmp"/*.cpp; do
         g++ -std=c++17 -fsyntax-only -Wall -Wextra -Werror -I"$tmp" -Ipruebas/stub_arduino -DESP_ARDUINO_VERSION_MAJOR=$api "$f"
       done

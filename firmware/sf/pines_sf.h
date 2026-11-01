@@ -9,7 +9,7 @@
 
 #define DRIVER_DRV8833 1
 #define DRIVER_TB6612  2
-#define DRIVER DRIVER_DRV8833      // VERIFICAR: módulo DRV8833 en encapsulado PWP (1.5 A RMS); el PW (0.5 A RMS) no sirve
+#define DRIVER CFG_DRIVER         // de config_maestra.h (conductor.modelo del YAML)
 
 inline sf::Robot robot_configurado() {
   sf::Robot r;
@@ -42,7 +42,7 @@ constexpr int PIN_MUX_SIG = 34;          // ADC1
 constexpr int PIN_EMISORES = 13;         // compuerta del MOSFET de emisores (VERIFICAR polaridad)
 constexpr bool EMISOR_ACTIVO_ALTO = true;
 constexpr bool ALTO_ES_NEGRO = true;     // VERIFICAR con 'crudo'
-constexpr bool RESTA_AMBIENTE = true;
+constexpr bool RESTA_AMBIENTE = cfg::RESTA_AMBIENTE;   // del YAML (barra)
 constexpr unsigned MUX_ESTABLECIMIENTO_US = 15;
 constexpr unsigned EMISOR_ESTABLECIMIENTO_US = 100;   // 5 × 20 µs (subida típica de fototransistores)
 

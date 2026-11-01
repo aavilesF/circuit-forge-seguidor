@@ -33,18 +33,23 @@ diseno:
   masa_limite_diseno: 0.450       # [D]
   margen_caja: 0.004              # [D] por lado
 
-arquitectura:                     # [D] selección vigente, justificada en docs/ARQUITECTURA.md (Fase 2)
-  motor: pololu_hpcb12_15
-  barra: arco16c
+arquitectura:                     # [D] selección vigente (Fase 3, presupuesto $2,000 MXN), justificada en docs/ARQUITECTURA.md
+  motor: chihai_n20_12v_2200_i10
+  barra: recta8_tcrt
   mcu: esp32_analogread
   control: C3m
-  succion: false                  # opción B; solo con autorización escrita de los organizadores
+  succion: false                  # deshabilitada en la Fase 3 (fuera de presupuesto y sin autorización)
+
+presupuesto:
+  maximo_mxn: 2000                # [R-usuario] por robot completo
+  reserva_mxn: 150                # [D] imprevistos
 
 geometria:
   L_cuello: 0.110                 # [O] eje -> barra (radio de la barra en arco); etapas D y F
   W_via: 0.085                    # [D] entre centros de llanta
   D_llanta: 0.034                 # [E] llanta 34 x 7 (MEDIR)
-  x_apoyo: 0.075                  # [D] rueda loca delante del eje
+  ancho_llanta: 0.007             # [E]
+  x_apoyo: 0.079                  # [D] rueda loca delante del eje (libra el ESP32)
   x_succion: 0.015                # [D] centro del faldón (opción B)
 
 traccion:
@@ -70,17 +75,18 @@ bateria:
   I_logica: 0.12                  # [E] MCU + 16 emisores pulsados + regulador
 
 # Componentes con posición: la masa total, el centro de masa (x, z) y la inercia de guiñada se CALCULAN de aquí.
-componentes:                      # masa kg, x m, z m
-  motores:          {masa: 0.019,  x: 0.000, z: 0.017, origen: "[F] Pololu 9.5 g c/u (sin encoder)"}
+componentes:                      # masa kg, x m, z m; dim = [largo en x, ancho en y] m; nivel: base | alto
+  motores:          {masa: 0.024,  x: 0.000, z: 0.017, dim: [0.012, 0.031], origen: "[E] la masa real sigue al motor elegido (2 × motores.masa); 12 × 10 × 31 mm con encoder [E]"}
   llantas:          {masa: 0.0064, x: 0.000, z: 0.017, origen: "[E] 3.2 g c/u"}
-  bateria:          {masa: 0.036,  x: 0.000, z: 0.032, origen: "[E] LiPo 2S 450-500 mAh, sobre el eje"}
-  mcu:              {masa: 0.008,  x: 0.040, z: 0.026, origen: "[E] placa de desarrollo pequeña"}
-  driver:           {masa: 0.002,  x: 0.020, z: 0.026, origen: "[E] módulo"}
-  regulador:        {masa: 0.002,  x: 0.025, z: 0.026, origen: "[E] módulo"}
-  barra_sensores:   {masa: 0.007,  x: 0.105, z: 0.006, origen: "[E] PCB en arco de radio L = 110 mm, 16 sensores + mux"}
-  apoyo:            {masa: 0.003,  x: 0.075, z: 0.005, origen: "[E] rueda loca genérica de bola"}
-  chasis:           {masa: 0.030,  x: 0.035, z: 0.012, origen: "[E] placa/estructura 120 x 60 mm"}
-  cableado:         {masa: 0.008,  x: 0.030, z: 0.020, origen: "[E] cables, conectores, tornillos"}
+  bateria:          {masa: 0.032,  x: -0.008, z: 0.034, dim: [0.030, 0.055], nivel: alto, origen: "[E] LiPo 2S 300-450 mAh, sobre el eje y los motores"}
+  mcu:              {masa: 0.011,  x: 0.038, z: 0.026, dim: [0.055, 0.028], origen: "[F-vendedor] ESP32 DevKit 38 pines 55 × 28 mm, 11 g (UNIT)"}
+  driver:           {masa: 0.003,  x: 0.032, y: 0.030, z: 0.010, dim: [0.020, 0.020], origen: "[E] módulo TB6612FNG ≈ 20 × 20 mm"}
+  regulador:        {masa: 0.002,  x: 0.032, y: -0.030, z: 0.010, dim: [0.022, 0.017], origen: "[E] módulo MP1584EN 22 × 17 mm"}
+  multiplexor:      {masa: 0.003,  x: 0.042, z: 0.040, dim: [0.041, 0.018], nivel: alto, origen: "[E] módulo 74HC4067 18 × 41 mm (MEDIR), sobre el ESP32"}
+  barra_sensores:   {masa: 0.0055, x: 0.110, z: 0.010, dim: [0.016, 0.066], origen: "[F-vendedor] clon QTR-8A 65.7 × 16 mm, 5.5 g; la masa sigue a la barra elegida"}
+  apoyo:            {masa: 0.005,  x: 0.079, z: 0.005, dim: [0.020, 0.020], origen: "[E] rueda loca genérica de bola (W420 o similar); MEDIR altura"}
+  chasis:           {masa: 0.030,  x: 0.040, z: 0.008, origen: "[E] placa impresa 120 × 60 × 3 mm + cuello"}
+  cableado:         {masa: 0.010,  x: 0.030, z: 0.020, origen: "[E] cables, perfboard, conectores, tornillos"}
 
 motores:
   # rpm, par e I de bloqueo a V_nom; relación exacta; J_rotor del motor sin reductora.
@@ -160,7 +166,7 @@ J_rotor: 2.4e-8                   # [S] kg·m² (rotor de ~3 g y 4 mm de radio);
 J_llanta: 4.3e-7                  # [E] kg·m² (3.2 g, r 17 mm)
 
 conductor:
-  modelo: DRV8833                 # [D]
+  modelo: TB6612FNG               # [D] Fase 3: ficha conocida (1.0 A continuos); el módulo DRV8833 no indica encapsulado
   VM_max_recomendado: 10.8        # [F]
   VM_max_absoluto: 11.8           # [F]
   I_rms_PWP: 1.5                  # [F]
@@ -187,7 +193,7 @@ optica:
 
 mcu:
   esp32_analogread:
-    t_canal: 60.0e-6              # [T] 42-100 µs por analogRead (foros Arduino/ESP32); no oficial
+    t_canal: 75.0e-6              # [T] 42-100 µs por analogRead (foros Arduino/ESP32; no oficial) + 15 µs de establecimiento del mux (firmware)
     t_calculo: 60.0e-6            # [E]
     origen: "[T] forum.arduino.cc/t/esp32-analogread-very-slow/1028266"
   stm32g431:
@@ -195,12 +201,13 @@ mcu:
     t_calculo: 30.0e-6            # [E] Cortex-M4F a 170 MHz con FPU [F]
     origen: "[F] st.com STM32G431KB: 2 ADC, 0.25 µs, hasta 23 canales"
 
-control:                          # parámetros de los controladores; C3m es el vigente ([O], sim/resultados/fase2/G_parametros_C3m.json); C2 queda como respaldo ajustado
+control:                          # parámetros de los controladores; C3m es el vigente ([O], sim/resultados/fase3/T_parametros.json); C2 = ajuste de la Fase 2
   T_min: 0.001                    # [D] periodo mínimo; el real es max(T_min, lectura + cálculo)
   t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
   C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
   C2:  {v_max: 0.709, a_lat: 7.2063, a_lon: 2.5446, k_pp: 1.2587, kp: 34.6271, kd: 1.6762, tau_d: 0.004, tau_k: 0.0248, piso: -0.1944}   # [O] respaldo: ajuste final (G) con la misma arquitectura
-  C3m: {v_max: 0.8089, a_lat: 7.2024, a_lon: 2.0, k_pp: 1.2222, kp: 38.5776, kd: 3.1796, tau_d: 0.004, tau_k: 0.0191, fuente_k: modelo, piso: -0.1868}   # [O] VIGENTE: ajuste final (G) arco16c + ESP32 + L110 + 12 V 15:1
+  C3m: {v_max: 0.9588, a_lat: 9.692, a_lon: 2.0, k_pp: 1.5, kp: 48.7166, kd: 8.0461, tau_d: 0.004, tau_k: 0.0213, fuente_k: modelo, piso: -0.3531}   # [O] VIGENTE (Fase 3, etapa T): Chihai 12V i10 + recta8 TCRT + ESP32 + L110
+  C3m_ga12: {v_max: 0.8089, a_lat: 7.2024, a_lon: 2.0, k_pp: 1.2222, kp: 38.5776, kd: 3.1796, tau_d: 0.004, tau_k: 0.0191, fuente_k: modelo, piso: -0.1868}   # [O] respaldo si se usa el GA12-N20 6 V local
   C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
 
 giroscopio:
