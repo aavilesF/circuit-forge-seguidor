@@ -49,10 +49,18 @@ class Motor:
         return self.T_bl / (self.I_bl - self.I0)
 
 
-def motor(cfg: dict, clave: str) -> Motor:
-    m = cfg["motores"][clave]
-    return Motor(clave, m["nombre"], m["V_nom"], m["rpm"], m["par_kgcm"] * KGCM, m["I_bloqueo"],
-                 m["I_vacio"], m["relacion"], m["limite_V"] if m["limite_V"] else math.inf)
+def motor(cfg: dict, clave: str, **cambios) -> Motor:
+    """Motor del YAML. Si par_kgcm es null, el par de bloqueo se estima con T = eta·Ke·(I_bl − I0).
+    cambios: I_bloqueo, rpm, eta (análisis de sensibilidad de los motores sin ficha)."""
+    m = dict(cfg["motores"][clave]); m.update(cambios)
+    V, rpm, Ib, I0 = m["V_nom"], m["rpm"], m["I_bloqueo"], m["I_vacio"]
+    if m.get("par_kgcm") is None:
+        R = V / Ib
+        Ke = (V - I0 * R) / (rpm * 2 * math.pi / 60)
+        T = m["eta"] * Ke * (Ib - I0)
+    else:
+        T = m["par_kgcm"] * KGCM
+    return Motor(clave, m["nombre"], V, rpm, T, Ib, I0, m["relacion"], m["limite_V"] if m["limite_V"] else math.inf)
 
 
 def sensores(cfg: dict, clave: str, L: float):
@@ -66,8 +74,12 @@ def sensores(cfg: dict, clave: str, L: float):
     return L * np.cos(phi), L * np.sin(phi)
 
 
-def masa_y_cg(cfg: dict, succion: bool):
-    comp = dict(cfg["componentes"])
+def masa_y_cg(cfg: dict, succion: bool, motor_clave: str | None = None, barra_clave: str | None = None):
+    comp = {k: dict(v) for k, v in cfg["componentes"].items()}
+    if motor_clave:                       # la masa de motores y barra sigue a la selección
+        comp["motores"]["masa"] = 2 * cfg["motores"][motor_clave]["masa"]
+    if barra_clave and "masa" in cfg["barras"][barra_clave]:
+        comp["barra_sensores"]["masa"] = cfg["barras"][barra_clave]["masa"]
     if succion:
         comp["succion"] = dict(masa=cfg["succion"]["masa"], x=cfg["geometria"]["x_succion"], z=0.015)
     m = sum(c["masa"] for c in comp.values())
@@ -139,16 +151,19 @@ def construir(cfg: dict | None = None, **cambios) -> Config:
     for k in ("motor", "barra", "mcu", "control", "succion"):
         if k in cambios:
             arq[k] = cambios.pop(k)
-    mot = motor(cfg, arq["motor"])
+    mot = motor(cfg, arq["motor"], **cambios.pop("motor_cambios", {}))
     succ = bool(arq["succion"])
-    m, x, z, Iz = masa_y_cg(cfg, succ)
+    m, x, z, Iz = masa_y_cg(cfg, succ, arq["motor"], arq["barra"])
     geo = cfg["geometria"]
     L = cambios.pop("L", geo["L_cuello"])
     sx, sy = sensores(cfg, arq["barra"], L)
-    op = cfg["optica"]
+    op = dict(cfg["optica"])
+    for k in ("radio_mancha", "ruido", "resta_ambiente"):
+        if k in cfg["barras"][arq["barra"]]:
+            op[k] = cfg["barras"][arq["barra"]][k]
     mc = cfg["mcu"][arq["mcu"]]
     n = len(sx)
-    t_lect = (2 if op["resta_ambiente"] else 1) * (n * mc["t_canal"] + op["t_emisor"]) + mc["t_calculo"]
+    t_lect = ((2 * (n * mc["t_canal"] + op["t_emisor"])) if op["resta_ambiente"] else n * mc["t_canal"]) + mc["t_calculo"]
     r = geo["D_llanta"] / 2
     J = cfg["J_rotor"] * mot.G ** 2 + cfg["J_llanta"]
     prm = dict(cfg["control"][arq["control"]])

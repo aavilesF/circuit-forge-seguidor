@@ -128,6 +128,33 @@ motores:
     masa: 0.0095
     limite_V: 6.0
     origen: "[F] tabla Pololu"
+  # ---- Candidatos económicos (Fase 3). El vendedor NO publica bloqueo ni par: el par se ESTIMA con
+  #      T_bl = eta·Ke·(I_bl − I0), eta = 0.79 (eficiencia que resulta de los datos del Pololu 12 V 15:1).
+  #      I_bloqueo es [S] y se barre en el análisis de sensibilidad (sim/fase3.py). MEDIR (M7) al recibir.
+  ga12_n20_6v_1000:
+    nombre: "GA12-N20 6V 1000 RPM (genérico; PWM limitado a 6 V)"
+    V_nom: 6.0
+    rpm: 1000                     # [F-vendedor] ±10 %
+    par_kgcm: null                # se calcula con eta
+    eta: 0.79                     # [E]
+    I_bloqueo: 0.60               # [S] rango de estudio 0.35-1.0 A
+    I_vacio: 0.10                 # [F-vendedor] "≤ 0.2 A"; [S] 0.10
+    relacion: 15.0                # [S] no publicada
+    masa: 0.010                   # [E]
+    limite_V: 6.0
+    origen: "[F-vendedor] 6 V, 1000 rpm ±10 %, I0 ≤ 0.2 A, par ≥ 0.15 kg·cm; bloqueo y relación [S]"
+  chihai_n20_12v_2200_i10:
+    nombre: "Chihai CHF-GM12-N20 12V 2200 RPM i10 (con encoder)"
+    V_nom: 12.0
+    rpm: 2200                     # [F-vendedor]
+    par_kgcm: null
+    eta: 0.79                     # [E]
+    I_bloqueo: 0.50               # [S] rango de estudio 0.3-0.8 A
+    I_vacio: 0.05                 # [S]
+    relacion: 10.0                # [F-vendedor] "i10"
+    masa: 0.012                   # [E] con encoder
+    limite_V: null
+    origen: "[F-vendedor] 12 V, 2200 rpm, 1:10, escobillas de carbón, encoder 7 PPR; par, bloqueo e I0 [S]"
 
 J_rotor: 2.4e-8                   # [S] kg·m² (rotor de ~3 g y 4 mm de radio); Pololu no lo publica
 J_llanta: 4.3e-7                  # [E] kg·m² (3.2 g, r 17 mm)
@@ -147,7 +174,9 @@ barras:                           # geometría de sensores (y = lateral, x = ade
   recta12: {tipo: recta, n: 12, paso: 0.008,    origen: "[D]"}
   arco13:  {tipo: arco,  n: 13, paso: 0.008,    origen: "[D] paso medido sobre el arco"}
   arco16:  {tipo: arco,  n: 16, paso: 0.00635,  origen: "[D] 16 canales de un multiplexor"}
-  arco16c: {tipo: arco,  n: 16, paso: 0.0060,   origen: "[D] arco16 con paso de 6.0 mm: con L = 110 mm deja los centros a ±43.7 mm (caja de 100 mm)"}
+  arco16c: {tipo: arco,  n: 16, paso: 0.0060,   masa: 0.007, origen: "[D] arco16 con paso de 6.0 mm: con L = 110 mm deja los centros a ±43.7 mm (caja de 100 mm); PCB propia con 16 × QRE1113"}
+  recta8_tcrt: {tipo: recta, n: 8, paso: 0.0085, masa: 0.0055, radio_mancha: 0.005, ruido: 0.04, resta_ambiente: false,
+                origen: "[F-vendedor] módulo QTR-8A clon (TCRT5000, 65.7 × 16 mm, 8-12 mm al piso, 5.5 g); paso [S] 8.5 mm (MEDIR); sin pin de emisores documentado: sin resta de luz ambiente [S]"}
 
 optica:
   radio_mancha: 0.003             # [S] radio del área que ve cada sensor a ~3 mm del piso
