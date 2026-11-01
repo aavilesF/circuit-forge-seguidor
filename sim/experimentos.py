@@ -232,6 +232,21 @@ def etapa_D(pool, kw):
     return arqs
 
 
+def etapa_F(pool):
+    """Finalistas con el motor elegido por criterio técnico (12 V 15:1: 0.6 A frente a 1.5 A de los de 6 V,
+    con < 2 % de diferencia de tiempo en la etapa C) y control C2: barra × MCU × cuello."""
+    arqs = []
+    for barra in ("recta8", "arco13", "arco16"):
+        for mcu in ("esp32_analogread", "stm32g431"):
+            for L in (0.100, 0.110):
+                nombre = f"{barra} + {mcu} + L{L*1000:.0f}"
+                kw = dict(control="C2", barra=barra, mcu=mcu, motor="pololu_hpcb12_15", succion=False, L=L)
+                a = ajustar(nombre, kw, pool, n_azar=64, n_local=36)
+                arqs.append(a)
+                print(f"  F {nombre}: E {a['val']['E']:.2f}, éxito {a['val']['p']:.2f}, t {a['val']['t']:.3f}")
+    return arqs
+
+
 def mejor(arqs):
     return min(arqs, key=lambda a: (a["val"]["E"], a["val"]["t"]))
 
@@ -272,6 +287,13 @@ def main():
             m = mejor(D)
             sel["L"] = m["kw"]["L"]
             sel["prm"] = m["prm"]
+        if "F" in etapas:
+            print("Etapa F: finalistas (C2, 12 V 15:1)")
+            F = etapa_F(pool)
+            escribir("F_finalistas.csv", [fila_resumen("F", a) for a in F])
+            escribir_corridas("F_corridas.csv", F)
+            with open(os.path.join(SALIDA, "F_parametros.json"), "w") as fh:
+                json.dump({a["nombre"]: dict(kw=a["kw"], prm=a["prm"]) for a in F}, fh, indent=1, ensure_ascii=False)
     with open(estado_ruta, "w") as f:
         json.dump(sel, f, indent=2, ensure_ascii=False)
     print("Selección:", json.dumps(sel, ensure_ascii=False))
