@@ -98,6 +98,18 @@ S_MUX = base.caja("CD74HC4067_MODULO", "U", "CD74HC4067",
                   [(str(9 + i), f"I{i}") for i in range(16)])
 S_QTR = base.caja("QTR_8A", "U", "QTR-8A", [(str(1 + i), f"OUT{i + 1}") for i in range(8)],
                   [("9", "VCC"), ("11", "EMIT_RTN"), None, None, None, None, None, ("10", "GND")])
+def nmos_sot23():
+    """El MOSFET con la numeracion real del SOT-23: 1 = G, 2 = S, 3 = D (los pines no se mueven)."""
+    import copy
+    q = copy.deepcopy(base.S_NMOS)
+    q.nombre = "NMOS_SOT23"
+    for pin in q.pines:
+        pin["num"] = {"G": "1", "S": "2", "D": "3"}[pin["name"]]
+    return q
+
+
+S_NMOS2 = nmos_sot23()
+HUELLAS_ESQ = {}      # ref -> "biblioteca:huella"; lo llena generar_kicad_pcb.py para que el esquema apunte a las huellas de la PCB
 S_POT = base.caja("POT", "RV", "POT", [("1", "A"), ("2", "B")], [("3", "W")], 10.16)
 
 
@@ -106,6 +118,10 @@ class Doc2(base.Doc):
     def colocar(self, sym, ref, valor, x, y):
         super().colocar(sym, ref, valor, x, y)
         inst = self.items[-1]
+        if ref in HUELLAS_ESQ:
+            for h in inst:
+                if isinstance(h, list) and h[0] == "property" and h[1] == "Footprint":
+                    h[2] = base.Q(HUELLAS_ESQ[ref])
         if getattr(sym, "off_ref", None):
             for h in inst:
                 if isinstance(h, list) and h[0] == "property" and h[1] == "Reference":
@@ -324,7 +340,7 @@ def construir():
     d.colocar(S_CV, "C4", "100nF (sensor)", *p2(372, 170))
     d.colocar(base.S_R, "R3", "100", *p2(300, 246))
     d.colocar(S_RV, "R4", "100k", *p2(338, 232))
-    d.colocar(base.S_NMOS, "Q1", "MOSFET nivel logico", *p2(368, 236))
+    d.colocar(S_NMOS2, "Q1", "MOSFET nivel logico", *p2(368, 236))
 
     # ---- obstáculos
     ancho_hoja, alto_hoja = 420.0, 297.0
