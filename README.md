@@ -1,44 +1,54 @@
 # circuit-forge-seguidor
 
-Speed Follower (seguidor de línea de velocidad) del equipo **Circuit Forge** para **Robolympics RMX2026**, categoría Seguidores de línea: sábado 21 de noviembre de 2026, Tec de Monterrey campus León.
+Speed Follower (seguidor de línea de velocidad) del equipo **Circuit Forge** para **Robolympics RMX2026**, categoría
+Seguidores de línea: sábado 21 de noviembre de 2026, Tec de Monterrey campus León.
 
-> **Una sola arquitectura vigente:** la de [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md), con todos sus parámetros en [`config/robot_maestro.yaml`](config/robot_maestro.yaml). Todo lo que está en [`legado/`](legado/README.md) es **histórico** (el robot básico descartado y la primera versión del Speed Follower) y no se debe usar para construir.
+> **Una sola configuración vigente**, cerrada para fabricación: [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md), con todos
+> sus parámetros en [`config/robot_maestro.yaml`](config/robot_maestro.yaml). Lo que está en [`legado/`](legado/README.md)
+> es **histórico** y no se debe usar para construir.
+
+![Robot completo (CAD)](hardware/mechanical/render/robot_isometrica.png)
 
 ## Estado
 
-Ver [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md). Resumen: arquitectura de **$2,000 MXN** (Fase 3: Chihai N20 12 V + clon QTR-8A + ESP32 + TB6612), con un costo estimado de $1,511 con reserva. Simulada: 6.35 s por vuelta y 100 % de éxito en 200 salidas. Nada se ha comprado, construido ni medido; el firmware **no** se ha compilado con el toolchain real del ESP32; el CAD definitivo espera las piezas medidas.
+Ingeniería cerrada y lista para fabricar: PCB-chasis de 4 capas con STM32G431, DRV8833 y 16 sensores QRE1113GR, motores
+Pololu HPCB 12 V 10:1 con encoder, batería 2S de 450 mAh. Masa 112.9 g y huella 132 × 92 mm en el CAD. Simulado:
+**5.81 s por vuelta y 100 % de éxito en 200 salidas** (modo seguro: 7.16 s, 100 %). ERC, DRC con paridad, conectividad,
+interferencias mecánicas y compilación del firmware **sin errores**. **Nada se ha fabricado, armado ni medido**: falta la
+validación física (pruebas E1-E9 y mediciones M1-M8 del manual). Detalle: [`docs/ESTADO_PROYECTO.md`](docs/ESTADO_PROYECTO.md)
+y [`docs/VALIDACION_FINAL.md`](docs/VALIDACION_FINAL.md).
 
 ## Estructura
 
 | Ruta | Contenido |
 |---|---|
-| `config/robot_maestro.yaml` | **Única fuente de parámetros** (reglamento, componentes con posición y masa, motores, barra, MCU, control). Cada valor indica su origen |
-| `docs/REGLAMENTO_MATRIZ.md` | Reglas oficiales → requisitos de diseño → verificación; preguntas a los organizadores |
-| `docs/ARQUITECTURA.md` | Arquitectura vigente y su justificación con resultados de simulación |
-| `docs/SIMULACION_DINAMICA.md` | Modelo, pruebas, resultados (Fase 2 y Fase 3) y límites del simulador |
-| `docs/AUDITORIA_ROBUSTEZ.md` | Escenarios desfavorables de la arquitectura vigente |
-| `docs/VERIFICACION_FASE1.md` | Verificación independiente de los cálculos de la Fase 1 |
-| `docs/CALCULOS_FISICOS.md` | Fase 1 (cálculos cuasiestáticos; evidencia histórica, ver su nota de estado) |
-| `docs/BOM_FINAL.csv` | Lista de materiales con especificaciones y presupuesto (objetivo, estimado y máximo permitido; no son cotizaciones) |
-| `hardware/` | Conexiones y verificación eléctrica; disposición mecánica (no es CAD definitivo) |
-| `docs/ESTADO_PROYECTO.md` | Fases, decisiones, limitaciones, pendientes y evidencia reproducible |
-| `sim/` | Simulador dinámico (`nucleo.py`, `simulador.py`, `config.py`, `pistas.py`), experimentos, validación y pruebas; `sim/fase1/` cálculos de la Fase 1; `sim/resultados/` CSV y gráficas |
-| `firmware/sf/` | Firmware (lógica C++ pura + capa de hardware ESP32 + `sf.ino`). `config_maestra.h` se **genera** del YAML |
-| `herramientas/generar_config_firmware.py` | Genera `config_maestra.h`; `--verificar` falla si no está sincronizada |
-| `pruebas/` | `ejecutar_todo.sh` corre todas las pruebas; `pruebas/sf/` pruebas del firmware |
+| `config/robot_maestro.yaml` | **Única fuente de parámetros** (reglamento, geometría, componentes con masa y posición del CAD, motores, sensores, MCU, control, firmware). Cada valor indica su origen |
+| `docs/ARQUITECTURA.md` | Configuración definitiva y por qué |
+| `docs/BOM_FINAL.csv` | Lista de compra: fabricante, modelo, número de parte, cantidad, tensión, corriente, dimensiones, masa, encapsulado, huella, función, hoja de datos, montaje (categorías A-G) |
+| `docs/MANUAL_ENSAMBLAJE.md` | Fabricación, ensamble, pruebas de aceptación E1-E9, calibración y mediciones |
+| `docs/CALCULOS_ELECTRICOS.md` | Corrientes y anchos de pista, caídas, regulador, sensores, ADC, pines (generado) |
+| `docs/VALIDACION_FINAL.md` · `docs/ESTADO_PROYECTO.md` | Qué se verificó, con qué herramienta, y qué falta |
+| `docs/AUDITORIA_ROBUSTEZ.md` · `docs/SIMULACION_DINAMICA.md` | Robustez del control final; modelo, pruebas y resultados del simulador |
+| `docs/REGLAMENTO_MATRIZ.md` · `docs/CALCULOS_FISICOS.md` · `docs/VERIFICACION_FASE1.md` | Reglamento → requisitos; cálculos de la Fase 1 (históricos) |
+| `hardware/electronics/` | Proyecto **KiCad 9** (esquemático jerárquico y PCB ruteada), generadores, verificaciones, **paquete de fabricación** (`fabricacion/`) y vistas 2D/3D de la PCBA (`pcba/`) |
+| `hardware/mechanical/` | **CAD** del robot completo: piezas impresas (STEP/STL), planos, ensamble STEP, vistas, verificación mecánica |
+| `firmware/` | Firmware del STM32G431 (lógica C++ verificada contra el simulador + capa de hardware con CMSIS); compila con arm-none-eabi-gcc |
+| `sim/` | Simulador dinámico, experimentos y resultados (`sim/resultados/final/` para la configuración definitiva) |
+| `herramientas/` | Generadores de la BOM y de la configuración del firmware |
+| `pruebas/` | `ejecutar_todo.sh` corre todas las pruebas; `registro_ejecutar_todo.txt` es la última corrida |
 | `legado/` | Diseños históricos (no vigentes) |
 | `modificaciones/` | Plantilla para registrar cambios hechos en el robot físico |
 
 ## Reproducir
 
 ```bash
-pip install numpy numba pyyaml matplotlib      # Python ≥ 3.10; g++ con C++17
-pruebas/ejecutar_todo.sh                       # todas las pruebas (≈ 1 min)
-python3 sim/fase3.py T G S M P                 # Fase 3: candidatos, ajuste final, sensibilidad, escenarios
-python3 sim/graficas_fase3.py                  # gráficas de la Fase 3
-python3 herramientas/presupuesto.py            # costo de la BOM contra $2,000
-python3 sim/verificacion_fase1.py              # verificación de la Fase 1
-python3 herramientas/generar_config_firmware.py  # tras editar el YAML
+pip install numpy numba scipy shapely pyyaml matplotlib cadquery   # Python ≥ 3.10
+sudo apt-get install g++ gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib   # + KiCad 9
+pruebas/ejecutar_todo.sh                          # todas las pruebas (≈ 30 s con los resultados ya generados)
+hardware/electronics/generar_fabricacion.sh       # esquemático, PCB, ERC/DRC, paquete de fabricación, vistas 2D/3D
+python3 hardware/mechanical/cad/generar_cad.py    # CAD mecánico, STEP/STL, planos, vistas
+python3 sim/fase_final.py Z R E S F G             # simulación de la fase final (horas con 2 núcleos)
+cd firmware/stm32 && make                         # firmware (Windows: ver firmware/README.md)
 ```
 
 ## Equipo

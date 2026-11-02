@@ -269,10 +269,27 @@ def etapa_F(pool):
     F3.escribir("F_validacion_robustez.csv", filas)
 
 
+def etapa_G(pool):
+    """Modo seguro (C3e) revalidado con las masas y el CG del CAD; incluye el caso crítico del modo de competencia
+    (CG 10 mm más adelante), para saber si el modo seguro es el respaldo correcto ante ese riesgo."""
+    kw = kw_base(control="C3e")
+    c0 = CF.construir(**kw)
+    filas = [F3.correr_lote(pool, "C3e nominal", kw, n=N_VAL)]
+    for etq, ch in [("C3e CG 5 mm más adelante", {"x_cg": c0.x_cg + 0.005}),
+                    ("C3e CG 10 mm más adelante", {"x_cg": c0.x_cg + 0.010}), ("C3e μ 0.60 (−25 %)", {"mu": 0.60}),
+                    ("C3e masa +10 g", {"masa": c0.masa + 0.010, "Iz": c0.Iz * (c0.masa + 0.010) / c0.masa})]:
+        filas.append(F3.correr_lote(pool, etq, kw, cambios_c=ch, n=30))
+    # tolerancia de CG del control de competencia (criterio de aceptación de la medición M2 del manual)
+    kc = kw_base()
+    for d in (0.003, 0.005, 0.007):
+        filas.append(F3.correr_lote(pool, f"C3m CG {d * 1000:.0f} mm más adelante", kc, cambios_c={"x_cg": c0.x_cg + d}, n=30))
+    F3.escribir("G_modo_seguro.csv", filas)
+
+
 if __name__ == "__main__":
     etapas = sys.argv[1:] or ["Z", "E", "F"]
     os.makedirs(SAL, exist_ok=True)
     with Pool(int(os.environ.get("SIM_PROCESOS", os.cpu_count() or 2))) as pool:
         for et in etapas:
             print(f"Etapa {et}")
-            {"Z": etapa_Z, "R": etapa_R, "E": etapa_E, "S": etapa_S, "F": etapa_F}[et](pool)
+            {"Z": etapa_Z, "R": etapa_R, "E": etapa_E, "S": etapa_S, "F": etapa_F, "G": etapa_G}[et](pool)

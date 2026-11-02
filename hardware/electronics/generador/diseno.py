@@ -128,8 +128,8 @@ _cargar_mcu()
 
 # Funciones fijas (AF verificadas con STM32_open_pin_data de ST, ver docs/CALCULOS_ELECTRICOS.md)
 FIJOS = {
-    "PA8": ("PWM_AIN1", "TIM1_CH1", 6), "PA9": ("PWM_AIN2", "TIM1_CH2", 6), "PA10": ("PWM_BIN1", "TIM1_CH3", 6),
-    "PA11": ("PWM_BIN2", "TIM1_CH4", 11),
+    "PA8": ("PWM_AIN1", "TIM1_CH1", 6), "PA9": ("PWM_AIN2", "TIM1_CH2", 6), "PA10": ("PWM_BIN2", "TIM1_CH3", 6),
+    "PA11": ("PWM_BIN1", "TIM1_CH4", 11),          # BIN1/BIN2 cruzados a propósito: las pistas al DRV8833 no se cruzan
     "PA15": ("ENC_L_A", "TIM2_CH1", 1), "PB3": ("ENC_L_B", "TIM2_CH2", 1),
     "PB4": ("ENC_R_A", "TIM3_CH1", 2), "PB5": ("ENC_R_B", "TIM3_CH2", 2),
     "PB6": ("UART_TX", "USART1_TX", 7), "PB7": ("UART_RX", "USART1_RX", 7),
@@ -320,7 +320,10 @@ P(ref="U3", lib_id="Driver_Motor:DRV8833PWP", valor="DRV8833PWPR", huella="Packa
   fabricante="Texas Instruments", mpn="DRV8833PWPR", descripcion="Puente H doble 2.7-10.8 V, 1.5 A RMS por canal (HTSSOP-16 PowerPAD)", hoja=H3,
   pines={"1": "DRV_SLEEP", "2": "MOT_L_1", "3": "GND", "4": "MOT_L_2", "5": "MOT_R_2", "6": "GND", "7": "MOT_R_1", "8": "DRV_FAULT",
          "9": "PWM_BIN1", "10": "PWM_BIN2", "11": "DRV_VCP", "12": "VBAT_SW", "13": "GND", "14": "DRV_VINT", "15": "PWM_AIN2",
-         "16": "PWM_AIN1", "17": "GND"}, x=17.0, y=0.0, rot=90, datasheet=DS["DRV8833"])
+         "16": "PWM_AIN1", "17": "GND"}, x=17.0, y=0.0, rot=90, datasheet=DS["DRV8833"],
+  # La huella oficial apunta a "…_Mask2.46x2.31mm.step", que la biblioteca 3D de KiCad 9 no trae; se usa el modelo
+  # oficial del mismo encapsulado (HTSSOP-16 4.4 × 5 mm, EP 3.4 × 5 mm): la variante de máscara no cambia el cuerpo.
+  extra=dict(modelo3d_oficial="Package_SO.3dshapes/HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm.step"))
 C("C20", "10u", "VBAT_SW", "GND", H3, enc="0805", x=17.0, y=5.6, rot=0)
 C("C21", "100n", "VBAT_SW", "GND", H3, x=20.0, y=3.0, rot=0)
 C("C22", "10n", "DRV_VCP", "VBAT_SW", H3, x=20.0, y=1.5, rot=0)
@@ -344,14 +347,16 @@ R("R14", "100", "EMIT_G", "EMIT_GATE", H4, x=80.5, y=6.0, rot=0)
 R("R15", "100k", "EMIT_GATE", "GND", H4, x=84.0, y=3.6, rot=0)
 for i in range(N_SENS):
     xs, ys, ang = G.sensor(i)          # mm y grados (marco del robot)
-    a = math.radians(ang)
-    r_led = GEO.polar(G.r_resistencias_mm, ang)
-    r_pu = GEO.polar(G.r_resistencias_mm - 2.6, ang)
+    r_res = G.r_resistencias_mm
+    d_ang = math.degrees(1.1 / r_res)  # el pad 2 (K) queda del lado horario y el pad 3 (S) del antihorario
+    r_led = GEO.polar(r_res, ang - d_ang)
+    r_pu = GEO.polar(r_res, ang + d_ang)
     k = i + 1
     P(ref=f"U{10 + k}", lib_id=f"{LIB_PROPIA}:QRE1113GR", valor="QRE1113GR", huella="OptoDevice:OnSemi_CASE100CY", fabricante="onsemi",
       mpn="QRE1113GR", descripcion=f"Sensor reflectivo IR (LED 940 nm + fototransistor), canal S{k}", hoja=H4,
       pines={"1": "+3V3", "2": f"K{k}", "3": f"S{k}", "4": "GND"}, x=xs, y=ys, rot=ang - 90 + 180, lado="B", datasheet=DS["QRE1113"])
-    R(f"R{20 + 2 * i}", "75", f"K{k}", "EMIT_K", H4, enc="0603", x=r_led[0], y=r_led[1], rot=ang, lado="B")
+    # radiales: pin hacia el sensor afuera (K en R_led, S en R_pu)
+    R(f"R{20 + 2 * i}", "75", f"K{k}", "EMIT_K", H4, enc="0603", x=r_led[0], y=r_led[1], rot=ang + 180, lado="B")
     R(f"R{21 + 2 * i}", "10k", "+3V3", f"S{k}", H4, x=r_pu[0], y=r_pu[1], rot=ang, lado="B")
 
 # --------------------------------------------------------------------------------------------- mecánicos de la PCB
@@ -368,6 +373,46 @@ PUNTOS_PRUEBA = [("TP1", "VBAT_SW", 28.0, -8.0), ("TP2", "+3V3", 50.0, -19.0), (
 for ref, red, x, y in PUNTOS_PRUEBA:
     P(ref=ref, lib_id="Connector:TestPoint", valor=red, huella="TestPoint:TestPoint_Pad_D1.0mm", fabricante="—", mpn="—",
       descripcion=f"Punto de prueba {red}", hoja=H5, pines={"1": red}, x=x, y=y, en_bom=False)
+
+# --------------------------------------------------------------------------------------------- colocación
+# Posiciones de diseño (x, y, rot) en el marco del robot; colocar.py solo corrige traslapes pequeños.
+COLOCACION = {
+    # potencia (lado derecho): XT30 -> PTC -> Q1 -> Q2 en línea; interruptor de compuerta en el borde
+    "J1": (19.5, -24.5, 0), "F1": (29.0, -24.5, 0), "Q1": (33.5, -24.5, 0), "Q2": (37.5, -24.5, 0),
+    "R1": (35.5, -20.5, 0), "R2": (38.5, -20.5, 0), "SW1": (45.0, -25.8, 0),      # actuador hacia el borde derecho (sobresale 2 mm del contorno) "D1": (41.5, -17.5, 90),
+    "C1": (31.0, -7.0, 90), "C2": (33.0, -7.0, 90),
+    "U2": (43.0, -11.5, 0), "C4": (38.5, -11.5, 90), "C5": (36.5, -11.5, 90), "C6": (40.5, -9.0, 0), "R5": (40.5, -14.5, 0),
+    "C7": (45.5, -14.5, 0), "L1": (49.0, -13.5, 0), "R6": (45.8, -9.0, 0), "R7": (45.8, -7.8, 0),
+    "C8": (52.5, -11.0, 90), "C9": (54.5, -11.0, 90), "D2": (55.0, -18.0, 0), "R8": (52.0, -18.0, 0),
+    "R3": (49.0, -7.0, 0), "R4": (56.6, 2.0, 90), "C3": (55.2, 2.0, 90),
+    # puente H y conectores de motor
+    "U3": (24.0, 0.0, 0), "C20": (29.2, -3.8, 90), "C21": (30.2, -0.3, 0), "C22": (30.2, -1.4, 0), "C23": (30.2, 1.0, 0),
+    "R12": (21.0, -4.0, 90), "R13": (21.0, 4.0, 90),
+    "J2": (16.5, 10.0, 90), "J3": (16.5, -10.0, 90),
+    "C24": (21.0, 8.0, 0), "C25": (21.0, 9.5, 0), "C26": (21.0, -8.0, 0), "C27": (21.0, -9.5, 0),
+    # MCU (rot 180) y su entorno
+    "C10": (58.0, 5.0, 45), "C11": (58.0, -5.0, -45), "C12": (68.6, -6.6, 45), "C13": (70.0, -5.0, 45), "C14": (56.5, -6.8, -45),
+    "FB1": (60.2, 8.6, 0), "C15": (62.6, 7.0, 90), "C16": (64.0, 7.0, 90),
+    "C17": (73.5, -8.6, 0), "R9": (67.4, -8.4, 45), "SW4": (73.5, -6.0, 0),
+    "J4": (66.0, -14.5, 90), "SW2": (80.0, -22.0, 0), "SW3": (80.0, -13.0, 0),
+    "D3": (53.5, 8.0, 0), "R10": (53.5, 9.5, 0), "D4": (53.0, -9.0, 0), "R11": (53.0, -10.5, 0),
+    # emisores
+    "Q3": (86.0, -12.0, 0), "R14": (82.5, -12.0, 0), "R15": (86.0, -9.5, 0),
+    # puntos de prueba
+    "TP1": (27.0, -12.0, 0), "TP2": (57.5, -17.0, 0), "TP3": (27.0, 12.0, 0), "TP4": (75.0, 6.0, 0), "TP5": (66.0, 9.0, 0),
+    "TP6": (89.0, -9.0, 0), "TP7": (89.0, -15.0, 0), "TP8": (24.0, 12.0, 0), "TP9": (24.0, -12.0, 0), "TP10": (31.0, 5.0, 0),
+    "TP11": (53.0, -6.0, 0), "TP12": (72.0, -11.0, 0),
+}
+# Condensadores del puente H en la cara inferior: dejan libre la entrada de las pistas PWM a la columna de pines
+LADO_INFERIOR = {"C20", "C21", "C22", "C23", "R4", "C3"}   # + rama baja del divisor de batería bajo el MCU
+# R3 (100k, lado alto del divisor) va junto a la entrada del regulador: solo VBAT_MED (pista fina, alta impedancia,
+# filtrada por C3 junto al pin del ADC) cruza hasta el MCU.
+for _p in PARTES:
+    if _p.ref in COLOCACION:
+        _p.x, _p.y, _p.rot = COLOCACION[_p.ref]
+    if _p.ref in LADO_INFERIOR:
+        _p.lado = "B"
+
 
 # --------------------------------------------------------------------------------------------- utilidades
 def por_ref():

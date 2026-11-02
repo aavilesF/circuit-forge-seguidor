@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <random>
-#include "../../firmware/sf/sf_logica.h"
+#include "../../firmware/logica/sf_logica.h"
 
 static int fallos = 0, total = 0;
 #define CHECK(c, m) do { ++total; if (!(c)) { ++fallos; std::printf("FALLO: %s (%s:%d)\n", m, __FILE__, __LINE__); } } while (0)

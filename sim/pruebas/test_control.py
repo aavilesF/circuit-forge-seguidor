@@ -1,5 +1,5 @@
 """El controlador C2 del simulador (nucleo.paso_sf, fuente 0) debe reproducir los vectores dorados que ya
-validan el C++ del firmware (firmware/sf/sf_logica.cpp). Uso: python3 sim/pruebas/test_control.py"""
+validan el C++ del firmware (firmware/logica/sf_logica.cpp). Uso: python3 sim/pruebas/test_control.py"""
 import csv
 import math
 import os

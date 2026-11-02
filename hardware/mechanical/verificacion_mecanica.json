@@ -1,0 +1,708 @@
+{
+ "interferencias": [
+  {
+   "a": "soporte_motor_base_izq",
+   "b": "APROX_motor_pololu3048_encoder4760_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "soporte_motor_tapa_izq",
+   "b": "APROX_motor_pololu3048_encoder4760_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "soporte_motor_base_der",
+   "b": "APROX_motor_pololu3048_encoder4760_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "soporte_motor_tapa_der",
+   "b": "APROX_motor_pololu3048_encoder4760_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_bateria_tattu450_2s",
+   "b": "soporte_motor_tapa_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_bateria_tattu450_2s",
+   "b": "soporte_motor_tapa_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_bateria_tattu450_2s",
+   "b": "APROX_motor_pololu3048_encoder4760_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_bateria_tattu450_2s",
+   "b": "APROX_motor_pololu3048_encoder4760_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_motor_pololu3048_encoder4760_izq",
+   "b": "APROX_motor_pololu3048_encoder4760_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_llanta_pololu1087_izq",
+   "b": "soporte_motor_base_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "APROX_llanta_pololu1087_der",
+   "b": "soporte_motor_base_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "rueda_loca_carcasa",
+   "b": "APROX_bola_6.35mm",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "rueda_loca_tapa",
+   "b": "APROX_bola_6.35mm",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_motor_pololu3048_encoder4760_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_motor_pololu3048_encoder4760_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_llanta_pololu1087_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_llanta_pololu1087_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_bateria_tattu450_2s",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "soporte_motor_base_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "soporte_motor_base_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "soporte_motor_tapa_izq",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "soporte_motor_tapa_der",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "APROX_bola_6.35mm",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "rueda_loca_carcasa",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "rueda_loca_tapa",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_1",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_2",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_3",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_4",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_5",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_6",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_7",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x12_8",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x8_rl1",
+   "volumen_mm3": 0.0,
+   "ok": true
+  },
+  {
+   "a": "PCBA",
+   "b": "tornillo_M2x8_rl2",
+   "volumen_mm3": 0.0,
+   "ok": true
+  }
+ ],
+ "caja": {
+  "largo_x": 132.0,
+  "ancho_y": 92.0,
+  "alto_z": 39.2,
+  "z_min": 0.0,
+  "cumple_200x100": true
+ },
+ "masa": {
+  "total_g": 112.9,
+  "cg_mm": [
+   20.08,
+   -0.65,
+   15.36
+  ],
+  "Iz_puntual_kgm2": 0.00011075168880635205,
+  "partes": [
+   {
+    "nombre": "soporte_motor_base_izq",
+    "masa_g": 2.73,
+    "cg_mm": [
+     -0.0,
+     24.79,
+     8.47
+    ]
+   },
+   {
+    "nombre": "soporte_motor_base_der",
+    "masa_g": 2.73,
+    "cg_mm": [
+     -0.0,
+     -24.79,
+     8.47
+    ]
+   },
+   {
+    "nombre": "soporte_motor_tapa_izq",
+    "masa_g": 1.57,
+    "cg_mm": [
+     0.0,
+     25.2,
+     17.02
+    ]
+   },
+   {
+    "nombre": "soporte_motor_tapa_der",
+    "masa_g": 1.57,
+    "cg_mm": [
+     0.0,
+     -25.2,
+     17.02
+    ]
+   },
+   {
+    "nombre": "rueda_loca_carcasa",
+    "masa_g": 0.23,
+    "cg_mm": [
+     92.0,
+     -0.0,
+     3.12
+    ]
+   },
+   {
+    "nombre": "rueda_loca_tapa",
+    "masa_g": 0.13,
+    "cg_mm": [
+     92.0,
+     -0.0,
+     6.71
+    ]
+   },
+   {
+    "nombre": "motor+encoder_izq",
+    "masa_g": 10.2,
+    "cg_mm": [
+     -0.0,
+     23.7,
+     15.78
+    ]
+   },
+   {
+    "nombre": "llanta_izq",
+    "masa_g": 3.12,
+    "cg_mm": [
+     -0.0,
+     42.5,
+     16.0
+    ]
+   },
+   {
+    "nombre": "motor+encoder_der",
+    "masa_g": 10.2,
+    "cg_mm": [
+     -0.0,
+     -23.7,
+     15.78
+    ]
+   },
+   {
+    "nombre": "llanta_der",
+    "masa_g": 3.12,
+    "cg_mm": [
+     -0.0,
+     -42.5,
+     16.0
+    ]
+   },
+   {
+    "nombre": "bateria",
+    "masa_g": 28.4,
+    "cg_mm": [
+     0.0,
+     -0.0,
+     31.7
+    ]
+   },
+   {
+    "nombre": "bola",
+    "masa_g": 1.05,
+    "cg_mm": [
+     92.0,
+     -0.0,
+     3.17
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_1",
+    "masa_g": 0.51,
+    "cg_mm": [
+     10.0,
+     16.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_2",
+    "masa_g": 0.51,
+    "cg_mm": [
+     10.0,
+     34.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_3",
+    "masa_g": 0.51,
+    "cg_mm": [
+     -10.0,
+     16.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_4",
+    "masa_g": 0.51,
+    "cg_mm": [
+     -10.0,
+     34.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_5",
+    "masa_g": 0.51,
+    "cg_mm": [
+     10.0,
+     -16.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_6",
+    "masa_g": 0.51,
+    "cg_mm": [
+     10.0,
+     -34.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_7",
+    "masa_g": 0.51,
+    "cg_mm": [
+     -10.0,
+     -16.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x12_8",
+    "masa_g": 0.51,
+    "cg_mm": [
+     -10.0,
+     -34.0,
+     8.58
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x8_rl1",
+    "masa_g": 0.39,
+    "cg_mm": [
+     92.0,
+     6.0,
+     5.45
+    ]
+   },
+   {
+    "nombre": "tornillo_M2x8_rl2",
+    "masa_g": 0.39,
+    "cg_mm": [
+     92.0,
+     -6.0,
+     5.45
+    ]
+   },
+   {
+    "nombre": "cables_encoder (2 × #4765)",
+    "masa_g": 2.0,
+    "cg_mm": [
+     10.0,
+     0.0,
+     12.0
+    ]
+   },
+   {
+    "nombre": "dual_lock (2 piezas)",
+    "masa_g": 1.2,
+    "cg_mm": [
+     0.0,
+     0.0,
+     23.4
+    ]
+   },
+   {
+    "nombre": "PCB FR-4 4 capas 1.6 mm",
+    "masa_g": 35.06,
+    "cg_mm": [
+     51.5,
+     -0.0,
+     5.3
+    ]
+   },
+   {
+    "nombre": "componentes de la PCBA",
+    "masa_g": 4.77,
+    "cg_mm": [
+     50.37,
+     -15.27,
+     6.45
+    ]
+   }
+  ],
+  "categorias_yaml": {
+   "impresos": {
+    "masa_kg": 0.00858,
+    "x_m": -0.0,
+    "y_abs_m": 0.0249,
+    "z_m": 0.0116
+   },
+   "rueda_loca": {
+    "masa_kg": 0.00141,
+    "x_m": 0.092,
+    "y_abs_m": 0.0,
+    "z_m": 0.0035
+   },
+   "motores": {
+    "masa_kg": 0.0204,
+    "x_m": -0.0,
+    "y_abs_m": 0.0237,
+    "z_m": 0.0158
+   },
+   "llantas": {
+    "masa_kg": 0.00624,
+    "x_m": -0.0,
+    "y_abs_m": 0.0425,
+    "z_m": 0.016
+   },
+   "bateria": {
+    "masa_kg": 0.0284,
+    "x_m": 0.0,
+    "y_abs_m": 0.0,
+    "z_m": 0.0317
+   },
+   "tornilleria": {
+    "masa_kg": 0.00486,
+    "x_m": 0.0148,
+    "y_abs_m": 0.022,
+    "z_m": 0.0081
+   },
+   "cables": {
+    "masa_kg": 0.0032,
+    "x_m": 0.0063,
+    "y_abs_m": 0.0,
+    "z_m": 0.0163
+   },
+   "pcb": {
+    "masa_kg": 0.03506,
+    "x_m": 0.0515,
+    "y_abs_m": 0.0,
+    "z_m": 0.0053
+   },
+   "electronica": {
+    "masa_kg": 0.00477,
+    "x_m": 0.0504,
+    "y_abs_m": 0.0153,
+    "z_m": 0.0065
+   }
+  }
+ },
+ "accesibilidad": [
+  {
+   "ref": "SW2",
+   "uso": "botón START",
+   "x_mm": 80.0,
+   "y_mm": -22.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "SW3",
+   "uso": "botón CAL",
+   "x_mm": 82.0,
+   "y_mm": -5.5,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "SW4",
+   "uso": "botón RESET",
+   "x_mm": 73.5,
+   "y_mm": -6.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "J4",
+   "uso": "conector STDC14 (programación)",
+   "x_mm": 66.4,
+   "y_mm": -14.9,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "J1",
+   "uso": "XT30 de la batería",
+   "x_mm": 19.5,
+   "y_mm": -24.5,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "SW1",
+   "uso": "interruptor ON/OFF",
+   "x_mm": 45.0,
+   "y_mm": -25.8,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "D3",
+   "uso": "LED OK",
+   "x_mm": 53.5,
+   "y_mm": 8.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "D4",
+   "uso": "LED ERR",
+   "x_mm": 53.0,
+   "y_mm": -9.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "D2",
+   "uso": "LED 3V3",
+   "x_mm": 55.0,
+   "y_mm": -18.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  },
+  {
+   "ref": "bola",
+   "uso": "cambio de la bola: 2 tuercas M2 sobre la tapa (cara superior)",
+   "x_mm": 92.0,
+   "y_mm": 0.0,
+   "cara": "superior",
+   "libre": true,
+   "tapado_por": []
+  }
+ ],
+ "alturas": {
+  "z_min_pcba_mm": 2.965,
+  "piezas": [
+   {
+    "pieza": "soporte_motor_base_izq",
+    "z_min_mm": 6.1
+   },
+   {
+    "pieza": "soporte_motor_base_der",
+    "z_min_mm": 6.1
+   },
+   {
+    "pieza": "soporte_motor_tapa_izq",
+    "z_min_mm": 11.0
+   },
+   {
+    "pieza": "soporte_motor_tapa_der",
+    "z_min_mm": 11.0
+   },
+   {
+    "pieza": "rueda_loca_carcasa",
+    "z_min_mm": 1.597
+   },
+   {
+    "pieza": "rueda_loca_tapa",
+    "z_min_mm": 6.094
+   },
+   {
+    "pieza": "APROX_motor_pololu3048_encoder4760_izq",
+    "z_min_mm": 8.2
+   },
+   {
+    "pieza": "APROX_motor_pololu3048_encoder4760_der",
+    "z_min_mm": 8.2
+   },
+   {
+    "pieza": "APROX_llanta_pololu1087_izq",
+    "z_min_mm": 0.0
+   },
+   {
+    "pieza": "APROX_llanta_pololu1087_der",
+    "z_min_mm": 0.0
+   },
+   {
+    "pieza": "APROX_bateria_tattu450_2s",
+    "z_min_mm": 24.2
+   },
+   {
+    "pieza": "APROX_bola_6.35mm",
+    "z_min_mm": 0.0
+   },
+   {
+    "pieza": "tornillo_M2x12_1",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_2",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_3",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_4",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_5",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_6",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_7",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x12_8",
+    "z_min_mm": 3.4
+   },
+   {
+    "pieza": "tornillo_M2x8_rl1",
+    "z_min_mm": 1.7
+   },
+   {
+    "pieza": "tornillo_M2x8_rl2",
+    "z_min_mm": 1.7
+   }
+  ],
+  "criterio": "partes rígidas a ≥ 2 mm del piso salvo llantas, bola y la carcasa de la bola"
+ }
+}

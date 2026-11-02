@@ -67,7 +67,7 @@ def main():
                     n += 1
                     if item["red"] != por_pin[k]:
                         err.append(f"PCB {k}: red {item['red']} en lugar de {por_pin[k]}")
-                elif item["red"] not in ("", None):
+                elif item["red"] not in ("", None) and not item["red"].startswith("unconnected-"):
                     err.append(f"PCB {k}: pad con red {item['red']} que el diseño no conecta")
             faltan = set(por_pin) - {(i["ref"], i["pad"]) for i in pads}
             for k in sorted(faltan):

@@ -1,0 +1,30 @@
+Drill report for speed_follower.kicad_pcb
+Created on 2026-11-02T01:46:22-0600
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  B.Cu                      back
+
+
+Drill file 'speed_follower-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.200mm  0.0079"  (12 holes)
+    T2  0.250mm  0.0098"  (198 holes)
+    T3  0.650mm  0.0256"  (14 holes)
+    T4  0.900mm  0.0354"  (3 holes)
+    T5  1.500mm  0.0591"  (2 holes)
+    T6  1.800mm  0.0709"  (2 holes)
+
+    Total plated holes count 231
+
+
+Drill file 'speed_follower-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  2.200mm  0.0866"  (10 holes)
+
+    Total unplated holes count 10

@@ -1,78 +1,81 @@
-# Auditoría de robustez — arquitectura de $2,000 MXN (Fase 3)
+# Auditoría de robustez — configuración definitiva
 
-Fecha: 1 nov 2026. **Todo es simulado** (`python3 sim/fase3.py S M P`, resultados en `sim/resultados/fase3/`). Nada se ha medido en hardware.
-Configuración: Chihai N20 12 V i10 + barra clon QTR-8A (8 sensores) + ESP32 + TB6612FNG, cuello de 110 mm, control C3m (`config/robot_maestro.yaml`, v_max 0.66 m/s).
-En cada escenario, el firmware conserva los parámetros y el modelo nominales; lo que cambia es el robot real (la planta). Son 30 salidas por pista (120 por escenario) con la dispersión normal (μ ±10 %, batería 7.6-8.3 V, motores ±5 %, colocación ±3 mm y ±2°). IC = intervalo de Wilson al 95 %.
+Fecha: 2 nov 2026. **Todo es simulado** (`python3 sim/fase_final.py Z R E S F G`, resultados en `sim/resultados/final/`).
+Nada se ha medido en hardware. La versión de la Fase 3 (Chihai + barra clon + ESP32) está en el historial de git
+(commit `033b641`).
+
+Configuración: Pololu #3048 HPCB 12 V 10:1 + 16 × QRE1113GR en arco (resta de luz ambiente) + STM32G431 + DRV8833,
+cuello de 110 mm, masas y CG del CAD (113.0 g, x_CG 20.1 mm), control **C3m v_max 0.8165 m/s** (competencia) y **C3e
+v_max 0.6327 m/s** (modo seguro). En cada escenario el firmware conserva sus parámetros nominales; lo que cambia es el
+robot real (la planta). Cada salida tiene la dispersión normal (μ ± 10 %, batería 7.6-8.3 V, motores ± 5 %, colocación
+± 3 mm y ± 2°). IC = intervalo de Wilson al 95 %.
 
 **Criterio de aceptación:** ≥ 99 % de vueltas completas, porque un intento perdido vale 5 minutos.
 
-## 1. Referencia
+## 1. Datos del motor que el fabricante no publica (etapas R y E)
 
-| Escenario | Éxito | t medio | Nota |
-|---|---|---|---|
-| Nominal (200 salidas, `G_barrido_vmax_robusto.csv`) | **100 %** (IC 98.1-100 %) | **6.35 s** | v_max 0.66 m/s, elegida por tiempo esperado |
+Pololu publica velocidad libre, corriente de bloqueo, par y relación; **no publica la inercia del rotor** (J_rotor, [S]).
+Para el motor elegido (`R_sensibilidad_motores.csv`, con el ajuste de la etapa Z):
 
-## 2. Datos no publicados del motor (`S_sensibilidad_motor.csv`)
-
-| Motor real distinto del supuesto | Éxito | t medio | Lectura |
-|---|---|---|---|
-| I de bloqueo 0.35 A (más débil) | 99.2 % | 7.02 s | Más lento, todavía estable |
-| I de bloqueo 0.45 A | 100 % | 6.49 s | |
-| **I de bloqueo 0.80 A (más fuerte)** | **57.5 %** | 6.30 s | **Derrapes**: el feed-forward manda más par del previsto |
-| **I de bloqueo 1.0 A** | **5 %** | 6.66 s | No sirve sin reajustar |
-| Eficiencia de reductora 0.6 | 79 % | 6.76 s | Pierde la línea: le falta par para girar |
-| Eficiencia 0.7 / 0.85 | 100 % / 100 % | 6.39 / 6.32 s | |
-| rpm −10 % / +10 % | 100 % / 98.3 % | 6.49 / 6.23 s | |
-
-**Hallazgo crítico:** el resultado depende de que el modelo del motor en el YAML coincida con el motor real. **Antes de cualquier prueba en pista hay que medir la velocidad libre y la corriente de bloqueo (M7), actualizar `motores.chihai_n20_12v_2200_i10`, regenerar `config_maestra.h` y volver a correr el ajuste final** (`python3 sim/fase3.py G` y luego validar).
-
-## 3. Fabricación y montaje (`M_fabricacion.csv`)
-
-| Error | Éxito | t medio |
+| Caso | Éxito | t medio |
 |---|---|---|
-| Barra 3 mm más adelante / más atrás | 100 % / 100 % | 6.34 / 6.36 s |
-| Barra desplazada 2 mm de lado | 100 % | 6.34 s |
-| Barra girada 3° | 100 % | 6.40 s |
-| Paso de sensores +5 % | 100 % | 6.32 s |
-| Sensor más alto (mancha ×1.6) | 100 % | 6.23 s |
-| Vía +3 mm | 100 % | 6.35 s |
-| Llanta 1 mm menor | 100 % | 6.39 s |
-| Motores desparejos ±10 % | 100 % | 6.42 s |
-| **CG 10 mm más adelante** | **62.5 %** | 6.88 s |
-| CG 10 mm más atrás | 100 % | 6.32 s |
-| **Masa +40 g** | **84 %** | 6.66 s |
+| Nominal | 100 % | 5.39 s |
+| J_rotor × 0.5 | 90.0 % | 5.44 s |
+| J_rotor × 2 | 100 % | 5.45 s |
+| μ 0.70 | 97.5 % | 5.43 s |
+| I de bloqueo 0.60 A / 0.90 A | 100 % / 100 % | 5.42 / 5.37 s |
 
-**Hallazgos:** la geometría de la barra tolera los errores de montaje típicos. Lo crítico es el **reparto de masa**: el CG debe quedar en x ≤ 22 mm (batería sobre o detrás del eje) y la masa en ≈ 132 g. Hay que pesar el robot y medir el reparto con dos básculas (M2, M5) antes de ajustar.
+Ese ajuste (v_max 0.892) no cumple el criterio con J_rotor × 0.5, por eso el control final se eligió por el tiempo esperado
+**medio** sobre 6 plantas (`E_eleccion.json`): C3m con v_max 0.8165 m/s queda en 98.3 % en el peor caso (J_rotor × 0.5) y
+100 % en las otras 5; el modo seguro C3e queda en 100 % en las 6.
 
-## 4. Batería, fricción, latencia, ruido y pérdida de línea (`P_escenarios.csv`)
+## 2. Validación del control de competencia con las masas del CAD (etapa F, `F_validacion_robustez.csv`)
 
-| Escenario | Éxito | t medio | Fallas |
+| Escenario | Salidas | Éxito (IC 95 %) | t medio | I máx por motor |
+|---|---|---|---|---|
+| Nominal | 200 | **100 %** (98.1-100) | **5.81 s** | 0.48 A |
+| μ 0.70 / 0.60 | 120 / 120 | 100 % / 100 % | 5.83 / 5.85 s | 0.47 A |
+| **CG 10 mm más adelante** | 120 | **80.0 %** (72.0-86.2), 24 derrapes | 6.13 s | 0.48 A |
+| CG 10 mm más atrás | 120 | 100 % | 5.74 s | 0.47 A |
+| Masa + 10 g (batería de 37 g) / + 40 g | 120 / 120 | 100 % / 100 % | 5.86 / 5.98 s | 0.47 A |
+| Sensores más altos (mancha × 1.6) | 120 | 100 % | 5.80 s | 0.48 A |
+| Ruido de sensores × 2 / × 3 | 120 / 120 | 100 % / 100 % | 5.73 / 5.55 s | 0.51 A |
+| Fototransistor lento (t_emisor 400 µs) | 120 | 100 % | 5.82 s | 0.48 A |
+| Encoder desconectado | 120 | 100 % | 5.82 s | 0.47 A |
+| Batería baja (6.9 V) | 120 | 100 % | 5.83 s | 0.39 A |
+| Latencia + 1 ms | 120 | 100 % | 5.82 s | 0.48 A |
+| Motores desparejos ± 10 % | 120 | 100 % | 5.92 s | 0.48 A |
+| I de bloqueo × 0.8 / × 1.2 | 120 / 120 | 100 % / 100 % | 5.83 / 5.80 s | 0.38 / 0.56 A |
+
+Corriente máxima por motor 0.56 A (DRV8833: 1.5 A RMS por canal). Que el ruido × 3 dé un tiempo menor no se toma como
+una mejora: sale del modelo de ruido supuesto ([S]) y se revisa con la medición M8.
+
+## 3. Modo seguro y tolerancia del CG (etapa G, `G_modo_seguro.csv`)
+
+| Escenario | Salidas | Éxito (IC 95 %) | t medio |
 |---|---|---|---|
-| Batería llena (8.4 V) | 99.2 % | 6.18 s | 1 derrape |
-| Batería 7.4 V | 100 % | 6.57 s | — |
-| Batería baja (6.9 V) | 100 % | 6.79 s | — |
-| μ 0.90 | 100 % | 6.30 s | — |
-| μ 0.70 | 97.5 % | 6.45 s | 3 derrapes |
-| **μ 0.60** | **88 %** | 6.64 s | 14 derrapes |
-| Latencia +2 ms | 100 % | 6.46 s | — |
-| **Ruido de sensores ×3** | **50 %** | 6.32 s | pierde la línea |
-| Huecos de 5 mm (reglamento) | 98.3 % | 6.33 s | 1 derrape |
-| Huecos de 10 mm | 96.7 % | 6.35 s | — |
-| Huecos de 20 / 40 mm | 75 % / 75 % | 6.67 s | Fuera de reglamento: margen de recuperación |
+| C3e (modo seguro) nominal | 200 | 100 % (98.1-100) | 7.16 s |
+| C3e μ 0.60 / masa + 10 g | 120 / 120 | 100 % / 100 % | 7.23 / 7.19 s |
+| C3e CG 5 mm más adelante | 120 | 100 % | 7.13 s |
+| C3e CG 10 mm más adelante | 120 | **60.0 %** (51.1-68.3), 48 derrapes | 7.69 s |
+| C3m CG 3 mm más adelante | 120 | 100 % | 5.85 s |
+| C3m CG 5 mm más adelante | 120 | 100 % | 5.87 s |
+| C3m CG 7 mm más adelante | 120 | 98.3 % (94.1-99.5) | 5.92 s |
+| C3m CG 10 mm más adelante (etapa F) | 120 | 80.0 % | 6.13 s |
 
-Corriente máxima por motor: 0.35 A (TB6612: 1.0 A continuos). Batería mínima: 6.8 V con 6.9 V en vacío. Consumo: 0.44-0.46 mAh por vuelta.
+**Tolerancia del CG:** hasta 5 mm por delante del CAD (x_CG ≤ 25 mm) ambos controles dan 100 %; desde 7 mm el de
+competencia baja del criterio. Con el CG adelantado **el modo seguro no ayuda** (60 % a 10 mm): lo que se reduce al
+adelantar el CG es la carga sobre las ruedas motrices, y eso afecta a los dos controles. La medición M2/M5 del manual tiene
+por eso un criterio de aceptación explícito.
 
-**Frenado en recta** (`P_frenado.csv`) desde 2.17 m/s: 4.0 m/s² con el piso del control, 3.9 m/s² con freno corto y 4.0 m/s² con inverso total. Llega al 20 % de la velocidad en 0.57 m. El frenado lo limita el agarre: el inverso total no gana nada y duplica la corriente (0.56 A).
-
-## 5. Riesgos y mitigaciones
+## 4. Riesgos y mitigaciones
 
 | # | Riesgo | Severidad | Mitigación |
 |---|---|---|---|
-| R1 | Motor real distinto del supuesto (bloqueo, eficiencia) | **Crítica** | Medir (M7) → YAML → reajuste → validar 200 salidas |
-| R2 | μ y μ cinético reales menores | Alta | Medir (M1); usar la tabla v_max por μ (`SIMULACION_DINAMICA.md` §5); bajar v_max por consola |
-| R3 | Ruido real de la barra clon mayor al supuesto (sin resta de luz ambiente) | Alta | Medir el ruido con `crudo` y `sens` (M8); si el ruido es más de 2× el supuesto, filtrar en firmware o cambiar a una barra con pin de emisores |
-| R4 | CG adelantado o masa extra | Alta | Batería detrás del eje; pesar el robot (M2, M5) |
-| R5 | Luz ambiente fuerte (la barra clon no resta luz ambiente) | Media | Probar bajo lámpara y luz de ventana (R06); pantalla negra alrededor de la barra |
-| R6 | Batería llena: algo más de velocidad y 1 derrape en 120 | Baja | Validar con batería llena antes de cada intento |
-| R7 | Salida de la barra a 5 V hacia el mux de 3.3 V | Media | 10 kΩ en serie por canal (BOM R1) |
-| R8 | Entrega de los motores Chihai (19-28 nov) | Calendario | Respaldo local GA12-N20 6 V (5.64 s simulados en la etapa T); parámetros `control.C3m_ga12` |
+| R1 | **CG real adelantado** (por ejemplo, cables o batería más adelante de lo modelado) | **Alta** | El CAD da 20.1 mm; medir el reparto con dos básculas (manual §7.5, M2/M5). Criterio: x_CG ≤ 25 mm. Si no se cumple, mover la batería hacia atrás sobre los soportes (el modo seguro **no** compensa este caso) |
+| R2 | Inercia del rotor menor a la supuesta | Media | Control elegido para 98.3 % en ese caso; el modo seguro da 100 %. Medición indirecta con los encoders |
+| R3 | Motor real distinto de la ficha (velocidad libre, bloqueo) | Media | M7 (manual §8) → YAML → `python3 sim/fase_final.py F` antes de competir |
+| R4 | μ real menor | Baja | 100 % hasta μ 0.60 simulado; M1 confirma |
+| R5 | Señal de los QRE1113GR a 3.05 mm menor a la supuesta | Media | M8 (manual §5); la calibración exige 150 cuentas de rango por sensor |
+| R6 | Batería con otro conector o género del XT30 | Baja | Revisar antes de soldar J1 (manual §2.4) |
+| R7 | Defecto de ensamble de la PCB (puentes en el LQFP de 0.5 mm, almohadilla del DRV8833 sin soldar) | Media | Pruebas E1-E4 sin batería y con fuente limitada antes de conectar motores |

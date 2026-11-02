@@ -1,0 +1,4138 @@
+{
+ "X0": 100.0,
+ "Y0": 100.0,
+ "nombres_red": {
+  "+3V3": "+3V3",
+  "+3V3A": "+3V3A",
+  "BUCK_BST": "/Alimentación y protecciones/BUCK_BST",
+  "BUCK_EN": "/Alimentación y protecciones/BUCK_EN",
+  "BUCK_FB": "/Alimentación y protecciones/BUCK_FB",
+  "BUCK_SW": "/Alimentación y protecciones/BUCK_SW",
+  "LED_PWR": "/Alimentación y protecciones/LED_PWR",
+  "PFET_G": "/Alimentación y protecciones/PFET_G",
+  "SW_COM": "/Alimentación y protecciones/SW_COM",
+  "VBAT_F": "/Alimentación y protecciones/VBAT_F",
+  "VBAT_IN": "/Alimentación y protecciones/VBAT_IN",
+  "VBAT_SRC": "/Alimentación y protecciones/VBAT_SRC",
+  "EMIT_GATE": "/Barra de 16 sensores/EMIT_GATE",
+  "K1": "/Barra de 16 sensores/K1",
+  "K2": "/Barra de 16 sensores/K2",
+  "K3": "/Barra de 16 sensores/K3",
+  "K4": "/Barra de 16 sensores/K4",
+  "K5": "/Barra de 16 sensores/K5",
+  "K6": "/Barra de 16 sensores/K6",
+  "K7": "/Barra de 16 sensores/K7",
+  "K8": "/Barra de 16 sensores/K8",
+  "K9": "/Barra de 16 sensores/K9",
+  "K10": "/Barra de 16 sensores/K10",
+  "K11": "/Barra de 16 sensores/K11",
+  "K12": "/Barra de 16 sensores/K12",
+  "K13": "/Barra de 16 sensores/K13",
+  "K14": "/Barra de 16 sensores/K14",
+  "K15": "/Barra de 16 sensores/K15",
+  "K16": "/Barra de 16 sensores/K16",
+  "BOOT0": "/MCU, programación e interfaz/BOOT0",
+  "BTN_CAL": "/MCU, programación e interfaz/BTN_CAL",
+  "BTN_START": "/MCU, programación e interfaz/BTN_START",
+  "LED_ERR": "/MCU, programación e interfaz/LED_ERR",
+  "LED_ERR_A": "/MCU, programación e interfaz/LED_ERR_A",
+  "LED_OK": "/MCU, programación e interfaz/LED_OK",
+  "LED_OK_A": "/MCU, programación e interfaz/LED_OK_A",
+  "NRST": "/MCU, programación e interfaz/NRST",
+  "SWCLK": "/MCU, programación e interfaz/SWCLK",
+  "SWDIO": "/MCU, programación e interfaz/SWDIO",
+  "UART_RX": "/MCU, programación e interfaz/UART_RX",
+  "DRV_VCP": "/Puente H y encoders/DRV_VCP",
+  "DRV_VINT": "/Puente H y encoders/DRV_VINT",
+  "MOT_L_1": "/Puente H y encoders/MOT_L_1",
+  "MOT_L_2": "/Puente H y encoders/MOT_L_2",
+  "MOT_R_1": "/Puente H y encoders/MOT_R_1",
+  "MOT_R_2": "/Puente H y encoders/MOT_R_2",
+  "DRV_FAULT": "DRV_FAULT",
+  "DRV_SLEEP": "DRV_SLEEP",
+  "EMIT_G": "EMIT_G",
+  "EMIT_K": "EMIT_K",
+  "ENC_L_A": "ENC_L_A",
+  "ENC_L_B": "ENC_L_B",
+  "ENC_R_A": "ENC_R_A",
+  "ENC_R_B": "ENC_R_B",
+  "GND": "GND",
+  "PWM_AIN1": "PWM_AIN1",
+  "PWM_AIN2": "PWM_AIN2",
+  "PWM_BIN1": "PWM_BIN1",
+  "PWM_BIN2": "PWM_BIN2",
+  "S1": "S1",
+  "S2": "S2",
+  "S3": "S3",
+  "S4": "S4",
+  "S5": "S5",
+  "S6": "S6",
+  "S7": "S7",
+  "S8": "S8",
+  "S9": "S9",
+  "S10": "S10",
+  "S11": "S11",
+  "S12": "S12",
+  "S13": "S13",
+  "S14": "S14",
+  "S15": "S15",
+  "S16": "S16",
+  "UART_TX": "UART_TX",
+  "VBAT_MED": "VBAT_MED",
+  "VBAT_SW": "VBAT_SW"
+ },
+ "contorno": [
+  [
+   86.0,
+   137.0
+  ],
+  [
+   120.0,
+   137.0
+  ],
+  [
+   132.0,
+   130.0
+  ],
+  [
+   180.0,
+   130.0
+  ],
+  [
+   192.64,
+   146.0
+  ],
+  [
+   206.4894,
+   146.0
+  ],
+  [
+   207.276,
+   144.1345
+  ],
+  [
+   208.0299,
+   142.2556
+  ],
+  [
+   208.751,
+   140.3637
+  ],
+  [
+   209.4388,
+   138.4596
+  ],
+  [
+   210.0934,
+   136.5438
+  ],
+  [
+   210.7144,
+   134.6168
+  ],
+  [
+   211.3017,
+   132.6793
+  ],
+  [
+   211.8551,
+   130.7319
+  ],
+  [
+   212.3744,
+   128.775
+  ],
+  [
+   212.8594,
+   126.8095
+  ],
+  [
+   213.3101,
+   124.8357
+  ],
+  [
+   213.7263,
+   122.8544
+  ],
+  [
+   214.1079,
+   120.8661
+  ],
+  [
+   214.4547,
+   118.8715
+  ],
+  [
+   214.7666,
+   116.8711
+  ],
+  [
+   215.0435,
+   114.8656
+  ],
+  [
+   215.2855,
+   112.8555
+  ],
+  [
+   215.4923,
+   110.8416
+  ],
+  [
+   215.6639,
+   108.8243
+  ],
+  [
+   215.8003,
+   106.8043
+  ],
+  [
+   215.9014,
+   104.7823
+  ],
+  [
+   215.9672,
+   102.7588
+  ],
+  [
+   215.9977,
+   100.7345
+  ],
+  [
+   215.9928,
+   98.7099
+  ],
+  [
+   215.9526,
+   96.6858
+  ],
+  [
+   215.8771,
+   94.6626
+  ],
+  [
+   215.7663,
+   92.6411
+  ],
+  [
+   215.6203,
+   90.6218
+  ],
+  [
+   215.439,
+   88.6054
+  ],
+  [
+   215.2226,
+   86.5925
+  ],
+  [
+   214.971,
+   84.5836
+  ],
+  [
+   214.6844,
+   82.5794
+  ],
+  [
+   214.363,
+   80.5805
+  ],
+  [
+   214.0066,
+   78.5876
+  ],
+  [
+   213.6156,
+   76.6012
+  ],
+  [
+   213.1899,
+   74.6219
+  ],
+  [
+   212.7297,
+   72.6503
+  ],
+  [
+   212.2352,
+   70.6871
+  ],
+  [
+   211.7066,
+   68.7327
+  ],
+  [
+   211.1439,
+   66.788
+  ],
+  [
+   210.5473,
+   64.8533
+  ],
+  [
+   209.9171,
+   62.9293
+  ],
+  [
+   209.2534,
+   61.0166
+  ],
+  [
+   208.5564,
+   59.1159
+  ],
+  [
+   207.8263,
+   57.2275
+  ],
+  [
+   206.4894,
+   54.0
+  ],
+  [
+   192.64,
+   54.0
+  ],
+  [
+   180.0,
+   70.0
+  ],
+  [
+   132.0,
+   70.0
+  ],
+  [
+   120.0,
+   63.0
+  ],
+  [
+   86.0,
+   63.0
+  ]
+ ],
+ "arco": {
+  "centro": [
+   100.0,
+   100.0
+  ],
+  "r": 116.0,
+  "inicio": [
+   206.4894,
+   146.0
+  ],
+  "fin": [
+   206.4894,
+   54.0
+  ]
+ },
+ "agujero_bola": {
+  "centro": [
+   192.0,
+   100.0
+  ],
+  "diametro": 6.4
+ },
+ "zonas_prohibidas": [
+  [
+   87.5,
+   63.0,
+   112.5,
+   87.4
+  ],
+  [
+   93.0,
+   87.4,
+   107.0,
+   92.4
+  ],
+  [
+   96.5,
+   92.4,
+   103.5,
+   97.4
+  ],
+  [
+   87.5,
+   112.6,
+   112.5,
+   137.0
+  ],
+  [
+   93.0,
+   107.6,
+   107.0,
+   112.6
+  ],
+  [
+   96.5,
+   102.6,
+   103.5,
+   107.6
+  ]
+ ],
+ "clases": {
+  "Default": {
+   "pista": 0.2,
+   "separacion": 0.15,
+   "via": 0.55,
+   "taladro": 0.25,
+   "patrones": []
+  },
+  "Potencia": {
+   "pista": 0.8,
+   "separacion": 0.15,
+   "via": 0.55,
+   "taladro": 0.25,
+   "patrones": [
+    "VBAT_IN",
+    "VBAT_F",
+    "VBAT_SRC",
+    "VBAT_SW"
+   ]
+  },
+  "Motor": {
+   "pista": 0.5,
+   "separacion": 0.15,
+   "via": 0.55,
+   "taladro": 0.25,
+   "patrones": [
+    "MOT_*",
+    "BUCK_SW"
+   ]
+  },
+  "Alimentacion": {
+   "pista": 0.4,
+   "separacion": 0.15,
+   "via": 0.55,
+   "taladro": 0.25,
+   "patrones": [
+    "+3V3*",
+    "GND",
+    "DRV_VINT",
+    "DRV_VCP",
+    "EMIT_K",
+    "K*"
+   ]
+  }
+ },
+ "partes": [
+  {
+   "ref": "J1",
+   "lib": "Connector_AMASS",
+   "fp": "AMASS_XT30UPB-M_1x02_P5.0mm_Vertical",
+   "valor": "XT30UPB-M",
+   "X": 119.5,
+   "Y": 124.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "VBAT_IN"
+   },
+   "campos": {
+    "Fabricante": "Changzhou Amass Electronics",
+    "MPN": "XT30UPB-M",
+    "Descripcion": "Conector de batería XT30 macho vertical para PCB, 15 A (pin 1 −, pin 2 +)",
+    "Datasheet": "https://www.tme.eu/Document/e5863b891432488e7531b3c4468225ac/XT30PB-M.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/7197d3d4-73d4-54ea-8a25-ba9c4de60555",
+   "hoja": "alimentacion",
+   "modelo3d": "propio:AMASS_XT30UPB-M",
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "F1",
+   "lib": "Fuse",
+   "fp": "Fuse_1812_4532Metric",
+   "valor": "1.5A/12V",
+   "X": 127.641,
+   "Y": 119.429,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_IN",
+    "2": "VBAT_F"
+   },
+   "campos": {
+    "Fabricante": "Littelfuse",
+    "MPN": "1812L150/12DR",
+    "Descripcion": "Fusible reajustable PTC 1812, Ihold 1.5 A, 12 V",
+    "Datasheet": "https://www.littelfuse.com/assetdocs/littelfuse-ptc-1812l-datasheet"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/30366cba-468e-551a-851c-dcce17e2bf4b",
+   "hoja": "alimentacion",
+   "modelo3d": "propio:Fuse_1812L",
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "Q1",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23",
+   "valor": "AO3401A",
+   "X": 133.5,
+   "Y": 124.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "PFET_G",
+    "2": "VBAT_SRC",
+    "3": "VBAT_F"
+   },
+   "campos": {
+    "Fabricante": "Alpha & Omega Semiconductor",
+    "MPN": "AO3401A",
+    "Descripcion": "MOSFET P −30 V −4 A SOT-23 (protección contra inversión)",
+    "Datasheet": "https://www.aosmd.com/res/datasheets/AO3401A.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/12d692f9-4c61-5caf-b6aa-19b4cf59d903",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "Q2",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23",
+   "valor": "AO3401A",
+   "X": 133.964,
+   "Y": 128.036,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "PFET_G",
+    "2": "VBAT_SRC",
+    "3": "VBAT_SW"
+   },
+   "campos": {
+    "Fabricante": "Alpha & Omega Semiconductor",
+    "MPN": "AO3401A",
+    "Descripcion": "MOSFET P −30 V −4 A SOT-23 (interruptor de encendido)",
+    "Datasheet": "https://www.aosmd.com/res/datasheets/AO3401A.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/c6051136-46c1-5c68-bce5-a2ca7d80a244",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R1",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100k",
+   "X": 135.5,
+   "Y": 120.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SRC",
+    "2": "PFET_G"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Descripcion": "Resistencia 100kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/9af26558-9f6c-5cc2-996b-904e3be4fb84",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R2",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 137.982,
+   "Y": 118.568,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "PFET_G",
+    "2": "SW_COM"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/71609175-1134-5de2-9305-d47df4275ca0",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "SW1",
+   "lib": "Button_Switch_THT",
+   "fp": "SW_Slide_SPDT_Angled_CK_OS102011MA1Q",
+   "valor": "ENCENDIDO",
+   "X": 145.0,
+   "Y": 125.8,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "SW_COM",
+    "3": "unconnected-(SW1-C-Pad3)"
+   },
+   "campos": {
+    "Fabricante": "C&K",
+    "MPN": "OS102011MA1QN1",
+    "Descripcion": "Interruptor deslizante SPDT de ángulo recto, 100 mA 12 V (solo conmuta la compuerta)",
+    "Datasheet": "https://www.ckswitches.com/media/1428/os.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/1accf90d-0a6a-52c6-a724-447810f20c45",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "D1",
+   "lib": "Diode_SMD",
+   "fp": "D_SMA",
+   "valor": "SMAJ9.0A",
+   "X": 133.773,
+   "Y": 115.429,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Littelfuse",
+    "MPN": "SMAJ9.0A",
+    "Descripcion": "TVS unidireccional 400 W, 9.0 V de trabajo (DO-214AC)",
+    "Datasheet": "https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-smaj-datasheet"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/499da075-465e-5acf-a862-8ad9952bde1f",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C1",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "22µF",
+   "X": 131.0,
+   "Y": 107.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E226ME44L",
+    "Descripcion": "Condensador cerámico 22µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/a77da786-e6f6-5db8-b807-71f9a4d7fe38",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C2",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "22µF",
+   "X": 133.0,
+   "Y": 107.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E226ME44L",
+    "Descripcion": "Condensador cerámico 22µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/fa9c5579-5e61-52c3-88e2-d9ebe301e402",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R3",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100k",
+   "X": 149.0,
+   "Y": 107.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "VBAT_MED"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Descripcion": "Resistencia 100kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/be2cd15f-9201-51a9-bb7f-de07cf96c8e8",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R4",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "33k",
+   "X": 156.6,
+   "Y": 98.0,
+   "rot": 90,
+   "lado": "B",
+   "redes": {
+    "1": "VBAT_MED",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0733KL",
+    "Descripcion": "Resistencia 33kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/7d65f97e-d51e-558e-9666-40269f811f1a",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C3",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 155.2,
+   "Y": 98.0,
+   "rot": 90,
+   "lado": "B",
+   "redes": {
+    "1": "VBAT_MED",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/3fd4237d-a29a-5022-a25f-afde96226a34",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U2",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23-6",
+   "valor": "TPS563200",
+   "X": 143.0,
+   "Y": 111.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "BUCK_SW",
+    "3": "VBAT_SW",
+    "4": "BUCK_FB",
+    "5": "BUCK_EN",
+    "6": "BUCK_BST"
+   },
+   "campos": {
+    "Fabricante": "Texas Instruments",
+    "MPN": "TPS563200DDCR",
+    "Descripcion": "Convertidor reductor síncrono 4.5-17 V, 3 A, 650 kHz (SOT-23-6)",
+    "Datasheet": "https://www.ti.com/lit/ds/symlink/tps563200.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/d88564f0-f251-58be-a2f1-5485d6eb4ae6",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C4",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "10µF",
+   "X": 138.5,
+   "Y": 111.5,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E106KA73L",
+    "Descripcion": "Condensador cerámico 10µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/d2c4e84f-b3f1-5225-bc18-934dc20912cc",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C5",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "10µF",
+   "X": 136.5,
+   "Y": 111.5,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E106KA73L",
+    "Descripcion": "Condensador cerámico 10µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/f398b407-305b-5584-bea7-df997ab88af4",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C6",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 140.5,
+   "Y": 109.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/c33a500f-c603-5ad8-a0b7-118e8bdf8cbc",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R5",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100k",
+   "X": 140.5,
+   "Y": 114.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "BUCK_EN"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Descripcion": "Resistencia 100kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/46c8779d-00b1-5fe7-b76c-fb00d83aa396",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C7",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 145.5,
+   "Y": 114.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "BUCK_BST",
+    "2": "BUCK_SW"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/c351131f-2b57-53b2-92bd-70a722f3e7ba",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "L1",
+   "lib": "Inductor_SMD",
+   "fp": "L_Wuerth_MAPI-4030",
+   "valor": "2.2µH",
+   "X": 149.0,
+   "Y": 113.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "BUCK_SW",
+    "2": "+3V3"
+   },
+   "campos": {
+    "Fabricante": "Würth Elektronik",
+    "MPN": "74438357022",
+    "Descripcion": "Inductor blindado WE-MAPI 4030, 2.2 µH, IR 7.1 A, Isat 9.2 A, 26 mΩ",
+    "Datasheet": "https://www.we-online.com/components/products/datasheet/74438357022.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/dee18803-2c14-5490-81ec-bd34d1c91b2d",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R6",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "33.2k",
+   "X": 145.8,
+   "Y": 109.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "BUCK_FB"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0733K2L",
+    "Descripcion": "Resistencia 33.2kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/c82fa87d-ba58-52da-ae86-86785aba58d2",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R7",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 145.8,
+   "Y": 107.8,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "BUCK_FB",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/6e41a8c5-66f1-5ed8-94ac-9351a8635da7",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C8",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "22µF",
+   "X": 152.953,
+   "Y": 112.69,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E226ME44L",
+    "Descripcion": "Condensador cerámico 22µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/1378daa6-6e17-5cb2-9066-4155a4ca01a0",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C9",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "22µF",
+   "X": 155.03,
+   "Y": 111.53,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E226ME44L",
+    "Descripcion": "Condensador cerámico 22µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/7ebd3c70-8164-5bc1-8d09-592575910ceb",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "D2",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "valor": "PWR",
+   "X": 155.0,
+   "Y": 118.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "LED_PWR"
+   },
+   "campos": {
+    "Fabricante": "Kingbright",
+    "MPN": "APT1608SGC",
+    "Descripcion": "LED verde 0603 (3.3 V presente)",
+    "Datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/ca9a6aac-5ca1-5de6-9643-f70deab0f19c",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R8",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "1k",
+   "X": 152.0,
+   "Y": 118.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "LED_PWR"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-071KL",
+    "Descripcion": "Resistencia 1kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/e4ee4140-96cf-53bb-9d05-39c0995165c8/27376249-20c2-5275-b89f-b6f909a93464",
+   "hoja": "alimentacion",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "U1",
+   "lib": "Package_QFP",
+   "fp": "LQFP-48_7x7mm_P0.5mm",
+   "valor": "STM32G431CBT6",
+   "X": 164.0,
+   "Y": 100.0,
+   "rot": 180.0,
+   "lado": "F",
+   "redes": {
+    "7": "NRST",
+    "5": "S16",
+    "6": "S15",
+    "2": "BTN_START",
+    "3": "BTN_CAL",
+    "4": "DRV_FAULT",
+    "16": "S6",
+    "17": "S5",
+    "18": "S4",
+    "40": "ENC_L_B",
+    "41": "ENC_R_A",
+    "42": "ENC_R_B",
+    "43": "UART_TX",
+    "44": "UART_RX",
+    "45": "BOOT0",
+    "46": "EMIT_G",
+    "22": "DRV_SLEEP",
+    "25": "S3",
+    "26": "S2",
+    "27": "LED_OK",
+    "28": "S1",
+    "29": "VBAT_MED",
+    "8": "S14",
+    "9": "S13",
+    "10": "S12",
+    "11": "S11",
+    "12": "S10",
+    "13": "S9",
+    "14": "S8",
+    "15": "S7",
+    "30": "PWM_AIN1",
+    "31": "PWM_AIN2",
+    "32": "PWM_BIN2",
+    "33": "PWM_BIN1",
+    "34": "LED_ERR",
+    "37": "SWDIO",
+    "38": "SWCLK",
+    "39": "ENC_L_A",
+    "20": "+3V3A",
+    "1": "+3V3",
+    "24": "+3V3",
+    "36": "+3V3",
+    "23": "GND",
+    "35": "GND",
+    "47": "GND",
+    "48": "+3V3",
+    "19": "GND",
+    "21": "+3V3A"
+   },
+   "campos": {
+    "Fabricante": "STMicroelectronics",
+    "MPN": "STM32G431CBT6",
+    "Descripcion": "MCU Arm Cortex-M4F 170 MHz, 128 KB flash, 32 KB RAM, 2 ADC 12 bits, LQFP-48",
+    "Datasheet": "https://www.st.com/resource/en/datasheet/stm32g431cb.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/9a5b9f5b-3131-5491-8684-a8aa4c8621cb",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C10",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 158.0,
+   "Y": 95.0,
+   "rot": 45,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/c3205ea4-f45a-54eb-ab9b-511cffb92add",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C11",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 158.0,
+   "Y": 105.0,
+   "rot": -45,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/a7154a86-e78c-5991-bc41-2f8a48a20c68",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C12",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 168.6,
+   "Y": 106.6,
+   "rot": 45,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/0b1bed81-7f59-5144-ba82-af20c51bb2f4",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C13",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 170.0,
+   "Y": 105.0,
+   "rot": 45,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/1f266f79-a274-5e00-816b-5c228f03f481",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C14",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0603_1608Metric",
+   "valor": "4.7µF",
+   "X": 156.5,
+   "Y": 106.8,
+   "rot": -45,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM188R61A475KE15D",
+    "Descripcion": "Condensador cerámico 4.7µF 10 V X5R 0603",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/bb60e061-c549-5f05-9165-91b00818fb8b",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "FB1",
+   "lib": "Inductor_SMD",
+   "fp": "L_0603_1608Metric",
+   "valor": "220Ω@100MHz",
+   "X": 160.2,
+   "Y": 91.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "+3V3A"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "BLM18PG221SN1D",
+    "Descripcion": "Ferrita 220 Ω a 100 MHz, 1.4 A, 0603 (filtro de VDDA)",
+    "Datasheet": "https://www.murata.com/en-us/products/productdetail?partno=BLM18PG221SN1D"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/e4c16124-edfe-5049-8119-2c95a4b198b5",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C15",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "1µF",
+   "X": 162.6,
+   "Y": 93.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3A",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R61A105KE15D",
+    "Descripcion": "Condensador cerámico 1µF 10 V X5R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/8d097b2f-42b6-5c04-bdc3-daf176c8d918",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C16",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 164.0,
+   "Y": 93.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3A",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/35b689c5-8d72-50ef-85d2-439e1d80f718",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C17",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 173.5,
+   "Y": 108.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "NRST",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/b717baa9-a83e-56dc-b58f-c3644f300ddc",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 167.4,
+   "Y": 108.4,
+   "rot": 45,
+   "lado": "F",
+   "redes": {
+    "1": "BOOT0",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/038df294-ffe6-5a59-b081-72ef2f3d0bcb",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "SW4",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_B3U-1000P",
+   "valor": "RESET",
+   "X": 173.5,
+   "Y": 106.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "NRST",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Omron",
+    "MPN": "B3U-1000P",
+    "Descripcion": "Pulsador táctil SMD 3.0 × 2.5 mm (reinicio)",
+    "Datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/8cf51956-ac8c-5a57-bf70-25940628d590",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "SW2",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_Omron_B3FS-100xP",
+   "valor": "START",
+   "X": 180.0,
+   "Y": 122.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "BTN_START",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Omron",
+    "MPN": "B3FS-1000P",
+    "Descripcion": "Pulsador táctil SMD 6 × 6 × 3.1 mm (arranque, regla R08)",
+    "Datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/491dc06b-11af-51e5-9ea0-4621cfc819fa",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "SW3",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_Omron_B3FS-100xP",
+   "valor": "CAL",
+   "X": 182.006,
+   "Y": 105.514,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "BTN_CAL",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Omron",
+    "MPN": "B3FS-1000P",
+    "Descripcion": "Pulsador táctil SMD 6 × 6 × 3.1 mm (calibración)",
+    "Datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/992ef825-aed7-52a8-aa54-ed5a9d895a7a",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "D3",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "valor": "OK",
+   "X": 153.5,
+   "Y": 92.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "LED_OK_A"
+   },
+   "campos": {
+    "Fabricante": "Kingbright",
+    "MPN": "APT1608SGC",
+    "Descripcion": "LED verde 0603 (estado)",
+    "Datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/77d63898-8427-50d7-9a89-f6bda7ec4822",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R10",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "1k",
+   "X": 153.5,
+   "Y": 90.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "LED_OK",
+    "2": "LED_OK_A"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-071KL",
+    "Descripcion": "Resistencia 1kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/2a31ff72-84e3-5b22-be36-8ac0940ff1cc",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "D4",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "valor": "ERR",
+   "X": 153.0,
+   "Y": 109.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "LED_ERR_A"
+   },
+   "campos": {
+    "Fabricante": "Kingbright",
+    "MPN": "APT1608EC",
+    "Descripcion": "LED rojo 0603 (falla / batería baja)",
+    "Datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/781b17b3-3d73-57a9-b5dd-3600f822bee2",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R11",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "1k",
+   "X": 153.0,
+   "Y": 110.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "LED_ERR",
+    "2": "LED_ERR_A"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-071KL",
+    "Descripcion": "Resistencia 1kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/a59128c0-ca35-5906-9260-4ab1e2aa5c3c",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "J4",
+   "lib": "Connector_PinHeader_1.27mm",
+   "fp": "PinHeader_2x07_P1.27mm_Vertical",
+   "valor": "STDC14",
+   "X": 166.354,
+   "Y": 114.854,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "3": "+3V3",
+    "4": "SWDIO",
+    "5": "GND",
+    "6": "SWCLK",
+    "7": "GND",
+    "12": "NRST",
+    "13": "UART_RX",
+    "14": "UART_TX",
+    "1": "unconnected-(J4-Pin_1-Pad1)",
+    "2": "unconnected-(J4-Pin_2-Pad2)",
+    "8": "unconnected-(J4-Pin_8-Pad8)",
+    "9": "unconnected-(J4-Pin_9-Pad9)",
+    "10": "unconnected-(J4-Pin_10-Pad10)",
+    "11": "unconnected-(J4-Pin_11-Pad11)"
+   },
+   "campos": {
+    "Fabricante": "Harwin",
+    "MPN": "M50-3500742",
+    "Descripcion": "Conector 2×7 1.27 mm THT para el cable STDC14 del STLINK-V3MINIE (SWD + puerto serie virtual)",
+    "Datasheet": "https://www.harwin.com/products/M50-3500742/"
+   },
+   "en_bom": true,
+   "ruta": "/d0b3148c-3a3e-54a2-adc2-1a69a3406451/e1114273-ad6b-5325-8737-60de07384039",
+   "hoja": "mcu",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "U3",
+   "lib": "Package_SO",
+   "fp": "HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias",
+   "valor": "DRV8833PWPR",
+   "X": 124.0,
+   "Y": 100.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "DRV_SLEEP",
+    "2": "MOT_L_1",
+    "3": "GND",
+    "4": "MOT_L_2",
+    "5": "MOT_R_2",
+    "6": "GND",
+    "7": "MOT_R_1",
+    "8": "DRV_FAULT",
+    "9": "PWM_BIN1",
+    "10": "PWM_BIN2",
+    "11": "DRV_VCP",
+    "12": "VBAT_SW",
+    "13": "GND",
+    "14": "DRV_VINT",
+    "15": "PWM_AIN2",
+    "16": "PWM_AIN1",
+    "17": "GND"
+   },
+   "campos": {
+    "Fabricante": "Texas Instruments",
+    "MPN": "DRV8833PWPR",
+    "Descripcion": "Puente H doble 2.7-10.8 V, 1.5 A RMS por canal (HTSSOP-16 PowerPAD)",
+    "Datasheet": "https://www.ti.com/lit/ds/symlink/drv8833.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/8533f667-b0ca-5b90-a272-8bbe6ffce601",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": "Package_SO.3dshapes/HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm.step",
+   "fijo": false
+  },
+  {
+   "ref": "C20",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "valor": "10µF",
+   "X": 129.2,
+   "Y": 103.8,
+   "rot": 90,
+   "lado": "B",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM21BR61E106KA73L",
+    "Descripcion": "Condensador cerámico 10µF 25 V X5R 0805",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/6d952424-e3fd-5980-be3e-945b5adc8d3e",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C21",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "100nF",
+   "X": 130.2,
+   "Y": 100.3,
+   "rot": 0,
+   "lado": "B",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Descripcion": "Condensador cerámico 100nF 16 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/accaa7f4-0160-553a-9695-8463d418ecf8",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C22",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "10nF",
+   "X": 130.2,
+   "Y": 101.4,
+   "rot": 0,
+   "lado": "B",
+   "redes": {
+    "1": "DRV_VCP",
+    "2": "VBAT_SW"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71H103KA88D",
+    "Descripcion": "Condensador cerámico 10nF 50 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/64eeb15c-1254-5a4e-b627-1acb1184d379",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C23",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "2.2µF",
+   "X": 130.2,
+   "Y": 99.0,
+   "rot": 0,
+   "lado": "B",
+   "redes": {
+    "1": "DRV_VINT",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R60J225ME15D",
+    "Descripcion": "Condensador cerámico 2.2µF 6.3 V X5R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/43733960-c27f-5b11-bb32-9dec265c649f",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R12",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 121.0,
+   "Y": 104.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "DRV_FAULT"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/ce8308a7-9b7c-521f-93ae-f35bb46e27c4",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R13",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100k",
+   "X": 121.0,
+   "Y": 96.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "DRV_SLEEP",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Descripcion": "Resistencia 100kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/d111b6b3-a6c5-5e12-a68a-898f081f5ba4",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "J2",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical",
+   "valor": "ENC_L",
+   "X": 116.5,
+   "Y": 90.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "ENC_L_B",
+    "3": "ENC_L_A",
+    "4": "+3V3",
+    "5": "MOT_L_2",
+    "6": "MOT_L_1",
+    "MP": "GND"
+   },
+   "campos": {
+    "Fabricante": "JST",
+    "MPN": "BM06B-SRSS-TB",
+    "Descripcion": "Conector JST SH 6 pines vertical: motor y encoder izquierdo (cable Pololu #4765)",
+    "Datasheet": "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/841fee27-7a70-502f-8faf-bbab85e26917",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical",
+   "valor": "ENC_R",
+   "X": 116.5,
+   "Y": 110.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "ENC_R_B",
+    "3": "ENC_R_A",
+    "4": "+3V3",
+    "5": "MOT_R_2",
+    "6": "MOT_R_1",
+    "MP": "GND"
+   },
+   "campos": {
+    "Fabricante": "JST",
+    "MPN": "BM06B-SRSS-TB",
+    "Descripcion": "Conector JST SH 6 pines vertical: motor y encoder derecho (cable Pololu #4765)",
+    "Datasheet": "https://www.jst-mfg.com/product/pdf/eng/eSH.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/3c851f4f-b322-5cc6-bdce-98deaf50ce00",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "C24",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "1nF",
+   "X": 121.0,
+   "Y": 92.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_L_A",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71H102KA01D",
+    "Descripcion": "Condensador cerámico 1nF 50 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/769191d0-2331-5049-8c9a-9879a9f98614",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C25",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "1nF",
+   "X": 121.0,
+   "Y": 90.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_L_B",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71H102KA01D",
+    "Descripcion": "Condensador cerámico 1nF 50 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/bbe221a7-b71e-5ec3-bb4b-39968f697ffc",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C26",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "1nF",
+   "X": 121.0,
+   "Y": 108.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_R_A",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71H102KA01D",
+    "Descripcion": "Condensador cerámico 1nF 50 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/4a57dcdd-464f-56c5-b104-d8b50adb8f19",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "C27",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "valor": "1nF",
+   "X": 121.0,
+   "Y": 109.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_R_B",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "Murata",
+    "MPN": "GRM155R71H102KA01D",
+    "Descripcion": "Condensador cerámico 1nF 50 V X7R 0402",
+    "Datasheet": "https://www.murata.com/en-us/products/capacitor/ceramiccapacitor"
+   },
+   "en_bom": true,
+   "ruta": "/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa/0825407c-e2e4-5b45-b403-a186cb647256",
+   "hoja": "motores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "Q3",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23",
+   "valor": "AO3400A",
+   "X": 186.0,
+   "Y": 112.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "EMIT_GATE",
+    "2": "GND",
+    "3": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "Alpha & Omega Semiconductor",
+    "MPN": "AO3400A",
+    "Descripcion": "MOSFET N 30 V 5.7 A SOT-23 (conmuta los 16 emisores, ≈ 0.42 A)",
+    "Datasheet": "https://www.aosmd.com/res/datasheets/AO3400A.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/3f23d457-71d1-5624-90b5-b92117734540",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R14",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100Ω",
+   "X": 182.5,
+   "Y": 112.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "EMIT_G",
+    "2": "EMIT_GATE"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100RL",
+    "Descripcion": "Resistencia 100Ω 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/0aba07a0-b355-500a-af9c-842c24eab216",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "R15",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "100k",
+   "X": 186.0,
+   "Y": 109.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "EMIT_GATE",
+    "2": "GND"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Descripcion": "Resistencia 100kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/fe4708ec-72c4-577d-a3d1-7128733ec704",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "U11",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 201.2191,
+   "Y": 56.9338,
+   "rot": 113.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K1",
+    "3": "S1",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S1",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/53b5054a-e68c-5c85-9741-579748b58e55",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R20",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 196.4914,
+   "Y": 60.1407,
+   "rot": 203.0,
+   "lado": "B",
+   "redes": {
+    "1": "K1",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/67a97440-8154-56cc-a408-4a0a83d303f3",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R21",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 195.6301,
+   "Y": 58.1164,
+   "rot": 23.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S1"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/d1cae046-a562-5b0c-9da1-4c27e67e5ad9",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U12",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 203.3823,
+   "Y": 62.4222,
+   "rot": 110.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K2",
+    "3": "S2",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S2",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/bb9bbbcc-c78e-51c5-8d49-28fe9eb8db18",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R22",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 198.4896,
+   "Y": 65.371,
+   "rot": 200.0,
+   "lado": "B",
+   "redes": {
+    "1": "K2",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/7abfa58b-4f48-52f5-a62d-5dfe45932847",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R23",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 197.738,
+   "Y": 63.3034,
+   "rot": 20.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S2"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/9029f2c3-4a7c-5425-8feb-df8fbc3a07db",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U13",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 205.2482,
+   "Y": 68.0186,
+   "rot": 106.9,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K3",
+    "3": "S3",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S3",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/6fe69998-c43b-5b6f-8ad5-1958849ef417",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R24",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 200.2044,
+   "Y": 70.7009,
+   "rot": 196.9,
+   "lado": "B",
+   "redes": {
+    "1": "K3",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/8b62d254-dfb7-5300-93a2-5d3ed0ce21cc",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R25",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 199.5648,
+   "Y": 68.596,
+   "rot": 16.9,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S3"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/72757cd0-0743-584a-9a44-b0c374aa9e42",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U14",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 206.8114,
+   "Y": 73.707,
+   "rot": 103.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K4",
+    "3": "S4",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S4",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/cb90187b-eb97-50f4-a808-1f90f37563de",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R26",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 201.631,
+   "Y": 76.1151,
+   "rot": 193.8,
+   "lado": "B",
+   "redes": {
+    "1": "K4",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/b5b1bb3c-3fc2-52df-9e33-2b116806aba6",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R27",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 201.1052,
+   "Y": 73.9789,
+   "rot": 13.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S4"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/d47f9634-e91a-5c04-a073-1d9d0f5629c7",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U15",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 208.0674,
+   "Y": 79.4711,
+   "rot": 100.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K5",
+    "3": "S5",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S5",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/4e5a6e77-2e20-5141-b0f0-db8db5eacfe0",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R28",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 202.7654,
+   "Y": 81.5979,
+   "rot": 190.8,
+   "lado": "B",
+   "redes": {
+    "1": "K5",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/8ccffcc8-e166-5ab6-8037-9a79af785666",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R29",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 202.3548,
+   "Y": 79.4366,
+   "rot": 10.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S5"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/7a7e0fba-e464-5d63-b7e0-1c70b7221184",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U16",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.0126,
+   "Y": 85.2942,
+   "rot": 97.7,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K6",
+    "3": "S6",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S6",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/8398372a-8145-5b97-ad52-7b398b12ff23",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R30",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 203.6041,
+   "Y": 87.1337,
+   "rot": 187.7,
+   "lado": "B",
+   "redes": {
+    "1": "K6",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/c6d32835-8ec2-5453-9bb0-90c3135b305a",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R31",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 203.31,
+   "Y": 84.9535,
+   "rot": 7.7,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S6"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/fbaa2fcb-4f16-5d4d-8620-a85e57a7133a",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U17",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.6442,
+   "Y": 91.1595,
+   "rot": 94.6,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K7",
+    "3": "S7",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S7",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/27190479-7657-5c8f-a5d4-6d9d9766365b",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R32",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 204.1449,
+   "Y": 92.7065,
+   "rot": 184.6,
+   "lado": "B",
+   "redes": {
+    "1": "K7",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/df426d08-0184-53aa-a721-5f6dd7026e81",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R33",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 203.9681,
+   "Y": 90.5136,
+   "rot": 4.6,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S7"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/5bb5ae5c-38eb-51d9-a651-a85a864a3fe3",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U18",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.9604,
+   "Y": 97.0504,
+   "rot": 91.5,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K8",
+    "3": "S8",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S8",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/683631cc-273b-5775-9ef7-4c440d9a2b7a",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R34",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 204.3862,
+   "Y": 98.3003,
+   "rot": 181.5,
+   "lado": "B",
+   "redes": {
+    "1": "K8",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/4bf3af87-36b4-57ed-b443-ba4e4cacdeec",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R35",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 204.3272,
+   "Y": 96.1011,
+   "rot": 1.5,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S8"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/8075f4f5-4c96-5c93-a686-58eadba1bea2",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U19",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.9604,
+   "Y": 102.9496,
+   "rot": 88.5,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K9",
+    "3": "S9",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S9",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/bf8db07d-52bc-55df-aa62-64c0e7decebd",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R36",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 204.3272,
+   "Y": 103.8989,
+   "rot": 178.5,
+   "lado": "B",
+   "redes": {
+    "1": "K9",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/41134461-5290-5927-9840-032c5164bc52",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R37",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 204.3862,
+   "Y": 101.6997,
+   "rot": -1.5,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S9"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/c71bb270-bfbe-5a96-9ec4-c679546b0d30",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U20",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.6442,
+   "Y": 108.8405,
+   "rot": 85.4,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K10",
+    "3": "S10",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S10",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/f980a572-b381-56fa-872b-9446be0e9663",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R38",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 203.9681,
+   "Y": 109.4864,
+   "rot": 175.4,
+   "lado": "B",
+   "redes": {
+    "1": "K10",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/61d8a08e-5059-553a-8e7d-4483e6c52830",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R39",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 204.1449,
+   "Y": 107.2935,
+   "rot": -4.6,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S10"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/224e9971-ce3b-5c6c-9865-6ed8b506c392",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U21",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 209.0126,
+   "Y": 114.7058,
+   "rot": 82.3,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K11",
+    "3": "S11",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S11",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/2ba695b2-e82f-5e4f-b8ed-0070cce47e01",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R40",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 203.31,
+   "Y": 115.0465,
+   "rot": 172.3,
+   "lado": "B",
+   "redes": {
+    "1": "K11",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/413ca1de-8744-53a3-b285-2507004e66e2",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R41",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 203.6041,
+   "Y": 112.8663,
+   "rot": -7.7,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S11"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/677d4c27-8ee0-5cc9-af1f-b9eb84bf8acd",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U22",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 208.0674,
+   "Y": 120.5289,
+   "rot": 79.2,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K12",
+    "3": "S12",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S12",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/ebc28738-af9e-5d4d-a29e-2bc601ada212",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R42",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 202.3548,
+   "Y": 120.5634,
+   "rot": 169.2,
+   "lado": "B",
+   "redes": {
+    "1": "K12",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/027fe4dd-17d7-59bd-a17c-f2f63ce629c0",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R43",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 202.7654,
+   "Y": 118.4021,
+   "rot": -10.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S12"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/ba7372d7-6eb2-5b59-ac17-06ecad2694cb",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U23",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 206.8114,
+   "Y": 126.293,
+   "rot": 76.2,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K13",
+    "3": "S13",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S13",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/8885fb2e-b57c-520a-920c-2c029a938f62",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R44",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 201.1052,
+   "Y": 126.0211,
+   "rot": 166.2,
+   "lado": "B",
+   "redes": {
+    "1": "K13",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/28b684e5-5050-5366-b053-3dbe4f10233a",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R45",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 201.631,
+   "Y": 123.8849,
+   "rot": -13.8,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S13"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/192d03c8-ead8-5826-b661-5be0ee0cc4b1",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U24",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 205.2482,
+   "Y": 131.9814,
+   "rot": 73.1,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K14",
+    "3": "S14",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S14",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/9db5f3ed-d0d9-586a-98ba-c772da05d097",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R46",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 199.5648,
+   "Y": 131.404,
+   "rot": 163.1,
+   "lado": "B",
+   "redes": {
+    "1": "K14",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/25a9919b-46e3-5107-bb07-1ad746dab1b7",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R47",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 200.2044,
+   "Y": 129.2991,
+   "rot": -16.9,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S14"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/621244a9-b56e-595f-bb9c-a40fd9883b6d",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U25",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 203.3823,
+   "Y": 137.5778,
+   "rot": 70.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K15",
+    "3": "S15",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S15",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/5a418ef7-092e-5fe9-8c85-4003d1b3715e",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R48",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 197.738,
+   "Y": 136.6966,
+   "rot": 160.0,
+   "lado": "B",
+   "redes": {
+    "1": "K15",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/0906e69e-9df7-5d2d-8e3f-c766042b86cc",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R49",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 198.4896,
+   "Y": 134.629,
+   "rot": -20.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S15"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/c81e6d79-9438-5d32-a1ed-93493d410a35",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "U26",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "valor": "QRE1113GR",
+   "X": 201.2191,
+   "Y": 143.0662,
+   "rot": 67.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "K16",
+    "3": "S16",
+    "4": "GND"
+   },
+   "campos": {
+    "Fabricante": "onsemi",
+    "MPN": "QRE1113GR",
+    "Descripcion": "Sensor reflectivo IR (LED 940 nm + fototransistor), canal S16",
+    "Datasheet": "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/94c1ad4e-e720-51e8-86d9-959843bd4a31",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R50",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "valor": "75Ω",
+   "X": 195.6301,
+   "Y": 141.8836,
+   "rot": 157.0,
+   "lado": "B",
+   "redes": {
+    "1": "K16",
+    "2": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0603FR-0775RL",
+    "Descripcion": "Resistencia 75Ω 1 % 0603",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/1c6b3a23-2eb7-5baf-a8e8-2b5c8df4b9dc",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "R51",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "valor": "10k",
+   "X": 196.4914,
+   "Y": 139.8593,
+   "rot": -23.0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "S16"
+   },
+   "campos": {
+    "Fabricante": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Descripcion": "Resistencia 10kΩ 1 % 0402",
+    "Datasheet": "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+   },
+   "en_bom": true,
+   "ruta": "/2952d349-a9aa-585a-9097-419d58cd28bd/07fc6d5a-6d23-5982-a99f-5fb854a8868f",
+   "hoja": "sensores",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H1",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 110.0,
+   "Y": 84.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/e2fae5a6-0fa3-55fc-85dc-e789a9df5f08",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 110.0,
+   "Y": 66.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/a694c7e7-dfbd-5861-b683-1e1d2e7e7ad8",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H3",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 90.0,
+   "Y": 84.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/b63d3b7a-70a1-5f6c-b5e6-552680256aef",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H4",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 90.0,
+   "Y": 66.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/3620bfbe-fb3b-5c49-a69d-a50b86adf40f",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H5",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 110.0,
+   "Y": 116.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/fc10d43a-af17-51c7-8764-c325d8a8987a",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H6",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 110.0,
+   "Y": 134.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/13eef428-77ce-578e-9b2c-87add41006e0",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H7",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 90.0,
+   "Y": 116.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/f94717f1-62d2-5966-9788-848411e22233",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H8",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 90.0,
+   "Y": 134.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (soporte de motor)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/0f46e4ea-90e4-574c-9bf4-2ad4b34c9289",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H20",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 192.0,
+   "Y": 94.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (rueda loca)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/26c9bc1b-0890-5b9a-a5ba-9f443853bea8",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "H21",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "valor": "M2",
+   "X": 192.0,
+   "Y": 106.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Agujero M2 sin metalizar (rueda loca)"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/1979c269-4d53-5e68-98a0-b77435faffd1",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": true
+  },
+  {
+   "ref": "TP1",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "VBAT_SW",
+   "X": 127.0,
+   "Y": 112.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba VBAT_SW"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/0ddcc99b-c32f-5a39-a015-408722f9d3ad",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP2",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "+3V3",
+   "X": 157.5,
+   "Y": 117.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba +3V3"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/1122e330-5b0f-590f-bdc4-b73edfe0e27a",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP3",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "GND",
+   "X": 127.0,
+   "Y": 88.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba GND"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/0b00ac8c-1ad7-592a-b73f-02e883cf35fc",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP4",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "GND",
+   "X": 175.0,
+   "Y": 94.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba GND"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/1730c525-fc2b-593d-99a2-708014f409c2",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP5",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "+3V3A",
+   "X": 166.0,
+   "Y": 91.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3A"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba +3V3A"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/35443d8a-c4a0-55c6-b2ff-227caaf37050",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP6",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "EMIT_K",
+   "X": 189.0,
+   "Y": 109.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "EMIT_K"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba EMIT_K"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/7e6203bf-d972-54e4-bed7-51dd4fe1c390",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP7",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "S8",
+   "X": 189.0,
+   "Y": 115.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "S8"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba S8"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/10c39996-e438-579e-acce-b4873dae14d6",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP8",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "ENC_L_A",
+   "X": 124.0,
+   "Y": 88.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_L_A"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba ENC_L_A"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/9c45f694-2bfa-5d2e-acc8-0d238a555350",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP9",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "ENC_R_A",
+   "X": 124.0,
+   "Y": 112.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_R_A"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba ENC_R_A"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/9a89d082-ac8a-5487-a42c-c08062c7a483",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP10",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "PWM_AIN1",
+   "X": 131.0,
+   "Y": 95.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "PWM_AIN1"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba PWM_AIN1"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/12cd915c-3ea7-52a8-a9a5-884649fa6b06",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP11",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "VBAT_MED",
+   "X": 153.0,
+   "Y": 106.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_MED"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba VBAT_MED"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/f12a0bd1-8ffa-55ac-88c1-4f47e20c091d",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  },
+  {
+   "ref": "TP12",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "valor": "UART_TX",
+   "X": 172.0,
+   "Y": 111.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "UART_TX"
+   },
+   "campos": {
+    "Fabricante": "—",
+    "MPN": "—",
+    "Descripcion": "Punto de prueba UART_TX"
+   },
+   "en_bom": false,
+   "ruta": "/377b0dc6-4be9-512b-bad5-4ee99abaeaed/7e6d4322-11fb-5d77-bb44-dea6317f864d",
+   "hoja": "mecanica",
+   "modelo3d": null,
+   "modelo3d_oficial": null,
+   "fijo": false
+  }
+ ],
+ "textos": [
+  {
+   "texto": "BAT 2S",
+   "X": 122.0,
+   "Y": 128.82,
+   "lado": "F",
+   "tam": 1.0,
+   "rot": 0
+  },
+  {
+   "texto": "ENC IZQ",
+   "X": 116.5,
+   "Y": 83.942,
+   "lado": "F",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "ENC DER",
+   "X": 116.5,
+   "Y": 103.942,
+   "lado": "F",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "ON/OFF",
+   "X": 147.0,
+   "Y": 121.942,
+   "lado": "F",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "START",
+   "X": 180.0,
+   "Y": 117.442,
+   "lado": "F",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "CAL",
+   "X": 182.006,
+   "Y": 100.956,
+   "lado": "F",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "RST",
+   "X": 173.5,
+   "Y": 103.255,
+   "lado": "F",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "SWD STDC14",
+   "X": 170.164,
+   "Y": 117.519,
+   "lado": "F",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "3V3",
+   "X": 155.0,
+   "Y": 116.175,
+   "lado": "F",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "OK",
+   "X": 156.375,
+   "Y": 92.0,
+   "lado": "F",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "ERR",
+   "X": 149.225,
+   "Y": 109.0,
+   "lado": "F",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "CIRCUIT FORGE SPEED FOLLOWER v1.0",
+   "X": 156.0,
+   "Y": 76.0,
+   "lado": "F",
+   "tam": 1.1,
+   "rot": 0
+  },
+  {
+   "texto": "RMX2026  4 CAPAS 1.6 mm",
+   "X": 156.0,
+   "Y": 73.0,
+   "lado": "F",
+   "tam": 1.0,
+   "rot": 0
+  },
+  {
+   "texto": "S1",
+   "X": 191.0972,
+   "Y": 61.2404,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S2",
+   "X": 193.0441,
+   "Y": 66.18,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S3",
+   "X": 194.7234,
+   "Y": 71.2168,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S4",
+   "X": 196.1303,
+   "Y": 76.3363,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S5",
+   "X": 197.2607,
+   "Y": 81.524,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S6",
+   "X": 198.1113,
+   "Y": 86.7647,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S7",
+   "X": 198.6798,
+   "Y": 92.0436,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S8",
+   "X": 198.9644,
+   "Y": 97.3453,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S9",
+   "X": 198.9644,
+   "Y": 102.6547,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S10",
+   "X": 198.6798,
+   "Y": 107.9564,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S11",
+   "X": 198.1113,
+   "Y": 113.2353,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S12",
+   "X": 197.2607,
+   "Y": 118.476,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S13",
+   "X": 196.1303,
+   "Y": 123.6637,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S14",
+   "X": 194.7234,
+   "Y": 128.7832,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S15",
+   "X": 193.0441,
+   "Y": 133.82,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "S16",
+   "X": 191.0972,
+   "Y": 138.7596,
+   "lado": "B",
+   "tam": 0.8,
+   "rot": 0
+  },
+  {
+   "texto": "RUEDA LOCA 1/4 in",
+   "X": 180.0,
+   "Y": 92.0,
+   "lado": "B",
+   "tam": 0.9,
+   "rot": 0
+  },
+  {
+   "texto": "CARA INFERIOR: 16 SENSORES QRE1113GR",
+   "X": 160.0,
+   "Y": 88.0,
+   "lado": "B",
+   "tam": 1.2,
+   "rot": 0
+  }
+ ],
+ "espesor": 1.6,
+ "r_sensores": 110.0
+}

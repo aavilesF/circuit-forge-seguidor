@@ -1,4 +1,4 @@
-# Simulación dinámica — Fase 2
+# Simulación dinámica — Fases 2, 3 y final
 
 Fecha: 1 nov 2026 · Rama `engineering/speed-follower`.
 Etiquetas: **[Simulado]** sale del simulador dinámico · **[Calculado]** · **[Supuesto]** · **[Pendiente de medición]**. Nada de esto se ha probado en hardware.
@@ -178,3 +178,30 @@ La planta es la misma (no se cambió el modelo físico). Cambian los datos de la
 ![Candidatos](../sim/resultados/fase3/F1_candidatos.png)
 ![Trayectorias Fase 3](../sim/resultados/fase3/F3_trayectorias.png)
 ![Robustez](../sim/resultados/fase3/F2_robustez.png)
+
+## 6. Fase final: configuración definitiva (`sim/fase_final.py`, `sim/resultados/final/`)
+
+**Cambios del modelo** (la física de la planta es la misma de la Fase 2):
+- Masa, CG e inercia desde `componentes` del YAML, que ahora copia masas y posiciones del **CAD** (113.0 g, x_CG 20.1 mm,
+  h_CG 15.4 mm, f_motriz 0.78; `hardware/mechanical/verificar_mecanica.py --actualizar-yaml`).
+- Barra `arco16q`: 16 QRE1113GR en arco de radio L = 110 mm, paso 5.9 mm, **con resta de luz ambiente**: la lectura dura
+  2 barridos + el establecimiento del fototransistor (t_emisor 200 µs [S]); el simulador usa 478 µs por lectura
+  (conservador frente a los ≈ 225 µs del firmware con los dos ADC en paralelo).
+- Encoders con **cuantización real** (12 CPR × 9.96 = 119.5 cuentas por vuelta de rueda): la velocidad medida es la
+  diferencia de cuentas entre lecturas. Habilita la fuente de curvatura 3 (C3e: curvatura medida con los encoders).
+- Plantas de incertidumbre del motor (J_rotor × 0.5-2, bloqueo × 0.8-1.2, μ 0.7) para elegir controles que no dependan
+  del valor exacto de los datos que el fabricante no publica.
+
+**Etapas:**
+
+| Etapa | Qué hace | Resultado |
+|---|---|---|
+| Z | Ajuste de C3m para cada motor candidato (200 salidas) | Pololu 10:1: 5.39 s; 15:1: 5.56 s; Chihai i10: 5.03 s con datos supuestos |
+| R | Sensibilidad de cada motor a sus datos no publicados | Chihai: 75 % con bloqueo de 0.8 A; 15:1: 70.8 % con J_rotor × 0.5; 10:1: 90 % con J_rotor × 0.5 |
+| E | Ajuste robusto de C3m (curvatura del modelo) y C3e (de los encoders) sobre 8 plantas; barrido de v_max | `E_fuente_curvatura.csv` |
+| S | Elección por tiempo esperado medio sobre 6 plantas | **C3m v_max 0.8165** (5.81 s nominal, peor caso 98.3 %); **modo seguro C3e v_max 0.6327** (7.16 s, 100 % en las 6) |
+| F | Validación del control de competencia con 17 escenarios (masas del CAD) | 100 % nominal (200 salidas, 5.81 s); único caso bajo el criterio: CG 10 mm adelante (80 %) |
+| G | Modo seguro con las masas del CAD y tolerancia de CG de ambos controles | `G_modo_seguro.csv` (resumen en `VALIDACION_FINAL.md` §3) |
+
+Robustez completa: [AUDITORIA_ROBUSTEZ.md](AUDITORIA_ROBUSTEZ.md). Comparación firmware = simulador (C2, C3m, C3g, C3e y
+estimación de la línea): diferencia ≤ 4.3 × 10⁻⁶ (`pruebas/ejecutar_todo.sh`, paso 4).

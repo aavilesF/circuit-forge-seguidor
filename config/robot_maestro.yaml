@@ -57,15 +57,15 @@ mecanica:                         # [D] disposición definitiva (hardware/geomet
   largo_reductora: 9.0            # [F] diagrama 0J949
   largo_motor: 15.4               # [F] HPCB
   largo_encoder: 5.0              # [F] #4760: sobresale ≈ 5 mm de la tapa
-  encoder_tarjeta: [11.6, 14.2]   # [F] #4760: 11.6 × 14.2 mm, 4.2 mm fuera de la sección del motor (hacia abajo)
+  encoder_tarjeta: [11.6, 12.8]   # [F] #4760: ancho 11.6 mm; sobresale 2.8 mm de la sección de 10 mm (hacia abajo)
   soporte_ancho_x: 24.0           # [D] base del soporte de motor (x ±12)
   agujeros_soporte: [[10.0, 16.0], [10.0, 34.0], [-10.0, 16.0], [-10.0, 34.0]]   # [D] (x, |y|) M2, por motor
   bateria_dim: [16.0, 61.0, 15.0] # [F-vendedor] Tattu 450 mAh 2S "long": x × y × z
   bola_diametro: 6.35             # [D] bola de acero al cromo de 1/4 in (ISO 3290 G25) de la rueda loca impresa
   agujeros_rueda_loca: [[92.0, 6.0], [92.0, -6.0]]
-  contorno: {x_trasero: -12.0, y_trasero: 37.0, x_hombro: 20.0, x_cuello: 32.0, y_cuello: 30.0, x_cuello_fin: 80.0,
-             y_max: 45.7, r_exterior: 114.5}
-  r_resistencias: 102.6           # [D] radio de las resistencias de cada sensor (cara inferior)
+  contorno: {x_trasero: -14.0, y_trasero: 37.0, x_hombro: 20.0, x_cuello: 32.0, y_cuello: 30.0, x_cuello_fin: 80.0,
+             y_max: 46.0, r_exterior: 116.0}
+  r_resistencias: 104.4           # [D] radio de las resistencias de cada sensor (cara inferior, radiales)
 
 traccion:
   mu: 0.80                        # [S] llanta-fórmica; MEDIR (M1)
@@ -94,15 +94,15 @@ bateria:
 # Valores de la disposición definitiva; hardware/mechanical/verificar_mecanica.py los recalcula desde el CAD y la PCB
 # y falla si difieren (masa ±3 %, x ±2 mm). par: true = la masa se reparte en ±y. Iz_propio: inercia propia (kg·m²).
 componentes:                      # masa kg, x/y/z m; dim = [largo en x, ancho en y] m
-  motores:     {masa: 0.0204, x: 0.000, y: 0.0223, z: 0.016, par: true, dim: [0.012, 0.029], origen: "[F] 2 × (9.5 g motor + 0.7 g encoder #4761); la masa sigue al motor elegido"}
-  llantas:     {masa: 0.0062, x: 0.000, y: 0.0425, z: 0.016, par: true, dim: [0.032, 0.007], origen: "[F] Pololu #1087, 0.11 oz c/u"}
-  bateria:     {masa: 0.0284, x: 0.000, y: 0.000, z: 0.030, dim: [0.016, 0.061], origen: "[F-vendedor] Tattu 450 mAh 2S, 28.4 g (la tabla del vendedor dice 37 g ±20: se prueba +10 g en la auditoría)"}
-  pcb:         {masa: 0.0290, x: 0.046, y: 0.000, z: 0.0053, Iz_propio: 4.0e-5, origen: "[E] FR-4 4 capas 1.6 mm, 0.39 g/cm² × área del contorno (generador de la PCB)"}
-  electronica: {masa: 0.0060, x: 0.050, y: 0.000, z: 0.0068, origen: "[E] componentes de la PCBA (suma de la BOM)"}
-  impresos:    {masa: 0.0120, x: 0.000, y: 0.000, z: 0.016, dim: [0.016, 0.075], origen: "[E] soportes de motor, tapas, bandeja y retén de batería en PA12 (volumen CAD × 1.01 g/cm³)"}
-  rueda_loca:  {masa: 0.0050, x: 0.092, y: 0.000, z: 0.009, origen: "[F] Pololu #951, 4 g + calza impresa"}
-  tornilleria: {masa: 0.0030, x: 0.030, y: 0.000, z: 0.010, origen: "[E] tornillos y tuercas M2"}
-  cables:      {masa: 0.0020, x: 0.015, y: 0.000, z: 0.015, origen: "[E] 2 cables Pololu #4765 (10 cm) + cables de la batería"}
+  motores:     {masa: 0.0204, x: -0.0000, y: 0.0237, z: 0.0158, par: true, dim: [0.012, 0.029], origen: "[F] 2 × (9.5 g motor #3048 + 0.7 g encoder #4760); posición del CAD (hardware/mechanical/propiedades_masa.json)"}
+  llantas:     {masa: 0.0062, x: -0.0000, y: 0.0425, z: 0.0160, par: true, dim: [0.032, 0.007], origen: "[F] Pololu #1087, 0.11 oz c/u; posición del CAD"}
+  bateria:     {masa: 0.0284, x: 0.0000, y: 0.0000, z: 0.0317, dim: [0.016, 0.061], origen: "[F-vendedor] Tattu 450 mAh 2S, 28.4 g (la tabla del vendedor dice 37 g ±20: se prueba +10 g en la validación); altura del CAD (sobre los soportes)"}
+  pcb:         {masa: 0.0351, x: 0.0515, y: 0.0000, z: 0.0053, Iz_propio: 4.0e-5, origen: "[E] FR-4 4 capas 1.6 mm, 0.39 g/cm² × área del contorno real menos el agujero de la bola; CG del contorno (CAD)"}
+  electronica: {masa: 0.0048, x: 0.0504, y: 0.0153, z: 0.0065, origen: "[E] componentes de la PCBA: suma de masas unitarias de la BOM en la posición de cada huella (masa_componentes.json)"}
+  impresos:    {masa: 0.0086, x: -0.0000, y: 0.0249, z: 0.0116, dim: [0.024, 0.0224], origen: "[CAD] 2 bases + 2 tapas de los soportes de motor en PA12 MJF (volumen CAD × 1.01 g/cm³)"}
+  rueda_loca:  {masa: 0.0014, x: 0.0920, y: 0.0000, z: 0.0035, origen: "[CAD] carcasa + tapa PA12 (volumen CAD) + bola de acero Ø 6.35 mm (1.05 g [E])"}
+  tornilleria: {masa: 0.0049, x: 0.0148, y: 0.0220, z: 0.0081, origen: "[E] 8 × M2×12 + 2 × M2×8 + 10 tuercas M2 (masas ISO estimadas), posiciones del CAD"}
+  cables:      {masa: 0.0032, x: 0.0063, y: 0.0000, z: 0.0163, origen: "[E] 2 cables Pololu #4765 (10 cm) + 2 piezas de Dual Lock"}
 
 motores:
   # rpm, par e I de bloqueo a V_nom; relación exacta; J_rotor del motor sin reductora.
@@ -236,6 +236,17 @@ control:                          # parámetros de los controladores; C3m es el 
   C3m_ga12: {v_max: 0.8089, a_lat: 7.2024, a_lon: 2.0, k_pp: 1.2222, kp: 38.5776, kd: 3.1796, tau_d: 0.004, tau_k: 0.0191, fuente_k: modelo, piso: -0.1868}   # [O] respaldo si se usa el GA12-N20 6 V local
   C3e: {v_max: 0.6327, a_lat: 4.9703, a_lon: 4.3242, k_pp: 1.1744, kp: 33.6163, kd: 0.2319, tau_d: 0.004, tau_k: 0.0214, fuente_k: encoder, piso: -0.3905}   # [O] VIGENTE: MODO SEGURO (100 % en las 6 plantas, E_eleccion.json)
   C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
+
+firmware:                         # [D] parámetros del firmware STM32 (firmware/config_maestra.h)
+  uart_baudios: 115200
+  t_calibracion_max: 10.0         # s (regla C03: 15 s para calibrar y colocar)
+  rango_cal_min: 150              # cuentas ADC blanco-negro mínimas por sensor para aceptar la calibración
+  invertir_motor_izq: false       # [S] se confirma en la prueba de giro del manual de ensamblaje (paso E7)
+  invertir_motor_der: true        # [S] los motores van en espejo: con el mismo cable uno gira al revés
+  invertir_encoder_izq: false     # [S] idem (paso E7)
+  invertir_encoder_der: true      # [S]
+  t_bloqueo: 0.30                 # s con ciclo > 0.5 y rueda sin girar (encoder) = motor trabado: se detiene
+  v_bateria_critica: 6.4          # V (3.2 V por celda) sostenidos 0.5 s: parada
 
 giroscopio:
   ruido: 0.02                     # [S] rad/s RMS

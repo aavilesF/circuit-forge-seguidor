@@ -1,0 +1,30 @@
+# Registro de compilación real del firmware (generado por: make clean && make)
+# fecha: 2026-11-02T07:45Z
+arm-none-eabi-gcc (15:13.2.rel1-2) 13.2.1 20231009
+mkdir -p build
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Werror -Wno-missing-field-initializers -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -c src/main.cpp -o build/main.cpp.o
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Werror -Wno-missing-field-initializers -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -c src/hw.cpp -o build/hw.cpp.o
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Werror -Wno-missing-field-initializers -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -c ../logica/sf_logica.cpp -o build/sf_logica.cpp.o
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Werror -Wno-missing-field-initializers -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -c ../logica/estados.cpp -o build/estados.cpp.o
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Werror -Wno-missing-field-initializers -std=c++17 -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -c ../logica/posicion.cpp -o build/posicion.cpp.o
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32G431xx -Isrc -I../logica -I.. -Ivendor/cmsis_core -Ivendor/cmsis_device_g4 -O2 -g3 -ffunction-sections -fdata-sections -fsingle-precision-constant -c vendor/cmsis_device_g4/system_stm32g4xx.c -o build/system_stm32g4xx.c.o
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c vendor/cmsis_device_g4/startup_stm32g431xx.s -o build/startup_stm32g431xx.s.o
+arm-none-eabi-g++ build/main.cpp.o build/hw.cpp.o build/sf_logica.cpp.o build/estados.cpp.o build/posicion.cpp.o build/system_stm32g4xx.c.o build/startup_stm32g431xx.s.o -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -TSTM32G431CBTX_FLASH.ld -Wl,--gc-sections -Wl,-Map=build/speed_follower.map -Wl,--print-memory-usage --specs=nano.specs --specs=nosys.specs -nostartfiles -Wl,--no-warn-rwx-segments -lm -o build/speed_follower.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       16228 B       126 KB     12.58%
+           PARAM:           0 B         2 KB      0.00%
+             RAM:        4704 B        22 KB     20.88%
+arm-none-eabi-objcopy -O ihex build/speed_follower.elf build/speed_follower.hex
+arm-none-eabi-objcopy -O binary build/speed_follower.elf build/speed_follower.bin
+arm-none-eabi-size build/speed_follower.elf
+   text	   data	    bss	    dec	    hex	filename
+  16100	     88	   4620	  20808	   5148	build/speed_follower.elf
+
+# Vectores resueltos (arm-none-eabi-nm):
+080038d4 T Default_Handler
+08003884 W Reset_Handler
+08002e08 T SysTick_Handler
+08002e18 T TIM6_DAC_IRQHandler
+08002e38 T USART1_IRQHandler
+20005800 R _estack
+08000000 R g_pfnVectors

@@ -4808,7 +4808,7 @@
 		)
 		(uuid "0cca9ad8-2187-5cbb-a28d-08dc3e9a4080")
 	)
-	(global_label "PWM_BIN1"
+	(global_label "PWM_BIN2"
 		(shape passive)
 		(at 87.63 78.74 0)
 		(fields_autoplaced yes)
@@ -4840,7 +4840,7 @@
 		)
 		(uuid "ad26f5ef-c514-5f53-a844-c7a3e6ccefcb")
 	)
-	(global_label "PWM_BIN2"
+	(global_label "PWM_BIN1"
 		(shape passive)
 		(at 87.63 81.28 0)
 		(fields_autoplaced yes)
