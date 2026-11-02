@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "filename": "speed_follower.kicad_pro",
+    "version": 3
+  },
+  "board": {},
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "sheets": [
+    [
+      "ef61ae34-8318-51ab-baf4-43c7f17ab7e6",
+      "Root"
+    ],
+    [
+      "e4ee4140-96cf-53bb-9d05-39c0995165c8",
+      "Alimentaci\u00f3n y protecciones"
+    ],
+    [
+      "d0b3148c-3a3e-54a2-adc2-1a69a3406451",
+      "MCU, programaci\u00f3n e interfaz"
+    ],
+    [
+      "683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa",
+      "Puente H y encoders"
+    ],
+    [
+      "2952d349-a9aa-585a-9097-419d58cd28bd",
+      "Barra de 16 sensores"
+    ],
+    [
+      "377b0dc6-4be9-512b-bad5-4ee99abaeaed",
+      "Agujeros y puntos de prueba"
+    ]
+  ],
+  "text_variables": {},
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  }
+}

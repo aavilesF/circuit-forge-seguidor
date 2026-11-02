@@ -75,22 +75,28 @@ def sensores(cfg: dict, clave: str, L: float):
 
 
 def masa_y_cg(cfg: dict, succion: bool, motor_clave: str | None = None, barra_clave: str | None = None):
+    """Masa, x y z del CG e inercia de guiñada desde `componentes` (posiciones y medidas de la disposición).
+    par: true reparte la masa en ±y; dim [lx, ly] agrega la inercia de una placa; Iz_propio la sustituye."""
     comp = {k: dict(v) for k, v in cfg["componentes"].items()}
-    if motor_clave:                       # la masa de motores y barra sigue a la selección
-        comp["motores"]["masa"] = 2 * cfg["motores"][motor_clave]["masa"]
-    if barra_clave and "masa" in cfg["barras"][barra_clave]:
+    if motor_clave and "motores" in comp:  # la masa de motores (con encoder) sigue a la selección
+        mm = cfg["motores"][motor_clave]
+        comp["motores"]["masa"] = 2 * (mm["masa"] + mm.get("masa_encoder", 0.0))
+    if barra_clave and "masa" in cfg["barras"][barra_clave] and "barra_sensores" in comp:
         comp["barra_sensores"]["masa"] = cfg["barras"][barra_clave]["masa"]
     if succion:
         comp["succion"] = dict(masa=cfg["succion"]["masa"], x=cfg["geometria"]["x_succion"], z=0.015)
     m = sum(c["masa"] for c in comp.values())
     x = sum(c["masa"] * c["x"] for c in comp.values()) / m
     z = sum(c["masa"] * c["z"] for c in comp.values()) / m
-    # inercia de guiñada: masas puntuales + chasis como placa de 120 x 60 mm
-    Iz = sum(c["masa"] * (c["x"] - x) ** 2 for c in comp.values())
-    Iz += comp["motores"]["masa"] * (0.03 ** 2)          # motores a ±30 mm del centro (eje y)
-    Iz += comp["llantas"]["masa"] * (cfg["geometria"]["W_via"] / 2) ** 2
-    Iz += comp["chasis"]["masa"] * (0.12 ** 2 + 0.06 ** 2) / 12
-    Iz += comp["bateria"]["masa"] * (0.045 ** 2 + 0.02 ** 2) / 12
+    Iz = 0.0
+    for c in comp.values():
+        y = c.get("y", 0.0)
+        Iz += c["masa"] * ((c["x"] - x) ** 2 + y ** 2)
+        if "Iz_propio" in c:
+            Iz += c["Iz_propio"]
+        elif "dim" in c:
+            lx, ly = c["dim"]
+            Iz += c["masa"] * (lx ** 2 + ly ** 2) / 12
     return m, x, z, Iz
 
 
@@ -135,6 +141,7 @@ class Config:
     giro_ruido: float = 0.02
     giro_sesgo: float = 0.03
     ancho_linea: float = 0.025
+    cpr_rueda: float = 0.0          # cuentas del encoder por vuelta de rueda (0 = sin encoder)
     prm: dict = field(default_factory=dict, compare=False)
 
     @property
@@ -163,7 +170,9 @@ def construir(cfg: dict | None = None, **cambios) -> Config:
             op[k] = cfg["barras"][arq["barra"]][k]
     mc = cfg["mcu"][arq["mcu"]]
     n = len(sx)
-    t_lect = ((2 * (n * mc["t_canal"] + op["t_emisor"])) if op["resta_ambiente"] else n * mc["t_canal"]) + mc["t_calculo"]
+    n_conv = math.ceil(n / mc.get("n_adc", 1))      # conversiones en serie por ADC
+    t_lect = ((2 * (n_conv * mc["t_canal"] + op["t_emisor"])) if op["resta_ambiente"] else n_conv * mc["t_canal"]) \
+        + mc["t_calculo"]
     r = geo["D_llanta"] / 2
     J = cfg["J_rotor"] * mot.G ** 2 + cfg["J_llanta"]
     prm = dict(cfg["control"][arq["control"]])
@@ -181,6 +190,7 @@ def construir(cfg: dict | None = None, **cambios) -> Config:
         t_lectura=t_lect, T_ctrl=max(cfg["control"]["T_min"], t_lect),
         t_perdida=cfg["control"]["t_perdida"], I_ocp=cfg["conductor"]["I_ocp_min"],
         giro_ruido=cfg["giroscopio"]["ruido"], giro_sesgo=cfg["giroscopio"]["sesgo"],
-        ancho_linea=cfg["reglamento"]["ancho_linea"], prm=prm,
+        ancho_linea=cfg["reglamento"]["ancho_linea"],
+        cpr_rueda=float(cfg["motores"][arq["motor"]].get("cpr_motor", 0) * mot.G), prm=prm,
     )
     return replace(c, **cambios) if cambios else c

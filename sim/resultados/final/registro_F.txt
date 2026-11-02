@@ -1,0 +1,19 @@
+Etapa F
+  nominal                                    éxito 1.000 [0.981] t 5.808 s  I_max 0.478 A  
+  μ 0.70 (−12 %)                             éxito 1.000 [0.969] t 5.82 s  I_max 0.475 A  
+  μ 0.60 (−25 %)                             éxito 1.000 [0.969] t 5.844 s  I_max 0.477 A  
+  CG 10 mm más adelante                      éxito 0.800 [0.720] t 6.118 s  I_max 0.472 A  derrape: 24
+  CG 10 mm más atrás                         éxito 1.000 [0.969] t 5.734 s  I_max 0.466 A  
+  masa +10 g (batería de 37 g)               éxito 1.000 [0.969] t 5.85 s  I_max 0.472 A  
+  masa +40 g                                 éxito 1.000 [0.969] t 5.968 s  I_max 0.473 A  
+  sensor más alto: mancha ×1.6               éxito 1.000 [0.969] t 5.794 s  I_max 0.476 A  
+  ruido de sensores ×2                       éxito 1.000 [0.969] t 5.725 s  I_max 0.51 A  
+  ruido de sensores ×3                       éxito 1.000 [0.969] t 5.546 s  I_max 0.51 A  
+  fototransistor lento: t_emisor 400 µs      éxito 1.000 [0.969] t 5.81 s  I_max 0.474 A  
+  encoder desconectado (CPR 0)               éxito 1.000 [0.969] t 5.809 s  I_max 0.474 A  
+  batería baja (6.9 V)                       éxito 1.000 [0.969] t 5.823 s  I_max 0.386 A  
+  latencia +1 ms                             éxito 1.000 [0.969] t 5.811 s  I_max 0.476 A  
+  motores desparejos ±10 %                   éxito 1.000 [0.969] t 5.907 s  I_max 0.478 A  
+  I de bloqueo ×0.8                          éxito 1.000 [0.969] t 5.822 s  I_max 0.382 A  
+  I de bloqueo ×1.2                          éxito 1.000 [0.969] t 5.798 s  I_max 0.565 A  
+  -> sim/resultados/final/F_validacion_robustez.csv

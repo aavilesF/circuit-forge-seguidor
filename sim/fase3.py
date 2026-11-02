@@ -52,7 +52,7 @@ def escribir(nombre, filas):
         w = csv.DictWriter(fh, fieldnames=claves)
         w.writeheader()
         w.writerows(filas)
-    print(f"  -> sim/resultados/fase3/{nombre}")
+    print(f"  -> {os.path.relpath(os.path.join(SAL, nombre), CF.RAIZ)}")
 
 
 def tarea(args):

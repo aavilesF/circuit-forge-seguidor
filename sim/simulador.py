@@ -62,6 +62,7 @@ def vector_planta(c: Config, pt: Perturbacion = Perturbacion(), t_max: float = 1
     P[N.I_KEL] = pt.f_keL; P[N.I_KER] = pt.f_keR; P[N.I_Y0] = pt.y0; P[N.I_PSI0] = pt.psi0
     P[N.I_TMAX] = t_max; P[N.I_DT] = paso_integracion(c); P[N.I_VMEDIDO] = pt.f_vmed
     P[N.I_MUK] = c.mu_k_rel; P[N.I_VSTR] = c.v_str
+    P[N.I_CPR] = c.cpr_rueda
     return P
 
 
@@ -69,7 +70,7 @@ def vector_control(c: Config):
     p = c.prm
     if c.control == "C1":
         return N.C_PD, np.array([p["b0"], p["k_freno"], p["e_ref"], p["kp"], p["kd"], p["rueda_min"]], float)
-    fuente = {"error": 0, "modelo": 1, "giroscopio": 2}[p.get("fuente_k", "error")]
+    fuente = {"error": 0, "modelo": 1, "giroscopio": 2, "encoder": 3}[p.get("fuente_k", "error")]
     return N.C_SF, np.array([p["v_max"], p["a_lat"], p["a_lon"], p["k_pp"], p["kp"], p["kd"],
                              p["tau_d"], p["tau_k"], fuente, p.get("piso", 0.0)], float)
 

@@ -18,8 +18,8 @@ G = 9.81
 (I_M, I_XCG, I_H, I_IZ, I_L, I_W, I_R, I_XA, I_XS, I_FS, I_MU, I_CRR, I_EPS, I_J,
  I_VOC, I_RINT, I_ILOG, I_IFAN, I_RM, I_KE, I_KT, I_I0, I_LIMV,
  I_MANCHA, I_RUIDO, I_UMBRAL, I_TLECT, I_TCTRL, I_TPERD, I_IOCP, I_GRUIDO, I_GSESGO, I_ANCHO,
- I_KEL, I_KER, I_Y0, I_PSI0, I_TMAX, I_DT, I_VMEDIDO, I_MUK, I_VSTR) = range(42)
-NP = 42
+ I_KEL, I_KER, I_Y0, I_PSI0, I_TMAX, I_DT, I_VMEDIDO, I_MUK, I_VSTR, I_CPR) = range(43)
+NP = 43
 
 # controladores
 C_LAZO_ABIERTO = 0  # pruebas: ciclos fijos (prm: izq, der, t_cambio, izq2, der2)
@@ -47,10 +47,11 @@ def _ff(v, a, vbat, P, prm_ffacel):
 
 
 @njit(cache=True)
-def paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz):
+def paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz, wLm=0.0, wRm=0.0):
     """Controlador C2/C3 (traducción del firmware sf_logica.cpp ControlSF::paso, sin inversión ni
     freno activo). ST = [e_f, de_f, k_f, km_f, v_cmd, inicial]. prm = v_max, a_lat, a_lon, k_pp, kp, kd,
-    tau_d, tau_k, fuente (0 error = C2, 1 modelo del motor = C3m, 2 giroscopio = C3g)."""
+    tau_d, tau_k, fuente (0 error = C2, 1 modelo del motor = C3m, 2 giroscopio = C3g, 3 encoders = C3e).
+    wLm, wRm: velocidad angular de cada rueda medida con los encoders (rad/s), solo para la fuente 3."""
     v_max = prm[0]; a_lat = prm[1]; a_lon = prm[2]; k_pp = prm[3]; kp = prm[4]; kd = prm[5]
     tau_d = prm[6]; tau_k = prm[7]; fuente = int(prm[8])
     L = P[I_L]; W = P[I_W]; rw = P[I_R]
@@ -71,6 +72,10 @@ def paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz):
         kmag = max(kmag, abs(ST[3]))
     elif fuente == 2:
         km = gz / vref
+        ST[3] += Tc / (tau_k + Tc) * (km - ST[3])
+        kmag = max(kmag, abs(ST[3]))
+    elif fuente == 3:
+        km = (wRm - wLm) * rw / (W * vref)
         ST[3] += Tc / (tau_k + Tc) * (km - ST[3])
         kmag = max(kmag, abs(ST[3]))
     v_obj = min(v_max, math.sqrt(a_lat / max(kmag, 1e-6)))
@@ -131,6 +136,9 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
     sesgo = P[I_GSESGO] * (2.0 * np.random.random() - 1.0)
     lect = np.zeros(ns)
     t_fuera = 0.0
+    # encoders: ángulo de cada rueda y cuentas en la última lectura (CPR = cuentas por vuelta de RUEDA)
+    cpr = P[I_CPR]
+    thL = 0.0; thR = 0.0; cL0 = 0.0; cR0 = 0.0; wLm = 0.0; wRm = 0.0; t_enc = 0.0
     # métricas
     vmax = 0.0; Imax = 0.0; n_ocp = 0; Q = 0.0; E = 0.0; Vmin = Voc; emax = 0.0
     n_sat = 0; n_ticks = 0; deslmax = 0.0; motivo = -1; t_fin = tmax
@@ -172,6 +180,11 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
                 dL = pend_L; dR = pend_R; t_apl = 1e9
             t_ctrl += Tc
             n_ticks += 1
+            if cpr > 0.0:            # velocidad por diferencia de cuentas entre lecturas (cuantización real)
+                cL = math.floor(thL * cpr / (2.0 * math.pi)); cR = math.floor(thR * cpr / (2.0 * math.pi))
+                dtt = t - t_enc if t > t_enc else Tc
+                wLm = (cL - cL0) * 2.0 * math.pi / cpr / dtt; wRm = (cR - cR0) * 2.0 * math.pi / cpr / dtt
+                cL0 = cL; cR0 = cR; t_enc = t
             sobre_linea = False
             for i in range(ns):
                 wx = Ax + sx[i] * c - sy[i] * s
@@ -243,7 +256,7 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
                 nL = _clamp(nL, rmin, 1.0) * lim; nR = _clamp(nR, rmin, 1.0) * lim
             else:
                 gz = wz + sesgo + P[I_GRUIDO] * np.random.standard_normal()
-                nL, nR = paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz)
+                nL, nR = paso_sf(ST, e_use, Tc, vbat, P, prm, dL, dR, gz, wLm, wRm)
                 v_cmd = ST[4]
             if abs(nL) >= 0.999 * min(1.0, limV / vbat) or abs(nR) >= 0.999 * min(1.0, limV / vbat):
                 n_sat += 1
@@ -306,6 +319,7 @@ def simular(tx, ty, trumbo, thueco, P, sx, sy, ctrl, prm, seed, traza):
         # integración semi-implícita
         wl += (TL - FxL * rw) / J * dt
         wr += (TR - FxR * rw) / J * dt
+        thL += wl * dt; thR += wr * dt
         ax_ = Fx / m; ay_ = Fy / m
         vx += (ax_ + wz * vy) * dt
         vy += (ay_ - wz * vx) * dt

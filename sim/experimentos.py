@@ -36,7 +36,7 @@ ESPACIO = {
                kd=(0.0, 20.0), tau_k=(0.01, 0.08), piso=(-1.0, 0.0)),
 }
 FIJOS = {"C1": {}, "C2": {"tau_d": 0.004}, "C3m": {"tau_d": 0.004, "fuente_k": "modelo"},
-         "C3g": {"tau_d": 0.004, "fuente_k": "giroscopio"}}
+         "C3g": {"tau_d": 0.004, "fuente_k": "giroscopio"}, "C3e": {"tau_d": 0.004, "fuente_k": "encoder"}}
 LOG = ("kp", "kd")   # se muestrean en escala logarítmica
 
 

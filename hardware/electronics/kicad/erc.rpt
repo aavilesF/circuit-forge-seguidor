@@ -1,0 +1,24 @@
+ERC report (2026-11-01T19:57:38-0600, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /Alimentación y protecciones/
+
+***** Sheet /MCU, programación e interfaz/
+
+***** Sheet /Puente H y encoders/
+[pin_to_pin]: Pins of type Bidirectional and Power output are connected
+    ; warning
+    @(49.53 mm, 55.88 mm): Symbol U3 Pin 3 [AISEN, Bidirectional, Line]
+    @(44.45 mm, 46.99 mm): Symbol #FLG_ALI002 Pin 1 [Power output, Line]
+[pin_to_pin]: Pins of type Bidirectional and Power output are connected
+    ; warning
+    @(49.53 mm, 58.42 mm): Symbol U3 Pin 6 [BISEN, Bidirectional, Line]
+    @(44.45 mm, 46.99 mm): Symbol #FLG_ALI002 Pin 1 [Power output, Line]
+
+***** Sheet /Barra de 16 sensores/
+
+***** Sheet /Agujeros y puntos de prueba/
+
+ ** ERC messages: 2  Errors 0  Warnings 2
