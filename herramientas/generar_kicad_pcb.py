@@ -226,6 +226,36 @@ def fp_smd2(nombre, w, h, sep, cw, ch, descr):
     return f.listo()
 
 
+def fp_axial(nombre="R_Axial_P7.62"):
+    f = FP(nombre, "Resistencia de 1/4 W con patitas (orificio pasante), paso 7.62 mm")
+    f.pad_th("1", -3.81, 0, 0.9, 1.8)
+    f.pad_th("2", 3.81, 0, 0.9, 1.8)
+    f.rect(-3.15, -1.15, 3.15, 1.15)
+    f.patio(-4.9, -1.5, 4.9, 1.5)
+    return f.listo()
+
+
+def fp_ceramico():
+    f = FP("C_Radial_P2.54", "Capacitor ceramico/multicapa de patitas, paso 2.54 mm (100 nF)")
+    f.pad_th("1", -1.27, 0, 0.9, 1.7)
+    f.pad_th("2", 1.27, 0, 0.9, 1.7)
+    f.rect(-1.9, -1.2, 1.9, 1.2)
+    f.patio(-2.4, -1.3, 2.4, 1.3)
+    return f.listo()
+
+
+def fp_to92(num):
+    """TO-92 (patas 1-2-3 de izquierda a derecha, cara plana al frente). Orden tipo 2N7000: 1=S, 2=G, 3=D. VERIFICAR."""
+    f = FP("TO-92_MOSFET", "MOSFET N de nivel logico en TO-92 (orden 2N7000: 1=S, 2=G, 3=D; VERIFICAR con la pieza)")
+    f.pad_th(num("S"), -2.54, 0, 0.9, 1.7)
+    f.pad_th(num("G"), 0, 0, 0.9, 1.7)
+    f.pad_th(num("D"), 2.54, 0, 0.9, 1.7)
+    f.rect(-2.2, -1.9, 2.2, 1.0, w=0.12)
+    f.linea(-2.2, 1.0, 2.2, 1.0)
+    f.patio(-3.5, -2.5, 3.5, 2.5)
+    return f.listo()
+
+
 def fp_sot23(num):
     f = FP("SOT-23_MOSFET", "MOSFET N de nivel logico en SOT-23 (1=G, 2=S, 3=D)")
     f.pad_smd(num("G"), -1.016, -0.889, 1.4, 0.65)
@@ -317,11 +347,11 @@ def huellas(d):
     out["RV1"] = fp_cabecera("Cabecera_POT_1x3", "Potenciometro: A, cursor, B (cable o recortador)", ["A", "W", "B"],
                              lambda fn: pines_de("RV1", d)[fn])
     for r in ("R1", "R2", "R3", "R4"):
-        out[r] = fp_smd2("R_0805", 1.0, 1.45, 1.778, 3.4, 1.9, "Resistencia 0805")
+        out[r] = fp_axial()
     for c in ("C2", "C3", "C4"):
-        out[c] = fp_smd2("C_0805", 1.0, 1.45, 1.778, 3.4, 1.9, "Capacitor 0805")
+        out[c] = fp_ceramico()
     out["C1"] = fp_radial(lambda fn: pines_de("C1", d)[fn])
-    out["Q1"] = fp_sot23(lambda fn: pines_de("Q1", d)[fn])
+    out["Q1"] = fp_to92(lambda fn: pines_de("Q1", d)[fn])
     return out
 
 
@@ -334,8 +364,8 @@ CHAFLAN = 2.0
 FPNAME = {"U1": "ESP32_DevKit_38", "U4": "TB6612FNG_modulo", "U5": "CD74HC4067_modulo", "U6": "Cabecera_QTR8A_1x11",
           "U2": "Buck_modulo_4P", "U3": "Buck_modulo_4P", "BT1": "Borne_2P_P5.0", "F1": "PPTC_radial_P5.08",
           "SW1": "Cabecera_2P", "M1": "Cabecera_2P", "M2": "Cabecera_2P", "SW2": "SW_Tactil_6x6_TH", "SW3": "SW_Tactil_6x6_TH",
-          "RV1": "Cabecera_POT_1x3", "R1": "R_0805", "R2": "R_0805", "R3": "R_0805", "R4": "R_0805",
-          "C1": "CP_Radial_D6.3_P2.5", "C2": "C_0805", "C3": "C_0805", "C4": "C_0805", "Q1": "SOT-23_MOSFET"}
+          "RV1": "Cabecera_POT_1x3", "R1": "R_Axial_P7.62", "R2": "R_Axial_P7.62", "R3": "R_Axial_P7.62", "R4": "R_Axial_P7.62",
+          "C1": "CP_Radial_D6.3_P2.5", "C2": "C_Radial_P2.54", "C3": "C_Radial_P2.54", "C4": "C_Radial_P2.54", "Q1": "TO-92_MOSFET"}
 
 # ref: (x, y, rotacion antihoraria en grados, cara "F" o "B")
 COLOCACION = {
@@ -350,16 +380,16 @@ COLOCACION = {
     "SW3": (21.59, 11.43, 0, "F"),
     "RV1": (31.75, 11.43, 0, "F"),
     "C1": (59.69, 41.91, 0, "F"),
-    "C2": (57.15, 49.53, 90, "F"),
+    "C2": (57.15, 52.07, 90, "F"),
     "C3": (32.77, 31.75, 90, "F"),
     "C4": (55.88, 6.35, 0, "F"),
     "M1": (60.96, 57.15, 270, "F"),
     "M2": (60.96, 62.23, 90, "F"),
-    "R1": (16.51, 24.13, 90, "F"),
-    "R2": (16.51, 29.21, 90, "F"),
-    "R3": (11.43, 52.07, 0, "F"),
-    "R4": (21.59, 52.07, 90, "F"),
-    "Q1": (16.51, 57.15, 0, "F"),
+    "R1": (16.51, 24.13, 0, "F"),
+    "R2": (16.51, 29.21, 0, "F"),
+    "R3": (13.97, 50.8, 0, "F"),
+    "R4": (16.51, 54.61, 0, "F"),
+    "Q1": (16.51, 59.69, 0, "F"),
     "U2": (16.51, 29.21, 90, "B"),
     "U3": (16.51, 54.61, 90, "B"),
 }

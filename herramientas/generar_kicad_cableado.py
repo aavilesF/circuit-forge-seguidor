@@ -99,12 +99,12 @@ S_MUX = base.caja("CD74HC4067_MODULO", "U", "CD74HC4067",
 S_QTR = base.caja("QTR_8A", "U", "QTR-8A", [(str(1 + i), f"OUT{i + 1}") for i in range(8)],
                   [("9", "VCC"), ("11", "EMIT_RTN"), None, None, None, None, None, ("10", "GND")])
 def nmos_sot23():
-    """El MOSFET con la numeracion real del SOT-23: 1 = G, 2 = S, 3 = D (los pines no se mueven)."""
+    """El MOSFET con la numeracion del TO-92 tipo 2N7000: 1 = S, 2 = G, 3 = D (los pines no se mueven)."""
     import copy
     q = copy.deepcopy(base.S_NMOS)
-    q.nombre = "NMOS_SOT23"
+    q.nombre = "NMOS_TO92"
     for pin in q.pines:
-        pin["num"] = {"G": "1", "S": "2", "D": "3"}[pin["name"]]
+        pin["num"] = {"S": "1", "G": "2", "D": "3"}[pin["name"]]
     return q
 
 

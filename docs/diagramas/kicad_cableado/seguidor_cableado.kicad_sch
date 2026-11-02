@@ -564,7 +564,7 @@
         )
       )
     )
-    (symbol "seguidor:NMOS_SOT23"
+    (symbol "seguidor:NMOS_TO92"
       (pin_numbers hide)
       (pin_names (offset 1.016))
       (in_bom yes)
@@ -573,7 +573,7 @@
       (property "Value" "NMOS" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
       (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-      (symbol "NMOS_SOT23_0_1"
+      (symbol "NMOS_TO92_0_1"
         (rectangle
           (start -5.08 5.08)
           (end 5.08 -5.08)
@@ -582,12 +582,12 @@
         )
         (text "NMOS" (at 0 0 0) (effects (font (size 1.27 1.27))))
       )
-      (symbol "NMOS_SOT23_1_1"
+      (symbol "NMOS_TO92_1_1"
         (pin passive line
           (at -10.16 0 0)
           (length 5.08)
           (name "G" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
         )
         (pin passive line
           (at 10.16 2.54 180)
@@ -599,7 +599,7 @@
           (at 10.16 -2.54 180)
           (length 5.08)
           (name "S" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -1112,7 +1112,7 @@
     (uuid "a625462f-2e8c-5806-be5b-efaa225084b0")
     (property "Reference" "R1" (at 120.04 74.9 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "100k" (at 120.04 77.5 0) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "seguidor:R_0805"
+    (property "Footprint" "seguidor:R_Axial_P7.62"
       (at 116.84 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1133,7 +1133,7 @@
     (uuid "64e7f494-7061-58cf-a7c2-adca97b9d361")
     (property "Reference" "R2" (at 120.04 92.68 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "47k" (at 120.04 95.28 0) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "seguidor:R_0805"
+    (property "Footprint" "seguidor:R_Axial_P7.62"
       (at 116.84 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1370,7 +1370,7 @@
       (at 287.68 44.48 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "seguidor:C_0805"
+    (property "Footprint" "seguidor:C_Radial_P2.54"
       (at 284.48 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1470,7 +1470,7 @@
       (at 252.12 174.02 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "seguidor:C_0805"
+    (property "Footprint" "seguidor:C_Radial_P2.54"
       (at 248.92 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1497,7 +1497,7 @@
       (at 374.04 171.48 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "seguidor:C_0805"
+    (property "Footprint" "seguidor:C_Radial_P2.54"
       (at 370.84 170.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1518,7 +1518,7 @@
     (uuid "6a670cdc-0bc9-54b8-8a88-33b392bdb1f8")
     (property "Reference" "R3" (at 299.72 242.57 0) (effects (font (size 1.27 1.27))))
     (property "Value" "100" (at 299.72 250.19 0) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "seguidor:R_0805"
+    (property "Footprint" "seguidor:R_Axial_P7.62"
       (at 299.72 246.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1542,7 +1542,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 341.02 232.44 0) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "seguidor:R_0805"
+    (property "Footprint" "seguidor:R_Axial_P7.62"
       (at 337.82 231.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1554,7 +1554,7 @@
     )
   )
   (symbol
-    (lib_id "seguidor:NMOS_SOT23")
+    (lib_id "seguidor:NMOS_TO92")
     (at 368.3 236.22 0)
     (unit 1)
     (in_bom yes)
@@ -1563,14 +1563,14 @@
     (uuid "5a8b0b57-1af4-5eaf-bb4a-5f6b3c716079")
     (property "Reference" "Q1" (at 368.3 229.87 0) (effects (font (size 1.27 1.27))))
     (property "Value" "MOSFET nivel logico" (at 368.3 242.57 0) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "seguidor:SOT-23_MOSFET"
+    (property "Footprint" "seguidor:TO-92_MOSFET"
       (at 368.3 236.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 368.3 236.22 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid "fa11a15f-de2e-58f1-9050-eb132ec7d5a0"))
+    (pin "2" (uuid "1330dfcd-2856-520f-97d6-ba4e1ec0ee56"))
     (pin "3" (uuid "6b1e4aa1-13fb-5bad-b24f-ffc1597fd642"))
-    (pin "2" (uuid "7f9081c0-ee65-508e-b8f6-4b8df7cef0b2"))
+    (pin "1" (uuid "72fce075-d921-5784-989b-7260c98efad1"))
     (instances
       (project "seguidor" (path "/b8254e2b-e38c-5bae-aa1e-1ac6dbd253c5" (reference "Q1") (unit 1)))
     )
