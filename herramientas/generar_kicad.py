@@ -23,6 +23,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "docs" / "diagramas" / "kicad"
 PROYECTO = "seguidor"
+ARCHIVO = "seguidor"       # nombre base de los archivos .kicad_sch / .kicad_pro
+TITULO = "Seguidor de linea - esquema de conexiones"
 NICK = "seguidor"          # nombre de la biblioteca de símbolos del proyecto
 REVISION = "A"
 FECHA = "2026-11-02"       # se actualiza a mano al regenerar con cambios de fondo
@@ -446,7 +448,7 @@ def escribir(d):
     SALIDA.mkdir(parents=True, exist_ok=True)
     simbolos = [d.syms[k] for k in sorted(d.syms)]
     sch = ["kicad_sch", ["version", 20230121], ["generator", "eeschema"], ["uuid", Q(UUID_RAIZ)], ["paper", Q("A3")],
-           ["title_block", ["title", Q("Seguidor de linea - esquema de conexiones")], ["date", Q(FECHA)],
+           ["title_block", ["title", Q(TITULO)], ["date", Q(FECHA)],
             ["rev", Q(REVISION)], ["company", Q("Circuit Forge")],
             ["comment", 1, Q("Generado por herramientas/generar_kicad.py desde firmware/seguidor/pines.h")],
             ["comment", 2, Q("Propuesta: nada aprobado por el equipo (ver docs/decisiones.md)")],
@@ -454,15 +456,15 @@ def escribir(d):
            ["lib_symbols", *[s.lib(True) for s in simbolos]],
            *d.items,
            ["sheet_instances", ["path", Q("/"), ["page", Q("1")]]]]
-    (SALIDA / "seguidor.kicad_sch").write_text(sx(sch) + "\n", encoding="utf-8")
+    (SALIDA / f"{ARCHIVO}.kicad_sch").write_text(sx(sch) + "\n", encoding="utf-8")
     lib = ["kicad_symbol_lib", ["version", 20220914], ["generator", "kicad_symbol_editor"], *[s.lib(False) for s in simbolos]]
     (SALIDA / "seguidor.kicad_sym").write_text(sx(lib) + "\n", encoding="utf-8")
     (SALIDA / "sym-lib-table").write_text(
         "(sym_lib_table\n  (version 7)\n"
         f'  (lib (name "{NICK}")(type "KiCad")(uri "${{KIPRJMOD}}/seguidor.kicad_sym")(options "")'
         '(descr "Simbolos funcionales del seguidor de linea"))\n)\n', encoding="utf-8")
-    (SALIDA / "seguidor.kicad_pro").write_text(
-        json.dumps({"meta": {"filename": "seguidor.kicad_pro", "version": 1}}, indent=2) + "\n", encoding="utf-8")
+    (SALIDA / f"{ARCHIVO}.kicad_pro").write_text(
+        json.dumps({"meta": {"filename": f"{ARCHIVO}.kicad_pro", "version": 1}}, indent=2) + "\n", encoding="utf-8")
 
 
 # ------------------------------------------------------------------ verificación (lee lo escrito)
@@ -499,7 +501,7 @@ def hijos(nodo, cab):
 
 
 def verificar(d):
-    arbol = leer_sexp((SALIDA / "seguidor.kicad_sch").read_text(encoding="utf-8"))
+    arbol = leer_sexp((SALIDA / f"{ARCHIVO}.kicad_sch").read_text(encoding="utf-8"))
     libs = {}
     for s in hijos(hijo(arbol, "lib_symbols"), "symbol"):
         pines = {}
