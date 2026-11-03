@@ -3,6 +3,9 @@
 Speed Follower (seguidor de línea de velocidad) del equipo **Circuit Forge** para **Robolympics RMX2026**, categoría
 Seguidores de línea: sábado 21 de noviembre de 2026, Tec de Monterrey campus León.
 
+> **Rama `engineering/final-robot-v2`:** desarrollo del robot V2 (alta velocidad con succión), Fase 1 entregada en
+> [`docs/v2/`](docs/v2/README.md). Lo que sigue describe V1, que se conserva como referencia.
+
 > **Una sola configuración vigente**, cerrada para fabricación: [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md), con todos
 > sus parámetros en [`config/robot_maestro.yaml`](config/robot_maestro.yaml). Lo que está en [`legado/`](legado/README.md)
 > es **histórico** y no se debe usar para construir.

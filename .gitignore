@@ -86,3 +86,5 @@ sim/resultados/fase3/registro_*.txt
 fp-info-cache
 *.kicad_prl
 hardware/electronics/kicad/#auto_saved_files#*
+# Modelos 3D de referencia del ventilador (OBJ de Fusion, no son objetos compilados)
+!hardware/v2/referencia_succion/*.obj

@@ -1,0 +1,13 @@
+nivel,fraccion_rpm,F_succion_N,v_crucero_ms,t_P1_s,t_P2_s,t_P3_s,t_P4_s,t_medio_s,P_ventilador_max_W,P_ventilador_W,E_ventilador_por_vuelta_J,mAh_ventilador_por_vuelta,caida_tension_V,tipo
+sin ventilador,0.0,0.0,1.157,3.697,3.926,3.653,3.249,3.631,5,0.0,0.0,0.0,0.0,calculado (cuasiestático; NO es la simulación dinámica)
+sin ventilador,0.0,0.0,1.157,3.697,3.926,3.653,3.249,3.631,10,0.0,0.0,0.0,0.0,calculado (cuasiestático; NO es la simulación dinámica)
+sin ventilador,0.0,0.0,1.157,3.697,3.926,3.653,3.249,3.631,20,0.0,0.0,0.0,0.0,calculado (cuasiestático; NO es la simulación dinámica)
+reducida,0.5,0.739,1.338,3.191,3.388,3.15,2.801,3.132,5,0.62,2.0,0.07,0.017,calculado (cuasiestático; NO es la simulación dinámica)
+reducida,0.5,0.739,1.338,3.191,3.388,3.15,2.801,3.132,10,1.25,3.9,0.15,0.034,calculado (cuasiestático; NO es la simulación dinámica)
+reducida,0.5,0.739,1.338,3.191,3.388,3.15,2.801,3.132,20,2.5,7.8,0.29,0.068,calculado (cuasiestático; NO es la simulación dinámica)
+intermedia,0.75,1.663,1.533,2.799,2.959,2.76,2.458,2.744,5,2.11,5.8,0.22,0.057,calculado (cuasiestático; NO es la simulación dinámica)
+intermedia,0.75,1.663,1.533,2.799,2.959,2.76,2.458,2.744,10,4.22,11.6,0.43,0.114,calculado (cuasiestático; NO es la simulación dinámica)
+intermedia,0.75,1.663,1.533,2.799,2.959,2.76,2.458,2.744,20,8.44,23.2,0.87,0.228,calculado (cuasiestático; NO es la simulación dinámica)
+máxima,1.0,2.957,1.768,2.448,2.569,2.411,2.154,2.396,5,5.0,12.0,0.45,0.135,calculado (cuasiestático; NO es la simulación dinámica)
+máxima,1.0,2.957,1.768,2.448,2.569,2.411,2.154,2.396,10,10.0,24.0,0.9,0.27,calculado (cuasiestático; NO es la simulación dinámica)
+máxima,1.0,2.957,1.768,2.448,2.569,2.411,2.154,2.396,20,20.0,47.9,1.8,0.541,calculado (cuasiestático; NO es la simulación dinámica)
