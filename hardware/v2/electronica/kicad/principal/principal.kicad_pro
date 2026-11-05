@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "filename": "principal.kicad_pro",
+    "version": 3
+  },
+  "board": {},
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "sheets": [
+    [
+      "cefff770-f6c9-59a9-b4bd-ac2dde9a95a2",
+      "Root"
+    ],
+    [
+      "48ae66be-faaf-5dd4-9344-11fa6d5369c7",
+      "Alimentaci\u00f3n y protecciones"
+    ],
+    [
+      "7e6437c5-4344-59ac-b018-9d970ff3017b",
+      "MCU (m\u00f3dulo WeAct), sensores e interfaz"
+    ],
+    [
+      "72d029ca-52ea-5edf-848e-81b5192c862c",
+      "Puentes H, motores, ESC y barra de sensores"
+    ]
+  ],
+  "text_variables": {},
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  }
+}

@@ -1,0 +1,66 @@
+# V2 · Fase 3 — geometría y disposición del robot (fuente única para el CAD y las PCB de V2).
+# Marco del robot, mm: x adelante desde el eje de las ruedas motrices, y a la izquierda, z arriba desde el piso.
+# Tipos: verificado (ficha o modelo entregado) · calculado · supuesto (decisión de diseño, ajustable) · pendiente.
+
+robot:
+  caja_reglamento: {valor: [192.0, 92.0], tipo: verificado, fuente: "R01: 200 × 100 mm con 4 mm de holgura por lado (REGLAMENTO_MATRIZ)"}
+  L_sensores: {valor: 125.0, tipo: supuesto, fuente: "radio del arco de sensores; dentro del intervalo 110-140 mm de la Fase 1 (T3)"}
+
+ruedas:
+  D: {valor: 32.0, tipo: verificado, fuente: "Pololu #1087"}
+  ancho: {valor: 7.0, tipo: verificado, fuente: "Pololu #1087"}
+  y_centro: {valor: 42.5, tipo: supuesto, fuente: "vía de 85 mm, como V1"}
+
+motores:                      # Pololu #5183 (15.25:1 HPCB 6V, encoder 12 CPR, conector lateral)
+  seccion_xz: {valor: [12.0, 10.0], tipo: verificado, fuente: "Pololu: sección de 10 × 12 mm (12 en x, 10 en z, como V1)"}
+  largo: {valor: 32.0, tipo: verificado, fuente: "pololu.com/product/5183/specs: 10 × 12 × 32 mm"}
+  y_cara_reductora: {valor: 37.0, tipo: supuesto, fuente: "como V1: eje de salida al ras de la cara exterior de la llanta"}
+  envolvente_encoder: {valor: [16.0, 6.0, 15.0], tipo: supuesto, fuente: "x, y, z de la tarjeta del encoder con conector lateral; Pololu no publica la medida en la ficha: APROX"}
+  masa_g: {valor: 11.0, tipo: verificado, fuente: "pololu.com/product/5183/specs"}
+
+chasis:                       # pieza impresa
+  z_inferior_placa: {valor: 5.1, tipo: supuesto, fuente: "techo de la cámara y cara superior de la barra de sensores"}
+  espesor_placa: {valor: 2.0, tipo: supuesto}
+  x_trasero: {valor: -33.5, tipo: supuesto}
+  y_max: {valor: 37.5, tipo: supuesto, fuente: "entre ruedas (cara interior de la llanta en |y| = 39)"}
+
+camara:
+  interior: {valor: [70.0, 70.0], tipo: verificado, fuente: "pedido del usuario (Fase 3): 70 × 70 mm"}
+  x_centro: {valor: 4.0, tipo: calculado, fuente: "el ventilador debe quedar delante de los soportes de motor; la entrada Ø20 cae dentro de la cámara con x_c ≥ 4 mm. Centro de succión 4 mm delante del eje: 96 % de la succión sobre las ruedas motrices"}
+  pared: {valor: 1.2, tipo: supuesto}
+  ranura: {valor: 0.5, tipo: supuesto, fuente: "ranura nominal del faldón (Fase 1, T6); medir con la succión encendida [P]"}
+
+ventilador:                   # modelos del usuario: hardware/v2/referencia_succion/*.obj
+  x: {valor: 27.5, tipo: calculado, fuente: "los pilares traseros (x_f − 15 ± 2.75) libran las abrazaderas de motor (|x| ≤ 8)"}
+  agujeros_base: {valor: 15.0, tipo: verificado, fuente: "BaseATS1.obj: 4 agujeros Ø1.8 en (±15, ±15)"}
+  realce_base: {valor: [31.8, 31.8, 0.85], tipo: verificado, fuente: "BaseATS1.obj"}
+  entrada_placa: {valor: 20.0, tipo: supuesto, fuente: "agujero en el techo de la cámara: Ø20 ≥ garganta Ø18.6 de la base"}
+  motor: {valor: "1104 ~9000 KV", tipo: supuesto, fuente: "indicación del usuario; masa 5-6 g de referencia (Darwin/TuneRC 1104)"}
+
+esc:
+  envolvente: {valor: [14.0, 26.0, 6.0], tipo: supuesto, fuente: "x, y, z de un ESC comercial de 20 A de un canal (largo a lo ancho del robot): ajustar a la medida real"}
+  centro: {valor: [-21.0, 0.0], tipo: supuesto}
+
+bateria:
+  dim_xyz: {valor: [16.0, 61.0, 15.0], tipo: verificado, fuente: "Tattu 450 mAh 2S (V1)"}
+  x_centro: {valor: 59.0, tipo: supuesto, fuente: "delante del ventilador (la base llega a x 46.5; 6.5 mm libres desde el rotor para la salida de aire): adelanta el CG"}
+
+pcb_principal:
+  contorno: {valor: [-42.0, 6.5, -35.0, 35.0], tipo: supuesto, fuente: "x_min, x_max, y_min, y_max; sobre los motores, sobresale 8.5 mm detrás del chasis para dejar el USB-C del módulo en el borde"}
+  z_inferior: {valor: 24.0, tipo: supuesto, fuente: "3 mm sobre los motores; se apoya en las tapas de las abrazaderas y en 2 postes traseros"}
+  espesor: {valor: 1.6, tipo: supuesto}
+  modulo_mcu: {valor: "WeAct STM32G474CEU6 Core Board V1.0, 36.28 × 28.14 mm, en zócalos 2 × 12", tipo: verificado, fuente: "github.com/WeActStudio/WeActStudio.STM32G474CoreBoard (plano de contorno y esquemático)"}
+
+barra_sensores:
+  n: {valor: 16, tipo: supuesto}
+  paso_arco: {valor: 5.5, tipo: supuesto, fuente: "V1 usaba 5.9 mm con R 110; con R 125 y 5.9 mm la barra pasaría de los 92 mm de ancho"}
+  R_interior: {valor: 100.0, tipo: supuesto}
+  R_exterior: {valor: 130.0, tipo: supuesto}
+  y_max: {valor: 45.0, tipo: supuesto}
+  espesor: {valor: 1.6, tipo: supuesto}
+  z_cara_sensor: {valor: 2.05, tipo: calculado, fuente: "placa de 1.6 mm bajo la placa del chasis (z 3.5-5.1) y QRE1113GR de 1.45 mm"}
+  cachucha_z_borde: {valor: 1.0, tipo: supuesto, fuente: "borde inferior de la cachucha a 1 mm del piso, sin contacto (R11)"}
+
+rueda_loca:
+  x: {valor: 92.0, tipo: supuesto, fuente: "detrás de la barra de sensores (borde interior en R 100)"}
+  bola: {valor: 6.35, tipo: verificado, fuente: "bola de acero de 1/4 in, como V1"}

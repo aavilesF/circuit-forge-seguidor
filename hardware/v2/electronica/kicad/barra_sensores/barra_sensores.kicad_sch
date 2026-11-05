@@ -1,0 +1,116 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "7cb43436-1830-51c4-a715-753453b34231")
+	(paper "A3")
+	(title_block
+		(title "Speed Follower V2 — Barra de sensores — Hoja principal")
+		(date "2026-11-04")
+		(rev "V2-A")
+		(company "Circuit Forge — Robolympics RMX2026")
+		(comment 1 "Generado por hardware/v2/electronica/generador (no editar a mano)")
+	)
+	(lib_symbols)
+	(text "Speed Follower V2 — Barra de sensores. Diseño fuente: hardware/v2/electronica/generador/"
+		(exclude_from_sim no)
+		(at 25.4 25.4 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left)
+		)
+		(uuid "ac0e68ab-3fc3-591c-bcb2-8275a4fd315d")
+	)
+	(sheet
+		(at 25.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "7aeda2d1-ee9d-59d8-8625-9286cc55b187")
+		(property "Sheetname" "16 sensores QRE1113GR"
+			(at 25.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sensores.kicad_sch"
+			(at 25.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "9bcf8772-a952-54f4-9943-a068cfae21e6")
+		(property "Sheetname" "Multiplexores, emisores y conector"
+			(at 85.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "interfaz.kicad_sch"
+			(at 85.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,17 @@
+** Drc report for barra_sensores.kicad_pcb **
+** Created on 2026-11-05T07:23:08-0600 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 2 DRC violations **
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(108.3871 mm, 134.6787 mm): Track [S16] on B.Cu, length 1.1691 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(105.1853 mm, 103.0186 mm): Track [/Multiplexores, emisores y conector/SENS_A] on F.Cu, length 1.7113 mm
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **

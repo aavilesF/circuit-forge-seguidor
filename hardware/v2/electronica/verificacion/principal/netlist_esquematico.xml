@@ -1,0 +1,3256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/principal/principal.kicad_sch</source>
+    <date>2026-11-05T07:25:52-0600</date>
+    <tool>Eeschema 9.0.8+dfsg-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Speed Follower V2 — PCB principal — Hoja principal</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>principal.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/">
+      <title_block>
+        <title>Speed Follower V2 — PCB principal — Alimentación y protecciones</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>alimentacion.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/">
+      <title_block>
+        <title>Speed Follower V2 — PCB principal — MCU (módulo WeAct), sensores e interfaz</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>control.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/">
+      <title_block>
+        <title>Speed Follower V2 — PCB principal — Puentes H, motores, ESC y barra de sensores</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>motores.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>ea058e1c-c2e0-5f7e-99ed-67091c010911</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>568b9979-aadb-572f-b80b-7af819aca81c</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>6603dc28-1802-5980-b01c-2633a3499716</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>10µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 10µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E106KA73L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 10µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E106KA73L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>0d908c31-2a01-5ae7-aa80-5e2f21d7d7a5</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>c542c456-c72d-5541-bfcb-1781f7f82cb0</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>25a39c26-c639-5735-ba5e-1d46500de3de</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>0193882e-5e0a-575d-82f5-345f5814e26b</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>4bb22bbc-e606-5c9d-a5bc-992e553b2b8e</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>SMAJ9.0A</value>
+      <footprint>Diode_SMD:D_SMA</footprint>
+      <datasheet>https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-smaj-datasheet</datasheet>
+      <description>TVS unidireccional 400 W, 9.0 V de trabajo (DO-214AC); cátodo (banda) a VBAT_SW</description>
+      <fields>
+        <field name="Fabricante">Littelfuse</field>
+        <field name="MPN">SMAJ9.0A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/littelfuse-tvs-diode-smaj-datasheet</field>
+        <field name="Description">TVS unidireccional 400 W, 9.0 V de trabajo (DO-214AC); cátodo (banda) a VBAT_SW</field>
+      </fields>
+      <libsource lib="Diode" part="SMAJ9.0A" description="400W unidirectional Transient Voltage Suppressor, 9.0Vr, SMA(DO-214AC)"/>
+      <property name="Fabricante" value="Littelfuse"/>
+      <property name="MPN" value="SMAJ9.0A"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="unidirectional diode TVS voltage suppressor"/>
+      <property name="ki_fp_filters" value="D*SMA*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>96f3a2fc-ed15-5bfd-a088-e636c6294fb8</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>MBR0540</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/mbr0540t1-d.pdf</datasheet>
+      <description>Schottky 40 V 0.5 A SOD-123: evita que el 3.3 V del USB alimente VBAT_SW a través del reductor</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">MBR0540T1G</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/mbr0540t1-d.pdf</field>
+        <field name="Description">Schottky 40 V 0.5 A SOD-123: evita que el 3.3 V del USB alimente VBAT_SW a través del reductor</field>
+      </fields>
+      <libsource lib="Diode" part="MBR0540" description="40V 0.5A Schottky Power Rectifier Diode, SOD-123"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="MBR0540T1G"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <property name="ki_fp_filters" value="D*SOD?123*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>d7d2d37b-b13d-5849-be86-73ca691e15b8</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>PWR</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</datasheet>
+      <description>LED verde 0603 (3.3 V presente)</description>
+      <fields>
+        <field name="Fabricante">Kingbright</field>
+        <field name="MPN">APT1608SGC</field>
+        <field name="Footprint">LED_SMD:LED_0603_1608Metric</field>
+        <field name="Datasheet">https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</field>
+        <field name="Description">LED verde 0603 (3.3 V presente)</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Fabricante" value="Kingbright"/>
+      <property name="MPN" value="APT1608SGC"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>0ac608b1-5b42-54a6-9e91-49ffe5a567f8</tstamps>
+    </comp>
+    <comp ref="F1">
+      <value>10A</value>
+      <footprint>Fuse:Fuse_Blade_Mini_directSolder</footprint>
+      <datasheet>https://www.littelfuse.com/products/fuses/automotive-passenger-car/blade-fuses/297</datasheet>
+      <description>Fusible de cuchilla MINI 297, 10 A 32 V, acción rápida (soldado)</description>
+      <fields>
+        <field name="Fabricante">Littelfuse</field>
+        <field name="MPN">0297010.WXNV</field>
+        <field name="Footprint">Fuse:Fuse_Blade_Mini_directSolder</field>
+        <field name="Datasheet">https://www.littelfuse.com/products/fuses/automotive-passenger-car/blade-fuses/297</field>
+        <field name="Description">Fusible de cuchilla MINI 297, 10 A 32 V, acción rápida (soldado)</field>
+      </fields>
+      <libsource lib="Device" part="Fuse" description="Fuse"/>
+      <property name="Fabricante" value="Littelfuse"/>
+      <property name="MPN" value="0297010.WXNV"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="fuse"/>
+      <property name="ki_fp_filters" value="*Fuse*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>35d6d81c-6786-5f6c-a5e2-6d894b497f0f</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>XT30UPB-M</value>
+      <footprint>Connector_AMASS:AMASS_XT30UPB-M_1x02_P5.0mm_Vertical</footprint>
+      <datasheet>https://www.tme.eu/Document/e5863b891432488e7531b3c4468225ac/XT30PB-M.pdf</datasheet>
+      <description>Conector de batería XT30 macho vertical para PCB, 15 A (pin 1 −, pin 2 +)</description>
+      <fields>
+        <field name="Fabricante">Changzhou Amass Electronics</field>
+        <field name="MPN">XT30UPB-M</field>
+        <field name="Footprint">Connector_AMASS:AMASS_XT30UPB-M_1x02_P5.0mm_Vertical</field>
+        <field name="Datasheet">https://www.tme.eu/Document/e5863b891432488e7531b3c4468225ac/XT30PB-M.pdf</field>
+        <field name="Description">Conector de batería XT30 macho vertical para PCB, 15 A (pin 1 −, pin 2 +)</field>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="Changzhou Amass Electronics"/>
+      <property name="MPN" value="XT30UPB-M"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>370bbb8e-ffa5-5591-8c62-0b6327134887</tstamps>
+    </comp>
+    <comp ref="L1">
+      <value>2.2µH</value>
+      <footprint>Inductor_SMD:L_Wuerth_MAPI-4030</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/74438357022.pdf</datasheet>
+      <description>Inductor blindado WE-MAPI 4030, 2.2 µH, IR 7.1 A, Isat 9.2 A, 26 mΩ</description>
+      <fields>
+        <field name="Fabricante">Würth Elektronik</field>
+        <field name="MPN">74438357022</field>
+        <field name="Footprint">Inductor_SMD:L_Wuerth_MAPI-4030</field>
+        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/74438357022.pdf</field>
+        <field name="Description">Inductor blindado WE-MAPI 4030, 2.2 µH, IR 7.1 A, Isat 9.2 A, 26 mΩ</field>
+      </fields>
+      <libsource lib="Device" part="L" description="Inductor"/>
+      <property name="Fabricante" value="Würth Elektronik"/>
+      <property name="MPN" value="74438357022"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <property name="ki_fp_filters" value="Choke_* *Coil* Inductor_* L_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>680fe3e9-35e1-5cfc-87cf-7c6570783fda</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>DMP3013SFV</value>
+      <footprint>Package_SON:Diodes_PowerDI3333-8</footprint>
+      <datasheet>https://www.diodes.com/part/view/DMP3013SFV</datasheet>
+      <description>MOSFET P −30 V −12 A 9.5 mΩ, VGS ±25 V, PowerDI3333-8 (protección contra inversión)</description>
+      <fields>
+        <field name="Fabricante">Diodes Incorporated</field>
+        <field name="MPN">DMP3013SFV-7</field>
+        <field name="Footprint">Package_SON:Diodes_PowerDI3333-8</field>
+        <field name="Datasheet">https://www.diodes.com/part/view/DMP3013SFV</field>
+        <field name="Description">MOSFET P −30 V −12 A 9.5 mΩ, VGS ±25 V, PowerDI3333-8 (protección contra inversión)</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMP3013SFV" description="-12A Id, -30V Vds, P-Channel Power MOSFET, 9.5mOhm Ron, 33.7nC Qg (typ), PowerDI3333-8"/>
+      <property name="Fabricante" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMP3013SFV-7"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="P-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="Diodes*PowerDI3333*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>a036bec3-3ae1-554e-bc6b-eca5c220e221</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>DMP3013SFV</value>
+      <footprint>Package_SON:Diodes_PowerDI3333-8</footprint>
+      <datasheet>https://www.diodes.com/part/view/DMP3013SFV</datasheet>
+      <description>MOSFET P −30 V −12 A 9.5 mΩ, VGS ±25 V, PowerDI3333-8 (interruptor de encendido)</description>
+      <fields>
+        <field name="Fabricante">Diodes Incorporated</field>
+        <field name="MPN">DMP3013SFV-7</field>
+        <field name="Footprint">Package_SON:Diodes_PowerDI3333-8</field>
+        <field name="Datasheet">https://www.diodes.com/part/view/DMP3013SFV</field>
+        <field name="Description">MOSFET P −30 V −12 A 9.5 mΩ, VGS ±25 V, PowerDI3333-8 (interruptor de encendido)</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="DMP3013SFV" description="-12A Id, -30V Vds, P-Channel Power MOSFET, 9.5mOhm Ron, 33.7nC Qg (typ), PowerDI3333-8"/>
+      <property name="Fabricante" value="Diodes Incorporated"/>
+      <property name="MPN" value="DMP3013SFV-7"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="P-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="Diodes*PowerDI3333*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>35072d18-3d5e-5270-8566-14a2491f7c8f</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>e356d78a-14a5-5d2d-988b-c7fbce150ad1</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>181c7d63-a1a7-5f32-bce4-2bb30d93b2a7</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>a8b1967e-c9f4-5754-a35d-037dab8695a8</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>33k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 33kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0733KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 33kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0733KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>cc3feef2-5231-5519-b4bc-fc8017a082c2</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>92ca0d2f-2220-5678-b229-b0fc4aecdcdc</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>33.2k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 33.2kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0733K2L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 33.2kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0733K2L"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>ce8aba17-2e1e-5579-8582-40d31ebbaa88</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>230e796e-8502-5acb-824f-39623ab45972</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>9dba103f-9bea-54e3-80ec-bc123134a92a</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>ENCENDIDO</value>
+      <footprint>Button_Switch_THT:SW_Slide_SPDT_Angled_CK_OS102011MA1Q</footprint>
+      <datasheet>https://www.ckswitches.com/media/1428/os.pdf</datasheet>
+      <description>Interruptor deslizante SPDT de ángulo recto, 100 mA 12 V (solo conmuta la compuerta)</description>
+      <fields>
+        <field name="Fabricante">C&amp;K</field>
+        <field name="MPN">OS102011MA1QN1</field>
+        <field name="Footprint">Button_Switch_THT:SW_Slide_SPDT_Angled_CK_OS102011MA1Q</field>
+        <field name="Datasheet">https://www.ckswitches.com/media/1428/os.pdf</field>
+        <field name="Description">Interruptor deslizante SPDT de ángulo recto, 100 mA 12 V (solo conmuta la compuerta)</field>
+      </fields>
+      <libsource lib="Switch" part="SW_SPDT" description="Switch, single pole double throw"/>
+      <property name="Fabricante" value="C&amp;K"/>
+      <property name="MPN" value="OS102011MA1QN1"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="switch single-pole double-throw spdt ON-ON"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>47cf7ba8-72bc-5869-8bfd-43e04fdb3a47</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>+3V3</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>Punto de prueba</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Punto de prueba</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>440a4ffe-ba10-5ac5-8b84-db93674a8c0e</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>GND</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>Punto de prueba</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Punto de prueba</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>3b214b05-9b37-552c-8749-e3bddcd9e39a</tstamps>
+    </comp>
+    <comp ref="TP3">
+      <value>VBAT_SW</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>Punto de prueba</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Punto de prueba</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>13ed0bb0-9875-521e-a27b-3f421c1bb0b8</tstamps>
+    </comp>
+    <comp ref="TP4">
+      <value>GND</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>Punto de prueba</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Punto de prueba</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>337c3144-f3cb-54bb-aad0-113735b4d82c</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>TPS563200</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/tps563200.pdf</datasheet>
+      <description>Convertidor reductor síncrono 4.5-17 V, 3 A, 650 kHz (SOT-23-6)</description>
+      <fields>
+        <field name="Fabricante">Texas Instruments</field>
+        <field name="MPN">TPS563200DDCR</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tps563200.pdf</field>
+        <field name="Description">Convertidor reductor síncrono 4.5-17 V, 3 A, 650 kHz (SOT-23-6)</field>
+      </fields>
+      <libsource lib="Regulator_Switching" part="TPS563200" description="3A Synchronous Step-Down Voltage Regulator, Adjustable Output Voltage, 4.5-17V Input Voltage, SOT-23-6"/>
+      <property name="Fabricante" value="Texas Instruments"/>
+      <property name="MPN" value="TPS563200DDCR"/>
+      <property name="Sheetname" value="Alimentación y protecciones"/>
+      <property name="Sheetfile" value="alimentacion.kicad_sch"/>
+      <property name="ki_keywords" value="step-down dcdc voltage regulator"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
+      <sheetpath names="/Alimentación y protecciones/" tstamps="/48ae66be-faaf-5dd4-9344-11fa6d5369c7/"/>
+      <tstamps>a914cbe7-292e-5bcd-8b67-ddd4ef1b62b8</tstamps>
+    </comp>
+    <comp ref="A1">
+      <value>WeAct STM32G474CEU6</value>
+      <footprint>circuitforge_v2:WeAct_STM32G474_CoreBoard_Zocalo</footprint>
+      <datasheet>https://github.com/WeActStudio/WeActStudio.STM32G474CoreBoard</datasheet>
+      <description>Módulo MCU STM32G474CEU6 (170 MHz, 512 KB, 128 KB) con USB-C, cristal de 8 MHz, BOOT0 y RESET</description>
+      <fields>
+        <field name="Fabricante">WeAct Studio</field>
+        <field name="MPN">STM32G474CEU6 Core Board V1.0</field>
+        <field name="Footprint">circuitforge_v2:WeAct_STM32G474_CoreBoard_Zocalo</field>
+        <field name="Datasheet">https://github.com/WeActStudio/WeActStudio.STM32G474CoreBoard</field>
+        <field name="Description">Módulo MCU STM32G474CEU6 (170 MHz, 512 KB, 128 KB) con USB-C, cristal de 8 MHz, BOOT0 y RESET</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="WeAct_STM32G474_CoreBoard" description="WeAct Studio STM32G474CEU6 Core Board V1.0 (36.28 × 28.14 mm) en 2 zócalos 2 × 12; P1 = pads A, P2 = pads B"/>
+      <property name="Fabricante" value="WeAct Studio"/>
+      <property name="MPN" value="STM32G474CEU6 Core Board V1.0"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>6e058a82-eb9b-5a33-8390-4bf2996113b5</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>4d26359e-7a61-5171-aff9-1176fe8c5779</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>471a1284-61e5-53b2-be1d-461f7fd5cac4</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>25c41e5a-7859-5b5b-8b49-3d53f1f1aa5f</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>2f95f91c-6b3a-59f4-85e3-224f460c00b7</tstamps>
+    </comp>
+    <comp ref="C13">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>bb4ffd94-c6c9-5b7e-9fec-f765a9c3ee43</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>93f4ab2d-28f5-50a8-83c5-49cc9f06b850</tstamps>
+    </comp>
+    <comp ref="D4">
+      <value>VERDE</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</datasheet>
+      <description>LED verde 0603 de estado</description>
+      <fields>
+        <field name="Fabricante">Kingbright</field>
+        <field name="MPN">APT1608SGC</field>
+        <field name="Footprint">LED_SMD:LED_0603_1608Metric</field>
+        <field name="Datasheet">https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</field>
+        <field name="Description">LED verde 0603 de estado</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Fabricante" value="Kingbright"/>
+      <property name="MPN" value="APT1608SGC"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>0aa88985-4882-57c9-8f94-b16dc1123d14</tstamps>
+    </comp>
+    <comp ref="D5">
+      <value>AMARILLO</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</datasheet>
+      <description>LED amarillo 0603 de estado</description>
+      <fields>
+        <field name="Fabricante">Kingbright</field>
+        <field name="MPN">APT1608YC</field>
+        <field name="Footprint">LED_SMD:LED_0603_1608Metric</field>
+        <field name="Datasheet">https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</field>
+        <field name="Description">LED amarillo 0603 de estado</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Fabricante" value="Kingbright"/>
+      <property name="MPN" value="APT1608YC"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>1d77a2c6-502f-5b2d-9f73-cbd7184a466c</tstamps>
+    </comp>
+    <comp ref="D6">
+      <value>ROJO</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</datasheet>
+      <description>LED rojo 0603 de estado</description>
+      <fields>
+        <field name="Fabricante">Kingbright</field>
+        <field name="MPN">APT1608EC</field>
+        <field name="Footprint">LED_SMD:LED_0603_1608Metric</field>
+        <field name="Datasheet">https://www.kingbrightusa.com/images/catalog/SPEC/APT1608SGC.pdf</field>
+        <field name="Description">LED rojo 0603 de estado</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Fabricante" value="Kingbright"/>
+      <property name="MPN" value="APT1608EC"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>ed4cae5d-9667-5076-8979-7da31b87ff9f</tstamps>
+    </comp>
+    <comp ref="J10">
+      <value>Zócalo 2×12</value>
+      <description>Zócalo hembra 2 × 12, 2.54 mm, para el módulo (se suelda en la huella del módulo)</description>
+      <fields>
+        <field name="Fabricante">genérico</field>
+        <field name="MPN">Zócalo hembra 2×12, paso 2.54 mm, 8.5 mm de alto (número de parte por elegir)</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Zócalo hembra 2 × 12, 2.54 mm, para el módulo (se suelda en la huella del módulo)</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="genérico"/>
+      <property name="MPN" value="Zócalo hembra 2×12, paso 2.54 mm, 8.5 mm de alto (número de parte por elegir)"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="exclude_from_board"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>3de8e6b8-603a-51fa-b69a-4be38844b8c5</tstamps>
+    </comp>
+    <comp ref="J11">
+      <value>Zócalo 2×12</value>
+      <description>Zócalo hembra 2 × 12, 2.54 mm, para el módulo (se suelda en la huella del módulo)</description>
+      <fields>
+        <field name="Fabricante">genérico</field>
+        <field name="MPN">Zócalo hembra 2×12, paso 2.54 mm, 8.5 mm de alto (número de parte por elegir)</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Zócalo hembra 2 × 12, 2.54 mm, para el módulo (se suelda en la huella del módulo)</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="genérico"/>
+      <property name="MPN" value="Zócalo hembra 2×12, paso 2.54 mm, 8.5 mm de alto (número de parte por elegir)"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="exclude_from_board"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>fc834052-a491-53cb-b046-f9b850816fc6</tstamps>
+    </comp>
+    <comp ref="LS1">
+      <value>PKLCS1212E4001</value>
+      <footprint>Buzzer_Beeper:Buzzer_Murata_PKLCS1212E</footprint>
+      <datasheet>https://www.murata.com/en-us/products/productdetail?partno=PKLCS1212E4001-R1</datasheet>
+      <description>Transductor piezoeléctrico SMD 12 × 12 mm, 4 kHz, excitación externa</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">PKLCS1212E4001-R1</field>
+        <field name="Footprint">Buzzer_Beeper:Buzzer_Murata_PKLCS1212E</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/productdetail?partno=PKLCS1212E4001-R1</field>
+        <field name="Description">Transductor piezoeléctrico SMD 12 × 12 mm, 4 kHz, excitación externa</field>
+      </fields>
+      <libsource lib="Device" part="Buzzer" description="Buzzer, polarized"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="PKLCS1212E4001-R1"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="quartz resonator ceramic"/>
+      <property name="ki_fp_filters" value="*Buzzer*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>841d300d-db32-5080-8ce4-367d42deda31</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>AO3400A</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.aosmd.com/res/datasheets/AO3400A.pdf</datasheet>
+      <description>MOSFET N 30 V SOT-23 (zumbador)</description>
+      <fields>
+        <field name="Fabricante">Alpha &amp; Omega Semiconductor</field>
+        <field name="MPN">AO3400A</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.aosmd.com/res/datasheets/AO3400A.pdf</field>
+        <field name="Description">MOSFET N 30 V SOT-23 (zumbador)</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="AO3400A" description="30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"/>
+      <property name="Fabricante" value="Alpha &amp; Omega Semiconductor"/>
+      <property name="MPN" value="AO3400A"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>3b774faa-1e15-5170-a9c9-98432f81173b</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>2.2k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 2.2kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 2.2kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>31acb697-5860-5958-8900-04a9baaf3ef0</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>2.2k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 2.2kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 2.2kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>74b05e8d-ba12-5392-83c6-4450724db56f</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>b6786b65-3980-5551-92a5-296e4b650854</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>4e5c7df5-60ab-5783-a377-b0a58d7f4dd3</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>619b906b-7959-5bd1-8716-9455398ab93b</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>09cae855-e51a-5d71-8f97-76ccf151a33d</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>365a3533-9774-5188-bcfa-431af71324cc</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>2.2k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 2.2kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-072K2L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 2.2kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-072K2L"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>0cab74e4-a811-5fa2-8072-88478b724c0b</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>100Ω</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100Ω 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100RL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100Ω 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100RL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>8d44868b-1778-5d97-a1ed-7a0b323cda51</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>2b69d26e-dd23-523a-88fb-6846fdbf1b40</tstamps>
+    </comp>
+    <comp ref="R29">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>4eec4e9b-e009-54e2-9900-9328ffa837b6</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>fe5f2e23-4d68-5825-8a56-97583ac39467</tstamps>
+    </comp>
+    <comp ref="SW2">
+      <value>START</value>
+      <footprint>Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP</footprint>
+      <datasheet>https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf</datasheet>
+      <description>Pulsador táctil SMD 6 × 6 × 3.1 mm (START)</description>
+      <fields>
+        <field name="Fabricante">Omron</field>
+        <field name="MPN">B3FS-1000P</field>
+        <field name="Footprint">Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP</field>
+        <field name="Datasheet">https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf</field>
+        <field name="Description">Pulsador táctil SMD 6 × 6 × 3.1 mm (START)</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Fabricante" value="Omron"/>
+      <property name="MPN" value="B3FS-1000P"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>2b2f0a5a-7b4e-52b9-8bf2-e5ab5497610a</tstamps>
+    </comp>
+    <comp ref="SW3">
+      <value>CAL</value>
+      <footprint>Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP</footprint>
+      <datasheet>https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf</datasheet>
+      <description>Pulsador táctil SMD 6 × 6 × 3.1 mm (CAL)</description>
+      <fields>
+        <field name="Fabricante">Omron</field>
+        <field name="MPN">B3FS-1000P</field>
+        <field name="Footprint">Button_Switch_SMD:SW_SPST_Omron_B3FS-100xP</field>
+        <field name="Datasheet">https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf</field>
+        <field name="Description">Pulsador táctil SMD 6 × 6 × 3.1 mm (CAL)</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Fabricante" value="Omron"/>
+      <property name="MPN" value="B3FS-1000P"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>513a98e3-4e67-531b-8256-4e9e2e0cb69b</tstamps>
+    </comp>
+    <comp ref="SW4">
+      <value>RESET</value>
+      <footprint>Button_Switch_SMD:SW_SPST_B3U-1000P</footprint>
+      <datasheet>https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf</datasheet>
+      <description>Pulsador táctil SMD 3.0 × 2.5 mm (RESET del MCU)</description>
+      <fields>
+        <field name="Fabricante">Omron</field>
+        <field name="MPN">B3U-1000P</field>
+        <field name="Footprint">Button_Switch_SMD:SW_SPST_B3U-1000P</field>
+        <field name="Datasheet">https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf</field>
+        <field name="Description">Pulsador táctil SMD 3.0 × 2.5 mm (RESET del MCU)</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Fabricante" value="Omron"/>
+      <property name="MPN" value="B3U-1000P"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>72ec5013-c208-5c4c-a66b-d18588f5cbf0</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>ISM330DHCXTR</value>
+      <footprint>Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/ism330dhcx.pdf</datasheet>
+      <description>IMU 6 ejes: giroscopio ±125-4000 dps, acelerómetro ±2-16 g, I2C/SPI, LGA-14L</description>
+      <fields>
+        <field name="Fabricante">STMicroelectronics</field>
+        <field name="MPN">ISM330DHCXTR</field>
+        <field name="Footprint">Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/ism330dhcx.pdf</field>
+        <field name="Description">IMU 6 ejes: giroscopio ±125-4000 dps, acelerómetro ±2-16 g, I2C/SPI, LGA-14L</field>
+      </fields>
+      <libsource lib="Sensor_Motion" part="ISM330DHCX" description="iNEMO inertial module with embedded Machine Learning Core: always-on 3D accelerometer and 3D gyroscope with digital output for industrial applications, LGA-14"/>
+      <property name="Fabricante" value="STMicroelectronics"/>
+      <property name="MPN" value="ISM330DHCXTR"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="ST iNEMO IMU"/>
+      <property name="ki_fp_filters" value="*LGA*3x2.5mm*P0.5mm*LayoutBorder3x4y*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>e107cc9b-7de8-5dd6-9a1b-0922eb85318e</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>LPS22DFTR</value>
+      <footprint>Package_LGA:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/lps22df.pdf</datasheet>
+      <description>Barómetro 260-1260 hPa, 200 Hz, I2C: presión de la CÁMARA (cara inferior, sobre la chimenea; 0x5D)</description>
+      <fields>
+        <field name="Fabricante">STMicroelectronics</field>
+        <field name="MPN">LPS22DFTR</field>
+        <field name="Footprint">Package_LGA:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/lps22df.pdf</field>
+        <field name="Description">Barómetro 260-1260 hPa, 200 Hz, I2C: presión de la CÁMARA (cara inferior, sobre la chimenea; 0x5D)</field>
+      </fields>
+      <libsource lib="Sensor_Pressure" part="LPS22DF" description="MEMS absolute pressure sensor, 260-1260 hPa, 1-200Hz ODR, 24bit, I2C/I3C/SPI interface, 2x2mm ST_HLGA-10L"/>
+      <property name="Fabricante" value="STMicroelectronics"/>
+      <property name="MPN" value="LPS22DFTR"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="digital barometer"/>
+      <property name="ki_fp_filters" value="ST?HLGA*2x2mm*P0.5mm*LayoutBorder3x2y*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>ddbdf185-6b28-50fa-9070-7b4c69eeaa56</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>LPS22DFTR</value>
+      <footprint>Package_LGA:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/lps22df.pdf</datasheet>
+      <description>Barómetro 260-1260 hPa, 200 Hz, I2C: presión AMBIENTE (cara superior; 0x5C)</description>
+      <fields>
+        <field name="Fabricante">STMicroelectronics</field>
+        <field name="MPN">LPS22DFTR</field>
+        <field name="Footprint">Package_LGA:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/lps22df.pdf</field>
+        <field name="Description">Barómetro 260-1260 hPa, 200 Hz, I2C: presión AMBIENTE (cara superior; 0x5C)</field>
+      </fields>
+      <libsource lib="Sensor_Pressure" part="LPS22DF" description="MEMS absolute pressure sensor, 260-1260 hPa, 1-200Hz ODR, 24bit, I2C/I3C/SPI interface, 2x2mm ST_HLGA-10L"/>
+      <property name="Fabricante" value="STMicroelectronics"/>
+      <property name="MPN" value="LPS22DFTR"/>
+      <property name="Sheetname" value="MCU (módulo WeAct), sensores e interfaz"/>
+      <property name="Sheetfile" value="control.kicad_sch"/>
+      <property name="ki_keywords" value="digital barometer"/>
+      <property name="ki_fp_filters" value="ST?HLGA*2x2mm*P0.5mm*LayoutBorder3x2y*"/>
+      <sheetpath names="/MCU (módulo WeAct), sensores e interfaz/" tstamps="/7e6437c5-4344-59ac-b018-9d970ff3017b/"/>
+      <tstamps>4c68d02a-ebd1-543d-8337-2ecaac343611</tstamps>
+    </comp>
+    <comp ref="C15">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>49a983c7-89ae-5c96-ba89-6a11ffe7cb24</tstamps>
+    </comp>
+    <comp ref="C16">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>85b13502-a270-5ab5-acf7-ed4e135a0985</tstamps>
+    </comp>
+    <comp ref="C17">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>21177e88-4bb1-5005-ae40-1b10574e7005</tstamps>
+    </comp>
+    <comp ref="C18">
+      <value>22nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H223KA12D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H223KA12D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>e1fdeb74-5106-5090-80ae-8243941ae3b2</tstamps>
+    </comp>
+    <comp ref="C19">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>82675ceb-34bd-54e3-9fd8-dd98ce9ece15</tstamps>
+    </comp>
+    <comp ref="C20">
+      <value>22µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E226ME44L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E226ME44L"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>0d38c395-9a7f-567c-999b-f059efea3d0c</tstamps>
+    </comp>
+    <comp ref="C21">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>aee4cfd0-0627-5fd7-9134-e6f9e85e402f</tstamps>
+    </comp>
+    <comp ref="C22">
+      <value>22nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 22nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H223KA12D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 22nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H223KA12D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>d52f014e-0827-5a61-afd5-a966f4d135b0</tstamps>
+    </comp>
+    <comp ref="C23">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>4949014a-7760-5d16-a28f-9d2a6bf47c7b</tstamps>
+    </comp>
+    <comp ref="C31">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>801d29be-111b-5b92-a452-269a03283e4b</tstamps>
+    </comp>
+    <comp ref="C32">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>46aab3f6-7862-5901-977d-acf2dac5f821</tstamps>
+    </comp>
+    <comp ref="C33">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>05a4b229-fd09-59aa-bc1e-726f8dece420</tstamps>
+    </comp>
+    <comp ref="C34">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>557c6168-5d4b-515b-a155-6efb4cb8cf08</tstamps>
+    </comp>
+    <comp ref="C35">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>71410dad-b5e8-5965-93f8-b6e9d190c5c5</tstamps>
+    </comp>
+    <comp ref="C36">
+      <value>1nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 1nF 50 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71H102KA01D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 1nF 50 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71H102KA01D"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>bd7d035b-f6c9-5a25-b4bf-ddfee7a225e0</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 de fijación al chasis</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 de fijación al chasis</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>b83ac4fb-46c2-5208-83eb-2f04b07f6155</tstamps>
+    </comp>
+    <comp ref="H2">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 de fijación al chasis</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 de fijación al chasis</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>67220bc4-4ebf-5924-909c-faab5afa6220</tstamps>
+    </comp>
+    <comp ref="H3">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 de fijación al chasis</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 de fijación al chasis</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>dc7bb21d-e335-59c0-9035-33d3d1a3c1b5</tstamps>
+    </comp>
+    <comp ref="H4">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 de fijación al chasis</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 de fijación al chasis</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>bf1fa22b-eaee-51a7-81a3-47d66240d2af</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>SENSORES</value>
+      <footprint>Connector_JST:JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical</footprint>
+      <datasheet>https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</datasheet>
+      <description>JST SH 8 vías a la barra de sensores (cable 1:1)</description>
+      <fields>
+        <field name="Fabricante">JST</field>
+        <field name="MPN">BM08B-SRSS-TB</field>
+        <field name="Footprint">Connector_JST:JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical</field>
+        <field name="Datasheet">https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</field>
+        <field name="Description">JST SH 8 vías a la barra de sensores (cable 1:1)</field>
+      </fields>
+      <libsource lib="Connector_Generic_MountingPin" part="Conn_01x08_MountingPin" description="Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="JST"/>
+      <property name="MPN" value="BM08B-SRSS-TB"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??-1MP*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>8bf7e96d-2daf-528a-82f1-2f826f670382</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>MOTOR_I</value>
+      <footprint>Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical</footprint>
+      <datasheet>https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</datasheet>
+      <description>JST SH 6 vías: motor y encoder izquierdo (Pololu #5183; cable JST SH 6 vías)</description>
+      <fields>
+        <field name="Fabricante">JST</field>
+        <field name="MPN">BM06B-SRSS-TB</field>
+        <field name="Footprint">Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical</field>
+        <field name="Datasheet">https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</field>
+        <field name="Description">JST SH 6 vías: motor y encoder izquierdo (Pololu #5183; cable JST SH 6 vías)</field>
+      </fields>
+      <libsource lib="Connector_Generic_MountingPin" part="Conn_01x06_MountingPin" description="Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="JST"/>
+      <property name="MPN" value="BM06B-SRSS-TB"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??-1MP*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>2845ac02-902e-5c52-87ad-bffd2c9c94c3</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>MOTOR_D</value>
+      <footprint>Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical</footprint>
+      <datasheet>https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</datasheet>
+      <description>JST SH 6 vías: motor y encoder derecho (Pololu #5183; cable JST SH 6 vías)</description>
+      <fields>
+        <field name="Fabricante">JST</field>
+        <field name="MPN">BM06B-SRSS-TB</field>
+        <field name="Footprint">Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical</field>
+        <field name="Datasheet">https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</field>
+        <field name="Description">JST SH 6 vías: motor y encoder derecho (Pololu #5183; cable JST SH 6 vías)</field>
+      </fields>
+      <libsource lib="Connector_Generic_MountingPin" part="Conn_01x06_MountingPin" description="Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="JST"/>
+      <property name="MPN" value="BM06B-SRSS-TB"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??-1MP*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>3731ecce-08dc-5736-9c30-d7eb07fc995b</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>ESC_POT</value>
+      <footprint>Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm</footprint>
+      <description>Pads para soldar los cables de potencia del ESC (0.5 mm²): 1 = +VBAT, 2 = GND</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Pads para soldar los cables de potencia del ESC (0.5 mm²): 1 = +VBAT, 2 = GND</field>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>de831a16-5564-5bdd-ba6e-54f398c57076</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>ESC_SEÑAL</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <description>Cabecera de servo para la señal del ESC: 1 = señal, 2 = sin conexión, 3 = GND</description>
+      <fields>
+        <field name="Fabricante">genérico</field>
+        <field name="MPN">Cabecera macho 1×3, paso 2.54 mm (número de parte por elegir)</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Cabecera de servo para la señal del ESC: 1 = señal, 2 = sin conexión, 3 = GND</field>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="genérico"/>
+      <property name="MPN" value="Cabecera macho 1×3, paso 2.54 mm (número de parte por elegir)"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>e55a1c69-0505-5314-9e6e-6e0ffa0d0a24</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>1.5k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1.5kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071K5L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1.5kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071K5L"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>0304078f-c6df-5bf4-928a-d811528cd0fd</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>0Ω</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 0Ω 5 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402JR-070RL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 0Ω 5 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402JR-070RL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>f733894d-61fc-5922-8c54-fa71a988e6d7</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>1.5k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 1.5kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-071K5L</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 1.5kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-071K5L"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>6877c616-339a-5ca3-94ce-032f1b9e56b1</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>0Ω</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 0Ω 5 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402JR-070RL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 0Ω 5 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402JR-070RL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>bae48d15-520e-58b2-a78e-93f248391a5a</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>fb43bef3-6f9a-5198-8bc5-ecd6a0b3d1b6</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>40e15a08-48d3-5377-a463-f46baf1dde3d</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>8696c649-ba5b-51ab-8dca-eb84f67d434b</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>61a73cae-f68f-5d2d-b9ee-762b2ea0c7cc</tstamps>
+    </comp>
+    <comp ref="R27">
+      <value>100Ω</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100Ω 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100RL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100Ω 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100RL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>54e219b3-8df7-59bd-aa33-c7037ea9ffd7</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>9816364f-72fc-5261-bee8-6a5ae8d220e9</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>DRV8874PWPR</value>
+      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/drv8874.pdf</datasheet>
+      <description>Puente H del motor izquierdo (PH/EN, 6 A pico, IPROPI)</description>
+      <fields>
+        <field name="Fabricante">Texas Instruments</field>
+        <field name="MPN">DRV8874PWPR</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/drv8874.pdf</field>
+        <field name="Description">Puente H del motor izquierdo (PH/EN, 6 A pico, IPROPI)</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="DRV8874PWPR" description="TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5"/>
+      <property name="Fabricante" value="Texas Instruments"/>
+      <property name="MPN" value="DRV8874PWPR"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>e3f28e6f-b9ba-58fe-98f1-388ac3cf8bf4</tstamps>
+    </comp>
+    <comp ref="U6">
+      <value>DRV8874PWPR</value>
+      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/drv8874.pdf</datasheet>
+      <description>Puente H del motor derecho (PH/EN, 6 A pico, IPROPI)</description>
+      <fields>
+        <field name="Fabricante">Texas Instruments</field>
+        <field name="MPN">DRV8874PWPR</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/drv8874.pdf</field>
+        <field name="Description">Puente H del motor derecho (PH/EN, 6 A pico, IPROPI)</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="DRV8874PWPR" description="TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5"/>
+      <property name="Fabricante" value="Texas Instruments"/>
+      <property name="MPN" value="DRV8874PWPR"/>
+      <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
+      <property name="Sheetfile" value="motores.kicad_sch"/>
+      <sheetpath names="/Puentes H, motores, ESC y barra de sensores/" tstamps="/72d029ca-52ea-5edf-848e-81b5192c862c/"/>
+      <tstamps>4191f2d2-09b9-58c6-a2e4-93cb010e611d</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x03">
+      <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x03</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic_MountingPin" part="Conn_01x06_MountingPin">
+      <description>Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??-1MP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06_MountingPin</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="MP" name="MountPin" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic_MountingPin" part="Conn_01x08_MountingPin">
+      <description>Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??-1MP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x08_MountingPin</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="MP" name="MountPin" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Buzzer">
+      <description>Buzzer, polarized</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>*Buzzer*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">BZ</field>
+        <field name="Value">Buzzer</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Buzzer, polarized</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="passive"/>
+        <pin num="2" name="-" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Fuse">
+      <description>Fuse</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>*Fuse*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">Fuse</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Fuse</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L">
+      <description>Inductor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Inductor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Light emitting diode</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="MBR0540">
+      <description>40V 0.5A Schottky Power Rectifier Diode, SOD-123</description>
+      <docs>http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf</docs>
+      <footprints>
+        <fp>D*SOD?123*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">MBR0540</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet">http://www.mccsemi.com/up_pdf/MBR0520~MBR0580(SOD123).pdf</field>
+        <field name="Description">40V 0.5A Schottky Power Rectifier Diode, SOD-123</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="SMAJ9.0A">
+      <description>400W unidirectional Transient Voltage Suppressor, 9.0Vr, SMA(DO-214AC)</description>
+      <docs>https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</docs>
+      <footprints>
+        <fp>D*SMA*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SMAJ9.0A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet">https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</field>
+        <field name="Description">400W unidirectional Transient Voltage Suppressor, 9.0Vr, SMA(DO-214AC)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="A2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
+    </libpart>
+    <libpart lib="Regulator_Switching" part="TPS563200">
+      <description>3A Synchronous Step-Down Voltage Regulator, Adjustable Output Voltage, 4.5-17V Input Voltage, SOT-23-6</description>
+      <docs>http://www.ti.com/lit/ds/symlink/tps563200.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS563200</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/tps563200.pdf</field>
+        <field name="Description">3A Synchronous Step-Down Voltage Regulator, Adjustable Output Voltage, 4.5-17V Input Voltage, SOT-23-6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="SW" type="output"/>
+        <pin num="3" name="VIN" type="power_in"/>
+        <pin num="4" name="VFB" type="input"/>
+        <pin num="5" name="EN" type="input"/>
+        <pin num="6" name="VBST" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Sensor_Motion" part="ISM330DHCX">
+      <description>iNEMO inertial module with embedded Machine Learning Core: always-on 3D accelerometer and 3D gyroscope with digital output for industrial applications, LGA-14</description>
+      <docs>https://www.st.com/resource/en/datasheet/ism330dhcx.pdf</docs>
+      <footprints>
+        <fp>*LGA*3x2.5mm*P0.5mm*LayoutBorder3x4y*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ISM330DHCX</field>
+        <field name="Footprint">Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/ism330dhcx.pdf</field>
+        <field name="Description">iNEMO inertial module with embedded Machine Learning Core: always-on 3D accelerometer and 3D gyroscope with digital output for industrial applications, LGA-14</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SDO/SA0" type="output"/>
+        <pin num="2" name="SDx" type="bidirectional"/>
+        <pin num="3" name="SCx" type="input"/>
+        <pin num="4" name="INT1" type="output"/>
+        <pin num="5" name="VDDIO" type="power_in"/>
+        <pin num="6" name="GND" type="power_in"/>
+        <pin num="7" name="GND" type="passive"/>
+        <pin num="8" name="VDD" type="power_in"/>
+        <pin num="9" name="INT2" type="output"/>
+        <pin num="10" name="OCS_AUX" type="passive"/>
+        <pin num="11" name="SDO_AUX" type="passive"/>
+        <pin num="12" name="CS" type="input"/>
+        <pin num="13" name="SCL" type="input"/>
+        <pin num="14" name="SDA" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Sensor_Pressure" part="LPS22DF">
+      <description>MEMS absolute pressure sensor, 260-1260 hPa, 1-200Hz ODR, 24bit, I2C/I3C/SPI interface, 2x2mm ST_HLGA-10L</description>
+      <docs>https://www.st.com/resource/en/datasheet/lps22df.pdf</docs>
+      <footprints>
+        <fp>ST?HLGA*2x2mm*P0.5mm*LayoutBorder3x2y*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LPS22DF</field>
+        <field name="Footprint">Package_LGA:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/lps22df.pdf</field>
+        <field name="Description">MEMS absolute pressure sensor, 260-1260 hPa, 1-200Hz ODR, 24bit, I2C/I3C/SPI interface, 2x2mm ST_HLGA-10L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Vdd_IO" type="power_in"/>
+        <pin num="2" name="SCL" type="input"/>
+        <pin num="3" name="GND" type="passive"/>
+        <pin num="4" name="SDA" type="bidirectional"/>
+        <pin num="5" name="SA0" type="input"/>
+        <pin num="6" name="~{CS}" type="input"/>
+        <pin num="7" name="INT_DRDY" type="output"/>
+        <pin num="8" name="GND_IO" type="power_in"/>
+        <pin num="9" name="GND" type="power_in"/>
+        <pin num="10" name="VDD" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Push button switch, generic, two pins</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_SPDT">
+      <description>Switch, single pole double throw</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_SPDT</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Switch, single pole double throw</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="B" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="AO3400A">
+      <description>30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23</description>
+      <docs>http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">AO3400A</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf</field>
+        <field name="Description">30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="DMP3013SFV">
+      <description>-12A Id, -30V Vds, P-Channel Power MOSFET, 9.5mOhm Ron, 33.7nC Qg (typ), PowerDI3333-8</description>
+      <docs>https://www.diodes.com/assets/Datasheets/DMP3013SFV.pdf</docs>
+      <footprints>
+        <fp>Diodes*PowerDI3333*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">DMP3013SFV</field>
+        <field name="Footprint">Package_SON:Diodes_PowerDI3333-8</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/DMP3013SFV.pdf</field>
+        <field name="Description">-12A Id, -30V Vds, P-Channel Power MOSFET, 9.5mOhm Ron, 33.7nC Qg (typ), PowerDI3333-8</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="S" type="passive"/>
+        <pin num="4" name="G" type="passive"/>
+        <pin num="5" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="circuitforge_v2" part="DRV8874PWPR">
+      <description>TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5</description>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DRV8874PWPR</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Datasheet"/>
+        <field name="Description">TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="EN/IN1" type="input"/>
+        <pin num="2" name="PH/IN2" type="input"/>
+        <pin num="3" name="nSLEEP" type="input"/>
+        <pin num="4" name="nFAULT" type="open_collector"/>
+        <pin num="5" name="VREF" type="input"/>
+        <pin num="6" name="IPROPI" type="output"/>
+        <pin num="7" name="IMODE" type="input"/>
+        <pin num="8" name="OUT1" type="output"/>
+        <pin num="9" name="PGND" type="power_in"/>
+        <pin num="10" name="OUT2" type="output"/>
+        <pin num="11" name="VM" type="power_in"/>
+        <pin num="12" name="VCP" type="passive"/>
+        <pin num="13" name="CPH" type="passive"/>
+        <pin num="14" name="CPL" type="passive"/>
+        <pin num="15" name="GND" type="power_in"/>
+        <pin num="16" name="PMODE" type="input"/>
+        <pin num="17" name="PAD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="circuitforge_v2" part="WeAct_STM32G474_CoreBoard">
+      <description>WeAct Studio STM32G474CEU6 Core Board V1.0 (36.28 × 28.14 mm) en 2 zócalos 2 × 12; P1 = pads A, P2 = pads B</description>
+      <fields>
+        <field name="Reference">A</field>
+        <field name="Value">WeAct_STM32G474_CoreBoard</field>
+        <field name="Footprint">circuitforge_v2:WeAct_STM32G474_CoreBoard_Zocalo</field>
+        <field name="Datasheet"/>
+        <field name="Description">WeAct Studio STM32G474CEU6 Core Board V1.0 (36.28 × 28.14 mm) en 2 zócalos 2 × 12; P1 = pads A, P2 = pads B</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="VCC" type="no_connect"/>
+        <pin num="A2" name="VCC" type="no_connect"/>
+        <pin num="A3" name="GND" type="power_in"/>
+        <pin num="A4" name="GND" type="power_in"/>
+        <pin num="A5" name="PB12" type="passive"/>
+        <pin num="A6" name="PB13" type="passive"/>
+        <pin num="A7" name="PB14" type="passive"/>
+        <pin num="A8" name="PB15" type="passive"/>
+        <pin num="A9" name="PC6" type="passive"/>
+        <pin num="A10" name="PA8_I2C3_SCL" type="passive"/>
+        <pin num="A11" name="PA9_TIM1_CH2" type="passive"/>
+        <pin num="A12" name="PA10_TIM1_CH3" type="passive"/>
+        <pin num="A13" name="PA11" type="passive"/>
+        <pin num="A14" name="PA12" type="passive"/>
+        <pin num="A15" name="PA15_TIM2_CH1" type="passive"/>
+        <pin num="A16" name="PC10" type="passive"/>
+        <pin num="A17" name="PC11_I2C3_SDA" type="passive"/>
+        <pin num="A18" name="PB3_TIM2_CH2" type="passive"/>
+        <pin num="A19" name="PB4" type="passive"/>
+        <pin num="A20" name="PB5" type="passive"/>
+        <pin num="A21" name="PB6_TIM4_CH1" type="passive"/>
+        <pin num="A22" name="PB7_TIM4_CH2" type="passive"/>
+        <pin num="A23" name="PB8_TIM16_CH1_(BOOT0_al_reset)" type="passive"/>
+        <pin num="A24" name="PB9_TIM17_CH1_(DShot/PWM)" type="passive"/>
+        <pin num="B1" name="3V3" type="power_in"/>
+        <pin num="B2" name="3V3" type="power_in"/>
+        <pin num="B3" name="GND" type="power_in"/>
+        <pin num="B4" name="GND" type="power_in"/>
+        <pin num="B5" name="PB10" type="passive"/>
+        <pin num="B6" name="PB11" type="passive"/>
+        <pin num="B7" name="PB2_ADC2_IN12" type="passive"/>
+        <pin num="B8" name="VREF+" type="passive"/>
+        <pin num="B9" name="PB0" type="passive"/>
+        <pin num="B10" name="PB1" type="passive"/>
+        <pin num="B11" name="PA7" type="passive"/>
+        <pin num="B12" name="PC4" type="passive"/>
+        <pin num="B13" name="PA5" type="passive"/>
+        <pin num="B14" name="PA6" type="passive"/>
+        <pin num="B15" name="PA3_ADC1_IN4" type="passive"/>
+        <pin num="B16" name="PA4" type="passive"/>
+        <pin num="B17" name="PA1_ADC2_IN2" type="passive"/>
+        <pin num="B18" name="PA2_ADC1_IN3" type="passive"/>
+        <pin num="B19" name="NRST" type="passive"/>
+        <pin num="B20" name="PA0_ADC1_IN1" type="passive"/>
+        <pin num="B21" name="PC14" type="passive"/>
+        <pin num="B22" name="PC15" type="passive"/>
+        <pin num="B23" name="VB" type="passive"/>
+        <pin num="B24" name="PC13" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/symbols//Connector.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>/usr/share/kicad/symbols//Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic_MountingPin">
+      <uri>/usr/share/kicad/symbols//Connector_Generic_MountingPin.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Diode">
+      <uri>/usr/share/kicad/symbols//Diode.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>/usr/share/kicad/symbols//Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Switching">
+      <uri>/usr/share/kicad/symbols//Regulator_Switching.kicad_sym</uri>
+    </library>
+    <library logical="Sensor_Motion">
+      <uri>/usr/share/kicad/symbols//Sensor_Motion.kicad_sym</uri>
+    </library>
+    <library logical="Sensor_Pressure">
+      <uri>/usr/share/kicad/symbols//Sensor_Pressure.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/usr/share/kicad/symbols//Switch.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>/usr/share/kicad/symbols//Transistor_FET.kicad_sym</uri>
+    </library>
+    <library logical="circuitforge_v2">
+      <uri>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/principal/circuitforge_v2.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3" class="Default">
+      <node ref="A1" pin="B1" pinfunction="3V3" pintype="power_in"/>
+      <node ref="A1" pin="B2" pinfunction="3V3" pintype="power_in"/>
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="C12" pin="1" pintype="passive"/>
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J3" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J4" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+      <node ref="R25" pin="1" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="12" pinfunction="CS" pintype="input"/>
+      <node ref="U2" pin="5" pinfunction="VDDIO" pintype="power_in"/>
+      <node ref="U2" pin="8" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U3" pin="1" pinfunction="Vdd_IO" pintype="power_in"/>
+      <node ref="U3" pin="10" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U3" pin="5" pinfunction="SA0" pintype="input"/>
+      <node ref="U3" pin="6" pinfunction="~{CS}" pintype="input"/>
+      <node ref="U4" pin="1" pinfunction="Vdd_IO" pintype="power_in"/>
+      <node ref="U4" pin="10" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U4" pin="6" pinfunction="~{CS}" pintype="input"/>
+    </net>
+    <net code="2" name="/Alimentación y protecciones/BUCK_BST" class="Default">
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="VBST" pintype="passive"/>
+    </net>
+    <net code="3" name="/Alimentación y protecciones/BUCK_EN" class="Default">
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="4" name="/Alimentación y protecciones/BUCK_FB" class="Default">
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="VFB" pintype="input"/>
+    </net>
+    <net code="5" name="/Alimentación y protecciones/BUCK_SW" class="Default">
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="SW" pintype="output"/>
+    </net>
+    <net code="6" name="/Alimentación y protecciones/LED_PWR_A" class="Default">
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+    </net>
+    <net code="7" name="/Alimentación y protecciones/PFET_G" class="Default">
+      <node ref="Q1" pin="4" pinfunction="G" pintype="passive"/>
+      <node ref="Q2" pin="4" pinfunction="G" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="8" name="/Alimentación y protecciones/SW_COM" class="Default">
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="B" pintype="passive"/>
+    </net>
+    <net code="9" name="/Alimentación y protecciones/VBAT_F" class="Default">
+      <node ref="F1" pin="2" pintype="passive"/>
+      <node ref="Q1" pin="5" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="10" name="/Alimentación y protecciones/VBAT_IN" class="Default">
+      <node ref="F1" pin="1" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    </net>
+    <net code="11" name="/Alimentación y protecciones/VBAT_S" class="Default">
+      <node ref="Q1" pin="1" pinfunction="S" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="Q2" pin="1" pinfunction="S" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="12" name="/Alimentación y protecciones/VIN_BUCK" class="Default">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="VIN" pintype="power_in"/>
+    </net>
+    <net code="13" name="/MCU (módulo WeAct), sensores e interfaz/BTN_CAL" class="Default">
+      <node ref="A1" pin="B13" pinfunction="PA5" pintype="passive"/>
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="SW3" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="14" name="/MCU (módulo WeAct), sensores e interfaz/BTN_START" class="Default">
+      <node ref="A1" pin="B12" pinfunction="PC4" pintype="passive"/>
+      <node ref="C13" pin="1" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="15" name="/MCU (módulo WeAct), sensores e interfaz/I2C_SCL" class="Default">
+      <node ref="A1" pin="A10" pinfunction="PA8_I2C3_SCL" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="U2" pin="13" pinfunction="SCL" pintype="input"/>
+      <node ref="U3" pin="2" pinfunction="SCL" pintype="input"/>
+      <node ref="U4" pin="2" pinfunction="SCL" pintype="input"/>
+    </net>
+    <net code="16" name="/MCU (módulo WeAct), sensores e interfaz/I2C_SDA" class="Default">
+      <node ref="A1" pin="A17" pinfunction="PC11_I2C3_SDA" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="U2" pin="14" pinfunction="SDA" pintype="bidirectional"/>
+      <node ref="U3" pin="4" pinfunction="SDA" pintype="bidirectional"/>
+      <node ref="U4" pin="4" pinfunction="SDA" pintype="bidirectional"/>
+    </net>
+    <net code="17" name="/MCU (módulo WeAct), sensores e interfaz/IMU_AUX" class="Default">
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="SDx" pintype="bidirectional"/>
+      <node ref="U2" pin="3" pinfunction="SCx" pintype="input"/>
+    </net>
+    <net code="18" name="/MCU (módulo WeAct), sensores e interfaz/IMU_SA0" class="Default">
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="SDO/SA0" pintype="output"/>
+    </net>
+    <net code="19" name="/MCU (módulo WeAct), sensores e interfaz/LED_AMARILLO" class="Default">
+      <node ref="A1" pin="B10" pinfunction="PB1" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+    </net>
+    <net code="20" name="/MCU (módulo WeAct), sensores e interfaz/LED_AMARILLO_A" class="Default">
+      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+    </net>
+    <net code="21" name="/MCU (módulo WeAct), sensores e interfaz/LED_ROJO" class="Default">
+      <node ref="A1" pin="B5" pinfunction="PB10" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+    </net>
+    <net code="22" name="/MCU (módulo WeAct), sensores e interfaz/LED_ROJO_A" class="Default">
+      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+    </net>
+    <net code="23" name="/MCU (módulo WeAct), sensores e interfaz/LED_VERDE" class="Default">
+      <node ref="A1" pin="B9" pinfunction="PB0" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+    </net>
+    <net code="24" name="/MCU (módulo WeAct), sensores e interfaz/LED_VERDE_A" class="Default">
+      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+    </net>
+    <net code="25" name="/MCU (módulo WeAct), sensores e interfaz/NRST" class="Default">
+      <node ref="A1" pin="B19" pinfunction="NRST" pintype="passive"/>
+      <node ref="SW4" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="26" name="/MCU (módulo WeAct), sensores e interfaz/ZUMB" class="Default">
+      <node ref="A1" pin="A23" pinfunction="PB8_TIM16_CH1_(BOOT0_al_reset)" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+    </net>
+    <net code="27" name="/MCU (módulo WeAct), sensores e interfaz/ZUMB_D" class="Default">
+      <node ref="LS1" pin="1" pinfunction="+" pintype="passive"/>
+      <node ref="Q3" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+    </net>
+    <net code="28" name="/MCU (módulo WeAct), sensores e interfaz/ZUMB_G" class="Default">
+      <node ref="Q3" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+    </net>
+    <net code="29" name="/Puentes H, motores, ESC y barra de sensores/CPH_D" class="Default">
+      <node ref="C22" pin="1" pintype="passive"/>
+      <node ref="U6" pin="13" pinfunction="CPH" pintype="passive"/>
+    </net>
+    <net code="30" name="/Puentes H, motores, ESC y barra de sensores/CPH_I" class="Default">
+      <node ref="C18" pin="1" pintype="passive"/>
+      <node ref="U5" pin="13" pinfunction="CPH" pintype="passive"/>
+    </net>
+    <net code="31" name="/Puentes H, motores, ESC y barra de sensores/CPL_D" class="Default">
+      <node ref="C22" pin="2" pintype="passive"/>
+      <node ref="U6" pin="14" pinfunction="CPL" pintype="passive"/>
+    </net>
+    <net code="32" name="/Puentes H, motores, ESC y barra de sensores/CPL_I" class="Default">
+      <node ref="C18" pin="2" pintype="passive"/>
+      <node ref="U5" pin="14" pinfunction="CPL" pintype="passive"/>
+    </net>
+    <net code="33" name="/Puentes H, motores, ESC y barra de sensores/DRV_VREF" class="Default">
+      <node ref="C23" pin="1" pintype="passive"/>
+      <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="R26" pin="1" pintype="passive"/>
+      <node ref="U5" pin="5" pinfunction="VREF" pintype="input"/>
+      <node ref="U6" pin="5" pinfunction="VREF" pintype="input"/>
+    </net>
+    <net code="34" name="/Puentes H, motores, ESC y barra de sensores/ESC_SEN_C" class="Default">
+      <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R27" pin="2" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
+    </net>
+    <net code="35" name="/Puentes H, motores, ESC y barra de sensores/IMODE_D" class="Default">
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="U6" pin="7" pinfunction="IMODE" pintype="input"/>
+    </net>
+    <net code="36" name="/Puentes H, motores, ESC y barra de sensores/IMODE_I" class="Default">
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="U5" pin="7" pinfunction="IMODE" pintype="input"/>
+    </net>
+    <net code="37" name="/Puentes H, motores, ESC y barra de sensores/MOT_D_1" class="Default">
+      <node ref="J4" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U6" pin="8" pinfunction="OUT1" pintype="output"/>
+    </net>
+    <net code="38" name="/Puentes H, motores, ESC y barra de sensores/MOT_D_2" class="Default">
+      <node ref="J4" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U6" pin="10" pinfunction="OUT2" pintype="output"/>
+    </net>
+    <net code="39" name="/Puentes H, motores, ESC y barra de sensores/MOT_I_1" class="Default">
+      <node ref="J3" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U5" pin="8" pinfunction="OUT1" pintype="output"/>
+    </net>
+    <net code="40" name="/Puentes H, motores, ESC y barra de sensores/MOT_I_2" class="Default">
+      <node ref="J3" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U5" pin="10" pinfunction="OUT2" pintype="output"/>
+    </net>
+    <net code="41" name="/Puentes H, motores, ESC y barra de sensores/VCP_D" class="Default">
+      <node ref="C21" pin="1" pintype="passive"/>
+      <node ref="U6" pin="12" pinfunction="VCP" pintype="passive"/>
+    </net>
+    <net code="42" name="/Puentes H, motores, ESC y barra de sensores/VCP_I" class="Default">
+      <node ref="C17" pin="1" pintype="passive"/>
+      <node ref="U5" pin="12" pinfunction="VCP" pintype="passive"/>
+    </net>
+    <net code="43" name="DRV_nFAULT" class="Default">
+      <node ref="A1" pin="A5" pinfunction="PB12" pintype="passive"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="U5" pin="4" pinfunction="nFAULT" pintype="open_collector"/>
+      <node ref="U6" pin="4" pinfunction="nFAULT" pintype="open_collector"/>
+    </net>
+    <net code="44" name="DRV_nSLEEP" class="Default">
+      <node ref="A1" pin="A19" pinfunction="PB4" pintype="passive"/>
+      <node ref="R24" pin="1" pintype="passive"/>
+      <node ref="U5" pin="3" pinfunction="nSLEEP" pintype="input"/>
+      <node ref="U6" pin="3" pinfunction="nSLEEP" pintype="input"/>
+    </net>
+    <net code="45" name="EMIT" class="Default">
+      <node ref="A1" pin="B16" pinfunction="PA4" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    </net>
+    <net code="46" name="ENC_D_A" class="Default">
+      <node ref="A1" pin="A15" pinfunction="PA15_TIM2_CH1" pintype="passive"/>
+      <node ref="C33" pin="1" pintype="passive"/>
+      <node ref="J4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+    </net>
+    <net code="47" name="ENC_D_B" class="Default">
+      <node ref="A1" pin="A18" pinfunction="PB3_TIM2_CH2" pintype="passive"/>
+      <node ref="C34" pin="1" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    </net>
+    <net code="48" name="ENC_I_A" class="Default">
+      <node ref="A1" pin="A21" pinfunction="PB6_TIM4_CH1" pintype="passive"/>
+      <node ref="C31" pin="1" pintype="passive"/>
+      <node ref="J3" pin="3" pinfunction="Pin_3" pintype="passive"/>
+    </net>
+    <net code="49" name="ENC_I_B" class="Default">
+      <node ref="A1" pin="A22" pinfunction="PB7_TIM4_CH2" pintype="passive"/>
+      <node ref="C32" pin="1" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    </net>
+    <net code="50" name="EN_D" class="Default">
+      <node ref="A1" pin="A11" pinfunction="PA9_TIM1_CH2" pintype="passive"/>
+      <node ref="U6" pin="1" pinfunction="EN/IN1" pintype="input"/>
+    </net>
+    <net code="51" name="EN_I" class="Default">
+      <node ref="A1" pin="A12" pinfunction="PA10_TIM1_CH3" pintype="passive"/>
+      <node ref="U5" pin="1" pinfunction="EN/IN1" pintype="input"/>
+    </net>
+    <net code="52" name="ESC_SEN" class="Default">
+      <node ref="A1" pin="A24" pinfunction="PB9_TIM17_CH1_(DShot/PWM)" pintype="passive"/>
+      <node ref="R27" pin="1" pintype="passive"/>
+    </net>
+    <net code="53" name="GND" class="Default">
+      <node ref="A1" pin="A3" pinfunction="GND" pintype="power_in"/>
+      <node ref="A1" pin="A4" pinfunction="GND" pintype="power_in"/>
+      <node ref="A1" pin="B3" pinfunction="GND" pintype="power_in"/>
+      <node ref="A1" pin="B4" pinfunction="GND" pintype="power_in"/>
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C10" pin="2" pintype="passive"/>
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="C12" pin="2" pintype="passive"/>
+      <node ref="C13" pin="2" pintype="passive"/>
+      <node ref="C14" pin="2" pintype="passive"/>
+      <node ref="C15" pin="2" pintype="passive"/>
+      <node ref="C16" pin="2" pintype="passive"/>
+      <node ref="C19" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C20" pin="2" pintype="passive"/>
+      <node ref="C23" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C31" pin="2" pintype="passive"/>
+      <node ref="C32" pin="2" pintype="passive"/>
+      <node ref="C33" pin="2" pintype="passive"/>
+      <node ref="C34" pin="2" pintype="passive"/>
+      <node ref="C35" pin="2" pintype="passive"/>
+      <node ref="C36" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A2" pintype="passive"/>
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D6" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J2" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="J2" pin="MP" pinfunction="MountPin" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J3" pin="MP" pinfunction="MountPin" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J4" pin="MP" pinfunction="MountPin" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J6" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="LS1" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="R26" pin="2" pintype="passive"/>
+      <node ref="R28" pin="2" pintype="passive"/>
+      <node ref="R29" pin="2" pintype="passive"/>
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="SW2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="SW3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="SW4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="6" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="7" pinfunction="GND" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="GND" pintype="passive"/>
+      <node ref="U3" pin="8" pinfunction="GND_IO" pintype="power_in"/>
+      <node ref="U3" pin="9" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="3" pinfunction="GND" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="SA0" pintype="input"/>
+      <node ref="U4" pin="8" pinfunction="GND_IO" pintype="power_in"/>
+      <node ref="U4" pin="9" pinfunction="GND" pintype="power_in"/>
+      <node ref="U5" pin="15" pinfunction="GND" pintype="power_in"/>
+      <node ref="U5" pin="16" pinfunction="PMODE" pintype="input"/>
+      <node ref="U5" pin="17" pinfunction="PAD" pintype="passive"/>
+      <node ref="U5" pin="9" pinfunction="PGND" pintype="power_in"/>
+      <node ref="U6" pin="15" pinfunction="GND" pintype="power_in"/>
+      <node ref="U6" pin="16" pinfunction="PMODE" pintype="input"/>
+      <node ref="U6" pin="17" pinfunction="PAD" pintype="passive"/>
+      <node ref="U6" pin="9" pinfunction="PGND" pintype="power_in"/>
+    </net>
+    <net code="54" name="IPROPI_D" class="Default">
+      <node ref="A1" pin="B7" pinfunction="PB2_ADC2_IN12" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="U6" pin="6" pinfunction="IPROPI" pintype="output"/>
+    </net>
+    <net code="55" name="IPROPI_I" class="Default">
+      <node ref="A1" pin="B15" pinfunction="PA3_ADC1_IN4" pintype="passive"/>
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="U5" pin="6" pinfunction="IPROPI" pintype="output"/>
+    </net>
+    <net code="56" name="MUX_S0" class="Default">
+      <node ref="A1" pin="A6" pinfunction="PB13" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+    </net>
+    <net code="57" name="MUX_S1" class="Default">
+      <node ref="A1" pin="A7" pinfunction="PB14" pintype="passive"/>
+      <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
+    </net>
+    <net code="58" name="MUX_S2" class="Default">
+      <node ref="A1" pin="A8" pinfunction="PB15" pintype="passive"/>
+      <node ref="J2" pin="5" pinfunction="Pin_5" pintype="passive"/>
+    </net>
+    <net code="59" name="PH_D" class="Default">
+      <node ref="A1" pin="A20" pinfunction="PB5" pintype="passive"/>
+      <node ref="U6" pin="2" pinfunction="PH/IN2" pintype="input"/>
+    </net>
+    <net code="60" name="PH_I" class="Default">
+      <node ref="A1" pin="A16" pinfunction="PC10" pintype="passive"/>
+      <node ref="U5" pin="2" pinfunction="PH/IN2" pintype="input"/>
+    </net>
+    <net code="61" name="SENS_A" class="Default">
+      <node ref="A1" pin="B20" pinfunction="PA0_ADC1_IN1" pintype="passive"/>
+      <node ref="C35" pin="1" pintype="passive"/>
+      <node ref="J2" pin="6" pinfunction="Pin_6" pintype="passive"/>
+    </net>
+    <net code="62" name="SENS_B" class="Default">
+      <node ref="A1" pin="B17" pinfunction="PA1_ADC2_IN2" pintype="passive"/>
+      <node ref="C36" pin="1" pintype="passive"/>
+      <node ref="J2" pin="7" pinfunction="Pin_7" pintype="passive"/>
+    </net>
+    <net code="63" name="VBAT_MED" class="Default">
+      <node ref="A1" pin="B18" pinfunction="PA2_ADC1_IN3" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="64" name="VBAT_SW" class="Default">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C15" pin="1" pintype="passive"/>
+      <node ref="C16" pin="1" pintype="passive"/>
+      <node ref="C17" pin="2" pintype="passive"/>
+      <node ref="C19" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C20" pin="1" pintype="passive"/>
+      <node ref="C21" pin="2" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="A1" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="Q2" pin="5" pinfunction="D" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U5" pin="11" pinfunction="VM" pintype="power_in"/>
+      <node ref="U6" pin="11" pinfunction="VM" pintype="power_in"/>
+    </net>
+    <net code="65" name="unconnected-(A1-PA6-PadB14)" class="Default">
+      <node ref="A1" pin="B14" pinfunction="PA6" pintype="passive+no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(A1-PA7-PadB11)" class="Default">
+      <node ref="A1" pin="B11" pinfunction="PA7" pintype="passive+no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(A1-PA11-PadA13)" class="Default">
+      <node ref="A1" pin="A13" pinfunction="PA11" pintype="passive+no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(A1-PA12-PadA14)" class="Default">
+      <node ref="A1" pin="A14" pinfunction="PA12" pintype="passive+no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(A1-PB11-PadB6)" class="Default">
+      <node ref="A1" pin="B6" pinfunction="PB11" pintype="passive+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(A1-PC6-PadA9)" class="Default">
+      <node ref="A1" pin="A9" pinfunction="PC6" pintype="passive+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(A1-PC13-PadB24)" class="Default">
+      <node ref="A1" pin="B24" pinfunction="PC13" pintype="passive+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(A1-PC14-PadB21)" class="Default">
+      <node ref="A1" pin="B21" pinfunction="PC14" pintype="passive+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(A1-PC15-PadB22)" class="Default">
+      <node ref="A1" pin="B22" pinfunction="PC15" pintype="passive+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(A1-VB-PadB23)" class="Default">
+      <node ref="A1" pin="B23" pinfunction="VB" pintype="passive+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(A1-VCC-PadA1)" class="Default">
+      <node ref="A1" pin="A1" pinfunction="VCC" pintype="no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(A1-VCC-PadA2)" class="Default">
+      <node ref="A1" pin="A2" pinfunction="VCC" pintype="no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(A1-VREF+-PadB8)" class="Default">
+      <node ref="A1" pin="B8" pinfunction="VREF+" pintype="passive+no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(J6-Pin_2-Pad2)" class="Default">
+      <node ref="J6" pin="2" pinfunction="Pin_2" pintype="passive+no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(SW1-C-Pad3)" class="Default">
+      <node ref="SW1" pin="3" pinfunction="C" pintype="passive+no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(U2-INT1-Pad4)" class="Default">
+      <node ref="U2" pin="4" pinfunction="INT1" pintype="output+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(U2-INT2-Pad9)" class="Default">
+      <node ref="U2" pin="9" pinfunction="INT2" pintype="output+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(U2-OCS_AUX-Pad10)" class="Default">
+      <node ref="U2" pin="10" pinfunction="OCS_AUX" pintype="passive+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(U2-SDO_AUX-Pad11)" class="Default">
+      <node ref="U2" pin="11" pinfunction="SDO_AUX" pintype="passive+no_connect"/>
+    </net>
+    <net code="84" name="unconnected-(U3-INT_DRDY-Pad7)" class="Default">
+      <node ref="U3" pin="7" pinfunction="INT_DRDY" pintype="output+no_connect"/>
+    </net>
+    <net code="85" name="unconnected-(U4-INT_DRDY-Pad7)" class="Default">
+      <node ref="U4" pin="7" pinfunction="INT_DRDY" pintype="output+no_connect"/>
+    </net>
+  </nets>
+</export>

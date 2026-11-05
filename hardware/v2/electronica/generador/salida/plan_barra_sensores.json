@@ -1,0 +1,1642 @@
+{
+ "proy": "barra_sensores",
+ "titulo": "Speed Follower V2 \u2014 Barra de sensores",
+ "capas": 2,
+ "espesor": 1.6,
+ "X0": 0.0,
+ "Y0": 100.0,
+ "origen_aux": [
+  100.0,
+  100.0
+ ],
+ "contorno": [
+  [
+   92.388,
+   138.2683
+  ],
+  [
+   93.1215,
+   136.447
+  ],
+  [
+   93.8191,
+   134.61169999999998
+  ],
+  [
+   94.4806,
+   132.763
+  ],
+  [
+   95.1057,
+   130.9017
+  ],
+  [
+   95.694,
+   129.0285
+  ],
+  [
+   96.2455,
+   127.144
+  ],
+  [
+   96.7599,
+   125.2492
+  ],
+  [
+   97.237,
+   123.3445
+  ],
+  [
+   97.6766,
+   121.43090000000001
+  ],
+  [
+   98.0785,
+   119.509
+  ],
+  [
+   98.4427,
+   117.5796
+  ],
+  [
+   98.7688,
+   115.6434
+  ],
+  [
+   99.0569,
+   113.7012
+  ],
+  [
+   99.3068,
+   111.7537
+  ],
+  [
+   99.5185,
+   109.8017
+  ],
+  [
+   99.6917,
+   107.8459
+  ],
+  [
+   99.8266,
+   105.8871
+  ],
+  [
+   99.9229,
+   103.926
+  ],
+  [
+   99.9807,
+   101.96340000000001
+  ],
+  [
+   100.0,
+   100.0
+  ],
+  [
+   99.9807,
+   98.03659999999999
+  ],
+  [
+   99.9229,
+   96.074
+  ],
+  [
+   99.8266,
+   94.1129
+  ],
+  [
+   99.6917,
+   92.1541
+  ],
+  [
+   99.5185,
+   90.1983
+  ],
+  [
+   99.3068,
+   88.2463
+  ],
+  [
+   99.0569,
+   86.2988
+  ],
+  [
+   98.7688,
+   84.3566
+  ],
+  [
+   98.4427,
+   82.4204
+  ],
+  [
+   98.0785,
+   80.491
+  ],
+  [
+   97.6766,
+   78.56909999999999
+  ],
+  [
+   97.237,
+   76.6555
+  ],
+  [
+   96.7599,
+   74.7508
+  ],
+  [
+   96.2455,
+   72.856
+  ],
+  [
+   95.694,
+   70.97149999999999
+  ],
+  [
+   95.1057,
+   69.0983
+  ],
+  [
+   94.4806,
+   67.237
+  ],
+  [
+   93.8191,
+   65.3883
+  ],
+  [
+   93.1215,
+   63.553
+  ],
+  [
+   92.388,
+   61.7317
+  ],
+  [
+   108.6396,
+   55.0
+  ],
+  [
+   121.9631,
+   55.0
+  ],
+  [
+   122.7393,
+   57.1624
+  ],
+  [
+   123.4772,
+   59.3382
+  ],
+  [
+   124.1765,
+   61.5267
+  ],
+  [
+   124.837,
+   63.7272
+  ],
+  [
+   125.4586,
+   65.9391
+  ],
+  [
+   126.0409,
+   68.16159999999999
+  ],
+  [
+   126.5839,
+   70.394
+  ],
+  [
+   127.0873,
+   72.6357
+  ],
+  [
+   127.5511,
+   74.88589999999999
+  ],
+  [
+   127.975,
+   77.144
+  ],
+  [
+   128.3589,
+   79.4092
+  ],
+  [
+   128.7028,
+   81.6808
+  ],
+  [
+   129.0064,
+   83.9582
+  ],
+  [
+   129.2698,
+   86.2406
+  ],
+  [
+   129.4928,
+   88.5272
+  ],
+  [
+   129.6753,
+   90.8175
+  ],
+  [
+   129.8173,
+   93.1106
+  ],
+  [
+   129.9188,
+   95.4059
+  ],
+  [
+   129.9797,
+   97.7026
+  ],
+  [
+   130.0,
+   100.0
+  ],
+  [
+   129.9797,
+   102.2974
+  ],
+  [
+   129.9188,
+   104.5941
+  ],
+  [
+   129.8173,
+   106.8894
+  ],
+  [
+   129.6753,
+   109.1825
+  ],
+  [
+   129.4928,
+   111.4728
+  ],
+  [
+   129.2698,
+   113.7594
+  ],
+  [
+   129.0064,
+   116.0418
+  ],
+  [
+   128.7028,
+   118.3192
+  ],
+  [
+   128.3589,
+   120.5908
+  ],
+  [
+   127.975,
+   122.856
+  ],
+  [
+   127.5511,
+   125.11410000000001
+  ],
+  [
+   127.0873,
+   127.3643
+  ],
+  [
+   126.5839,
+   129.606
+  ],
+  [
+   126.0409,
+   131.8384
+  ],
+  [
+   125.4586,
+   134.0609
+  ],
+  [
+   124.837,
+   136.2728
+  ],
+  [
+   124.1765,
+   138.4733
+  ],
+  [
+   123.4772,
+   140.6618
+  ],
+  [
+   122.7393,
+   142.8376
+  ],
+  [
+   121.9631,
+   145.0
+  ],
+  [
+   108.6396,
+   145.0
+  ]
+ ],
+ "partes": [
+  {
+   "ref": "U1",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 118.2553,
+   "Y": 59.4946,
+   "rot": 108.908,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K1",
+    "3": "S1",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R1",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 112.2006,
+   "Y": 61.5685,
+   "rot": 18.908,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K1",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R17",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 109.1733,
+   "Y": 62.6054,
+   "rot": 18.908,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S1"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U2",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 119.9225,
+   "Y": 64.7354,
+   "rot": 106.387,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K2",
+    "3": "S2",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R2",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 113.7825,
+   "Y": 66.5409,
+   "rot": 16.387,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K2",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R18",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 110.7125,
+   "Y": 67.4437,
+   "rot": 16.387,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S2"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U3",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 121.3576,
+   "Y": 70.0444,
+   "rot": 103.866,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K3",
+    "3": "S3",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R3",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 115.1441,
+   "Y": 71.5781,
+   "rot": 13.866,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K3",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R19",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 112.0373,
+   "Y": 72.345,
+   "rot": 13.866,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S3"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U4",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 122.5577,
+   "Y": 75.4114,
+   "rot": 101.345,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K4",
+    "3": "S4",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R4",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 116.2828,
+   "Y": 76.6703,
+   "rot": 11.345,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K4",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R20",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 113.1453,
+   "Y": 77.2998,
+   "rot": 11.345,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S4"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U5",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 123.5207,
+   "Y": 80.826,
+   "rot": 98.824,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K5",
+    "3": "S5",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R5",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 117.1964,
+   "Y": 81.8077,
+   "rot": 8.824,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K5",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R21",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 114.0343,
+   "Y": 82.2986,
+   "rot": 8.824,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S5"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U6",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.2445,
+   "Y": 86.2777,
+   "rot": 96.303,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K6",
+    "3": "S6",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R6",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 117.8832,
+   "Y": 86.9803,
+   "rot": 6.303,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K6",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R22",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 114.7025,
+   "Y": 87.3316,
+   "rot": 6.303,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S6"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U7",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.7278,
+   "Y": 91.756,
+   "rot": 93.782,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K7",
+    "3": "S7",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R7",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 118.3418,
+   "Y": 92.1781,
+   "rot": 3.782,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K7",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R23",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 115.1488,
+   "Y": 92.3891,
+   "rot": 3.782,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S7"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U8",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.9698,
+   "Y": 97.2502,
+   "rot": 91.261,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K8",
+    "3": "S8",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R8",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 118.5713,
+   "Y": 97.391,
+   "rot": 1.261,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K8",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R24",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 115.3721,
+   "Y": 97.4614,
+   "rot": 1.261,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S8"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U9",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.9698,
+   "Y": 102.7498,
+   "rot": 88.739,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K9",
+    "3": "S9",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R9",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 118.5713,
+   "Y": 102.609,
+   "rot": -1.261,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K9",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R25",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 115.3721,
+   "Y": 102.5386,
+   "rot": -1.261,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S9"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U10",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.7278,
+   "Y": 108.244,
+   "rot": 86.218,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K10",
+    "3": "S10",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R10",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 118.3418,
+   "Y": 107.8219,
+   "rot": -3.782,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K10",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R26",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 115.1488,
+   "Y": 107.6109,
+   "rot": -3.782,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S10"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U11",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 124.2445,
+   "Y": 113.7223,
+   "rot": 83.697,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K11",
+    "3": "S11",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R11",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 117.8832,
+   "Y": 113.0197,
+   "rot": -6.303,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K11",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R27",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 114.7025,
+   "Y": 112.6684,
+   "rot": -6.303,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S11"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U12",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 123.5207,
+   "Y": 119.174,
+   "rot": 81.176,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K12",
+    "3": "S12",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R12",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 117.1964,
+   "Y": 118.1923,
+   "rot": -8.824,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K12",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R28",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 114.0343,
+   "Y": 117.7014,
+   "rot": -8.824,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S12"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U13",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 122.5577,
+   "Y": 124.5886,
+   "rot": 78.655,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K13",
+    "3": "S13",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R13",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 116.2828,
+   "Y": 123.3297,
+   "rot": -11.345,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K13",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R29",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 113.1453,
+   "Y": 122.7002,
+   "rot": -11.345,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S13"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U14",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 121.3576,
+   "Y": 129.9556,
+   "rot": 76.134,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K14",
+    "3": "S14",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R14",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 115.1441,
+   "Y": 128.4219,
+   "rot": -13.866,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K14",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R30",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 112.0373,
+   "Y": 127.655,
+   "rot": -13.866,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S14"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U15",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 119.9225,
+   "Y": 135.2646,
+   "rot": 73.613,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K15",
+    "3": "S15",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R15",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 113.7825,
+   "Y": 133.4591,
+   "rot": -16.387,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K15",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R31",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 110.7125,
+   "Y": 132.5563,
+   "rot": -16.387,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S15"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U16",
+   "valor": "QRE1113GR",
+   "lib": "OptoDevice",
+   "fp": "OnSemi_CASE100CY",
+   "X": 118.2553,
+   "Y": 140.5054,
+   "rot": 71.092,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/16 sensores QRE1113GR/K16",
+    "3": "S16",
+    "4": "GND"
+   },
+   "en_bom": true,
+   "mpn": "QRE1113GR",
+   "fabricante": "onsemi",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R16",
+   "valor": "75\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0603_1608Metric",
+   "X": 112.2006,
+   "Y": 138.4315,
+   "rot": -18.908,
+   "lado": "F",
+   "redes": {
+    "1": "/16 sensores QRE1113GR/K16",
+    "2": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "RC0603FR-0775RL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "R32",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 109.1733,
+   "Y": 137.3946,
+   "rot": -18.908,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "S16"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "sensores"
+  },
+  {
+   "ref": "U17",
+   "valor": "74HC4051PW",
+   "lib": "Package_SO",
+   "fp": "TSSOP-16_4.4x5mm_P0.65mm",
+   "X": 106.5,
+   "Y": 83.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "3": "/Multiplexores, emisores y conector/SENS_A",
+    "6": "GND",
+    "7": "GND",
+    "8": "GND",
+    "9": "/Multiplexores, emisores y conector/MUX_S2",
+    "10": "/Multiplexores, emisores y conector/MUX_S1",
+    "11": "/Multiplexores, emisores y conector/MUX_S0",
+    "16": "+3V3",
+    "13": "S1",
+    "14": "S2",
+    "15": "S3",
+    "12": "S4",
+    "1": "S5",
+    "5": "S6",
+    "2": "S7",
+    "4": "S8"
+   },
+   "en_bom": true,
+   "mpn": "74HC4051PW,118",
+   "fabricante": "Nexperia",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "C1",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": 103.2,
+   "Y": 79.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "U18",
+   "valor": "74HC4051PW",
+   "lib": "Package_SO",
+   "fp": "TSSOP-16_4.4x5mm_P0.65mm",
+   "X": 106.5,
+   "Y": 117.0,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "3": "/Multiplexores, emisores y conector/SENS_B",
+    "6": "GND",
+    "7": "GND",
+    "8": "GND",
+    "9": "/Multiplexores, emisores y conector/MUX_S2",
+    "10": "/Multiplexores, emisores y conector/MUX_S1",
+    "11": "/Multiplexores, emisores y conector/MUX_S0",
+    "16": "+3V3",
+    "13": "S16",
+    "14": "S15",
+    "15": "S14",
+    "12": "S13",
+    "1": "S12",
+    "5": "S11",
+    "2": "S10",
+    "4": "S9"
+   },
+   "en_bom": true,
+   "mpn": "74HC4051PW,118",
+   "fabricante": "Nexperia",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "C2",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": 103.2,
+   "Y": 121.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "Q1",
+   "valor": "AO3400A",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23",
+   "X": 109.0,
+   "Y": 106.5,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "/Multiplexores, emisores y conector/EMIT",
+    "2": "GND",
+    "3": "EMIT_K"
+   },
+   "en_bom": true,
+   "mpn": "AO3400A",
+   "fabricante": "Alpha & Omega Semiconductor",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "R33",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": 106.0,
+   "Y": 108.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Multiplexores, emisores y conector/EMIT",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "C3",
+   "valor": "10\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": 109.6,
+   "Y": 93.4,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E106KA73L",
+   "fabricante": "Murata",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "C4",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": 107.3,
+   "Y": 93.4,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "J1",
+   "valor": "SENSORES",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical",
+   "X": 104.0,
+   "Y": 100.0,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/Multiplexores, emisores y conector/EMIT",
+    "3": "/Multiplexores, emisores y conector/MUX_S0",
+    "4": "/Multiplexores, emisores y conector/MUX_S1",
+    "5": "/Multiplexores, emisores y conector/MUX_S2",
+    "6": "/Multiplexores, emisores y conector/SENS_A",
+    "7": "/Multiplexores, emisores y conector/SENS_B",
+    "8": "GND",
+    "MP": "GND"
+   },
+   "en_bom": true,
+   "mpn": "BM08B-SRSS-TB",
+   "fabricante": "JST",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "H1",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": 104.561,
+   "Y": 59.8628,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "H2",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": 104.561,
+   "Y": 140.1372,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "interfaz"
+  },
+  {
+   "ref": "H3",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": 112.0,
+   "Y": 100.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "interfaz"
+  }
+ ],
+ "clases": {
+  "Default": {
+   "pista": 0.2,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.6,
+   "taladro": 0.3,
+   "patrones": []
+  },
+  "Potencia": {
+   "pista": 0.5,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.6,
+   "taladro": 0.3,
+   "patrones": [
+    "+3V3",
+    "GND",
+    "*EMIT_K"
+   ]
+  }
+ },
+ "planos": [
+  {
+   "capa": "B",
+   "red": "GND"
+  },
+  {
+   "capa": "F",
+   "red": "GND"
+  }
+ ],
+ "nombres_red": {
+  "+3V3": "+3V3",
+  "K1": "/16 sensores QRE1113GR/K1",
+  "S1": "S1",
+  "GND": "GND",
+  "EMIT_K": "EMIT_K",
+  "K2": "/16 sensores QRE1113GR/K2",
+  "S2": "S2",
+  "K3": "/16 sensores QRE1113GR/K3",
+  "S3": "S3",
+  "K4": "/16 sensores QRE1113GR/K4",
+  "S4": "S4",
+  "K5": "/16 sensores QRE1113GR/K5",
+  "S5": "S5",
+  "K6": "/16 sensores QRE1113GR/K6",
+  "S6": "S6",
+  "K7": "/16 sensores QRE1113GR/K7",
+  "S7": "S7",
+  "K8": "/16 sensores QRE1113GR/K8",
+  "S8": "S8",
+  "K9": "/16 sensores QRE1113GR/K9",
+  "S9": "S9",
+  "K10": "/16 sensores QRE1113GR/K10",
+  "S10": "S10",
+  "K11": "/16 sensores QRE1113GR/K11",
+  "S11": "S11",
+  "K12": "/16 sensores QRE1113GR/K12",
+  "S12": "S12",
+  "K13": "/16 sensores QRE1113GR/K13",
+  "S13": "S13",
+  "K14": "/16 sensores QRE1113GR/K14",
+  "S14": "S14",
+  "K15": "/16 sensores QRE1113GR/K15",
+  "S15": "S15",
+  "K16": "/16 sensores QRE1113GR/K16",
+  "S16": "S16",
+  "SENS_A": "/Multiplexores, emisores y conector/SENS_A",
+  "MUX_S2": "/Multiplexores, emisores y conector/MUX_S2",
+  "MUX_S1": "/Multiplexores, emisores y conector/MUX_S1",
+  "MUX_S0": "/Multiplexores, emisores y conector/MUX_S0",
+  "SENS_B": "/Multiplexores, emisores y conector/SENS_B",
+  "EMIT": "/Multiplexores, emisores y conector/EMIT"
+ },
+ "textos": [
+  {
+   "texto": "CIRCUIT FORGE V2 \u00b7 BARRA DE SENSORES \u00b7 REV A",
+   "X": 102.6,
+   "Y": 100.0,
+   "rot": 90,
+   "lado": "B",
+   "tam": 1.0
+  }
+ ],
+ "canal": {
+  "S1": [
+   "SENS_A",
+   0
+  ],
+  "S2": [
+   "SENS_A",
+   1
+  ],
+  "S3": [
+   "SENS_A",
+   2
+  ],
+  "S4": [
+   "SENS_A",
+   3
+  ],
+  "S5": [
+   "SENS_A",
+   4
+  ],
+  "S6": [
+   "SENS_A",
+   5
+  ],
+  "S7": [
+   "SENS_A",
+   6
+  ],
+  "S8": [
+   "SENS_A",
+   7
+  ],
+  "S16": [
+   "SENS_B",
+   0
+  ],
+  "S15": [
+   "SENS_B",
+   1
+  ],
+  "S14": [
+   "SENS_B",
+   2
+  ],
+  "S13": [
+   "SENS_B",
+   3
+  ],
+  "S12": [
+   "SENS_B",
+   4
+  ],
+  "S11": [
+   "SENS_B",
+   5
+  ],
+  "S10": [
+   "SENS_B",
+   6
+  ],
+  "S9": [
+   "SENS_B",
+   7
+  ]
+ }
+}

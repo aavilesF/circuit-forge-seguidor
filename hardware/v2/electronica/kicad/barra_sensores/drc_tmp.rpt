@@ -1,0 +1,186 @@
+** Drc report for barra_sensores.kicad_pcb **
+** Created on 2026-11-04T20:51:21-0600 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 7 DRC violations **
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1972 mm)
+    Local override; error
+    @(129.0249 mm, 92.9834 mm): Track [GND] on B.Cu, length 3.1924 mm
+    @(126.7857 mm, 92.5143 mm): Pad 1 [+3V3] of U7 on B.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1934 mm)
+    Local override; error
+    @(124.3492 mm, 125.8537 mm): Pad 1 [+3V3] of U13 on B.Cu
+    @(125.6487 mm, 124.5761 mm): Track [GND] on B.Cu, length 2.8513 mm
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(115.0220 mm, 107.2211 mm): Segment of R26 on F.Silkscreen
+    @(116.0000 mm, 100.0000 mm): PCB text 'CIRCUIT FORGE V2 · BARRA DE SENSORES' on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(116.0000 mm, 100.0000 mm): PCB text 'CIRCUIT FORGE V2 · BARRA DE SENSORES' on F.Silkscreen
+    @(115.2119 mm, 102.9159 mm): Segment of R25 on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(115.2251 mm, 97.8440 mm): Segment of R24 on F.Silkscreen
+    @(116.0000 mm, 100.0000 mm): PCB text 'CIRCUIT FORGE V2 · BARRA DE SENSORES' on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(115.0220 mm, 92.7789 mm): Segment of R23 on F.Silkscreen
+    @(116.0000 mm, 100.0000 mm): PCB text 'CIRCUIT FORGE V2 · BARRA DE SENSORES' on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(116.0000 mm, 100.0000 mm): PCB text 'CIRCUIT FORGE V2 · BARRA DE SENSORES' on F.Silkscreen
+
+** Found 1 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(108.9643 mm, 120.0518 mm): Track [+3V3] on F.Cu, length 0.2677 mm
+    @(103.2000 mm, 121.4800 mm): Pad 1 [+3V3] of C2 on F.Cu
+
+** Found 48 Footprint errors **
+[net_conflict]: Pad net (K1) doesn't match net given by schematic (/16 sensores QRE1113GR/K1).
+    Local override; warning
+    @(111.4205 mm, 61.8371 mm): Pad 1 [K1] of R1 on F.Cu
+[net_conflict]: Pad net (K2) doesn't match net given by schematic (/16 sensores QRE1113GR/K2).
+    Local override; warning
+    @(112.9895 mm, 66.7683 mm): Pad 1 [K2] of R2 on F.Cu
+[net_conflict]: Pad net (K3) doesn't match net given by schematic (/16 sensores QRE1113GR/K3).
+    Local override; warning
+    @(114.3436 mm, 71.7777 mm): Pad 1 [K3] of R3 on F.Cu
+[net_conflict]: Pad net (K4) doesn't match net given by schematic (/16 sensores QRE1113GR/K4).
+    Local override; warning
+    @(115.4730 mm, 76.8277 mm): Pad 1 [K4] of R4 on F.Cu
+[net_conflict]: Pad net (K5) doesn't match net given by schematic (/16 sensores QRE1113GR/K5).
+    Local override; warning
+    @(116.3816 mm, 81.9368 mm): Pad 1 [K5] of R5 on F.Cu
+[net_conflict]: Pad net (K6) doesn't match net given by schematic (/16 sensores QRE1113GR/K6).
+    Local override; warning
+    @(117.0627 mm, 87.0665 mm): Pad 1 [K6] of R6 on F.Cu
+[net_conflict]: Pad net (K7) doesn't match net given by schematic (/16 sensores QRE1113GR/K7).
+    Local override; warning
+    @(117.5188 mm, 92.2356 mm): Pad 1 [K7] of R7 on F.Cu
+[net_conflict]: Pad net (K8) doesn't match net given by schematic (/16 sensores QRE1113GR/K8).
+    Local override; warning
+    @(117.7464 mm, 97.4054 mm): Pad 1 [K8] of R8 on F.Cu
+[net_conflict]: Pad net (K9) doesn't match net given by schematic (/16 sensores QRE1113GR/K9).
+    Local override; warning
+    @(117.7464 mm, 102.5946 mm): Pad 1 [K9] of R9 on F.Cu
+[net_conflict]: Pad net (K10) doesn't match net given by schematic (/16 sensores QRE1113GR/K10).
+    Local override; warning
+    @(117.5188 mm, 107.7644 mm): Pad 1 [K10] of R10 on F.Cu
+[net_conflict]: Pad net (K11) doesn't match net given by schematic (/16 sensores QRE1113GR/K11).
+    Local override; warning
+    @(117.0627 mm, 112.9335 mm): Pad 1 [K11] of R11 on F.Cu
+[net_conflict]: Pad net (K12) doesn't match net given by schematic (/16 sensores QRE1113GR/K12).
+    Local override; warning
+    @(116.3816 mm, 118.0632 mm): Pad 1 [K12] of R12 on F.Cu
+[net_conflict]: Pad net (K13) doesn't match net given by schematic (/16 sensores QRE1113GR/K13).
+    Local override; warning
+    @(115.4730 mm, 123.1723 mm): Pad 1 [K13] of R13 on F.Cu
+[net_conflict]: Pad net (K14) doesn't match net given by schematic (/16 sensores QRE1113GR/K14).
+    Local override; warning
+    @(114.3436 mm, 128.2223 mm): Pad 1 [K14] of R14 on F.Cu
+[net_conflict]: Pad net (K15) doesn't match net given by schematic (/16 sensores QRE1113GR/K15).
+    Local override; warning
+    @(112.9895 mm, 133.2317 mm): Pad 1 [K15] of R15 on F.Cu
+[net_conflict]: Pad net (K16) doesn't match net given by schematic (/16 sensores QRE1113GR/K16).
+    Local override; warning
+    @(111.4205 mm, 138.1629 mm): Pad 1 [K16] of R16 on F.Cu
+[net_conflict]: Pad net (K1) doesn't match net given by schematic (/16 sensores QRE1113GR/K1).
+    Local override; warning
+    @(116.6573 mm, 60.9967 mm): Pad 2 [K1] of U1 on B.Cu
+[net_conflict]: Pad net (K2) doesn't match net given by schematic (/16 sensores QRE1113GR/K2).
+    Local override; warning
+    @(118.2481 mm, 66.1518 mm): Pad 2 [K2] of U2 on B.Cu
+[net_conflict]: Pad net (K3) doesn't match net given by schematic (/16 sensores QRE1113GR/K3).
+    Local override; warning
+    @(119.6347 mm, 71.4015 mm): Pad 2 [K3] of U3 on B.Cu
+[net_conflict]: Pad net (K4) doesn't match net given by schematic (/16 sensores QRE1113GR/K4).
+    Local override; warning
+    @(120.7662 mm, 76.6765 mm): Pad 2 [K4] of U4 on B.Cu
+[net_conflict]: Pad net (K5) doesn't match net given by schematic (/16 sensores QRE1113GR/K5).
+    Local override; warning
+    @(121.6861 mm, 82.0278 mm): Pad 2 [K5] of U5 on B.Cu
+[net_conflict]: Pad net (K6) doesn't match net given by schematic (/16 sensores QRE1113GR/K6).
+    Local override; warning
+    @(122.3495 mm, 87.3818 mm): Pad 2 [K6] of U6 on B.Cu
+[net_conflict]: Pad net (K7) doesn't match net given by schematic (/16 sensores QRE1113GR/K7).
+    Local override; warning
+    @(122.7955 mm, 92.7933 mm): Pad 2 [K7] of U7 on B.Cu
+[net_conflict]: Pad net (K8) doesn't match net given by schematic (/16 sensores QRE1113GR/K8).
+    Local override; warning
+    @(122.9858 mm, 98.1850 mm): Pad 2 [K8] of U8 on B.Cu
+[net_conflict]: Pad net (K9) doesn't match net given by schematic (/16 sensores QRE1113GR/K9).
+    Local override; warning
+    @(122.9544 mm, 103.6148 mm): Pad 2 [K9] of U9 on B.Cu
+[net_conflict]: Pad net (K10) doesn't match net given by schematic (/16 sensores QRE1113GR/K10).
+    Local override; warning
+    @(122.6699 mm, 109.0023 mm): Pad 2 [K10] of U10 on B.Cu
+[net_conflict]: Pad net (K11) doesn't match net given by schematic (/16 sensores QRE1113GR/K11).
+    Local override; warning
+    @(122.1614 mm, 114.4083 mm): Pad 2 [K11] of U11 on B.Cu
+[net_conflict]: Pad net (K12) doesn't match net given by schematic (/16 sensores QRE1113GR/K12).
+    Local override; warning
+    @(121.4045 mm, 119.7501 mm): Pad 2 [K12] of U12 on B.Cu
+[net_conflict]: Pad net (K13) doesn't match net given by schematic (/16 sensores QRE1113GR/K13).
+    Local override; warning
+    @(120.4227 mm, 125.0904 mm): Pad 2 [K13] of U13 on B.Cu
+[net_conflict]: Pad net (K14) doesn't match net given by schematic (/16 sensores QRE1113GR/K14).
+    Local override; warning
+    @(119.1993 mm, 130.3450 mm): Pad 2 [K14] of U14 on B.Cu
+[net_conflict]: Pad net (K15) doesn't match net given by schematic (/16 sensores QRE1113GR/K15).
+    Local override; warning
+    @(117.7519 mm, 135.5785 mm): Pad 2 [K15] of U15 on B.Cu
+[net_conflict]: Pad net (K16) doesn't match net given by schematic (/16 sensores QRE1113GR/K16).
+    Local override; warning
+    @(116.0713 mm, 140.7052 mm): Pad 2 [K16] of U16 on B.Cu
+[net_conflict]: Pad net (EMIT) doesn't match net given by schematic (/Multiplexores, emisores y conector/EMIT).
+    Local override; warning
+    @(102.6750 mm, 97.5000 mm): Pad 2 [EMIT] of J1 on F.Cu
+[net_conflict]: Pad net (MUX_S0) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S0).
+    Local override; warning
+    @(102.6750 mm, 98.5000 mm): Pad 3 [MUX_S0] of J1 on F.Cu
+[net_conflict]: Pad net (MUX_S1) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S1).
+    Local override; warning
+    @(102.6750 mm, 99.5000 mm): Pad 4 [MUX_S1] of J1 on F.Cu
+[net_conflict]: Pad net (MUX_S2) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S2).
+    Local override; warning
+    @(102.6750 mm, 100.5000 mm): Pad 5 [MUX_S2] of J1 on F.Cu
+[net_conflict]: Pad net (SENS_A) doesn't match net given by schematic (/Multiplexores, emisores y conector/SENS_A).
+    Local override; warning
+    @(102.6750 mm, 101.5000 mm): Pad 6 [SENS_A] of J1 on F.Cu
+[net_conflict]: Pad net (SENS_B) doesn't match net given by schematic (/Multiplexores, emisores y conector/SENS_B).
+    Local override; warning
+    @(102.6750 mm, 102.5000 mm): Pad 7 [SENS_B] of J1 on F.Cu
+[net_conflict]: Pad net (EMIT) doesn't match net given by schematic (/Multiplexores, emisores y conector/EMIT).
+    Local override; warning
+    @(109.9375 mm, 107.4500 mm): Pad 1 [EMIT] of Q1 on F.Cu
+[net_conflict]: Pad net (EMIT) doesn't match net given by schematic (/Multiplexores, emisores y conector/EMIT).
+    Local override; warning
+    @(105.4900 mm, 108.0000 mm): Pad 1 [EMIT] of R33 on F.Cu
+[net_conflict]: Pad net (SENS_A) doesn't match net given by schematic (/Multiplexores, emisores y conector/SENS_A).
+    Local override; warning
+    @(105.5250 mm, 85.8625 mm): Pad 3 [SENS_A] of U17 on F.Cu
+[net_conflict]: Pad net (MUX_S2) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S2).
+    Local override; warning
+    @(108.7750 mm, 80.1375 mm): Pad 9 [MUX_S2] of U17 on F.Cu
+[net_conflict]: Pad net (MUX_S1) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S1).
+    Local override; warning
+    @(108.1250 mm, 80.1375 mm): Pad 10 [MUX_S1] of U17 on F.Cu
+[net_conflict]: Pad net (MUX_S0) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S0).
+    Local override; warning
+    @(107.4750 mm, 80.1375 mm): Pad 11 [MUX_S0] of U17 on F.Cu
+[net_conflict]: Pad net (SENS_B) doesn't match net given by schematic (/Multiplexores, emisores y conector/SENS_B).
+    Local override; warning
+    @(107.4750 mm, 114.1375 mm): Pad 3 [SENS_B] of U18 on F.Cu
+[net_conflict]: Pad net (MUX_S2) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S2).
+    Local override; warning
+    @(104.2250 mm, 119.8625 mm): Pad 9 [MUX_S2] of U18 on F.Cu
+[net_conflict]: Pad net (MUX_S1) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S1).
+    Local override; warning
+    @(104.8750 mm, 119.8625 mm): Pad 10 [MUX_S1] of U18 on F.Cu
+[net_conflict]: Pad net (MUX_S0) doesn't match net given by schematic (/Multiplexores, emisores y conector/MUX_S0).
+    Local override; warning
+    @(105.5250 mm, 119.8625 mm): Pad 11 [MUX_S0] of U18 on F.Cu
+
+** End of Report **

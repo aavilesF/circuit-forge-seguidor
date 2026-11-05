@@ -1,0 +1,27 @@
+{
+ "interferencias_solidos": [],
+ "interferencias_mallas_usuario": [],
+ "holguras_mm": {
+  "rotor_a_base_mm": 1.1999999999999993,
+  "pilar_trasero_a_abrazadera_mm": 4.600000000000001,
+  "entrada_a_pared_camara_mm": 1.5,
+  "pared_camara_a_llanta_mm": 2.799999999999997,
+  "faldon_al_piso_mm": 0.5,
+  "cachucha_al_piso_mm": 1.0,
+  "cara_sensor_al_piso_mm": 2.05,
+  "encoder_a_pcb_mm": 1.5
+ },
+ "largo_mm": 173.6,
+ "ancho_mm": 92.0,
+ "alto_mm": 38.9,
+ "extremos_mm": [
+  -42.6,
+  131.0,
+  -46.0,
+  46.0,
+  0.0,
+  38.9
+ ],
+ "cabe_en_caja_192x92": true,
+ "lo_mas_bajo_sin_contacto_mm": 0.5
+}
