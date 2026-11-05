@@ -46,14 +46,20 @@ CAD sin interferencias, firmware compilado. **Sin ninguna validación física**:
 | Cálculos y simulaciones de V1 | `sim/resultados/*`, `docs/*` | **Conservar como evidencia** | Base de la comparación V1 contra V2 (Fase 4) |
 | Diseños anteriores | `legado/` | **Conservar** sin cambios | Historia |
 
-## 4. Riesgos de reglamento que bloquean la succión (consultar por escrito antes de la Fase 3)
+## 4. Reglamento para la succión: preguntas de la Fase 1 y respuestas oficiales
 
-| # | Pregunta | Por qué bloquea |
-|---|---|---|
-| 1 | ¿Se permite un ventilador que genere succión contra la pista? | Pregunta abierta desde la Fase 1 de V1 (`REGLAMENTO_MATRIZ.md` §5, C12) y sin respuesta. Sin permiso, la V2 con succión no compite |
-| 2 | R03 dice "500 g **en todo momento**". ¿La succión cuenta como peso? | Para 2.0 m/s hace falta ≈ 3-5 N de succión con 200 g (T3b): el **peso aparente** con el ventilador encendido sería 518-654 g. Si se pesa encendido o si el juez lo interpreta así, el robot queda descalificado sin apelación |
-| 3 | En las 3 vueltas (C01), ¿el circuito es el mismo y puede el robot recordar lo aprendido entre intentos? | Con un mapa aprendido, el robot frena antes de cada curva y la anticipación deja de ser el límite (T8b: −20 % de tiempo sin succión). Sin respuesta, se diseña como robot reactivo |
-| 4 | R11: ¿un faldón a 0.3-0.5 mm de la fórmica, sin contacto, se acepta? ¿Y uno con roce ligero (cerdas, película)? | La fuerza cae a la mitad si la ranura pasa de 0.5 a 1.0 mm (T6); el faldón no puede levantar el vinil |
+Las 4 preguntas se enviaron a los organizadores después de la Fase 1. **Respuestas oficiales recibidas** (las transmitió el
+equipo el 4 nov 2026; verificado documentalmente a partir de ese mensaje):
+
+| # | Pregunta de la Fase 1 | Respuesta oficial | Consecuencia en el diseño |
+|---|---|---|---|
+| 1 | ¿Se permite un ventilador que genere succión contra la pista? | **Sí, la succión está permitida** | V2 se diseña con succión (cámara de 70 × 70 mm, ventilador del usuario) |
+| 2 | R03 dice "500 g en todo momento". ¿La succión cuenta como peso? | **El peso se mide con el robot APAGADO** antes de la ronda: la succión (fuerza hacia abajo) no cuenta | El "peso aparente" deja de ser un riesgo. El límite real es la masa del robot apagado (≈ 156 g en CAD, tope de 500 g) |
+| 3 | ¿El circuito es el mismo entre intentos y puede el robot recordar lo aprendido? | **Se permiten mapas y memoria** (sin comunicación inalámbrica), pero **la pista puede cambiar entre rondas** | El robot aprende el mapa en tiempo real en cada ronda y valida que siga siendo la misma pista |
+| 4 | R11: ¿un faldón a 0.3-0.5 mm de la fórmica, sin contacto, se acepta? | **Se acepta un faldón cerca de la pista siempre que NUNCA la toque** | El borde del faldón se calcula con la compresión de las llantas y las cargas dinámicas (Fase 3.5): ≥ 0.5 mm de la pista en el peor caso |
+
+Sigue vigente: **comunicación inalámbrica prohibida** durante la competencia (R10): el robot no lleva radio y el firmware
+no inicializa ninguna; los ajustes entre rondas se hacen por el USB-C.
 
 ## 5. Uso de los archivos entregados
 

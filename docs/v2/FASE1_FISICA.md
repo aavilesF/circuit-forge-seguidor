@@ -90,8 +90,8 @@ reaccionar y frenar sin exceder la adherencia (m 200 g, μ 0.8, t_r 10 ms, δ 2 
    La latencia y el umbral importan poco frente a la succión, la masa y μ.
 4. **Diseño que sale de aquí** (para las Fases 2-3): cuello de 110-140 mm, cámara de succión **centrada sobre el eje motriz**,
    ≥ 3-4 N de succión real, masa ≤ 200 g. Si la succión no se permite o no se alcanza, la meta realista sin mapa es ≈ 1.2 m/s.
-5. **Alternativa sin succión** (depende de la pregunta 3 de la auditoría): con un mapa aprendido, el robot frena antes de cada
-   curva; la vuelta cuasiestática baja 20 % sin succión (T8b). Con succión alta, el mapa casi no aporta (−3 % con 4 N).
+5. **Alternativa sin succión** (mapas permitidos por los organizadores): con un mapa aprendido, el robot frena antes de cada
+   curva; la vuelta cuasiestática baja 23 % sin succión (T8b, corregida en la Fase 3.5). Con succión alta, el mapa casi no aporta (−3 % con 4 N).
 
 Comparación con la fórmula simple del enunciado (frenar en línea recta antes de la curva), d = v·t + (v² − v_c²)/(2a): con L 110
 mm, 4 N, d_requerida = 95 mm contra ≈ 86 mm disponibles (L − s_det): la fórmula dice "no alcanza" y el modelo cinemático da
@@ -190,16 +190,23 @@ Leyes de semejanza: ΔP ∝ RPM², Q ∝ RPM, P ∝ RPM³. La potencia eléctric
 
 | Escenario | RPM | Succión | Crucero | Vuelta media | Energía del ventilador por vuelta (5 / 10 / 20 W máx.) | Caída de tensión |
 |---|---|---|---|---|---|---|
-| Sin ventilador | 0 | 0 | 1.16 m/s | 3.63 s | 0 | 0 |
-| Reducida | 50 % | 0.74 N | 1.34 m/s | 3.13 s (−14 %) | 2 / 4 / 8 J | ≤ 0.07 V |
-| Intermedia | 75 % | 1.66 N | 1.53 m/s | 2.74 s (−24 %) | 6 / 12 / 23 J | ≤ 0.23 V |
-| Máxima | 100 % | 2.96 N | 1.77 m/s | 2.40 s (−34 %) | 12 / 24 / 48 J | ≤ 0.54 V |
+| Sin ventilador | 0 | 0 | 1.16 m/s | 3.76 s | 0 J | 0 |
+| Reducida | 50 % | 0.74 N | 1.34 m/s | 3.25 s (−14 %) | 2 / 4 / 8 J | ≤ 0.07 V |
+| Intermedia | 75 % | 1.66 N | 1.53 m/s | 2.85 s (−24 %) | 6 / 12 / 24 J | ≤ 0.23 V |
+| Máxima | 100 % | 2.96 N | 1.77 m/s | 2.49 s (−34 %) | 12 / 25 / 50 J | ≤ 0.54 V |
 
 - **La mejora en curvas compensa con mucho el consumo**: en la vuelta, el ventilador gasta ≤ 1.8 mAh de una batería de 450 mAh.
   La energía **no** es el límite; lo son la masa, la corriente pico (caída de tensión de hasta 0.5 V que también frena a los
   motores) y la legalidad.
-- Los tiempos son de un modelo cuasiestático con seguimiento perfecto: solo valen **en relativo**. (Con el mismo tipo de modelo V1 da
-  3.63 s, contra 5.81 s de la simulación dinámica de V1.)
+- Los tiempos son de un modelo cuasiestático con seguimiento perfecto: solo valen **en relativo** (V1 con la simulación
+  dinámica da 5.81 s por vuelta).
+- **Corregido en la Fase 3.5** (auditoría externa del commit `cd3ff42`): la versión anterior de `tiempo_vuelta()` sumaba
+  (v_crucero − v)/a, negativo cuando el robot salía de un arco más rápido que su crucero, y no limitaba el arco al crucero:
+  daba tiempos imposibles (en el caso de prueba, 1.43 s contra un mínimo físico de 2.57 s). Ahora el perfil es factible
+  (pasada hacia atrás con el frenado y hacia adelante con la aceleración; el robot reactivo solo frena por lo que la
+  barra ya vio, a L delante del eje) y lo fijan las pruebas de `sim/v2/pruebas/test_fase1_v2.py`. Los tiempos de esta
+  tabla subieron 3-4 % respecto a la versión anterior; las conclusiones no cambian. El mapa ahora ahorra 23 % sin succión
+  y 3 % con 4 N (T8b; antes 20 % y 3 %).
 
 ## 10. Tabla de escenarios (resumen de la Fase 1)
 
@@ -209,13 +216,13 @@ Leyes de semejanza: ΔP ∝ RPM², Q ∝ RPM, P ∝ RPM³. La potencia eléctric
 | Tracción | R 300 mm a 2.0 m/s | 1.4 / 2.7 N | Calculado |
 | Anticipación | Sin succión, cualquier cuello 80-140 mm | Crucero máx. 1.10-1.20 m/s: **2.0 m/s imposible** | Calculado |
 | Anticipación | 4 N, L 140 mm, x_s 30 mm | 2.00 m/s | Calculado |
-| Anticipación | Succión sobre el eje, L 110 mm | 2.0 m/s con 3.1 N (peso aparente 518 g) | Calculado |
+| Anticipación | Succión sobre el eje, L 110 mm | 2.0 m/s con 3.1 N (el peso se mide apagado: la succión no cuenta) | Calculado |
 | Succión | Base entregada como cámara | ≤ 1.3 N en todo el barrido: **insuficiente** | Calculado sobre supuestos |
 | Succión | Cámara 70 × 70, ranura 0.5 mm, ΔP₀ 800 Pa | 2.96 N; con 1.0 mm, 1.59 N | Calculado sobre supuestos |
 | Fallos | Pérdida total en curva | Derrape en 20-160 ms (τ 50-400 ms) | Calculado sobre supuestos |
 | Fallos | RPM −20 % / ranura ×2 | 64 % / 54 % de la succión: derrape si se planea con el 100 % | Calculado sobre supuestos |
 | Energía | Máxima contra sin ventilador | −34 % de tiempo por ≤ 48 J por vuelta | Calculado (cuasiestático) |
-| Reglamento | Succión permitida, peso aparente, mapa entre intentos, faldón | **Sin respuesta: bloquean** | Verificado documentalmente (pendiente de consulta) |
+| Reglamento | Succión, peso, mapa, faldón, inalámbrico | **Resuelto por los organizadores**: succión permitida; 500 g con el robot apagado; mapas permitidos (la pista puede cambiar entre rondas); faldón sin tocar nunca la pista; inalámbrico prohibido | Verificado documentalmente (FASE1_AUDITORIA §4) |
 
 ## 11. Límites de estos modelos
 

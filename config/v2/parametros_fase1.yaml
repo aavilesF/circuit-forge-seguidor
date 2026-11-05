@@ -7,7 +7,11 @@
 reglamento:
   radio_min_linea: {valor: 0.15, tipo: verificado documentalmente, fuente: "Reglamento RMX2026, pista P03 (docs/REGLAMENTO_MATRIZ.md)"}
   caja_m: {valor: [0.20, 0.10], tipo: verificado documentalmente, fuente: "R01: 20 × 10 cm (largo × ancho), sin límite de altura"}
-  masa_max_kg: {valor: 0.500, tipo: verificado documentalmente, fuente: "R03: 500 g en todo momento"}
+  masa_max_kg: {valor: 0.500, tipo: verificado documentalmente, fuente: "R03: 500 g; respuesta oficial: se pesa con el robot APAGADO antes de la ronda (la succión no cuenta)"}
+  succion_permitida: {valor: true, tipo: verificado documentalmente, fuente: "respuesta oficial de los organizadores (4 nov 2026)"}
+  faldon_sin_contacto: {valor: true, tipo: verificado documentalmente, fuente: "respuesta oficial: el faldón puede estar cerca de la pista si NUNCA la toca (R11)"}
+  mapas_permitidos: {valor: true, tipo: verificado documentalmente, fuente: "respuesta oficial: mapas y memoria sí, sin inalámbrico; la pista puede cambiar entre rondas"}
+  inalambrico_prohibido: {valor: true, tipo: verificado documentalmente, fuente: "R10 y respuesta oficial"}
 
 aire:
   altitud_m: {valor: 1815, tipo: verificado documentalmente, fuente: "León, Gto. (sede del evento): 1,815 m, en.wikipedia.org/wiki/León,_Guanajuato"}

@@ -26,6 +26,8 @@ MEC = os.path.abspath(os.path.join(AQUI, ".."))
 RAIZ = os.path.abspath(os.path.join(MEC, "..", "..", ".."))
 sys.path.insert(0, AQUI)
 import vistas_v2 as VI  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.join(AQUI, "..", "..", "..", "..")), "sim", "v2"))
+import fase35 as F35  # noqa: E402  (altura del faldón con la compresión de las llantas)
 
 G = yaml.safe_load(open(os.path.join(RAIZ, "config", "v2", "robot_v2.yaml"), encoding="utf-8"))
 v = lambda s, k: G[s][k]["valor"]   # noqa: E731
@@ -149,14 +151,31 @@ def chasis():
     return p
 
 
-def faldon():
-    """Cámara de succión: marco de 70 × 70 mm interior, pared de 1.2 mm, borde a RANURA del piso."""
+def borde_faldon(delta=None):
+    """Alturas del borde del faldón (trasero, delantero; mm sobre el piso con la geometría del CAD = llantas sin
+    comprimir) para la compresión de llanta de diseño delta (m): sim/v2/fase35.py, modelo sim/v2/hundimiento.py."""
+    d = v("fase35", "compresion_llanta_diseno") if delta is None else delta
+    S, _ = F35.suspension(d)
+    e_t, e_d = F35.borde_faldon(S)
+    return e_t * 1e3, e_d * 1e3, S
+
+
+def faldon(delta=None):
+    """Cámara de succión: marco de 70 × 70 mm interior, pared de 1.2 mm. El borde NO es horizontal: sube hacia atrás
+    para que, con las llantas comprimidas por la succión y las cargas dinámicas (fase35.py), quede siempre a ≥ 0.5 mm
+    de la pista. Tornillos desde ARRIBA (autorroscantes en los refuerzos): nada sobresale por debajo del borde."""
+    e_t, e_d, _ = borde_faldon(delta)
     x0, x1 = CAM_X - CAM_IN, CAM_X + CAM_IN
-    ext = caja(x0 - CAM_W, x1 + CAM_W, -CAM_IN - CAM_W, CAM_IN + CAM_W, RANURA, Z_PB)
-    f = ext.cut(caja(x0, x1, -CAM_IN, CAM_IN, RANURA - 1, Z_PB + 1))
+    xa, xb = x0 - CAM_W, x1 + CAM_W
+    f = caja(xa, xb, -CAM_IN - CAM_W, CAM_IN + CAM_W, 0.0, Z_PB).cut(caja(x0, x1, -CAM_IN, CAM_IN, -1, Z_PB + 1))
+    pend = (e_d - e_t) / (xb - xa)
     for x, y in TORN_FALDON:
-        f = f.union(cil(x, y, 2.5, Z_PB, 4.6)).cut(cil(x, y, 0, Z_PB + 1, 2.2))
-    return f
+        zb = e_t + pend * (x - xa) + 1.0
+        f = f.union(cil(x, y, zb, Z_PB, 4.6)).cut(cil(x, y, zb + 0.6, Z_PB + 1, 1.8))
+    ext = 10.0
+    cuna = (cq.Workplane("XZ").polyline([(xa - ext, -5), (xb + ext, -5), (xb + ext, e_d + pend * ext), (xa - ext, e_t - pend * ext)])
+            .close().extrude(60, both=True))
+    return f.cut(cuna)
 
 
 def tapa_motor(s):
@@ -314,6 +333,12 @@ def main():
     for n, f in impresas.items():
         cq.exporters.export(f, os.path.join(SAL["step"], f"{n}.step"))
         cq.exporters.export(f, os.path.join(SAL["stl"], f"{n}.stl"), tolerance=0.02, angularTolerance=0.2)
+    variantes = {}
+    for d in v("fase35", "variantes_compresion"):
+        nombre = f"faldon_camara_llanta_{d * 1e3:.1f}mm".replace(".", "p")
+        e_t, e_d, _ = borde_faldon(d)
+        variantes[nombre] = {"compresion_llanta_mm": d * 1e3, "borde_trasero_mm": round(e_t, 2), "borde_delantero_mm": round(e_d, 2)}
+        cq.exporters.export(faldon(d), os.path.join(SAL["stl"], f"{nombre}.stl"), tolerance=0.02, angularTolerance=0.2)
     print("V2 CAD: compras y PCB")
     vent, rotor, mot_v = ventilador_aprox()
     compras = {"motor_izq_APROX": motor(1), "motor_der_APROX": motor(-1), "rueda_izq": rueda(1), "rueda_der": rueda(-1),
@@ -443,6 +468,31 @@ def main():
     ver["extremos_mm"] = [round(bb.xmin, 1), round(bb.xmax, 1), round(bb.ymin, 1), round(bb.ymax, 1), round(bb.zmin, 2), round(bb.zmax, 1)]
     ver["cabe_en_caja_192x92"] = bool(round(bb.xlen, 1) <= 192.0 and round(bb.ylen, 1) <= 92.0)   # la caja OCC suma tolerancia
     ver["lo_mas_bajo_sin_contacto_mm"] = round(min(cajas[n].zmin for n in nombres if n not in ("bola", "rueda_izq", "rueda_der")), 2)
+    # holgura con el chasis hundido (llantas comprimidas, succión máxima con 500 Pa, cargas dinámicas): cada vértice bajo
+    # z = 8 mm de cada pieza que no toca el piso, contra la envolvente de hundimiento; mínimo exigido 0.5 mm
+    _, _, S = borde_faldon()
+    peor = []
+    for n in nombres:
+        if n in ("bola", "rueda_izq", "rueda_der"):
+            continue
+        try:
+            mm = a_malla(todos[n], tol=0.1)
+        except Exception:
+            continue
+        vb = mm.vertices[mm.vertices[:, 2] < 8.0]
+        if not len(vb):
+            continue
+        h = np.array([z - 1e3 * S.envolvente(x / 1e3, y / 1e3) for x, y, z in vb])
+        h0 = np.array([z - 1e3 * S.envolvente_sin_succion(x / 1e3, y / 1e3) for x, y, z in vb])
+        i = int(np.argmin(h))
+        peor.append((n, round(float(h[i]), 3), [round(float(c), 1) for c in vb[i]], round(float(h0.min()), 3)))
+    peor.sort(key=lambda r: r[1])
+    ver["holgura_con_hundimiento_mm"] = [{"pieza": n, "holgura_peor_caso_mm": h, "punto_mm": p, "holgura_sin_succion_mm": h0}
+                                         for n, h, p, h0 in peor[:6]]
+    ver["holgura_minima_con_hundimiento_mm"] = peor[0][1]
+    ver["cumple_margen_0p5mm"] = bool(peor[0][1] >= 0.5 - 1e-3)
+    ver["faldon_variantes"] = variantes
+    ver["compresion_llanta_diseno_mm"] = v("fase35", "compresion_llanta_diseno") * 1e3
     json.dump(ver, open(os.path.join(MEC, "verificacion_mecanica.json"), "w"), indent=1, ensure_ascii=False)
     piezas_vista = [(n, f, colores[n]) for n, f in todos.items() if n not in ("ventilador_montaje_APROX", "ventilador_rotor_APROX")]
     VI.renders(piezas_vista, [(vent_real, (0.92, 0.92, 0.95))], SAL["render"], prefijo="robot_v2")

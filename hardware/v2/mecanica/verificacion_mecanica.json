@@ -23,5 +23,87 @@
   38.9
  ],
  "cabe_en_caja_192x92": true,
- "lo_mas_bajo_sin_contacto_mm": 0.5
+ "lo_mas_bajo_sin_contacto_mm": 0.99,
+ "holgura_con_hundimiento_mm": [
+  {
+   "pieza": "faldon_camara",
+   "holgura_peor_caso_mm": 0.5,
+   "punto_mm": [
+    40.2,
+    -36.2,
+    1.9
+   ],
+   "holgura_sin_succion_mm": 1.45
+  },
+  {
+   "pieza": "chasis",
+   "holgura_peor_caso_mm": 0.872,
+   "punto_mm": [
+    86.5,
+    0.3,
+    1.0
+   ],
+   "holgura_sin_succion_mm": 0.957
+  },
+  {
+   "pieza": "cachucha_sensores",
+   "holgura_peor_caso_mm": 1.36,
+   "punto_mm": [
+    115.4,
+    43.3,
+    1.0
+   ],
+   "holgura_sin_succion_mm": 1.113
+  },
+  {
+   "pieza": "barra_sensores_pcba",
+   "holgura_peor_caso_mm": 2.397,
+   "punto_mm": [
+    116.4,
+    41.7,
+    2.0
+   ],
+   "holgura_sin_succion_mm": 2.135
+  },
+  {
+   "pieza": "esc_APROX",
+   "holgura_peor_caso_mm": 4.195,
+   "punto_mm": [
+    -28.0,
+    -13.0,
+    7.1
+   ],
+   "holgura_sin_succion_mm": 6.145
+  },
+  {
+   "pieza": "ventilador_montaje_APROX",
+   "holgura_peor_caso_mm": 4.279,
+   "punto_mm": [
+    11.6,
+    -15.9,
+    6.2
+   ],
+   "holgura_sin_succion_mm": 5.603
+  }
+ ],
+ "holgura_minima_con_hundimiento_mm": 0.5,
+ "cumple_margen_0p5mm": true,
+ "faldon_variantes": {
+  "faldon_camara_llanta_2p0mm": {
+   "compresion_llanta_mm": 2.0,
+   "borde_trasero_mm": 3.86,
+   "borde_delantero_mm": 1.9
+  },
+  "faldon_camara_llanta_1p0mm": {
+   "compresion_llanta_mm": 1.0,
+   "borde_trasero_mm": 2.18,
+   "borde_delantero_mm": 1.2
+  },
+  "faldon_camara_llanta_0p5mm": {
+   "compresion_llanta_mm": 0.5,
+   "borde_trasero_mm": 1.34,
+   "borde_delantero_mm": 0.85
+  }
+ },
+ "compresion_llanta_diseno_mm": 2.0
 }

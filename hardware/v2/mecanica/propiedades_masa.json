@@ -1,13 +1,13 @@
 {
- "masa_total_g": 156.2,
+ "masa_total_g": 155.2,
  "cg_mm": [
-  24.0,
+  24.2,
   0.1,
-  15.2
+  15.3
  ],
  "x_apoyo_mm": 92.0,
  "a_max_sin_levantar_apoyo_ms2_sin_succion": 15.5,
- "carga_estatica_apoyo_N": 0.4,
+ "carga_estatica_apoyo_N": 0.401,
  "densidad_impresas": "PLA sólido 1.24 g/cm³ (cota superior)",
  "piezas": [
   {
@@ -22,11 +22,11 @@
   },
   {
    "pieza": "faldon_camara",
-   "masa_g": 2.03,
+   "masa_g": 1.0,
    "centro_mm": [
-    4.0,
-    0.0,
-    2.9
+    15.0,
+    -0.0,
+    3.9
    ],
    "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
   },

@@ -1,19 +1,35 @@
 # V2 · Fase 2 — Selección de componentes
 
-Fecha: 4 nov 2026 · Rama `engineering/final-robot-v2` · **Propuesta para aprobación. Sin KiCad ni CAD.**
+Fecha: 4 nov 2026 · Rama `engineering/final-robot-v2` · **Aprobada** (actualizada en la Fase 3.5, 5 nov 2026: reglas
+oficiales, motor del ventilador, límite de corriente y cambios de componentes de la Fase 3, ver §0).
 
 Marcas de tipo que usa esta página: **[V]** verificado documentalmente (hoja de datos o página del fabricante, §11) ·
 **[C]** calculado (`sim/v2/fase2_motores.py`, tablas T10-T11, o aritmética mostrada) · **[E]** estimado · **[S]** supuesto de
 diseño · **[P]** pendiente de medición física. Ningún componente de esta página se ha comprado, armado ni medido.
 
+## 0. Actualización de la Fase 3.5
+
+- **Reglas oficiales** (FASE1_AUDITORIA §4): succión permitida; los 500 g se pesan con el robot **apagado** (la succión no
+  cuenta); el faldón puede estar cerca de la pista si **nunca** la toca; mapas permitidos (la pista puede cambiar entre
+  rondas); **comunicación inalámbrica prohibida** (R10).
+- **Ventilador**: motor brushless **1104 ~9000 KV** con **ESC comercial de 20 A** (opción B de §2.2), indicación del
+  usuario [S]. Hasta la prueba de báscula, los cálculos usan una presión de cierre **conservadora de 500 Pa** (fase35.py).
+- **Límite de corriente de los puentes H**: ITRIP bajado de ≈ 2.4 A a **≈ 1.56 A** por motor (VREF 1.055 V) y límite de
+  frenado de **1.5 A** en el firmware con estimador térmico; ver `FASE35_CORRECCIONES.md` §3. Los 2.35 A de frenado por
+  inversión de §2.1 son lo que el motor PEDIRÍA a 2 m/s; la adherencia solo aprovecha ≤ 1.57 A aun con 3.1 N de succión.
+- **Componentes cambiados en la Fase 3** (FASE3_ENTREGA1 §3): MCU en módulo WeAct STM32G474CEU6; IMU ISM330DHCX en lugar
+  de ICM-42688-P; 2 × LPS22DF en lugar de 2 × BMP390; piezo Murata PKLCS1212E4001-R1 en lugar del zumbador magnético; USB-C
+  del módulo.
+
 ## 1. Requisitos nuevos (respuestas oficiales) y qué cambian
 
 | Fuente | Respuesta o requisito | Consecuencia en la selección |
 |---|---|---|
-| Organizadores 1 | Ventilador permitido | Se diseña con succión. Mando del ventilador, supervisión de presión y modo degradado "sin succión" |
-| Organizadores 2 | Los 500 g se pesan **apagado** antes de la ronda | El peso aparente con succión (518 g con 3.1 N y 200 g) deja de descalificar. El tope de masa propio sigue en 200 g por física (T3b), no por reglamento |
+| Organizadores 1 | Ventilador (succión) permitido | Se diseña con succión. Mando del ventilador, supervisión de presión y modo degradado "sin succión" |
+| Organizadores 2 | Los 500 g se pesan con el robot **APAGADO** antes de la ronda | La succión no cuenta como peso: el "peso aparente" (518 g con 3.1 N y 200 g) deja de ser un riesgo. El tope de masa propio sigue en 200 g por física (T3b), no por reglamento |
 | Organizadores 3 | Mapas permitidos sin radio, pero la pista puede cambiar entre rondas | El mapa se aprende **en cada ronda** (vuelta 1 reactiva y mapeando, vueltas 2-3 con el mapa y validación continua; si no coincide, vuelve a reactivo). Pide giroscopio, encoders con buena resolución y RAM |
 | Organizadores 4 | Cámara de succión permitida si el faldón **nunca** toca la pista | Ranura de diseño 0.5 mm **con la succión encendida** (las llantas se comprimen con la carga extra) [P]; faldón rígido; el sensor de presión detecta una ranura abierta |
+| R10 / organizadores | Comunicación inalámbrica prohibida | Sin radio en el robot; ajustes y registros por USB-C entre rondas |
 | Profesor | Botón físico de arranque | START dedicado (R08), separado de CAL y RESET |
 | Profesor | Calibración + colocación ≤ 15 s | Calibración **manual** por barrido (el reglamento C03 prohíbe que el robot se mueva solo antes de la señal), con confirmación por LED y sonido. Cero de presión e IMU en la misma ventana |
 | Profesor | Sensores lo más bajo posible, con "cachucha" | Se conservan los QRE1113GR (cuerpo de 1.45 mm de alto [V]) y se montan más cerca del piso que en V1 (cara a 3.05 mm del piso en V1). La altura final y la cachucha se fijan en la Fase 3 |
@@ -43,12 +59,12 @@ esta fase (≈ 120-150 g, §6) el requisito baja a ≈ 2.3 N (T3b, 150 g) [C]. S
 | **Presión de la cámara** ×2 | Bosch Sensortec · **BMP390** | LGA-10 con tapa metálica, 2.0 × 2.0 × 0.75 mm [V] | 300-1250 hPa; precisión relativa ±0.03 hPa (= ±3 Pa); absoluta ±0.50 hPa; ruido 0.02 Pa RMS al menor ancho de banda; hasta 200 Hz; I2C y SPI; 1.65-3.6 V; deriva ±0.6 Pa/K [V] | Uno dentro de la cámara y otro afuera: ΔP = diferencia, con el cero hecho en la calibración (ventilador apagado) para quitar el error absoluto de ±50 Pa. Señal de 500-900 Pa contra ±3 Pa [C]. **Es lo único que ve el faldón gastado o un escalón de la pista** (T7: 54 % y 19 % de la succión) que RPM y corriente no ven. A 200 Hz hay 10 lecturas en τ = 50 ms, la caída más rápida de T7b [C]. Ruido a 200 Hz: se fija en la Fase 4 con la tabla de sobremuestreo | Sensor diferencial de ±1 kPa o más: no encontré uno verificado de tamaño similar |
 | **Llantas** | Pololu · **#1087** (par 32 × 7 mm, silicón) | Ø32 × 7 mm, 6.24 g el par [V] | Eje en D de 3 mm (el de los motores #5183 [V]) | Las de V1; el diámetro de 32 mm es el de los cálculos T9/T10 | μ con succión y compresión de la llanta: [P] |
 
-### 2.2 Ventilador (bloqueado por un dato que falta)
+### 2.2 Ventilador (resuelto en la Fase 3: 1104 ~9000 KV + ESC de 20 A, opción B)
 
 | Función | Selección | Estado |
 |---|---|---|
 | Rotor y montaje | Modelos entregados: rotor de 12 álabes radiales (r 10-17 mm) + base, 4 pilares y soporte | Se integran. Masa impresa en PA12: rotor 2.0 g, montaje 3.6 g [C con el volumen de las mallas y densidad 1.01 g/cm³ [S]] |
-| **Motor del ventilador** | **Pendiente: no está en los archivos ni en los mensajes** | El soporte tiene 4 agujeros Ø2.2 sobre un círculo de Ø9 mm y paso central Ø5 [medido en el modelo]: es compatible con los motores sin escobillas clase 11xx de patrón de 9 mm y tornillos M2 [V: TuneRC 1104, Darwin 1104]. **Necesito modelo, KV y número de polos** |
+| **Motor del ventilador** | **Brushless 1104 ~9000 KV** (indicación del usuario, Fase 3) [S] | El soporte tiene 4 agujeros Ø2.2 sobre un círculo de Ø9 mm y paso central Ø5 [medido en el modelo]: es compatible con los motores sin escobillas clase 11xx de patrón de 9 mm y tornillos M2 [V: TuneRC 1104, Darwin 1104]. **Necesito modelo, KV y número de polos** |
 | **Mando del ventilador** | **Opción A**: TI **MCT8316AV** (VQFN-40 RGF, 7 × 5 mm; I2C con EEPROM) [V] en la placa. **Opción B**: módulo ESC comercial con firmware AM32/BLHeli_S/Bluejay, mando DShot (telemetría de RPM bidireccional) o PWM | Decide la frecuencia eléctrica f_e = pares de polos × rpm / 60 (T11) [C]. El MCT8316A llega a **3 kHz** eléctricos [V]: con un motor 9N12P (6 pares, típico de 11xx [V: Darwin 1104]) eso es **30 000 rpm, justo el mínimo estimado** (30 000-40 000 rpm) **sin margen**; con 12N14P, 25 700 rpm: no alcanza. **Recomiendo B** si el motor es 11xx de 12 o 14 polos; A solo si f_e ≤ 2.5 kHz a las rpm de trabajo (margen de ≈ 17 % [S]). El MCF8316A (control FOC) queda descartado: 1.5 kHz |
 
 La opción B usa un módulo de controlador, que el reglamento acepta como componente (R04: "módulos sueltos (sensor, driver, MCU)
@@ -195,12 +211,11 @@ la ronda anterior (presión, RPM, derrapes).
 | Masa | 112.9 g (CAD) | ≈ 120-150 g [E] |
 | Mapa | No | Por ronda, con validación continua |
 
-## 10. Lo que necesito para cerrar la Fase 2
+## 10. Cierre de la Fase 2 (resuelto)
 
-1. **Motor del ventilador**: modelo, KV y número de polos (o configuración tipo 9N12P), y si ya tienen un ESC. Con eso fijo
-   la opción A o B y el conector.
-2. **Aprobación de la barra de sensores separable** (§8).
-3. **Calendario**: la competencia es el 21 de noviembre (17 días). Fabricar y enviar la PCB, armar y hacer las pruebas físicas
+1. **Motor del ventilador**: 1104 ~9000 KV con ESC comercial de 20 A (opción B). Resuelto por el usuario.
+2. **Barra de sensores separable**: aprobada.
+3. **Calendario**: la competencia es el 21 de noviembre. Fabricar y enviar la PCB, armar y hacer las pruebas físicas
    en ese plazo es el riesgo principal del proyecto. Todo lo elegido es de catálogo; el ESC en módulo evita diseñar un controlador.
 
 Reproducir T10 y T11: `python3 sim/v2/fase2_motores.py` (datos en `config/v2/parametros_fase2.yaml`).

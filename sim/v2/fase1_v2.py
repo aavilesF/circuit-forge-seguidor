@@ -420,27 +420,74 @@ def t7_fallos():
 
 
 # ===================================================================== T8: energía y tiempo de vuelta (cuasiestático)
-def tiempo_vuelta(pista, m, Fs, mu, g: Geo, L, v_crucero, a_acc_max):
-    """Vuelta desde parado, robot REACTIVO: en recta va a min(v_crucero, lo que alcance); en cada arco va a la velocidad
-    estable de ese radio (la bajada de velocidad es factible por construcción porque v_crucero ≤ v0 reactiva)."""
-    c = capacidades(m, Fs, mu, g)
-    a_acc = min(c["ax_ac"], a_acc_max)
-    t = 0.0; vel = 0.0
+def topes_pista(pista, m, Fs, mu, g: Geo, L, v_tope, ds):
+    """Tope de velocidad en cada punto de la pista (coordenada a lo largo de la línea, paso ds), medido en la barra
+    (sobre la línea): v_tope en recta; en un arco, la velocidad estable del CG llevada a la barra (vc · R / Rc)."""
+    cap = []
     for seg in pista.segs:
         if seg[0] == "S":
-            Ls = seg[1]
-            d_acc = max(v_crucero ** 2 - vel ** 2, 0) / (2 * a_acc)
-            if d_acc >= Ls:
-                v1 = math.sqrt(vel ** 2 + 2 * a_acc * Ls)
-                t += (v1 - vel) / a_acc; vel = v1
-            else:
-                t += (v_crucero - vel) / a_acc + (Ls - d_acc) / v_crucero; vel = v_crucero
+            cap += [v_tope] * max(int(round(seg[1] / ds)), 1)
         else:
             R, th = seg[1], math.radians(abs(seg[2]))
             vc, Rc = v_curva(R, L, m, Fs, mu, g)
-            v_arco = vc if vel >= vc else (vel + vc) / 2              # si llega más lento, acelera dentro del arco
-            t += th * Rc / v_arco
-            vel = vc
+            cap += [min(v_tope, vc * R / Rc)] * max(int(round(th * R / ds)), 1)
+    return np.array(cap, dtype=float)
+
+
+def perfil_vuelta(cap, a_acc, a_fr, ds, horizonte=None, v_ini=0.0):
+    """Perfil de velocidad FACTIBLE sobre los topes cap (uno por tramo de largo ds) desde v_ini.
+
+    Pasada hacia atrás (frenado con a_fr) y hacia adelante (aceleración con a_acc). horizonte = None: el robot conoce
+    toda la pista (mapa). horizonte = k tramos: robot reactivo, solo "ve" k tramos adelante (la barra va L delante del
+    eje): el frenado por un tope que aún no ve no puede empezar antes. Devuelve (v en los nodos [n + 1], t por tramo,
+    desaceleración máxima exigida). Si esa desaceleración supera a_fr, el perfil reactivo NO es factible (el robot
+    llega a la curva más rápido de lo que puede frenar): se informa, no se oculta."""
+    n = len(cap)
+    if horizonte is None:
+        vb = cap.copy()
+        for i in range(n - 2, -1, -1):
+            vb[i] = min(vb[i], math.sqrt(vb[i + 1] ** 2 + 2 * a_fr * ds))
+    else:
+        k = int(horizonte)
+        vb = cap.copy()
+        d = np.arange(1, k + 1) * ds
+        for i in range(n):
+            ven = cap[i + 1:i + 1 + k]
+            if len(ven):
+                vb[i] = min(vb[i], float(np.min(np.sqrt(ven ** 2 + 2 * a_fr * d[:len(ven)]))))
+    vel = np.zeros(n + 1)
+    vel[0] = v_ini
+    a_req = 0.0
+    for i in range(n):
+        v_sig = min(math.sqrt(vel[i] ** 2 + 2 * a_acc * ds), vb[i])
+        a_req = max(a_req, (vel[i] ** 2 - v_sig ** 2) / (2 * ds))
+        vel[i + 1] = v_sig
+    dt = 2 * ds / np.maximum(vel[1:] + vel[:-1], 1e-9)       # exacto con aceleración constante en cada tramo
+    return vel, dt, a_req
+
+
+def tiempo_vuelta(pista, m, Fs, mu, g: Geo, L, v_crucero, a_acc_max, ds=0.002, detalle=False):
+    """Vuelta desde parado de un robot REACTIVO: tope v_crucero (la anticipación de la Fase 1 lo limita) y en cada
+    arco la velocidad estable de ese radio; solo puede frenar por lo que la barra ya vio (horizonte = L).
+    Corrige la versión anterior (antes de la Fase 3.5), que sumaba (v_crucero − v)/a negativo cuando el robot salía de
+    un arco más rápido que v_crucero y no limitaba la velocidad del arco a v_crucero."""
+    c = capacidades(m, Fs, mu, g)
+    cap = topes_pista(pista, m, Fs, mu, g, L, v_crucero, ds)
+    vel, dt, a_req = perfil_vuelta(cap, min(c["ax_ac"], a_acc_max), c["ax_fr"], ds, horizonte=round(L / ds))
+    t = float(np.sum(dt))
+    if detalle:
+        return dict(t=t, vel=vel, dt=dt, a_req=a_req, a_fr=c["ax_fr"], factible=a_req <= c["ax_fr"] * (1 + 1e-6))
+    return t
+
+
+def tiempo_vuelta_mapa(pista, m, Fs, mu, g: Geo, L, v_tope, a_acc_max, ds=0.002, detalle=False):
+    """Cota de referencia: el robot conoce la pista (mapa aprendido en la vuelta) y frena ANTES de cada curva."""
+    c = capacidades(m, Fs, mu, g)
+    cap = topes_pista(pista, m, Fs, mu, g, L, v_tope, ds)
+    vel, dt, a_req = perfil_vuelta(cap, min(c["ax_ac"], a_acc_max), c["ax_fr"], ds, horizonte=None)
+    t = float(np.sum(dt))
+    if detalle:
+        return dict(t=t, vel=vel, dt=dt, a_req=a_req, a_fr=c["ax_fr"], factible=a_req <= c["ax_fr"] * (1 + 1e-6))
     return t
 
 
@@ -464,7 +511,8 @@ def t8_energia(t3):
         v_cr = min(v0, v("energia.v_tope_ms"))
         for P_max in v("energia.P_ventilador_max_W"):
             Pf = P_max * f_rpm ** 3
-            tiempos = [tiempo_vuelta(p, m_eff, Fs, mu, g, L, v_cr, v("energia.a_acc_motor_ms2")) for p in F1.pistas()]
+            det = [tiempo_vuelta(p, m_eff, Fs, mu, g, L, v_cr, v("energia.a_acc_motor_ms2"), detalle=True) for p in F1.pistas()]
+            tiempos = [d["t"] for d in det]
             tm = sum(tiempos) / len(tiempos)
             I_fan = Pf / v("bateria.V_nominal")
             filas.append(dict(nivel=nivel, fraccion_rpm=f_rpm, F_succion_N=round(Fs, 3), v_crucero_ms=round(v_cr, 3),
@@ -473,35 +521,10 @@ def t8_energia(t3):
                               E_ventilador_por_vuelta_J=round(Pf * tm, 1),
                               mAh_ventilador_por_vuelta=round(I_fan * tm / 3.6, 2),
                               caida_tension_V=round(I_fan * v("bateria.R_interna_ohm"), 3),
-                              tipo="calculado (cuasiestático; NO es la simulación dinámica)"))
+                              perfil_factible=all(d["factible"] for d in det),
+                              tipo="calculado (cuasiestático, perfil factible adelante/atrás; NO es la simulación dinámica)"))
     escribir("T8_energia.csv", filas)
     return filas
-
-
-def tiempo_vuelta_mapa(pista, m, Fs, mu, g: Geo, L, v_tope, a_acc_max, ds=0.002):
-    """Cota de referencia: el robot conoce la pista (mapa aprendido) y frena ANTES de cada curva (pasada hacia atrás
-    con la desaceleración en recta). Velocidades medidas en la barra (sobre la línea)."""
-    c = capacidades(m, Fs, mu, g)
-    a_acc = min(c["ax_ac"], a_acc_max); a_fr = c["ax_fr"]
-    cap = []
-    for seg in pista.segs:
-        if seg[0] == "S":
-            cap += [v_tope] * max(int(seg[1] / ds), 1)
-        else:
-            R, th = seg[1], math.radians(abs(seg[2]))
-            vc, Rc = v_curva(R, L, m, Fs, mu, g)
-            cap += [vc * R / Rc] * max(int(th * R / ds), 1)
-    cap = np.array(cap)
-    n = len(cap)
-    vb = cap.copy()
-    for _ in range(2):                                           # cíclica: la meta no obliga a detenerse
-        for i in range(n - 1, -1, -1):
-            vb[i] = min(vb[i], math.sqrt(vb[(i + 1) % n] ** 2 + 2 * a_fr * ds))
-    vel = np.zeros(n + 1)
-    for i in range(n):
-        vel[i + 1] = min(math.sqrt(vel[i] ** 2 + 2 * a_acc * ds), vb[i])
-    vm = np.maximum((vel[1:] + vel[:-1]) / 2, 1e-4)
-    return float(np.sum(ds / vm))
 
 
 def t8b_reactivo_vs_mapa():
@@ -513,12 +536,16 @@ def t8b_reactivo_vs_mapa():
     for Fs in v("estudio.F_succion_N"):
         v0 = v0_max_reactiva(traj, m, Fs, mu, g, v("energia.umbral_m"), v("energia.latencia_s"), 0.15)
         v_cr = min(v0, v("energia.v_tope_ms"))
-        tr = [tiempo_vuelta(p, m, Fs, mu, g, L, v_cr, v("energia.a_acc_motor_ms2")) for p in F1.pistas()]
-        tm = [tiempo_vuelta_mapa(p, m, Fs, mu, g, L, v("energia.v_tope_ms"), v("energia.a_acc_motor_ms2")) for p in F1.pistas()]
+        dr = [tiempo_vuelta(p, m, Fs, mu, g, L, v_cr, v("energia.a_acc_motor_ms2"), detalle=True) for p in F1.pistas()]
+        dm = [tiempo_vuelta_mapa(p, m, Fs, mu, g, L, v("energia.v_tope_ms"), v("energia.a_acc_motor_ms2"), detalle=True)
+              for p in F1.pistas()]
+        tr = [d["t"] for d in dr]
+        tm = [d["t"] for d in dm]
         filas.append(dict(F_succion_N=Fs, v_crucero_reactiva_ms=round(v_cr, 3), t_medio_reactivo_s=round(sum(tr) / 4, 3),
                           t_medio_con_mapa_s=round(sum(tm) / 4, 3),
                           ganancia_mapa=round(1 - sum(tm) / sum(tr), 3),
-                          tipo="calculado (cuasiestático; el mapa depende de una consulta al reglamento)"))
+                          perfil_factible=all(d["factible"] for d in dr + dm),
+                          tipo="calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"))
     escribir("T8b_reactivo_vs_mapa.csv", filas)
 
 

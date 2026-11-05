@@ -64,3 +64,18 @@ barra_sensores:
 rueda_loca:
   x: {valor: 92.0, tipo: supuesto, fuente: "detrás de la barra de sensores (borde interior en R 100)"}
   bola: {valor: 6.35, tipo: verificado, fuente: "bola de acero de 1/4 in, como V1"}
+
+# ---------------------------------------------------------------- Fase 3.5 (auditoría): faldón, succión conservadora, térmica
+fase35:
+  compresion_llanta_diseno: {valor: 0.002, tipo: supuesto, fuente: "indicación del usuario (1-2 mm); se diseña con la cota alta. Medir y reimprimir el faldón de la variante que corresponda [P]"}
+  variantes_compresion: {valor: [0.002, 0.001, 0.0005], tipo: supuesto, fuente: "faldones alternativos para imprimir después de medir la compresión real"}
+  margen_faldon: {valor: 0.0005, tipo: verificado, fuente: "pedido del usuario: ≥ 0.5 mm de la pista con el robot succionando, en el peor caso"}
+  dP0_conservador_Pa: {valor: 500.0, tipo: supuesto, fuente: "presión de cierre conservadora pedida por el usuario hasta la prueba de báscula"}
+  Q0_m3s: {valor: 0.0045, tipo: supuesto, fuente: "caudal libre interpolado entre los escenarios de 400 y 800 Pa de la Fase 1"}
+  motor_ventilador: {valor: "brushless 1104 ~9000 KV, ESC comercial de 20 A", tipo: supuesto, fuente: "indicación del usuario"}
+  motor_R_ohm: {valor: 4.0, tipo: calculado, fuente: "6 V / 1.5 A de bloqueo (Pololu #5183, valores extrapolados por Pololu)"}
+  motor_kt_Nm_A: {valor: 0.01635, tipo: calculado, fuente: "0.25 kg·cm / 1.5 A en el eje de salida (sin pérdidas de la reductora)"}
+  motor_I0_A: {valor: 0.15, tipo: verificado, fuente: "Pololu #5183: corriente sin carga a 6 V (±50 %)"}
+  motor_Rth_KW: {valor: 40.0, tipo: estimado, fuente: "resistencia térmica devanado-ambiente de un micromotor de 10 × 12 mm sin disipador (no publicada por Pololu)"}
+  motor_Cth_JK: {valor: 3.0, tipo: estimado, fuente: "capacidad térmica del motor (≈ 6 g de cobre y acero)"}
+  motor_dT_max_K: {valor: 50.0, tipo: supuesto, fuente: "elevación máxima admitida del devanado (Pololu no publica la clase de aislamiento)"}

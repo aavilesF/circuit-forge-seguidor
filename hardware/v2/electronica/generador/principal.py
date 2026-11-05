@@ -215,7 +215,7 @@ for lado, ref, x, y, sgn in (("I", "U5", 1.0, 20.0, 1), ("D", "U6", 1.0, -10.5, 
 D.R("R23", "10k", "+3V3", "DRV_nFAULT", HM, x=-2.5, y=14.5, rot=90)
 D.R("R24", "100k", "DRV_nSLEEP", "GND", HM, x=-4.0, y=14.5, rot=90)
 D.R("R25", "10k", "+3V3", "DRV_VREF", HM, x=-2.5, y=12.0, rot=90)
-D.R("R26", "10k", "DRV_VREF", "GND", HM, x=-4.0, y=12.0, rot=90)
+D.R("R26", "4.7k", "DRV_VREF", "GND", HM, x=-4.0, y=12.0, rot=90)   # ITRIP ≈ 1.56 A (Fase 3.5, revisión térmica)
 D.C("C23", "100n", "DRV_VREF", "GND", HM, x=-5.5, y=12.0, rot=90)
 # ESC comercial (módulo): potencia por 2 hilos soldados, señal por cabecera de servo (S, +, −) con el + sin conectar
 D.P(ref="J5", lib_id="Connector_Generic:Conn_01x02", valor="ESC_POT", huella="Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm",
@@ -288,7 +288,7 @@ def principal():
              "PB11 (/CS de la flash QSPI del módulo) sin conectar: la flash queda deseleccionada y PB0, PB1, PB10 se usan para los LED.",
              "PB8 = BOOT0 al reset: la compuerta de Q3 tiene 100k a GND, así el zumbador no cambia el arranque.",
              "I2C3 (PA8/PC11): ISM330DHCX 0x6A, LPS22DF ambiente 0x5C, LPS22DF de la cámara 0x5D."],
-        HM: ["DRV8874: PMODE a GND = PH/EN. ITRIP = VREF / (R_IPROPI × A_IPROPI) = 1.65 V / (1.5 kΩ × 450 µA/A) ≈ 2.4 A por motor.",
+        HM: ["DRV8874: PMODE a GND = PH/EN. ITRIP = VREF / (R_IPROPI × A_IPROPI) = 1.055 V / (1.5 kΩ × 450 µA/A) ≈ 1.56 A por motor (Fase 3.5).",
              "IMODE con 0 Ω a GND (nivel 1); cambiar por 20k/62k cambia el modo de regulación (tabla IMODE de la hoja de datos).",
              "J3/J4: pinout del encoder Pololu (1 GND, 2 B, 3 A, 4 VCC, 5 M2, 6 M1). J2: 1:1 con J1 de la barra de sensores.",
              "ESC: señal por J6 (PB9, TIM17_CH1: PWM, Oneshot o DShot con telemetría bidireccional), potencia por J5."]})

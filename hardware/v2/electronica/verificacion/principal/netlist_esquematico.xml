@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/principal/principal.kicad_sch</source>
-    <date>2026-11-05T07:25:52-0600</date>
+    <date>2026-11-05T09:27:27-0600</date>
     <tool>Eeschema 9.0.8+dfsg-1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -2116,20 +2116,20 @@
       <tstamps>8696c649-ba5b-51ab-8dca-eb84f67d434b</tstamps>
     </comp>
     <comp ref="R26">
-      <value>10k</value>
+      <value>4.7k</value>
       <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
-      <description>Resistencia 10kΩ 1 % 0402</description>
+      <description>Resistencia 4.7kΩ 1 % 0402</description>
       <fields>
         <field name="Fabricante">YAGEO</field>
-        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="MPN">RC0402FR-074K7L</field>
         <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
-        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+        <field name="Description">Resistencia 4.7kΩ 1 % 0402</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="Fabricante" value="YAGEO"/>
-      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="MPN" value="RC0402FR-074K7L"/>
       <property name="Sheetname" value="Puentes H, motores, ESC y barra de sensores"/>
       <property name="Sheetfile" value="motores.kicad_sch"/>
       <property name="ki_keywords" value="R res resistor"/>

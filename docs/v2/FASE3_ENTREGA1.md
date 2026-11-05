@@ -72,8 +72,8 @@ conexión); paridad esquemático-PCB sin diferencias.
 Bloques: XT30 → fusible 10 A → 2 × DMP3013SFV espalda con espalda (inversión de polaridad + encendido por el interruptor
 deslizante, como V1) → TVS SMAJ9.0A y 2 × 22 µF → reductor TPS563200 a 3.3 V (circuito de V1) → módulo, sensores y lógica.
 Puentes H: 2 × TI DRV8874PWPR en modo PH/EN (PMODE a GND), VCP 100 nF a VM, CPH-CPL 22 nF, IPROPI con 1.5 kΩ:
-**ITRIP = VREF / (R_IPROPI × A_IPROPI) = 1.65 V / (1.5 kΩ × 450 µA/A) ≈ 2.4 A por motor** [C con A_IPROPI de la hoja de
-datos], que cubre los 2.35 A de frenado a 2 m/s de la Fase 2.
+**ITRIP = VREF / (R_IPROPI × A_IPROPI)**; en la Fase 3.5 se bajó de 2.4 A a **1.056 V / (1.5 kΩ × 450 µA/A) ≈ 1.56 A por
+motor** [C] tras la revisión térmica (`FASE35_CORRECCIONES.md` §3).
 
 **Asignación de pines del módulo** (cada pin con el periférico que necesita según los datos de pines de ST [V]):
 
@@ -103,7 +103,7 @@ place. Las posiciones del esquemático actual son la colocación inicial que us�
 | Pieza impresa | Función | Masa (PLA sólido, cota superior) |
 |---|---|---|
 | `chasis` | Placa de 2 mm (techo de la cámara), cunas de motor, alojamiento del ventilador (bolsillo para el realce de la base, entrada Ø20, 4 agujeros Ø1.8), chimenea al sensor de presión, bahía del ESC, portabaterías con ranuras para correa, rueda loca, postes de la PCB, ventana sobre la barra | 31.0 g [C] |
-| `faldon_camara` | Cámara de 70 × 70 mm interior, pared de 1.2 mm, borde a **0.5 mm** del piso, 4 tornillos M2 | 2.0 g [C] |
+| `faldon_camara` | Cámara de 70 × 70 mm interior, pared de 1.2 mm. **Corregido en la Fase 3.5**: borde inclinado (3.86 mm atrás, 1.90 mm adelante) para quedar a ≥ 0.5 mm de la pista con las llantas comprimidas; tornillos desde arriba (ver `FASE35_CORRECCIONES.md`) | 2.0 g [C] |
 | `tapa_motor_izq/der` | Abrazaderas de los motores; su cara superior apoya la PCB principal | 2 × 2.0 g [C] |
 | `cachucha_sensores` | Escudo de luz bajo la barra: ventana alrededor de los 16 sensores y paredes hasta **1.0 mm** del piso | 2.2 g [C] |
 | `tapa_rueda_loca` | Cierra el alojamiento de la bola de 1/4 in | 0.1 g [C] |
@@ -114,7 +114,7 @@ place. Las posiciones del esquemático actual son la colocación inicial que us�
 - Medidas totales **173.6 × 92.0 × 38.9 mm**: cabe en la caja de 192 × 92 mm (R01 con 4 mm de holgura por lado) [C].
 - Holguras: rotor-base 1.2 mm; entrada Ø20 a la pared de la cámara 1.5 mm; pared de la cámara a la llanta 2.8 mm;
   encoder a la PCB 1.5 mm; pilares del ventilador a las abrazaderas 4.6 mm [C].
-- Lo más bajo sin contacto con la pista: faldón a 0.5 mm, cachucha a 1.0 mm, cara de los sensores a 2.05 mm, rueda loca a
+- (Antes de la Fase 3.5) lo más bajo sin contacto con la pista: faldón a 0.5 mm, cachucha a 1.0 mm, cara de los sensores a 2.05 mm, rueda loca a
   1.0 mm (solo la bola toca) [C]. **Todas con la succión apagada**: la compresión de las llantas con la succión puesta baja
   estas cifras y hay que medirla [P].
 - **Masa total 156 g** (con las piezas impresas sólidas en PLA; con relleno parcial pesa menos) [C/E]; CG en

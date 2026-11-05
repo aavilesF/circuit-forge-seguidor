@@ -7039,7 +7039,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4.7k"
 			(at 331.47 167.64 90)
 			(effects
 				(font
@@ -7065,7 +7065,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistencia 10kΩ 1 % 0402"
+		(property "Description" "Resistencia 4.7kΩ 1 % 0402"
 			(at 331.47 165.1 90)
 			(effects
 				(font
@@ -7083,7 +7083,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RC0402FR-0710KL"
+		(property "MPN" "RC0402FR-074K7L"
 			(at 331.47 165.1 90)
 			(effects
 				(font
@@ -9061,7 +9061,7 @@
 			)
 		)
 	)
-	(text "DRV8874: PMODE a GND = PH/EN. ITRIP = VREF / (R_IPROPI × A_IPROPI) = 1.65 V / (1.5 kΩ × 450 µA/A) ≈ 2.4 A por motor."
+	(text "DRV8874: PMODE a GND = PH/EN. ITRIP = VREF / (R_IPROPI × A_IPROPI) = 1.055 V / (1.5 kΩ × 450 µA/A) ≈ 1.56 A por motor (Fase 3.5)."
 		(exclude_from_sim no)
 		(at 25.4 257 0)
 		(effects
