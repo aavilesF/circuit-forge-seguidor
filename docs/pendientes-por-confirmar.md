@@ -106,6 +106,6 @@ Con una foto del cuerpo del diodo basta también. **Pregunta:** ¿el diodo del t
 | ID | Riesgo | Por qué | Cómo revisarlo |
 |---|---|---|---|
 | R01 | El ventilador queda **debajo** de las PCB (separadores de 15 mm): la salida de aire queda limitada a ~5 mm | La placa de 188 mm de largo no deja una zona libre para ventilador + barra + PCB principal dentro de 200 mm | Pesar la succión con báscula; si no funciona, acortar la PCB principal o poner el ventilador en la parte trasera |
-| R02 | Muchos puentes de alambre en la PCB (las pistas de la capa superior **no se graban**) | El enrutador automático los usa para cruzar pistas; ver `electronica/kicad/NOTAS.md` para el conteo | Contarlos al armar; si son demasiados, rehacer la colocación |
+| R02 | Muchos puentes de alambre (las pistas ROJAS = capa superior **no se graban**): ~22 en la barra y ~27 en la principal, de ~20 mm en promedio | El enrutador propio los usa para cruzar pistas. El DRC no los penaliza, pero soldar ~50 alambres es trabajo y riesgo de error | Ver `vista_*.png` en cada carpeta de KiCad; si es demasiado, usar cable AWG 26 por tramos o rehacer la colocación en KiCad a mano |
 | R03 | Los sensores se colocan en arco sobre una PCB plana | El brillo en curva depende de la altura real (3–8 mm del suelo) | Probar en pista |
 | R04 | La caja de 200 × 100 mm incluye ruedas y sensores | Las ruedas sobresalen por las muescas | Medir con las ruedas puestas antes de la competencia |

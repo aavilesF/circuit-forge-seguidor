@@ -61,6 +61,7 @@ python3.12 herramientas/generar_pcb.py principal
 - Reglas: pistas 0.8 mm, separación 0.5 mm, pastillas redondas de 1.8 mm, taladro 0.8 mm (la broca del ticket), vía 1.6/0.8 mm.
 - **Las pistas de la capa superior (F.Cu) NO se graban: son puentes de alambre** soldados por las pastillas/vías. Se cuentan en `docs/pendientes-por-confirmar.md` (R02).
 - El ruteo lo hace un enrutador propio (`ruteador.py`, A* en rejilla de 0.25 mm). No se usó Freerouting: el JAR se descargó pero el entorno bloqueó ejecutarlo.
+- Resultado: barra y principal con **0 errores de DRC** y todas las redes unidas. Puentes de alambre (tramos rojos de `vista_*.png`): ~22 en la barra y ~27 en la principal.
 - El DRC es el **oficial de pcbnew** (`WriteDRCReport`), KiCad 7.0.11. Quedan avisos de serigrafía (texto encima de cobre); no son errores.
 - `*_mecanica.json` guarda el contorno y los agujeros M3 de cada PCB: de ahí los toma `mecanica/autocad/generar_dxf.py`.
 - Todas las huellas de módulos son provisionales (ver IDs M01 a M20 en `docs/pendientes-por-confirmar.md`).

@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461350.826412037
+2461350.831365741
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461350.826412037
+2461350.831365741
   9
 $TDUUPDATE
  40
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{1BFDB15A-CC94-400F-BE0C-300A559DF3D7}
+{BE41C16D-70DB-4642-83B6-FDB31AC77D08}
   9
 $VERSIONGUID
   2
-{19609B9D-96E1-4FC1-A931-A6B89BD7DE4C}
+{62775B2F-7770-443D-8367-FA70B3B76BBB}
   9
 $EXTNAMES
 290
@@ -1323,9 +1323,9 @@ ISM
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -1339,9 +1339,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -5419,11 +5419,11 @@ AcDbPolyline
  10
 -68.0
  20
--47.5
+-48.5
  10
 -19.0
  20
--47.5
+-48.5
  10
 -19.0
  20
@@ -5435,27 +5435,27 @@ AcDbPolyline
  10
 19.0
  20
--47.5
+-48.5
  10
 116.0
  20
--47.5
+-48.5
  10
 120.0
  20
--43.5
+-44.5
  10
 120.0
  20
-43.5
+44.5
  10
 116.0
  20
-47.5
+48.5
  10
 19.0
  20
-47.5
+48.5
  10
 19.0
  20
@@ -5467,19 +5467,19 @@ AcDbPolyline
  10
 -19.0
  20
-47.5
+48.5
  10
 -68.0
  20
-47.5
+48.5
  10
 -72.0
  20
-43.5
+44.5
  10
 -72.0
  20
--43.5
+-44.5
   0
 CIRCLE
   5
@@ -5607,7 +5607,7 @@ AcDbCircle
  10
 68.0
  20
-38.0
+40.0
  30
 0.0
  40
@@ -5627,7 +5627,7 @@ AcDbCircle
  10
 68.0
  20
--38.0
+-40.0
  30
 0.0
  40
@@ -5647,7 +5647,7 @@ AcDbCircle
  10
 42.0
  20
-38.0
+40.0
  30
 0.0
  40
@@ -5667,7 +5667,7 @@ AcDbCircle
  10
 42.0
  20
--38.0
+-40.0
  30
 0.0
  40
@@ -6751,7 +6751,7 @@ AcDbText
  40
 2.2
   1
-Largo placa 192 mm x ancho 95 mm
+Largo placa 192 mm x ancho 97 mm
  11
 -72.0
  21
@@ -7863,7 +7863,7 @@ DictionaryVariables
 280
 0
   1
-1.4.5 @ 2026-11-06T01:50:02.444761+00:00
+1.4.5 @ 2026-11-06T01:57:10.461753+00:00
   0
 VISUALSTYLE
   5
@@ -8575,7 +8575,7 @@ DictionaryVariables
 280
 0
   1
-1.4.5 @ 2026-11-06T01:50:02.449943+00:00
+1.4.5 @ 2026-11-06T01:57:10.466474+00:00
   0
 ENDSEC
   0
