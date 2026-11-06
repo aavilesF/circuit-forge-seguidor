@@ -17,7 +17,7 @@ chasis:
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
   x_trasero_mm: -72
   x_delantero_mm: 120
-  ancho_mm: 95                    # 5 mm menos que la caja: margen de seguridad
+  ancho_mm: 97                    # 3 mm menos que la caja: margen de seguridad
   chaflan_mm: 4
   agujero_tornillo_m3_mm: 3.2     # M3 con holgura (tornillos del ticket por comprar)
 
@@ -29,7 +29,7 @@ ruedas_y_motores:
   motor_alto_mm: {valor: 10, estado: pendiente, id: M06}
   eje_largo_mm: {valor: 10, estado: nominal, id: M05}
   muesca_rueda_largo_mm: 38       # llanta 34 + 4
-  muesca_rueda_profundo_mm: 9.5   # desde el borde: 7 mm de llanta + 2.5 de holgura
+  muesca_rueda_profundo_mm: 10.5  # desde el borde: 7 mm de llanta + 2.5 de holgura
   cara_motor_y_mm: 38.5           # la cara del reductor queda a esta distancia del centro
   cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal, nota: "cincho de 2.5 mm del ticket de faltantes"}
   rueda_loca: {x_mm: -62.0, y_mm: 8.0, diametro_tornillo_mm: 2.2, estado: pendiente, id: "M(rueda loca)", nota: "SIN FUENTE; medir la rueda comprada"}

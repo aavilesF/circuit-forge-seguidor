@@ -1,5 +1,5 @@
 ** Drc report for /home/claude/circuit-forge-seguidor/electronica/kicad/barra_sensores/barra_sensores.kicad_pcb **
-** Created on 2026-11-05 19:47:05 **
+** Created on 2026-11-05 19:52:52 **
 
 ** Found 26 DRC violations **
 [silk_overlap]: Silkscreen overlap
@@ -31,43 +31,31 @@
     @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(91.6855 mm, 18.0989 mm): Reference 'OP12'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(69.3056 mm, 11.8394 mm): Reference 'OP9'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(84.3737 mm, 15.5050 mm): Reference 'OP11'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(23.0978 mm, 13.4152 mm): Reference 'OP3'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(15.6263 mm, 15.5050 mm): Reference 'OP2'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(10.0000 mm, 84.0000 mm): Value 'AgujeroM3' of H3
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(90.0000 mm, 58.0000 mm): Value 'AgujeroM3' of H2
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(8.3145 mm, 18.0989 mm): Reference 'OP1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(10.0000 mm, 58.0000 mm): Value 'AgujeroM3' of H1
+    @(88.0000 mm, 58.0000 mm): Value 'AgujeroM3' of H2
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(61.6194 mm, 10.7847 mm): Reference 'OP8'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(29.6800 mm, 77.2400 mm): Reference 'U1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
     @(76.9022 mm, 13.4152 mm): Reference 'OP10'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(30.6944 mm, 11.8394 mm): Reference 'OP4'
+    @(38.3806 mm, 10.7847 mm): Reference 'OP5'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(29.6800 mm, 77.2400 mm): Reference 'U1'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(91.6855 mm, 18.0989 mm): Reference 'OP12'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(12.0000 mm, 84.0000 mm): Value 'AgujeroM3' of H3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(84.3737 mm, 15.5050 mm): Reference 'OP11'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(8.3145 mm, 18.0989 mm): Reference 'OP1'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(53.8791 mm, 10.2561 mm): Reference 'OP7'
@@ -76,18 +64,58 @@
     @(46.1209 mm, 10.2561 mm): Reference 'OP6'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(38.3806 mm, 10.7847 mm): Reference 'OP5'
+    @(30.6944 mm, 11.8394 mm): Reference 'OP4'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(90.0000 mm, 84.0000 mm): Value 'AgujeroM3' of H4
-[lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
+    @(69.3056 mm, 11.8394 mm): Reference 'OP9'
+[silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(69.3056 mm, 11.8394 mm): Footprint OP9
+    @(88.0000 mm, 84.0000 mm): Value 'AgujeroM3' of H4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(12.0000 mm, 58.0000 mm): Value 'AgujeroM3' of H1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(23.0978 mm, 13.4152 mm): Reference 'OP3'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(15.6263 mm, 15.5050 mm): Reference 'OP2'
 [lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
     Local override; Severity: warning
     @(76.9022 mm, 13.4152 mm): Footprint OP10
+[lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
+    Local override; Severity: warning
+    @(69.3056 mm, 11.8394 mm): Footprint OP9
 
-** Found 0 unconnected pads **
+** Found 7 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(10.1752 mm, 22.8259 mm): PTH pad C [/SEN1] of OP1
+    @(8.7500 mm, 46.0000 mm): PTH pad 1 [/SEN1] of R13
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(8.7500 mm, 46.0000 mm): PTH pad 1 [/SEN1] of R13
+    @(29.6800 mm, 62.0000 mm): PTH pad 9 [/SEN1] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(23.7500 mm, 46.0000 mm): PTH pad 1 [/SEN3] of R15
+    @(34.7600 mm, 62.0000 mm): PTH pad 11 [/SEN3] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(24.2986 mm, 18.3513 mm): PTH pad C [/SEN3] of OP3
+    @(23.7500 mm, 46.0000 mm): PTH pad 1 [/SEN3] of R15
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(83.7500 mm, 46.0000 mm): PTH pad 1 [/SEN11] of R23
+    @(82.8394 mm, 20.3478 mm): PTH pad C [/SEN11] of OP11
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(55.0800 mm, 62.0000 mm): PTH pad 19 [/SEN11] of U1
+    @(83.7500 mm, 46.0000 mm): PTH pad 1 [/SEN11] of R23
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(44.9200 mm, 77.2400 mm): PTH pad 7 [/SIG] of U1
+    @(56.2400 mm, 86.0000 mm): PTH pad 7 [/SIG] of J1
 
 ** Found 0 Footprint errors **
 
