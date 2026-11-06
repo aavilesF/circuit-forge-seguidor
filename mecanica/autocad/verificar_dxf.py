@@ -12,7 +12,7 @@ import yaml
 
 AQUI = Path(__file__).resolve().parent
 P = yaml.safe_load(open(AQUI / "parametros.yaml"))
-CAPAS = ["CORTE", "GRABADO", "TALADROS", "REFERENCIA", "COTAS", "PIEZAS_FANTASMA", "PIEZAS_FANTASMA_ABAJO"]
+CAPAS = ["CORTE", "GRABADO", "TALADROS", "REFERENCIA", "COTAS", "PIEZAS_FANTASMA", "PIEZAS_FANTASMA_ABAJO", "PIEZAS_FANTASMA_ENTRE"]
 
 
 def bbox(pts):
@@ -84,7 +84,7 @@ def verificar(archivo, material):
             if x + rad > b[0] - 2 and x - rad < b[2] + 2 and y + rad > b[1] - 2 and y - rad < b[3] + 2:
                 errores.append(f"ranura y agujero a menos de 2 mm cerca de ({x:.1f},{y:.1f})")
     # piezas fantasma del mismo lado no se encimen
-    for capa in ("PIEZAS_FANTASMA", "PIEZAS_FANTASMA_ABAJO"):
+    for capa in ("PIEZAS_FANTASMA", "PIEZAS_FANTASMA_ABAJO", "PIEZAS_FANTASMA_ENTRE"):
         cajas = [(bbox([(p[0], p[1]) for p in e.get_points("xy")]), id(e)) for e in msp.query("LWPOLYLINE") if e.dxf.layer == capa]
         for i in range(len(cajas)):
             for j in range(i + 1, len(cajas)):

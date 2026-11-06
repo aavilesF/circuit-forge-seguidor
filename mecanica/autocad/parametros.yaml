@@ -15,7 +15,7 @@ chasis:
   kerf_laser_mm: {valor: 0.2, estado: pendiente, id: C05}
   holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
-  x_trasero_mm: -68
+  x_trasero_mm: -72
   x_delantero_mm: 120
   ancho_mm: 95                    # 5 mm menos que la caja: margen de seguridad
   chaflan_mm: 4
@@ -32,10 +32,10 @@ ruedas_y_motores:
   muesca_rueda_profundo_mm: 9.5   # desde el borde: 7 mm de llanta + 2.5 de holgura
   cara_motor_y_mm: 38.5           # la cara del reductor queda a esta distancia del centro
   cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal, nota: "cincho de 2.5 mm del ticket de faltantes"}
-  rueda_loca: {x_mm: -63.5, y_mm: 8.0, diametro_tornillo_mm: 2.2, estado: pendiente, id: "M(rueda loca)", nota: "SIN FUENTE; medir la rueda comprada"}
+  rueda_loca: {x_mm: -62.0, y_mm: 8.0, diametro_tornillo_mm: 2.2, estado: pendiente, id: "M(rueda loca)", nota: "SIN FUENTE; medir la rueda comprada"}
 
 modulos:
-  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: -30, estado: nominal, id: M14, nota: "Tattu 450 mAh según el contexto del equipo; medir la real"}
+  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: -25, estado: nominal, id: M14, nota: "Tattu 450 mAh según el contexto del equipo; medir la real"}
   ventilador_4010: {lado_mm: 40, alto_mm: 10, separacion_agujeros_mm: 32, agujero_mm: 3.2, hueco_mm: 34, x_centro_mm: 24, estado: pendiente, id: M21, nota: "32 mm entre agujeros es lo habitual de un 4010; confirmar"}
   tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, id: M18}
   barra_sensores: {n_sensores: 12, paso_mm: 7.5, ancho_total_mm_aprox: 88, estado: nominal, id: M29}

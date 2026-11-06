@@ -20,7 +20,8 @@ RAIZ = AQUI.parent.parent
 CAPAS = [("CORTE", 1, "CONTINUOUS"), ("GRABADO", 5, "CONTINUOUS"), ("TALADROS", 3, "CONTINUOUS"),
          ("REFERENCIA", 8, "DASHED"), ("COTAS", 2, "CONTINUOUS"),
          ("PIEZAS_FANTASMA", 6, "DASHED"),           # piezas ARRIBA de la placa (PCB, ventilador)
-         ("PIEZAS_FANTASMA_ABAJO", 4, "DASHED")]     # piezas DEBAJO de la placa (motores, batería, rueda loca)
+         ("PIEZAS_FANTASMA_ABAJO", 4, "DASHED"),      # piezas DEBAJO de la placa (motores, batería, rueda loca)
+         ("PIEZAS_FANTASMA_ENTRE", 30, "DASHED")]    # piezas entre la placa y las PCB (ventilador, bajo los separadores)
 MATERIALES = ["acrilico", "mdf", "pla"]
 
 
@@ -112,16 +113,17 @@ def generar(material, P, pr, ba):
     for dx in (-s, s):
         for dy in (-s, s):
             agujero(fx + dx, dy, V["agujero_mm"])
-    poli(rect(fx, 0, V["lado_mm"], V["lado_mm"]), "PIEZAS_FANTASMA")
+    poli(rect(fx, 0, V["lado_mm"], V["lado_mm"]), "PIEZAS_FANTASMA_ENTRE")
 
     # --- motores N20: cuerpo debajo de la placa, 2 cinchos por motor
-    mw, ml = R["motor_ancho_mm"], R["motor_largo_mm"]
+    mw, ml = val(R["motor_ancho_mm"]), val(R["motor_largo_mm"])
     yc = R["cara_motor_y_mm"]
+    eje, llanta_d, llanta_a = val(R["eje_largo_mm"]), val(R["llanta_diametro_mm"]), val(R["llanta_ancho_mm"])
     sl, sa = R["cincho_slot_mm"]["largo"], R["cincho_slot_mm"]["ancho"]
     for lado in (1, -1):
         poli(rect(0, lado * (yc - ml / 2), mw, ml), "PIEZAS_FANTASMA_ABAJO")
-        msp.add_line((0, lado * yc), (0, lado * (yc + R["eje_largo_mm"])), dxfattribs={"layer": "PIEZAS_FANTASMA_ABAJO"})
-        poli(rect(0, lado * (yc + 1.5 + R["llanta_ancho_mm"] / 2), R["llanta_diametro_mm"], R["llanta_ancho_mm"]), "PIEZAS_FANTASMA_ABAJO")
+        msp.add_line((0, lado * yc), (0, lado * (yc + eje)), dxfattribs={"layer": "PIEZAS_FANTASMA_ABAJO"})
+        poli(rect(0, lado * (yc + 1.5 + llanta_a / 2), llanta_d, llanta_a), "PIEZAS_FANTASMA_ABAJO")
         for yy in (22.0, 32.0):
             for xx in (-mw / 2 - 2.5, mw / 2 + 2.5):
                 ranura(xx, lado * yy, sa, sl)
@@ -138,7 +140,7 @@ def generar(material, P, pr, ba):
     rl = R["rueda_loca"]
     for dy in (-rl["y_mm"], rl["y_mm"]):
         agujero(rl["x_mm"], dy, rl["diametro_tornillo_mm"])
-    poli(rect(rl["x_mm"], 0, 12, 2 * rl["y_mm"] + 6), "PIEZAS_FANTASMA_ABAJO")
+    poli(rect(rl["x_mm"], 0, 10, 2 * rl["y_mm"] + 6), "PIEZAS_FANTASMA_ABAJO")
 
     # --- referencias
     xr = ch["x_trasero_mm"]
@@ -153,7 +155,7 @@ def generar(material, P, pr, ba):
         f"ROBOT CASERO - placa plana - {material.upper()} {esp:g} mm - unidades: mm - 5 nov 2026",
         "Origen = centro del eje de las ruedas. X al frente, Y a la izquierda. Linea punteada gris = caja de 200 x 100 mm del reglamento.",
         "PENDIENTE (docs/pendientes-por-confirmar.md): espesor C01, kerf/holgura C05, motor M05-M07, PCB M01-M20, ventilador M21, LiPo M14, rueda loca.",
-        "NO CORTAR hasta confirmar las medidas con la regla/vernier. Piezas fantasma: magenta = arriba de la placa; cian = debajo.",
+        "NO CORTAR hasta confirmar las medidas con la regla/vernier. Piezas fantasma: magenta = PCB arriba; cian = debajo de la placa; naranja = ventilador entre placa y PCB.",
         f"Compensacion de agujeros: {comp:+.1f} mm en el diametro ({'laser: quita el kerf' if comp < 0 else 'FDM: la impresora cierra los agujeros'}).",
     ]):
         texto(xr, ytxt - i * 4.0, t, 2.2)
