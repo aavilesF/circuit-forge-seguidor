@@ -7,6 +7,10 @@ Presupuesto objetivo: 1,500–1,800 MXN incluyendo la batería.
 La versión avanzada (STM32, encoders, SMD, sensores de presión) vive en la rama `engineering/final-robot-v2` y **no**
 es la que se va a construir.
 
+> **Plan B (6 nov 2026): este es el prototipo oficial.** Se arma en placa fenólica con módulos comerciales (sin PCB
+> fabricada ni piezas impresas). Conexiones, plantilla de la placa 1:1, firmware V3 y manual de ensamblaje:
+> [`docs/robot-casero/`](../docs/robot-casero/README.md) y [`firmware/robot-casero/`](../firmware/robot-casero/README.md).
+
 ## Contenido
 
 | Archivo | Para qué sirve |
