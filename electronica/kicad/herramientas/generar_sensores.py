@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera el esquemático de la BARRA DE SENSORES: 12 × TCRT5000 + multiplexor 74HC4067 + interruptor de emisores.
+"""Genera el esquemático de la PLACA DE SENSORES EN CURVA: 12 × TCRT5000 + multiplexor 74HC4067 + interruptor de emisores.
 
 A la placa principal llegan solo 8 hilos (conector J1): +3V3, GND, S0, S1, S2, S3, SIG, EMIT_EN.
 Todo trabaja a 3.3 V para que la salida analógica nunca pase de 3.3 V (límite del ADC del ESP32).
@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from kicad_gen import Esquematico
 import biblioteca_propia as bp
 
-SALIDA = Path(__file__).resolve().parent.parent / "barra_sensores"
+SALIDA = Path(__file__).resolve().parent.parent / "sensores"
 N = 12
 FP_R = "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"   # resistencia de 1/4 W parada
 FP_C = "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"                    # VERIFICAR con el cerámico comprado
@@ -20,9 +20,9 @@ FP_OP = "robot_casero:TCRT5000_THT"                                    # se crea
 
 def construir():
     s = Esquematico(
-        "barra_sensores", "Barra de sensores TCRT5000 (12 canales)", "A",
+        "sensores", "Placa de sensores TCRT5000 (12 canales)", "A",
         ["Robot casero - Circuit Forge. Rama engineering/robot-casero",
-         "Generado por herramientas/generar_barra.py (no editar a mano)",
+         "Generado por herramientas/generar_sensores.py (no editar a mano)",
          "Todo a 3.3 V. 12 sensores: S0..S3 eligen el canal, SIG va al ADC del ESP32",
          "EMIT_EN enciende los LED infrarrojos para restar la luz ambiente"])
     s.usar_propio("robot_casero:TCRT5000", bp.tcrt5000())
@@ -30,9 +30,9 @@ def construir():
     s.usar_oficial("Device:C")
     s.usar_oficial("Device:Q_NPN_EBC")
     s.usar_oficial("Connector_Generic:Conn_01x08")
-    s.usar_propio("robot_casero:MUX4067_Modulo", bp.modulo_mux_barrita())
+    s.usar_propio("robot_casero:MUX4067_Modulo", bp.modulo_mux())
 
-    s.texto("BARRA DE SENSORES - 12 x TCRT5000, paso 7.5 mm (ver mecanica). Cada fila: LED, sensor y resistencia de carga.",
+    s.texto("PLACA DE SENSORES EN CURVA - 12 x TCRT5000, paso 7.5 mm (ver mecanica). Cada fila: LED, sensor y resistencia de carga.",
             20, 12, 1.8, True)
     s.texto("R LED (330 ohm): ~5.6 mA por LED a 3.3 V. R carga (10 kohm): sube la señal del fototransistor a +3V3.",
             20, 18)
@@ -80,10 +80,10 @@ def construir():
 if __name__ == "__main__":
     s = construir()
     SALIDA.mkdir(parents=True, exist_ok=True)
-    s.escribir(SALIDA / "barra_sensores.kicad_sch")
+    s.escribir(SALIDA / "sensores.kicad_sch")
     import json
     (SALIDA / "esperado.json").write_text(json.dumps(
         {"conexiones": s.conexiones, "nc": s.nc}, ensure_ascii=False, indent=1))
     from biblioteca_propia import archivo_biblioteca
-    (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca([bp.tcrt5000(), bp.modulo_mux_barrita()]))
-    print("OK:", SALIDA / "barra_sensores.kicad_sch", f"({len(s.conexiones)} conexiones)")
+    (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca([bp.tcrt5000(), bp.modulo_mux()]))
+    print("OK:", SALIDA / "sensores.kicad_sch", f"({len(s.conexiones)} conexiones)")

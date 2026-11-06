@@ -2158,7 +2158,7 @@
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp f3dd818a-be59-4e6e-bead-0a79579d9733))
   (gr_line (start 97 8) (end 97 90)
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp ffe825f0-b397-4e10-99db-7af865905461))
-  (gr_text "barra_sensores - robot casero - PROVISIONAL (medidas por confirmar) - 5 nov 2026" (at 43 87) (layer "F.SilkS") (tstamp 25480a7d-ea18-47e0-b18a-1c89ef6c11a2)
+  (gr_text "sensores - robot casero - PROVISIONAL (medidas por confirmar) - 5 nov 2026" (at 43 87) (layer "F.SilkS") (tstamp 25480a7d-ea18-47e0-b18a-1c89ef6c11a2)
     (effects (font (size 1 1)))
   )
 

@@ -2,7 +2,7 @@
  "contorno_mm": [
   2.0,
   2.0,
-  78.0,
+  92.0,
   94.0
  ],
  "agujeros_m3_mm": [
@@ -11,16 +11,12 @@
    6
   ],
   [
-   74,
+   88,
    6
   ],
   [
-   6,
-   90
-  ],
-  [
-   74,
-   90
+   47,
+   91
   ]
  ],
  "nota": "Coordenadas de la PCB (x derecha, y hacia atr\u00e1s). Las usa mecanica/autocad/generar_dxf.py"

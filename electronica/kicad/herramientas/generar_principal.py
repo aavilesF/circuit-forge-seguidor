@@ -55,15 +55,16 @@ def leer_pines():
 
 
 FP_R = "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-FP_CD = "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"                # VERIFICAR con el cerámico comprado
-FP_CP = "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"                    # VERIFICAR (470 uF 16 V del ticket)
+FP_CD = "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P7.50mm"                # cerámico: 7 mm entre patas (M23, escalímetro)
+FP_CP = "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"                    # 470 uF: diámetro 8 mm; Alan midió 3 mm entre patas (M23)
 FP_H2 = "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 FP_H8 = "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
-FP_SW = "Button_Switch_THT:SW_PUSH_6mm"                              # VERIFICAR con los pulsadores comprados
-FP_D = "Diode_THT:D_DO-201AD_P15.24mm_Horizontal"                   # 1N5822; VERIFICAR paso de patas
-FP_ESP = "robot_casero:ESP32_DevKit_38_VERIFICAR"
-FP_DRV = "robot_casero:Modulo_DRV8833_VERIFICAR"
-FP_MP = "robot_casero:Modulo_MP1584_VERIFICAR"
+FP_SW = "Button_Switch_THT:SW_PUSH_6mm"                              # pulsador pequeño 6 x 6 mm (M26)
+FP_SW12 = "Button_Switch_THT:SW_PUSH-12mm"                           # pulsador mediano 12 x 12 mm (M26)
+FP_D = "robot_casero:D_DO-201AD_P35.56mm_Taladro1.3"               # 1N5822: 3.5 cm entre patas (M24); patas de 1.3 mm
+FP_ESP = "robot_casero:ESP32_DevKit_30"
+FP_DRV = "robot_casero:Modulo_DRV8833"
+FP_MP = "robot_casero:Modulo_MP1584"
 FP_PTC = "robot_casero:PTC_Radial_VERIFICAR"
 
 
@@ -77,7 +78,7 @@ def construir():
          "Generado por herramientas/generar_principal.py desde pines_robot_casero.h (no editar a mano)",
          "Modulos comerciales: orden de pines y medidas POR VERIFICAR con la pieza real",
          "ERC oficial de KiCad no corrido (KiCad 7 CLI no lo incluye): correrlo en la interfaz"])
-    s.usar_propio("robot_casero:ESP32_DevKit_38", bp.esp32_devkit_38())
+    s.usar_propio("robot_casero:ESP32_DevKit_30", bp.esp32_devkit_30())
     s.usar_propio("robot_casero:DRV8833_Modulo", bp.modulo_drv8833())
     s.usar_propio("robot_casero:MP1584_Modulo", bp.modulo_mp1584())
     for lid in ("Device:R", "Device:C", "Device:C_Polarized", "Device:D_Schottky", "Device:Polyfuse",
@@ -85,7 +86,7 @@ def construir():
                 "Connector_Generic:Conn_01x08"):
         s.usar_oficial(lid)
 
-    s.texto("PLACA PRINCIPAL - robot casero (ESP32 DevKit 38 pines, DRV8833, ventilador)", 20, 14, 1.8, True)
+    s.texto("PLACA PRINCIPAL - robot casero (ESP32 DevKit 30 pines, DRV8833, ventilador)", 20, 14, 1.8, True)
 
     # ------------------------------------------------ Entrada de batería y protección
     s.texto("1. BATERIA, FUSIBLE E INTERRUPTOR", 20, 28, 1.4, True)
@@ -106,8 +107,8 @@ def construir():
     s.texto("D2 evita que el USB del ESP32 devuelva corriente al regulador", 112, 94)
 
     # ------------------------------------------------ ESP32
-    mapa_izq = {1: "+3V3", 2: "EN", 14: "GND", 19: "ESP_5V"}
-    mapa_der = {38: "GND", 32: "GND"}
+    mapa_izq = {1: "+3V3", 2: "GND"}
+    mapa_der = {30: "ESP_5V", 29: "GND", 16: "EN"}
     ESP_NOMBRE_GPIO = {n: nm for n, nm in bp.ESP32_IZQ + bp.ESP32_DER}
     redes_esp, nc_esp = {}, []
     for num, nm in bp.ESP32_IZQ + bp.ESP32_DER:
@@ -123,11 +124,11 @@ def construir():
             else:
                 nc_esp.append(str(num))
     # IO36 aparece como "IO36_SVP": el regex lo toma como 36
-    s.pieza("A1", "robot_casero:ESP32_DevKit_38", "ESP32 DevKit 38", FP_ESP, 241.3, 152.4, 0, redes_esp, nc=nc_esp)
+    s.pieza("A1", "robot_casero:ESP32_DevKit_30", "ESP32 DevKit 30", FP_ESP, 241.3, 152.4, 0, redes_esp, nc=nc_esp)
     s.texto("3. ESP32 (el radio WiFi/Bluetooth NO se inicializa: el reglamento lo prohibe)", 195, 100, 1.4, True)
 
     # Botones
-    s.pieza("SW2", "Switch:SW_Push", "START", FP_SW, 50.8, 190.5, 0, {"1": "START", "2": "GND"})
+    s.pieza("SW2", "Switch:SW_Push", "START", FP_SW12, 50.8, 190.5, 0, {"1": "START", "2": "GND"})
     s.pieza("SW3", "Switch:SW_Push", "CAL", FP_SW, 50.8, 210.82, 0, {"1": "CAL", "2": "GND"})
     s.pieza("SW4", "Switch:SW_Push", "RESET", FP_SW, 50.8, 231.14, 0, {"1": "EN", "2": "GND"})
     s.texto("4. BOTONES (START solo arranca; CAL calibra a mano)", 20, 180, 1.4, True)
@@ -141,9 +142,9 @@ def construir():
     # ------------------------------------------------ Driver y motores
     s.texto("6. DRIVER DE MOTORES DRV8833 (alimentado a 6 V fijos)", 330, 100, 1.4, True)
     s.pieza("U3", "robot_casero:DRV8833_Modulo", "DRV8833", FP_DRV, 355.6, 139.7, 0,
-            {"1": "+6V_MOT", "2": "GND", "3": "AIN1", "4": "AIN2", "5": "BIN1", "6": "BIN2",
-             "7": "DRV_SLEEP", "9": "MOTL_A", "10": "MOTL_B", "11": "MOTR_A", "12": "MOTR_B"},
-            nc=("8",))
+            {"4": "+6V_MOT", "3": "GND", "6": "AIN1", "5": "AIN2", "2": "BIN1", "1": "BIN2",
+             "7": "DRV_SLEEP", "8": "MOTL_A", "9": "MOTL_B", "10": "MOTR_A", "11": "MOTR_B"},
+            nc=("12",))
     s.pieza("R3", "Device:R", "10k", FP_R, 330.2, 190.5, 90, {"1": "DRV_SLEEP", "2": "GND"})
     s.texto("R3 mantiene el driver dormido mientras el ESP32 arranca", 300, 183)
     s.pieza("J2", "Connector_Generic:Conn_01x02", "Motor izquierdo", FP_H2, 330.2, 215.9, 0,
@@ -166,8 +167,8 @@ def construir():
     s.texto("D1 protege al MOSFET del pico de voltaje del motor del ventilador", 195, 246)
 
     # ------------------------------------------------ Barra de sensores
-    s.texto("8. HACIA LA BARRA DE SENSORES (8 hilos)", 330, 28, 1.4, True)
-    s.pieza("J5", "Connector_Generic:Conn_01x08", "A barra de sensores", FP_H8, 391.16, 38.1, 0,
+    s.texto("8. HACIA LA PLACA DE SENSORES (8 hilos)", 330, 28, 1.4, True)
+    s.pieza("J5", "Connector_Generic:Conn_01x08", "A placa de sensores", FP_H8, 391.16, 38.1, 0,
             {"1": "+3V3", "2": "GND", "3": "S0", "4": "S1", "5": "S2", "6": "S3", "7": "SIG", "8": "EMIT_EN"})
 
     s.pwr_flag("GND", 20.0, 264.0)
@@ -189,5 +190,5 @@ if __name__ == "__main__":
                                                       ensure_ascii=False, indent=1))
     from biblioteca_propia import archivo_biblioteca
     (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca(
-        [bp.esp32_devkit_38(), bp.modulo_drv8833(), bp.modulo_mp1584()]))
+        [bp.esp32_devkit_30(), bp.modulo_drv8833(), bp.modulo_mp1584()]))
     print("OK:", SALIDA / "principal.kicad_sch", f"({len(s.conexiones)} conexiones)")

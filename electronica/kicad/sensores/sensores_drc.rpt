@@ -1,34 +1,34 @@
-** Drc report for /home/claude/circuit-forge-seguidor/electronica/kicad/barra_sensores/barra_sensores.kicad_pcb **
-** Created on 2026-11-05 19:56:57 **
+** Drc report for sensores/sensores.kicad_pcb **
+** Created on 2026-11-05 23:28:52 **
 
 ** Found 26 DRC violations **
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
+    @(38.6700 mm, 86.0000 mm): Reference 'J1'
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
     @(39.6700 mm, 87.3300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
     @(41.0000 mm, 87.3300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
     @(42.2700 mm, 87.3300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
     @(42.2700 mm, 87.3300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
     @(60.1100 mm, 87.3300 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
-    @(38.6700 mm, 86.0000 mm): Reference 'J1'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(43.0000 mm, 87.0000 mm): PCB Text 'barra_sensores - robot casero - PR...' on F.Silkscreen
+    @(43.0000 mm, 87.0000 mm): PCB Text 'sensores - robot casero - PROVISIO...' on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(53.8791 mm, 10.2561 mm): Reference 'OP7'

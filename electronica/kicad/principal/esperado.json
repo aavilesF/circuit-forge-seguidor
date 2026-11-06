@@ -150,142 +150,135 @@
   [
    "A1",
    "2",
-   "EN",
+   "GND",
    "bidirectional",
-   "EN"
-  ],
-  [
-   "A1",
-   "3",
-   "IO36_SVP",
-   "bidirectional",
-   "VBAT_SENSE"
+   "GND"
   ],
   [
    "A1",
    "5",
-   "IO34",
+   "IO4",
    "bidirectional",
-   "SIG"
+   "START"
   ],
   [
    "A1",
-   "8",
-   "IO33",
-   "bidirectional",
-   "S3"
-  ],
-  [
-   "A1",
-   "9",
-   "IO25",
-   "bidirectional",
-   "S0"
-  ],
-  [
-   "A1",
-   "10",
-   "IO26",
-   "bidirectional",
-   "S1"
-  ],
-  [
-   "A1",
-   "11",
-   "IO27",
-   "bidirectional",
-   "S2"
-  ],
-  [
-   "A1",
-   "12",
-   "IO14",
-   "bidirectional",
-   "CAL"
-  ],
-  [
-   "A1",
-   "14",
-   "GND",
-   "bidirectional",
-   "GND"
-  ],
-  [
-   "A1",
-   "15",
-   "IO13",
-   "bidirectional",
-   "EMIT_EN"
-  ],
-  [
-   "A1",
-   "19",
-   "5V",
-   "bidirectional",
-   "ESP_5V"
-  ],
-  [
-   "A1",
-   "38",
-   "GND",
-   "bidirectional",
-   "GND"
-  ],
-  [
-   "A1",
-   "37",
-   "IO23",
-   "bidirectional",
-   "BIN2"
-  ],
-  [
-   "A1",
-   "36",
-   "IO22",
-   "bidirectional",
-   "BIN1"
-  ],
-  [
-   "A1",
-   "33",
-   "IO21",
-   "bidirectional",
-   "AIN2"
-  ],
-  [
-   "A1",
-   "32",
-   "GND",
-   "bidirectional",
-   "GND"
-  ],
-  [
-   "A1",
-   "31",
-   "IO19",
-   "bidirectional",
-   "AIN1"
-  ],
-  [
-   "A1",
-   "28",
-   "IO17",
-   "bidirectional",
-   "FAN_PWM"
-  ],
-  [
-   "A1",
-   "27",
+   "6",
    "IO16",
    "bidirectional",
    "DRV_SLEEP"
   ],
   [
    "A1",
-   "26",
-   "IO4",
+   "7",
+   "IO17",
    "bidirectional",
-   "START"
+   "FAN_PWM"
+  ],
+  [
+   "A1",
+   "10",
+   "IO19",
+   "bidirectional",
+   "AIN1"
+  ],
+  [
+   "A1",
+   "11",
+   "IO21",
+   "bidirectional",
+   "AIN2"
+  ],
+  [
+   "A1",
+   "14",
+   "IO22",
+   "bidirectional",
+   "BIN1"
+  ],
+  [
+   "A1",
+   "15",
+   "IO23",
+   "bidirectional",
+   "BIN2"
+  ],
+  [
+   "A1",
+   "30",
+   "VIN",
+   "bidirectional",
+   "ESP_5V"
+  ],
+  [
+   "A1",
+   "29",
+   "GND",
+   "bidirectional",
+   "GND"
+  ],
+  [
+   "A1",
+   "28",
+   "IO13",
+   "bidirectional",
+   "EMIT_EN"
+  ],
+  [
+   "A1",
+   "26",
+   "IO14",
+   "bidirectional",
+   "CAL"
+  ],
+  [
+   "A1",
+   "25",
+   "IO27",
+   "bidirectional",
+   "S2"
+  ],
+  [
+   "A1",
+   "24",
+   "IO26",
+   "bidirectional",
+   "S1"
+  ],
+  [
+   "A1",
+   "23",
+   "IO25",
+   "bidirectional",
+   "S0"
+  ],
+  [
+   "A1",
+   "22",
+   "IO33",
+   "bidirectional",
+   "S3"
+  ],
+  [
+   "A1",
+   "19",
+   "IO34",
+   "bidirectional",
+   "SIG"
+  ],
+  [
+   "A1",
+   "17",
+   "IO36_VP",
+   "bidirectional",
+   "VBAT_SENSE"
+  ],
+  [
+   "A1",
+   "16",
+   "EN",
+   "bidirectional",
+   "EN"
   ],
   [
    "SW2",
@@ -374,77 +367,77 @@
   [
    "U3",
    "1",
-   "VM",
+   "IN4",
    "passive",
-   "+6V_MOT"
+   "BIN2"
   ],
   [
    "U3",
    "2",
+   "IN3",
+   "passive",
+   "BIN1"
+  ],
+  [
+   "U3",
+   "3",
    "GND",
    "passive",
    "GND"
   ],
   [
    "U3",
-   "3",
-   "AIN1",
+   "4",
+   "VCC",
    "passive",
-   "AIN1"
+   "+6V_MOT"
   ],
   [
    "U3",
-   "4",
-   "AIN2",
+   "5",
+   "IN2",
    "passive",
    "AIN2"
   ],
   [
    "U3",
-   "5",
-   "BIN1",
-   "passive",
-   "BIN1"
-  ],
-  [
-   "U3",
    "6",
-   "BIN2",
+   "IN1",
    "passive",
-   "BIN2"
+   "AIN1"
   ],
   [
    "U3",
    "7",
-   "SLEEP",
+   "EEP_nSLEEP",
    "passive",
    "DRV_SLEEP"
   ],
   [
    "U3",
-   "9",
-   "AOUT1",
+   "8",
+   "OUT1",
    "passive",
    "MOTL_A"
   ],
   [
    "U3",
-   "10",
-   "AOUT2",
+   "9",
+   "OUT2",
    "passive",
    "MOTL_B"
   ],
   [
    "U3",
-   "11",
-   "BOUT1",
+   "10",
+   "OUT3",
    "passive",
    "MOTR_A"
   ],
   [
    "U3",
-   "12",
-   "BOUT2",
+   "11",
+   "OUT4",
    "passive",
    "MOTR_B"
   ],
@@ -676,93 +669,58 @@
  "nc": [
   [
    "A1",
-   "4",
-   "IO39_SVN"
-  ],
-  [
-   "A1",
-   "6",
-   "IO35"
-  ],
-  [
-   "A1",
-   "7",
-   "IO32"
-  ],
-  [
-   "A1",
-   "13",
-   "IO12"
-  ],
-  [
-   "A1",
-   "16",
-   "SD2"
-  ],
-  [
-   "A1",
-   "17",
-   "SD3"
-  ],
-  [
-   "A1",
-   "18",
-   "CMD"
-  ],
-  [
-   "A1",
-   "35",
-   "TXD0"
-  ],
-  [
-   "A1",
-   "34",
-   "RXD0"
-  ],
-  [
-   "A1",
-   "30",
-   "IO18"
-  ],
-  [
-   "A1",
-   "29",
-   "IO5"
-  ],
-  [
-   "A1",
-   "25",
-   "IO0"
-  ],
-  [
-   "A1",
-   "24",
-   "IO2"
-  ],
-  [
-   "A1",
-   "23",
+   "3",
    "IO15"
   ],
   [
    "A1",
-   "22",
-   "SD1"
+   "4",
+   "IO2"
+  ],
+  [
+   "A1",
+   "8",
+   "IO5"
+  ],
+  [
+   "A1",
+   "9",
+   "IO18"
+  ],
+  [
+   "A1",
+   "12",
+   "RXD0"
+  ],
+  [
+   "A1",
+   "13",
+   "TXD0"
+  ],
+  [
+   "A1",
+   "27",
+   "IO12"
   ],
   [
    "A1",
    "21",
-   "SD0"
+   "IO32"
   ],
   [
    "A1",
    "20",
-   "CLK"
+   "IO35"
+  ],
+  [
+   "A1",
+   "18",
+   "IO39_VN"
   ],
   [
    "U3",
-   "8",
-   "FAULT"
+   "12",
+   "ULT_nFAULT"
   ]
  ]
 }

@@ -74,31 +74,49 @@ def tcrt5000():
 
 
 def esp32():
-    fp = _huella("ESP32_DevKit_38_VERIFICAR",
-                 "ESP32 DevKit 38 pines. 19 pines por lado, filas a 25.4 mm, placa 54.4x27.9: PROVISIONAL (M01-M04)")
-    for i in range(19):
+    fp = _huella("ESP32_DevKit_30",
+                 "ESP32 DevKit 30 pines (clon USB-C). Placa 51 x 28 mm, filas a 25.4 mm (Alan midio 25.5 con escalimetro), "
+                 "15 pines por lado a 2.54 mm. Por confirmar con vernier (M01-M04)")
+    for i in range(15):
         _pad(fp, i + 1, 0, 2.54 * i)
-        _pad(fp, 38 - i, 25.4, 2.54 * i)
-    _contorno(fp, -1.25, -3.0, 26.65, 51.4, "VERIFICAR M01-M04 ESP32")
-    _texto(fp, "USB", 12.7, 49.5)
+        _pad(fp, 30 - i, 25.4, 2.54 * i)
+    # placa de 51 mm: los pines quedan centrados a lo largo (35.56 mm de fila)
+    y0 = (35.56 - 51.0) / 2
+    _contorno(fp, -1.3, y0, 26.7, y0 + 51.0, "ESP32 30p (M01-M04)")
+    _texto(fp, "USB-C", 12.7, y0 + 2.0)
     return fp
 
 
 def drv8833():
-    fp = _huella("Modulo_DRV8833_VERIFICAR", "Modulo DRV8833: orden y medidas SIN FUENTE (M09-M10)")
-    for i in range(8):
+    fp = _huella("Modulo_DRV8833",
+                 "Modulo DRV8833 comprado: 2 filas de 6 pines a 2.54 mm. Separacion entre filas 15.24 mm "
+                 "(estimada de la foto; Alan midio 13 x 11 mm de placa: NO cuadra, confirmar M09)")
+    for i in range(6):
         _pad(fp, i + 1, 0, 2.54 * i)
-    for i in range(4):
-        _pad(fp, 9 + i, 15.24, 2.54 * i)
-    _contorno(fp, -2.0, -2.0, 17.2, 20.0, "VERIFICAR M09-M10 DRV8833")
+        _pad(fp, 7 + i, 15.24, 2.54 * i)
+    _contorno(fp, -1.4, -1.6, 16.64, 14.3, "VERIFICAR M09 DRV8833")
     return fp
 
 
 def mp1584():
-    fp = _huella("Modulo_MP1584_VERIFICAR", "Modulo MP1584 22x17x4 mm (sigmanortec); pads: SIN FUENTE (M12-M13)")
-    for n, x, y in [(1, 0, 0), (2, 0, 12.7), (3, 19.05, 0), (4, 19.05, 12.7)]:
+    fp = _huella("Modulo_MP1584",
+                 "Modulo MP1584 22 x 16.5 x 4 mm (Alan, escalimetro). OUT a la izquierda, IN a la derecha (M13). "
+                 "Posicion exacta de los agujeros por confirmar")
+    for n, x, y in [(1, 19.5, 13.5), (2, 19.5, 0), (3, 0, 13.5), (4, 0, 0)]:
         _pad(fp, n, x, y)
-    _contorno(fp, -1.5, -2.2, 20.5, 14.8, "VERIFICAR M12-M13 MP1584")
+    _contorno(fp, -1.25, -1.5, 20.75, 15.0, "MP1584 (M12-M13)")
+    _texto(fp, "OUT", 3.0, 6.75)
+    _texto(fp, "IN", 16.5, 6.75)
+    return fp
+
+
+def diodo_largo():
+    fp = _huella("D_DO-201AD_P35.56mm_Taladro1.3",
+                 "Diodo 1N5822 (DO-201AD) acostado, 35.56 mm entre patas como pidio Alan (M24). "
+                 "Las patas del 1N5822 miden ~1.3 mm: taladro de 1.3 mm (la broca de 0.8 no sirve)")
+    _pad(fp, 1, 0, 0, d=2.6, taladro=1.3)        # 1 = cátodo (franja)
+    _pad(fp, 2, 35.56, 0, d=2.6, taladro=1.3)    # 2 = ánodo
+    _contorno(fp, 13.03, -2.9, 22.53, 2.9, "1N5822 franja=pin1")
     return fp
 
 
@@ -135,7 +153,7 @@ def agujero_m3():
     return fp
 
 
-TODAS = [tcrt5000, esp32, drv8833, mp1584, ptc, mux, agujero_m3]
+TODAS = [tcrt5000, esp32, drv8833, mp1584, diodo_largo, ptc, mux, agujero_m3]
 
 
 def escribir_biblioteca(destino):

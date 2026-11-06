@@ -5,7 +5,7 @@ Pasos: netlist (kicad-cli) -> placa con huellas colocadas -> ruteo con Freerouti
 Reglas de PCB casera: pistas 0.8 mm, separación 0.5 mm, pastillas redondas, taladro 0.8 mm.
 Las pistas de la cara SUPERIOR (F.Cu) son PUENTES DE ALAMBRE: no se graban en la placa; se sueldan por las vías.
 TODAS las medidas de módulos son PROVISIONALES (docs/pendientes-por-confirmar.md).
-Uso: python3.12 generar_pcb.py barra_sensores|principal [--sin-ruteo]
+Uso: python3.12 generar_pcb.py sensores|principal [--sin-ruteo]
 """
 import json
 import math
@@ -70,7 +70,7 @@ def cargar_huella(nombre):
 
 
 # ---------------------------------------------------------------- colocación (x, y, rotación) del PIN 1 / origen de la huella
-def colocacion_barra():
+def colocacion_sensores():
     """12 sensores en arco (R = 110 mm); detrás, dos filas de resistencias (330 y 10k); módulo del multiplexor y conector atrás."""
     cx, R, y0 = 50.0, 110.0, 14.0
     cy = y0 + R
@@ -96,21 +96,24 @@ def colocacion_barra():
 
 
 def colocacion_principal():
+    """Placa principal 90 x 92 mm (pasa por encima de las ruedas). Medidas de módulos de docs/especificaciones-componentes.md (escalímetro, por confirmar)."""
     pos = {
-        "J5": (22, 6, 90), "A1": (31, 16, 0), "U3": (60.5, 16, 0),
-        "U1": (6, 16, 0), "U2": (6, 36, 0), "D2": (6, 54, 0),
-        "J1": (6, 62, 0), "F1": (12, 62, 0), "SW1": (22, 62, 0), "C1": (6, 72, 0), "C2": (20, 72, 0),
-        "R1": (6, 80, 0), "R2": (6, 85, 0), "C3": (14, 90, 0),
-        "SW2": (32, 74, 0), "SW3": (32, 84, 0), "SW4": (46, 74, 0),
-        "J2": (62, 40, 0), "J3": (68, 40, 0), "J4": (74, 40, 0),
-        "C4": (60, 47, 0), "C5": (68, 47, 0),
-        "Q1": (62, 54, 0), "R4": (60, 60, 0), "R5": (60, 65, 0), "D1": (60, 70, 0), "R3": (60, 76, 0),
+        "J5": (30, 6, 90), "A1": (36, 22, 0), "U3": (74.5, 16, 0),
+        "U1": (5, 16, 0), "U2": (5, 36, 0),
+        "J1": (5, 56, 0), "F1": (11, 56, 0), "SW1": (21, 56, 0), "C1": (6, 63, 0), "C2": (16, 63, 0),
+        "D2": (5, 70, 0), "D1": (44, 76, 0),
+        "R1": (5, 76, 0), "R2": (15, 76, 0), "C3": (25, 76, 0),
+        "SW2": (8, 82, 0), "SW3": (26, 84, 0), "SW4": (37, 84, 0),
+        "J2": (75, 34, 0), "J3": (81, 34, 0), "J4": (87, 34, 0),
+        "C4": (74, 42, 0), "C5": (74, 50, 0),
+        "Q1": (54, 84, 0), "R4": (64, 84, 0), "R5": (64, 89, 0), "R3": (78, 84, 0),
     }
-    huecos = [(6, 6), (74, 6), (6, 90), (74, 90)]
-    return pos, (2.0, 2.0, 78.0, 94.0), huecos
+    # 3 apoyos: dos al frente y uno atrás al centro (atrás no caben en las esquinas por las muescas de las ruedas)
+    huecos = [(6, 6), (88, 6), (47, 91)]
+    return pos, (2.0, 2.0, 92.0, 94.0), huecos
 
 
-DISENOS = {"barra_sensores": colocacion_barra, "principal": colocacion_principal}
+DISENOS = {"sensores": colocacion_sensores, "principal": colocacion_principal}
 
 
 def construir(nombre, carpeta):
@@ -196,7 +199,7 @@ def rutear(ruta):
     from ruteador import Ruteador
     b = pcbnew.LoadBoard(str(ruta))
     r = Ruteador(b, **REGLAS)
-    r.limite = 250000 if 'barra' in ruta.name else 700000
+    r.limite = 250000 if 'sensores' in ruta.name else 700000
     res = r.correr()
     print("Ruteo:", res)
     pcbnew.SaveBoard(str(ruta), b)
