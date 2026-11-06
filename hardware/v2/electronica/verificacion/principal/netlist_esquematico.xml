@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/principal/principal.kicad_sch</source>
-    <date>2026-11-05T09:27:27-0600</date>
+    <date>2026-11-05T12:40:34-0600</date>
     <tool>Eeschema 9.0.8+dfsg-1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -2183,13 +2183,13 @@
     </comp>
     <comp ref="U5">
       <value>DRV8874PWPR</value>
-      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</footprint>
+      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm</footprint>
       <datasheet>https://www.ti.com/lit/ds/symlink/drv8874.pdf</datasheet>
       <description>Puente H del motor izquierdo (PH/EN, 6 A pico, IPROPI)</description>
       <fields>
         <field name="Fabricante">Texas Instruments</field>
         <field name="MPN">DRV8874PWPR</field>
-        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/drv8874.pdf</field>
         <field name="Description">Puente H del motor izquierdo (PH/EN, 6 A pico, IPROPI)</field>
       </fields>
@@ -2203,13 +2203,13 @@
     </comp>
     <comp ref="U6">
       <value>DRV8874PWPR</value>
-      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</footprint>
+      <footprint>Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm</footprint>
       <datasheet>https://www.ti.com/lit/ds/symlink/drv8874.pdf</datasheet>
       <description>Puente H del motor derecho (PH/EN, 6 A pico, IPROPI)</description>
       <fields>
         <field name="Fabricante">Texas Instruments</field>
         <field name="MPN">DRV8874PWPR</field>
-        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/drv8874.pdf</field>
         <field name="Description">Puente H del motor derecho (PH/EN, 6 A pico, IPROPI)</field>
       </fields>
@@ -2644,7 +2644,7 @@
       <fields>
         <field name="Reference">U</field>
         <field name="Value">DRV8874PWPR</field>
-        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias</field>
+        <field name="Footprint">Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm</field>
         <field name="Datasheet"/>
         <field name="Description">TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5</field>
       </fields>

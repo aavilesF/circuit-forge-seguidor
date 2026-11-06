@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # V2 · Genera la electrónica con KiCad 9 (kicad-cli + pcbnew) y Freerouting.
 #   hardware/v2/electronica/generar.sh barra        esquemático, PCB enrutada, DRC, paquete de fabricación de la barra
-#   hardware/v2/electronica/generar.sh principal    esquemático y ERC de la PCB principal (la PCB se hace en la siguiente entrega)
+#   hardware/v2/electronica/generar.sh principal    lo mismo para la PCB principal (módulo WeAct, puentes H, alimentación)
+#   Variables: ENRUTAR=0 reutiliza el .ses guardado; SOLO_DRC=1 se detiene tras el DRC; PASADAS = pasadas de Freerouting
 # Requisitos: KiCad 9 (en el entorno de trabajo, chroot /opt/resolute), Java 21 y freerouting-2.1.0.jar (FREEROUTING=ruta).
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -9,7 +10,8 @@ E=$PWD
 RAIZ=$(cd ../../.. && pwd)
 K="$RAIZ/hardware/electronics/herramientas/kicad.sh"
 # Sin Freerouting: ENRUTAR=0 reutiliza las rutas guardadas en kicad/<proy>/<proy>.ses
-FREEROUTING=${FREEROUTING:-$HOME/freerouting-2.1.0.jar}
+FREEROUTING=${FREEROUTING:-$HOME/freerouting-2.1.0.jar}          # barra de sensores
+FREEROUTING_P=${FREEROUTING_P:-$HOME/freerouting-1.9.0.jar}      # PCB principal (ver la nota en principal())
 # El chroot de KiCad 9 necesita ver el repositorio en la misma ruta
 if [[ -d /opt/resolute && ! -d /opt/resolute$RAIZ ]]; then mkdir -p /opt/resolute/home/claude; mount --bind /home/claude /opt/resolute/home/claude; fi
 if [[ -d /opt/k3d && -d /opt/resolute && ! -d /opt/resolute/opt/k3d/usr ]]; then mkdir -p /opt/resolute/opt/k3d; mount --bind /opt/k3d /opt/resolute/opt/k3d; fi
@@ -55,12 +57,51 @@ barra() {
 }
 
 principal() {
-  local P=principal KD="$E/kicad/principal" VD="$E/verificacion/principal"
-  mkdir -p "$VD"
-  echo "== 1. Esquemático";   python3 generador/principal.py
+  local P=principal KD="$E/kicad/principal" VD="$E/verificacion/principal" FAB="$E/fabricacion/principal"
+  mkdir -p "$VD" "$FAB/gerber"
+  echo "== 1. Esquemático y plan";       python3 generador/principal.py
+  (cd "$KD" && $K sch export netlist --format kicadsexpr -o $P.net $P.kicad_sch >/dev/null)
+  echo "== 2. PCB: huellas, abanico de GND/+3V3 y DSN";       pcbpy construir $P
+  if [[ "${ENRUTAR:-1}" == "1" ]]; then
+    echo "== 3. Freerouting (sin GND ni +3V3: van a los planos internos)"
+    python3 generador/dsn_sin_red.py "$KD/$P.dsn" GND +3V3
+    rm -f "$KD/$P.ses"
+    # Freerouting 1.9.0 respeta -mp (pasadas) y termina aunque queden conexiones; abre su ventana: sin pantalla se
+    # corre dentro de xvfb-run. (2.1.0 sin interfaz ignora -mp e -inc y no termina mientras falte algo por enrutar.)
+    local X=""; command -v xvfb-run >/dev/null && X="xvfb-run -a"
+    (cd "$KD" && timeout ${T_RUTEO:-1500} $X java -Xmx3g -jar "$FREEROUTING_P" -de $P.dsn -do $P.ses -mp ${PASADAS:-30} -mt 1 \
+      > "$VD/freerouting.log" 2>&1 || true)
+    [[ -f "$KD/$P.ses" ]] || { echo "Freerouting no terminó (quedan conexiones sin enrutar)"; exit 1; }
+  fi
+  echo "== 4. Rutas, polígonos de potencia y GND, relleno"; pcbpy importar $P; pcbpy rellenar $P; pcbpy pads $P
+  echo "== 5. ERC, DRC con paridad, conectividad"
   (cd "$KD" && $K sch erc --format report --severity-all -o "$VD/erc.rpt" $P.kicad_sch >/dev/null \
-            && $K sch export pdf -o "$E/fabricacion/principal_esquematico.pdf" $P.kicad_sch >/dev/null)
+            && $K pcb drc --format report --severity-all --schematic-parity --all-track-errors -o "$VD/drc.rpt" $P.kicad_pcb >/dev/null \
+            && $K pcb drc --format json --severity-all --schematic-parity --all-track-errors -o "$VD/drc.json" $P.kicad_pcb >/dev/null)
   python3 generador/verificar.py principal
+  [[ "${SOLO_DRC:-0}" == "1" ]] && return 0
+  echo "== 6. Paquete de fabricación"
+  (cd "$KD"
+   rm -f "$FAB/gerber"/*
+   $K pcb export gerbers --no-protel-ext --subtract-soldermask --use-drill-file-origin \
+      -l F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts -o "$FAB/gerber/" $P.kicad_pcb >/dev/null
+   $K pcb export drill --format excellon --excellon-separate-th --drill-origin plot --excellon-units mm --generate-map --map-format pdf \
+      -o "$FAB/gerber/" $P.kicad_pcb >/dev/null
+   $K pcb export pos --format csv --units mm --side front --use-drill-file-origin --exclude-dnp -o "$FAB/posiciones_superior.csv" $P.kicad_pcb >/dev/null
+   $K pcb export pos --format csv --units mm --side back --use-drill-file-origin --exclude-dnp -o "$FAB/posiciones_inferior.csv" $P.kicad_pcb >/dev/null
+   $K pcb export step --subst-models --include-tracks -f -o "$FAB/${P}_pcba.step" $P.kicad_pcb >/dev/null 2>&1 || echo "  (STEP con advertencias)"
+   $K pcb export pdf --mode-single -l F.Cu,F.Silkscreen,F.Fab,Edge.Cuts -o "$FAB/${P}_superior.pdf" $P.kicad_pcb >/dev/null
+   $K pcb export pdf --mode-single -l In1.Cu,Edge.Cuts -o "$FAB/${P}_in1_gnd.pdf" $P.kicad_pcb >/dev/null
+   $K pcb export pdf --mode-single -l In2.Cu,Edge.Cuts -o "$FAB/${P}_in2_3v3.pdf" $P.kicad_pcb >/dev/null
+   $K pcb export pdf --mode-single --mirror -l B.Cu,B.Silkscreen,B.Fab,Edge.Cuts -o "$FAB/${P}_inferior.pdf" $P.kicad_pcb >/dev/null
+   $K sch export pdf -o "$FAB/${P}_esquematico.pdf" $P.kicad_sch >/dev/null
+   for vista in top bottom; do
+     $K pcb render --side $vista --quality basic --width 1800 --height 2400 --background opaque \
+        -o "$FAB/${P}_3d_${vista}.png" $P.kicad_pcb >/dev/null 2>&1 || echo "  (render $vista no disponible)"
+   done)
+  (cd "$FAB/gerber" && rm -f ../${P}_gerbers.zip && zip -q ../${P}_gerbers.zip *)
+  python3 generador/fabricacion.py principal
+  ls -la "$FAB"
 }
 
 mkdir -p "$E/fabricacion"

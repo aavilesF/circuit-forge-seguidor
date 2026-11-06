@@ -13,6 +13,8 @@ deshabilitada por su /CS en PB11). Ver docs/v2/FASE3_ENTREGA1.md.
 Uso: python3 hardware/v2/electronica/generador/principal.py"""
 from __future__ import annotations
 
+import json
+import math
 import os
 import sys
 
@@ -185,14 +187,14 @@ D.simbolos_propios.append(K.simbolo_rect(
     [("11", "VM"), ("12", "VCP"), ("13", "CPH"), ("14", "CPL"), ("8", "OUT1"), ("10", "OUT2"), ("9", "PGND"), ("15", "GND"),
      ("17", "PAD")],
     ref="U", descr="TI DRV8874 puente H 4.5-37 V, 6 A pico, IPROPI (HTSSOP-16 PWP). Pines: hoja de datos SLVSF66A §5",
-    huella="Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias", ancho=17.78,
+    huella="Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm", ancho=17.78,
     tipo_por_nombre=lambda n: {"VM": "power_in", "GND": "power_in", "PGND": "power_in", "PAD": "passive",
                                "nFAULT": "open_collector", "IPROPI": "output", "OUT1": "output", "OUT2": "output",
                                "VCP": "passive", "CPH": "passive", "CPL": "passive"}.get(n, "input")))
 for lado, ref, x, y, sgn in (("I", "U5", 1.0, 20.0, 1), ("D", "U6", 1.0, -10.5, -1)):
     n0 = 19 if lado == "I" else 21
     D.P(ref=ref, lib_id=f"{K.LIB_PROPIA}:DRV8874PWPR", valor="DRV8874PWPR",
-        huella="Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm_ThermalVias", fabricante="Texas Instruments",
+        huella="Package_SO:HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm", fabricante="Texas Instruments",
         mpn="DRV8874PWPR", descripcion=f"Puente H del motor {'izquierdo' if lado == 'I' else 'derecho'} (PH/EN, 6 A pico, IPROPI)",
         hoja=HM, pines={"1": f"EN_{lado}", "2": f"PH_{lado}", "3": "DRV_nSLEEP", "4": "DRV_nFAULT", "5": "DRV_VREF",
                         "6": f"IPROPI_{lado}", "7": f"IMODE_{lado}", "16": "GND", "11": "VBAT_SW", "12": f"VCP_{lado}",
@@ -240,8 +242,166 @@ for k, (x, y) in enumerate(((-28.0, 30.0), (-28.0, -30.0), (0.0, 27.0), (0.0, -2
 
 CONTORNO = (-42.0, 6.5, -35.0, 35.0)   # x_min, x_max, y_min, y_max (marco del robot)
 
+# ------------------------------------------------------------------------------------------------ colocación de la PCB
+# (x, y, rot) en el marco del robot (rot antihoraria vista desde arriba); "B" = cara inferior. Esquina trasera derecha:
+# alimentación (XT30, fusible, MOSFET, interruptor, ESC); trasera izquierda: START, CAL, RESET, LED; franja delantera:
+# puentes H, conectores de motor y de la barra, IMU y barómetro ambiente; bajo el módulo: divisor de batería y puntos de prueba.
+COLOC = {
+    # alimentación (esquina trasera derecha): XT30 -> fusible -> 2 PMOS espalda con espalda -> VBAT_SW (TVS, capacitores, ESC)
+    "J1": (-38.8, -31.6, 0), "F1": (-22.4, -32.6, 0), "Q1": (-9.2, -32.6, 180), "Q2": (-4.6, -32.6, 0),
+    "R1": (-8.2, -28.8, 90), "R2": (-6.6, -28.8, 90), "SW1": (-35.4, -19.0, -90),
+    "C1": (-1.3, -32.6, -90), "C2": (0.9, -32.6, -90), "D1": (4.6, -31.3, -90), "J5": (4.7, -25.0, 90),
+    "J6": (-30.0, -19.5, 90), "R27": (-21.9, -18.3, 0), "R28": (-21.9, -17.1, 0),
+    "TP1": (-27.5, -15.6, 0), "TP2": (-25.0, -15.6, 0), "TP3": (-22.5, -15.6, 0), "TP4": (-20.0, -15.6, 0),
+    # regulador de 3.3 V
+    "U1": (-17.0, -22.0, 0), "C4": (-20.6, -22.0, 90), "C5": (-17.0, -24.6, 0), "R5": (-15.0, -24.6, 0), "C6": (-19.0, -19.4, 0),
+    "R6": (-16.2, -19.0, 0), "R7": (-16.2, -17.8, 0), "L1": (-11.6, -22.0, 0), "C7": (-7.9, -21.6, 90), "C8": (-7.9, -25.6, 0),
+    "D2": (-20.6, -26.2, 0),
+    # puentes H en la franja delantera, junto a sus conectores de motor
+    # (salidas OUT1/OUT2 hacia la derecha, frente a los pines de motor de J3/J4; capacitores del lado de VM)
+    "U5": (-2.6, 13.0, 90), "J3": (3.8, 13.0, -90),
+    "U6": (-2.6, -13.0, 90), "J4": (3.8, -13.0, -90),
+    "R25": (-4.5, 3.0, 90), "R26": (-3.2, 3.0, 90), "C23": (-1.9, 3.0, 90), "R23": (-4.5, -2.6, 90), "R24": (-3.2, -2.6, 90),
+    "C31": (-4.5, 0.2, 90), "C32": (-3.2, 0.2, 90), "C33": (-1.9, 0.2, 90), "C34": (-0.6, 0.2, 90),
+    "J2": (3.8, 0.0, 90), "C35": (-0.6, 3.0, 90), "C36": (-0.6, -2.6, 90),
+    # bajo el módulo (8.5 mm libres): IMU, barómetro ambiente, pull-ups de I2C, divisor de batería
+    "U2": (-15.0, 0.0, 0), "C9": (-17.4, 0.3, 90), "C10": (-12.9, 2.6, 0), "R29": (-11.8, 0.6, 90), "R30": (-11.8, -1.6, 90),
+    "R9": (-15.0, -3.7, 0), "R10": (-15.0, -4.8, 0), "U4": (-20.5, -2.0, 0), "C12": (-22.7, -2.0, 90),
+    "R3": (-26.0, -2.0, 0), "R4": (-26.0, -3.2, 0), "C3": (-26.0, -4.4, 0),
+    # interfaz (esquina trasera izquierda): START, CAL, RESET, LED, zumbador; barómetro de la cámara en la cara inferior
+    "SW2": (-36.4, 23.0, 0), "SW3": (-36.4, 31.0, 0), "SW4": (-39.0, 17.0, 0),
+    "R11": (-29.6, 21.4, 0), "C13": (-29.6, 22.6, 0), "R12": (-29.6, 24.6, 0), "C14": (-29.6, 25.8, 0),
+    "D3": (-24.0, 33.8, 0), "D4": (-21.0, 33.8, 0), "D5": (-18.0, 33.8, 0), "D6": (-15.0, 33.8, 0),
+    "R8": (-24.0, 32.1, 0), "R13": (-21.0, 32.1, 0), "R14": (-18.0, 32.1, 0), "R15": (-15.0, 32.1, 0),
+    "LS1": (-12.0, 22.5, 0), "Q3": (-22.6, 17.3, 0), "R16": (-20.0, 15.4, 0), "R17": (-25.3, 17.8, 90), "R18": (-26.6, 17.8, 90),
+    "U3": (-20.0, 22.0, 0, "B"), "C11": (-20.0, 27.5, 0, "B"),
+}
+# Celda de cada puente H (U5 y U6 tienen la misma rotación y el mismo conector a la derecha): capacitores y resistencias
+# justo frente a sus pines y pistas fijas cortas (ver CELDA_PISTAS), para que el enrutador no tenga que resolver lo más
+# apretado. Desplazamientos (dx, dy) desde el centro del DRV8874 en el marco del robot; fila de pines 9-16 hacia +y.
+CELDA = {"CPH_CPL": (-0.75, 4.6, 180), "VCP": (0.70, 5.9, 0), "VM_100n": (1.18, 7.35, 90), "VM_22u": (-1.1, 7.4, 180),
+         "IPROPI": (0.97, -4.85, -90), "IMODE": (1.62, -6.75, -90)}
+REF_CELDA = {"U5": {"CPH_CPL": "C18", "VCP": "C17", "VM_100n": "C15", "VM_22u": "C16", "IPROPI": "R19", "IMODE": "R20", "J": "J3"},
+             "U6": {"CPH_CPL": "C22", "VCP": "C21", "VM_100n": "C19", "VM_22u": "C20", "IPROPI": "R21", "IMODE": "R22", "J": "J4"}}
+for _u, _refs in REF_CELDA.items():
+    _cx, _cy = COLOC[_u][0], COLOC[_u][1]
+    for _k, (_dx, _dy, _r) in CELDA.items():
+        COLOC[_refs[_k]] = (round(_cx + _dx, 3), round(_cy + _dy, 3), _r)
 
-# ------------------------------------------------------------------------------------------------ huella del zócalo
+
+def celda_pistas():
+    """Pistas fijas de cada celda de puente H (marco del robot, mm). ("pad", ref, n) = centro de ese pad."""
+    out = []
+    for u, refs in REF_CELDA.items():
+        cx, cy = COLOC[u][0], COLOC[u][1]
+        P = lambda dx, dy: [round(cx + dx, 3), round(cy + dy, 3)]
+        j = refs["J"]
+        out += [
+            dict(pad=(u, "14"), ancho=0.2, puntos=[P(-0.98, 2.86), P(-0.98, 4.6)]),                 # CPL -> C18/C22
+            dict(pad=(u, "13"), ancho=0.2, puntos=[P(-0.32, 2.86), P(-0.32, 4.6)]),                 # CPH
+            dict(pad=(u, "12"), ancho=0.2, puntos=[P(0.32, 2.86), P(0.32, 5.9)]),                   # VCP -> C17/C21
+            dict(pad=(u, "11"), ancho=0.45, puntos=[P(0.97, 2.86), P(0.97, 5.9)]),                  # VM -> C17/C21
+            dict(pad=(u, "11"), ancho=0.45, puntos=[P(1.18, 5.9), P(1.18, 6.87), P(0.2, 6.87)]),    # VM -> C15 y C16
+            dict(pad=(u, "10"), ancho=0.45, puntos=[P(1.62, 2.86), P(1.62, 4.3), P(3.3, 4.3), P(3.3, -1.5), ("pad", j, "5")]),  # OUT2
+            dict(pad=(u, "8"), ancho=0.45, puntos=[P(2.27, -2.86), P(2.27, -4.0), P(4.2, -4.0), P(4.2, -2.5), ("pad", j, "6")]),  # OUT1
+            dict(pad=(u, "6"), ancho=0.2, puntos=[P(0.97, -2.86), P(0.97, -4.37)]),                 # IPROPI -> R19/R21
+            dict(pad=(u, "7"), ancho=0.2, puntos=[P(1.62, -2.86), P(1.62, -6.27)]),                 # IMODE -> R20/R22
+        ]
+    return out
+
+
+for _p in D.partes:
+    if _p.ref in COLOC:
+        c = COLOC[_p.ref]
+        _p.x, _p.y, _p.rot = c[0], c[1], c[2]
+        if len(c) > 3:
+            _p.lado = c[3]
+
+
+def nombres_red():
+    """Nombre de cada red como lo pone KiCad al leer el esquemático: las locales llevan la ruta de su hoja."""
+    hojas_de, titulo = {}, dict(D.hojas)
+    for p in D.partes:
+        for pin, r in p.pines.items():
+            hojas_de.setdefault(r, set()).add(p.hoja)
+    return {r: (r if (len(h) > 1 or r in D.power) else f"/{titulo[next(iter(h))]}/{r}") for r, h in hojas_de.items()}
+
+
+def plan():
+    nr = nombres_red()
+    x0, x1, y0, y1 = CONTORNO
+    r = 1.5                                         # esquinas redondeadas (polígono)
+    contorno = []
+    for cx, cy, a0 in ((x1 - r, y1 - r, 0), (x0 + r, y1 - r, 90), (x0 + r, y0 + r, 180), (x1 - r, y0 + r, 270)):
+        for k in range(7):
+            a = math.radians(a0 + 15 * k)
+            contorno.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+    partes = []
+    for p in D.partes:
+        if not p.huella:
+            continue
+        lib, fp = p.huella.split(":")
+        partes.append(dict(ref=p.ref, valor=p.valor, lib=lib, fp=fp, X=round(p.x, 4), Y=round(K.Y0 - p.y, 4),
+                           rot=round(p.rot, 3), lado=p.lado, redes={k: nr[vv] for k, vv in p.pines.items() if k not in p.nc},
+                           en_bom=p.en_bom, mpn=p.mpn, fabricante=p.fabricante, hoja=p.hoja,
+                           ref_visible=p.ref.startswith(("SW", "J", "TP"))))
+    def poli(pts):
+        return [[round(x, 4), round(K.Y0 - y, 4)] for x, y in pts]
+
+    # Cobre de la ruta de la batería: polígonos de cobre (F.Cu; VBAT_IN también en B.Cu) sobre las pistas de Freerouting.
+    zonas = [
+        dict(red=nr["VBAT_IN"], capas=["F", "B"], prioridad=2, puntos=poli([(-36.0, -34.75), (-19.4, -34.75), (-19.4, -29.6), (-36.0, -29.6)])),
+        dict(red=nr["VBAT_F"], capas=["F"], prioridad=2, puntos=poli([(-17.3, -34.75), (-8.6, -34.75), (-8.6, -30.3), (-17.3, -30.3)])),
+        dict(red=nr["VBAT_S"], capas=["F"], prioridad=2, puntos=poli([(-8.15, -33.95), (-7.05, -33.95), (-7.05, -33.16), (-5.65, -33.16),
+                                                                       (-5.65, -31.25), (-6.75, -31.25), (-6.75, -32.04), (-8.15, -32.04)])),
+        dict(red=nr["VBAT_SW"], capas=["F"], prioridad=2, puntos=poli([(-5.25, -34.2), (-2.4, -34.2), (-2.4, -32.4), (6.25, -32.4),
+                                                                        (6.25, -23.6), (3.4, -23.6), (3.4, -29.6), (-5.25, -29.6)])),
+    ]
+    agujeros = [dict(X=round(p.x, 4), Y=round(K.Y0 - p.y, 4), r=2.5) for p in D.partes if p.ref.startswith("H")]
+    # empaque Ø8/Ø4 de la chimenea del chasis alrededor del barómetro de la cámara (U3, cara inferior): sin vías (fugarían)
+    sin_vias = [dict(X=-20.0, Y=K.Y0 - 22.0, r=4.4)]
+    vias = [dict(ref=r, pad="17", red="GND", taladro=0.3, diametro=0.6,
+                 offsets=[[dx, dy] for dx in (-0.6, 0.6) for dy in (-1.2, 0.0, 1.2)]) for r in ("U5", "U6")]
+    return dict(
+        proy=D.proy, titulo=D.titulo, capas=4, espesor=1.6, origen_aux=[x0, K.Y0 - y0],
+        # 4 capas: señales en F.Cu y B.Cu; In1 = plano de GND, In2 = plano de +3V3 (tipo "power": no se enruta en ellas)
+        tipo_capas={"In1.Cu": "power", "In2.Cu": "power"},
+        contorno=[[round(x, 4), round(K.Y0 - y, 4)] for x, y in contorno], partes=partes,
+        clases={"Default": dict(pista=0.2, separacion=0.2, separacion_drc=0.15, via=0.6, taladro=0.3, patrones=[]),
+                # GND y +3V3 no las enruta Freerouting: vías de abanico a sus planos internos (In1, In2)
+                "Planos": dict(pista=0.3, separacion=0.2, separacion_drc=0.15, via=0.6, taladro=0.3, patrones=["GND", "+3V3"]),
+                "Bateria": dict(pista=0.4, separacion=0.2, separacion_drc=0.2, via=0.8, taladro=0.4,
+                                patrones=["*VBAT_IN", "*VBAT_F", "*VBAT_S"]),
+                "Motor": dict(pista=0.45, separacion=0.2, separacion_drc=0.15, via=0.8, taladro=0.4, patrones=["*MOT_*", "VBAT_SW"]),
+                "Buck": dict(pista=0.5, separacion=0.2, separacion_drc=0.15, via=0.8, taladro=0.4, patrones=["*VIN_BUCK", "*BUCK_SW"])},
+        planos=[dict(capa="In1.Cu", red="GND"), dict(capa="In2.Cu", red="+3V3"), dict(capa="B", red="GND"),
+                dict(capa="F", red="GND")], zonas=zonas, agujeros=agujeros, sin_vias=sin_vias, vias=vias,
+        pistas_fijas=celda_pistas() + [
+            # U3 (LPS22DF de la cámara, cara inferior, bajo el empaque: sin vías): pads de +3V3 unidos de a dos por fuera
+            dict(pad=("U3", "5"), capa="B", ancho=0.2, puntos=[[-19.5, 22.76], [-19.5, 23.2], [-18.8, 23.2], [-18.8, 22.25], ["pad", "U3", "6"]]),
+            dict(pad=("U3", "10"), capa="B", ancho=0.2, puntos=[[-20.5, 21.24], [-20.5, 20.8], [-21.2, 20.8], [-21.2, 21.75], ["pad", "U3", "1"]])],
+        abanico=[dict(red="GND", diametro=0.6, taladro=0.3, pista=0.3, separacion=0.25, excluir_pads=["17"],
+                      unir_a_pad={"U5": "17", "U6": "17"}),
+                 dict(red="+3V3", diametro=0.6, taladro=0.3, pista=0.3, separacion=0.25)],
+        redes_plano=["GND", "+3V3"],
+        conexion_solida=[["U3", "3"], ["U3", "8"], ["U3", "9"]],    # GND de U3 bajo el empaque: al plano inferior sin alivio
+        holgura_local={"U2": 0.127, "U3": 0.127, "U4": 0.127}, nombres_red=nr,
+        textos=[dict(texto="CIRCUIT FORGE V2 · PCB PRINCIPAL · REV A", X=-23.86, Y=K.Y0 - 4.0, rot=0, lado="B", tam=1.0),
+                dict(texto="START", X=-36.4, Y=K.Y0 - 27.6, rot=0, lado="F", tam=1.0),
+                dict(texto="CAL", X=-29.0, Y=K.Y0 - 34.0, rot=0, lado="F", tam=1.0),
+                dict(texto="RST", X=-35.0, Y=K.Y0 - 17.0, rot=0, lado="F", tam=1.0),
+                dict(texto="P", X=-24.0, Y=K.Y0 - 30.5, rot=0, lado="F", tam=1.0),
+                dict(texto="V", X=-21.0, Y=K.Y0 - 30.5, rot=0, lado="F", tam=1.0),
+                dict(texto="A", X=-18.0, Y=K.Y0 - 30.5, rot=0, lado="F", tam=1.0),
+                dict(texto="R", X=-15.0, Y=K.Y0 - 30.5, rot=0, lado="F", tam=1.0),
+                dict(texto="ESC", X=2.1, Y=K.Y0 + 22.7, rot=90, lado="F", tam=1.0),
+                dict(texto="+", X=2.6, Y=K.Y0 + 25.6, rot=0, lado="F", tam=1.2),
+                dict(texto="-", X=2.6, Y=K.Y0 + 19.6, rot=0, lado="F", tam=1.2),
+                dict(texto="ESC SEÑAL", X=-27.5, Y=K.Y0 + 22.3, rot=0, lado="F", tam=1.0),
+                dict(texto="BAT+", X=-33.8, Y=K.Y0 + 27.8, rot=0, lado="F", tam=1.0),
+                dict(texto="ON", X=-40.0, Y=K.Y0 + 15.0, rot=0, lado="F", tam=1.0)])
+
+
 def huella_zocalo(dir_lib):
     """Huella con los 48 pines del módulo en su posición real (plano de contorno WeAct: 36.28 × 28.14 mm; primera
     columna a 6.97 mm del borde del USB; filas a 1.37 mm de los bordes largos; 20.32 mm entre filas interiores)."""
@@ -260,9 +420,15 @@ def huella_zocalo(dir_lib):
             nodo.insert(4, [Sym("hide"), Sym("yes")])
         return nodo
     elems += [texto("Reference", "REF**", 0, -H / 2 - 1.5, "F.SilkS"), texto("Value", "WeAct_STM32G474", 0, H / 2 + 1.5, "F.Fab")]
-    for capa, m, ancho in (("F.SilkS", 0.11, 0.12), ("F.CrtYd", 0.5, 0.05), ("F.Fab", 0.0, 0.1)):
+    for capa, m, ancho in (("F.SilkS", 0.11, 0.12), ("F.Fab", 0.0, 0.1)):
         elems.append([Sym("fp_rect"), [Sym("start"), -W / 2 - m, -H / 2 - m], [Sym("end"), W / 2 + m, H / 2 + m],
                       [Sym("stroke"), [Sym("width"), ancho], [Sym("type"), Sym("solid")]], [Sym("fill"), Sym("no")], [Sym("layer"), capa]])
+    # Cortijo: solo los 2 zócalos (2 × 12, 30.5 × 5.1 mm). El módulo queda 8.5 mm arriba: debajo caben componentes bajos.
+    x0z, x1z = 6.97 - W / 2 - 1.27 - 0.25, 6.97 + 11 * 2.54 - W / 2 + 1.27 + 0.25
+    for y0z, y1z in ((fil["B_par"] - H / 2 - 1.27 - 0.25, fil["B_impar"] - H / 2 + 1.27 + 0.25),
+                     (fil["A_par"] - H / 2 - 1.27 - 0.25, fil["A_impar"] - H / 2 + 1.27 + 0.25)):
+        elems.append([Sym("fp_rect"), [Sym("start"), round(x0z, 3), round(y0z, 3)], [Sym("end"), round(x1z, 3), round(y1z, 3)],
+                      [Sym("stroke"), [Sym("width"), 0.05], [Sym("type"), Sym("solid")]], [Sym("fill"), Sym("no")], [Sym("layer"), "F.CrtYd"]])
     elems.append([Sym("fp_text"), Sym("user"), "USB-C", [Sym("at"), -W / 2 + 3.0, 0, 90], [Sym("layer"), "F.SilkS"],
                   [Sym("effects"), [Sym("font"), [Sym("size"), 1, 1], [Sym("thickness"), 0.15]]]])
     for pref in ("A", "B"):
@@ -293,6 +459,10 @@ def principal():
              "J3/J4: pinout del encoder Pololu (1 GND, 2 B, 3 A, 4 VCC, 5 M2, 6 M1). J2: 1:1 con J1 de la barra de sensores.",
              "ESC: señal por J6 (PB9, TIM17_CH1: PWM, Oneshot o DShot con telemetría bidireccional), potencia por J5."]})
     huella_zocalo(os.path.join(D.dir, f"{K.LIB_PROPIA}.pretty"))
+    os.makedirs(os.path.join(K.V2E, "generador", "salida"), exist_ok=True)
+    ruta = os.path.join(K.V2E, "generador", "salida", "plan_principal.json")
+    json.dump(plan(), open(ruta, "w"), indent=1)
+    print("plan ->", os.path.relpath(ruta, K.RAIZ))
 
 
 if __name__ == "__main__":

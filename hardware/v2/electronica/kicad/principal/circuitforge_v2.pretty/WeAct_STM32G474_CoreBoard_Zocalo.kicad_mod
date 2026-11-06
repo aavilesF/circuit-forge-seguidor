@@ -36,16 +36,6 @@
 		(layer "F.SilkS")
 	)
 	(fp_rect
-		(start -18.64 -14.57)
-		(end 18.64 14.57)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(fill no)
-		(layer "F.CrtYd")
-	)
-	(fp_rect
 		(start -18.14 -14.07)
 		(end 18.14 14.07)
 		(stroke
@@ -54,6 +44,26 @@
 		)
 		(fill no)
 		(layer "F.Fab")
+	)
+	(fp_rect
+		(start -12.69 -14.22)
+		(end 18.29 -8.64)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+	)
+	(fp_rect
+		(start -12.69 8.64)
+		(end 18.29 14.22)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
 	)
 	(fp_text user "USB-C"
 		(at -15.14 0 90)
