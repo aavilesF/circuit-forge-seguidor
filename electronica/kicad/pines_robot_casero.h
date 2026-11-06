@@ -1,4 +1,4 @@
-// Mapa de pines del ESP32 DevKit (38 pines) para el ROBOT CASERO. Es la ÚNICA fuente de verdad de los pines:
+// Mapa de pines del ESP32 DevKit (30 pines, clon USB-C) para el ROBOT CASERO. Es la ÚNICA fuente de verdad de los pines:
 // el esquemático de electronica/kicad/principal/ se genera leyendo este archivo (herramientas/generar_principal.py).
 //
 // Reglas aplicadas (ver docs de la skill proyectos-electronicos-kicad):
@@ -10,13 +10,13 @@
 // VERIFICAR con la placa real: el orden de pines de cada fabricante de DevKit cambia (ver electronica/kicad/NOTAS.md).
 #pragma once
 
-// ---- Barra de sensores (12 x TCRT5000 + multiplexor 74HC4067) ---------------
+// ---- Placa de sensores en curva (12 x TCRT5000 + multiplexor 74HC4067) ---------------
 constexpr int PIN_MUX_S0   = 25;
 constexpr int PIN_MUX_S1   = 26;
 constexpr int PIN_MUX_S2   = 27;
 constexpr int PIN_MUX_S3   = 33;
 constexpr int PIN_MUX_SIG  = 34;   // ADC1_CH6, solo entrada. El multiplexor trabaja a 3.3 V.
-constexpr int PIN_EMISORES = 13;   // enciende los LED infrarrojos (transistor 2N2222 en la barra)
+constexpr int PIN_EMISORES = 13;   // enciende los LED infrarrojos (transistor 2N2222 en la placa de sensores)
 
 // ---- Driver DRV8833 (2 pines de control por motor, PWM por LEDC) -------------
 constexpr int PIN_AIN1 = 19;       // motor IZQUIERDO

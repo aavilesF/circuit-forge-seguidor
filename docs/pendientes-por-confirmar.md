@@ -1,111 +1,93 @@
 # Pendientes por confirmar (robot casero)
 
-Rama `engineering/robot-casero`. **Aquí vive todo lo que el diseño supone pero todavía no está medido ni verificado.**
-No tenemos vernier: Alan mide con regla (precisión ~0.5–1 mm) y compara con el valor propuesto.
+Rama `engineering/robot-casero`. Actualizado: 5 nov 2026.
+Las medidas ya tomadas están en `especificaciones-componentes.md`; aquí solo queda **lo que falta confirmar o decidir**.
+Las decisiones ya tomadas están en `decisiones-robot-casero.md` (no se repiten aquí).
 
-**Regla de decisión:** diferencia ≤ 1 mm con la regla → se da por buena (estado *aceptada*). Más de 1 mm, o si la pieza es de ajuste justo (agujeros, ranuras,
-distancia entre filas de pines) → anotar la medida de la regla y conseguir un vernier (o una escuadra con escala fina) para repetirla.
+**Estados:** `pendiente` · `escalímetro` (medido, falta vernier) · `pregunta` (necesito respuesta de Alan) · `resuelto`.
+**Quién:** Alan salvo que se diga otra cosa.
 
-**Estados:** `pendiente` · `medida con regla` · `aceptada` · `con vernier` · `descartada`.
-**Quién mide:** Alan salvo que se indique otra persona (columna "Quién").
-Los valores marcados **SIN FUENTE** son marcadores de posición míos para poder dibujar; **no deben usarse para cortar ni fabricar**.
-
-## 1. Medidas de módulos y piezas
+## 0. General
 
 | ID | Tema | Valor propuesto | Fuente | Cómo confirmarlo | Estado | Quién |
 |---|---|---|---|---|---|---|
-| M01 | ESP32 DevKit 38 pines: largo × ancho de la placa | 54.4 × 27.9 mm | Reportado para el DevKitC V4 (Espressif, [guía](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html), hay PDF/DXF de dimensiones ahí); **el clon que vende UNIT puede variar** | Regla: largo y ancho con la placa recostada | pendiente | Alan |
-| M02 | ESP32: distancia entre las dos filas de pines (centro a centro) | 25.4 mm (1 pulgada) | **SIN FUENTE verificada** (valor habitual de 38 pines; algunos clones usan 22.9 mm) | Regla: medir de pin a pin enfrentados. **Es la medida que más importa para el PCB** | pendiente | Alan |
-| M03 | ESP32: orden de pines | 19 pines por lado, orden Espressif (3V3, EN, VP, VN, 34, 35, 32, 33, 25, 26, 27, 14, 12, GND, 13, D2, D3, CMD, 5V // GND, 23, 22, TX, RX, 21, GND, 19, 18, 5, 17, 16, 4, 0, 2, 15, D1, D0, CLK) | Espressif DevKitC V4 | Leer la serigrafía de la placa y comparar con el esquema (foto de ambos lados) | pendiente | Alan |
-| M04 | ESP32: cantidad de pines por lado y paso | 19 × 2,54 mm | Espressif | Contar pines | pendiente | Alan |
-| M05 | Motor GA12-N20 6 V 1000 RPM: largo del cuerpo y del eje | 34 mm total (incluye eje ∅3 × 10 mm); peso 10 g; 0.07 A nominal, 1 A en atasco | [mikroelectron.com](https://mikroelectron.com), página del GA12-N20 | Regla | pendiente | Alan |
-| M06 | N20: ancho × alto del cuerpo | 12 × 10 mm | **SIN FUENTE verificada** (medida habitual del N20) | Regla | pendiente | Alan |
-| M07 | N20: posición de los 2 agujeros M1.6 del frente | separación 9 mm, a ~3 mm del frente | **SIN FUENTE** | Regla; se usa para ver si se sujeta con abrazadera o tornillos | pendiente | Alan |
-| M08 | Rueda 34 × 7 mm, eje en D de 3 mm | ∅34 × 7 mm | Contexto del equipo (compra no concretada) | Regla al llegar | pendiente | Alan |
-| M09 | Driver DRV8833 (módulo): largo × ancho | 21 × 18 mm | **SIN FUENTE** (los módulos genéricos varían mucho) | Regla | pendiente | Alan |
-| M10 | DRV8833: orden de pines | VM, GND, AIN1, AIN2, BIN1, BIN2, SLEEP, FAULT (un lado) y AOUT1, AOUT2, BOUT1, BOUT2 (otro) | **SIN FUENTE verificada**: ya compramos 2; el orden cambia entre módulos (el de Pololu es distinto) | Fotografiar el módulo comprado y leer la serigrafía | pendiente | Alan |
-| M11 | DRV8833: voltaje de motor y corriente | 2.7–10.8 V; 1.5 A continuo por puente | [Components101](https://components101.com/ics/drv8833-motor-driver-ic) (el chip, no el módulo) | Datasheet del módulo comprado | pendiente | Alan |
-| M12 | MP1584 (módulo): largo × ancho × alto | 22 × 17 × 4 mm | [sigmanortec](https://sigmanortec.ro) | Regla | pendiente | Alan |
-| M13 | MP1584: posición de IN+/IN− y OUT+/OUT− | IN a un extremo, OUT al otro | **SIN FUENTE** (cada módulo tiene sus pads) | Foto del módulo; marcar cuál pad es cuál | pendiente | Alan |
-| M14 | LiPo 2S 450–500 mAh: largo × ancho × alto y peso | 61 × 16 × 15 mm (Tattu 450 mAh), ~30 g | Contexto del equipo (modelo Tattu, sin comprar; peso **SIN FUENTE**) | Medir cuando se compre; es la pieza que más decide la distribución de peso | pendiente | Alan |
-| M15 | LiPo: tipo de conector de potencia y de balanceo | JST-RC 2 pines + JST-XH 3 pines | **SIN FUENTE** | Mirar la batería antes de comprar el conector (ver faltantes) | pendiente | Alan |
-| M16 | Multiplexor 74HC4067 (módulo en barrita): tamaño | 18 × 41 mm | Mensaje de Alan al ver la pieza; sin datasheet | Regla | pendiente | Alan |
-| M17 | 74HC4067: orden y posición de los pines | VCC, GND, SIG, EN, S0–S3 en un extremo; C0–C15 en los lados (8 por lado) | **SIN FUENTE**; cada vendedor lo hace distinto | Foto de la serigrafía | pendiente | Alan |
-| M18 | TCRT5000 suelto: cuerpo | 10.2 × 5.8 × 7 mm | Vishay (datasheet) | Regla | pendiente | Alan |
-| M19 | TCRT5000: separación de patas (paso) y entre filas | 2.54 mm y 4.5 mm | **SIN FUENTE** (no pude leerla en el datasheet) | Regla en el sensor comprado | pendiente | Alan |
-| M20 | TCRT5000: orden de pines (A, K, C, E) | A=ánodo, K=cátodo (LED); C=colector, E=emisor (fototransistor) | Convención del datasheet; el orden en el cuerpo se confirma | Mirar el lado con la muesca/chaflán | pendiente | Alan |
-| M21 | Ventilador elegido: tamaño, voltaje y consumo reales | Ver `faltantes-unit.md` (4010: 40 × 40 × 10 mm, 12 V, ~0.1–0.2 A) | **SIN FUENTE** de consumo (páginas de UNIT no legibles desde mi entorno) | Etiqueta del ventilador + multímetro en serie a 8 V | pendiente | Alan |
-| M22 | Ventilador: peso | ~10–15 g | **SIN FUENTE** | Báscula | pendiente | Alan |
-| M23 | Cerámicos 100 nF, electrolíticos 470 µF: diámetro y paso de patas | 100 nF: 5 mm; 470 µF: ∅8 mm, paso 3.5 mm | **SIN FUENTE** (valores habituales) | Regla en las piezas del ticket | pendiente | Alan |
-| M24 | Diodo 1N5822: distancia entre patas | 15.24 mm (huella DO-201AD horizontal) | KiCad (`D_DO-201AD_P15.24mm_Horizontal`) | Regla; si se dobla distinto, ajustar | pendiente | Alan |
-| M25 | Transistor 2N2222: orientación de patas | Si es PN2222A plástico: E-B-C; si es metálico, no | Hoja de datos del fabricante; **varía** | Ver letras de la caja y probar con multímetro (modo diodo) antes de soldar | pendiente | Alan |
-| M26 | Pulsadores (3 comprados): tamaño y paso de patas | 6 × 6 mm, 4 patas | Ticket | Regla | pendiente | Alan |
-| M27 | Interruptor balancín: agujero de montaje y tamaño | ~19 × 13 mm | **SIN FUENTE** | Regla | pendiente | Alan |
-| M28 | Fusible reseteable radial: paso de patas | 5.0 mm | **SIN FUENTE** | Regla | pendiente | Alan |
-| M29 | Sensor de la barra: paso entre sensores | 7.5 mm (12 sensores = ~88 mm de ancho) | Cálculo del diseño (mismos 12 × 7.5 mm) | Decidir después de ver la pieza | pendiente | Equipo |
+| V01 | **Confirmar medidas con vernier** | Todas las de estado "escalímetro" en `especificaciones-componentes.md` (M01, M02, M08, M09, M12, M16, M23, M24, M26, M27) | Escalímetro (5 nov) | Repetir con vernier; si cambian más de 0.5 mm, avisar para regenerar huellas y DXF | pendiente | Alan |
 
-## 2. Chasis y reglamento
+## 1. Preguntas de identificación y ambigüedades
+
+| ID | Tema | Lo que creo | Fuente | Cómo confirmarlo | Estado | Quién |
+|---|---|---|---|---|---|---|
+| P01 | M09: ¿el módulo de 1.3 × 1.1 cm es el DRV8833? | Sí: M09 era "tamaño del DRV8833". **Pero no cuadra**: 6 pines a 2.54 mm ocupan 12.7 mm de centro a centro, así que la placa debe medir al menos ~15 mm. En la foto se ve de ~15 × 18 mm | Foto + paso estándar | Medir de nuevo largo, ancho y **distancia entre las dos filas de pines** | pregunta | Alan |
+| P02 | M12: ¿qué es la pieza de 2.2 × 1.65 × 0.4 cm? | El **MP1584** (reductor de voltaje). Coincide con su ficha (22 × 17 × 4) | Foto + sigmanortec | Confirmar que es la placa verde "MP1584" | pregunta | Alan |
+| P03 | M13: ¿qué módulo tiene OUT−/OUT+ e IN−/IN+? | También el **MP1584**: entra la batería (IN) y sale el voltaje ajustado (OUT) | Foto | Confirmar | pregunta | Alan |
+| P04 | M24: ¿qué pieza tiene 3.5 cm entre patas? | El **diodo 1N5822** (D1 y D2), patas dobladas a 3.5 cm | Foto / contexto | Confirmar | pregunta | Alan |
+| P05 | M25: orden de patas del 2N2222 "H331" | PN2222A = E-B-C; P2N2222A = C-B-E (al revés). No se sabe cuál es | Datasheets onsemi | Multímetro en modo diodo: la pata que marca ~0.6 V hacia las otras dos (punta roja) es la **base**; la que da un poco menos es el colector | pendiente | Alan |
+| P06 | M27: ¿qué es la pieza de 2 × 2.5 × 0.7 cm? | El **interruptor de balancín KCD1** (rojo, 6 A). Se conecta con 2 cables, no se suelda a la PCB | Fotos | Confirmar | pregunta | Alan |
+| P07 | ESP32: el primer pin de la derecha, ¿VIN o VN? | **VIN** (entrada de 5 V, arriba junto al USB). "VN" es otro pin (GPIO39) que está abajo, junto a VP | Foto: arriba dice "VIN", abajo "VN" | Leer de nuevo la serigrafía con lupa | pregunta | Alan |
+| P08 | DRV8833: "EEP" y "ULT" | EEP = **nSLEEP** (la letra "SL" quedó cortada) y ULT = **nFAULT** ("FA" cortado). El módulo además tiene un puente "J1 sleep–en" | Foto del reverso + datasheet TI | Dejar **J1 abierto** (sin soldar) para que el ESP32 controle SLEEP con GPIO16. Confirmar si viene soldado | pregunta | Alan |
+| P09 | M08: interpretación de la rueda | Llanta de goma ∅28 mm y 21.5 mm de ancho sobre un rin de aluminio de ∅21 × 22 mm con tornillo prisionero que se aprieta sobre el eje del motor | Fotos | Confirmar que el agujero del rin es de 3 mm (eje del N20) | pregunta | Alan |
+| P10 | ¿Ya tienen los motores N20? | En la lista de faltantes siguen como "por comprar" | Mensaje de Alan | Confirmar | pregunta | Alan |
+| P11 | M23: electrolítico 3 mm entre patas | El estándar para ∅8 mm es 3.5 mm; la huella usa 3.5 mm (las patas se doblan un poco) | KiCad / fabricante | Vernier | escalímetro | Alan |
+
+## 2. Medidas que faltan (piezas que aún no se miden o no se compran)
 
 | ID | Tema | Valor propuesto | Fuente | Cómo confirmarlo | Estado | Quién |
 |---|---|---|---|---|---|---|
-| C01 | Espesor del acrílico | **3 mm** (espesores comunes: 2, 3, 5 mm) | Propuesta mía; 3 mm es el estándar más frecuente | Preguntar al taller qué tienen y su precio | pendiente | Equipo |
-| C02 | Material del chasis | Acrílico, MDF o PLA. DXF de los tres | Decisión del equipo | Cotizar taller; probar impresión 3D | pendiente | Equipo |
-| C03 | Dimensiones máximas del chasis | Caja de **200 × 100 mm** (largo × ancho) y 500 g totales; margen de diseño: placa ≤ 190 × 95 mm | Reglamento (proyecto "Seguidor Línea V2") | Releer reglas el 18 nov (pueden cambiar) | aceptada | Equipo |
-| C04 | Peso del chasis | Acrílico 3 mm ≈ 50–70 g según el área; MDF 3 mm ≈ 45 g; PLA según relleno | Cálculo área × espesor × densidad (acrílico 1.18 g/cm³; PLA 1.24 g/cm³) | Pesar la pieza | pendiente | Equipo |
-| C05 | Holgura de agujeros y ranuras | Láser: +0.2 mm, ranura = espesor medido +0.1; FDM: +0.3 mm | Skill `mecanica-dxf-autocad` (valores de arranque) | Cortar una pieza de prueba | pendiente | Equipo |
-| C06 | Permiso por escrito para usar ventilador | Permitido según el repositorio | `docs/requisitos.md` | Correo a los organizadores | pendiente | Equipo |
-| C07 | Altura mínima de la falda sobre la pista | 0 mm de contacto (nunca debe tocar) | Diseño | Probar con la pista real | pendiente | Equipo |
-| C08 | Fecha de congelamiento del reglamento | 18 nov | Proyecto "Seguidor Línea V2" | Revisar al día siguiente | pendiente | Equipo |
+| M05–M07 | Motor N20: cuerpo y agujeros | 24 + 10 mm, 12 × 10 mm, M1.6 a 9 mm | mikroelectron / típico | Escalímetro al tenerlos | pendiente | Alan |
+| M14–M15 | LiPo 2S: medidas, peso y conectores | 61 × 16 × 15 mm, ~30 g, JST-RC | contexto del equipo | Al comprarla | pendiente | Alan |
+| M16–M17 | Módulo 74HC4067: tamaño y orden de pines | 18 × 41 mm | Alan | Foto de la serigrafía + vernier | pendiente | Alan |
+| M19–M20 | TCRT5000: patas y orden | 4 en línea a 2.54 mm | sin fuente | Al comprarlos | pendiente | Alan |
+| M21–M22 | Ventilador: tamaño, consumo y peso | 4010, 12 V, ~0.15 A, ~12 g | típico | Etiqueta + multímetro + báscula | pendiente | Alan |
+| M28 | Fusible reseteable: paso de patas | 5 mm | sin fuente | Al comprarlo | pendiente | Alan |
+| M30 | Rueda loca: tornillos y altura | 2 × M2 a 12 mm; debe medir ~19.5 mm hasta el piso | sin fuente | Al comprarla | pendiente | Alan |
 
-## 3. Eléctrico y pruebas
+## 3. Chasis
 
 | ID | Tema | Valor propuesto | Fuente | Cómo confirmarlo | Estado | Quién |
 |---|---|---|---|---|---|---|
-| E01 | MP1584 #1 salida | **5.0 V** antes de conectar nada | Diseño | Multímetro y tornillo del módulo | pendiente | Alan |
-| E02 | MP1584 #2 salida | **6.0 V** antes de conectar motores | Diseño | Multímetro | pendiente | Alan |
-| E03 | Diodo 1N5822 (D1 y D2): ¿buena caída directa y bloqueo inverso? | Ver sección 4 | Datasheet y guía abajo | Multímetro en modo diodo | pendiente | Alan |
-| E04 | ERC oficial de KiCad | Los verificadores propios dan 0 errores. **El ERC oficial no se pudo correr** (KiCad 7 sin comando) | `electronica/kicad/NOTAS.md` | Abrir el proyecto en KiCad 8/9 → Inspeccionar → Verificar reglas eléctricas | pendiente | Alan |
-| E05 | Divisor de batería 100 k / 33 k | 8.4 V → 2.08 V (ADC) | Cálculo | Medir con LiPo cargada | pendiente | Alan |
-| E06 | Corriente de ventilador y fusible 1.5 A | ≤ 0.3 A del ventilador + motores < 1.5 A | Estimación | Multímetro en serie | pendiente | Alan |
-| E07 | Revisar corto antes de conectar la LiPo | Continuidad entre +VBAT y GND debe ser abierta | Buena práctica | Multímetro | pendiente | Alan |
+| C01 | Espesor del acrílico | 3 mm | Estándar más común | Preguntar al taller | pendiente | Equipo |
+| C02 | Material | Acrílico, MDF o PLA (hay DXF de los tres) | — | Cotizar | pendiente | Equipo |
+| C03 | Tamaño máximo del robot | 200 × 100 mm y 500 g (límite del reglamento, robot completo con ruedas). El diseño mide 197 × 96 mm | Reglamento | Medir el robot armado | resuelto (diseño) | Equipo |
+| C05 | Holgura de corte | Láser −0.2 mm; PLA +0.3 mm en los agujeros | Valores de arranque | Pieza de prueba | pendiente | Equipo |
+| C07 | Altura de los sensores al piso | 4 mm (separadores de 7 mm bajo el travesaño) | Diseño | Probar en pista: 2–8 mm | pendiente | Equipo |
+| C08 | Reglamento: posible cambio el 18 nov | Ver nota abajo | Proyecto "Seguidor Línea V2" | Releer el reglamento el 18 o 19 nov | pendiente | Equipo |
+| C09 | Separadores | M3: 3 de 18 mm (PCB principal) y 4 de 7 mm (placa de sensores) | Diseño | Comprar | pendiente | Alan |
 
-## 4. Cómo medir el diodo (1N5822)
+**Qué es C08:** el documento de reglas dice que los organizadores pueden publicar cambios al reglamento el **18 de noviembre**.
+No hay que decidir nada ahora: solo **revisar las reglas ese día** por si cambian tamaño, peso o algo del ventilador, y avisarme si algo cambió.
 
-**¿Qué diodo es?** El del ticket: **1N5822**, diodo *Schottky* (tipo con caída de voltaje baja y muy rápido) de 3 A y 40 V. Se compraron 2.
-- **D1**: diodo de rueda libre del ventilador (protege al MOSFET de los picos al apagar el motor). Cátodo hacia +VBAT, ánodo hacia el drenador del MOSFET.
-- **D2**: protección entre la salida de 5 V del MP1584 y el pin 5V del ESP32 (impide que la USB y la batería se peleen). Ánodo hacia el MP1584, cátodo hacia el ESP32.
+## 4. Eléctrico y pruebas
 
-**Material:** multímetro con símbolo de diodo (▶|). Diodo sin soldar.
+| ID | Tema | Valor propuesto | Fuente | Cómo confirmarlo | Estado | Quién |
+|---|---|---|---|---|---|---|
+| E01 | MP1584 #1 | 5.0 V antes de conectar | Diseño | Multímetro | pendiente | Alan |
+| E02 | MP1584 #2 | 6.0 V antes de conectar motores | Diseño | Multímetro | pendiente | Alan |
+| E03 | Diodos 1N5822 | Directa ~0.15–0.30 V, inversa OL | Guía abajo | Multímetro modo diodo | pendiente | Alan |
+| E04 | ERC oficial de KiCad | El propio da 0 errores; el oficial no se pudo correr | `electronica/kicad/NOTAS.md` | Abrir en KiCad → Inspeccionar → ERC | pendiente | Alan |
+| E05 | Divisor de batería | 8.4 V → 2.08 V | Cálculo | LiPo cargada | pendiente | Alan |
+| E06 | Corriente total | < 1.5 A (fusible) | Estimación | Multímetro en serie | pendiente | Alan |
+| E07 | Corto antes de la LiPo | +VBAT–GND abierto | Buena práctica | Multímetro | pendiente | Alan |
+| E08 | Brocas para la PCB | 0.8 mm no basta: pines de header y TO-220 necesitan **1.0 mm** y el 1N5822 **1.3 mm** | Diámetro de las patas | Comprar brocas 1.0 y 1.3 mm (ver faltantes) | pendiente | Alan |
 
-**Paso a paso**
-1. Gira el selector a **modo diodo**. Si no existe, no mides bien: avisa y ajustamos la prueba.
-2. **Directa:** punta roja en el lado sin franja (**ánodo**), punta negra en el lado con franja (**cátodo**). Anota el número en pantalla.
-3. **Inversa:** invierte las puntas (roja en la franja). Debe mostrar **OL** o "1" (abierto).
-4. Repite con el otro diodo y anota.
+## 5. Riesgos de diseño
 
-**Valores esperados (orientativos, varían con el multímetro)**
-
-| Tipo | Directa (modo diodo) | Inversa |
-|---|---|---|
-| Schottky (1N5822) | ~0.15–0.30 V (en un multímetro de corriente baja suele leerse menos de 0.35 V) | OL |
-| Silicio normal (1N4007) | ~0.5–0.7 V | OL |
-| Roto en corto | ~0.00 V en ambos sentidos | 0.00 V |
-| Roto abierto | OL en ambos sentidos | OL |
-
-Si lee ~0.55 V o más en directa, **no es Schottky** (lo cambiaron por uno de silicio): avísame, porque D2 bajaría más voltaje del que cabe en el ESP32.
-
-**Cómo anotarlo** (copia y pega en este archivo, tabla E03):
-
-`Diodo 1: directa = ___ V; inversa = ___ ; marca/letras en el cuerpo = ___ ; multímetro = ___`
-`Diodo 2: directa = ___ V; inversa = ___ ; marca/letras en el cuerpo = ___`
-
-Con una foto del cuerpo del diodo basta también. **Pregunta:** ¿el diodo del ticket dice "1N5822" en el cuerpo o solo el mostrador lo escribió? Si dice otra cosa, avísame.
-
-## 5. Riesgos de diseño que hay que revisar físicamente
-
-| ID | Riesgo | Por qué | Cómo revisarlo |
+| ID | Riesgo | Explicación | Qué hacer |
 |---|---|---|---|
-| R01 | El ventilador queda **debajo** de las PCB (separadores de 15 mm): la salida de aire queda limitada a ~5 mm | La placa de 188 mm de largo no deja una zona libre para ventilador + barra + PCB principal dentro de 200 mm | Pesar la succión con báscula; si no funciona, acortar la PCB principal o poner el ventilador en la parte trasera |
-| R02 | Muchos puentes de alambre (las pistas ROJAS = capa superior **no se graban**): ~22 en la barra y ~27 en la principal, de ~20 mm en promedio | El enrutador propio los usa para cruzar pistas. El DRC no los penaliza, pero soldar ~50 alambres es trabajo y riesgo de error | Ver `vista_*.png` en cada carpeta de KiCad; si es demasiado, usar cable AWG 26 por tramos o rehacer la colocación en KiCad a mano |
-| R03 | Los sensores se colocan en arco sobre una PCB plana | El brillo en curva depende de la altura real (3–8 mm del suelo) | Probar en pista |
-| R04 | La caja de 200 × 100 mm incluye ruedas y sensores | Las ruedas sobresalen por las muescas | Medir con las ruedas puestas antes de la competencia |
+| R01 | El ventilador queda debajo de la PCB principal | La PCB está a 8 mm sobre el ventilador: el aire sale de lado, no libre hacia arriba | Probar la succión con báscula; si no basta, mover el ventilador al frente de la PCB |
+| R02 | Puentes de alambre en la PCB | Ver explicación abajo | Contarlos al armar; si son muchos, pulir la colocación |
+| R03 | Sensores en arco | Funcionan mejor entre 2 y 8 mm del piso | Probar en pista y ajustar con arandelas |
+
+**Qué es R02 (puentes de alambre):** la placa casera tiene cobre **solo por abajo**. Cuando dos pistas necesitan cruzarse, una de ellas no
+puede pasar por el cobre: el diseño la dibuja en la capa de arriba (color **rojo** en `vista_*.png`), y eso significa que **ahí va un cable
+soldado por encima de la placa** (un "puente"). El programa de diseño (KiCad) lo acepta sin error, pero en la vida real cada puente es un
+alambre que hay que cortar, pelar y soldar en dos agujeros. En el diseño actual hay del orden de 20 a 30 puentes por placa, de ~2 cm cada uno.
+Funciona, pero es trabajo y un lugar más donde equivocarse. Si se quiere menos, hay que reacomodar piezas a mano en KiCad.
+
+## 6. Cómo medir los diodos 1N5822 (E03)
+
+1. Multímetro en **modo diodo** (símbolo ▶|).
+2. **Directa:** punta roja al lado **sin** franja, negra al lado **con** franja. Debe marcar ~0.15–0.30 V.
+3. **Inversa:** al revés. Debe marcar **OL** (abierto).
+4. Si marca ~0.55 V o más en directa, no es Schottky: avísame. Si marca 0.00 en ambos sentidos, está en corto.
+
+Anotar: `Diodo 1: directa ___ V, inversa ___ · Diodo 2: directa ___ V, inversa ___ · letras del cuerpo ___`

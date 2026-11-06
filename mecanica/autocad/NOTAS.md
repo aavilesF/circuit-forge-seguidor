@@ -1,25 +1,23 @@
-# Placa plana del robot casero (DXF para AutoCAD)
+# Placa plana en "T" del robot casero (AutoCAD)
 
-Archivos: `placa_acrilico.dxf`, `placa_mdf.dxf`, `placa_pla.dxf` (milímetros, DXF R2010), `placa_acrilico.png` (vista previa).
-Se **generan** con `python3 generar_dxf.py` desde `parametros.yaml`; se comprueban con `python3 verificar_dxf.py`.
-Los agujeros de las PCB salen de `electronica/kicad/*/*_mecanica.json` (los escribe `generar_pcb.py`).
+Archivos (milímetros, DXF R2010):
+- `placa_acrilico.dxf`, `placa_mdf.dxf`, `placa_pla.dxf`: placa 2D para cortar (láser) o imprimir; `placa_*.png` vista previa.
+- `robot_3d.dxf`: **modelo 3D del robot armado** (mallas MESH, una capa por pieza). En AutoCAD: abrir, `VISTA` → Isométrica SO y
+  estilo visual "Realista" o "Sombreado". `robot_3d.png`: vistas del mismo modelo.
+- Generadores: `generar_dxf.py` (2D), `generar_3d.py` (3D), `verificar_dxf.py`; parámetros en `parametros.yaml`.
 
-## Qué contiene
-- Placa de 192 × 95 mm (la caja del reglamento es 200 × 100), esquinas con chaflán de 4 mm, **muescas** para las ruedas.
-- Agujeros M3 (3.2 mm) para las dos PCB sobre separadores de 15 mm.
-- Hueco de 34 mm y 4 agujeros para el ventilador 4010. El ventilador queda **entre la placa y las PCB** (riesgo R01).
-- Ranuras para cinchos: 2 por motor y 2 para la LiPo. Dos agujeros para la rueda loca.
-- Capas: CORTE, TALADROS, GRABADO, REFERENCIA (caja del reglamento), COTAS y tres de piezas fantasma
-  (arriba = PCB, abajo = motores/batería/rueda loca, entre = ventilador).
+## Diseño (basado en las fotos de seguidores profesionales que mandó Alan)
+- **Base** trasera (105 × 98 mm) con muescas para las ruedas: motores N20 abajo con cinchos, LiPo a lo ancho y ventilador 4010 encima de la
+  placa, y la **PCB principal** encima de todo sobre 3 separadores de 18 mm (pasa por encima de las ruedas).
+- **Espina** central angosta (30 mm) con la rueda loca abajo.
+- **Travesaño** delantero (42 × 96 mm) que sostiene por debajo la **placa de sensores** con 4 separadores de 7 mm: los sensores quedan a
+  ~4 mm del piso (antes quedaban a 35 mm, eso ya se corrigió).
+- Robot completo: **197 × 96 mm** (límite del reglamento 200 × 100). Placa sola: acrílico 3 mm ≈ 42 g, MDF ≈ 27 g, PLA ≈ 44 g.
 
-## Peso estimado de la placa sola (sin piezas)
-Acrílico 3 mm ≈ 58 g · MDF 3 mm ≈ 37 g · PLA macizo 3 mm ≈ 61 g (el relleno de la impresión lo baja). Ver `RESUMEN.md`.
-
-## Qué se verificó
-Auditoría de ezdxf sin errores, unidades en mm, todas las capas, polilíneas cerradas, la placa y todo el conjunto dentro de 200 × 100 mm,
-agujeros a ≥ 2× el espesor del borde y ≥ 2 mm entre sí, y que las piezas fantasma del mismo nivel no se encimen.
-**No se verificó:** ninguna medida real (todas son `nominal`/`pendiente`: ver `docs/pendientes-por-confirmar.md`), ni se abrió en AutoCAD
-(se comprobó con ezdxf y vista previa). **No cortar hasta confirmar** C01, C05, M05–M07, M14, M21 y las PCB.
+## Verificado
+Auditoría ezdxf sin errores, mm, capas, polilíneas cerradas, robot completo dentro de 200 × 100, agujeros a ≥ 2× espesor del borde y
+≥ 2 mm entre sí y de las ranuras, piezas del mismo nivel sin encimarse. El 3D se abrió con ezdxf (37 mallas, 0 errores de auditoría).
+**No verificado:** abrir en AutoCAD; medidas reales con vernier (ver `docs/pendientes-por-confirmar.md`). **No cortar todavía.**
 
 ## DWG
-`ezdxf` no escribe DWG. En AutoCAD: abrir el DXF y Guardar como DWG.
+ezdxf no escribe DWG: abrir el DXF en AutoCAD y "Guardar como" DWG.

@@ -1,4 +1,7 @@
-# Faltantes para el robot casero (5 nov 2026)
+# Faltantes para el robot casero (5 nov 2026) — HISTÓRICO
+
+> **Desactualizado.** La lista vigente es `docs/faltantes-unit.md` y las decisiones están en `docs/decisiones-robot-casero.md`.
+> Se conserva solo como registro del ticket de compra (sección 1).
 
 Rama `engineering/robot-casero`. Compara tres fuentes: la lista que acordó el equipo, el ticket de Electrónica Valtierra
 (223209, 5 nov 2026, 510 MXN) y lo que ya había en el repositorio (`docs/presupuesto.md`, `docs/decisiones.md`, `firmware/seguidor/pines.h`).

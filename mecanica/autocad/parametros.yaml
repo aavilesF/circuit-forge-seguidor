@@ -1,13 +1,14 @@
-# Parámetros mecánicos del robot casero. Fuente de verdad del chasis: los lee generar_dxf.py.
-# estado: verificado = tomado del reglamento o de una hoja de datos
-#         nominal    = valor de internet / típico, NO medido (se compara con la regla: docs/pendientes-por-confirmar.md)
-#         pendiente  = marcador de posición SIN FUENTE; no usar para cortar
-# Cada valor lleva el ID de docs/pendientes-por-confirmar.md. Unidades: milímetros y gramos.
-# Ejes del dibujo: origen en el centro del eje de las ruedas, X hacia el frente, Y hacia la izquierda.
+# Parámetros mecánicos del robot casero (fuente de verdad del chasis). Los leen generar_dxf.py, generar_3d.py y verificar_dxf.py.
+# Diseño: placa plana en forma de "T" como los seguidores profesionales (base con motores atrás, espina al centro,
+# travesaño al frente que sostiene la placa de sensores muy cerca del piso).
+# estado: verificado = reglamento u hoja de datos | escalimetro = medido por Alan (cm), por confirmar con vernier
+#         nominal = de internet / típico | pendiente = sin fuente, no usar para cortar
+# Las medidas de Alan se guardan en cm (como las dio) y el diseño usa mm (cm x 10). IDs en docs/especificaciones-componentes.md.
+# Ejes: origen en el centro del eje de las ruedas, X hacia el frente, Y hacia la izquierda, Z hacia arriba (piso = 0).
 
-reglamento:                       # Reglas seguidor de línea.md (proyecto de Claude)
-  caja_largo_max_mm: {valor: 200, estado: verificado, id: C03}
-  caja_ancho_max_mm: {valor: 100, estado: verificado, id: C03}
+reglamento:                       # "Reglas seguidor de línea.md": límite de tamaño y peso del robot completo
+  largo_max_mm: {valor: 200, estado: verificado, id: C03}
+  ancho_max_mm: {valor: 100, estado: verificado, id: C03}
   peso_max_g: {valor: 500, estado: verificado, id: C03}
 
 chasis:
@@ -15,32 +16,34 @@ chasis:
   kerf_laser_mm: {valor: 0.2, estado: pendiente, id: C05}
   holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
-  x_trasero_mm: -72
-  x_delantero_mm: 120
-  ancho_mm: 97                    # 3 mm menos que la caja: margen de seguridad
+  z_inferior_mm: 19.5             # cara de abajo de la placa: libra el motor (eje a 14 mm + 5 mm de medio motor)
+  base: {x1: -27, x2: 78, medio_ancho: 49}        # zona trasera (motores, ventilador, batería, PCB principal encima)
+  espina: {x1: 78, x2: 86, medio_ancho: 15}       # unión central
+  travesano: {x1: 86, x2: 128, medio_ancho: 48}   # sostiene la placa de sensores por debajo
   chaflan_mm: 4
-  agujero_tornillo_m3_mm: 3.2     # M3 con holgura (tornillos del ticket por comprar)
+  agujero_tornillo_m3_mm: 3.2
 
 ruedas_y_motores:
-  llanta_diametro_mm: {valor: 34, estado: nominal, id: M08}
-  llanta_ancho_mm: {valor: 7, estado: nominal, id: M08}
+  llanta_diametro: {cm: 2.8, mm: 28.0, estado: escalimetro, id: M08}
+  llanta_ancho: {cm: 2.15, mm: 21.5, estado: escalimetro, id: M08}
+  rin_diametro: {cm: 2.1, mm: 21.0, estado: escalimetro, id: M08}
+  rin_alto: {cm: 2.2, mm: 22.0, estado: escalimetro, id: M08}
+  cara_exterior_llanta_y_mm: 48.0  # 2 mm de margen contra el ancho máximo de 100 mm
   motor_largo_mm: {valor: 24, estado: nominal, id: M05, nota: "34 mm totales menos 10 mm de eje (mikroelectron)"}
   motor_ancho_mm: {valor: 12, estado: pendiente, id: M06}
   motor_alto_mm: {valor: 10, estado: pendiente, id: M06}
   eje_largo_mm: {valor: 10, estado: nominal, id: M05}
-  muesca_rueda_largo_mm: 38       # llanta 34 + 4
-  muesca_rueda_profundo_mm: 10.5  # desde el borde: 7 mm de llanta + 2.5 de holgura
-  cara_motor_y_mm: 38.5           # la cara del reductor queda a esta distancia del centro
-  cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal, nota: "cincho de 2.5 mm del ticket de faltantes"}
-  rueda_loca: {x_mm: -62.0, y_mm: 8.0, diametro_tornillo_mm: 2.2, estado: pendiente, id: "M(rueda loca)", nota: "SIN FUENTE; medir la rueda comprada"}
+  muesca_rueda_medio_largo_mm: 16  # radio de llanta 14 + 2 de holgura
+  muesca_rueda_y_interior_mm: 25   # cara interior de la llanta a 26.5 mm del centro
+  cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal}
+  rueda_loca: {x_mm: 82.0, sep_tornillos_mm: 12.0, diametro_tornillo_mm: 2.2, estado: pendiente, nota: "SIN FUENTE: medir la rueda loca comprada"}
 
 modulos:
-  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: -25, estado: nominal, id: M14, nota: "Tattu 450 mAh según el contexto del equipo; medir la real"}
-  ventilador_4010: {lado_mm: 40, alto_mm: 10, separacion_agujeros_mm: 32, agujero_mm: 3.2, hueco_mm: 34, x_centro_mm: 24, estado: pendiente, id: M21, nota: "32 mm entre agujeros es lo habitual de un 4010; confirmar"}
+  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: 22, orientacion: "a lo ancho (eje Y)", estado: nominal, id: M14}
+  ventilador_4010: {lado_mm: 40, alto_mm: 10, separacion_agujeros_mm: 32, agujero_mm: 3.2, hueco_mm: 34, x_centro_mm: 54, estado: pendiente, id: M21}
   tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, id: M18}
-  barra_sensores: {n_sensores: 12, paso_mm: 7.5, ancho_total_mm_aprox: 88, estado: nominal, id: M29}
+  sensores: {n: 12, paso_mm: 7.5, radio_arco_mm: 110, altura_al_piso_mm: 4, estado: decision, nota: "paso y arco: decisión de diseño (D05)"}
 
-pcbs:                             # medidas del contorno y los agujeros: las genera electronica/kicad/herramientas/generar_pcb.py
-  principal: {ancho_mm: 76, largo_mm: 92, x_frente_mm: 32, estado: pendiente, nota: "depende de las medidas provisionales M01-M13"}
-  barra:     {ancho_mm: 94, largo_mm: 82, x_frente_mm: 118, estado: pendiente, nota: "depende de M16-M20"}
-  altura_separadores_mm: 15       # separadores M3 de 15 mm (ver faltantes): libran el ventilador de 10 mm
+pcbs:                             # contorno y agujeros: los escribe electronica/kicad/herramientas/generar_pcb.py
+  principal: {x_frente_mm: 70, separadores_mm: 18, nota: "encima de la batería (15 mm) y del ventilador (10 mm)"}
+  sensores: {x_frente_mm: 170, separadores_bajo_placa_mm: 7, nota: "cuelga DEBAJO del travesaño; sensores a ~4 mm del piso"}

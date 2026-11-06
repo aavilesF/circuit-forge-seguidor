@@ -25,7 +25,7 @@ Las tiendas físicas suelen costar más que UNIT; los precios son solo referenci
 ## Pendiente (prioridad alta: sin esto no hay robot)
 
 - [ ] 2 motorreductores GA12-N20 6 V 1000 RPM, sin encoder, eje en D de 3 mm (V: 89 c/u)
-- [ ] ESP32 DevKit 38 pines, ESP32-WROOM-32 (V: 131)
+- [ ] ESP32 DevKit 30 pines (ya lo tienen)
 - [ ] LiPo 2S 7.4 V, 450–500 mAh, ≥ 20C, con balanceo y conector de potencia que coincida con el JST-RC (E: ~350)
 - [ ] 12 sensores TCRT5000 individuales, orificio pasante (E: ~100)
 - [ ] Multiplexor 74HC4067, DIP-24 o módulo con pines (V: 25)
@@ -37,7 +37,7 @@ Las tiendas físicas suelen costar más que UNIT; los precios son solo referenci
 - [ ] Resistencias 1/4 W 5 %: 12 × 330 Ω, 12 × 10 kΩ, 2 × 1 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ y 2 × 10 kΩ de repuesto (E: ~10)
 - [ ] Fusible reseteable radial de orificio pasante, 1.5 A de mantenimiento, ≥ 16 V (ej. Littelfuse RXEF160)
 - [ ] Conector JST-RC par, 2 pines (V: 8)
-- [ ] Cable UTP Cat5/Cat6 (~30 cm) o cable 24–26 AWG para la barra de sensores
+- [ ] Cable UTP Cat5/Cat6 (~30 cm) o cable 24–26 AWG para la placa de sensores
 - [ ] Cable 22–26 AWG para motores y botones
 - [ ] Cautín 30–40 W, malla desoldadora y multímetro (si el equipo no los tiene)
 - [ ] Tornillos M2/M3, tuercas, separadores M3 de 10–15 mm y cinchos de 100 mm

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verifica los DXF de la placa: auditoría, unidades, capas, polilíneas cerradas, caja del reglamento,
+"""Verifica los DXF de la placa: auditoría, unidades, capas, polilíneas cerradas, límite de tamaño del reglamento,
 márgenes de agujeros y que las piezas fantasma de un mismo lado no se encimen. Genera vista previa en PNG.
 Uso: python3 verificar_dxf.py
 """
@@ -57,14 +57,14 @@ def verificar(archivo, material):
     pts = [(p[0], p[1]) for p in placa.get_points("xy")]
     x1, y1, x2, y2 = bbox(pts)
     L, A = x2 - x1, y2 - y1
-    Lmax, Amax = P["reglamento"]["caja_largo_max_mm"]["valor"], P["reglamento"]["caja_ancho_max_mm"]["valor"]
+    Lmax, Amax = P["reglamento"]["largo_max_mm"]["valor"], P["reglamento"]["ancho_max_mm"]["valor"]
     if L > Lmax or A > Amax:
-        errores.append(f"la placa {L:.1f} x {A:.1f} excede la caja {Lmax} x {Amax}")
-    # todo lo físico dentro de la caja
+        errores.append(f"la placa {L:.1f} x {A:.1f} excede el límite de tamaño {Lmax} x {Amax}")
+    # todo lo físico dentro del límite de tamaño
     todo = [(p[0], p[1]) for e in msp.query("LWPOLYLINE") if e.dxf.layer != "REFERENCIA" for p in e.get_points("xy")]
     bx1, by1, bx2, by2 = bbox(todo)
     if (bx2 - bx1) > Lmax or (by2 - by1) > Amax:
-        errores.append(f"con las piezas fantasma el conjunto mide {bx2 - bx1:.1f} x {by2 - by1:.1f} y excede la caja")
+        errores.append(f"con las piezas fantasma el conjunto mide {bx2 - bx1:.1f} x {by2 - by1:.1f} y excede el límite de tamaño")
     # agujeros: margen al borde >= 2 x espesor y a otros agujeros >= 2 mm
     circ = [(c.dxf.center.x, c.dxf.center.y, c.dxf.radius) for c in msp.query("CIRCLE") if c.dxf.layer in ("TALADROS", "CORTE")]
     for (x, y, r) in circ:
@@ -85,12 +85,12 @@ def verificar(archivo, material):
                 errores.append(f"ranura y agujero a menos de 2 mm cerca de ({x:.1f},{y:.1f})")
     # piezas fantasma del mismo lado no se encimen
     for capa in ("PIEZAS_FANTASMA", "PIEZAS_FANTASMA_ABAJO", "PIEZAS_FANTASMA_ENTRE"):
-        cajas = [(bbox([(p[0], p[1]) for p in e.get_points("xy")]), id(e)) for e in msp.query("LWPOLYLINE") if e.dxf.layer == capa]
-        for i in range(len(cajas)):
-            for j in range(i + 1, len(cajas)):
-                if solapan(cajas[i][0], cajas[j][0]):
+        rects = [(bbox([(p[0], p[1]) for p in e.get_points("xy")]), id(e)) for e in msp.query("LWPOLYLINE") if e.dxf.layer == capa]
+        for i in range(len(rects)):
+            for j in range(i + 1, len(rects)):
+                if solapan(rects[i][0], rects[j][0]):
                     # las llantas (en la muesca) están junto al motor por diseño: solo se avisa si no tocan la muesca
-                    errores.append(f"{capa}: dos piezas se encinman {tuple(round(v, 1) for v in cajas[i][0])} y {tuple(round(v, 1) for v in cajas[j][0])}")
+                    errores.append(f"{capa}: dos piezas se enciman {tuple(round(v, 1) for v in rects[i][0])} y {tuple(round(v, 1) for v in rects[j][0])}")
         # que estén dentro del contorno de la placa en X (las ruedas pueden salir en Y: van en muescas)
     return errores, avisos, (L, A)
 
