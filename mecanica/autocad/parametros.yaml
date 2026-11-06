@@ -1,0 +1,37 @@
+# Parámetros mecánicos del robot casero. Fuente de verdad del chasis (se leerá el generador del DXF).
+# estado: verificado = medido con vernier o tomado del reglamento / hoja de datos
+#         nominal    = valor típico, NO medido
+#         pendiente  = falta el dato; el diseño NO debe suponerlo
+# Unidades: milímetros y gramos.
+
+reglamento:                       # Reglas seguidor de línea.md (proyecto de Claude)
+  caja_largo_max_mm: {valor: 200, estado: verificado}
+  caja_ancho_max_mm: {valor: 100, estado: verificado}
+  peso_max_g: {valor: 500, estado: verificado}
+  altura_max_mm: {valor: null, estado: verificado, nota: "sin restricción de altura"}
+
+chasis:
+  material: {valor: "por definir (acrílico o PLA)", estado: pendiente}
+  espesor_acrilico_mm: {valor: null, estado: pendiente, nota: "medir con vernier la placa que se vaya a usar"}
+  kerf_laser_mm: {valor: null, estado: pendiente, nota: "se mide con una pieza de prueba en la máquina"}
+  holgura_impresion_mm: {valor: null, estado: pendiente, nota: "se calibra con una pieza de prueba"}
+  cama_impresora_mm: {valor: null, estado: pendiente}
+
+ruedas_y_motores:
+  llanta_diametro_mm: {valor: 34, estado: nominal, nota: "llanta N20 34 x 7; agotada en UNIT, puede cambiar"}
+  llanta_ancho_mm: {valor: 7, estado: nominal}
+  motor_largo_total_mm: {valor: null, estado: pendiente, nota: "GA12-N20 con caja reductora; cambia con la relación"}
+  motor_ancho_mm: {valor: null, estado: pendiente}
+  motor_alto_mm: {valor: null, estado: pendiente}
+  eje_d_mm: {valor: 3, estado: nominal}
+  rueda_loca_altura_mm: {valor: null, estado: pendiente}
+  separacion_entre_ruedas_mm: {valor: null, estado: pendiente, nota: "se define al diseñar; el repo usaba 75 mm nominal"}
+
+modulos:                          # los marcados "ya comprado" se pueden medir hoy
+  esp32_devkit: {largo_mm: null, ancho_mm: null, separacion_filas_pines_mm: null, estado: pendiente, nota: "aún no comprado"}
+  drv8833: {largo_mm: null, ancho_mm: null, alto_mm: null, estado: pendiente, nota: "ya comprado: medir"}
+  mp1584: {largo_mm: null, ancho_mm: null, alto_mm: null, estado: pendiente, nota: "ya comprado (x2): medir"}
+  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, estado: nominal, nota: "Tattu 450 mAh según el contexto del equipo; sin comprar, medir la real"}
+  tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, nota: "hoja de datos Vishay; faltan posición y separación de patas"}
+  barra_sensores: {n_sensores: 12, paso_mm: 7.5, ancho_total_mm_aprox: 88, estado: nominal}
+  ventilador: {diametro_rotor_mm: null, alto_mm: null, estado: pendiente, nota: "se diseña junto con el chasis"}

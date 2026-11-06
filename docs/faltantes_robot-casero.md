@@ -41,7 +41,7 @@ La tienda física cuesta más que UNIT (en el ticket, MP1584 a 30 contra 19 y DR
 | ESP32 DevKit 38 pines (ESP32-WROOM-32) | 1 | 131 (V) | UNIT; preguntar antes a Valtierra | No | Medio |
 | Multiplexor 74HC4067, DIP-24 o módulo | 1 | 25 (V) | UNIT | No | Medio: verificar que no sea la versión SMD sola |
 | Rueda loca mini N20 | 1 | 16 (V) | UNIT | No | Medio |
-| Resistencias 1/4 W 5 %: 12 × 330 Ω, 12 × 10 kΩ, 2 × 1 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ, 2 × 10 kΩ extra | surtido | ~15 (E) | Valtierra | No | Bajo |
+| Resistencias 1/4 W 5 %: 14 × 330 Ω, 16 × 10 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ (ya incluyen repuestos; las de 1 kΩ ya no se usan) | surtido | ~15 (E) | Valtierra | No | Bajo |
 | Fusible reseteable radial, 1.5 A de mantenimiento, ≥ 16 V (orificio pasante) | 1 | ~15 (E) | Valtierra o UNIT | No | Bajo |
 | Conector JST-RC (par, 2 pines) que coincida con la LiPo | 1 | 8 (V) | UNIT | No | Bajo, pero **depende de qué conector traiga la batería** |
 | Cable UTP o 24–26 AWG para la barra de sensores y motores | ~1 m | ~20 (E) | Tienda de redes o computación | No | Bajo |
