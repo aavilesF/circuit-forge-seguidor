@@ -1,7 +1,15 @@
 ** Drc report for /home/claude/circuit-forge-seguidor/electronica/kicad/principal/principal.kicad_pcb **
-** Created on 2026-11-05 19:49:13 **
+** Created on 2026-11-05 19:51:24 **
 
-** Found 27 DRC violations **
+** Found 24 DRC violations **
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
+    @(74.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H4
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(60.5400 mm, 66.3700 mm): Line on F.Silkscreen
+    @(67.6200 mm, 66.2800 mm): Reference 'D1'
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
@@ -16,89 +24,68 @@
     @(19.1200 mm, 91.0550 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-    @(74.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H4
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
     @(13.6200 mm, 50.2800 mm): Reference 'D2'
     @(26.5000 mm, 50.8000 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(6.0000 mm, 51.4000 mm): Footprint Text 'K' of D2
     @(26.5000 mm, 50.8000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(57.6500 mm, 13.0000 mm): Line on F.Silkscreen
-    @(57.4200 mm, 55.3710 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(57.6500 mm, 13.0000 mm): Line on F.Silkscreen
-    @(57.4200 mm, 50.7300 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(57.6500 mm, 13.0000 mm): Line on F.Silkscreen
-    @(57.4200 mm, 52.2400 mm): Line on F.Silkscreen
+    @(6.0000 mm, 51.4000 mm): Footprint Text 'K' of D2
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(62.5000 mm, 44.5000 mm): Reference 'C4'
     @(60.6700 mm, 43.8700 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(67.6200 mm, 66.2800 mm): Reference 'D1'
-    @(60.5400 mm, 66.3700 mm): Line on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(6.0000 mm, 16.0000 mm): Reference 'U1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(74.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(6.0000 mm, 36.0000 mm): Reference 'U2'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(74.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H4
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(67.6200 mm, 66.2800 mm): Reference 'D1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(6.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H3
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(12.0000 mm, 62.0000 mm): Reference 'F1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(60.5000 mm, 16.0000 mm): Reference 'U3'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(31.0000 mm, 16.0000 mm): Reference 'A1'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 16.0000 mm): Reference 'U1'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(74.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(60.5000 mm, 16.0000 mm): Reference 'U3'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(67.6200 mm, 66.2800 mm): Reference 'D1'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(74.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 36.0000 mm): Reference 'U2'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(12.0000 mm, 62.0000 mm): Reference 'F1'
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
-    @(78.0000 mm, 2.0000 mm): Line on Edge.Cuts
-    @(74.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
+    @(2.0000 mm, 94.0000 mm): Line on Edge.Cuts
+    @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
     @(78.0000 mm, 2.0000 mm): Line on Edge.Cuts
     @(74.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H4
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
-    @(2.0000 mm, 94.0000 mm): Line on Edge.Cuts
-    @(6.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H3
+    @(78.0000 mm, 2.0000 mm): Line on Edge.Cuts
+    @(74.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
     @(2.0000 mm, 94.0000 mm): Line on Edge.Cuts
-    @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
-[courtyards_overlap]: Courtyards overlap
-    Rule: board setup constraints courtyard; Severity: error
-    @(60.0000 mm, 54.0000 mm): Footprint Q1
-    @(31.0000 mm, 16.0000 mm): Footprint A1
+    @(6.0000 mm, 90.0000 mm): Value 'AgujeroM3' of H3
+[track_dangling]: Track has unconnected end
+    Local override; Severity: warning
+    @(66.2000 mm, 58.4500 mm): Track [/FAN_G] on B.Cu, length 0.2500 mm
 
 ** Found 0 unconnected pads **
 
