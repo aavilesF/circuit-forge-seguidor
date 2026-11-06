@@ -47,7 +47,7 @@ Las decisiones ya tomadas están en `decisiones-robot-casero.md` (no se repiten 
 |---|---|---|---|---|---|---|
 | C01 | Espesor del acrílico | 3 mm | Estándar más común | Preguntar al taller | pendiente | Equipo |
 | C02 | Material | Acrílico, MDF o PLA (hay DXF de los tres) | — | Cotizar | pendiente | Equipo |
-| C03 | Tamaño máximo del robot | 200 × 100 mm y 500 g (límite del reglamento, robot completo con ruedas). El diseño mide 197 × 96 mm | Reglamento | Medir el robot armado | resuelto (diseño) | Equipo |
+| C03 | Tamaño máximo del robot | 200 × 100 mm y 500 g (límite del reglamento, robot completo con ruedas). El diseño mide 198 × 96 mm | Reglamento | Medir el robot armado | resuelto (diseño) | Equipo |
 | C05 | Holgura de corte | Láser −0.2 mm; PLA +0.3 mm en los agujeros | Valores de arranque | Pieza de prueba | pendiente | Equipo |
 | C07 | Altura de los sensores al piso | 4 mm (separadores de 7 mm bajo el travesaño) | Diseño | Probar en pista: 2–8 mm | pendiente | Equipo |
 | C08 | Reglamento: posible cambio el 18 nov | Ver nota abajo | Proyecto "Seguidor Línea V2" | Releer el reglamento el 18 o 19 nov | pendiente | Equipo |

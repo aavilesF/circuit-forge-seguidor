@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461350.980983796
+2461350.9844444445
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461350.980983796
+2461350.9844444445
   9
 $TDUUPDATE
  40
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{E184AF96-44E8-4708-8D1C-E0DB7D7545A2}
+{D89B4594-C5E3-4354-8830-059F262454F1}
   9
 $VERSIONGUID
   2
-{D0F2671B-C7A6-4D7E-B7FC-D383259FF566}
+{35D2AB30-C8F7-4F06-86CD-4A08D1F807D3}
   9
 $EXTNAMES
 290
@@ -5417,7 +5417,7 @@ AcDbPolyline
  70
 1
  10
--23.0
+-24.0
  20
 -49.0
  10
@@ -5501,15 +5501,15 @@ AcDbPolyline
  20
 49.0
  10
--23.0
+-24.0
  20
 49.0
  10
--27.0
+-28.0
  20
 45.0
  10
--27.0
+-28.0
  20
 -45.0
   0
@@ -5565,9 +5565,9 @@ TALADROS
 100
 AcDbCircle
  10
--19.0
+-19.5
  20
--0.0
+-2.0
  30
 0.0
  40
@@ -6481,19 +6481,19 @@ AcDbPolyline
  70
 1
  10
--27.0
+-28.0
  20
 -50.0
  10
-173.0
+172.0
  20
 -50.0
  10
-173.0
+172.0
  20
 50.0
  10
--27.0
+-28.0
  20
 50.0
   0
@@ -6557,7 +6557,7 @@ COTAS
 100
 AcDbText
  10
--27.0
+-28.0
  20
 -58.0
  30
@@ -6567,7 +6567,7 @@ AcDbText
   1
 ROBOT CASERO - placa plana en T - ACRILICO 3 mm - unidades: mm
  11
--27.0
+-28.0
  21
 -58.0
  31
@@ -6587,7 +6587,7 @@ COTAS
 100
 AcDbText
  10
--27.0
+-28.0
  20
 -62.0
  30
@@ -6597,7 +6597,7 @@ AcDbText
   1
 Origen = centro del eje de las ruedas. X al frente, Y a la izquierda. Gris punteado = limite de tamano del reglamento (200 x 100 mm).
  11
--27.0
+-28.0
  21
 -62.0
  31
@@ -6617,7 +6617,7 @@ COTAS
 100
 AcDbText
  10
--27.0
+-28.0
  20
 -66.0
  30
@@ -6627,7 +6627,7 @@ AcDbText
   1
 Magenta = PCB principal (arriba). Cian = debajo: motores, ruedas, rueda loca y placa de sensores. Naranja = entre placa y PCB: LiPo y ventilador.
  11
--27.0
+-28.0
  21
 -66.0
  31
@@ -6647,7 +6647,7 @@ COTAS
 100
 AcDbText
  10
--27.0
+-28.0
  20
 -70.0
  30
@@ -6657,7 +6657,7 @@ AcDbText
   1
 PENDIENTE: espesor C01, kerf/holgura C05, motor N20 M05-M07, LiPo M14, ventilador M21, rueda loca M30. Ver docs/pendientes-por-confirmar.md
  11
--27.0
+-28.0
  21
 -70.0
  31
@@ -6677,7 +6677,7 @@ COTAS
 100
 AcDbText
  10
--27.0
+-28.0
  20
 -74.0
  30
@@ -6687,7 +6687,7 @@ AcDbText
   1
 Compensacion de agujeros: -0.2 mm en el diametro. NO CORTAR hasta confirmar las medidas con vernier.
  11
--27.0
+-28.0
  21
 -74.0
  31
@@ -7797,7 +7797,7 @@ DictionaryVariables
 280
 0
   1
-1.4.5 @ 2026-11-06T05:32:37.479734+00:00
+1.4.5 @ 2026-11-06T05:37:36.289653+00:00
   0
 VISUALSTYLE
   5
@@ -8509,7 +8509,7 @@ DictionaryVariables
 280
 0
   1
-1.4.5 @ 2026-11-06T05:32:37.484555+00:00
+1.4.5 @ 2026-11-06T05:37:36.294108+00:00
   0
 ENDSEC
   0

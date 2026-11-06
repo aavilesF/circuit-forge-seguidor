@@ -17,7 +17,7 @@ chasis:
   holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
   z_inferior_mm: 19.5             # cara de abajo de la placa: libra el motor (eje a 14 mm + 5 mm de medio motor)
-  base: {x1: -27, x2: 78, medio_ancho: 49}        # zona trasera (motores, ventilador, batería, PCB principal encima)
+  base: {x1: -28, x2: 78, medio_ancho: 49}        # zona trasera (motores, ventilador, batería, PCB principal encima)
   espina: {x1: 78, x2: 86, medio_ancho: 15}       # unión central
   travesano: {x1: 86, x2: 128, medio_ancho: 48}   # sostiene la placa de sensores por debajo
   chaflan_mm: 4

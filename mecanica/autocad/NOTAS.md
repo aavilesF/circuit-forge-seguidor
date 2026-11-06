@@ -7,12 +7,12 @@ Archivos (milímetros, DXF R2010):
 - Generadores: `generar_dxf.py` (2D), `generar_3d.py` (3D), `verificar_dxf.py`; parámetros en `parametros.yaml`.
 
 ## Diseño (basado en las fotos de seguidores profesionales que mandó Alan)
-- **Base** trasera (105 × 98 mm) con muescas para las ruedas: motores N20 abajo con cinchos, LiPo a lo ancho y ventilador 4010 encima de la
+- **Base** trasera (106 × 98 mm) con muescas para las ruedas: motores N20 abajo con cinchos, LiPo a lo ancho y ventilador 4010 encima de la
   placa, y la **PCB principal** encima de todo sobre 3 separadores de 18 mm (pasa por encima de las ruedas).
 - **Espina** central angosta (30 mm) con la rueda loca abajo.
 - **Travesaño** delantero (42 × 96 mm) que sostiene por debajo la **placa de sensores** con 4 separadores de 7 mm: los sensores quedan a
   ~4 mm del piso (antes quedaban a 35 mm, eso ya se corrigió).
-- Robot completo: **197 × 96 mm** (límite del reglamento 200 × 100). Placa sola: acrílico 3 mm ≈ 42 g, MDF ≈ 27 g, PLA ≈ 44 g.
+- Robot completo: **198 × 96 mm** (límite del reglamento 200 × 100). Placa sola: acrílico 3 mm ≈ 42 g, MDF ≈ 27 g, PLA ≈ 44 g.
 
 ## Verificado
 Auditoría ezdxf sin errores, mm, capas, polilíneas cerradas, robot completo dentro de 200 × 100, agujeros a ≥ 2× espesor del borde y
