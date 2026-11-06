@@ -31,6 +31,12 @@ el ESP32 controle nSLEEP (P08). Datasheet TI: VM 2.7–10.8 V, 1.5 A RMS por pue
 Pistas 0.8 mm, separación 0.5 mm, pastillas de 1.8 mm. Pistas ROJAS (capa superior) = **puentes de alambre** (R02).
 Brocas: 0.8 mm para resistencias, **1.0 mm** para headers y TO-220, **1.3 mm** para el 1N5822 (E08).
 
+## Estado de la PCB (6 nov, opción A) — RUTEO INCOMPLETO
+- Colocación nueva de las dos PCB sin piezas encimadas (DRC de colocación limpio antes de rutear).
+- **El enrutador automático no pudo unir todas las redes:** principal 16 redes sin conectar (de ~60), sensores 5 (de 27).
+  Las PCB de este commit tienen **errores de DRC `unconnected_items`**: no fabricarlas así.
+- Siguiente paso: terminar el ruteo a mano en KiCad 10 (las pistas que faltan se ven como líneas de "ratsnest") o reacomodar piezas.
+
 ## Verificado / no verificado
 - Esquemáticos: netlist de KiCad 7.0.11 + ERC propio, 0 errores. **ERC oficial no corrido** (E04).
 - PCB: DRC oficial de pcbnew (`*_drc.rpt`). Ver resultado en el commit; avisos de serigrafía no son errores.

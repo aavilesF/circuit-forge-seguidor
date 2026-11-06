@@ -86,6 +86,7 @@ Versiones anteriores: `docs/historial/`. Medidas completas: `especificaciones-co
 | E05 | Divisor de batería | 8.4 V → 2.08 V | cálculo | LiPo cargada | pendiente | Alan |
 | E06 | Corriente total | < 1.5 A | estimación | Multímetro en serie | pendiente | Alan |
 | E07 | Corto antes de la LiPo | +VBAT–GND abierto | buena práctica | Multímetro | pendiente | Alan |
+| E09 | Ruteo de las PCB de la opción A | Incompleto: principal 16 redes sin unir, sensores 5. Las PCB tienen errores de DRC | Enrutador propio | Terminar a mano en KiCad 10 o reacomodar piezas (siguiente sesión) | pendiente | Claude / Alan |
 | E08 | Brocas | 1.0 mm (headers, TO-220) y 1.3 mm (1N5822); la de 0.8 solo para resistencias | diámetro de patas | Comprar | pendiente | Alan |
 
 ## 5. Riesgos (R)
