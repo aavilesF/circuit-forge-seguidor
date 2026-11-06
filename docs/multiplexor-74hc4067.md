@@ -27,5 +27,5 @@ unos cientos de ohm), lee el ADC y pasa al siguiente canal.
 - **Nunca más de 3.3 V en SIG.** Por eso el multiplexor y los sensores se alimentan a 3.3 V: la salida jamás pasa de ese valor. Si se alimentara a 5 V,
   una lectura alta podría dañar el ESP32.
 - El ADC del ESP32 no es lineal en los extremos (cerca de 0 V y de 3.3 V). Se compensa con la calibración de blanco y negro (los 15 s del reglamento).
-- Los pines S0 a S3 están en GPIO25, 26, 27 y 33. El GPIO25 y 26 son ADC2, pero aquí se usan como salidas digitales, así que no hay problema.
+- Los pines S0 a S3 están en GPIO25, 26, 27 y 33. Los GPIO25, 26 y 27 son ADC2, pero aquí se usan como salidas digitales, así que no hay problema.
 - 100 nF entre VCC y GND cerca del módulo evita lecturas ruidosas.
