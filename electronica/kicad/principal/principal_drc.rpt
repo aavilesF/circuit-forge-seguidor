@@ -1,91 +1,509 @@
 ** Drc report for /home/claude/circuit-forge-seguidor/electronica/kicad/principal/principal.kicad_pcb **
-** Created on 2026-11-05 23:38:26 **
+** Created on 2026-11-06 11:32:22 **
 
-** Found 25 DRC violations **
+** Found 42 DRC violations **
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-    @(49.0000 mm, 91.5000 mm): Value 'AgujeroM3' of H3
+    @(42.0000 mm, 105.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
+    @(56.7500 mm, 105.0000 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-    @(64.5400 mm, 90.0400 mm): Line on F.Silkscreen
+    @(42.0000 mm, 105.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
+    @(72.3500 mm, 101.5400 mm): Circle on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-    @(64.5400 mm, 90.3700 mm): Line on F.Silkscreen
+    @(50.6200 mm, 81.2800 mm): Reference 'D1'
+    @(45.7500 mm, 80.7200 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
-    @(20.4000 mm, 90.6500 mm): Line on F.Silkscreen
+    @(45.7500 mm, 87.7200 mm): Line on F.Silkscreen
+    @(46.5400 mm, 87.7300 mm): Reference 'Q1'
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(14.0800 mm, 77.3400 mm): Reference 'SW2'
-    @(15.5400 mm, 77.0400 mm): Line on F.Silkscreen
+    @(45.7500 mm, 82.2800 mm): Line on F.Silkscreen
+    @(46.5400 mm, 87.7300 mm): Reference 'Q1'
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(47.1750 mm, 82.2800 mm): Line on F.Silkscreen
+    @(46.5400 mm, 87.7300 mm): Reference 'Q1'
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(42.0000 mm, 64.0000 mm): Line on F.Silkscreen
+    @(41.4200 mm, 88.7300 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(42.0000 mm, 64.0000 mm): Line on F.Silkscreen
+    @(41.4200 mm, 90.2400 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(42.0000 mm, 64.0000 mm): Line on F.Silkscreen
+    @(41.4200 mm, 93.3710 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(42.0000 mm, 64.0000 mm): Line on F.Silkscreen
+    @(62.7000 mm, 65.2800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(62.7000 mm, 65.2800 mm): Line on F.Silkscreen
+    @(58.7500 mm, 64.7500 mm): Reference 'C2'
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(72.0800 mm, 94.3400 mm): Reference 'SW2'
+    @(91.1400 mm, 94.1000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(72.0800 mm, 94.3400 mm): Reference 'SW2'
+    @(73.1000 mm, 94.1000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(34.7000 mm, 65.2800 mm): Line on F.Silkscreen
+    @(2.0000 mm, 64.0000 mm): Line on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(42.0000 mm, 91.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
+    @(42.0000 mm, 105.0000 mm): PCB Text 'principal - robot casero - PROVISI...' on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(74.5000 mm, 16.0000 mm): Reference 'U3'
+    @(22.0000 mm, 84.0000 mm): Reference 'HV'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
+    @(42.0000 mm, 64.0000 mm): Line on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(49.0000 mm, 91.5000 mm): Value 'AgujeroM3' of H3
+    @(42.0000 mm, 104.0000 mm): Line on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(5.0000 mm, 16.0000 mm): Reference 'U1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(11.0000 mm, 56.0000 mm): Reference 'F1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(44.0000 mm, 76.0000 mm): Reference 'D1'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(5.0000 mm, 36.0000 mm): Reference 'U2'
+    @(88.0000 mm, 104.0000 mm): Value 'AgujeroM3' of H4
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(36.0000 mm, 22.0000 mm): Reference 'A1'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
+    @(66.1000 mm, 98.0700 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(66.1000 mm, 103.0700 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(66.1000 mm, 107.6500 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(78.4000 mm, 95.3500 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(78.4000 mm, 99.9300 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(78.4000 mm, 104.9300 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 105.0000 mm): Value 'AgujeroM3' of H3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(74.5000 mm, 55.0000 mm): Reference 'U4'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(11.0000 mm, 52.0000 mm): Reference 'F1'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(5.0000 mm, 33.0000 mm): Reference 'U2'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
     @(88.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(5.0000 mm, 70.0000 mm): Reference 'D2'
+    @(74.5000 mm, 14.0000 mm): Reference 'U3'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(14.0800 mm, 77.3400 mm): Reference 'SW2'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(8.1000 mm, 81.0700 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(8.1000 mm, 86.0700 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(8.1000 mm, 90.6500 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(20.4000 mm, 78.3500 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(20.4000 mm, 82.9300 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(20.4000 mm, 87.9300 mm): Line on F.Silkscreen
+    @(5.0000 mm, 14.0000 mm): Reference 'U1'
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
-    @(2.0000 mm, 94.0000 mm): Line on Edge.Cuts
+    @(2.0000 mm, 2.0000 mm): Line on Edge.Cuts
+    @(15.2500 mm, 2.0000 mm): Reference 'SW3'
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(2.0000 mm, 108.0000 mm): Line on Edge.Cuts
+    @(2.0000 mm, 64.0000 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(2.0000 mm, 108.0000 mm): Line on Edge.Cuts
+    @(2.0000 mm, 104.0000 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(2.0000 mm, 108.0000 mm): Line on Edge.Cuts
+    @(42.0000 mm, 104.0000 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(92.0000 mm, 2.0000 mm): Line on Edge.Cuts
+    @(88.0000 mm, 104.0000 mm): Value 'AgujeroM3' of H4
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(2.0000 mm, 108.0000 mm): Line on Edge.Cuts
+    @(6.0000 mm, 105.0000 mm): Value 'AgujeroM3' of H3
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(2.0000 mm, 108.0000 mm): Line on Edge.Cuts
     @(6.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H1
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
     @(92.0000 mm, 2.0000 mm): Line on Edge.Cuts
     @(88.0000 mm, 6.0000 mm): Value 'AgujeroM3' of H2
 
-** Found 0 unconnected pads **
+** Found 88 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(28.0000 mm, 6.0000 mm): PTH pad 1 [+3V3] of J5
+    @(36.0000 mm, 22.0000 mm): PTH pad 1 [+3V3] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(63.0000 mm, 84.0000 mm): PTH pad 1 [+3V3] of C6
+    @(74.5000 mm, 55.0000 mm): PTH pad 1 [+3V3] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(74.5000 mm, 55.0000 mm): PTH pad 1 [+3V3] of U4
+    @(36.0000 mm, 22.0000 mm): PTH pad 1 [+3V3] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(5.0000 mm, 27.5000 mm): PTH pad 3 [+5V] of U1
+    @(58.2400 mm, 78.0000 mm): PTH pad 2 [+5V] of D2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(57.0000 mm, 70.0000 mm): PTH pad 1 [/+6V_MOT] of C2
+    @(74.5000 mm, 21.6200 mm): PTH pad 4 [/+6V_MOT] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(5.0000 mm, 46.5000 mm): PTH pad 3 [/+6V_MOT] of U2
+    @(57.0000 mm, 70.0000 mm): PTH pad 1 [/+6V_MOT] of C2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 44.8600 mm): PTH pad 10 [/AIN1] of A1
+    @(74.5000 mm, 26.7000 mm): PTH pad 6 [/AIN1] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 47.4000 mm): PTH pad 11 [/AIN2] of A1
+    @(74.5000 mm, 24.1600 mm): PTH pad 5 [/AIN2] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(68.5400 mm, 72.0000 mm): PTH pad 2 [/BASE_Q2] of Q2
+    @(70.6200 mm, 78.0000 mm): PTH pad 2 [/BASE_Q2] of R25
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 55.0200 mm): PTH pad 14 [/BIN1] of A1
+    @(74.5000 mm, 16.5400 mm): PTH pad 2 [/BIN1] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 57.5600 mm): PTH pad 15 [/BIN2] of A1
+    @(74.5000 mm, 14.0000 mm): PTH pad 1 [/BIN2] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(18.5000 mm, 4.0000 mm): PTH pad 1 [/CAL] of SW3
+    @(12.0000 mm, 4.0000 mm): PTH pad 1 [/CAL] of SW3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 32.1600 mm): PTH pad 26 [/CAL] of A1
+    @(18.5000 mm, 4.0000 mm): PTH pad 1 [/CAL] of SW3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(89.7400 mm, 14.0000 mm): PTH pad 7 [/DRV_SLEEP] of U3
+    @(36.0000 mm, 34.7000 mm): PTH pad 6 [/DRV_SLEEP] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 34.7000 mm): PTH pad 6 [/DRV_SLEEP] of A1
+    @(64.0000 mm, 90.0000 mm): PTH pad 1 [/DRV_SLEEP] of R3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 27.0800 mm): PTH pad 28 [/EMIT_EN] of A1
+    @(63.0000 mm, 78.0000 mm): PTH pad 1 [/EMIT_EN] of R25
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(33.0800 mm, 6.0000 mm): PTH pad 3 [/EMIT_K] of J5
+    @(71.0800 mm, 72.0000 mm): PTH pad 3 [/EMIT_K] of Q2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(50.0000 mm, 102.0000 mm): PTH pad 1 [/EN] of SW4
+    @(56.5000 mm, 102.0000 mm): PTH pad 1 [/EN] of SW4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(56.5000 mm, 102.0000 mm): PTH pad 1 [/EN] of SW4
+    @(61.4000 mm, 57.5600 mm): PTH pad 16 [/EN] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(43.0000 mm, 78.0000 mm): PTH pad 1 [/ESP_5V] of D2
+    @(61.4000 mm, 22.0000 mm): PTH pad 30 [/ESP_5V] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(54.0000 mm, 97.0000 mm): PTH pad 1 [/FAN_G] of R5
+    @(61.6200 mm, 92.0000 mm): PTH pad 2 [/FAN_G] of R4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(44.0000 mm, 92.0000 mm): PTH pad 1 [/FAN_G] of Q1
+    @(54.0000 mm, 97.0000 mm): PTH pad 1 [/FAN_G] of R5
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 37.2400 mm): PTH pad 7 [/FAN_PWM] of A1
+    @(54.0000 mm, 92.0000 mm): PTH pad 1 [/FAN_PWM] of R4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(46.5400 mm, 92.0000 mm): PTH pad 2 [/FAN_SW] of Q1
+    @(58.2400 mm, 85.0000 mm): PTH pad 2 [/FAN_SW] of D1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(58.2400 mm, 85.0000 mm): PTH pad 2 [/FAN_SW] of D1
+    @(87.0000 mm, 34.5400 mm): PTH pad 2 [/FAN_SW] of J4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(75.0000 mm, 32.0000 mm): PTH pad 1 [/MOTL_A] of J2
+    @(74.0000 mm, 40.0000 mm): PTH pad 1 [/MOTL_A] of C4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(89.7400 mm, 16.5400 mm): PTH pad 8 [/MOTL_A] of U3
+    @(75.0000 mm, 32.0000 mm): PTH pad 1 [/MOTL_A] of J2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(75.0000 mm, 34.5400 mm): PTH pad 2 [/MOTL_B] of J2
+    @(81.5000 mm, 40.0000 mm): PTH pad 2 [/MOTL_B] of C4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(89.7400 mm, 19.0800 mm): PTH pad 9 [/MOTL_B] of U3
+    @(75.0000 mm, 34.5400 mm): PTH pad 2 [/MOTL_B] of J2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(89.7400 mm, 21.6200 mm): PTH pad 10 [/MOTR_A] of U3
+    @(81.0000 mm, 32.0000 mm): PTH pad 1 [/MOTR_A] of J3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(81.0000 mm, 32.0000 mm): PTH pad 1 [/MOTR_A] of J3
+    @(74.0000 mm, 49.0000 mm): PTH pad 1 [/MOTR_A] of C5
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(89.7400 mm, 24.1600 mm): PTH pad 11 [/MOTR_B] of U3
+    @(81.0000 mm, 34.5400 mm): PTH pad 2 [/MOTR_B] of J3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(81.0000 mm, 34.5400 mm): PTH pad 2 [/MOTR_B] of J3
+    @(81.5000 mm, 49.0000 mm): PTH pad 2 [/MOTR_B] of C5
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 39.7800 mm): PTH pad 23 [/S0] of A1
+    @(74.5000 mm, 60.0800 mm): PTH pad 3 [/S0] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 37.2400 mm): PTH pad 24 [/S1] of A1
+    @(74.5000 mm, 62.6200 mm): PTH pad 4 [/S1] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 34.7000 mm): PTH pad 25 [/S2] of A1
+    @(74.5000 mm, 65.1600 mm): PTH pad 5 [/S2] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 42.3200 mm): PTH pad 22 [/S3] of A1
+    @(74.5000 mm, 67.7000 mm): PTH pad 6 [/S3] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(35.6200 mm, 6.0000 mm): PTH pad 4 [/SEN1] of J5
+    @(89.7400 mm, 55.0000 mm): PTH pad 9 [/SEN1] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(38.1600 mm, 6.0000 mm): PTH pad 5 [/SEN2] of J5
+    @(89.7400 mm, 57.5400 mm): PTH pad 10 [/SEN2] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(40.7000 mm, 6.0000 mm): PTH pad 6 [/SEN3] of J5
+    @(89.7400 mm, 60.0800 mm): PTH pad 11 [/SEN3] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(43.2400 mm, 6.0000 mm): PTH pad 7 [/SEN4] of J5
+    @(89.7400 mm, 62.6200 mm): PTH pad 12 [/SEN4] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(45.7800 mm, 6.0000 mm): PTH pad 8 [/SEN5] of J5
+    @(89.7400 mm, 65.1600 mm): PTH pad 13 [/SEN5] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(48.3200 mm, 6.0000 mm): PTH pad 9 [/SEN6] of J5
+    @(89.7400 mm, 67.7000 mm): PTH pad 14 [/SEN6] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(50.8600 mm, 6.0000 mm): PTH pad 10 [/SEN7] of J5
+    @(89.7400 mm, 70.2400 mm): PTH pad 15 [/SEN7] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(53.4000 mm, 6.0000 mm): PTH pad 11 [/SEN8] of J5
+    @(89.7400 mm, 72.7800 mm): PTH pad 16 [/SEN8] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(55.9400 mm, 6.0000 mm): PTH pad 12 [/SEN9] of J5
+    @(89.7400 mm, 75.3200 mm): PTH pad 17 [/SEN9] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(58.4800 mm, 6.0000 mm): PTH pad 13 [/SEN10] of J5
+    @(89.7400 mm, 77.8600 mm): PTH pad 18 [/SEN10] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.0200 mm, 6.0000 mm): PTH pad 14 [/SEN11] of J5
+    @(89.7400 mm, 80.4000 mm): PTH pad 19 [/SEN11] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(63.5600 mm, 6.0000 mm): PTH pad 15 [/SEN12] of J5
+    @(89.7400 mm, 82.9400 mm): PTH pad 20 [/SEN12] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 49.9400 mm): PTH pad 19 [/SIG] of A1
+    @(74.5000 mm, 70.2400 mm): PTH pad 7 [/SIG] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(66.0000 mm, 99.0000 mm): PTH pad 1 [/START] of SW2
+    @(78.5000 mm, 99.0000 mm): PTH pad 1 [/START] of SW2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 32.1600 mm): PTH pad 5 [/START] of A1
+    @(66.0000 mm, 99.0000 mm): PTH pad 1 [/START] of SW2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(16.0000 mm, 52.0000 mm): PTH pad 2 [/VBAT_F] of F1
+    @(21.0000 mm, 52.0000 mm): PTH pad 1 [/VBAT_F] of SW1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(5.0000 mm, 52.0000 mm): PTH pad 1 [/VBAT_RAW] of J1
+    @(11.0000 mm, 52.0000 mm): PTH pad 1 [/VBAT_RAW] of F1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(12.6200 mm, 60.0000 mm): PTH pad 2 [/VBAT_SENSE] of R1
+    @(15.0000 mm, 60.0000 mm): PTH pad 1 [/VBAT_SENSE] of R2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(44.0000 mm, 70.0000 mm): PTH pad 1 [/VBAT_SENSE] of C3
+    @(61.4000 mm, 55.0200 mm): PTH pad 17 [/VBAT_SENSE] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(15.0000 mm, 60.0000 mm): PTH pad 1 [/VBAT_SENSE] of R2
+    @(44.0000 mm, 70.0000 mm): PTH pad 1 [/VBAT_SENSE] of C3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(21.0000 mm, 54.5400 mm): PTH pad 2 [/VBAT_SW] of SW1
+    @(26.0000 mm, 53.5000 mm): PTH pad 1 [/VBAT_SW] of C1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(26.0000 mm, 53.5000 mm): PTH pad 1 [/VBAT_SW] of C1
+    @(24.5000 mm, 46.5000 mm): PTH pad 1 [/VBAT_SW] of U2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(21.0000 mm, 54.5400 mm): PTH pad 2 [/VBAT_SW] of SW1
+    @(5.0000 mm, 60.0000 mm): PTH pad 1 [/VBAT_SW] of R1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(24.5000 mm, 46.5000 mm): PTH pad 1 [/VBAT_SW] of U2
+    @(24.5000 mm, 27.5000 mm): PTH pad 1 [/VBAT_SW] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(43.0000 mm, 85.0000 mm): PTH pad 1 [/VBAT_SW] of D1
+    @(26.0000 mm, 53.5000 mm): PTH pad 1 [/VBAT_SW] of C1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(87.0000 mm, 32.0000 mm): PTH pad 1 [/VBAT_SW] of J4
+    @(24.5000 mm, 27.5000 mm): PTH pad 1 [/VBAT_SW] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(66.0000 mm, 72.0000 mm): PTH pad 1 [GND] of Q2
+    @(60.5000 mm, 70.0000 mm): PTH pad 2 [GND] of C2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(70.5000 mm, 84.0000 mm): PTH pad 2 [GND] of C6
+    @(71.6200 mm, 90.0000 mm): PTH pad 2 [GND] of R3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(18.5000 mm, 8.5000 mm): PTH pad 2 [GND] of SW3
+    @(12.0000 mm, 8.5000 mm): PTH pad 2 [GND] of SW3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(50.0000 mm, 106.5000 mm): PTH pad 2 [GND] of SW4
+    @(56.5000 mm, 106.5000 mm): PTH pad 2 [GND] of SW4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(24.5000 mm, 14.0000 mm): PTH pad 2 [GND] of U1
+    @(18.5000 mm, 8.5000 mm): PTH pad 2 [GND] of SW3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.6200 mm, 97.0000 mm): PTH pad 2 [GND] of R5
+    @(66.0000 mm, 104.0000 mm): PTH pad 2 [GND] of SW2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(74.5000 mm, 72.7800 mm): PTH pad 8 [GND] of U4
+    @(66.0000 mm, 72.0000 mm): PTH pad 1 [GND] of Q2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(12.0000 mm, 8.5000 mm): PTH pad 2 [GND] of SW3
+    @(5.0000 mm, 14.0000 mm): PTH pad 4 [GND] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(51.5000 mm, 70.0000 mm): PTH pad 2 [GND] of C3
+    @(60.5000 mm, 70.0000 mm): PTH pad 2 [GND] of C2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(22.6200 mm, 60.0000 mm): PTH pad 2 [GND] of R2
+    @(29.5000 mm, 53.5000 mm): PTH pad 2 [GND] of C1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(56.5000 mm, 106.5000 mm): PTH pad 2 [GND] of SW4
+    @(66.0000 mm, 104.0000 mm): PTH pad 2 [GND] of SW2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(30.5400 mm, 6.0000 mm): PTH pad 2 [GND] of J5
+    @(24.5000 mm, 14.0000 mm): PTH pad 2 [GND] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(70.5000 mm, 84.0000 mm): PTH pad 2 [GND] of C6
+    @(74.5000 mm, 72.7800 mm): PTH pad 8 [GND] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.6200 mm, 97.0000 mm): PTH pad 2 [GND] of R5
+    @(71.6200 mm, 90.0000 mm): PTH pad 2 [GND] of R3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(66.0000 mm, 104.0000 mm): PTH pad 2 [GND] of SW2
+    @(78.5000 mm, 104.0000 mm): PTH pad 2 [GND] of SW2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(49.0800 mm, 92.0000 mm): PTH pad 3 [GND] of Q1
+    @(61.6200 mm, 97.0000 mm): PTH pad 2 [GND] of R5
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(61.4000 mm, 24.5400 mm): PTH pad 29 [GND] of A1
+    @(74.5000 mm, 19.0800 mm): PTH pad 3 [GND] of U3
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(24.5000 mm, 33.0000 mm): PTH pad 2 [GND] of U2
+    @(36.0000 mm, 24.5400 mm): PTH pad 2 [GND] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(74.5000 mm, 57.5400 mm): PTH pad 2 [GND] of U4
+    @(74.5000 mm, 72.7800 mm): PTH pad 8 [GND] of U4
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 24.5400 mm): PTH pad 2 [GND] of A1
+    @(24.5000 mm, 14.0000 mm): PTH pad 2 [GND] of U1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(5.0000 mm, 54.5400 mm): PTH pad 2 [GND] of J1
+    @(22.6200 mm, 60.0000 mm): PTH pad 2 [GND] of R2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(5.0000 mm, 14.0000 mm): PTH pad 4 [GND] of U1
+    @(5.0000 mm, 33.0000 mm): PTH pad 4 [GND] of U2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(29.5000 mm, 53.5000 mm): PTH pad 2 [GND] of C1
+    @(24.5000 mm, 33.0000 mm): PTH pad 2 [GND] of U2
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(36.0000 mm, 24.5400 mm): PTH pad 2 [GND] of A1
+    @(61.4000 mm, 24.5400 mm): PTH pad 29 [GND] of A1
+[unconnected_items]: Missing connection between items
+    Local override; Severity: error
+    @(51.5000 mm, 70.0000 mm): PTH pad 2 [GND] of C3
+    @(29.5000 mm, 53.5000 mm): PTH pad 2 [GND] of C1
 
 ** Found 0 Footprint errors **
 

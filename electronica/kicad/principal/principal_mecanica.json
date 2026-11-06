@@ -3,7 +3,7 @@
   2.0,
   2.0,
   92.0,
-  94.0
+  108.0
  ],
  "agujeros_m3_mm": [
   [
@@ -15,8 +15,15 @@
    6
   ],
   [
-   49,
-   91.5
+   88,
+   100
+  ]
+ ],
+ "huecos_ventilador_mm": [
+  [
+   22,
+   84,
+   34.0
   ]
  ],
  "nota": "Coordenadas de la PCB (x derecha, y hacia atr\u00e1s). Las usa mecanica/autocad/generar_dxf.py"

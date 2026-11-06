@@ -59,9 +59,10 @@ FP_CD = "Capacitor_THT:C_Disc_D7.5mm_W5.0mm_P7.50mm"                # cerámico:
 FP_CP = "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"                    # 470 uF: diámetro 8 mm; Alan midió 3 mm entre patas (M23)
 FP_H2 = "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 FP_H8 = "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
+FP_H15 = "Connector_PinHeader_2.54mm:PinHeader_1x15_P2.54mm_Vertical"
 FP_SW = "Button_Switch_THT:SW_PUSH_6mm"                              # pulsador pequeño 6 x 6 mm (M26)
 FP_SW12 = "Button_Switch_THT:SW_PUSH-12mm"                           # pulsador mediano 12 x 12 mm (M26)
-FP_D = "robot_casero:D_DO-201AD_P35.56mm_Taladro1.3"               # 1N5822: 3.5 cm entre patas (M24); patas de 1.3 mm
+FP_D = "Diode_THT:D_DO-201AD_P15.24mm_Horizontal"                  # 1N5822: 15.24 mm entre patas (propuesta O03; Alan pidió 3.5 cm, M24)
 FP_ESP = "robot_casero:ESP32_DevKit_30"
 FP_DRV = "robot_casero:Modulo_DRV8833"
 FP_MP = "robot_casero:Modulo_MP1584"
@@ -81,6 +82,7 @@ def construir():
     s.usar_propio("robot_casero:ESP32_DevKit_30", bp.esp32_devkit_30())
     s.usar_propio("robot_casero:DRV8833_Modulo", bp.modulo_drv8833())
     s.usar_propio("robot_casero:MP1584_Modulo", bp.modulo_mp1584())
+    s.usar_propio("robot_casero:MUX4067_Modulo", bp.modulo_mux())
     for lid in ("Device:R", "Device:C", "Device:C_Polarized", "Device:D_Schottky", "Device:Polyfuse",
                 "Device:Q_NMOS_GDS", "Switch:SW_Push", "Switch:SW_SPST", "Connector_Generic:Conn_01x02",
                 "Connector_Generic:Conn_01x08"):
@@ -166,10 +168,22 @@ def construir():
             {"1": "VBAT_SW", "2": "FAN_SW"})
     s.texto("D1 protege al MOSFET del pico de voltaje del motor del ventilador", 195, 246)
 
-    # ------------------------------------------------ Barra de sensores
-    s.texto("8. HACIA LA PLACA DE SENSORES (8 hilos)", 330, 28, 1.4, True)
-    s.pieza("J5", "Connector_Generic:Conn_01x08", "A placa de sensores", FP_H8, 391.16, 38.1, 0,
-            {"1": "+3V3", "2": "GND", "3": "S0", "4": "S1", "5": "S2", "6": "S3", "7": "SIG", "8": "EMIT_EN"})
+    # ------------------------------------------------ Placa de sensores (cable de 15 hilos) y multiplexor
+    s.texto("8. MULTIPLEXOR Y CONEXION A LA PLACA DE SENSORES (15 hilos)", 330, 28, 1.4, True)
+    redes_j5 = {"1": "+3V3", "2": "GND", "3": "EMIT_K"}
+    for i in range(12):
+        redes_j5[str(4 + i)] = f"SEN{i + 1}"
+    s.pieza("J5", "Connector_Generic:Conn_01x15", "A placa de sensores", FP_H15, 345.44, 50.8, 0, redes_j5)
+    redes_mux = {"VCC": "+3V3", "GND": "GND", "EN": "GND", "S0": "S0", "S1": "S1", "S2": "S2", "S3": "S3", "SIG": "SIG"}
+    for i in range(12):
+        redes_mux[f"C{i}"] = f"SEN{i + 1}"
+    s.pieza("U4", "robot_casero:MUX4067_Modulo", "Modulo 74HC4067", "robot_casero:Modulo_MUX4067_VERIFICAR", 391.16, 76.2, 0,
+            redes_mux, nc=("C12", "C13", "C14", "C15"))
+    s.pieza("C6", "Device:C", "100n", FP_CD, 360.68, 124.46, 90, {"1": "+3V3", "2": "GND"})
+    s.texto("Emisores IR: Q2 (2N2222) une los catodos (EMIT_K) a GND cuando GPIO13 = 1", 315, 168)
+    s.pieza("R25", "Device:R", "330", FP_R, 330.2, 177.8, 90, {"1": "EMIT_EN", "2": "BASE_Q2"})
+    s.pieza("Q2", "Device:Q_NPN_EBC", "2N2222 (orden por confirmar, M25)", "Package_TO_SOT_THT:TO-92_Inline_Wide",
+            370.84, 177.8, 0, {"E": "GND", "B": "BASE_Q2", "C": "EMIT_K"})
 
     s.pwr_flag("GND", 20.0, 264.0)
     s.pwr_flag("+3V3", 40.0, 264.0)
@@ -190,5 +204,5 @@ if __name__ == "__main__":
                                                       ensure_ascii=False, indent=1))
     from biblioteca_propia import archivo_biblioteca
     (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca(
-        [bp.esp32_devkit_30(), bp.modulo_drv8833(), bp.modulo_mp1584()]))
+        [bp.esp32_devkit_30(), bp.modulo_drv8833(), bp.modulo_mp1584(), bp.modulo_mux()]))
     print("OK:", SALIDA / "principal.kicad_sch", f"({len(s.conexiones)} conexiones)")

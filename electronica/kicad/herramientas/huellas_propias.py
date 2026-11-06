@@ -110,6 +110,42 @@ def mp1584():
     return fp
 
 
+def diodo_20mm():
+    fp = _huella("D_DO-201AD_P20.32mm_Taladro1.3",
+                 "Diodo 1N5822 (DO-201AD) acostado, 20.32 mm entre patas (propuesta O03 para ahorrar espacio). Taladro 1.3 mm")
+    _pad(fp, 1, 0, 0, d=2.6, taladro=1.3)
+    _pad(fp, 2, 20.32, 0, d=2.6, taladro=1.3)
+    _contorno(fp, 5.41, -2.9, 14.91, 2.9, "1N5822 franja=pin1")
+    return fp
+
+
+def hueco_ventilador():
+    fp = _huella("Hueco_Ventilador_34mm", "Hueco de 34 mm en la PCB para que el ventilador 4010 saque el aire (sin cobre alrededor)")
+    p = pcbnew.PAD(fp)
+    p.SetNumber("")
+    p.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+    p.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
+    p.SetSize(V(34, 34)); p.SetDrillSize(V(34, 34))
+    ls = pcbnew.LSET(); ls.AddLayer(pcbnew.F_Mask); ls.AddLayer(pcbnew.B_Mask); p.SetLayerSet(ls)
+    p.SetPosition(V(0, 0)); p.SetPos0(V(0, 0))
+    fp.Add(p)
+    # 4 agujeros M3 del ventilador (32 mm entre agujeros, típico del 4010; por confirmar M21). El ventilador va sobre
+    # 4 separadores de 8 mm, por encima de las piezas bajas que queden cerca del hueco.
+    for dx in (-16, 16):
+        for dy in (-16, 16):
+            h = pcbnew.PAD(fp)
+            h.SetNumber("")
+            h.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+            h.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
+            h.SetSize(V(3.2, 3.2)); h.SetDrillSize(V(3.2, 3.2))
+            ls2 = pcbnew.LSET(); ls2.AddLayer(pcbnew.F_Mask); ls2.AddLayer(pcbnew.B_Mask); h.SetLayerSet(ls2)
+            h.SetPosition(V(dx, dy)); h.SetPos0(V(dx, dy))
+            fp.Add(h)
+    _rect(fp, -20, -20, 20, 20, pcbnew.F_SilkS)      # contorno del ventilador 40 x 40
+    _rect(fp, -18, -18, 18, 18, pcbnew.F_CrtYd, 0.05)
+    return fp
+
+
 def diodo_largo():
     fp = _huella("D_DO-201AD_P35.56mm_Taladro1.3",
                  "Diodo 1N5822 (DO-201AD) acostado, 35.56 mm entre patas como pidio Alan (M24). "
@@ -153,7 +189,7 @@ def agujero_m3():
     return fp
 
 
-TODAS = [tcrt5000, esp32, drv8833, mp1584, diodo_largo, ptc, mux, agujero_m3]
+TODAS = [tcrt5000, esp32, drv8833, mp1584, diodo_largo, diodo_20mm, hueco_ventilador, ptc, mux, agujero_m3]
 
 
 def escribir_biblioteca(destino):

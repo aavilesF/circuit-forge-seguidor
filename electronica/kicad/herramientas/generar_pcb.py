@@ -85,32 +85,29 @@ def colocacion_sensores():
         xr = cx + (i - 5.5) * 7.5
         pos[f"R{i + 1}"] = (xr, 38.54, 180)           # R del LED: pin 2 (LEDA) arriba, pin 1 (+3V3) abajo
         pos[f"R{13 + i}"] = (xr, 46.0, 0)             # R de carga: pin 1 (SEN) arriba, pin 2 (+3V3) abajo
-    pos["U1"] = (cx - 20.32, 62.0 + 15.24, 90)         # canales al frente, mando atrás
-    pos["J1"] = (cx - 9.0, 86.0, 90)
-    pos["C1"] = (cx + 24.0, 60.0, 0)
-    pos["C2"] = (cx + 24.0, 67.0, 0)
-    pos["R25"] = (cx + 30.0, 74.0, 0)
-    pos["Q1"] = (cx + 36.0, 76.0, 0)
-    huecos = [(10, 58), (90, 58), (10, 84), (90, 84)]
-    return pos, (3.0, 8.0, 97.0, 90.0), huecos
+    # Solo sensores y resistencias: el multiplexor pasó a la placa principal (opción A, 6 nov)
+    pos["J1"] = (cx - 17.78, 54.0, 90)
+    pos["C1"] = (cx + 24.0, 54.0, 0)
+    huecos = [(50, 30), (10, 54), (90, 54)]   # el del centro hace de patín delantero (O02)
+    return pos, (3.0, 8.0, 97.0, 58.0), huecos
 
 
 def colocacion_principal():
-    """Placa principal 90 x 92 mm (pasa por encima de las ruedas). Medidas de módulos de docs/especificaciones-componentes.md (escalímetro, por confirmar)."""
+    """Placa principal 90 x 106 mm, apoyada sobre la placa de acrílico (opción A), con hueco para el ventilador. Medidas de módulos de docs/especificaciones-componentes.md (escalímetro, por confirmar)."""
     pos = {
-        "J5": (30, 6, 90), "A1": (36, 22, 0), "U3": (74.5, 16, 0),
-        "U1": (5, 16, 0), "U2": (5, 36, 0),
-        "J1": (5, 56, 0), "F1": (11, 56, 0), "SW1": (21, 56, 0), "C1": (68, 60, 0), "C2": (80, 60, 0),
-        "D2": (5, 70, 0), "D1": (44, 76, 0),
-        "R1": (5, 76, 0), "R2": (15, 76, 0), "C3": (25, 76, 0),
-        "SW2": (8, 82, 0), "SW3": (26, 84, 0), "SW4": (37, 84, 0),
-        "J2": (75, 34, 0), "J3": (81, 34, 0), "J4": (87, 34, 0),
-        "C4": (74, 42, 0), "C5": (74, 50, 0),
-        "Q1": (54, 84, 0), "R4": (64, 84, 0), "R5": (64, 89, 0), "R3": (78, 84, 0),
+        "J5": (28, 6, 90), "A1": (36, 22, 0), "U3": (74.5, 14, 0), "U1": (5, 14, 0), "U2": (5, 33, 0),
+        "J2": (75, 32, 0), "J3": (81, 32, 0), "J4": (87, 32, 0), "C4": (74, 40, 0), "C5": (74, 49, 0),
+        "U4": (74.5, 55, 0),
+        "J1": (5, 52, 0), "F1": (11, 52, 0), "SW1": (21, 52, 0), "C1": (26, 53.5, 0),
+        "R1": (5, 60, 0), "R2": (15, 60, 0), "C3": (44, 70, 0), "C2": (57, 70, 0),
+        "D2": (43, 78, 0), "D1": (43, 85, 0), "Q1": (44, 92, 0), "R4": (54, 92, 0), "R5": (54, 97, 0), "R3": (64, 90, 0),
+        "SW2": (66, 99, 0), "SW3": (12, 4, 0), "SW4": (50, 102, 0),
+        "Q2": (66, 72, 0), "R25": (63, 78, 0), "C6": (63, 84, 0),
+        "HV": (22, 84, 0),
     }
-    # 3 apoyos: dos al frente y uno atrás al centro (atrás no caben en las esquinas por las muescas de las ruedas)
-    huecos = [(6, 6), (88, 6), (49, 91.5)]
-    return pos, (2.0, 2.0, 92.0, 94.0), huecos
+    # 4 apoyos M3; HV = hueco del ventilador (34 mm)
+    huecos = [(6, 6), (88, 6), (88, 100)]   # atrás a la izquierda no cabe por el ventilador: sus 4 tornillos también sujetan la PCB
+    return pos, (2.0, 2.0, 92.0, 108.0), huecos
 
 
 DISENOS = {"sensores": colocacion_sensores, "principal": colocacion_principal}
@@ -120,6 +117,8 @@ def construir(nombre, carpeta):
     sch = carpeta / f"{nombre}.kicad_sch"
     comps, nets = leer_netlist(sch)
     pos, (bx1, by1, bx2, by2), huecos = DISENOS[nombre]()
+    if "HV" in pos:
+        comps["HV"] = ("Hueco ventilador", "robot_casero:Hueco_Ventilador_34mm")
     faltan = set(comps) - set(pos)
     if faltan:
         sys.exit(f"Sin posición: {sorted(faltan)}")
@@ -188,6 +187,7 @@ def construir(nombre, carpeta):
     (carpeta / "fp-lib-table").write_text("\n".join(tabla) + "\n)\n")
     (carpeta / f"{nombre}_mecanica.json").write_text(json.dumps(
         {"contorno_mm": [bx1, by1, bx2, by2], "agujeros_m3_mm": huecos,
+         "huecos_ventilador_mm": [[pos["HV"][0], pos["HV"][1], 34.0]] if "HV" in pos else [],
          "nota": "Coordenadas de la PCB (x derecha, y hacia atrás). Las usa mecanica/autocad/generar_dxf.py"}, indent=1))
     ruta = carpeta / f"{nombre}.kicad_pcb"
     pcbnew.SaveBoard(str(ruta), b)
