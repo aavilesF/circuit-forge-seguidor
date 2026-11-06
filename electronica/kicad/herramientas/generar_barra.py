@@ -30,7 +30,7 @@ def construir():
     s.usar_oficial("Device:C")
     s.usar_oficial("Device:Q_NPN_EBC")
     s.usar_oficial("Connector_Generic:Conn_01x08")
-    s.usar_oficial("74xx:CD74HC4067M")
+    s.usar_propio("robot_casero:MUX4067_Modulo", bp.modulo_mux_barrita())
 
     s.texto("BARRA DE SENSORES - 12 x TCRT5000, paso 7.5 mm (ver mecanica). Cada fila: LED, sensor y resistencia de carga.",
             20, 12, 1.8, True)
@@ -50,12 +50,12 @@ def construir():
 
     # Multiplexor
     mx, my = 233.68, 119.38
-    redes = {"VCC": "+3V3", "GND": "GND", "~{E}": "GND", "S0": "S0", "S1": "S1", "S2": "S2", "S3": "S3", "COM": "SIG"}
+    redes = {"VCC": "+3V3", "GND": "GND", "EN": "GND", "S0": "S0", "S1": "S1", "S2": "S2", "S3": "S3", "SIG": "SIG"}
     for i in range(N):
-        redes[f"I{i}"] = f"SEN{i + 1}"
-    s.pieza("U1", "74xx:CD74HC4067M", "74HC4067 (DIP-24)", "Package_DIP:DIP-24_W7.62mm", mx, my, 0, redes,
-            nc=("I12", "I13", "I14", "I15"))
-    s.texto("Multiplexor 74HC4067: /E a GND = siempre habilitado", mx - 20, my - 36)
+        redes[f"C{i}"] = f"SEN{i + 1}"
+    s.pieza("U1", "robot_casero:MUX4067_Modulo", "Modulo 74HC4067", "robot_casero:Modulo_MUX4067_VERIFICAR", mx, my, 0, redes,
+            nc=("C12", "C13", "C14", "C15"))
+    s.texto("Modulo 74HC4067: EN a GND = siempre habilitado. Orden de pines por confirmar (M17)", mx - 20, my - 36)
 
     # Interruptor de emisores: 2N2222 (PN2222A, pines E-B-C), enciende todos los cátodos a la vez
     s.pieza("R25", "Device:R", "330", FP_R, 312.42, 53.34, 90, {"1": "EMIT_EN", "2": "BASE_Q1"})
@@ -85,5 +85,5 @@ if __name__ == "__main__":
     (SALIDA / "esperado.json").write_text(json.dumps(
         {"conexiones": s.conexiones, "nc": s.nc}, ensure_ascii=False, indent=1))
     from biblioteca_propia import archivo_biblioteca
-    (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca([bp.tcrt5000()]))
+    (SALIDA / "robot_casero.kicad_sym").write_text(archivo_biblioteca([bp.tcrt5000(), bp.modulo_mux_barrita()]))
     print("OK:", SALIDA / "barra_sensores.kicad_sch", f"({len(s.conexiones)} conexiones)")

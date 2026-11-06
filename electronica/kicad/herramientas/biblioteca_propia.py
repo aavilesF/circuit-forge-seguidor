@@ -40,6 +40,14 @@ def modulo_mp1584():
                               desc="Modulo reductor MP1584EN ajustable")
 
 
+def modulo_mux_barrita():
+    """Módulo 74HC4067 "en barrita": orden de pines POR CONFIRMAR con la pieza real (ver docs/pendientes-por-confirmar.md M17)."""
+    izq = [(1, "VCC"), (2, "GND"), (3, "S0"), (4, "S1"), (5, "S2"), (6, "S3"), (7, "SIG"), (8, "EN")]
+    der = [(9 + i, f"C{i}") for i in range(16)]
+    return make_custom_symbol("MUX4067_Modulo", "U", "Modulo 74HC4067 16 canales", izq, der, half_width=7.62,
+                              desc="Modulo multiplexor analogico 74HC4067 en barrita (orden de pines por confirmar)")
+
+
 def tcrt5000():
     # Pines nombrados por función (A, K, C, E); las patillas físicas se confirman al medir la pieza.
     return make_custom_symbol("TCRT5000", "OP", "TCRT5000",
