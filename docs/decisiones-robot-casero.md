@@ -15,6 +15,10 @@ Rama `engineering/robot-casero`.
 | D08 | 5 nov 2026 | **Ventilador permitido** (confirmado con expertos y participantes de competencias anteriores). Ya no está pendiente | Alan | este archivo |
 | D09 | 5 nov 2026 | Ruedas: las que Alan ya tiene (rin de aluminio + llanta de goma ∅28 mm). Ya no se compran llantas | Alan | `faltantes-unit.md` |
 | D10 | 5 nov 2026 | Medidas con escalímetro como valores de trabajo; se confirmarán con vernier | Alan | `especificaciones-componentes.md` |
+| D11 | 6 nov 2026 | **Nunca se borran IDs** de pendientes; se guardan versiones anteriores en `docs/historial/` | Alan | skill `mantenimiento-repositorio` |
+| D12 | 6 nov 2026 | El chasis debe ser una sola base de acrílico, compacta, sin segundo piso; ruedas más adelante (la opción concreta se elige en P12) | Alan | `opciones-diseno.md` |
+| D13 | 6 nov 2026 | Motores sujetos con aseguradores de plástico (M31) | Alan | DXF |
+| D14 | 6 nov 2026 | El puente J1 del DRV8833 se deja sin soldar (P08) | Alan (foto) + datasheet | NOTAS de KiCad |
 
 **Nota sobre "caja":** el reglamento limita el robot completo a **200 × 100 mm** de planta (largo × ancho). En los dibujos ese límite aparece
 como un rectángulo gris llamado "límite de tamaño del reglamento". No es una caja física ni el chasis.

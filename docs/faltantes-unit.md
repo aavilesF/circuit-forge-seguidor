@@ -1,6 +1,6 @@
 # Faltantes para pedir en UNIT (5 nov 2026)
 
-Rama `engineering/robot-casero` (actualizado 5 nov 2026, noche). Tienda: <https://uelectronics.com/> (pedido por unidad).
+Rama `engineering/robot-casero` (actualizado 6 nov 2026). Tienda: <https://uelectronics.com/> (pedido por unidad).
 **Solo aparece lo que todavía falta comprar.** Lo que ya se compró en Electrónica Valtierra (ticket 223209, 510 MXN) está en
 `docs/faltantes_robot-casero.md`, sección 1.
 
@@ -14,47 +14,44 @@ Rama `engineering/robot-casero` (actualizado 5 nov 2026, noche). Tienda: <https:
 
 | # | Componente | Cant. | Enlace o referencia en UNIT | MXN est. | Riesgo de retraso |
 |---|---|---|---|---|---|
-| 1 | Motorreductor GA12-N20 6 V **1000 RPM**, sin encoder (elegir la variante de RPM) — **confirmar si ya los tienen (P10)** | 2 | <https://uelectronics.com/producto/ga12-n20-motorreductor-dc-3v-6v-12v-diferentes-rpm/> | 178 (V) | **Alto**: define la tracción |
-| 2 | Multiplexor analógico **74HC4067 16 canales, módulo "en barrita"** | 1 | <https://uelectronics.com/producto/74hc4067-multiplexor-analogico-digital-16-canales/> | 25 (V) | Medio |
-| 3 | Rueda loca (caster) mini | 1 | Buscar "rueda loca" en UNIT | 16 (V) | Medio |
-| 4 | Conector JST-RC de 2 pines (par) | 1 | Buscar "JST RC 2 pines" | 8 (V) | Bajo, **depende del conector de la LiPo** |
+| 1 | Motorreductor GA12-N20 6 V **1000 RPM**, sin encoder (aún no se compran, P10) | 2 | <https://uelectronics.com/producto/ga12-n20-motorreductor-dc-3v-6v-12v-diferentes-rpm/> | 178 (V) | **Alto**: define la tracción |
+| 2 | Asegurador (soporte) para motor N20 (el blanco de la foto) | 2 | Buscar "soporte motorreductor N20" en UNIT | ~30 (E) | Medio: sin él hay que usar cinchos |
+| 3 | Multiplexor analógico **74HC4067**, módulo | 1 | <https://uelectronics.com/producto/74hc4067-multiplexor-analogico-digital-16-canales/> | 25 (V) | Medio |
+| 4 | Conector JST-RC 2 pines (par) | 1 | Buscar "JST RC 2 pines" | 8 (V) | Bajo, depende de la LiPo |
 | 5 | Ventilador 4010 (40 × 40 × 10 mm) **12 V** | 1 | <https://uelectronics.com/producto/ventilador-4010-12v-24v-dc-40x40x10mm/> | ~50 (E) | Medio |
 | 6 | MOSFET IRLZ44N (TO-220) | 1 | Buscar "IRLZ44N" | ~20 (E) | Bajo |
-| 7 | Fusible reseteable (PTC) radial, 1.5 A, ≥ 16 V | 1 | Buscar "fusible reseteable 1.5A" | ~15 (E) | Bajo |
-| 8 | Resistencias 1/4 W: 14 × 330 Ω, 16 × 10 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ | 34 pzas | Buscar por valor | ~30 (E) | Bajo |
-| 9 | TCRT5000 **suelto** (12 + 2 repuestos). La página de UNIT parece ser el módulo con placa: no sirve | 14 | <https://uelectronics.com/producto/sensor-seguidor-de-linea-tcrt5000-optico-infrarrojo/> | ~115 (E) | **Alto**: probablemente solo en tienda local |
-| | **Subtotal UNIT (filas 1 a 8)** | | | **≈ 342** | |
+| 7 | Fusible reseteable (PTC) radial 1.5 A | 1 | Buscar "fusible reseteable 1.5A" | ~15 (E) | Bajo |
+| 8 | Resistencias 1/4 W: 14 × 330 Ω, 16 × 10 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ | 34 pzas | Por valor | ~30 (E) | Bajo |
+| 9 | Tira de pines macho y hembra de 15 (cable de la placa de sensores) | 1 + 1 | Buscar "header 1x40" | ~20 (E) | Bajo |
+| | **Subtotal UNIT (filas 1 a 9)** | | | **≈ 376** | |
 
-Ya **no** se compran: ESP32 (tienen uno de 30 pines, D03), llantas N20 (usan las suyas, D09), módulos DRV8833 y MP1584 (ticket).
+Ya **no** se compran: ESP32 (tienen uno de 30 pines, D03), llantas (D09), DRV8833 y MP1584 (ticket). La **rueda loca** sale de la lista si
+se aprueba el patín (O02); si no, agregar 16 MXN.
 
-## 2. Lo que NO se consigue en UNIT (comprar en León o papelería)
+## 1b. Lo que NO se encontró (o no conviene) en UNIT, con alternativa
 
-| Componente | MXN est. | Dónde |
-|---|---|---|
-| LiPo 2S (7.4 V) 450–500 mAh, ≥ 20C, con conector de balanceo | ~350 (E) | Tienda de radiocontrol/hobby. En UNIT solo vi un paquete 2S de 18650 de 2200 mAh: **demasiado pesado** (<https://uelectronics.com/producto/bateria-18650-de-7-4v-2s1p-2200mah-2s2p-4400mah/>) |
-| TCRT5000 sueltos (fila 9) | ~115 (E) | Valtierra u otra tienda local |
-| Brocas de **1.0 mm** y **1.3 mm** (la de 0.8 no sirve para headers ni para el 1N5822, E08) | ~30 (E) | Ferretería |
-| Separadores M3: 3 de 18 mm y 4 de 7 mm (C09) | incluido en tornillería | Ferretería o UNIT |
-| Cable UTP o 24–26 AWG | ~20 (E) | Redes o computación |
-| Tornillos M2/M3, tuercas, separadores, cinchos | ~60 (E) | Ferretería |
-| Cartulina blanca mate | ~40 (E) | Papelería |
-| Cinta de vinil negra 2.5 cm | ~60 (E) | Papelería o ferretería |
+| Componente | Por qué no en UNIT | Alternativa | MXN est. |
+|---|---|---|---|
+| LiPo 2S 450–500 mAh con balanceo | Solo vi un paquete 18650 2S de 2200 mAh: muy pesado | Tienda de radiocontrol en León o Mercado Libre (envío de LiPo puede tardar) | ~350 (E) |
+| TCRT5000 suelto (14) | La página de UNIT parece ser el módulo con placa, que no cabe en el arco | Valtierra / tiendas locales; última opción: desoldar el sensor de 14 módulos | ~115 (E) |
+| Brocas 1.0 y 1.3 mm | Ferretería | Ferretería o tienda de electrónica | ~30 (E) |
+| Tornillo M3 de cabeza redonda de **nailon** (patín) | Ferretería | Tornillo M3 metálico con cabeza redonda pulida | ~10 (E) |
+| Separadores M3 de 2 mm y 4 mm, tornillos M2 para aseguradores | Ferretería | Tuercas M3 como separador | ~40 (E) |
+| Cable plano de 15 hilos (o cable UTP) | — | Cable plano de disco duro viejo / 2 cables UTP | ~20 (E) |
 
 ## 3. Total contra presupuesto (1,500–1,800 MXN con la LiPo)
 
 | Concepto | MXN |
 |---|---|
 | Ya gastado (ticket Valtierra) | 510 |
-| UNIT (filas 1 a 8) | ≈ 342 |
-| TCRT5000 sueltos | ~115 |
-| LiPo 2S | ~350 |
-| Cable, tornillos y separadores, cartulina, cinta, brocas | ~210 |
-| **Total estimado, sin envío ni chasis** | **≈ 1,527** |
-| Margen contra 1,800 | ≈ 270 |
+| UNIT (filas 1 a 9) | ≈ 376 |
+| Fuera de UNIT (LiPo, TCRT5000, brocas, tornillería, cable) | ≈ 565 |
+| Cartulina y cinta de vinil (pista de prueba) | ~100 |
+| **Total estimado, sin envío ni chasis** | **≈ 1,551** |
+| Margen contra 1,800 | ≈ 249 |
 
-**Sí cabe**, con ~270 MXN para envío y chasis. Si ya tienen los motores (P10), se ahorran 178 más.
-**Fecha límite de pedido:** no la definieron ([FECHA LÍMITE] quedó vacío). Mi recomendación: pedir a más tardar el **7 de noviembre** para tener
-las piezas alrededor del 11–12 y dejar ~9 días de armado (tiempo de entrega de UNIT **sin verificar**: revisar en el carrito).
+**Sí cabe.** **Fecha límite de pedido:** no la dieron ([FECHA LÍMITE] vacío). Recomiendo pedir a UNIT **a más tardar el 7 de noviembre**
+(el tiempo de entrega de UNIT no está verificado: revisarlo en el carrito).
 
 ## 4. Ventiladores recomendados (elegir uno)
 
