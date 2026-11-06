@@ -1,37 +1,46 @@
-# Parámetros mecánicos del robot casero. Fuente de verdad del chasis (se leerá el generador del DXF).
-# estado: verificado = medido con vernier o tomado del reglamento / hoja de datos
-#         nominal    = valor típico, NO medido
-#         pendiente  = falta el dato; el diseño NO debe suponerlo
-# Unidades: milímetros y gramos.
+# Parámetros mecánicos del robot casero. Fuente de verdad del chasis: los lee generar_dxf.py.
+# estado: verificado = tomado del reglamento o de una hoja de datos
+#         nominal    = valor de internet / típico, NO medido (se compara con la regla: docs/pendientes-por-confirmar.md)
+#         pendiente  = marcador de posición SIN FUENTE; no usar para cortar
+# Cada valor lleva el ID de docs/pendientes-por-confirmar.md. Unidades: milímetros y gramos.
+# Ejes del dibujo: origen en el centro del eje de las ruedas, X hacia el frente, Y hacia la izquierda.
 
 reglamento:                       # Reglas seguidor de línea.md (proyecto de Claude)
-  caja_largo_max_mm: {valor: 200, estado: verificado}
-  caja_ancho_max_mm: {valor: 100, estado: verificado}
-  peso_max_g: {valor: 500, estado: verificado}
-  altura_max_mm: {valor: null, estado: verificado, nota: "sin restricción de altura"}
+  caja_largo_max_mm: {valor: 200, estado: verificado, id: C03}
+  caja_ancho_max_mm: {valor: 100, estado: verificado, id: C03}
+  peso_max_g: {valor: 500, estado: verificado, id: C03}
 
 chasis:
-  material: {valor: "por definir (acrílico o PLA)", estado: pendiente}
-  espesor_acrilico_mm: {valor: null, estado: pendiente, nota: "medir con vernier la placa que se vaya a usar"}
-  kerf_laser_mm: {valor: null, estado: pendiente, nota: "se mide con una pieza de prueba en la máquina"}
-  holgura_impresion_mm: {valor: null, estado: pendiente, nota: "se calibra con una pieza de prueba"}
-  cama_impresora_mm: {valor: null, estado: pendiente}
+  espesor_mm: {acrilico: 3.0, mdf: 3.0, pla: 3.0, estado: pendiente, id: C01, nota: "propuesta estándar; confirmar con el taller"}
+  kerf_laser_mm: {valor: 0.2, estado: pendiente, id: C05}
+  holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
+  densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
+  x_trasero_mm: -68
+  x_delantero_mm: 120
+  ancho_mm: 95                    # 5 mm menos que la caja: margen de seguridad
+  chaflan_mm: 4
+  agujero_tornillo_m3_mm: 3.2     # M3 con holgura (tornillos del ticket por comprar)
 
 ruedas_y_motores:
-  llanta_diametro_mm: {valor: 34, estado: nominal, nota: "llanta N20 34 x 7; agotada en UNIT, puede cambiar"}
-  llanta_ancho_mm: {valor: 7, estado: nominal}
-  motor_largo_total_mm: {valor: null, estado: pendiente, nota: "GA12-N20 con caja reductora; cambia con la relación"}
-  motor_ancho_mm: {valor: null, estado: pendiente}
-  motor_alto_mm: {valor: null, estado: pendiente}
-  eje_d_mm: {valor: 3, estado: nominal}
-  rueda_loca_altura_mm: {valor: null, estado: pendiente}
-  separacion_entre_ruedas_mm: {valor: null, estado: pendiente, nota: "se define al diseñar; el repo usaba 75 mm nominal"}
+  llanta_diametro_mm: {valor: 34, estado: nominal, id: M08}
+  llanta_ancho_mm: {valor: 7, estado: nominal, id: M08}
+  motor_largo_mm: {valor: 24, estado: nominal, id: M05, nota: "34 mm totales menos 10 mm de eje (mikroelectron)"}
+  motor_ancho_mm: {valor: 12, estado: pendiente, id: M06}
+  motor_alto_mm: {valor: 10, estado: pendiente, id: M06}
+  eje_largo_mm: {valor: 10, estado: nominal, id: M05}
+  muesca_rueda_largo_mm: 38       # llanta 34 + 4
+  muesca_rueda_profundo_mm: 9.5   # desde el borde: 7 mm de llanta + 2.5 de holgura
+  cara_motor_y_mm: 38.5           # la cara del reductor queda a esta distancia del centro
+  cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal, nota: "cincho de 2.5 mm del ticket de faltantes"}
+  rueda_loca: {x_mm: -63.5, y_mm: 8.0, diametro_tornillo_mm: 2.2, estado: pendiente, id: "M(rueda loca)", nota: "SIN FUENTE; medir la rueda comprada"}
 
-modulos:                          # los marcados "ya comprado" se pueden medir hoy
-  esp32_devkit: {largo_mm: null, ancho_mm: null, separacion_filas_pines_mm: null, estado: pendiente, nota: "aún no comprado"}
-  drv8833: {largo_mm: null, ancho_mm: null, alto_mm: null, estado: pendiente, nota: "ya comprado: medir"}
-  mp1584: {largo_mm: null, ancho_mm: null, alto_mm: null, estado: pendiente, nota: "ya comprado (x2): medir"}
-  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, estado: nominal, nota: "Tattu 450 mAh según el contexto del equipo; sin comprar, medir la real"}
-  tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, nota: "hoja de datos Vishay; faltan posición y separación de patas"}
-  barra_sensores: {n_sensores: 12, paso_mm: 7.5, ancho_total_mm_aprox: 88, estado: nominal}
-  ventilador: {diametro_rotor_mm: null, alto_mm: null, estado: pendiente, nota: "se diseña junto con el chasis"}
+modulos:
+  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: -30, estado: nominal, id: M14, nota: "Tattu 450 mAh según el contexto del equipo; medir la real"}
+  ventilador_4010: {lado_mm: 40, alto_mm: 10, separacion_agujeros_mm: 32, agujero_mm: 3.2, hueco_mm: 34, x_centro_mm: 24, estado: pendiente, id: M21, nota: "32 mm entre agujeros es lo habitual de un 4010; confirmar"}
+  tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, id: M18}
+  barra_sensores: {n_sensores: 12, paso_mm: 7.5, ancho_total_mm_aprox: 88, estado: nominal, id: M29}
+
+pcbs:                             # medidas del contorno y los agujeros: las genera electronica/kicad/herramientas/generar_pcb.py
+  principal: {ancho_mm: 76, largo_mm: 92, x_frente_mm: 32, estado: pendiente, nota: "depende de las medidas provisionales M01-M13"}
+  barra:     {ancho_mm: 94, largo_mm: 82, x_frente_mm: 118, estado: pendiente, nota: "depende de M16-M20"}
+  altura_separadores_mm: 15       # separadores M3 de 15 mm (ver faltantes): libran el ventilador de 10 mm

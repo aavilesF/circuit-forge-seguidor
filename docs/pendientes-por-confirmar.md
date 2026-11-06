@@ -27,7 +27,7 @@ Los valores marcados **SIN FUENTE** son marcadores de posición míos para poder
 | M11 | DRV8833: voltaje de motor y corriente | 2.7–10.8 V; 1.5 A continuo por puente | [Components101](https://components101.com/ics/drv8833-motor-driver-ic) (el chip, no el módulo) | Datasheet del módulo comprado | pendiente | Alan |
 | M12 | MP1584 (módulo): largo × ancho × alto | 22 × 17 × 4 mm | [sigmanortec](https://sigmanortec.ro) | Regla | pendiente | Alan |
 | M13 | MP1584: posición de IN+/IN− y OUT+/OUT− | IN a un extremo, OUT al otro | **SIN FUENTE** (cada módulo tiene sus pads) | Foto del módulo; marcar cuál pad es cuál | pendiente | Alan |
-| M14 | LiPo 2S 450–500 mAh: largo × ancho × alto y peso | 55 × 18 × 14 mm, ~30 g | **SIN FUENTE** (valor típico de esa capacidad) | Medir cuando se compre; es la pieza que más decide la distribución de peso | pendiente | Alan |
+| M14 | LiPo 2S 450–500 mAh: largo × ancho × alto y peso | 61 × 16 × 15 mm (Tattu 450 mAh), ~30 g | Contexto del equipo (modelo Tattu, sin comprar; peso **SIN FUENTE**) | Medir cuando se compre; es la pieza que más decide la distribución de peso | pendiente | Alan |
 | M15 | LiPo: tipo de conector de potencia y de balanceo | JST-RC 2 pines + JST-XH 3 pines | **SIN FUENTE** | Mirar la batería antes de comprar el conector (ver faltantes) | pendiente | Alan |
 | M16 | Multiplexor 74HC4067 (módulo en barrita): tamaño | 18 × 41 mm | Mensaje de Alan al ver la pieza; sin datasheet | Regla | pendiente | Alan |
 | M17 | 74HC4067: orden y posición de los pines | VCC, GND, SIG, EN, S0–S3 en un extremo; C0–C15 en los lados (8 por lado) | **SIN FUENTE**; cada vendedor lo hace distinto | Foto de la serigrafía | pendiente | Alan |
@@ -100,3 +100,12 @@ Si lee ~0.55 V o más en directa, **no es Schottky** (lo cambiaron por uno de si
 `Diodo 2: directa = ___ V; inversa = ___ ; marca/letras en el cuerpo = ___`
 
 Con una foto del cuerpo del diodo basta también. **Pregunta:** ¿el diodo del ticket dice "1N5822" en el cuerpo o solo el mostrador lo escribió? Si dice otra cosa, avísame.
+
+## 5. Riesgos de diseño que hay que revisar físicamente
+
+| ID | Riesgo | Por qué | Cómo revisarlo |
+|---|---|---|---|
+| R01 | El ventilador queda **debajo** de las PCB (separadores de 15 mm): la salida de aire queda limitada a ~5 mm | La placa de 188 mm de largo no deja una zona libre para ventilador + barra + PCB principal dentro de 200 mm | Pesar la succión con báscula; si no funciona, acortar la PCB principal o poner el ventilador en la parte trasera |
+| R02 | Muchos puentes de alambre en la PCB (las pistas de la capa superior **no se graban**) | El enrutador automático los usa para cruzar pistas; ver `electronica/kicad/NOTAS.md` para el conteo | Contarlos al armar; si son demasiados, rehacer la colocación |
+| R03 | Los sensores se colocan en arco sobre una PCB plana | El brillo en curva depende de la altura real (3–8 mm del suelo) | Probar en pista |
+| R04 | La caja de 200 × 100 mm incluye ruedas y sensores | Las ruedas sobresalen por las muescas | Medir con las ruedas puestas antes de la competencia |

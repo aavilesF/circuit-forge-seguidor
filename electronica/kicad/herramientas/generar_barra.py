@@ -59,7 +59,7 @@ def construir():
 
     # Interruptor de emisores: 2N2222 (PN2222A, pines E-B-C), enciende todos los cátodos a la vez
     s.pieza("R25", "Device:R", "330", FP_R, 312.42, 53.34, 90, {"1": "EMIT_EN", "2": "BASE_Q1"})
-    s.pieza("Q1", "Device:Q_NPN_EBC", "PN2222A", "Package_TO_SOT_THT:TO-92_Inline", 383.54, 53.34, 0,
+    s.pieza("Q1", "Device:Q_NPN_EBC", "PN2222A", "Package_TO_SOT_THT:TO-92_Inline_Wide", 383.54, 53.34, 0,
             {"E": "GND", "B": "BASE_Q1", "C": "EMIT_K"})
     s.texto("Interruptor de emisores (resta de luz ambiente)", 320, 36)
 

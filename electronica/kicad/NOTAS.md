@@ -4,8 +4,8 @@ Rama `engineering/robot-casero`. Dos proyectos independientes:
 
 | Carpeta | Contenido | Estado |
 |---|---|---|
-| `principal/` | ESP32 + DRV8833 + reguladores + ventilador + botones + medición de batería | Esquemático listo; PCB pendiente de medidas |
-| `barra_sensores/` | 12 × TCRT5000 + multiplexor 74HC4067 + interruptor de emisores | Esquemático listo; PCB pendiente de medidas |
+| `principal/` | ESP32 + DRV8833 + reguladores + ventilador + botones + medición de batería | Esquemático y PCB listos (medidas provisionales) |
+| `barra_sensores/` | 12 × TCRT5000 + multiplexor 74HC4067 + interruptor de emisores | Esquemático y PCB listos (medidas provisionales) |
 
 Los `.kicad_sch` se **generan** con `herramientas/generar_principal.py` y `herramientas/generar_barra.py`
 (los pines del ESP32 se leen de `pines_robot_casero.h`). No se editan a mano: se cambia el script y se regenera.
@@ -41,13 +41,29 @@ python3 herramientas/verificar_esquematico.py barra_sensores
 | Módulo DRV8833 (ya comprado) | Orden y nombres de los pines, largo × ancho y posición de los pines |
 | Módulos MP1584 (ya comprados) | Posición de los 4 pads, largo × ancho, altura |
 | TCRT5000 (sin comprar) | Posición física de las 4 patas (ánodo, cátodo, colector, emisor) y su separación |
-| 74HC4067 | Si se compra en DIP-24 o como módulo (el esquemático supone **DIP-24**) |
+| 74HC4067 (módulo en barrita) | Orden de pines y tamaño (el esquemático usa un símbolo funcional del **módulo**, no el DIP-24) |
 | Pulsadores de 4 patas (comprados) | Tamaño y separación de patas |
 | Capacitor 470 µF 16 V (comprado) | Diámetro y separación de patas |
 | Fusible reseteable | Separación de patas |
 | Diodo 1N5822 (comprado) | Separación de patas |
 | Transistor PN2222 (comprado) | Orden de pines (E-B-C es el habitual del PN2222A; confirmar en el empaque) |
 | Ventilador | Voltaje y corriente. El MOSFET y el fusible de 1.5 A dependen de esto |
+
+## PCB (casera, una cara)
+
+```bash
+export KICAD7_FOOTPRINT_DIR=/usr/share/kicad/footprints      # solo para correr en este entorno
+python3.12 herramientas/huellas_propias.py                    # crea robot_casero.pretty (medidas provisionales)
+python3.12 herramientas/generar_pcb.py barra_sensores         # placa + ruteo + informe DRC
+python3.12 herramientas/generar_pcb.py principal
+```
+
+- Reglas: pistas 0.8 mm, separación 0.5 mm, pastillas redondas de 1.8 mm, taladro 0.8 mm (la broca del ticket), vía 1.6/0.8 mm.
+- **Las pistas de la capa superior (F.Cu) NO se graban: son puentes de alambre** soldados por las pastillas/vías. Se cuentan en `docs/pendientes-por-confirmar.md` (R02).
+- El ruteo lo hace un enrutador propio (`ruteador.py`, A* en rejilla de 0.25 mm). No se usó Freerouting: el JAR se descargó pero el entorno bloqueó ejecutarlo.
+- El DRC es el **oficial de pcbnew** (`WriteDRCReport`), KiCad 7.0.11. Quedan avisos de serigrafía (texto encima de cobre); no son errores.
+- `*_mecanica.json` guarda el contorno y los agujeros M3 de cada PCB: de ahí los toma `mecanica/autocad/generar_dxf.py`.
+- Todas las huellas de módulos son provisionales (ver IDs M01 a M20 en `docs/pendientes-por-confirmar.md`).
 
 ## Cambios a la lista de compra que salen de este diseño
 
