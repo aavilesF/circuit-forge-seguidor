@@ -63,25 +63,22 @@ def cilindro_z(capa, color, aci, xc, yc, r, z0, z1, n=16):
 
 # ---------------- placa plana en T
 prisma("3D_PLACA", "#cfe3f5", 4, G["contorno"], Z0, Z1)
-# ---------------- ruedas y motores (debajo)
+# ---------------- ruedas y motores (encima de la placa, con aseguradores)
 ye, la = R["cara_exterior_llanta_y_mm"], R["llanta_ancho"]["mm"]
 rr = R["llanta_diametro"]["mm"] / 2
 mw, ml, mh = val(R["motor_ancho_mm"]), val(R["motor_largo_mm"]), val(R["motor_alto_mm"])
+A = R["asegurador"]
 yc = ye - la - 0.5
-for s in (1, -1):
-    y1, y2 = sorted((s * (ye - la), s * ye))
+for s_ in (1, -1):
+    y1, y2 = sorted((s_ * (ye - la), s_ * ye))
     cilindro_y("3D_RUEDAS", "#1a1a1a", 250, 0, rr, rr, y1, y2)
-    yo1, yo2 = sorted((s * ye, s * (ye + 0.4)))
-    cilindro_y("3D_RUEDAS", "#b8bcc2", 9, 0, rr, R["rin_diametro"]["mm"] / 2, yo1, yo2)      # cara del rin
-    m1, m2 = sorted((s * (yc - ml), s * yc))
+    yo1, yo2 = sorted((s_ * ye, s_ * (ye + 0.4)))
+    cilindro_y("3D_RUEDAS", "#b8bcc2", 9, 0, rr, R["rin_diametro"]["mm"] / 2, yo1, yo2)
+    m1, m2 = sorted((s_ * (yc - ml), s_ * yc))
     caja("3D_MOTORES", "#8a6d3b", 42, -mw / 2, mw / 2, m1, m2, rr - mh / 2, rr + mh / 2)
-# ---------------- batería y ventilador (sobre la placa, debajo de la PCB principal)
-L = M["lipo_2s"]
-caja("3D_BATERIA", "#e3a21a", 40, L["x_centro_mm"] - L["ancho_mm"] / 2, L["x_centro_mm"] + L["ancho_mm"] / 2,
-     -L["largo_mm"] / 2, L["largo_mm"] / 2, Z1, Z1 + L["alto_mm"])
-V = M["ventilador_4010"]
-caja("3D_VENTILADOR", "#2a7f62", 94, V["x_centro_mm"] - 20, V["x_centro_mm"] + 20, -20, 20, Z1, Z1 + V["alto_mm"])
-# ---------------- PCB principal sobre separadores
+    a1, a2 = sorted((s_ * (yc - ml + 2), s_ * (yc - ml + 2 + A["largo_mm"])))
+    caja("3D_ASEGURADORES", "#f2f2f2", 7, -A["ancho_mm"] / 2, A["ancho_mm"] / 2, a1, a2, Z1, rr + mh / 2 + 1.0)
+# ---------------- PCB principal (baja, sobre separadores cortos)
 zp = Z1 + P["pcbs"]["principal"]["separadores_mm"]
 xf = P["pcbs"]["principal"]["x_frente_mm"]
 for x, y, d, quien in G["agujeros"]:
@@ -93,39 +90,47 @@ prisma("3D_PCB", "#1f6f43", 96, esq, zp, zp + 1.6)
 
 
 def modulo(nombre, aci, color, x0, y0, ancho, largo, alto, sobre=8.5):
-    """Módulo sobre la PCB principal (coordenadas de la PCB: esquina y tamaño). 'sobre' = altura de los headers hembra."""
     pts = [pcb_a_placa(PR, xf, a, b) for a, b in ((x0, y0), (x0 + ancho, y0), (x0 + ancho, y0 + largo), (x0, y0 + largo))]
-    prisma("3D_MODULOS", color, aci, pts, zp + 1.6 + sobre, zp + 1.6 + sobre + alto)
+    z0 = zp + 1.6 + sobre
+    prisma("3D_MODULOS", color, aci, pts, z0, z0 + alto)
+    return pts, z0 + alto
 
 
-modulo("ESP32", 5, "#222831", 34.7, 14.3, 28.0, 51.0, 1.6 + 3.2)         # placa + blindaje del módulo
-modulo("DRV8833", 1, "#111111", 73.6, 14.4, 18.0, 15.9, 1.6)
-modulo("MP1584 5V", 3, "#2e8b57", 3.75, 14.5, 22.0, 16.5, 4.0)
-modulo("MP1584 6V", 3, "#2e8b57", 3.75, 34.5, 22.0, 16.5, 4.0)
-# ---------------- placa de sensores (cuelga bajo el travesaño)
+esp_pts, z_esp = modulo("ESP32", 5, "#222831", 34.7, 14.3, 28.0, 51.0, 1.6 + 3.2)
+modulo("DRV8833", 1, "#111111", 73.6, 12.4, 18.0, 15.5, 1.6)
+modulo("MP1584 5V", 3, "#2e8b57", 3.75, 12.5, 22.0, 16.5, 4.0)
+modulo("MP1584 6V", 3, "#2e8b57", 3.75, 31.5, 22.0, 16.5, 4.0)
+modulo("74HC4067", 5, "#1d3f8f", 73.1, 53.0, 18.0, 41.0, 1.6)
+# LiPo pegada encima del ESP32 (a lo largo)
+L = M["lipo_2s"]
+cx = sum(p[0] for p in esp_pts) / 4
+caja("3D_BATERIA", "#e3a21a", 40, cx - L["largo_mm"] / 2, cx + L["largo_mm"] / 2, -L["ancho_mm"] / 2, L["ancho_mm"] / 2, z_esp, z_esp + L["alto_mm"])
+# ventilador sobre su hueco, con separadores de 8 mm
+V = M["ventilador_4010"]
+for hx, hy, d in PR.get("huecos_ventilador_mm", []):
+    x, y = pcb_a_placa(PR, xf, hx, hy)
+    caja("3D_VENTILADOR", "#2a7f62", 94, x - 20, x + 20, y - 20, y + 20, zp + 1.6 + V["separadores_mm"],
+         zp + 1.6 + V["separadores_mm"] + V["alto_mm"])
+# ---------------- placa de sensores sobre la MISMA placa, sensores por las ventanas
 xs = P["pcbs"]["sensores"]["x_frente_mm"]
 alt = M["sensores"]["altura_al_piso_mm"]
-zs = alt + M["tcrt5000"]["alto_mm"]          # cara inferior de la PCB de sensores
+zs = Z1 + P["pcbs"]["sensores"]["separadores_mm"]
 for x, y, d, quien in G["agujeros"]:
     if quien == "Placa de sensores":
-        cilindro_z("3D_SEPARADORES", "#c0c0c0", 8, x, y, 2.5, zs + 1.6, Z0)
+        cilindro_z("3D_SEPARADORES", "#c0c0c0", 8, x, y, 2.5, Z1, zs)
 bx1, by1, bx2, by2 = SE["contorno_mm"]
 esq = [pcb_a_placa(SE, xs, a, b) for a, b in ((bx1, by1), (bx2, by1), (bx2, by2), (bx1, by2))]
 prisma("3D_PCB", "#1f6f43", 96, esq, zs, zs + 1.6)
 Rk, n, paso = M["sensores"]["radio_arco_mm"], M["sensores"]["n"], M["sensores"]["paso_mm"]
 for i in range(n):
     th = (i - (n - 1) / 2) * paso / Rk
-    xp = 50 + Rk * math.sin(th)                       # coordenadas de la PCB de sensores (ver generar_pcb.py)
+    xp = 50 + Rk * math.sin(th)
     yp = 14 + Rk - Rk * math.cos(th) + 3.81
     x, y = pcb_a_placa(SE, xs, xp, yp)
-    caja("3D_SENSORES", "#c0392b", 1, x - 5.1, x + 5.1, y - 2.9, y + 2.9, alt, zs)
-# módulo multiplexor sobre la placa de sensores
-pts = [pcb_a_placa(SE, xs, a, b) for a, b in ((29.7, 60.0), (70.3, 60.0), (70.3, 78.0), (29.7, 78.0))]
-prisma("3D_MODULOS", "#1d3f8f", 5, pts, zs + 1.6 + 2.5, zs + 1.6 + 4.1)
-# ---------------- rueda loca
-rl = R["rueda_loca"]
-cilindro_z("3D_RUEDA_LOCA", "#7f8c8d", 8, rl["x_mm"], 0, 5, 5, Z0)
-cilindro_z("3D_RUEDA_LOCA", "#dddddd", 9, rl["x_mm"], 0, 4, 0, 5)
+    caja("3D_SENSORES", "#c0392b", 1, x - 5.1, x + 5.1, y - 2.9, y + 2.9, zs - M["tcrt5000"]["alto_mm"], zs)
+# patín delantero: tornillo de cabeza redonda de nailon bajo el agujero central de la placa de sensores
+x, y = pcb_a_placa(SE, xs, 50, 30)
+cilindro_z("3D_PATIN", "#eeeeee", 9, x, y, 3.0, 0.3, Z0)
 
 
 def escribir_dxf():
@@ -141,7 +146,7 @@ def escribir_dxf():
             mb.add_face(c)
         mb.render_mesh(msp, dxfattribs={"layer": capa})
     doc.layers.add("COTAS", color=2)
-    msp.add_text("ROBOT CASERO armado (modelo de volumenes, mm). Medidas por confirmar con vernier.", height=3,
+    msp.add_text("ROBOT CASERO armado, opcion A (modelo de volumenes, mm). Medidas por confirmar con vernier.", height=3,
                  dxfattribs={"layer": "COTAS"}).set_placement((-30, -65))
     doc.saveas(AQUI / "robot_3d.dxf")
 
@@ -158,14 +163,14 @@ def escribir_png():
         for capa, color, _, caras in PIEZAS:
             a = 0.75 if capa == "3D_PLACA" else 1.0
             ax.add_collection3d(Poly3DCollection(caras, facecolor=color, alpha=a, edgecolor=(0, 0, 0, 0.0 if capa == "3D_PLACA" else 0.25), linewidths=0.2))
-        ax.set_xlim(-30, 175); ax.set_ylim(-60, 60); ax.set_zlim(0, 70)
-        ax.set_box_aspect((205, 120, 70))
+        ax.set_xlim(-130, 75); ax.set_ylim(-60, 60); ax.set_zlim(0, 50)
+        ax.set_box_aspect((205, 120, 50))
         ax.view_init(elev=elev, azim=azim)
         ax.set_title(tit, fontsize=10)
         ax.set_axis_off()
-    fig.suptitle("Robot casero armado (modelo 3D de volúmenes, mm; medidas por confirmar con vernier)\n"
-                 "Azul claro: placa en T · verde: PCB · negro: ruedas · café: motores N20 · amarillo: LiPo · "
-                 "verde oscuro: ventilador · rojo: sensores TCRT5000 · gris: separadores y rueda loca", fontsize=10)
+    fig.suptitle("Robot casero armado, opción A: una sola placa de acrílico (modelo de volúmenes, mm; medidas por confirmar)\n"
+                 "Azul claro: placa · verde: PCB · negro: ruedas · café: motores N20 · blanco: aseguradores · amarillo: LiPo · "
+                 "verde oscuro: ventilador · rojo: sensores TCRT5000 · gris: separadores y patín", fontsize=10)
     fig.savefig(AQUI / "robot_3d.png", dpi=140, bbox_inches="tight")
 
 

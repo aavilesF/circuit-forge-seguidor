@@ -1,26 +1,25 @@
-# Parámetros mecánicos del robot casero (fuente de verdad del chasis). Los leen generar_dxf.py, generar_3d.py y verificar_dxf.py.
-# Diseño: placa plana en forma de "T" como los seguidores profesionales (base con motores atrás, espina al centro,
-# travesaño al frente que sostiene la placa de sensores muy cerca del piso).
-# estado: verificado = reglamento u hoja de datos | escalimetro = medido por Alan (cm), por confirmar con vernier
-#         nominal = de internet / típico | pendiente = sin fuente, no usar para cortar
-# Las medidas de Alan se guardan en cm (como las dio) y el diseño usa mm (cm x 10). IDs en docs/especificaciones-componentes.md.
-# Ejes: origen en el centro del eje de las ruedas, X hacia el frente, Y hacia la izquierda, Z hacia arriba (piso = 0).
+# Parámetros mecánicos del robot casero — OPCIÓN A (6 nov 2026): UNA sola placa de acrílico, todo encima, sin segundo piso.
+# Ver docs/opciones-diseno.md. Los leen generar_dxf.py, generar_3d.py y verificar_dxf.py.
+# estado: verificado = reglamento u hoja de datos | escalimetro = medido por Alan, por confirmar con vernier
+#         nominal = internet / típico | pendiente = sin fuente, no usar para cortar
+# Ejes: origen en el centro del eje de las ruedas, X al frente, Y a la izquierda, Z arriba (piso = 0).
 
-reglamento:                       # "Reglas seguidor de línea.md": límite de tamaño y peso del robot completo
+reglamento:
   largo_max_mm: {valor: 200, estado: verificado, id: C03}
   ancho_max_mm: {valor: 100, estado: verificado, id: C03}
   peso_max_g: {valor: 500, estado: verificado, id: C03}
 
 chasis:
-  espesor_mm: {acrilico: 3.0, mdf: 3.0, pla: 3.0, estado: pendiente, id: C01, nota: "propuesta estándar; confirmar con el taller"}
+  espesor_mm: {acrilico: 3.0, mdf: 3.0, pla: 3.0, estado: pendiente, id: C01}
   kerf_laser_mm: {valor: 0.2, estado: pendiente, id: C05}
   holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
-  z_inferior_mm: 19.5             # cara de abajo de la placa: libra el motor (eje a 14 mm + 5 mm de medio motor)
-  base: {x1: -28, x2: 78, medio_ancho: 49}        # zona trasera (motores, ventilador, batería, PCB principal encima)
-  espina: {x1: 78, x2: 86, medio_ancho: 15}       # unión central
-  travesano: {x1: 86, x2: 128, medio_ancho: 48}   # sostiene la placa de sensores por debajo
-  chaflan_mm: 4
+  # La cara de arriba de la placa queda a: eje (14) - medio motor (5) - base del asegurador (1.5, pendiente M31) = 7.5 mm
+  z_inferior_mm: 4.5
+  delantera: {x1: 20, x2: 70, medio_ancho: 48}    # bajo la placa de sensores
+  centro: {x1: -24, x2: 20, medio_ancho: 49}      # zona de motores (con muescas para las ruedas)
+  trasera: {x1: -126, x2: -24, medio_ancho: 49}   # bajo la PCB principal
+  chaflan_mm: 5
   agujero_tornillo_m3_mm: 3.2
 
 ruedas_y_motores:
@@ -28,22 +27,24 @@ ruedas_y_motores:
   llanta_ancho: {cm: 2.15, mm: 21.5, estado: escalimetro, id: M08}
   rin_diametro: {cm: 2.1, mm: 21.0, estado: escalimetro, id: M08}
   rin_alto: {cm: 2.2, mm: 22.0, estado: escalimetro, id: M08}
-  cara_exterior_llanta_y_mm: 48.0  # 2 mm de margen contra el ancho máximo de 100 mm
-  motor_largo_mm: {valor: 24, estado: nominal, id: M05, nota: "34 mm totales menos 10 mm de eje (mikroelectron)"}
+  cara_exterior_llanta_y_mm: 48.0
+  motor_largo_mm: {valor: 24, estado: nominal, id: M05}
   motor_ancho_mm: {valor: 12, estado: pendiente, id: M06}
   motor_alto_mm: {valor: 10, estado: pendiente, id: M06}
   eje_largo_mm: {valor: 10, estado: nominal, id: M05}
-  muesca_rueda_medio_largo_mm: 16  # radio de llanta 14 + 2 de holgura
-  muesca_rueda_y_interior_mm: 25   # cara interior de la llanta a 26.5 mm del centro
-  cincho_slot_mm: {largo: 3.0, ancho: 1.8, estado: nominal}
-  rueda_loca: {x_mm: 82.0, sep_tornillos_mm: 12.0, diametro_tornillo_mm: 2.2, estado: pendiente, nota: "SIN FUENTE: medir la rueda loca comprada"}
+  muesca_rueda_medio_largo_mm: 16
+  muesca_rueda_y_interior_mm: 25
+  asegurador: {largo_mm: 14, ancho_mm: 16, base_mm: 1.5, sep_agujeros_mm: 22, diametro_agujero_mm: 2.2, estado: pendiente, id: M31,
+               nota: "SIN FUENTE: medidas supuestas del asegurador blanco de la foto; Alan las mide"}
 
 modulos:
-  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, x_centro_mm: 22, orientacion: "a lo ancho (eje Y)", estado: nominal, id: M14}
-  ventilador_4010: {lado_mm: 40, alto_mm: 10, separacion_agujeros_mm: 32, agujero_mm: 3.2, hueco_mm: 34, x_centro_mm: 54, estado: pendiente, id: M21}
+  lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, estado: nominal, id: M14, nota: "va pegada con cinta doble cara encima del ESP32"}
+  ventilador_4010: {lado_mm: 40, alto_mm: 10, hueco_mm: 34, separadores_mm: 8, estado: pendiente, id: M21,
+                    nota: "atornillado a la PCB principal sobre su hueco; la placa tiene el mismo hueco"}
   tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, id: M18}
-  sensores: {n: 12, paso_mm: 7.5, radio_arco_mm: 110, altura_al_piso_mm: 4, estado: decision, nota: "paso y arco: decisión de diseño (D05)"}
+  sensores: {n: 12, paso_mm: 7.5, radio_arco_mm: 110, altura_al_piso_mm: 2.5, estado: decision, nota: "D05 y opciones-diseno.md"}
+  deslizadores: {n: 1, nota: "el tornillo central de la placa de sensores, con cabeza redonda de nailon, hace de patín (sustituye la rueda loca, O02)"}
 
-pcbs:                             # contorno y agujeros: los escribe electronica/kicad/herramientas/generar_pcb.py
-  principal: {x_frente_mm: 70, separadores_mm: 18, nota: "encima de la batería (15 mm) y del ventilador (10 mm)"}
-  sensores: {x_frente_mm: 170, separadores_bajo_placa_mm: 7, nota: "cuelga DEBAJO del travesaño; sensores a ~4 mm del piso"}
+pcbs:
+  principal: {x_frente_mm: -20, separadores_mm: 4}
+  sensores: {x_frente_mm: 70, separadores_mm: 2, nota: "los sensores atraviesan la placa por ventanas y quedan a 2.5 mm del piso"}
