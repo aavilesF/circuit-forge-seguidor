@@ -15,8 +15,8 @@
    6
   ],
   [
-   47,
-   91
+   49,
+   91.5
   ]
  ],
  "nota": "Coordenadas de la PCB (x derecha, y hacia atr\u00e1s). Las usa mecanica/autocad/generar_dxf.py"
