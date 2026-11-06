@@ -196,6 +196,7 @@ def rutear(ruta):
     from ruteador import Ruteador
     b = pcbnew.LoadBoard(str(ruta))
     r = Ruteador(b, **REGLAS)
+    r.limite = 250000 if 'barra' in ruta.name else 700000
     res = r.correr()
     print("Ruteo:", res)
     pcbnew.SaveBoard(str(ruta), b)

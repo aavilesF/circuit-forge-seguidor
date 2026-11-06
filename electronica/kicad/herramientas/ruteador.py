@@ -34,6 +34,7 @@ class Ruteador:
         self.claim = [np.zeros((self.H, self.W), dtype=np.int32) for _ in CAPAS]
         self.redes = {}      # id -> nombre
         self.pads = defaultdict(list)   # id -> [(x, y)] en mm
+        self.limite = 250000   # expansiones máximas de A* por conexión
         self.resultado = {"pistas": 0, "vias": 0, "puentes_mm": 0.0, "falló": []}
         self._cargar()
 
@@ -99,7 +100,7 @@ class Ruteador:
         expand = 0
         while abiertos:
             expand += 1
-            if expand > 700000:
+            if expand > self.limite:
                 return None
             f, costo, cur = heapq.heappop(abiertos)
             if costo > g.get(cur, 1e18):
