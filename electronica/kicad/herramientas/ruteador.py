@@ -225,7 +225,7 @@ class Ruteador:
                     t.SetWidth(pcbnew.FromMM(self.w)); t.SetLayer(CAPAS[c]); t.SetNetCode(red)
                     b.Add(t)
 
-    def correr(self, intentos=4):
+    def correr(self, intentos=7):
         orden = sorted(self.pads, key=lambda r: self._hpwl(r))
         for it in range(intentos):
             fallan = []
