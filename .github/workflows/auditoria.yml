@@ -1,0 +1,61 @@
+name: Auditoría con DeepSeek
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Obtener archivos cambiados
+        run: git diff --name-only HEAD~1 HEAD > cambios.txt
+
+      - name: Preparar el contenido
+        run: |
+          rm -f contexto.txt
+          while read -r archivo; do
+            case "$archivo" in
+              *.md|*.txt|*.py|*.js|*.java|*.html|*.css|*.json|*.yml|*.sql)
+                if [ -f "$archivo" ]; then
+                  echo "=== ARCHIVO: $archivo ===" >> contexto.txt
+                  cat "$archivo" >> contexto.txt
+                  echo "" >> contexto.txt
+                fi;;
+            esac
+          done < cambios.txt
+
+      - name: Enviar a DeepSeek
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, urllib.request
+          contenido = open("contexto.txt", encoding="utf-8").read()[:100000]
+          if not contenido.strip():
+              print("No hay archivos de texto cambiados.")
+              raise SystemExit(0)
+          body = {
+              "model": "deepseek-chat",
+              "messages": [
+                  {"role": "system", "content": "Eres un auditor de código y documentos. Revisa los archivos y reporta errores, riesgos de seguridad y mejoras, con el nombre del archivo y la línea."},
+                  {"role": "user", "content": contenido}
+              ]
+          }
+          req = urllib.request.Request(
+              "https://api.deepseek.com/chat/completions",
+              data=json.dumps(body).encode("utf-8"),
+              headers={"Content-Type": "application/json",
+                       "Authorization": "Bearer " + os.environ["DEEPSEEK_API_KEY"]})
+          with urllib.request.urlopen(req) as r:
+              resp = json.load(r)
+          print(resp["choices"][0]["message"]["content"])
+          EOF
