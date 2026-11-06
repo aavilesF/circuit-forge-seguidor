@@ -14,8 +14,8 @@ import pcbnew
 
 PASO = 0.25            # mm por celda
 CAPAS = (pcbnew.B_Cu, pcbnew.F_Cu)   # índice 0 = cobre real (abajo), 1 = puente de alambre (arriba)
-COSTO_PUENTE = 20.0
-COSTO_VIA = 30.0
+COSTO_PUENTE = 6.0
+COSTO_VIA = 45.0
 MARGEN = 0.30          # error de redondeo de la rejilla + holgura
 
 
@@ -99,7 +99,7 @@ class Ruteador:
         expand = 0
         while abiertos:
             expand += 1
-            if expand > 250000:
+            if expand > 700000:
                 return None
             f, costo, cur = heapq.heappop(abiertos)
             if costo > g.get(cur, 1e18):
@@ -235,7 +235,8 @@ class Ruteador:
                     fallan.append(r)
             if not fallan:
                 break
-            # reiniciar con las redes que fallaron primero
+            if it == intentos - 1:
+                break          # último intento: se conserva lo ruteado y se informa lo que falló
             self._reiniciar()
             orden = fallan + [r for r in orden if r not in fallan]
         self.resultado["falló"] = [self.redes[r] for r in fallan]
