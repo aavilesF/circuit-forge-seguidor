@@ -14,7 +14,7 @@
 2. Verifiquen con regla que la barra mide **50 mm**.
 3. Pongan el ESP32 y el DRV8833 encima: sus pines deben caer en las cruces.
 
-Si el DRV8833 no cae (sus filas podrían no estar a 15.24 mm, medida M09 [P]), **avisen antes de taladrar**.
+Si el DRV8833 no cae (sus filas podrían no estar a 15.24 mm, medida M32 [P]; el tamaño del módulo, 16 × 18.5 mm, ya está resuelto en M09), **avisen antes de taladrar**.
 
 El layout sale de `herramientas/placa_principal.py`. Al ejecutarlo comprueba solo que:
 
@@ -84,7 +84,7 @@ Coordenadas en agujeros (x, y), contando desde el agujero de arriba a la izquier
 | J5 | Sensores: 3V3, 5V, GND, LED_ON, EMIT− | x = 28, y = 3 a 7 | Header macho 1×5. |
 | J6 | Sensores A1…A8 | x = 28, y = 9 a 16 | Header macho 1×8. |
 | J7 | Zumbador (+ arriba, − abajo) | (21,23) – (21,24) | Header macho 1×2. |
-| JP1 | Puente de soldadura nFAULT | (5,10) – (5,11) | **Abierto.** Se cierra en la etapa 5 del manual. |
+| JP1 | Puente de soldadura nFAULT | (5,10) – (5,11) | **Abierto.** Se decide en la etapa 7 (paso 2) del manual; ver P13. |
 
 ### Pistas
 

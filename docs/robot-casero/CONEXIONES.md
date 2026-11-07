@@ -31,7 +31,7 @@ LiPo − ───────────────────────�
 | **D2 1N5822, en la placa** | **Aislamiento USB / batería.** El 5 V del MP1584 entra al VIN del ESP32 a través de D2. Si además hay USB conectado, el 5 V de la PC no se mete al MP1584 y el MP1584 no empuja corriente hacia la PC. | VIN queda en ≈ 4.7 V [E]. Es suficiente para el regulador de 3.3 V del DevKit con ~150 mA. |
 | U2 MP1584 #1 | 5.0 V para el ESP32, los LED IR de los sensores y el zumbador. | **Ajustar ANTES de soldar** (E01). |
 | U3 MP1584 #2 | 6.0 V fijos para los motores (decisión D04 de Alan). El N20 es de 6 V. Con VM constante, el PID se comporta igual con la batería llena que casi vacía. | **Ajustar ANTES de soldar** (E02). Si se cae con carga, ver el plan B de la sección 3. |
-| Fusible 2 A (BOM, pendiente) | Un corto en VBAT–GND sin fusible deja la LiPo en corto. | **No conecten la LiPo sin fusible.** |
+| Fusible 2 A (BOM, pendiente; el BOM dice PTC 1.5 A: ver P16) | Un corto en VBAT–GND sin fusible deja la LiPo en corto. | **No conecten la LiPo sin fusible.** |
 | R1/R2 + C6 | Medir la batería: 8.4 V × 33/133 = **2.08 V** en GPIO36 [C]. Está dentro del rango de 150–2450 mV del ADC con atenuación de 11 dB [V Espressif]. | El firmware suma la caída de D1 (`caida_d1`). Avisa batería baja en < 6.8 V y se detiene en < 6.4 V. |
 
 ## 2. Señales del ESP32

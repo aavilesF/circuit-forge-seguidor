@@ -19,6 +19,9 @@ Rama `engineering/robot-casero`.
 | D12 | 6 nov 2026 | El chasis debe ser una sola base de acrílico, compacta, sin segundo piso; ruedas más adelante (la opción concreta se elige en P12) | Alan | `opciones-diseno.md` |
 | D13 | 6 nov 2026 | Motores sujetos con aseguradores de plástico (M31) | Alan | DXF |
 | D14 | 6 nov 2026 | El puente J1 del DRV8833 se deja sin soldar (P08) | Alan (foto) + datasheet | NOTAS de KiCad |
+| D15 | 7 nov 2026 | Placa fenólica FEN20X20 de **cobre liso** (sin perforar). El diseño se transfiere con **plancha** (tóner) y los agujeros se taladran después del ataque | Alan | `docs/robot-casero/LAYOUT_PLACA.md` (el orden de taladrado y plancha del manual ya lo cubre; pregunta abierta 2 del README resuelta) |
+| D16 | 7 nov 2026 | Sensores: **12 TCRT5000 sueltos** en arco, soldados a la placa, con multiplexor 74HC4067 para ahorrar pines. Confirma D05 y sustituye el "8 directos por defecto" del plan B | Alan | **Pendiente de reflejar:** P15 (¿placa de sensores aparte?), layout de esa placa en fenólica y `SENSORES_DIRECTOS 0` en `config.h` |
+| D17 | 7 nov 2026 | Medidas: si una pieza trae dibujo o datasheet con sus dimensiones, esa medida vale y no se mide con vernier (V01, M09) | Alan | `pendientes-por-confirmar.md` |
 
 **Nota sobre "caja":** el reglamento limita el robot completo a **200 × 100 mm** de planta (largo × ancho). En los dibujos ese límite aparece
 como un rectángulo gris llamado "límite de tamaño del reglamento". No es una caja física ni el chasis.

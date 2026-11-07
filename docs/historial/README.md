@@ -8,3 +8,5 @@ Ningún ID se borra: si un ID ya no aparece en la versión actual, aquí está s
 | `pendientes-v1_2026-11-05_tarde.md` | 5 nov, tarde | Primera tabla completa (M01–M29, C01–C08, E01–E07, R01–R04). Medidas de internet |
 | `pendientes-v2_2026-11-05_noche.md` | 5 nov, noche | Igual que v1 con riesgos R01–R04 actualizados |
 | `pendientes-v3_2026-11-05_ultima.md` | 5 nov, última | Se movieron medidas a `especificaciones-componentes.md` y **se borraron IDs por error** (M29, C04, C06, R04 y otros). Corregido en la v4 (6 nov): todos los IDs restaurados |
+| `pendientes-v4_2026-11-06_pre-carrito.md` | 6 nov, antes del carrito UNIT | Restaura todos los IDs. Después: carrito UNIT, fichas aportadas por Alan y v5 (esta fila faltaba en la tabla) |
+| `pendientes-v5_2026-11-07_pre-ficha-drv8833.md` | 7 nov, antes de la v6 | Después: M09 resuelto con el dibujo oficial de UNIT; IDs nuevos M32, P13, P14, P15, P16; M25, P05, P07, M21, M28, E01, E02, E09 y R01 actualizados; V01 sin M09 |

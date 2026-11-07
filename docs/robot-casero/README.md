@@ -21,12 +21,12 @@ No hay PCB fabricada ni piezas impresas.
 
 ## Preguntas abiertas (cambian el diseño o el firmware)
 
-1. **Sensores físicos:** QTR-8A, TCRT5000 sueltos (¿cuántos?) o 74HC4067. El firmware sirve para los tres (`config.h`); la barra casera solo hace falta con TCRT5000.
-2. **FEN20X20:** ¿cobre liso o perforada? El layout sirve para las dos (rejilla de 2.54 mm).
-3. **LiPo 2S:** ¿ya la tienen? ¿Qué conector? ¿Y el **fusible**?
+1. **Sensores físicos:** QTR-8A, TCRT5000 sueltos (¿cuántos?) o 74HC4067. El firmware sirve para los tres (`config.h`); la barra casera solo hace falta con TCRT5000. **Resuelta el 7 nov (D16):** 12 TCRT5000 sueltos con 74HC4067; falta decidir si van en placa aparte (P15).
+2. **FEN20X20:** ¿cobre liso o perforada? El layout sirve para las dos (rejilla de 2.54 mm). **Resuelta el 7 nov (D15):** cobre liso, plancha y taladrado después.
+3. **LiPo 2S:** ¿ya la tienen? ¿Qué conector? ¿Y el **fusible**? (fusible: ver P16)
 4. **N20:** voltaje y RPM de la etiqueta. Los valores del modelo se ajustan con `set m_R …`.
 5. **Resistencias que tienen:** hacen falta 2 × 1 kΩ, 100 kΩ, 33 kΩ, y con TCRT5000 además 8 × 330 Ω y 8 × 10 kΩ.
-6. **Zumbador:** ¿activo o pasivo? ¿Hay LED suelto?
+6. **Zumbador:** ¿activo o pasivo? ¿Hay LED suelto? (ver P14)
 7. **MSW-39, MSW-67 y SW-104S:** no aparecen en ningún catálogo consultable. Se supone que son el botón 6×6, el botón 12×12 y el balancín KCD1.
 
 ## Diferencias con lo que había en la rama
@@ -37,5 +37,5 @@ No hay PCB fabricada ni piezas impresas.
 | Pull-down de 10 kΩ en nSLEEP | Sin él | El DRV8833 trae 500 kΩ internos [V TI] |
 | D1 en la PCB | D1 en el cable de la batería | Patas de 1.3 mm y broca de 0.8 mm |
 | nFAULT sin usar | GPIO15 a través de JP1 (abierto hasta medir) | Detectar fallas del puente sin arriesgar el pin |
-| 12 TCRT5000 en arco + 74HC4067 (D05) | 8 directos por defecto; los 12 con mux siguen soportados | Menos piezas y sin multiplexor que comprar |
+| 12 TCRT5000 en arco + 74HC4067 (D05) | 8 directos por defecto; los 12 con mux siguen soportados | Menos piezas y sin multiplexor que comprar. **7 nov: Alan confirmó los 12 con mux (D16); este cambio queda sin efecto y falta actualizar el layout y `config.h` (P15)** |
 | Botón RESET en la placa | Botón EN del DevKit | Menos huecos y pistas |

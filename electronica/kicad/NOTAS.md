@@ -33,7 +33,7 @@ Brocas: 0.8 mm para resistencias, **1.0 mm** para headers y TO-220, **1.3 mm** p
 
 ## Estado de la PCB (6 nov, opción A) — RUTEO INCOMPLETO
 - Colocación nueva de las dos PCB sin piezas encimadas (DRC de colocación limpio antes de rutear).
-- **El enrutador automático no pudo unir todas las redes:** principal 16 redes sin conectar (de ~60), sensores 5 (de 27).
+- **El enrutador automático no pudo unir todas las redes:** principal 15 redes distintas sin conectar (44 pastillas, según `principal_drc.rpt`; antes se decía 16) más 1 error de separación, sensores 5 (de 27).
   Las PCB de este commit tienen **errores de DRC `unconnected_items`**: no fabricarlas así.
 - Siguiente paso: terminar el ruteo a mano en KiCad 10 (las pistas que faltan se ven como líneas de "ratsnest") o reacomodar piezas.
 
