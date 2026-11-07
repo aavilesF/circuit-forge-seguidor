@@ -1,70 +1,85 @@
-# Faltantes para pedir en UNIT (5 nov 2026)
+# Faltantes y carrito de UNIT (6 nov 2026)
 
-Rama `engineering/robot-casero` (actualizado 6 nov 2026). Tienda: <https://uelectronics.com/> (pedido por unidad).
-**Solo aparece lo que todavía falta comprar.** Lo que ya se compró en Electrónica Valtierra (ticket 223209, 510 MXN) está en
-`docs/faltantes_robot-casero.md`, sección 1.
+Rama `engineering/robot-casero`. Tienda: <https://uelectronics.com/>. Este documento distingue **en carrito** de **comprado/recibido**: agregar al carrito no significa que el componente ya esté adquirido.
 
-**Cómo leer esta tabla**
-- *V* = precio anotado por el equipo en UNIT el 31 oct 2026 (hoy no pude abrir las páginas de UNIT desde mi entorno).
-- *E* = estimado mío, sin cotización: **confirmar en el carrito antes de pagar**.
-- Los enlaces son la referencia que encontré por búsqueda; la existencia en almacén **no está verificada**.
-- Riesgo de retraso: Alto = si falta o llega tarde, el robot no se puede armar.
+## 1. Carrito informado por Alan (6 nov 2026)
 
-## 1. Tabla para UNIT
+Subtotal declarado por Alan: **$579 MXN**, sin envío. Se verificó la suma de los subtotales de la tabla.
 
-| # | Componente | Cant. | Enlace o referencia en UNIT | MXN est. | Riesgo de retraso |
-|---|---|---|---|---|---|
-| 1 | Motorreductor GA12-N20 6 V **1000 RPM**, sin encoder (aún no se compran, P10) | 2 | <https://uelectronics.com/producto/ga12-n20-motorreductor-dc-3v-6v-12v-diferentes-rpm/> | 178 (V) | **Alto**: define la tracción |
-| 2 | Asegurador (soporte) para motor N20 (el blanco de la foto) | 2 | Buscar "soporte motorreductor N20" en UNIT | ~30 (E) | Medio: sin él hay que usar cinchos |
-| 3 | Multiplexor analógico **74HC4067**, módulo | 1 | <https://uelectronics.com/producto/74hc4067-multiplexor-analogico-digital-16-canales/> | 25 (V) | Medio |
-| 4 | Conector JST-RC 2 pines (par) | 1 | Buscar "JST RC 2 pines" | 8 (V) | Bajo, depende de la LiPo |
-| 5 | Ventilador 4010 (40 × 40 × 10 mm) **12 V** | 1 | <https://uelectronics.com/producto/ventilador-4010-12v-24v-dc-40x40x10mm/> | ~50 (E) | Medio |
-| 6 | MOSFET IRLZ44N (TO-220) | 1 | Buscar "IRLZ44N" | ~20 (E) | Bajo |
-| 7 | Fusible reseteable (PTC) radial 1.5 A | 1 | Buscar "fusible reseteable 1.5A" | ~15 (E) | Bajo |
-| 8 | Resistencias 1/4 W: 14 × 330 Ω, 16 × 10 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ | 34 pzas | Por valor | ~30 (E) | Bajo |
-| 9 | Tira de pines macho y hembra de 15 (cable de la placa de sensores) | 1 + 1 | Buscar "header 1x40" | ~20 (E) | Bajo |
-| | **Subtotal UNIT (filas 1 a 9)** | | | **≈ 376** | |
+| Producto | Cantidad en carrito | Precio unitario | Subtotal | Evaluación frente al diseño |
+|---|---:|---:|---:|---|
+| TCRT5000 individual (variante Sensor, no módulo) | 14 | $8 | $112 | Correcto: el diseño usa 12 sensores; 2 quedan de repuesto |
+| Módulo CD74HC4067 | 2 | $25 | $50 | El diseño requiere 1; el segundo es repuesto, no imprescindible |
+| Mini rueda libre 3Pi N20 | 2 | $16 | $32 | **No comprar todavía**: opción A contempla un patín (O02), no dos ruedas libres. Resolver M30 |
+| Soporte N20/N30 blanco ABS | 2 | $5 | $10 | Correcto: 2 soportes para los 2 motores |
+| Ventilador 4010 12 V | 1 | $32 | $32 | Variante correcta; ficha: 40×40×10 mm, 100 mA ±10 %, 5000 RPM ±10 %, 5 CFM, 16 g |
+| GA12-N20 6 V 1000 RPM | 2 | $89 | $178 | **Coincide con el requisito exacto** del repositorio: 6 V, 1000 RPM, sin encoder |
+| Par de cables JST-RC macho/hembra | 2 | $8 | $16 | Útil; comprobar que el conector de descarga de la LiPo sea compatible |
+| MOSFET IRLZ44N TO-220 | 3 | $12 | $36 | El diseño requiere 1; 2 adicionales serían repuestos. Confirmar accionamiento con GPIO de 3.3 V |
+| Kit de separadores M3 de latón (120 piezas) | 1 | $113 | $113 | **No resuelve directamente** los separadores M3 de 4 mm ni los tornillos M2; mínimo del kit = 6 mm |
+| **TOTAL** | | | **$579** | Sin envío |
 
-Ya **no** se compran: ESP32 (tienen uno de 30 pines, D03), llantas (D09), DRV8833 y MP1584 (ticket). La **rueda loca** sale de la lista si
-se aprueba el patín (O02); si no, agregar 16 MXN.
+### 1.1 Recomendaciones antes de pagar
 
-## 1b. Lo que NO se encontró (o no conviene) en UNIT, con alternativa
+- **Motores:** sí, la variante seleccionada de 6 V y 1000 RPM es la que pide el repositorio. No se ha confirmado todavía el largo/ancho exacto del motor ni la geometría del eje; medir al recibir.
+- **Soportes:** cantidad correcta. Ficha: ABS, 25 mm de ancho, 11 mm de alto, abertura/agujero 2 mm, 1.33 g; incluye 2 tornillos M2×7 mm y 2 tuercas M2 por soporte. La ficha no indica el patrón de agujeros para fijarlo a la PCB. No inventar huella.
+- **Multiplexor:** el nombre correcto es **74HC4067 / CD74HC4067**, no 74HC6047. Ficha: 2–6 V, 16 canales, 40×20×3 mm, 8 g. El diseño necesita 1; el segundo es opcional.
+- **JST-RC:** la ficha indica pitch 2.5 mm, cable 22 AWG, 10 cm. La LiPo debe tener conector de descarga compatible y conector de balance JST-XH de 3 pines para 2S.
+- **Ventilador:** la variante de 12 V es la correcta de las disponibles. Pesa 16 g, por lo que debe quedar fijado de forma robusta; según las reglas del proyecto, una pieza de más de 10 g que se desprenda causa falta. La cifra de 5 CFM es nominal a las condiciones del fabricante; no demuestra que el montaje genere succión útil. Requiere cámara/plenum, faldón y prueba en pista. Alimentado desde 2S (7.4–8.4 V) no recibirá sus 12 V nominales y el flujo real será menor.
+- **IRLZ44N:** 1 unidad basta según la lista; las otras 2 son repuestos. El datasheet especifica RDS(on) a VGS de 4–5 V, no garantiza el valor a 3.3 V. Como el ESP32 entrega lógica de 3.3 V, Claude debe revisar el circuito de compuerta y considerar un MOSFET con RDS(on) garantizado a 2.5/3.3 V si el IRLZ44N no conmuta plenamente.
+- **Ruedas libres:** no son parte de la compra necesaria si se mantiene el patín O02. Quitar las 2 del carrito hasta resolver M30.
+- **Kit M3:** no asumir que sustituye los separadores de 4 mm. Sus separadores más cortos son de 6 mm y sus tornillos/tuercas son M3, mientras los soportes de motor incluyen M2. Comprar solo si se acepta rediseñar la altura o si también se necesitan sus otras medidas.
 
-| Componente | Por qué no en UNIT | Alternativa | MXN est. |
-|---|---|---|---|
-| LiPo 2S 450–500 mAh con balanceo | Solo vi un paquete 18650 2S de 2200 mAh: muy pesado | Tienda de radiocontrol en León o Mercado Libre (envío de LiPo puede tardar) | ~350 (E) |
-| TCRT5000 suelto (14) | La página de UNIT parece ser el módulo con placa, que no cabe en el arco | Valtierra / tiendas locales; última opción: desoldar el sensor de 14 módulos | ~115 (E) |
-| Brocas 1.0 y 1.3 mm | Ferretería | Ferretería o tienda de electrónica | ~30 (E) |
-| Tornillo M3 de cabeza redonda de **nailon** (patín) | Ferretería | Tornillo M3 metálico con cabeza redonda pulida | ~10 (E) |
-| Separadores M3 de 2 mm y 4 mm, tornillos M2 para aseguradores | Ferretería | Tuercas M3 como separador | ~40 (E) |
-| Cable plano de 15 hilos (o cable UTP) | — | Cable plano de disco duro viejo / 2 cables UTP | ~20 (E) |
+## 2. Componentes que siguen faltando o requieren decisión
 
-## 3. Total contra presupuesto (1,500–1,800 MXN con la LiPo)
+| Componente | Cantidad/requisito | Estado | Próxima acción |
+|---|---:|---|---|
+| PTC rearmable | Selección pendiente | No está en carrito | Revisar en qué rail del esquema está y medir corriente normal; elegir Vmax adecuado |
+| Resistencias 1/4 W: 330 Ω | 14 | No están en carrito | Comprar por valor |
+| Resistencias 1/4 W: 10 kΩ | 16 | No están en carrito | Comprar por valor |
+| Resistencias 1/4 W: 100 Ω | 2 | No están en carrito | Comprar por valor |
+| Resistencia 1/4 W: 100 kΩ | 1 | No está en carrito | Comprar |
+| Resistencia 1/4 W: 33 kΩ | 1 | No está en carrito | Comprar |
+| Header macho 1×15 | 1 | No está en carrito | Confirmar longitud y paso 2.54 mm |
+| Header hembra 1×15 | 1 | No está en carrito | Confirmar longitud y paso 2.54 mm |
+| Cable plano de 15 hilos o alternativa | 1 tramo | No está en carrito | Revisar cable plano/UTP y longitud |
+| Brocas | 1.0 y 1.3 mm | Fuera de UNIT | Ferretería |
+| Tornillo M3 de nailon para patín | 1, si se mantiene O02 | Fuera de UNIT | Ferretería |
+| Separadores M3 de 4 mm | Según PCB | Pendiente | El kit de 6 mm no es reemplazo directo |
+| Tornillos M2 para soportes | Según diseño | Pendiente | Confirmar si los incluidos con los soportes fijan motor o soporte a PCB |
+| LiPo 2S | 450–500 mAh, ver sección 3 | Fuera de UNIT | Elegir modelo que quepa y entregue corriente suficiente |
 
-| Concepto | MXN |
-|---|---|
-| Ya gastado (ticket Valtierra) | 510 |
-| UNIT (filas 1 a 9) | ≈ 376 |
-| Fuera de UNIT (LiPo, TCRT5000, brocas, tornillería, cable) | ≈ 565 |
-| Cartulina y cinta de vinil (pista de prueba) | ~100 |
-| **Total estimado, sin envío ni chasis** | **≈ 1,551** |
-| Margen contra 1,800 | ≈ 249 |
+## 3. Requisitos para elegir la batería LiPo
 
-**Sí cabe.** **Fecha límite de pedido:** no la dieron ([FECHA LÍMITE] vacío). Recomiendo pedir a UNIT **a más tardar el 7 de noviembre**
-(el tiempo de entrega de UNIT no está verificado: revisarlo en el carrito).
+Que aparezca como **7.4 V** es normal: es el voltaje nominal de una batería LiPo 2S. Completamente cargada alcanza **8.4 V**.
 
-## 4. Ventiladores recomendados (elegir uno)
+Requisito inicial a buscar:
+- Química: LiPo.
+- Configuración: 2S1P (2 celdas en serie).
+- Voltaje: 7.4 V nominal, 8.4 V máximo cargada.
+- Capacidad: 450–500 mAh.
+- Descarga continua: preferible 20C o más; confirmar contra la corriente real de motores, ventilador y electrónica.
+- Descarga pico: especificación del fabricante, no usarla como corriente continua.
+- Conector de descarga: compatible con el cable JST-RC elegido; verificar físicamente antes de comprar.
+- Balanceo: JST-XH de 3 pines.
+- Peso y dimensiones: elegir después de comprobar el espacio real del chasis. No asumir que todas las LiPo 2S de 500 mAh tienen el mismo formato.
 
-Los tres usan corriente continua y se manejan con el MOSFET IRLZ44N desde la LiPo (7.4–8.4 V). Un ventilador de 12 V alimentado con ~8 V gira más lento
-(aprox. 60–70 % de su velocidad), así que **mueve menos aire de lo que dice la etiqueta**: es normal. Todas las cifras de consumo son **típicas de este tipo de
-ventilador, sin confirmar en la página de UNIT** (por eso están como pendiente en `pendientes-por-confirmar.md`).
+Ejemplo de ficha comparable encontrada en web: 500 mAh, 2S, 7.4 V, 20C continua, 30C pico, 55×30×14 mm y 36 g. Es una referencia de especificaciones, **no una recomendación de compra**, porque sus dimensiones y conector podrían no encajar. Ver <https://www.grupoelectrostore.com/producto/bateria-lipo-2s-74v-500mah-turnigy-20c/>.
 
-| Opción | Tipo y tamaño | Voltaje | Consumo típico a 12 V (por confirmar) | Comentario |
-|---|---|---|---|---|
-| A. [4010](https://uelectronics.com/producto/ventilador-4010-12v-24v-dc-40x40x10mm/) | Axial 40 × 40 × 10 mm | 12 V (hay de 24 V: **elegir 12 V**) | ~0.1–0.2 A | Más compacto y liviano (~10–15 g). Caben dos. **Recomendada para empezar** |
-| B. [5015 turbina](https://uelectronics.com/producto/ventiladores-de-refrigeracion-5015-12v-24v-dc-impresoras-3d/) | Centrífugo (turbina) 50 × 50 × 15 mm | 12 V | ~0.1–0.2 A | Genera más presión de aire: mejor para succionar bajo una falda. Un poco más alto |
-| C. [6015 turbina](https://uelectronics.com/producto/ventiladores-6015-5v-12v-24v-dc/) | Centrífugo 60 × 60 × 15 mm | 12 V (hay de 5 V y 24 V) | ~0.15–0.3 A | La más fuerte; ocupa más placa y pesa más. Solo si sobra peso (límite 500 g) |
+## 4. Alternativas al PTC radial de 1.5 A
 
-**Cuidados:** (1) un ventilador de 12 V puede no arrancar con ciclo de trabajo (PWM) bajo; úsenlo casi al 100 % o encendido/apagado. (2) El ventilador solo se
-enciende **después** de la señal del árbitro. (3) Pesar el ventilador: cualquier pieza de más de 10 g que se caiga es falta. (4) Pidan por escrito a la
-organización el permiso de usar ventilador (el repo indica que está permitido, pero hay que tenerlo por escrito para la homologación).
+No elegirlo solo por el valor "1.5 A". Primero revisar si protege la entrada de batería 2S o una rama regulada. Si está en la entrada 2S, el voltaje máximo del PTC debe superar 8.4 V con margen. Una alternativa es un PTC radial de 16 V/30 V o superior, o un fusible convencional reemplazable con portafusible; la corriente nominal debe salir del consumo real y de la protección del cableado/PCB. No sustituir hasta revisar el esquema y calcular el valor.
+
+## 5. Presupuesto actualizado
+
+- Ya gastado en Electrónica Valtierra: $510 MXN.
+- Carrito UNIT declarado: $579 MXN.
+- Pendientes estimados fuera del carrito (LiPo, brocas, patín si se mantiene, tornillería M2/M3 y cable): aprox. $450 MXN, **sin volver a contar los TCRT5000**, que ya están en el carrito.
+- Pendientes UNIT que no están en el carrito (PTC, resistencias, headers): aprox. $65 MXN.
+- Pista de prueba: aprox. $100 MXN.
+
+**Total preliminar: aprox. $1,704 MXN**, sin envío ni chasis. Es una estimación y deja poco margen contra el máximo de $1,800. Quitar las ruedas libres (-$32) y reducir el IRLZ44N a 1 unidad (-$24) bajaría el total a aprox. $1,648. Si se decide no comprar el kit M3 hasta confirmar su utilidad (-$113), bajaría a aprox. $1,535, antes de comprar los separadores correctos.
+
+## 6. Ventilador y reglas
+
+El ventilador seleccionado pesa 16 g según UNIT. Debe quedar retenido con tornillería/soporte y no depender solo de adhesivo. La succión no puede darse por confirmada por el dato de 5 CFM: hay que diseñar una cámara de presión negativa/faldón y medir si realmente aumenta la carga normal sin rozar la pista. El ventilador solo se activa después de la señal de salida del árbitro, según las reglas del proyecto.
