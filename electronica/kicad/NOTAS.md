@@ -16,7 +16,9 @@ export KICAD7_FOOTPRINT_DIR=/usr/share/kicad/footprints
 python3.12 herramientas/huellas_propias.py
 python3.12 herramientas/generar_pcb.py principal      # placa + ruteo + DRC (tarda varios minutos)
 python3.12 herramientas/generar_pcb.py sensores
+python3.12 herramientas/exportar_fabricacion.py principal sensores   # patrón 1:1, perforaciones y puentes
 ```
+Fabricación casera (planchado), reglas y cómo correr ERC/DRC en KiCad 10: ver `FABRICACION_CASERA.md`.
 
 ## Pines del ESP32 de 30 pines (todos existen en esa placa)
 Mux S0=GPIO25, S1=26, S2=27, S3=33, SIG=34 (ADC1); emisores=13; motores AIN1=19, AIN2=21, BIN1=22, BIN2=23, SLEEP=16;

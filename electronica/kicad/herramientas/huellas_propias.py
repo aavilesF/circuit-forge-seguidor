@@ -89,12 +89,12 @@ def esp32():
 
 def drv8833():
     fp = _huella("Modulo_DRV8833",
-                 "Modulo DRV8833 comprado: 2 filas de 6 pines a 2.54 mm. Separacion entre filas 15.24 mm "
-                 "(estimada de la foto; Alan midio 13 x 11 mm de placa: NO cuadra, confirmar M09)")
+                 "Modulo DRV8833 comprado: placa 16 x 18.5 mm (dibujo UNIT, M09). 2 filas de 6 pines a 2.54 mm. "
+                 "Separacion entre filas 15.24 mm SIN CONFIRMAR (M32: el dibujo no la acota; probar con plantilla 1:1)")
     for i in range(6):
         _pad(fp, i + 1, 0, 2.54 * i)
         _pad(fp, 7 + i, 15.24, 2.54 * i)
-    _contorno(fp, -1.4, -1.6, 16.64, 14.3, "VERIFICAR M09 DRV8833")
+    _contorno(fp, -1.63, -1.65, 16.87, 14.35, "DRV8833 16x18.5 (filas: M32)")
     return fp
 
 

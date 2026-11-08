@@ -16,22 +16,27 @@ Pasta para soldar,1,Fundente,comprado,32,ticket,Electronica Valtierra
 Placa fenolica,1,20 x 20 cm una cara,comprado,74,ticket,Electronica Valtierra
 Modulo MP1584,2,Reductor ajustable (ajustar a 5.0 V),comprado,60,ticket,Electronica Valtierra
 Modulo DRV8833,2,Puente H doble 1.5 A por canal,comprado,66,ticket,Electronica Valtierra
-Motorreductor GA12-N20,2,6 V 1000 RPM sin encoder eje D 3 mm,pendiente,178,verificado UNIT,UNIT Electronics
+Motorreductor GA12-N20,2,6 V 1000 RPM sin encoder eje D 3 mm,comprado,178,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 ESP32 DevKit,1,30 pines ESP32-WROOM-32,comprado,131,verificado UNIT,UNIT Electronics
 LiPo 2S,1,7.4 V 450-500 mAh >=20C con balanceo,pendiente,350,estimado,Por cotizar
-Sensor TCRT5000,12,Individual orificio pasante,pendiente,100,estimado,Por cotizar
-Multiplexor 74HC4067,1,DIP-24 o modulo,pendiente,25,verificado UNIT,UNIT Electronics
+Sensor TCRT5000,14,Individual orificio pasante (12 + 2 repuesto),comprado,112,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Multiplexor 74HC4067,2,Modulo 16 canales (1 + 1 repuesto),comprado,50,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Llanta N20,2,34 x 7 mm eje D 3 mm,pendiente,22,verificado UNIT (agotada),UNIT Electronics
 Rueda loca mini N20,1,Bola metalica,pendiente,16,verificado UNIT,UNIT Electronics
 Resistencias 1/4 W,1,Surtido: 12x330 12x10k 2x1k 2x100 1x100k 1x33k,pendiente,10,estimado,Por cotizar
 Fusible reseteable radial,1,1.5 A mantenimiento >=16 V,pendiente,16,estimado,Por cotizar
-Conector JST-RC,1,Par 2 pines,pendiente,8,verificado UNIT,UNIT Electronics
+Conector JST-RC,2,Par macho/hembra (2 pares),comprado,16,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Cable UTP o 24-26 AWG,1,Placa de sensores (~30 cm),pendiente,10,estimado,Por cotizar
 Cable 22-26 AWG,1,Motores y botones,pendiente,15,estimado,Por cotizar
 Tornillos separadores cinchos,1,M2/M3 separadores M3 10-15 mm cinchos 100 mm,pendiente,60,estimado,Por cotizar
 Cartulina blanca mate,1,>=1.2 m,pendiente,40,estimado,Por cotizar
 Cinta vinil negra,1,2.5 cm de ancho,pendiente,60,estimado,Por cotizar
-MOSFET IRLZ44N,1,Nivel logico TO-220 (ventilador),pendiente,12,estimado,Por cotizar
-Motor DC ventilador,1,Clase 720 u 8520 (cuando haya diseno),pendiente,100,estimado,Por cotizar
+MOSFET IRLZ44N,3,Canal N 55 V 47 A TO-220 (1 + 2 repuesto),comprado,36,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Motor DC ventilador,1,OBSOLETO: sustituido por Ventilador 4010 12 V,obsoleto,0,-,ver fila Ventilador 4010
 Cargador balanceador B3 2S,1,Solo si la escuela no presta uno,opcional,227,verificado UNIT,UNIT Electronics
 Cautin multimetro malla,1,Solo si el equipo no los tiene,opcional,0,por definir,Por cotizar
+Mini rueda universal 3Pi N20,2,POR CONFIRMAR: llanta de traccion o rueda loca (ver P17),comprado,32,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Soporte motorreductor N20/N30,2,ABS con tornillos M2,comprado,10,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Ventilador 4010,1,12 V 100 mA 40x40x10 mm 16 g,comprado,32,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Kit separadores laton M3,1,120 piezas (separador mas corto 6 mm),comprado,113,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Envio UNIT,1,Estafeta estandar 1-2 dias habiles,comprado,145,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)

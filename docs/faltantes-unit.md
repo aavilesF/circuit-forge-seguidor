@@ -2,7 +2,9 @@
 
 Rama `engineering/robot-casero`. Tienda: <https://uelectronics.com/>. Este documento distingue **en carrito** de **comprado/recibido**: agregar al carrito no significa que el componente ya esté adquirido.
 
-## 1. Carrito informado por Alan (6 nov 2026)
+## 1. Carrito informado por Alan (6 nov 2026) — **COMPRADO el 7 nov 2026**
+
+**Actualización 7 nov:** Alan hizo el pedido con estos mismos 9 renglones y cantidades (captura del pedido). Subtotal **$579**, envío **$145** (Estafeta estándar, 1–2 días hábiles), **total $724 MXN**. Las recomendaciones de "no comprar todavía" de la tabla quedan como registro: las ruedas, los 3 IRLZ44N y el kit M3 sí se compraron. Estado de inventario: `robot-casero/materiales/BOM.csv` y `CHECKLIST.md`.
 
 Subtotal declarado por Alan: **$579 MXN**, sin envío. Se verificó la suma de los subtotales de la tabla.
 

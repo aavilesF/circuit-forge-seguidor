@@ -22,18 +22,30 @@ Las tiendas físicas suelen costar más que UNIT; los precios son solo referenci
 - [x] Módulo MP1584 (×2, uno de repuesto)
 - [x] Módulo DRV8833 (×2, uno de repuesto)
 
+## Comprado (pedido UNIT Electronics, 7 nov 2026: $579 + $145 de envío = $724 MXN)
+
+- [x] 14 sensores TCRT5000 sueltos (12 + 2 de repuesto) — $112
+- [x] 2 módulos 74HC4067 (1 + 1 de repuesto) — $50
+- [x] 2 "Mini rueda universal 3Pi N20" — $32 (**por confirmar si son llantas de tracción o ruedas locas: P17**)
+- [x] 2 soportes para motorreductor N20/N30 — $10
+- [x] 1 ventilador 4010 12 V — $32 (sustituye al "motor DC para ventilador")
+- [x] 2 motorreductores GA12-N20 6 V 1000 RPM — $178
+- [x] 2 pares de cables JST-RC macho/hembra — $16
+- [x] 3 MOSFET IRLZ44N TO-220 (1 + 2 de repuesto) — $36
+- [x] 1 kit de separadores de latón M3, 120 piezas — $113
+- [x] Envío Estafeta estándar — $145
+- [x] ESP32 DevKit 30 pines (ya lo tenían)
+
+**Gastado en total:** Valtierra $510 + UNIT $724 = **$1,234 MXN** (sin contar el ESP32 que ya tenían). Quedan ~$566 contra el tope de $1,800 para la LiPo y lo que sigue pendiente.
+
 ## Pendiente (prioridad alta: sin esto no hay robot)
 
-- [ ] 2 motorreductores GA12-N20 6 V 1000 RPM, sin encoder, eje en D de 3 mm (V: 89 c/u)
-- [ ] ESP32 DevKit 30 pines (ya lo tienen)
 - [ ] LiPo 2S 7.4 V, 450–500 mAh, ≥ 20C, con balanceo y conector de potencia que coincida con el JST-RC (E: ~350)
-- [ ] 12 sensores TCRT5000 individuales, orificio pasante (E: ~100)
-- [ ] Multiplexor 74HC4067, DIP-24 o módulo con pines (V: 25)
 
 ## Pendiente (prioridad media: para que ruede bien)
 
-- [ ] 2 llantas N20 34 × 7 mm, eje en D de 3 mm (V: 22, agotadas en UNIT)
-- [ ] Rueda loca mini N20 (V: 16)
+- [ ] 2 llantas N20 34 × 7 mm, eje en D de 3 mm (V: 22, agotadas en UNIT) — **solo si las "ruedas 3Pi" no son llantas (P17)**
+- [ ] Rueda loca o patín (O02/M30) — solo si las "ruedas 3Pi" no lo son (P17)
 - [ ] Resistencias 1/4 W 5 %: 12 × 330 Ω, 12 × 10 kΩ, 2 × 1 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ y 2 × 10 kΩ de repuesto (E: ~10)
 - [ ] Fusible reseteable radial de orificio pasante, 1.5 A de mantenimiento, ≥ 16 V (ej. Littelfuse RXEF160)
 - [ ] Conector JST-RC par, 2 pines (V: 8)
@@ -49,8 +61,6 @@ Las tiendas físicas suelen costar más que UNIT; los precios son solo referenci
 
 ## Pendiente (ventilador y chasis, al final)
 
-- [ ] MOSFET IRLZ44N o equivalente de nivel lógico (no usar IRFZ44N directo al ESP32)
-- [ ] Motor DC con escobillas para el ventilador (clase 720 u 8520), cuando exista el diseño del rotor
 - [ ] Material del chasis: acrílico de 2–3 mm o PLA (primero confirmar con la organización)
 - [ ] Cargador balanceador 2S, solo si la escuela no presta uno (V: 227)
 
