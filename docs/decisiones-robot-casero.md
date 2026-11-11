@@ -20,8 +20,15 @@ Rama `engineering/robot-casero`.
 | D13 | 6 nov 2026 | Motores sujetos con aseguradores de plástico (M31) | Alan | DXF |
 | D14 | 6 nov 2026 | El puente J1 del DRV8833 se deja sin soldar (P08) | Alan (foto) + datasheet | NOTAS de KiCad |
 | D15 | 7 nov 2026 | Placa fenólica FEN20X20 de **cobre liso** (sin perforar). El diseño se transfiere con **plancha** (tóner) y los agujeros se taladran después del ataque | Alan | `docs/robot-casero/LAYOUT_PLACA.md` (el orden de taladrado y plancha del manual ya lo cubre; pregunta abierta 2 del README resuelta) |
-| D16 | 7 nov 2026 | Sensores: **12 TCRT5000 sueltos** en arco, soldados a la placa, con multiplexor 74HC4067 para ahorrar pines. Confirma D05 y sustituye el "8 directos por defecto" del plan B | Alan | **Pendiente de reflejar:** P15 (¿placa de sensores aparte?), layout de esa placa en fenólica y `SENSORES_DIRECTOS 0` en `config.h` |
+| D16 | 7 nov 2026 | Sensores: **12 TCRT5000 sueltos** en arco, soldados a la placa, con multiplexor 74HC4067 para ahorrar pines. Confirma D05 y sustituye el "8 directos por defecto" del plan B | Alan | Reflejado en D20 (11 nov): placa de sensores con multiplexor. Falta `config.h` (P18) |
 | D17 | 7 nov 2026 | Medidas: si una pieza trae dibujo o datasheet con sus dimensiones, esa medida vale y no se mide con vernier (V01, M09) | Alan | `pendientes-por-confirmar.md` |
+| D18 | 11 nov 2026 | Las PCB (principal y sensores) son de **doble cara**: una sola placa fenólica con cobre arriba y abajo, grabadas por planchado. Vías = agujero con alambre soldado en las dos caras (sin metalizado) | Alan | `electronica/kicad/` (ruteador, exportador, `FABRICACION_CASERA.md`); E09; R02 resuelto |
+| D19 | 11 nov 2026 | **Sin zumbador** (buzzer): no se necesita y ocupa espacio | Alan | P14; la PCB no lo tiene; falta el firmware (P18) |
+| D20 | 11 nov 2026 | Multiplexor 74HC4067, 12 TCRT5000 e interruptor de emisores (Q1) en la **placa de sensores**; a la principal van 8 hilos (+3V3, GND, S0–S3, SIG, EMIT_EN) | Alan | P15; `generar_sensores.py`, `generar_principal.py` |
+| D21 | 11 nov 2026 | Diodos 1N5822 con **~20 mm** entre patas (huella de 20.32 mm) | Alan | M24; huella `D_DO-201AD_P20.32mm_Taladro1.3` |
+| D22 | 11 nov 2026 | Diseño mecánico: **opción A**, todo en una sola placa de acrílico sin niveles (ahorrar espacio y peso) | Alan | P12; `mecanica/autocad/` |
+| D23 | 11 nov 2026 | Rueda loca: **Mini rueda universal 3Pi N20** de UNIT (ya comprada); medidas de la ficha como verdaderas. El patín de nailon (O02) queda descartado | Alan | M30, P17; `parametros.yaml`; R03 |
+| D24 | 11 nov 2026 | Protección de la batería con **fusible reseteable** (PTC); la pieza exacta queda en M28 con huella provisional | Alan | P16, M28; F1 |
 
 **Nota sobre "caja":** el reglamento limita el robot completo a **200 × 100 mm** de planta (largo × ancho). En los dibujos ese límite aparece
 como un rectángulo gris llamado "límite de tamaño del reglamento". No es una caja física ni el chasis.

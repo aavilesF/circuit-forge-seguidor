@@ -1,3 +1,8 @@
+> **HISTÓRICO (11 nov 2026).** Este archivo describe el *plan B*: una sola placa fenólica de una cara, con 8 sensores directos y zumbador.
+> Quedó sustituido por las decisiones **D18** (PCB de doble cara), **D19** (sin zumbador) y **D20** (placa de sensores con multiplexor).
+> Las PCB vigentes están en `electronica/kicad/` (principal y sensores); la fabricación, en `electronica/kicad/FABRICACION_CASERA.md`.
+> Ojo: el firmware (`firmware/robot-casero/`) todavía usa los pines de este archivo hasta que se resuelva **P18**.
+
 # Robot casero · D. Manual de ensamblaje
 
 Para Alan y Daniel. El orden va de lo más bajo y resistente al calor a lo más delicado: **resistencias y diodo → cerámicos → transistores y botones → headers → electrolíticos → cables → módulos**. Cada etapa termina con una prueba que se hace **antes** de pasar a la siguiente y **sin la LiPo**. La LiPo se conecta hasta la etapa 8.

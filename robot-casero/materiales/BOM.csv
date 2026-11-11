@@ -21,10 +21,10 @@ ESP32 DevKit,1,30 pines ESP32-WROOM-32,comprado,131,verificado UNIT,UNIT Electro
 LiPo 2S,1,7.4 V 450-500 mAh >=20C con balanceo,pendiente,350,estimado,Por cotizar
 Sensor TCRT5000,14,Individual orificio pasante (12 + 2 repuesto),comprado,112,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Multiplexor 74HC4067,2,Modulo 16 canales (1 + 1 repuesto),comprado,50,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
-Llanta N20,2,34 x 7 mm eje D 3 mm,pendiente,22,verificado UNIT (agotada),UNIT Electronics
-Rueda loca mini N20,1,Bola metalica,pendiente,16,verificado UNIT,UNIT Electronics
-Resistencias 1/4 W,1,Surtido: 12x330 12x10k 2x1k 2x100 1x100k 1x33k,pendiente,10,estimado,Por cotizar
-Fusible reseteable radial,1,1.5 A mantenimiento >=16 V,pendiente,16,estimado,Por cotizar
+Llanta N20,2,"OBSOLETO: ya tienen rin con prisionero + llanta (M08, P09)",obsoleto,0,-,-
+Rueda loca mini N20,1,OBSOLETO: se compro la Mini rueda universal 3Pi N20 (M30),obsoleto,0,-,-
+Resistencias 1/4 W,1,Surtido: 13x330 13x10k 2x1k 2x100 1x100k 1x33k (sensores: 12+1 de cada una),pendiente,10,estimado,Por cotizar
+Fusible reseteable radial,1,Reseteable (D24); >=16 V; mantenimiento 2-3 A [E]; pieza exacta en M28,pendiente,16,estimado,Por cotizar
 Conector JST-RC,2,Par macho/hembra (2 pares),comprado,16,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Cable UTP o 24-26 AWG,1,Placa de sensores (~30 cm),pendiente,10,estimado,Por cotizar
 Cable 22-26 AWG,1,Motores y botones,pendiente,15,estimado,Por cotizar
@@ -35,7 +35,7 @@ MOSFET IRLZ44N,3,Canal N 55 V 47 A TO-220 (1 + 2 repuesto),comprado,36,pedido UN
 Motor DC ventilador,1,OBSOLETO: sustituido por Ventilador 4010 12 V,obsoleto,0,-,ver fila Ventilador 4010
 Cargador balanceador B3 2S,1,Solo si la escuela no presta uno,opcional,227,verificado UNIT,UNIT Electronics
 Cautin multimetro malla,1,Solo si el equipo no los tiene,opcional,0,por definir,Por cotizar
-Mini rueda universal 3Pi N20,2,POR CONFIRMAR: llanta de traccion o rueda loca (ver P17),comprado,32,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
+Mini rueda universal 3Pi N20,2,Rueda loca (rueda libre) 22x16x15 mm 10 g (M30; P17 resuelto),comprado,32,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Soporte motorreductor N20/N30,2,ABS con tornillos M2,comprado,10,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Ventilador 4010,1,12 V 100 mA 40x40x10 mm 16 g,comprado,32,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)
 Kit separadores laton M3,1,120 piezas (separador mas corto 6 mm),comprado,113,pedido UNIT,UNIT Electronics (pedido 7 nov 2026)

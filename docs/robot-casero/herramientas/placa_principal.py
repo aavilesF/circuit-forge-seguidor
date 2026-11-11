@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Robot casero · placa principal en placa fenólica de UNA cara, rejilla de 2.54 mm.
+"""HISTÓRICO (11 nov 2026): plan B sustituido por las PCB de doble cara de electronica/kicad (D18, D20). No usar para fabricar.
+
+Robot casero · placa principal en placa fenólica de UNA cara, rejilla de 2.54 mm.
 
 Este script es la única fuente del layout: de aquí salen los dibujos y la tabla de conexiones,
 y antes de dibujar se COMPRUEBA que:

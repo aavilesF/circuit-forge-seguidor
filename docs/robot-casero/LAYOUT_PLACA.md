@@ -1,3 +1,8 @@
+> **HISTÓRICO (11 nov 2026).** Este archivo describe el *plan B*: una sola placa fenólica de una cara, con 8 sensores directos y zumbador.
+> Quedó sustituido por las decisiones **D18** (PCB de doble cara), **D19** (sin zumbador) y **D20** (placa de sensores con multiplexor).
+> Las PCB vigentes están en `electronica/kicad/` (principal y sensores); la fabricación, en `electronica/kicad/FABRICACION_CASERA.md`.
+> Ojo: el firmware (`firmware/robot-casero/`) todavía usa los pines de este archivo hasta que se resuelva **P18**.
+
 # Robot casero · B. Layout de la placa fenólica
 
 **Plantilla para imprimir (3 hojas tamaño carta):** [`placa/PLANTILLA_PLACA_1a1.pdf`](placa/PLANTILLA_PLACA_1a1.pdf)

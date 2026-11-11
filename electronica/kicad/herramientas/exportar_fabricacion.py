@@ -1,20 +1,29 @@
 #!/usr/bin/env python3.12
-"""Archivos para fabricar la PCB en casa (planchado / transferencia de tóner + cloruro férrico + taladro).
+"""Archivos para fabricar en casa una PCB DE DOBLE CARA (planchado / transferencia de tóner + cloruro férrico).
 
 Uso: python3.12 exportar_fabricacion.py principal|sensores
 
 Genera en <placa>/fabricacion/:
-  <placa>_cobre_1a1.pdf      Patrón de cobre (cara inferior, B.Cu) + contorno + marcas de taladro, escala 1:1,
-                             listo para imprimir en láser y planchar. Incluye una regla de 50 mm para comprobar la escala.
-  <placa>_perforaciones.csv  Una fila por agujero: ID, pieza, pata, X, Y (mm desde la esquina superior izquierda
-                             de la placa vista desde los COMPONENTES), diámetro de diseño y broca sugerida.
-  <placa>_perforaciones.pdf  Mapa de perforaciones 1:1 (vista desde los componentes) con el ID de cada agujero.
-  <placa>_puentes.csv        Pistas de la cara superior (F.Cu): son PUENTES DE ALAMBRE, no se graban.
-  LEEME.md                   Resumen: tamaño, número de agujeros por broca, puentes, cómo imprimir.
+  <placa>-<placa>_cara_abajo_1a1.pdf   Cobre de la cara de ABAJO (B.Cu) + contorno, SIN espejo, escala 1:1.
+  <placa>-<placa>_cara_arriba_1a1.pdf  Cobre de la cara de ARRIBA (F.Cu) + contorno, EN ESPEJO, escala 1:1.
+  <placa>-<placa>_perforaciones.pdf    Mapa de perforaciones 1:1 visto desde ARRIBA (componentes), con el número de
+                                       cada agujero; las vías se marcan con "V".
+  <placa>_perforaciones.csv            ID, pieza, pata, red, X, Y (mm desde la esquina superior izquierda vista desde
+                                       arriba), diámetro, broca y tipo (pata / vía / montaje).
+  <placa>_soldar_arriba.csv            Patas con pista en la cara de arriba: se sueldan por arriba (en piezas montadas
+                                       arriba, ADEMÁS de por abajo; los TCRT5000 van montados abajo y se sueldan arriba).
+  LEEME.md                             Resumen y procedimiento.
 
-Orientación (la placa es de UNA cara, el cobre va abajo):
-  KiCad dibuja B.Cu visto desde arriba. Al poner la hoja boca abajo sobre el cobre, la transferencia invierte la
-  imagen y queda exactamente como el cobre visto desde abajo. Por eso el PDF de cobre se imprime SIN espejo.
+Sin metalizado:
+  * Cada VÍA es un agujero de 0.8 mm con un alambre (pata cortada de resistencia) soldado en las dos caras.
+  * Una pata con pista arriba se suelda también arriba; el enrutador solo hace eso en piezas que lo permiten
+    (resistencias, diodos y transistores: ruteador.SOLDABLE_ARRIBA).
+
+Orientación: KiCad dibuja las dos caras vistas desde arriba. La transferencia invierte la imagen:
+  * cara de abajo: se imprime tal cual (sin espejo) y al planchar queda como se ve el cobre desde abajo;
+  * cara de arriba: se imprime EN ESPEJO y al planchar queda derecha vista desde arriba.
+Alineación: cada agujero M3 lleva una diana (círculo + cruz) en las dos caras; se taladran primero los M3 y cada hoja
+se alinea centrando sus dianas en esos agujeros.
 """
 import csv
 import sys
@@ -23,22 +32,47 @@ from pathlib import Path
 
 import pcbnew
 
+sys.path.insert(0, str(Path(__file__).parent))
+from ruteador import capas_accesibles  # noqa: E402
+
 RAIZ = Path(__file__).resolve().parent.parent
-BROCAS = [0.8, 1.0, 1.3, 3.2]          # brocas que tiene o necesita el equipo (E08); 3.2 = M3
+BROCAS = [0.8, 1.0, 1.3, 3.2]          # brocas del equipo (E08); 3.2 = M3
 mm = pcbnew.ToMM
+MM = pcbnew.FromMM
+V = lambda x, y: pcbnew.VECTOR2I(MM(x), MM(y))
 
 
 def broca(d):
-    """Broca más chica que no sea menor que el agujero de diseño (con 0.05 mm de tolerancia)."""
     for b in BROCAS:
         if b + 0.05 >= d:
             return b
     return round(d, 1)
 
 
-def contorno(b):
-    r = b.GetBoardEdgesBoundingBox()
-    return mm(r.GetX()), mm(r.GetY()), mm(r.GetRight()), mm(r.GetBottom())
+def linea(b, capa, x1, y1, x2, y2, w=0.3):
+    s = pcbnew.PCB_SHAPE(b)
+    s.SetShape(pcbnew.SHAPE_T_SEGMENT)
+    s.SetStart(V(x1, y1)); s.SetEnd(V(x2, y2))
+    s.SetLayer(capa); s.SetWidth(MM(w))
+    b.Add(s)
+
+
+def circulo(b, capa, x, y, r, w=0.3):
+    s = pcbnew.PCB_SHAPE(b)
+    s.SetShape(pcbnew.SHAPE_T_CIRCLE)
+    s.SetCenter(V(x, y)); s.SetEnd(V(x + r, y))
+    s.SetLayer(capa); s.SetWidth(MM(w))
+    b.Add(s)
+
+
+def texto(b, capa, txt, x, y, tam=1.5, espejo=False):
+    t = pcbnew.PCB_TEXT(b)
+    t.SetText(txt); t.SetLayer(capa)
+    t.SetTextSize(V(tam, tam)); t.SetTextThickness(MM(tam * 0.15))
+    t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_LEFT)
+    t.SetMirrored(espejo)
+    t.SetPosition(V(x, y))
+    b.Add(t)
 
 
 def agujeros(b, x0, y0):
@@ -49,61 +83,56 @@ def agujeros(b, x0, y0):
             if d <= 0:
                 continue
             pos = p.GetPosition()
+            npth = p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH
             filas.append(dict(pieza=fp.GetReference(), pata=p.GetNumber() or "-", red=p.GetNetname() or "-",
-                              x=round(mm(pos.x) - x0, 2), y=round(mm(pos.y) - y0, 2), d=round(d, 2),
-                              broca=broca(d), cobre="no (NPTH)" if p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH else "sí"))
+                              x=round(mm(pos.x) - x0, 2), y=round(mm(pos.y) - y0, 2), d=round(d, 2), broca=broca(d),
+                              tipo=("montaje / alineación" if d < 5 else "hueco") if npth else "pata"))
     for t in b.GetTracks():
         if t.GetClass() == "PCB_VIA":
             pos = t.GetPosition()
             d = mm(t.GetDrillValue())
             filas.append(dict(pieza="VIA", pata="-", red=t.GetNetname(), x=round(mm(pos.x) - x0, 2),
-                              y=round(mm(pos.y) - y0, 2), d=round(d, 2), broca=broca(d), cobre="sí (puente)"))
+                              y=round(mm(pos.y) - y0, 2), d=round(d, 2), broca=broca(d),
+                              tipo="vía: alambre soldado en las dos caras"))
     filas.sort(key=lambda f: (f["y"], f["x"]))
     for i, f in enumerate(filas, 1):
         f["id"] = f"H{i:03d}"
     return filas
 
 
-def regla(b, x0, y1, capa):
-    """Regla de 50 mm bajo el contorno, en la capa indicada, para comprobar que la impresión salió 1:1."""
-    objs = []
+def patas_arriba(b):
+    """Pastillas que tocan una pista F.Cu: hay que soldarlas también por arriba."""
+    tramos = [t for t in b.GetTracks() if t.GetClass() == "PCB_TRACK" and t.GetLayer() == pcbnew.F_Cu]
+    salida = []
+    for fp in b.GetFootprints():
+        for p in fp.Pads():
+            if p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH or not p.GetNetCode():
+                continue
+            pos = p.GetPosition()
+            r = max(p.GetSize().x, p.GetSize().y) / 2
+            for t in tramos:
+                if t.GetNetCode() == p.GetNetCode() and (t.GetStart() - pos).EuclideanNorm() <= r or \
+                        t.GetNetCode() == p.GetNetCode() and (t.GetEnd() - pos).EuclideanNorm() <= r:
+                    salida.append((fp.GetReference(), p.GetNumber(), p.GetNetname(), 1 in capas_accesibles(fp)))
+                    break
+    return salida
+
+
+def dianas(b, capa, montajes, x0, y0):
+    for h in montajes:
+        x, y = x0 + h["x"], y0 + h["y"]
+        circulo(b, capa, x, y, 2.6, 0.4)
+        for dx, dy in ((1, 0), (0, 1)):
+            linea(b, capa, x - 3.4 * dx, y - 3.4 * dy, x - 1.9 * dx, y - 1.9 * dy, 0.3)
+            linea(b, capa, x + 1.9 * dx, y + 1.9 * dy, x + 3.4 * dx, y + 3.4 * dy, 0.3)
+
+
+def regla(b, capa, x0, y1, leyenda, espejo=False):
     y = y1 + 4
-    for xa, ya, xb, yb in [(x0, y, x0 + 50, y), (x0, y - 1.5, x0, y + 1.5), (x0 + 50, y - 1.5, x0 + 50, y + 1.5)]:
-        s = pcbnew.PCB_SHAPE(b)
-        s.SetShape(pcbnew.SHAPE_T_SEGMENT)
-        s.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(xa), pcbnew.FromMM(ya)))
-        s.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(xb), pcbnew.FromMM(yb)))
-        s.SetLayer(capa)
-        s.SetWidth(pcbnew.FromMM(0.3))
-        b.Add(s)
-        objs.append(s)
-    t = pcbnew.PCB_TEXT(b)
-    t.SetText("50 mm: medir con regla; si no mide 50 mm, la impresion NO esta a escala")
-    t.SetLayer(capa)
-    t.SetTextSize(pcbnew.VECTOR2I(pcbnew.FromMM(1.5), pcbnew.FromMM(1.5)))
-    t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_LEFT)
-    t.SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(x0), pcbnew.FromMM(y + 3)))
-    b.Add(t)
-    objs.append(t)
-    return objs
-
-
-def agrupar_puentes(tramos):
-    """Une los tramos F.Cu que se tocan: cada grupo es UN puente de alambre real."""
-    par = {}
-
-    def raiz(a):
-        par.setdefault(a, a)
-        while par[a] != a:
-            par[a] = par[par[a]]
-            a = par[a]
-        return a
-    for t in tramos:
-        par[raiz((t.GetStart().x, t.GetStart().y))] = raiz((t.GetEnd().x, t.GetEnd().y))
-    grupos = {}
-    for t in tramos:
-        grupos.setdefault(raiz((t.GetStart().x, t.GetStart().y)), []).append(t)
-    return list(grupos.values())
+    linea(b, capa, x0, y, x0 + 50, y)
+    linea(b, capa, x0, y - 1.5, x0, y + 1.5)
+    linea(b, capa, x0 + 50, y - 1.5, x0 + 50, y + 1.5)
+    texto(b, capa, f"50 mm - {leyenda}", x0 + (50 if espejo else 0), y + 3, 1.4, espejo)
 
 
 def trazar(b, carpeta, nombre, capas, espejo=False, marcas=True):
@@ -120,7 +149,6 @@ def trazar(b, carpeta, nombre, capas, espejo=False, marcas=True):
     po.SetPlotValue(False)
     po.SetPlotReference(True)
     po.SetPlotInvisibleText(False)
-    po.SetSketchPadsOnFabLayers(False)
     pc.OpenPlotfile(nombre, pcbnew.PLOT_FORMAT_PDF, nombre)
     for c in capas:
         pc.SetLayer(c)
@@ -129,77 +157,90 @@ def trazar(b, carpeta, nombre, capas, espejo=False, marcas=True):
     return Path(pc.GetPlotFileName())
 
 
+def quitar_dibujos(b, capas):
+    for o in list(b.Drawings()):
+        if o.GetLayer() in capas and isinstance(o, (pcbnew.PCB_SHAPE, pcbnew.PCB_TEXT)):
+            b.Remove(o)
+
+
 def exportar(placa):
     ruta = RAIZ / placa / f"{placa}.kicad_pcb"
     b = pcbnew.LoadBoard(str(ruta))
     out = RAIZ / placa / "fabricacion"
     out.mkdir(exist_ok=True)
-    x0, y0, x1, y1 = contorno(b)
+    for viejo in out.glob("*"):
+        viejo.unlink()
+    e = b.GetBoardEdgesBoundingBox()
+    x0, y0, x1, y1 = mm(e.GetX()), mm(e.GetY()), mm(e.GetRight()), mm(e.GetBottom())
     hs = agujeros(b, x0, y0)
+    montajes = [h for h in hs if h["tipo"].startswith("montaje")]
+    vias = [h for h in hs if h["pieza"] == "VIA"]
+    arriba = patas_arriba(b)
+    malas = [a for a in arriba if not a[3]]
 
     with open(out / f"{placa}_perforaciones.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, ["id", "pieza", "pata", "red", "x", "y", "d", "broca", "cobre"])
+        w = csv.DictWriter(f, ["id", "pieza", "pata", "red", "x", "y", "d", "broca", "tipo"])
         w.writeheader()
         w.writerows(hs)
-    puentes = [t for t in b.GetTracks() if t.GetClass() == "PCB_TRACK" and t.GetLayer() == pcbnew.F_Cu]
-    with open(out / f"{placa}_puentes.csv", "w", newline="", encoding="utf-8") as f:
+    with open(out / f"{placa}_soldar_arriba.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["puente", "red", "tramos", "largo_mm"])
-        grupos = agrupar_puentes(puentes)
-        for i, g in enumerate(grupos, 1):
-            w.writerow([f"P{i:02d}", g[0].GetNetname(), len(g), round(sum(mm(t.GetLength()) for t in g), 1)])
-    largo = sum(mm(t.GetLength()) for t in puentes)
+        w.writerow(["pieza", "pata", "red", "se_puede_soldar_arriba"])
+        for a in sorted(arriba):
+            w.writerow([a[0], a[1], a[2], "sí" if a[3] else "NO: revisar"])
 
-    # PDFs 1:1 (se agregan regla y textos de ID en una copia en memoria; el .kicad_pcb no se guarda)
-    regla(b, x0, y1, pcbnew.B_Cu)
-    cobre = trazar(b, out, f"{placa}_cobre_1a1", [pcbnew.B_Cu, pcbnew.Edge_Cuts])
-    for o in list(b.Drawings()):
-        if isinstance(o, (pcbnew.PCB_SHAPE, pcbnew.PCB_TEXT)) and o.GetLayer() == pcbnew.B_Cu:
-            b.Remove(o)
-    regla(b, x0, y1, pcbnew.Cmts_User)
+    # cara de abajo (sin espejo)
+    dianas(b, pcbnew.B_Cu, montajes, x0, y0)
+    regla(b, pcbnew.B_Cu, x0, y1, "CARA ABAJO, imprimir SIN espejo")
+    abajo = trazar(b, out, f"{placa}_cara_abajo_1a1", [pcbnew.B_Cu, pcbnew.Edge_Cuts])
+    quitar_dibujos(b, {pcbnew.B_Cu})
+    # cara de arriba (en espejo); el texto se escribe ya invertido para que se lea al imprimir en espejo
+    dianas(b, pcbnew.F_Cu, montajes, x0, y0)
+    regla(b, pcbnew.F_Cu, x0, y1, "CARA ARRIBA, impresa EN ESPEJO", espejo=True)
+    arr = trazar(b, out, f"{placa}_cara_arriba_1a1", [pcbnew.F_Cu, pcbnew.Edge_Cuts], espejo=True)
+    quitar_dibujos(b, {pcbnew.F_Cu})
+    # mapa de perforaciones (vista desde arriba)
     for h in hs:
-        c = pcbnew.PCB_SHAPE(b)
-        c.SetShape(pcbnew.SHAPE_T_CIRCLE)
-        c.SetCenter(pcbnew.VECTOR2I(pcbnew.FromMM(x0 + h["x"]), pcbnew.FromMM(y0 + h["y"])))
-        c.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(x0 + h["x"] + h["d"] / 2), pcbnew.FromMM(y0 + h["y"])))
-        c.SetLayer(pcbnew.Cmts_User)
-        c.SetWidth(pcbnew.FromMM(0.15))
-        b.Add(c)
-        t = pcbnew.PCB_TEXT(b)
-        t.SetText(h["id"][1:])
-        t.SetLayer(pcbnew.Cmts_User)
-        t.SetTextSize(pcbnew.VECTOR2I(pcbnew.FromMM(0.7), pcbnew.FromMM(0.7)))
-        t.SetTextThickness(pcbnew.FromMM(0.1))
-        t.SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(x0 + h["x"] + 1.1), pcbnew.FromMM(y0 + h["y"] - 1.1)))
-        b.Add(t)
-    mapa = trazar(b, out, f"{placa}_perforaciones", [pcbnew.Edge_Cuts, pcbnew.F_Fab, pcbnew.Cmts_User], marcas=True)
+        circulo(b, pcbnew.Cmts_User, x0 + h["x"], y0 + h["y"], h["d"] / 2, 0.15)
+        etiqueta = "V" + h["id"][1:] if h["pieza"] == "VIA" else h["id"][1:]
+        texto(b, pcbnew.Cmts_User, etiqueta, x0 + h["x"] + 1.0, y0 + h["y"] - 1.0, 0.7)
+    regla(b, pcbnew.Cmts_User, x0, y1, "mapa de perforaciones visto desde ARRIBA")
+    mapa = trazar(b, out, f"{placa}_perforaciones", [pcbnew.Edge_Cuts, pcbnew.F_Fab, pcbnew.Cmts_User])
 
     cuenta = Counter(h["broca"] for h in hs)
     sin_unir = b.GetConnectivity().GetUnconnectedCount(False)
-    (out / "LEEME.md").write_text(f"""# Fabricación casera — placa `{placa}`
+    largo_arriba = sum(mm(t.GetLength()) for t in b.GetTracks() if t.GetClass() == "PCB_TRACK" and t.GetLayer() == pcbnew.F_Cu)
+    estado = "**NO fabricar todavía**: faltan conexiones" if sin_unir else "ruteo completo"
+    (out / "LEEME.md").write_text(f"""# Fabricación casera de doble cara — placa `{placa}`
 
 Generado por `herramientas/exportar_fabricacion.py` desde `{placa}.kicad_pcb`. **No editar a mano: regenerar.**
 
 | Dato | Valor |
 |---|---|
-| Tamaño de la placa | {x1 - x0:.1f} × {y1 - y0:.1f} mm |
+| Tamaño | {x1 - x0:.1f} × {y1 - y0:.1f} mm |
 | Agujeros | {len(hs)} ({", ".join(f"{n} con broca {k} mm" for k, n in sorted(cuenta.items()))}) |
-| Puentes de alambre (pistas F.Cu) | **{len(grupos)} puentes**, {largo:.0f} mm de alambre en total (`{placa}_puentes.csv`) |
-| Conexiones sin rutear | **{sin_unir}** {"→ NO fabricar todavía" if sin_unir else "(ruteo completo)"} |
+| Vías (alambre soldado por las dos caras) | **{len(vias)}** |
+| Pistas en la cara de arriba | {largo_arriba:.0f} mm |
+| Patas que se sueldan también por arriba | {len(arriba)} (`{placa}_soldar_arriba.csv`){f"; **{len(malas)} en piezas difíciles de soldar arriba: revisar**" if malas else ""} |
+| Conexiones sin rutear | **{sin_unir}** → {estado} |
 
 ## Archivos
-- `{cobre.name}`: patrón de cobre. Imprimir en **láser**, al **100 %** ("tamaño real", sin "ajustar a página"),
-  **sin espejo**. Antes de planchar, medir la regla: debe dar 50 mm exactos.
-- `{mapa.name}`: mapa de perforaciones visto desde los **componentes**, con el número de cada agujero (H###).
-- `{placa}_perforaciones.csv`: coordenadas en mm desde la **esquina superior izquierda** de la placa vista desde
-  los componentes (X a la derecha, Y hacia abajo), diámetro de diseño y broca sugerida.
+- `{abajo.name}`: cara de **abajo**. Imprimir en láser al **100 %**, **sin espejo**.
+- `{arr.name}`: cara de **arriba**. Ya viene **en espejo**: imprimir al 100 % tal cual (no volver a invertir).
+- `{mapa.name}`: perforaciones vistas desde arriba; "V###" = vía.
+- `{placa}_perforaciones.csv`: X, Y en mm desde la esquina superior izquierda vista desde arriba.
 
-## Orientación
-El cobre va en la cara de abajo (B.Cu). La hoja se pone **boca abajo** sobre el cobre: la transferencia invierte
-la imagen y queda como debe verse el cobre desde abajo. Por eso se imprime sin espejo. Las marcas pequeñas en el
-centro de cada pad guían la broca (se taladra desde el cobre, después del ataque).
+## Procedimiento
+1. Cortar la placa con 5 mm de sobra. Medir la regla de 50 mm de cada hoja: si no mide 50 mm, no sirve.
+2. Taladrar **solo los agujeros M3** (broca 3.2) usando el mapa.
+3. Planchar la cara de abajo centrando sus dianas en los agujeros M3. Luego la de arriba, igual.
+4. Atacar con cloruro férrico las dos caras (proteger la que no se ataca si se hace por turnos). Limpiar el tóner.
+5. Taladrar el resto desde cualquier cara usando las marcas del centro de cada pad.
+6. Vías: meter un alambre en cada una y soldarlo por las dos caras; cortar el sobrante.
+7. Soldar los componentes. Las patas de `{placa}_soldar_arriba.csv` se sueldan **también por arriba**.
+8. Antes de conectar nada: continuidad de cada vía con el multímetro.
 """, encoding="utf-8")
-    print(f"{placa}: {len(hs)} agujeros, {len(grupos)} puentes ({largo:.0f} mm), {sin_unir} sin rutear -> {out}")
+    print(f"{placa}: {len(hs)} agujeros, {len(vias)} vías, {len(arriba)} patas a soldar arriba "
+          f"({len(malas)} difíciles), {largo_arriba:.0f} mm arriba, {sin_unir} sin rutear -> {out}")
 
 
 if __name__ == "__main__":

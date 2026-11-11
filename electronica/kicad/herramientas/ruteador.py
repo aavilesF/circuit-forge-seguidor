@@ -1,9 +1,17 @@
 #!/usr/bin/env python3.12
-"""Enrutador propio (A* en rejilla, 2 capas) para la PCB casera. No depende de programas externos.
+"""Enrutador propio (A* en rejilla, 2 capas) para la PCB casera DE DOBLE CARA. No depende de programas externos.
 
 Idea: cada pastilla y cada pista ya puesta "reclama" un disco de rejilla (radio = separación + mitad de pista).
-Una pista nueva de la red k solo puede pasar por celdas libres o reclamadas por k. Vías = cambio de capa (costoso).
-Capa B.Cu = cobre real que se graba. Capa F.Cu = PUENTE DE ALAMBRE (no se graba), cuesta más para usarla poco.
+Una pista nueva de la red k solo puede pasar por celdas libres o reclamadas por k. Vías = cambio de cara.
+
+Doble cara casera (decisión de Alan, 11 nov): las dos caras se graban (B.Cu abajo, F.Cu arriba), pero NO hay
+metalizado. Por eso:
+  * Cada vía es un agujero con un alambre soldado por las dos caras: cuesta trabajo, se usa poco (COSTO_VIA).
+  * Una pista solo puede llegar a una pata por la cara donde esa pata se puede soldar (ver capas_accesibles):
+      - pieza montada ARRIBA con el cuerpo pegado a la placa (módulos en tira hembra, headers, botones, capacitores):
+        solo por abajo;
+      - pieza montada ARRIBA con el cuerpo separado (resistencias, diodos, transistores): por las dos caras;
+      - pieza montada ABAJO (los TCRT5000 de la placa de sensores, que miran al piso): solo por arriba.
 """
 import heapq
 import math
@@ -13,9 +21,23 @@ import numpy as np
 import pcbnew
 
 PASO = 0.25            # mm por celda
-CAPAS = (pcbnew.B_Cu, pcbnew.F_Cu)   # índice 0 = cobre real (abajo), 1 = puente de alambre (arriba)
-COSTO_PUENTE = 6.0
-COSTO_VIA = 45.0
+CAPAS = (pcbnew.B_Cu, pcbnew.F_Cu)   # índice 0 = cara de abajo, 1 = cara de arriba (las dos se graban)
+COSTO_ARRIBA = 1.15    # la cara de arriba cuesta casi lo mismo; un poco más para dejar la de abajo como principal
+COSTO_VIA = 18.0      # cada vía es un alambre soldado a mano: se paga, pero menos que no terminar el ruteo
+# Prefijos de referencia cuyas patas SÍ se pueden soldar por la cara de arriba (cuerpo separado de la placa):
+# resistencias y diodos acostados, MOSFET TO-220 vertical, transistor TO-92.
+SOLDABLE_ARRIBA = ("R", "D", "Q")
+
+
+def soldable_arriba(ref):
+    return ref.rstrip("0123456789") in SOLDABLE_ARRIBA
+
+
+def capas_accesibles(fp):
+    """Índices de CAPAS (0 = abajo, 1 = arriba) por donde se puede soldar una pata de esta huella."""
+    if fp.GetLayer() == pcbnew.B_Cu:
+        return (1,)
+    return (0, 1) if soldable_arriba(fp.GetReference()) else (0,)
 MARGEN = 0.30          # error de redondeo de la rejilla + holgura
 
 
@@ -34,8 +56,9 @@ class Ruteador:
         self.claim = [np.zeros((self.H, self.W), dtype=np.int32) for _ in CAPAS]
         self.redes = {}      # id -> nombre
         self.pads = defaultdict(list)   # id -> [(x, y)] en mm
+        self.capas_pad = {}             # (x, y) -> capas permitidas para llegar a esa pastilla
         self.limite = 250000   # expansiones máximas de A* por conexión
-        self.resultado = {"pistas": 0, "vias": 0, "puentes_mm": 0.0, "falló": []}
+        self.resultado = {"pistas": 0, "vias": 0, "arriba_mm": 0.0, "falló": []}
         self._cargar()
 
     # ---- rejilla
@@ -79,8 +102,12 @@ class Ruteador:
                     self.redes[red] = p.GetNetname()
                     self.pads[red].append((x, y))
                 r = max(mm(p.GetSize().x), mm(p.GetSize().y)) / 2 + self.cl + self.w / 2 + MARGEN
+                acc = capas_accesibles(fp)
+                if red != 99999:
+                    self.capas_pad[(x, y)] = acc
                 for c in range(len(CAPAS)):
-                    self._disco(c, x, y, r, red)
+                    # cara donde la pata no se puede soldar: obstáculo para todas las redes, incluida la suya
+                    self._disco(c, x, y, r, red if (c in acc or red == 99999) else -1)
         # borde: celdas a menos de 0.5 + w/2 del contorno
         m = int(math.ceil((0.5 + self.w / 2 + 0.3) / PASO))
         for c in range(len(CAPAS)):
@@ -112,7 +139,7 @@ class Ruteador:
                     cur = previo[cur]
                     ruta.append(cur)
                 return ruta[::-1]
-            mult = 1.0 if c == 0 else COSTO_PUENTE
+            mult = 1.0 if c == 0 else COSTO_ARRIBA
             gc = self.claim[c]
             for dy, dx, d in pasos:
                 ny, nx = cy + dy, cx + dx
@@ -146,7 +173,9 @@ class Ruteador:
         return (dx + dy) + (1.414 - 2) * min(dx, dy)
 
     def _via_ok(self, red, cy, cx):
-        n = int(math.ceil((self.vd / 2 + self.cl - self.w / 2 + 0.9) / PASO))
+        # las pistas ya reclaman w + cl + MARGEN alrededor de su centro; una vía necesita vd/2 + cl + w/2 desde el
+        # centro de otra pista: basta revisar ese excedente más el error de la rejilla
+        n = int(math.ceil((self.vd / 2 + self.cl - self.w / 2 + 0.5) / PASO))
         for g in self.claim:
             sub = g[max(0, cy - n):cy + n + 1, max(0, cx - n):cx + n + 1]
             if ((sub != 0) & (sub != red)).any():
@@ -159,7 +188,8 @@ class Ruteador:
         if len(pads) < 2:
             return True
         celdas = [self.celda(x, y) for x, y in pads]
-        arbol = {(c, celdas[0][0], celdas[0][1]) for c in range(len(CAPAS))}
+        capas = {self.celda(x, y): self.capas_pad.get((x, y), (0, 1)) for x, y in pads}
+        arbol = {(c, celdas[0][0], celdas[0][1]) for c in capas[celdas[0]]}
         pendientes = celdas[1:]
         segs = []
         while pendientes:
@@ -170,10 +200,13 @@ class Ruteador:
                 return False
             for (c, cy, cx) in ruta:
                 arbol.add((c, cy, cx))
-            for (c, cy, cx) in ruta:
+            for i, (c, cy, cx) in enumerate(ruta):
                 x, y = self.punto(cy, cx)
                 self._disco(c, x, y, self.w + self.cl + MARGEN, red)
-            arbol |= {(c, mejor[0], mejor[1]) for c in range(len(CAPAS))}
+                if i + 1 < len(ruta) and ruta[i + 1][0] != c:      # vía: reserva su pad completo en las dos caras
+                    for cc in range(len(CAPAS)):
+                        self._disco(cc, x, y, self.vd / 2 + self.cl + self.w / 2 + MARGEN, red)
+            arbol |= {(c, mejor[0], mejor[1]) for c in capas[mejor]}
             segs.append(ruta)
             pendientes.remove(mejor)
         self._guardar(red, segs)
@@ -211,21 +244,21 @@ class Ruteador:
                 b.Add(t)
                 self.resultado["pistas"] += 1
                 if c == 1:
-                    self.resultado["puentes_mm"] += math.hypot(x2 - x1, y2 - y1)
+                    self.resultado["arriba_mm"] += math.hypot(x2 - x1, y2 - y1)
                 i = j
         # unir el centro real de cada pastilla con su celda (tramos < 0.2 mm)
         for (x, y) in self.pads[red]:
             cy, cx = self.celda(x, y)
             px, py = self.punto(cy, cx)
             if abs(px - x) > 1e-3 or abs(py - y) > 1e-3:
-                for c in range(len(CAPAS)):
+                for c in self.capas_pad.get((x, y), (0, 1)):
                     t = pcbnew.PCB_TRACK(b)
                     t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(x), pcbnew.FromMM(y)))
                     t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(px), pcbnew.FromMM(py)))
                     t.SetWidth(pcbnew.FromMM(self.w)); t.SetLayer(CAPAS[c]); t.SetNetCode(red)
                     b.Add(t)
 
-    def correr(self, intentos=7):
+    def correr(self, intentos=10):
         orden = sorted(self.pads, key=lambda r: self._hpwl(r))
         for it in range(intentos):
             fallan = []
@@ -251,6 +284,6 @@ class Ruteador:
         for t in list(self.b.GetTracks()):
             self.b.Remove(t)
         self.claim = [np.zeros((self.H, self.W), dtype=np.int32) for _ in CAPAS]
-        self.resultado.update({"pistas": 0, "vias": 0, "puentes_mm": 0.0})
+        self.resultado.update({"pistas": 0, "vias": 0, "arriba_mm": 0.0})
         self.pads = defaultdict(list)
         self._cargar()

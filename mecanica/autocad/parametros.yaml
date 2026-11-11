@@ -14,7 +14,7 @@ chasis:
   kerf_laser_mm: {valor: 0.2, estado: pendiente, id: C05}
   holgura_fdm_mm: {valor: 0.3, estado: pendiente, id: C05}
   densidad_g_cm3: {acrilico: 1.18, mdf: 0.75, pla: 1.24, estado: nominal, id: C04}
-  # La cara de arriba de la placa queda a: eje (14) - medio motor (5) - base del asegurador (1.5, pendiente M31) = 7.5 mm
+  # La cara de arriba de la placa queda a: eje (26.7/2 = 13.35) - medio motor (5) - base del asegurador (1.5, M31) = 6.85 mm (R03)
   z_inferior_mm: 4.5
   delantera: {x1: 20, x2: 70, medio_ancho: 48}    # bajo la placa de sensores
   centro: {x1: -24, x2: 20, medio_ancho: 49}      # zona de motores (con muescas para las ruedas)
@@ -23,19 +23,19 @@ chasis:
   agujero_tornillo_m3_mm: 3.2
 
 ruedas_y_motores:
-  llanta_diametro: {cm: 2.8, mm: 28.0, estado: escalimetro, id: M08}
-  llanta_ancho: {cm: 2.15, mm: 21.5, estado: escalimetro, id: M08}
+  llanta_diametro: {cm: 2.67, mm: 26.7, estado: vernier, id: M08}
+  llanta_ancho: {cm: 2.17, mm: 21.7, estado: vernier, id: M08}
   rin_diametro: {cm: 2.1, mm: 21.0, estado: escalimetro, id: M08}
   rin_alto: {cm: 2.2, mm: 22.0, estado: escalimetro, id: M08}
   cara_exterior_llanta_y_mm: 48.0
-  motor_largo_mm: {valor: 24, estado: nominal, id: M05}
-  motor_ancho_mm: {valor: 12, estado: pendiente, id: M06}
-  motor_alto_mm: {valor: 10, estado: pendiente, id: M06}
-  eje_largo_mm: {valor: 10, estado: nominal, id: M05}
+  motor_largo_mm: {valor: 24.5, estado: referencia, id: M05}
+  motor_ancho_mm: {valor: 12, estado: referencia, id: M06}
+  motor_alto_mm: {valor: 10, estado: referencia, id: M06}
+  eje_largo_mm: {valor: 8.5, estado: referencia, id: M05}
   muesca_rueda_medio_largo_mm: 16
   muesca_rueda_y_interior_mm: 25
-  asegurador: {largo_mm: 14, ancho_mm: 16, base_mm: 1.5, sep_agujeros_mm: 22, diametro_agujero_mm: 2.2, estado: pendiente, id: M31,
-               nota: "SIN FUENTE: medidas supuestas del asegurador blanco de la foto; Alan las mide"}
+  asegurador: {largo_mm: 14, ancho_mm: 16, base_mm: 1.5, sep_agujeros_mm: 19.5, diametro_agujero_mm: 2.2, estado: vernier, id: M31,
+               nota: "Alan 11 nov: espesor 1.5 mm y 19.5 mm entre agujeros; largo/ancho siguen SIN FUENTE"}
 
 modulos:
   lipo_2s: {largo_mm: 61, ancho_mm: 16, alto_mm: 15, estado: nominal, id: M14, nota: "va pegada con cinta doble cara encima del ESP32"}
@@ -43,7 +43,9 @@ modulos:
                     nota: "atornillado a la PCB principal sobre su hueco; la placa tiene el mismo hueco"}
   tcrt5000: {largo_mm: 10.2, ancho_mm: 5.8, alto_mm: 7, estado: verificado, id: M18}
   sensores: {n: 12, paso_mm: 7.5, radio_arco_mm: 110, altura_al_piso_mm: 2.5, estado: decision, nota: "D05 y opciones-diseno.md"}
-  deslizadores: {n: 1, nota: "el tornillo central de la placa de sensores, con cabeza redonda de nailon, hace de patín (sustituye la rueda loca, O02)"}
+  deslizadores: {n: 0, nota: "OBSOLETO (11 nov): se compro rueda loca, ver rueda_loca y R03"}
+  rueda_loca: {modelo: "Mini rueda universal 3Pi N20", largo_mm: 22, ancho_mm: 16, alto_mm: 15, sep_agujeros_mm: 15, peso_g: 10, estado: ficha, id: M30,
+               nota: "15 mm de alto: no cabe debajo de la placa (queda a ~3.9 mm del piso), ver R03"}
 
 pcbs:
   principal: {x_frente_mm: -20, separadores_mm: 4}

@@ -90,7 +90,7 @@ def geometria(P, pr, se):
     for i in range(S["n"]):
         th = (i - (S["n"] - 1) / 2) * S["paso_mm"] / S["radio_arco_mm"]
         xp = 50 + S["radio_arco_mm"] * math.sin(th)
-        yp = 14 + S["radio_arco_mm"] - S["radio_arco_mm"] * math.cos(th) + 3.81
+        yp = 14 + S["radio_arco_mm"] - S["radio_arco_mm"] * math.cos(th)   # centro del sensor (la huella 2x2 tiene su origen en el centro; antes sobraba +3.81)
         x, y = pcb_a_placa(se, xs, xp, yp)
         g["ventanas"].append((x, y, 11.0, 7.0, -th))   # sensor 10.2 x 5.8 + 0.4 por lado
     # motores N20 sobre la placa con aseguradores

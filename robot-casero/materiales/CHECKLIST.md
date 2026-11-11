@@ -44,10 +44,10 @@ Las tiendas físicas suelen costar más que UNIT; los precios son solo referenci
 
 ## Pendiente (prioridad media: para que ruede bien)
 
-- [ ] 2 llantas N20 34 × 7 mm, eje en D de 3 mm (V: 22, agotadas en UNIT) — **solo si las "ruedas 3Pi" no son llantas (P17)**
-- [ ] Rueda loca o patín (O02/M30) — solo si las "ruedas 3Pi" no lo son (P17)
-- [ ] Resistencias 1/4 W 5 %: 12 × 330 Ω, 12 × 10 kΩ, 2 × 1 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ y 2 × 10 kΩ de repuesto (E: ~10)
-- [ ] Fusible reseteable radial de orificio pasante, 1.5 A de mantenimiento, ≥ 16 V (ej. Littelfuse RXEF160)
+- [x] Llantas: ya tienen rin con prisionero + llanta de goma ∅26.7 × 21.7 mm (M08). Las de 34 × 7 mm quedan obsoletas
+- [x] Rueda loca: las 2 "Mini rueda universal 3Pi N20" compradas son ruedas locas (M30, P17). Ver R03 por su altura
+- [ ] Resistencias 1/4 W 5 %: 13 × 330 Ω, 13 × 10 kΩ (12 de sensores + 1 de Q1 cada una), 2 × 1 kΩ, 2 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ y 2 × 10 kΩ de repuesto (E: ~10)
+- [ ] Fusible reseteable (PTC) radial de orificio pasante, ≥ 16 V, 2–3 A de mantenimiento [E] (D24; la pieza exacta se elige en M28)
 - [ ] Conector JST-RC par, 2 pines (V: 8)
 - [ ] Cable UTP Cat5/Cat6 (~30 cm) o cable 24–26 AWG para la placa de sensores
 - [ ] Cable 22–26 AWG para motores y botones

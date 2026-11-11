@@ -1,111 +1,196 @@
 # Pendientes por confirmar (robot casero) — versión 7
 
-Rama `engineering/robot-casero`. Actualizado: 7 nov 2026, noche (pedido UNIT comprado, fabricación casera por planchado, regeneración de KiCad). Copia íntegra de v6: `docs/historial/pendientes-v6_2026-11-07_pre-compra-unit.md`.
-**IDs nuevos en la v6:** M32, P13, P14, P15, P16. **En la v7:** P17, P18.
-**Regla:** ningún ID se borra. Si se resolvió, cambia su estado y se anota la decisión; si quedó obsoleto, se marca **obsoleto** con el motivo.
-Versiones anteriores: `docs/historial/`. Medidas completas: `especificaciones-componentes.md`. Decisiones: `decisiones-robot-casero.md`.
+Rama `engineering/robot-casero`. Actualizado: **11 nov 2026** con las medidas de vernier y las respuestas por ID de Alan.
+Copia íntegra de la v6 (la última publicada): `docs/historial/pendientes-v6_2026-11-07_pre-compra-unit.md`.
 
-**Estados:** `pendiente` · `escalímetro` (medido con regla/escalímetro, falta vernier) · `pregunta` (necesito respuesta de Alan) ·
-`resuelto` · `obsoleto`. **Quién:** Alan salvo que se diga otra cosa.
+**Cómo leer este archivo**
+1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
+2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
+3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
 
-## 0. General
-| ID | Tema | Valor / situación | Fuente | Cómo confirmarlo | Estado | Quién |
-|---|---|---|---|---|---|---|
-| V01 | Confirmar medidas con vernier | Las "escalímetro" que **no** tengan dibujo o ficha oficial: M01, M02, M08, M12, M16, M23, M24, M26, M27. **M09 sale de la lista (7 nov):** tiene dibujo oficial de UNIT. Regla de Alan (7 nov): si una pieza trae dibujo o datasheet con sus dimensiones, esa medida vale y no se mide con vernier | Escalímetro; dibujo UNIT (M09) | Repetir con vernier solo las que no tienen ficha; avisar si cambian más de 0.5 mm | pendiente | Alan |
+IDs nuevos en esta versión: **M33, P19, C10, D18–D24**. Medidas completas: `especificaciones-componentes.md`.
+Decisiones: `decisiones-robot-casero.md`. **Quién:** Alan, salvo que se diga otra cosa.
 
-## 1. Medidas de piezas (M)
-| ID | Tema | Valor / situación | Fuente | Cómo confirmarlo | Estado | Quién |
-|---|---|---|---|---|---|---|
-| M01 | ESP32: tamaño de placa | **30 pines**, 5.1 × 2.8 cm (5.4 con USB-C) → 51 × 28 mm. (Antes se suponía uno de 38 pines de 54.4 × 27.9) | Alan | Vernier | escalímetro | Alan |
-| M02 | ESP32: distancia entre filas | 2.55 cm → huella a 25.4 mm (estándar) | Alan | Vernier | escalímetro | Alan |
-| M03 | ESP32: orden de pines | Leído de la serigrafía (ver especificaciones). Queda la duda del primer pin derecho: ver P07 | Foto de Alan | — | resuelto (salvo P07) | — |
-| M04 | ESP32: pines por lado | 15 por lado, paso 2.54 mm | Foto | — | resuelto | — |
-| M05 | Motor GA12-N20 6 V 1000 RPM elegido en UNIT: largo y eje | Aún no recibido. Alan midió otros motores que ya tenía: cuerpo 24 mm de largo, 5 mm de ancho; eje 8 mm; total 32 mm. **No son los GA12-N20 de 1000 RPM elegidos** | Medición de motores de referencia de Alan; ficha de UNIT aún sin dimensiones suficientes | Medir el GA12-N20 comprado cuando llegue; no trasladar las medidas de los motores viejos | pendiente | Alan |
-| M06 | GA12-N20: ancho × alto del cuerpo | 12 × 10 mm era un valor típico sin fuente. Los motores de referencia de Alan miden 5 mm de ancho, pero no son el modelo 1000 RPM elegido | Medición de otros motores + valor típico no verificado | Medir el GA12-N20 de UNIT al recibirlo con vernier | pendiente | Alan |
-| M07 | N20: agujeros del frente | Ya no se usan: el motor se sujeta con **asegurador** (M31) | — | — | obsoleto (6 nov) | — |
-| M08 | Rueda (rin + llanta) | Llanta ∅2.8 × 2.15 cm, rin ∅2.1 × 2.2 cm → ∅28 × 21.5 mm. (Antes se pensaba comprar llantas de 34 × 7 mm) | Alan | Vernier; confirmar interpretación (P09) | escalímetro | Alan |
-| M09 | DRV8833 (módulo): tamaño | **16 × 18.5 mm** (16 a lo largo de cada fila de 6 pines; 18.5 de una fila a la otra), paso 2.54 mm. Sustituye la medida de regla de 18 × 15.5 mm (6 nov) y la de 1.3 × 1.1 cm (5 nov) | Dibujo "Dimensiones DRV8833 Controlador Motor DC Dual" de UNIT, aportado por Alan (7 nov) | El dibujo **no da la separación entre filas**: ver M32 | resuelto (tamaño) | — |
-| M10 | DRV8833: orden de pines | IN4, IN3, GND, VCC, IN2, IN1 · EEP, OUT1…OUT4, ULT | Foto | — | resuelto | — |
-| M11 | DRV8833: voltaje y corriente | VM 2.7–10.8 V, 1.5 A RMS por puente | [Datasheet TI](https://www.ti.com/lit/ds/symlink/drv8833.pdf) | — | resuelto | — |
-| M12 | MP1584: tamaño | 2.2 × 1.65 × 0.4 cm → 22 × 16.5 × 4 mm. **Es el módulo MP1584** (reductor de voltaje) | Alan | Vernier | escalímetro | Alan |
-| M13 | MP1584: terminales | OUT−/OUT+ a la izquierda, IN−/IN+ a la derecha | Foto | — | resuelto | — |
-| M14 | LiPo 2S: medidas y peso | Requisito: 7.4 V nominal (8.4 V cargada), 450–500 mAh. Medidas y peso dependen del modelo; 61 × 16 × 15 mm / ~30 g era referencia, no selección | Requisito del proyecto; modelo pendiente | Elegir pack 2S con descarga suficiente y dimensiones que quepan en el chasis; registrar ficha exacta | pendiente | Alan |
-| M15 | LiPo: conectores | Se añadieron 2 pares de cables JST-RC macho/hembra (2.5 mm, 22 AWG, 10 cm) al carrito. El pack 2S debe tener conector de descarga compatible y balanceo JST-XH de 3 pines | Ficha UNIT del cable + especificación de batería pendiente | Comparar físicamente el conector de descarga de la LiPo antes de comprar | pendiente | Alan |
-| M16 | Módulo 74HC4067: tamaño | Alan midió aprox. 41 × 18 mm; ficha UNIT indica 40 × 20 × 3 mm | Alan + ficha UNIT | Confirmar con vernier al recibir el módulo y actualizar huella si hace falta | escalímetro | Alan |
-| M17 | 74HC4067: orden de pines | VCC, GND, S0–S3, SIG, EN en una fila; C0–C15 en otra | SIN FUENTE | Foto de la serigrafía | pendiente | Alan |
-| M18 | TCRT5000: cuerpo | Ficha UNIT: 10 × 5 × 7 mm, 0.3 g; datasheet Vishay: 10.2 × 5.8 × 7 mm | UNIT + datasheet Vishay | Verificar lote recibido; usar el datasheet para huella inicial | resuelto (datasheet) | — |
-| M19 | TCRT5000: patas | 4 en línea a 2.54 mm | SIN FUENTE (el datasheet lo da solo en dibujo) | Al comprarlos | pendiente | Alan |
-| M20 | TCRT5000: orden A, K, C, E | A, K = LED; C, E = fototransistor | datasheet | Al comprarlos | pendiente | Alan |
-| M21 | Ventilador 4010: tamaño y consumo | Ficha UNIT: 40 × 40 × 10 mm, 12 V, 100 mA ±10 %, 1.2 W, 5000 RPM ±10 %, 5 CFM, cable 10 cm | Ficha UNIT aportada por Alan | Verificar etiqueta y corriente real; el pack LiPo 2S entrega 7.4–8.4 V, no 12 V. **7 nov (dibujo UNIT):** marco 40 × 40 × 10 mm; 4 agujeros de montaje Ø3.2 ±0.2 mm en un cuadrado de **32 ±0.3 mm**; flechas de flujo y giro grabadas en el marco. Con 7.4–8.4 V girará más lento que a 12 V y puede no arrancar con PWM bajo | pendiente de prueba | Alan |
-| M22 | Ventilador: peso | Ficha UNIT: 16 g | Ficha UNIT aportada por Alan | Verificar con báscula y fijar mecánicamente; una pieza de más de 10 g que se desprenda implica falta según reglas del proyecto | pendiente de prueba | Alan |
-| M23 | Capacitores | Electrolítico ∅8 mm, 3 mm entre patas (huella 3.5); cerámico 7 mm entre patas | Alan | Vernier | escalímetro | Alan |
-| M24 | Diodo 1N5822: patas | 3.5 cm entre patas (pedido de Alan). En la PCB nueva se usó 15.24 mm para que quepa (ver `opciones-diseno.md`, O05) | Alan | Decidir | pregunta | Alan |
-| M25 | 2N2222 "H331": orden de patas | Imagen de la página de UNIT (7 nov), vista de la cara plana: pata 1 = E, 2 = B, 3 = C (**E-B-C**). Es una imagen genérica: no dice el fabricante ni cita el datasheet, y no pude abrir la página desde aquí. Otros fabricantes usan C-B-E (el P2N2222A de onsemi) | Imagen UNIT aportada por Alan; datasheets onsemi | Prueba con multímetro (P05). **No bloquea el taladrado:** la base es la pata del centro y el layout permite girar el transistor 180° | pendiente (dato de vendedor; verificar con multímetro al armar) | Alan |
-| M26 | Pulsadores | Mediano 12 × 12 mm, pequeño 6 × 6 mm, 5 mm entre patas | Alan | Vernier | escalímetro | Alan |
-| M27 | Interruptor de balancín KCD1 | 20 × 16 × 7 mm de cuerpo, 25 mm con patas; va cableado, no en la PCB | Alan | Confirmar que es el KCD1 rojo | escalímetro | Alan |
-| M28 | Protección PTC: selección y huella | PTC radial 1.5 A no localizado. No se ha elegido alternativa | Esquemático y hoja de datos por revisar | Definir corriente de operación, corriente de disparo, Vmax y ubicación. Si protege la entrada 2S, Vmax debe superar 8.4 V con margen; luego fijar huella/paso. **7 nov:** Alan no encontró en UNIT el fusible de 2 A; ver P16 | pendiente | Alan / Claude |
-| M29 | Paso entre sensores de la "barra" | **Obsoleto:** no hay barra comercial. Se reemplazó por la decisión D05 (12 sensores a 7.5 mm en arco) | — | — | obsoleto (5 nov) | — |
-| M30 | Rueda loca mini | En el diseño nuevo (opción A) **se elimina** y se usa 1 patín (tornillo de nailon) al centro de la placa de sensores (O02). Si se aprueba, pasa a obsoleto. **7 nov:** se compraron 2 "Mini rueda universal 3Pi N20" (ver P17) | — | Decidir | pregunta | Alan |
-| M31 | Asegurador plástico N20/N30 | Ficha UNIT: ABS blanco, 25 mm de ancho × 11 mm de alto, abertura/agujero 2 mm, 1.33 g; incluye 2 tornillos M2 × 7 mm y 2 tuercas M2 por soporte. Hay 2 en el carrito | Ficha UNIT aportada por Alan | Al recibirlo, medir espesor/base, distancia entre agujeros y posición respecto al motor. La ficha no da patrón de fijación a PCB; no crear huella inventada | pendiente de huella PCB | Alan |
-| M32 | DRV8833 (módulo): separación entre las dos filas de pines | El dibujo de UNIT no la da. Medida sobre la imagen: ≈ 15.3 mm usando el paso de 2.54 mm como regla y ≈ 15.8 mm usando los 18.5 mm de alto; el layout asume **15.24 mm** (6 agujeros). Es una estimación [E], no una medida | Imagen de UNIT (7 nov), medida sobre píxeles | Poner el módulo sobre la hoja 2 de la plantilla 1:1 (manual, etapa 0.7) antes de taladrar, o medir con regla de centro a centro de la primera pata de cada fila | pendiente | Alan |
+**¿Bloquea las PCB?** — **sí** = sin ese dato no se puede taladrar o planchar esa placa · **no** = la PCB puede avanzar.
 
-## 2. Preguntas y ambigüedades (P)
-| ID | Tema | Lo que creo | Fuente | Cómo confirmarlo | Estado | Quién |
-|---|---|---|---|---|---|---|
-| P01 | Tamaño del DRV8833 no cuadraba | Resuelto con la nueva medida de 18 × 15.5 mm (M09) | Alan, 6 nov | — | resuelto | — |
-| P02 | ¿La pieza de 2.2 × 1.65 × 0.4 cm (M12) es el MP1584? | Sí | Foto | Confirmar | pregunta | Alan |
-| P03 | ¿El módulo con OUT−/OUT+ e IN−/IN+ (M13) es el MP1584? | Sí | Foto | Confirmar | pregunta | Alan |
-| P04 | ¿La pieza de 3.5 cm entre patas (M24) es el diodo 1N5822? | Sí | Contexto | Confirmar | pregunta | Alan |
-| P05 | Orden de patas del 2N2222 (M25) | Multímetro en modo diodo: la pata que da ~0.6 V hacia las otras dos (punta roja en ella) es la base. Con la imagen de UNIT (M25) se espera E-B-C; la prueba confirma cuál pata es E y cuál es C | datasheets + imagen UNIT | Prueba al armar; no bloquea el taladrado | pendiente | Alan |
-| P06 | ¿La pieza de 2 × 2.5 × 0.7 cm (M27) es el interruptor rojo KCD1? | Sí | Fotos | Confirmar | pregunta | Alan |
-| P07 | ESP32: el primer pin de arriba a la derecha, ¿VIN o VN? | La serigrafía dice "VN" según Alan, pero en el diagrama de pines que mandó (mismo modelo, USB abajo) **VIN está en la esquina junto al USB** y VN (GPIO39) está en el otro extremo, junto a VP y EN. Con el USB arriba eso es el pin de arriba a la derecha → **VIN**. El esquema ya usa VIN y **no se cambia** hasta confirmar | Foto + diagrama de pines | Conectar el ESP32 por USB y medir con multímetro entre ese pin y GND: si marca ~4.7–5 V, es VIN. **7 nov:** Alan leyó el pinout de ESP32 DevKit de Last Minute Engineers (micro-USB, USB abajo): junto al USB, VIN a la izquierda y 3V3 a la derecha. Con el USB arriba, VIN queda arriba a la derecha y 3V3 arriba a la izquierda, igual que M03 y el layout. Ese dibujo es de una placa micro-USB y la de Alan es un clon USB-C, por eso se conserva la prueba de 5 V antes de conectar el 5 V del MP1584 | resuelto por imagen; prueba de 5 V pendiente | Alan |
-| P08 | DRV8833: puente J1 "sleep–en" | Es un puente de soldadura de 2 pastillas que une nSLEEP con VCC (el módulo quedaría siempre encendido). Viene **sin soldar** (foto 6 nov): así queda bien, el ESP32 controla nSLEEP por el pin EEP (GPIO16). **No soldarlo** | Foto + datasheet (nSLEEP tiene pulldown interno de 500 kΩ) | — | resuelto | — |
-| P09 | Interpretación de la rueda (M08) | Llanta ∅28 × 21.5 mm sobre rin ∅21 × 22 con prisionero; agujero del rin de 3 mm | Fotos | Confirmar el agujero de 3 mm | pregunta | Alan |
-| P10 | Motores N20 | Alan midió motores que ya tenía: cuerpo 24 × 5 mm, eje 8 mm, total 32 mm; **no son** los GA12-N20 6 V 1000 RPM del carrito. Los GA12-N20 seleccionados aún no se reciben | Alan, 6 nov | Medir el modelo exacto 6 V 1000 RPM al recibirlo; no usar las dimensiones de los motores anteriores | pendiente (medición parcial de motores distintos) | Alan |
-| P11 | Electrolítico: 3 mm vs 3.5 mm entre patas (M23) | Huella de 3.5 mm; las patas se doblan | KiCad | Vernier | escalímetro | Alan |
-| P12 | ¿Qué opción de diseño se elige? | Recomiendo la **opción A** de `opciones-diseno.md` (una sola placa de acrílico, todo abajo) | Este análisis | Alan elige | pregunta | Alan |
-| P13 | JP1 / nFAULT: ¿se cierra el puente JP1 o se deja abierto? | JP1 es un puente de soldadura de la placa (abierto) que une el pin ULT (nFAULT) del DRV8833 con GPIO15 del ESP32. El datasheet TI dice que nFAULT es de **drenador abierto**: solo se jala a 0 V cuando hay falla, el chip no trae pull-up propio (VOL ≤ 0.5 V a 5 mA; fuga ≤ 1 µA a 3.3 V) y baja con sobrecorriente, sobretemperatura y bajo voltaje. El datasheet es del chip y **no dice** si el módulo trae una resistencia pull-up a VM (6 V): en la foto hay resistencias marcadas 472 y 473 y un LED, sin esquema. Si hubiera pull-up a 6 V, cerrar JP1 pondría 6 V en un pin de 3.3 V | TI SLVSAR1E págs. 3–4, 6, 8 y 11; página UNIT (ULT = "Fault", Open Drain); foto del módulo | Manual, etapa 7, paso 2: con el robot alimentado, medir ULT contra GND. 0 a 3.3 V → cerrar JP1 (el firmware ya activa el pull-up interno de GPIO15); ≈ 6 V → dejarlo abierto. También sirve medir resistencia entre ULT y VCC sin alimentar: "OL" = sin pull-up. Dejarlo abierto no quita la protección: el chip se protege solo | pendiente | Alan |
-| P14 | Zumbador: ¿activo o pasivo? | En palabras simples: un zumbador **activo** trae su propio circuito y suena con solo darle voltaje (un pitido fijo, sin cambiar de tono). Uno **pasivo** es como una bocina pequeña: el ESP32 le manda una señal de tono para que suene (permite melodías). El firmware ya soporta los dos, pero el pasivo de bobina necesita un diodo en paralelo y el activo no | README de `docs/robot-casero/` (pregunta abierta 6); `hw_casero.cpp` | Probar el zumbador con 3 a 5 V (+ y −): si pita continuo, es activo; si solo hace un "clic", es pasivo. Decir también si ya tienen zumbador o hay que comprarlo, y si hay un LED suelto | pregunta | Alan |
-| P15 | Sensores (12 TCRT5000 + 74HC4067): ¿en una placa aparte? | Alan (7 nov, D16): 12 sensores sueltos en arco, soldados a la placa, con multiplexor para ahorrar pines. La placa principal de la fenólica **no lleva** multiplexor ni sensores: solo los headers J5/J6, con los pines del mux ya asignados (S0 = GPIO25, S1 = 26, S2 = 27, S3 = 33, SIG = 34; en J6 son A3, A2, A1, A4 y A7). Los sensores deben quedar a 2.5–3 mm del piso (C07); por eso recomiendo una **placa de sensores aparte** colgada bajo el chasis (como en D05) y no soldarlos a la principal | D05, D16, `config.h`, LAYOUT_PLACA | Alan decide: ¿placa de sensores aparte (recomendado) o todo en una sola? Después hay que dibujar el layout de esa placa para la fenólica (hoy solo existe la de KiCad, con 9 pastillas sin unir) y poner `SENSORES_DIRECTOS 0` en `config.h` | pregunta | Alan / Claude |
-| P16 | Fusible de la batería: Alan no encontró el de 2 A en UNIT | Los documentos no coinciden: `CONEXIONES.md` y el manual piden un **fusible de 2 A**; `BOM.csv` y `CHECKLIST.md` piden un **PTC reseteable de 1.5 A de mantenimiento, ≥ 16 V**. Alternativas ya listadas en `faltantes-unit.md` §4: PTC radial de 16–30 V o fusible convencional con portafusible. El valor sale del consumo real (E06, < 1.5 A estimado, sin medir los picos de arranque de los motores): un valor justo puede dispararse en falso | `faltantes-unit.md` §4; búsqueda web (UNIT lista fusibles de vidrio 5×20 mm rápidos en paquete de 100; no pude abrir la página para ver amperajes, precio ni portafusibles) | Alan: preguntar en una tienda local por (a) fusible de vidrio 5×20 mm o automotriz mini de 3 A con portafusible en línea, o (b) PTC radial ≥ 16 V con mantenimiento de 2 a 3 A [E]. Decidir y unificar BOM, CONEXIONES y manual. Hasta tenerlo no se conecta la LiPo | pregunta | Alan |
-| P17 | ¿Qué son las 2 "Mini rueda universal 3Pi N20" que se compraron? | Compradas el 7 nov (UNIT, $32). En el carrito se interpretaron como **ruedas locas** (por eso se recomendó no comprarlas, M30), pero "rueda 3Pi para N20" también puede ser la **llanta de tracción** que entra en el eje en D del motor. Si son llantas, la "Llanta N20 34 × 7 mm" (agotada) ya no hace falta; si son ruedas locas, siguen faltando las llantas | Pedido UNIT (captura de Alan) | Alan: decir si entran en el eje del motor (llanta) o si giran libres en un soporte (rueda loca); si se puede, su diámetro | pregunta | Alan |
-| P18 | Mapa de pines único (la "prioridad 2") | El firmware (`firmware/robot-casero/casero/config.h`) y el archivo de pines de KiCad (`electronica/kicad/pines_robot_casero.h`) no coinciden: START = GPIO18 / GPIO4; GPIO4 = zumbador en el firmware; nFAULT = GPIO15 solo en el firmware; ventilador = GPIO17 solo en KiCad; `SENSORES_DIRECTOS 1` (8 sensores) en el firmware contra 12 con mux en KiCad. Si se fabrica la PCB de KiCad con el firmware actual, el botón START no funciona y el firmware manda señal de zumbador al mismo pin del botón | `config.h`, `pines_robot_casero.h` (7 nov) | Alan decide cuál manda; recomendación: que KiCad adopte START = 18 y nFAULT = 15 (JP1) del firmware, y el firmware adopte ventilador = 17 y `SENSORES_DIRECTOS 0` | pregunta | Alan |
+---
 
-## 3. Chasis (C)
-| ID | Tema | Valor / situación | Fuente | Cómo confirmarlo | Estado | Quién |
-|---|---|---|---|---|---|---|
-| C01 | Espesor del acrílico | 3 mm | estándar común | Preguntar al taller | pendiente | Equipo |
-| C02 | Material | Acrílico, MDF o PLA (DXF de los tres) | — | Cotizar | pendiente | Equipo |
-| C03 | Tamaño máximo | 200 × 100 mm de planta y 500 g, **robot completo** (reglamento). Antes se llamaba "caja"; ese nombre quedó **obsoleto** porque se confundía con el chasis | Reglamento | Medir el robot armado | resuelto | — |
-| C04 | Peso del chasis | Placa sola: ver `mecanica/autocad/RESUMEN.md` | cálculo | Báscula | pendiente | Equipo |
-| C05 | Holgura de corte | Láser −0.2 mm; PLA +0.3 mm en agujeros | valores de arranque | Pieza de prueba | pendiente | Equipo |
-| C06 | Permiso para usar ventilador | **Confirmado** con expertos y participantes anteriores (Alan, 5 nov). Ver D08 | Alan | — | resuelto | — |
-| C07 | Falda del ventilador y altura de sensores | Diseño previo: sensores a 2.5–3 mm del piso. Vishay especifica para TCRT5000 distancia de pico 2.5 mm y rango de operación (>20 % de corriente relativa) 0.2–15 mm; UNIT describe 2.5 mm como distancia máxima, lo que no equivale al dato de Vishay | Datasheet Vishay + ficha UNIT | Probar lecturas sobre vinil blanco/negro a 2.5 y 3 mm; fijar altura tras medir contraste real. La falda no debe tocar la pista | pendiente de prueba | Equipo |
-| C08 | Posible cambio del reglamento el 18 nov | No hay que decidir nada: releer las reglas el 18 o 19 nov y avisar si cambió algo | Proyecto "Seguidor Línea V2" | Releer | pendiente | Equipo |
-| C09 | Separadores y tornillería | Alan encontró kit M3 de latón: separadores macho-hembra 6/10/15/20 mm y hembra-hembra 6/10/15/20 mm; tornillos/tuercas M3. **No incluye separadores de 4 mm ni tornillos M2**. El kit está en carrito, pero no resuelve directamente el diseño actual | Ficha UNIT aportada por Alan | No modificar alturas ni agujeros hasta decidir si se adapta el diseño a 6 mm o se compran separadores M3 de 4 mm y tornillos M2 por separado | pendiente | Alan |
+## A. Pendientes activos
 
-## 4. Eléctrico (E)
-| ID | Tema | Valor | Fuente | Cómo confirmarlo | Estado | Quién |
-|---|---|---|---|---|---|---|
-| E01 | MP1584 #1 (5 V) | Ajustar la salida a **5.0 V** antes de conectar nada | Diseño | El módulo trae un tornillito (potenciómetro) que fija el voltaje de salida. Alimentar IN+/IN− con la batería (o una fuente de 7 a 8.4 V) **sin nada conectado a OUT**; multímetro en OUT+/OUT−; girar el tornillo con un desarmador chico hasta 5.00 V y marcarlo con plumón. Hasta entonces no se suelda ni se conecta el ESP32 | pendiente | Alan |
-| E02 | MP1584 #2 (6 V motores) | Ajustar la salida a **6.0 V** antes de conectar el DRV8833 y los motores | Diseño | Igual que E01, pero hasta 6.00 V | pendiente | Alan |
-| E03 | Diodos 1N5822 | directa ~0.15–0.30 V, inversa OL | guía abajo | Multímetro | pendiente | Alan |
-| E04 | ERC oficial de KiCad | El propio da 0 errores (vuelto a correr el 7 nov con KiCad 7.0.11: principal 31 componentes / 59 redes, sensores 38 / 27); el oficial no se puede correr aquí | NOTAS | Alan en KiCad 10: abrir `principal.kicad_sch` → Inspeccionar → Comprobador de reglas eléctricas → Ejecutar; guardar el informe (botón "Guardar…") y pasarlo. Igual con `sensores.kicad_sch`. Mismo procedimiento con el DRC en las `.kicad_pcb` | pendiente | Alan |
-| E05 | Divisor de batería | 8.4 V → 2.08 V | cálculo | LiPo cargada | pendiente | Alan |
-| E06 | Corriente total | < 1.5 A | estimación | Multímetro en serie | pendiente | Alan |
-| E07 | Corto antes de la LiPo | +VBAT–GND abierto | buena práctica | Multímetro | pendiente | Alan |
-| E09 | Ruteo de las PCB de la opción A | Incompleto: principal 15 redes distintas sin unir según `principal_drc.rpt` (44 pastillas; antes se decía 16) más 1 error de separación, sensores 5. Las PCB tienen errores de DRC. Los componentes y algunas dimensiones se actualizaron en documentación; falta sincronizar huellas y posiciones | Enrutador propio + fichas UNIT aportadas por Alan | Revisar footprints/huellas de GA12-N20, soportes M31, 74HC4067, TCRT5000, ventilador y conectores; terminar ruteo en KiCad 10 y correr ERC/DRC oficiales | pendiente | Claude / Alan |
-| E08 | Brocas | 1.0 mm (headers, TO-220) y 1.3 mm (1N5822); la de 0.8 solo para resistencias | diámetro de patas | Comprar | pendiente | Alan |
+### Medidas y piezas (M)
+| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
+|---|---|---|---|---|---|
+| M14 | LiPo 2S: medidas y peso | Elegir y comprar el pack (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso y conector | Alan |
+| M15 | LiPo: conectores | Que el conector de descarga de la LiPo coincida con el JST-RC comprado y que traiga balanceo JST-XH de 3 pines | no (J1 es un header de 2 pines con cable) | Comparar al comprar la LiPo | Alan |
+| M16 | 74HC4067: medida con vernier | Por ahora se usan las de la ficha UNIT (40 × 20 mm), como pidió Alan | no | Medir con vernier cuando se pueda; si difiere más de 0.5 mm se corrige la huella | Alan |
+| M17 | 74HC4067: orden y separación de sus pines | La huella supone: fila de control VCC, GND, S0, S1, S2, S3, SIG, EN y fila de canales C0–C15, a 15.24 mm. **Sin fuente** | **sí** (placa de sensores) | Foto de las dos caras del módulo, donde se lea la serigrafía de los pines, y distancia entre las dos filas | Alan |
+| M19 | TCRT5000: posición de las patas | Ya se sabe que son 2 filas de 2. Faltan **2 medidas** (ver C.1) | **sí** (placa de sensores) | (a) distancia entre las 2 patas de una misma fila; (b) distancia entre las dos filas. Centro a centro, con vernier | Alan |
+| M20 | TCRT5000: qué pata es cuál (A, K, C, E) | Saber cuál es el ánodo y cátodo del LED y el colector y emisor del sensor (ver C.2) | **sí** (si se invierte, el sensor no funciona) | Prueba de C.2 con multímetro, o foto de abajo del sensor | Alan |
+| M21 | Ventilador 4010: consumo real con la LiPo | Es de 12 V; con 7.4–8.4 V gira más lento y puede no arrancar (ver C.3) | no | Conectarlo a la batería y medir la corriente | Alan |
+| M22 | Ventilador: peso y sujeción | Ficha: 16 g. Más de 10 g que se caiga es falta (ver C.4) | no | Pesarlo (C04) y sujetarlo con sus 4 tornillos M3 | Alan |
+| M28 | Fusible reseteable (PTC): elegir la pieza | Tipo decidido: **reseteable** (P16). Faltan los datos para comprarlo: corriente de mantenimiento (aprox. 2–3 A [E]), voltaje máximo ≥ 16 V, encapsulado radial y paso de patas | no (huella **provisional** F1 de 5.08 mm) | Buscar un PTC radial ≥ 16 V de 2–3 A; al comprarlo, medir el paso de patas y cambiar la huella | Alan / Claude |
+| M33 | MP1584: posición de sus 4 agujeros (nuevo) | La huella supone 19.5 mm entre los agujeros IN y OUT y 13.5 mm entre + y −. Sin fuente | **sí** (placa principal) | Con vernier: distancia de IN+ a IN− y de IN+ a OUT+, centro a centro | Alan |
 
-## 5. Riesgos (R)
-| ID | Riesgo | Situación | Qué hacer | Estado |
+### Preguntas (P)
+| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
+|---|---|---|---|---|---|
+| P13 | Señal de falla del DRV8833 (pin ULT) | Saber si se puede conectar al ESP32 sin dañarlo (ver C.5). Hoy la PCB **no** la conecta | no | Multímetro en resistencia entre ULT y VCC del DRV8833, sin alimentar | Alan |
+| P18 | Mapa de pines del firmware | La PCB de KiCad manda (START = GPIO4, ventilador = GPIO17, 12 sensores con multiplexor, sin zumbador ni nFAULT). Falta pasar eso a `firmware/robot-casero/casero/config.h`, que hoy dice START = GPIO18, zumbador en GPIO4, nFAULT en GPIO15 y 8 sensores directos | no | Trabajo de Claude en la siguiente tanda (con pruebas del firmware) | Claude |
+| P19 | Eje del motor contra agujero del rin (nuevo) | P09 dice agujero de **2.3 mm**; el BOM y la ficha de UNIT dicen motor con **eje en D de 3 mm**. Un eje de 3 mm no entra en 2.3 mm | no (es mecánico) | Medir el diámetro del eje de los motores cuando lleguen (o el de los motores de referencia) | Alan |
+
+### Chasis (C)
+| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
+|---|---|---|---|---|---|
+| C01 | Espesor del acrílico | Ideal: **3 mm máximo** (Alan) | no | Confirmar con el taller | Equipo |
+| C02 | Material de la base | Acrílico, MDF o PLA | no | Decidir | Equipo |
+| C04 | Peso total | Alan irá pesando las piezas; Claude las suma | no | Mandar pesos | Alan |
+| C05 | Holgura de corte | Láser −0.2 mm; PLA +0.3 mm en agujeros | no | Pieza de prueba | Equipo |
+| C07 | Falda del ventilador | Decidir si se usa (ver C.6) | no | Depende de R01 y de la prueba de succión | Equipo |
+| C09 | Tornillos M2 y M3 | Dónde va cada uno (ver C.8) | no | — | — |
+| C10 | Reacomodo mecánico por las PCB nuevas (nuevo) | La placa de sensores creció de 94 × 50 a **94 × 75 mm** porque ahora lleva el multiplexor (P15). Con el arreglo actual el robot pasaría de 200 mm de largo. También se corrigió en `generar_dxf.py` un desfase de 3.81 mm de las ventanas de los sensores. Falta regenerar los DXF | no para grabar; **sí** para fijar dónde van los agujeros de montaje | Elegir una opción de R01 y reacomodar en AutoCAD | Alan / Claude |
+
+### Eléctrico (E)
+| ID | Tema | Valor | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
+|---|---|---|---|---|---|
+| E01 | MP1584 #1 (5 V) | Ajustar la salida a **5.0 V** antes de conectar nada | no | Alimentar IN+/IN− con 7–8.4 V sin nada en OUT; girar el tornillito hasta 5.00 V con el multímetro en OUT | Alan |
+| E02 | MP1584 #2 (6 V motores) | Ajustar a **6.0 V** antes de conectar el DRV8833 | no | Igual que E01 | Alan |
+| E03 | Diodos 1N5822 | Directa ~0.15–0.30 V, inversa OL | no | Sección D | Alan |
+| E04 | ERC y DRC oficiales en KiCad 10 | Claude avisa cuándo hacen falta y qué mandar (Alan, 11 nov) | no | Ver `electronica/kicad/FABRICACION_CASERA.md` | Alan, cuando Claude avise |
+| E05 | Divisor de batería | 8.4 V → 2.08 V | no | Medir con la LiPo cargada | Alan |
+| E06 | Corriente total | < 1.5 A estimado | no | Multímetro en serie | Alan |
+| E07 | Corto antes de la LiPo | +VBAT–GND abierto | no | Multímetro | Alan |
+| E08 | Brocas | 0.8 mm (resistencias, sensores, vías), 1.0 mm (headers, módulos, TO-220, PTC), 1.3 mm (1N5822), 3.2 mm (M3) | no | Comprar las que falten | Alan |
+| E09 | Ruteo de las PCB de doble cara | E09_ESTADO | **es el pendiente principal** | E09_COMO | Claude |
+
+### Riesgos (R)
+| ID | Riesgo | Situación | Qué hacer | Quién |
 |---|---|---|---|---|
-| R01 | Ventilador tapado por la PCB | En la opción A el ventilador va sobre un hueco de la placa y de la PCB, con la salida libre | Probar la succión con báscula. **7 nov:** Alan duda que un 4010 axial (ventilador de gabinete) sirva para succión; UNIT no publica presión estática y el modelo de 12 V con LiPo 2S dará menos aire que en la ficha. Medir con báscula la fuerza hacia abajo, con falda, antes de fijar el diseño | pendiente |
-| R02 | Puentes de alambre en la PCB casera | Cobre solo por abajo: cada cruce de pistas es un alambre soldado por arriba (pistas rojas en `vista_*.png`). Idea de Alan de dos placas fenólicas: evaluada en `opciones-diseno.md` (O04), **sin decidir** | Contar los puentes; elegir entre O04, doble cara o puentes | pendiente |
-| R03 | Sensores en arco | Funcionan de 0.2 a 15 mm, mejor a 2.5 mm | Ajustar con arandelas | pendiente |
-| R04 | El límite de 200 × 100 incluye ruedas y sensores | El diseño (opción A) mide 196 × 98 mm con todo | Medir armado | pendiente |
+| R01 | Posición del ventilador | Hoy va sobre un hueco de 34 mm de la PCB principal. Alan pide evaluar moverlo hacia adelante (ver C.7) | Alan elige una opción de C.7 | Alan |
+| R03 | Altura de la rueda loca (15 mm) | **Sí hay problema**: la base queda a ~3.9 mm del piso y la rueda loca mide 15 mm (ver C.9) | Medir lo que pide C.9 y decidir cómo montarla | Alan |
+| R04 | Verificación física de medidas y el límite de 200 × 100 mm | Alan medirá en físico; las medidas conocidas ya están en `mecanica/autocad/parametros.yaml` | Medir el robot armado | Alan |
+| V01 | Medidas con vernier | Ya están todas, salvo el multiplexor (M16) | — | Alan |
 
-## 6. Cómo medir los diodos 1N5822 (E03)
+---
+
+## B. Resueltos y obsoletos (no se borran)
+| ID | Tema | Resolución | Fecha | Dónde quedó |
+|---|---|---|---|---|
+| M01 | ESP32: tamaño | 51.9 × 28.7 mm; 54 mm con USB-C (vernier) | 11 nov | Huella `ESP32_DevKit_30`; especificaciones |
+| M02 | ESP32: distancia entre filas | 25.5 mm (vernier) → huella a 25.4 mm (paso estándar) | 11 nov | Huella; especificaciones |
+| M03 | ESP32: orden de pines | Serigrafía + pinout (P07) | 7 nov | Especificaciones |
+| M04 | ESP32: pines por lado | 15 por lado a 2.54 mm | 6 nov | Huella |
+| M05 | Motor N20: largo | Cuerpo 24.5 mm, eje 8.5 mm, total 33 mm. Referencia aceptada por Alan (P10) | 11 nov | `parametros.yaml`; especificaciones |
+| M06 | Motor N20: ancho × alto | 12 × 10 mm (antes se había anotado 5 mm de ancho; manda la medida nueva) | 11 nov | `parametros.yaml`; especificaciones |
+| M07 | N20: agujeros del frente | **Obsoleto**: se sujeta con el asegurador M31 | 6 nov | — |
+| M08 | Rueda | Llanta ∅26.7 × 21.7 mm; rin ∅21 × 22.1 mm (vernier) | 11 nov | `parametros.yaml`; especificaciones |
+| M09 | DRV8833: tamaño | 16 × 18.5 mm (dibujo UNIT) | 7 nov | Huella |
+| M10 | DRV8833: orden de pines | IN4, IN3, GND, VCC, IN2, IN1 · EEP, OUT1…OUT4, ULT | 6 nov | Símbolo y huella |
+| M11 | DRV8833: voltaje y corriente | VM 2.7–10.8 V, 1.5 A RMS por puente (datasheet TI) | 6 nov | Especificaciones |
+| M12 | MP1584: tamaño | 22.4 × 16.8 mm (vernier). Agujeros: M33 | 11 nov | Huella |
+| M13 | MP1584: terminales | OUT−/OUT+ y IN−/IN+ (confirmado en P03) | 11 nov | Huella |
+| M18 | TCRT5000: cuerpo | 10.2 × 5.8 × 7 mm (datasheet) | 6 nov | Huella |
+| M23 | Capacitores | Electrolítico ∅8 × 12.8 mm, 4.1 mm entre patas → huella de 3.8 mm; cerámico 5.5 mm → huella de 5.0 mm (paso estándar; las patas se acomodan) | 11 nov | Huellas en `generar_principal.py` y `generar_sensores.py` |
+| M24 | 1N5822: separación de patas | **Decisión de Alan: ~20 mm** → huella de 20.32 mm, taladro 1.3 mm (D1 y D2) | 11 nov | D21; huella |
+| M25 | 2N2222 H331: orden de patas | **E-B-C** viendo la cara plana. La huella TO-92_Inline_Wide coincide (pad 1 = E con la cara plana al frente) | 11 nov | Placa de sensores, Q1 |
+| M26 | Pulsadores | 6 × 6 y 12 × 12 mm, 5 mm entre patas | 11 nov | Huellas SW_PUSH_6mm y SW_PUSH-12mm |
+| M27 | Interruptor KCD1 rojo | 18.8 × 6.7 mm, 16.5 mm de alto (25 con terminales). **Cableado**, fijo en la estructura | 11 nov | SW1 = header de 2 pines; mecánica |
+| M29 | Paso de la "barra" | **Obsoleto**: no hay barra (D05) | 5 nov | — |
+| M30 | Rueda loca | **Mini rueda universal 3Pi N20** (UNIT): 22 × 16 × 15 mm, agujeros a 15 mm, 10 g. Medidas de la ficha como verdaderas | 11 nov | D23; `parametros.yaml`; ver R03 |
+| M31 | Asegurador de motor N20 | **Solo mecánico** (no va en la PCB): espesor 1.5 mm, 19.5 mm entre agujeros | 11 nov | `parametros.yaml` |
+| M32 | DRV8833: separación entre filas | **15.9 mm** (vernier) | 11 nov | Huella `Modulo_DRV8833` |
+| P01 | Tamaño del DRV8833 | Resuelto con M09 | 6 nov | — |
+| P02 | ¿La pieza de M12 es el MP1584? | Sí | 11 nov | M12 |
+| P03 | ¿El módulo OUT−/OUT+ e IN−/IN+ es el MP1584? | Sí (Alan) | 11 nov | M13 |
+| P04 | ¿La pieza de M24 es el 1N5822? | Sí; separación según M24 | 11 nov | M24 |
+| P05 | Orden de patas del 2N2222 | Resuelto en M25 | 11 nov | M25 |
+| P06 | ¿Es el interruptor KCD1? | Sí, rojo KCD1; solo enciende y apaga; va cableado y fijo | 11 nov | M27 |
+| P07 | ESP32: ¿VIN o VN arriba a la derecha? | VIN | 7 nov | Huella |
+| P08 | Puente J1 del DRV8833 | No soldarlo | 6 nov | D14 |
+| P09 | Rin | Rin con prisionero; agujero de 2.3 mm (ver P19 por el eje de 3 mm) | 11 nov | M08 |
+| P10 | Medidas de los motores | Usar M05/M06 como referencia para avanzar | 11 nov | `parametros.yaml` |
+| P11 | Distancia entre patas de capacitores | Resuelto en M23 | 11 nov | M23 |
+| P12 | Opción de diseño | **Opción A**: todo en una sola placa de acrílico, sin niveles | 11 nov | D22 |
+| P14 | Zumbador | **Se quita** del diseño: es un buzzer y no se necesita. La PCB de KiCad no lo tiene; falta quitarlo del firmware (P18) | 11 nov | D19 |
+| P15 | Sensores y multiplexor | Sensores + multiplexor + transistor de emisores en la **placa de sensores**; a la principal van 8 hilos | 11 nov | D20; esquemáticos |
+| P16 | Fusible | Tipo: **reseteable**. La pieza exacta queda en M28 | 11 nov | D24; F1 provisional |
+| P17 | ¿Qué son las "ruedas 3Pi"? | Ruedas locas (M30) | 11 nov | BOM |
+| C03 | Tamaño máximo | 200 × 100 mm y 500 g (reglamento). No se busca usar el máximo: siempre ahorrar espacio y peso | 11 nov | Reglamento |
+| C06 | Permiso para el ventilador | Confirmado (D08) | 5 nov | — |
+| C08 | Cambio del reglamento | No cambiará (Alan) | 11 nov | — |
+| R02 | Puentes de alambre | Se resuelve con **PCB de doble cara** (D18) | 11 nov | E09 |
+
+---
+
+## C. Explicaciones detalladas
+
+### C.1 — M19: posición de las patas del TCRT5000
+El TCRT5000 tiene 4 patas: dos del LED infrarrojo (fila 1) y dos del fototransistor (fila 2). Para dibujar los agujeros de
+la PCB necesito saber **dónde cae cada pata**. La huella actual es provisional: 2.54 mm entre las patas de una fila y 5.08 mm
+entre filas. Si eso no coincide con la pieza real, las patas no entran en los agujeros y la placa de sensores se tira.
+**Qué medir, centro a centro y con vernier:** (a) entre las 2 patas de una misma fila; (b) entre una fila y la otra.
+Truco: apoyar el sensor sobre una tira de cartón para que las patas lo perforen, y medir los agujeros.
+
+### C.2 — M20: qué pata es cuál
+- **A** (ánodo) y **K** (cátodo) son del LED infrarrojo; **C** (colector) y **E** (emisor) son del fototransistor.
+- **Si se invierte A con K**, el LED no prende. **Si se invierte C con E**, el sensor no da lectura.
+- **Prueba del LED:** con el multímetro en modo diodo, entre las dos patas del lado del LED (normalmente el de lente azulada o transparente), una dirección marca ~1.0–1.2 V y la otra OL. Donde marca, la punta roja está en **A** y la negra en **K**. Con la cámara del celular se ve el LED prender.
+- **Prueba del fototransistor:** con las dos patas del otro lado en modo diodo, cubre el sensor y luego ilumínalo con el LED de otro TCRT5000 o con un control remoto. El valor cambia solo con la punta roja en **C** y la negra en **E**.
+- **Alternativa:** manda una foto de la cara de abajo del sensor y lo reviso.
+
+### C.3 — M21: consumo del ventilador
+El 4010 que compraron es de **12 V**, y la batería da 7.4–8.4 V. Va a girar más lento que en la ficha y, con PWM bajo, puede
+no arrancar. **No afecta a la PCB:** el MOSFET IRLZ44N y el diodo aguantan de sobra 100 mA. Sirve para saber si mueve aire
+suficiente y desde qué PWM arranca, para el firmware. **Prueba:** rojo a + y negro a − de la batería, el multímetro en serie
+en mA, y anotar la corriente y si arranca.
+
+### C.4 — M22: peso y sujeción del ventilador
+El reglamento sanciona que se caiga del robot una pieza de más de 10 g, y el ventilador pesa 16 g. Hay que pesarlo para la
+suma total (C04) y sujetarlo con sus **4 tornillos M3** (agujeros de Ø3.2 en un cuadrado de 32 mm, ya están en la PCB). No
+basta con cinta.
+
+### C.5 — P13: señal de falla del DRV8833 (pin ULT)
+- **Qué es:** el DRV8833 tiene un pin llamado **ULT** (nFAULT) que se pone en 0 V cuando el driver se calienta demasiado o un motor pide demasiada corriente. Si se conecta a una entrada del ESP32, el programa se entera de la falla y puede parar los motores o avisar.
+- **El problema:** ese pin solo sabe "jalar a 0 V" (drenador abierto). Para leerlo hace falta una resistencia que lo suba a "1". El ESP32 tiene una interna de 3.3 V que sirve, pero no sabemos si el **módulo** trae otra resistencia hacia el voltaje de los motores (6 V); en la foto hay resistencias, sin esquema. Si la trae y se conecta ULT al ESP32, entrarían 6 V a un pin que aguanta 3.3 V y se puede dañar.
+- **Situación hoy:** la PCB de KiCad **no conecta** ULT (queda libre). El robot funciona sin ella, porque el chip se protege solo y se apaga si se calienta.
+- **Qué necesito:** con todo desconectado, el multímetro en resistencia entre **ULT** y **VCC** del módulo.
+  - "OL" (sin resistencia): es seguro conectarlo y lo agrego a la PCB con un pin libre del ESP32.
+  - Algunos kΩ: no se conecta (o se agrega un divisor).
+
+### C.6 — C07: qué es la "falda"
+La falda es una **tira delgada y flexible** (acetato, plástico de botella o hule espuma delgado) que se pega alrededor de la
+parte de abajo del robot, o solo alrededor de la zona del ventilador, y baja hasta casi tocar el piso.
+
+- **Función:** cerrar el espacio entre la base y el piso. Así, cuando el ventilador saca el aire de abajo hacia arriba, se forma un vacío pequeño que **empuja el robot contra la pista** y le da más agarre en curvas.
+- **Sin falda**, el aire entra por los lados y la succión casi no se nota.
+- **Dónde va:** debajo de la base de acrílico, rodeando el hueco del ventilador. No debe tocar la pista con fuerza, porque frena.
+- **Cómo afecta a los sensores:** los sensores deben quedar **fuera** de la zona cerrada, o la falda no debe taparles la vista ni reflejar su luz.
+- **Cómo afecta al ventilador:** sin falda, el ventilador casi no sirve para agarre.
+- **Con un 4010 de 12 V a 7.4 V la succión será pequeña** (R01, M21). Por eso la falda queda pendiente hasta medir con báscula si vale la pena.
+
+### C.7 — R01: dónde poner el ventilador
+| Opción | Qué es | Ventajas | Desventajas |
+|---|---|---|---|
+| **A (actual)** | Ventilador sobre el hueco de 34 mm de la PCB principal | Sin cables extra; ya está ruteada | La PCB principal mide 90 × 106 mm por el hueco; con la placa de sensores nueva (75 mm) el robot pasa de 200 mm de largo |
+| **B (recomendada)** | Sacar el ventilador de la PCB: va en su propio hueco de la base de acrílico, entre los motores y la placa de sensores; se conecta con 2 cables a J4 | La PCB principal se acorta unos 40 mm y deja lugar para la placa de sensores más grande. La succión queda más cerca del centro del robot | Hay que rediseñar la base en AutoCAD y regenerar la PCB principal sin el hueco. Menos espacio entre los motores |
+| **C** | Quitar el ventilador | −16 g, −100 mA, menos piezas | Se pierde el posible agarre extra |
+
+### C.8 — C09: dónde va cada tornillo
+| Medida | Dónde | Qué sujeta |
+|---|---|---|
+| **M3** (kit de latón: separadores de 6–20 mm, tornillos y tuercas) | PCB principal (3 agujeros), placa de sensores (3 agujeros) y ventilador (4 agujeros a 32 mm) | Las dos PCB a la base de acrílico con separadores, y el ventilador |
+| **M2** (vienen con el asegurador, 2 tornillos M2 × 7 mm + tuercas por asegurador) | Base de acrílico | Los aseguradores de los motores N20 (agujeros a 19.5 mm) |
+| Por definir | Rueda loca 3Pi (agujeros a 15 mm) | Depende de R03; normalmente lleva tornillos M2 |
+
+### C.9 — R03: altura de la rueda loca
+- **Altura de la base:** la llanta mide ∅26.7 mm, así que el eje del motor queda a 13.35 mm del piso. El motor (10 mm de alto) va encima de la base sobre el asegurador (1.5 mm), así que la cara de arriba de la base queda a 13.35 − 5 − 1.5 ≈ **6.85 mm**. Con acrílico de 3 mm, **la cara de abajo de la base queda a ~3.9 mm del piso**.
+- **El problema:** la rueda loca mide **15 mm** de alto. Atornillada debajo de la base, levantaría ese extremo del robot unos 11 mm. El robot quedaría inclinado y los sensores lejos del piso: el TCRT5000 lee mejor a ~2.5 mm y pierde contraste rápido al alejarse. **No funcionaría así.**
+- **Solución 1 (recomendada):** hacer un hueco en la base y meter la rueda loca **desde arriba**, de modo que solo salga por abajo la parte de la esfera que hace falta (~3.9 mm).
+- **Solución 2:** subir todo el robot (motores debajo de la base). Eso aleja los sensores del piso, y habría que bajarlos con separadores.
+- **Qué necesito:** la distancia desde la cara donde se apoyan las orejas de los tornillos de la rueda loca hasta la parte de abajo de la esfera. Con eso dibujo el hueco.
+
+---
+
+## D. Cómo medir los diodos 1N5822 (E03)
 1. Multímetro en **modo diodo** (▶|). 2. Directa: roja al lado sin franja, negra a la franja → ~0.15–0.30 V.
 3. Inversa: al revés → **OL**. 4. ~0.55 V o más = no es Schottky; 0.00 en ambos sentidos = en corto.
 Anotar: `Diodo 1: directa ___ V, inversa ___ · Diodo 2: directa ___ V, inversa ___ · letras del cuerpo ___`

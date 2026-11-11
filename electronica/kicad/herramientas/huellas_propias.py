@@ -66,23 +66,26 @@ def _contorno(fp, x1, y1, x2, y2, aviso):
 
 
 def tcrt5000():
-    fp = _huella("TCRT5000_THT", "TCRT5000 suelto. Cuerpo 10.2x5.8 mm (Vishay); patas en linea a 2.54 mm: PROVISIONAL (M18-M20)")
-    for i, n in enumerate("AKCE"):
-        _pad(fp, n, 0, 2.54 * i)
-    _contorno(fp, -2.9, -1.3, 2.9, 8.9, "VERIFICAR M19")
+    fp = _huella("TCRT5000_THT",
+                 "TCRT5000 suelto. Cuerpo 10.2x5.8 mm (Vishay, M18). Patas en 2 filas de 2 (Alan, 11 nov): fila del LED (A, K) "
+                 "y fila del fototransistor (C, E). Separaciones 2.54 x 5.08 mm PROVISIONALES SIN FUENTE (M19); "
+                 "que pata es cual: M20. Origen = centro del sensor")
+    for n, x, y in (("A", -1.27, -2.54), ("K", 1.27, -2.54), ("C", -1.27, 2.54), ("E", 1.27, 2.54)):
+        _pad(fp, n, x, y)
+    _contorno(fp, -2.9, -5.1, 2.9, 5.1, "PROVISIONAL M19-M20")
     return fp
 
 
 def esp32():
     fp = _huella("ESP32_DevKit_30",
-                 "ESP32 DevKit 30 pines (clon USB-C). Placa 51 x 28 mm, filas a 25.4 mm (Alan midio 25.5 con escalimetro), "
-                 "15 pines por lado a 2.54 mm. Por confirmar con vernier (M01-M04)")
+                 "ESP32 DevKit 30 pines (clon USB-C). Placa 51.9 x 28.7 mm, 54 mm con USB-C (vernier, M01). Filas a 25.4 mm "
+                 "(Alan midio 25.5 con vernier, M02: se usa el paso estandar 25.4). 15 pines por lado a 2.54 mm (M04)")
     for i in range(15):
-        _pad(fp, i + 1, 0, 2.54 * i)
-        _pad(fp, 30 - i, 25.4, 2.54 * i)
-    # placa de 51 mm: los pines quedan centrados a lo largo (35.56 mm de fila)
-    y0 = (35.56 - 51.0) / 2
-    _contorno(fp, -1.3, y0, 26.7, y0 + 51.0, "ESP32 30p (M01-M04)")
+        _pad(fp, i + 1, 0, 2.54 * i, taladro=1.0)
+        _pad(fp, 30 - i, 25.4, 2.54 * i, taladro=1.0)
+    # placa de 51.9 mm: los pines quedan centrados a lo largo (35.56 mm de fila); ancho 28.7 centrado en las filas
+    y0 = (35.56 - 51.9) / 2
+    _contorno(fp, 12.7 - 14.35, y0, 12.7 + 14.35, y0 + 51.9, "ESP32 30p 51.9x28.7 (M01-M02)")
     _texto(fp, "USB-C", 12.7, y0 + 2.0)
     return fp
 
@@ -90,21 +93,21 @@ def esp32():
 def drv8833():
     fp = _huella("Modulo_DRV8833",
                  "Modulo DRV8833 comprado: placa 16 x 18.5 mm (dibujo UNIT, M09). 2 filas de 6 pines a 2.54 mm. "
-                 "Separacion entre filas 15.24 mm SIN CONFIRMAR (M32: el dibujo no la acota; probar con plantilla 1:1)")
+                 "Separacion entre filas 15.9 mm (vernier, Alan 11 nov, M32)")
     for i in range(6):
-        _pad(fp, i + 1, 0, 2.54 * i)
-        _pad(fp, 7 + i, 15.24, 2.54 * i)
-    _contorno(fp, -1.63, -1.65, 16.87, 14.35, "DRV8833 16x18.5 (filas: M32)")
+        _pad(fp, i + 1, 0, 2.54 * i, taladro=1.0)
+        _pad(fp, 7 + i, 15.9, 2.54 * i, taladro=1.0)
+    _contorno(fp, 7.95 - 9.25, 6.35 - 8.0, 7.95 + 9.25, 6.35 + 8.0, "DRV8833 16x18.5, filas 15.9 (M09, M32)")
     return fp
 
 
 def mp1584():
     fp = _huella("Modulo_MP1584",
-                 "Modulo MP1584 22 x 16.5 x 4 mm (Alan, escalimetro). OUT a la izquierda, IN a la derecha (M13). "
-                 "Posicion exacta de los agujeros por confirmar")
+                 "Modulo MP1584 22.4 x 16.8 mm (vernier, M12). Terminales OUT-/OUT+ a la izquierda, IN-/IN+ a la derecha (M13, P03). "
+                 "Posicion exacta de los 4 agujeros PROVISIONAL (M33)")
     for n, x, y in [(1, 19.5, 13.5), (2, 19.5, 0), (3, 0, 13.5), (4, 0, 0)]:
-        _pad(fp, n, x, y)
-    _contorno(fp, -1.25, -1.5, 20.75, 15.0, "MP1584 (M12-M13)")
+        _pad(fp, n, x, y, taladro=1.0)
+    _contorno(fp, 9.75 - 11.2, 6.75 - 8.4, 9.75 + 11.2, 6.75 + 8.4, "MP1584 22.4x16.8 (agujeros: M33)")
     _texto(fp, "OUT", 3.0, 6.75)
     _texto(fp, "IN", 16.5, 6.75)
     return fp
@@ -112,7 +115,7 @@ def mp1584():
 
 def diodo_20mm():
     fp = _huella("D_DO-201AD_P20.32mm_Taladro1.3",
-                 "Diodo 1N5822 (DO-201AD) acostado, 20.32 mm entre patas (propuesta O03 para ahorrar espacio). Taladro 1.3 mm")
+                 "Diodo 1N5822 (DO-201AD) acostado, 20.32 mm entre patas (decision de Alan 11 nov, M24: ~20 mm para no cortar ni doblar de mas las patas). Taladro 1.3 mm")
     _pad(fp, 1, 0, 0, d=2.6, taladro=1.3)
     _pad(fp, 2, 20.32, 0, d=2.6, taladro=1.3)
     _contorno(fp, 5.41, -2.9, 14.91, 2.9, "1N5822 franja=pin1")
@@ -157,21 +160,25 @@ def diodo_largo():
 
 
 def ptc():
-    fp = _huella("PTC_Radial_VERIFICAR", "Fusible reseteable radial, paso 5 mm SIN FUENTE (M28)")
-    _pad(fp, 1, 0, 0)
-    _pad(fp, 2, 5.0, 0)
-    _contorno(fp, -1.5, -3.0, 6.5, 3.0, "VERIFICAR M28")
+    fp = _huella("PTC_Radial_VERIFICAR",
+                 "Fusible reseteable radial PROVISIONAL (M28, P16): paso 5.08 mm, taladro 1.0 mm, como los PTC radiales comunes "
+                 "de 16-30 V. Cambiar cuando se compre la pieza real")
+    _pad(fp, 1, 0, 0, taladro=1.0)
+    _pad(fp, 2, 5.08, 0, taladro=1.0)
+    _contorno(fp, -1.5, -3.0, 6.58, 3.0, "PTC PROVISIONAL M28")
     return fp
 
 
 def mux():
     fp = _huella("Modulo_MUX4067_VERIFICAR",
-                 "Modulo 74HC4067 18x41 mm. Canales C0-C15 (pines 9-24) en una columna, control (pines 1-8) en la otra: PROVISIONAL (M16-M17)")
+                 "Modulo 74HC4067: placa 40 x 20 mm segun ficha UNIT (M16, Alan pidio usarla mientras no mida con vernier). "
+                 "Control (pines 1-8: VCC GND S0 S1 S2 S3 SIG EN) en una fila y C0-C15 (pines 9-24) en otra a 15.24 mm: "
+                 "orden y separacion PROVISIONALES (M17)")
     for i in range(8):
         _pad(fp, 1 + i, 0, 2.54 * i)           # VCC GND S0 S1 S2 S3 SIG EN
     for i in range(16):
         _pad(fp, 9 + i, 15.24, 2.54 * i)       # C0..C15
-    _contorno(fp, -1.4, -2.0, 16.64, 39.1, "VERIFICAR M16-M17 MUX")
+    _contorno(fp, 7.62 - 10.0, 19.05 - 20.0, 7.62 + 10.0, 19.05 + 20.0, "MUX 20x40 UNIT (pines: M17)")
     return fp
 
 
