@@ -13,11 +13,11 @@ Pega el bloque que corresponda al abrir un chat nuevo. Reglas comunes: responder
 - Riesgos: R01 (el ventilador queda bajo las PCB, salida de aire limitada), R04 (caja de 200 × 100 incluye ruedas y sensores).
 - Siguiente: confirmar medidas con regla/vernier, actualizar `parametros.yaml`, regenerar, hacer pieza de prueba, soporte del ventilador/falda en 3D (STEP/STL).
 
-## B. Diagrama y PCB en KiCad (`electronica/kicad/`)
-- Qué hay: `principal/` (ESP32 + DRV8833 + 2 MP1584 + ventilador + botones + medición de batería) y `barra_sensores/` (12 × TCRT5000 + módulo 74HC4067 + interruptor de emisores con 2N2222), cada una con `.kicad_sch`, `.kicad_pcb`, `.kicad_pro`, `fp-lib-table`, `*_drc.rpt`, `vista_*.png`; `robot_casero.pretty` (huellas propias provisionales); `herramientas/` (generadores `generar_principal.py`, `generar_barra.py`, `generar_pcb.py`, `ruteador.py`, `huellas_propias.py`, `verificar_esquematico.py`); `pines_robot_casero.h` (fuente de verdad de los pines); `NOTAS.md`.
+## B. Diagrama y PCB en KiCad (`electronica/kicad/`) — actualizado 11 nov (V7)
+- Qué hay: `principal/` (ESP32 + DRV8833 + 2 MP1584 + ventilador + botones + medición de batería; 90 × 106 mm) y `sensores/` (12 × TCRT5000 montados abajo + módulo 74HC4067 + interruptor de emisores con 2N2222; 94 × 75 mm), cada una con `.kicad_sch`, `.kicad_pcb`, `.kicad_pro`, `fp-lib-table`, `*_drc.rpt` y la carpeta `fabricacion/` (PDF 1:1 de las dos caras, mapa de perforaciones, CSV); `robot_casero.pretty` (huellas propias; las de módulos siguen provisionales); `herramientas/` (`generar_principal.py`, `generar_sensores.py`, `generar_pcb.py`, `ruteador.py`, `huellas_propias.py`, `exportar_fabricacion.py`, `verificar_esquematico.py`); `pines_robot_casero.h`; `NOTAS.md`; `FABRICACION_CASERA.md`.
 - Pines ESP32: mux S0=25, S1=26, S2=27, S3=33, SIG=34 (ADC1), emisores=13; motores AIN1=19, AIN2=21, BIN1=22, BIN2=23, SLEEP=16; ventilador=17; START=4, CAL=14; batería=36 (divisor 100k/33k).
-- Verificado: esquemáticos con netlist de KiCad 7.0.11 y ERC propio (0 errores). PCB con el **DRC oficial de pcbnew: 0 errores** y todas las redes unidas, solo avisos de serigrafía (y 2 `lib_footprint_mismatch` en la barra, 1 `track_dangling` en la principal).
-- NO verificado: **ERC oficial** de KiCad (KiCad 7 no lo trae por línea de comandos: abrir en KiCad y correrlo), ninguna prueba eléctrica real.
-- Ruteo con enrutador propio (Freerouting no se pudo ejecutar). Las pistas ROJAS (capa superior) son **puentes de alambre** que no se graban: ~22 en la barra y ~27 en la principal (R02).
-- Pendiente: medidas reales de módulos (M01–M20), orden de pines del DRV8833 y del módulo del multiplexor, medición del diodo 1N5822, pulir la colocación para bajar puentes.
+- Las dos PCB son de **doble cara** (D18): vías de 1.8/0.8 mm que se rellenan con alambre soldado (no hay metalizado). Ruteo completo: 0 conexiones faltantes en ambas (sensores 37 vías, principal 29).
+- Verificado: esquemáticos con netlist de KiCad 7.0.11 y ERC propio (0 errores); DRC de pcbnew 7: 0 errores en ambas (solo avisos de serigrafía); ERC/DRC de KiCad 10 por el servidor MCP del usuario: sensores 0 errores (informes JSON en la PC de Alan). Ninguna prueba eléctrica real.
+- Pendiente para pasar a "lista para fabricar" (D): confirmar huellas provisionales M17 (pines del mux), M19/M20 (TCRT5000), M33 (agujeros MP1584) y regenerar.
 - Cuidado: ajustar los MP1584 a 5.0 V y 6.0 V con multímetro antes de conectar cargas.
+

@@ -21,6 +21,9 @@ MM = pcbnew.FromMM
 V = lambda x, y: pcbnew.VECTOR2I(MM(x), MM(y))
 FREEROUTING = Path("/tmp/fr/fr.jar")
 
+# Costo de una vía (en celdas de 0.25 mm de rodeo). Sensores: casi todo se resuelve sin vías (las resistencias
+# cambian de cara). Principal: casi todas las patas se sueldan solo por abajo y la cara de arriba se alcanza con vías.
+COSTO_VIA = {"sensores": 150.0, "principal": 60.0}
 # Doble cara casera (planchado): pista 0.8 mm, separación 0.5 mm; vía = agujero de 0.8 mm con alambre, pad de 1.8 mm
 REGLAS = dict(clearance=0.5, pista=0.8, via_d=1.8, via_taladro=0.8)
 
@@ -101,13 +104,17 @@ MUX_SENSORES = (31.0, 73.0, 90)   # módulo 74HC4067 acostado detrás de las res
 
 def colocacion_principal():
     """Placa principal 90 x 106 mm, apoyada sobre la placa de acrílico (opción A), con hueco para el ventilador. Medidas de módulos de docs/especificaciones-componentes.md (escalímetro, por confirmar)."""
+    # Colocación 11 nov (V7): el ESP32 va a la derecha con las patas AIN/BIN/START/FAN_PWM/DRV_SLEEP en su columna
+    # izquierda, de frente al DRV8833 (girado 180 para que su columna de entradas mire al ESP32), y las patas
+    # S0-S3/SIG/EMIT_EN/CAL/EN/ESP_5V en la columna derecha, junto a J5 (arriba) y los botones (derecha).
+    # Así las señales no se cruzan de lado a lado: el ruteador ya no se atasca (antes 1 red sin ruta y 44-58 vías).
     pos = {
-        "J5": (28, 6, 90), "A1": (36, 20, 0), "U3": (73, 14, 0), "U1": (5, 14, 0), "U2": (5, 33, 0),
-        "J2": (75, 32, 0), "J3": (81, 32, 0), "J4": (87, 32, 0), "C4": (74, 40, 0), "C5": (74, 49, 0),
+        "J5": (62, 6, 90), "A1": (60, 20, 0), "U3": (50, 26.7, 180), "U1": (5, 14, 0), "U2": (5, 33, 0),
+        "J2": (30, 32, 0), "J3": (36, 32, 0), "J4": (76, 84, 0), "C4": (30, 40, 0), "C5": (38, 46, 0),
         "J1": (5, 52, 0), "F1": (11, 52, 0), "SW1": (21, 52, 0), "C1": (26, 53.5, 0),
-        "R1": (5, 60, 0), "R2": (15, 60, 0), "C3": (44, 70, 0), "C2": (57, 70, 0),
-        "D2": (43, 78, 0), "D1": (43, 85, 0), "Q1": (44, 92, 0), "R4": (54, 92, 0), "R5": (54, 97, 0), "R3": (64, 90, 0),
-        "SW2": (66, 99, 0), "SW3": (12, 4, 0), "SW4": (50, 102, 0),
+        "R1": (64, 67, 0), "R2": (74, 67, 0), "C3": (66, 72, 0), "C2": (44, 58, 0),
+        "D2": (63.3, 78, 180), "D1": (43, 85, 0), "Q1": (44, 92, 0), "R4": (54, 92, 0), "R5": (54, 97, 0), "R3": (64, 90, 0),
+        "SW2": (66, 99, 0), "SW3": (78, 74, 0), "SW4": (82, 90, 0),
         "HV": (22, 84, 0),
     }
     # 4 apoyos M3; HV = hueco del ventilador (34 mm)
@@ -160,6 +167,7 @@ def construir(nombre, carpeta):
             # los TCRT5000 van ABAJO de la placa, mirando al piso: la huella se voltea (así las patas quedan en espejo
             # como en la pieza real) y se sueldan por la cara de arriba
             fp.Flip(fp.GetPosition(), False)
+            fp.SetOrientationDegrees(rot)      # Flip deja el giro en espejo: se repone para que sigan el arco
     # contorno
     for a, c, d, e in [(bx1, by1, bx2, by1), (bx2, by1, bx2, by2), (bx2, by2, bx1, by2), (bx1, by2, bx1, by1)]:
         s = pcbnew.PCB_SHAPE(b)
@@ -208,7 +216,8 @@ def rutear(ruta):
     from ruteador import Ruteador
     b = pcbnew.LoadBoard(str(ruta))
     r = Ruteador(b, **REGLAS)
-    r.limite = 700000
+    r.limite = 300000
+    r.costo_via = COSTO_VIA[ruta.stem]
     res = r.correr()
     print("Ruteo:", res)
     pcbnew.SaveBoard(str(ruta), b)

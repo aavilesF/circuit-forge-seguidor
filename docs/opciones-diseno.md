@@ -68,7 +68,7 @@ a cada lado del cuerpo, que es lo normal) para que quepa todo. Si prefieren más
 **La idea:** grabar dos placas de una cara: una con pistas abajo y otra con pistas arriba; pegarlas espalda con espalda (o con una capa
 aislante en medio) y soldar componentes por arriba y por abajo.
 
-| | O04. Dos placas fenólicas pegadas | Doble cara casera (una placa de doble cobre) | Una cara + puentes de alambre (actual) |
+| | O04. Dos placas fenólicas pegadas | Doble cara casera (una placa de doble cobre) | Una cara + puentes de alambre (descartada el 11 nov: se eligió doble cara, D18) |
 |---|---|---|---|
 | Cruces de pistas | Sí, por la otra placa | Sí, por la otra cara | Con alambres |
 | Unir las dos caras | Hay que pasar **cada** pata y cada vía por las dos placas y soldar en ambas; las placas deben coincidir al décimo de mm | Alinear dos fotolitos en la misma placa y hacer vías con alambre | No hace falta |

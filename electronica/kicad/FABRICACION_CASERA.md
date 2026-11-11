@@ -43,23 +43,15 @@ KiCad dibuja las dos caras vistas desde arriba, y al planchar la imagen se invie
 - la lista `*_soldar_arriba.csv` no trae ninguna pata marcada "NO";
 - las huellas provisionales (ver `docs/pendientes-por-confirmar.md`) ya se confirmaron.
 
-## Comprobaciones que hace Alan en KiCad 10 (cuando Claude avise, E04)
-KiCad 10 abre estos archivos, pero al guardarlos los convierte al formato nuevo. **Revisa sin guardar**, o guarda una copia aparte.
+## Verificación con KiCad 10.0.8 (hecha el 11 nov por el servidor MCP de KiCad en la PC de Alan, E04)
+Los informes JSON de `kicad-cli` 10 están en `<placa>/verificacion_kicad10/`. Resumen:
 
-**ERC (esquemáticos)**
-1. Abre `principal/principal.kicad_pro` → Editor de esquemáticos.
-2. *Inspeccionar → Comprobador de reglas eléctricas → Ejecutar ERC*.
-3. *Guardar…* → `principal_erc_kicad10.rpt`. Repite con `sensores/sensores.kicad_pro`.
+| Placa | DRC: errores | Conexiones faltantes | DRC: avisos | ERC: errores | ERC: avisos |
+|---|---|---|---|---|---|
+| sensores | 0 | 0 | serigrafía (10), `lib_footprint_mismatch` (30: huellas estándar de KiCad 7 vs 10); paridad: 4 pines NC del mux, 3 agujeros M3 | 0 | 226 `endpoint_off_grid`, 1 `lib_symbol_issues` (Q_NPN_EBC) |
+| principal | 0 | 0 | serigrafía (34), `lib_footprint_mismatch` (18, mismo motivo); paridad: 10 pines NC del ESP32 + nFAULT del DRV8833, 4 huellas mecánicas (M3 y hueco del ventilador) | 0 | 15 `endpoint_off_grid`, 3 `pin_to_pin` (bidireccional con salida de potencia: 3V3/VIN del módulo ESP32), 1 `lib_symbol_issues` (Q_NMOS_GDS) |
 
-**DRC (PCB)**
-1. Abre el Editor de PCB del mismo proyecto.
-2. *Inspeccionar → Comprobador de reglas de diseño*: marca "Rellenar zonas" y "Comprobar paridad con el esquemático", y luego *Ejecutar DRC*.
-3. *Guardar…* → `principal_drc_kicad10.rpt` (y `sensores_drc_kicad10.rpt`).
-
-**Qué mandar:** los `.rpt` completos. Lo importante:
-- `unconnected_items` (conexiones faltantes);
-- `clearance` / `shorting_items` (pistas demasiado cerca o en corto);
-- `lib_footprint_issues` (huellas que KiCad 10 no encuentra);
-- errores de paridad entre esquema y PCB.
-
-No hace falta corregir nada: con los reportes, Claude compara contra el DRC de KiCad 7.
+Los avisos son cosméticos o esperados (pines sin usar, huellas mecánicas sin símbolo, símbolos/huellas de la biblioteca de KiCad 7
+que KiCad 10 compara con las suyas). Si Alan quiere repetirlo a mano: abrir el `.kicad_pro`, *Inspeccionar → ERC* en el esquemático
+y *Inspeccionar → DRC* (con "paridad con el esquemático") en la PCB. KiCad 10 convierte los archivos al guardar: revisar sin guardar
+o guardar una copia aparte.

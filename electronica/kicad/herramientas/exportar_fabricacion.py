@@ -113,7 +113,8 @@ def patas_arriba(b):
             for t in tramos:
                 if t.GetNetCode() == p.GetNetCode() and (t.GetStart() - pos).EuclideanNorm() <= r or \
                         t.GetNetCode() == p.GetNetCode() and (t.GetEnd() - pos).EuclideanNorm() <= r:
-                    salida.append((fp.GetReference(), p.GetNumber(), p.GetNetname(), 1 in capas_accesibles(fp)))
+                    salida.append((fp.GetReference(), p.GetNumber(), p.GetNetname(), 1 in capas_accesibles(fp),
+                                   fp.GetLayer() == pcbnew.B_Cu))
                     break
     return salida
 
@@ -177,6 +178,7 @@ def exportar(placa):
     vias = [h for h in hs if h["pieza"] == "VIA"]
     arriba = patas_arriba(b)
     malas = [a for a in arriba if not a[3]]
+    dos_caras = [a for a in arriba if not a[4]]
 
     with open(out / f"{placa}_perforaciones.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, ["id", "pieza", "pata", "red", "x", "y", "d", "broca", "tipo"])
@@ -184,10 +186,16 @@ def exportar(placa):
         w.writerows(hs)
     with open(out / f"{placa}_soldar_arriba.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["pieza", "pata", "red", "se_puede_soldar_arriba"])
+        w.writerow(["pieza", "pata", "red", "se_puede_soldar_arriba", "como_se_suelda"])
         for a in sorted(arriba):
-            w.writerow([a[0], a[1], a[2], "sí" if a[3] else "NO: revisar"])
+            w.writerow([a[0], a[1], a[2], "sí" if a[3] else "NO: revisar",
+                        "solo arriba (pieza montada abajo)" if a[4] else "por las DOS caras"])
 
+    # se aleja la placa 25 mm de la esquina de la hoja: las impresoras no imprimen los primeros milímetros
+    dx, dy = 25 - x0, 25 - y0
+    for it in list(b.GetFootprints()) + list(b.GetTracks()) + list(b.Drawings()):
+        it.Move(V(dx, dy))
+    x0, y0, x1, y1 = x0 + dx, y0 + dy, x1 + dx, y1 + dy
     # cara de abajo (sin espejo)
     dianas(b, pcbnew.B_Cu, montajes, x0, y0)
     regla(b, pcbnew.B_Cu, x0, y1, "CARA ABAJO, imprimir SIN espejo")
@@ -220,7 +228,8 @@ Generado por `herramientas/exportar_fabricacion.py` desde `{placa}.kicad_pcb`. *
 | Agujeros | {len(hs)} ({", ".join(f"{n} con broca {k} mm" for k, n in sorted(cuenta.items()))}) |
 | Vías (alambre soldado por las dos caras) | **{len(vias)}** |
 | Pistas en la cara de arriba | {largo_arriba:.0f} mm |
-| Patas que se sueldan también por arriba | {len(arriba)} (`{placa}_soldar_arriba.csv`){f"; **{len(malas)} en piezas difíciles de soldar arriba: revisar**" if malas else ""} |
+| Patas que se sueldan por las **dos** caras | {len(dos_caras)} (`{placa}_soldar_arriba.csv`){f"; **{len(malas)} en piezas difíciles de soldar arriba: revisar**" if malas else ""} |
+| Patas de piezas montadas abajo (se sueldan solo por arriba) | {len(arriba) - len(dos_caras)} |
 | Conexiones sin rutear | **{sin_unir}** → {estado} |
 
 ## Archivos
@@ -236,10 +245,11 @@ Generado por `herramientas/exportar_fabricacion.py` desde `{placa}.kicad_pcb`. *
 4. Atacar con cloruro férrico las dos caras (proteger la que no se ataca si se hace por turnos). Limpiar el tóner.
 5. Taladrar el resto desde cualquier cara usando las marcas del centro de cada pad.
 6. Vías: meter un alambre en cada una y soldarlo por las dos caras; cortar el sobrante.
-7. Soldar los componentes. Las patas de `{placa}_soldar_arriba.csv` se sueldan **también por arriba**.
+7. Soldar los componentes. En `{placa}_soldar_arriba.csv`, las patas marcadas "por las DOS caras" se sueldan arriba
+   y abajo; las de piezas montadas abajo (sensores), solo arriba.
 8. Antes de conectar nada: continuidad de cada vía con el multímetro.
 """, encoding="utf-8")
-    print(f"{placa}: {len(hs)} agujeros, {len(vias)} vías, {len(arriba)} patas a soldar arriba "
+    print(f"{placa}: {len(hs)} agujeros, {len(vias)} vías, {len(dos_caras)} patas por las dos caras "
           f"({len(malas)} difíciles), {largo_arriba:.0f} mm arriba, {sin_unir} sin rutear -> {out}")
 
 

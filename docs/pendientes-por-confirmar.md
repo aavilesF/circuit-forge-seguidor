@@ -55,12 +55,12 @@ Decisiones: `decisiones-robot-casero.md`. **Quién:** Alan, salvo que se diga ot
 | E01 | MP1584 #1 (5 V) | Ajustar la salida a **5.0 V** antes de conectar nada | no | Alimentar IN+/IN− con 7–8.4 V sin nada en OUT; girar el tornillito hasta 5.00 V con el multímetro en OUT | Alan |
 | E02 | MP1584 #2 (6 V motores) | Ajustar a **6.0 V** antes de conectar el DRV8833 | no | Igual que E01 | Alan |
 | E03 | Diodos 1N5822 | Directa ~0.15–0.30 V, inversa OL | no | Sección D | Alan |
-| E04 | ERC y DRC oficiales en KiCad 10 | Claude avisa cuándo hacen falta y qué mandar (Alan, 11 nov) | no | Ver `electronica/kicad/FABRICACION_CASERA.md` | Alan, cuando Claude avise |
+| E04 | ERC y DRC oficiales en KiCad 10 | **Hechos el 11 nov con KiCad 10.0.8 por el servidor MCP** (sin intervención de Alan): 0 errores de ERC y de DRC en las dos placas, 0 conexiones faltantes; solo avisos esperados. Informes en `electronica/kicad/<placa>/verificacion_kicad10/` | no | Se repiten cada vez que se regeneren las PCB (huellas confirmadas) | Claude (MCP) |
 | E05 | Divisor de batería | 8.4 V → 2.08 V | no | Medir con la LiPo cargada | Alan |
 | E06 | Corriente total | < 1.5 A estimado | no | Multímetro en serie | Alan |
 | E07 | Corto antes de la LiPo | +VBAT–GND abierto | no | Multímetro | Alan |
 | E08 | Brocas | 0.8 mm (resistencias, sensores, vías), 1.0 mm (headers, módulos, TO-220, PTC), 1.3 mm (1N5822), 3.2 mm (M3) | no | Comprar las que falten | Alan |
-| E09 | Ruteo de las PCB de doble cara | E09_ESTADO | **es el pendiente principal** | E09_COMO | Claude |
+| E09 | Ruteo de las PCB de doble cara | **Las dos placas quedaron ruteadas al 100 %** (11 nov): sensores 0 conexiones faltantes, 37 vías; principal 0 faltantes, 29 vías (se reacomodó: ESP32 a la derecha, DRV8833 girado 180° de frente a él, J5 y botones junto a la columna de señales). DRC KiCad 7: 0 errores en ambas (solo avisos de serigrafía). Estado **C** (verificadas); pasan a **D** cuando se confirmen las huellas provisionales M17, M19, M20 y M33 y se regenere | ya no bloquea | Regenerar con `generar_pcb.py` tras cada medida nueva; archivos 1:1 en `electronica/kicad/<placa>/fabricacion/` | Claude |
 
 ### Riesgos (R)
 | ID | Riesgo | Situación | Qué hacer | Quién |
