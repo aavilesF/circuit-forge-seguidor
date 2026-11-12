@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "robot_casero")(type "KiCad")(uri "${KIPRJMOD}/robot_casero.kicad_sym")(options "")(descr "Simbolos propios del robot casero"))
+)

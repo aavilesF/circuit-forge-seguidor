@@ -1,0 +1,24 @@
+{
+ "contorno_mm": [
+  3.0,
+  8.0,
+  97.0,
+  83.0
+ ],
+ "agujeros_m3_mm": [
+  [
+   50,
+   30
+  ],
+  [
+   6,
+   79
+  ],
+  [
+   94,
+   79
+  ]
+ ],
+ "huecos_ventilador_mm": [],
+ "nota": "Coordenadas de la PCB (x derecha, y hacia atr\u00e1s). Las usa mecanica/autocad/generar_dxf.py"
+}
