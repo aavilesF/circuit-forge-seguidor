@@ -1,0 +1,8 @@
+F_succion_N,v_crucero_reactiva_ms,t_medio_reactivo_s,t_medio_con_mapa_s,ganancia_mapa,perfil_factible,tipo
+0.0,1.157,3.761,2.894,0.23,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+0.5,1.282,3.391,2.667,0.213,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+1.0,1.396,3.114,2.511,0.193,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+2.0,1.598,2.738,2.358,0.139,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+3.0,1.773,2.482,2.283,0.08,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+4.0,1.932,2.291,2.233,0.026,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"
+6.0,2.0,2.217,2.217,0.0,True,"calculado (cuasiestático, perfil factible; mapas permitidos por los organizadores)"

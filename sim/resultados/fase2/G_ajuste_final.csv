@@ -1,0 +1,2 @@
+etapa,arquitectura,E_s,exito,t_medio_s,P1_exito,P1_t_s,P2_exito,P2_t_s,P3_exito,P3_t_s,P4_exito,P4_t_s,v_media_ms,v_max_ms,I_max_A,T_ctrl_ms,fallas,parametros,n_evaluados
+G,final,6.353,1.0,6.353,1.0,6.236,1.0,7.418,1.0,6.427,1.0,5.332,0.667,0.758,0.424,2.18,,"{""v_max"": 0.709, ""a_lat"": 7.2063, ""a_lon"": 2.5446, ""k_pp"": 1.2587, ""kp"": 34.6271, ""kd"": 1.6762, ""tau_k"": 0.0248, ""piso"": -0.1944, ""tau_d"": 0.004}",144

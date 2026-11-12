@@ -1,0 +1,12 @@
+{
+ "conectividad_errores": [],
+ "erc": {},
+ "drc": {
+  "track_dangling (warning)": 2
+ },
+ "drc_conteos": {
+  "DRC violations": 2,
+  "unconnected pads": 0,
+  "Footprint errors": 0
+ }
+}

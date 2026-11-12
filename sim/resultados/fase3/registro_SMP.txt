@@ -1,0 +1,45 @@
+Etapa S: sensibilidad del motor
+  nominal                                    éxito 1.000 [0.969] t 6.346 s  I_max 0.339 A  
+  I_bloqueo 0.35 A                           éxito 0.992 [0.954] t 7.02 s  I_max 0.238 A  pierde la línea: 1
+  I_bloqueo 0.45 A                           éxito 1.000 [0.969] t 6.485 s  I_max 0.305 A  
+  I_bloqueo 0.8 A                            éxito 0.575 [0.486] t 6.298 s  I_max 0.543 A  derrape: 51
+  I_bloqueo 1.0 A                            éxito 0.050 [0.023] t 6.659 s  I_max 0.68 A  derrape: 114
+  eficiencia 0.6                             éxito 0.792 [0.711] t 6.76 s  I_max 0.339 A  pierde la línea: 25
+  eficiencia 0.7                             éxito 1.000 [0.969] t 6.393 s  I_max 0.339 A  
+  eficiencia 0.85                            éxito 1.000 [0.969] t 6.323 s  I_max 0.339 A  
+  rpm 90% del nominal                        éxito 1.000 [0.969] t 6.49 s  I_max 0.339 A  
+  rpm 110% del nominal                       éxito 0.983 [0.941] t 6.227 s  I_max 0.339 A  derrape: 2
+  -> sim/resultados/fase3/S_sensibilidad_motor.csv
+Etapa M: fabricación y montaje
+  nominal                                    éxito 1.000 [0.969] t 6.346 s  I_max 0.339 A  
+  barra 3 mm más adelante (L + 3 mm)         éxito 1.000 [0.969] t 6.339 s  I_max 0.339 A  
+  barra 3 mm más atrás (L − 3 mm)            éxito 1.000 [0.969] t 6.356 s  I_max 0.339 A  
+  barra desplazada 2 mm a la izquierda       éxito 1.000 [0.969] t 6.336 s  I_max 0.339 A  
+  barra girada 3°                            éxito 1.000 [0.969] t 6.395 s  I_max 0.34 A  
+  paso de sensores +5 % (planta)             éxito 1.000 [0.969] t 6.321 s  I_max 0.339 A  
+  sensor más alto: mancha ×1.6               éxito 1.000 [0.969] t 6.233 s  I_max 0.34 A  
+  CG 10 mm más adelante                      éxito 0.625 [0.536] t 6.882 s  I_max 0.339 A  derrape: 19; pierde la línea: 26
+  CG 10 mm más atrás                         éxito 1.000 [0.969] t 6.32 s  I_max 0.339 A  
+  vía W ±3 mm (88 mm)                        éxito 1.000 [0.969] t 6.345 s  I_max 0.339 A  
+  llanta 1 mm menor (D 33 mm)                éxito 1.000 [0.969] t 6.39 s  I_max 0.339 A  
+  masa +40 g                                 éxito 0.842 [0.766] t 6.662 s  I_max 0.338 A  pierde la línea: 19
+  motores desparejos ±10 % (izq rápido)      éxito 1.000 [0.969] t 6.417 s  I_max 0.339 A  
+  -> sim/resultados/fase3/M_fabricacion.csv
+Etapa P: escenarios dirigidos
+  batería llena 8.4 V                        éxito 0.992 [0.954] t 6.179 s  I_max 0.346 A  derrape: 1
+  batería 7.4 V                              éxito 1.000 [0.969] t 6.566 s  I_max 0.305 A  
+  batería baja 6.9 V                         éxito 1.000 [0.969] t 6.79 s  I_max 0.284 A  
+  μ 0.70                                     éxito 0.975 [0.929] t 6.445 s  I_max 0.339 A  derrape: 3
+  μ 0.60                                     éxito 0.883 [0.814] t 6.644 s  I_max 0.339 A  derrape: 14
+  μ 0.90                                     éxito 1.000 [0.969] t 6.296 s  I_max 0.339 A  
+  latencia +2 ms                             éxito 1.000 [0.969] t 6.455 s  I_max 0.338 A  
+  ruido ×3                                   éxito 0.500 [0.412] t 6.32 s  I_max 0.34 A  pierde la línea: 60
+  huecos 5 mm: éxito 0.983
+  huecos 10 mm: éxito 0.967
+  huecos 20 mm: éxito 0.75
+  huecos 40 mm: éxito 0.75
+  -> sim/resultados/fase3/P_escenarios.csv
+  frenado freno con piso del control: 4.01 m/s² desde 2.17 m/s, I_max 0.31 A
+  frenado freno corto (ciclo 0): 3.91 m/s² desde 2.17 m/s, I_max 0.31 A
+  frenado inverso total (−1): 4.01 m/s² desde 2.17 m/s, I_max 0.56 A
+  -> sim/resultados/fase3/P_frenado.csv

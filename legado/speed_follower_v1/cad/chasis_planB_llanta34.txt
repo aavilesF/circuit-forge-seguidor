@@ -1,0 +1,10 @@
+== llanta34 ==
+volumen sólido: 35.8 cm³
+robot completo (con llantas y barra): 170.0 x 92.0 mm (reglamento: 200 x 100)
+pieza impresa: 170.0 x 72.0 x 15.0 mm
+placa: z = 9.0 a 12.0 mm; cuello y almohadilla desde z = 15.0 mm
+separadores entre barra de sensores y almohadilla: 3.0 mm
+motor: de |y| = 13.0 a 37.0 mm
+masa PLA estimada (relleno efectivo 60 / 80 / 100 %): 26.6 g / 35.5 g / 44.4 g
+avisos: ninguno
+parámetros: nombre=llanta34, diam_rueda=34.0, ancho_rueda=7.0, via=85.0, motor_ancho=12.0, motor_alto=10.0, motor_largo=24.0, hueco_rueda=2.0, espesor=3.0, ancho_placa=70.0, x_trasero=-30.0, ancho_cuello=30.0, L=130.0, sensor_ancho=65.7, sensor_fondo=16.0, sensor_altura_piso=8.0, sensor_grosor=4.0, x_caster=109.0, caster_sep=15.0, caster_agujero=2.2, caster_altura=15.0, bat=(55.0, 30.0, 14.0), mux=(18.0, 41.0), esp=(55.0, 28.0), esp_altura_rieles=10.0, pared=1.6, densidad_pla=1.24

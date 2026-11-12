@@ -1,0 +1,25 @@
+F_succion_N,pista,modo,t_vuelta_s,I_pico_A,t_sobre_1p5A_s,I_rms_A,calor_por_vuelta_J,P_media_W,dT_ronda_3_vueltas_K,dT_permanente_K,dT_max_K,a_frenado_adherencia_ms2,I_frenado_adherencia_A,tipo
+1.22,P1,reactivo,2.57,0.952,0.0,0.278,0.79,0.308,0.8,12.3,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P1,mapa,2.238,0.952,0.0,0.354,1.12,0.502,1.1,20.1,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P2,reactivo,3.032,0.952,0.0,0.262,0.83,0.275,0.8,11.0,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P2,mapa,2.551,0.952,0.0,0.298,0.9,0.354,0.9,14.2,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P3,reactivo,2.665,0.952,0.0,0.274,0.8,0.3,0.8,12.0,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P3,mapa,2.35,0.952,0.0,0.39,1.43,0.609,1.4,24.4,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P4,reactivo,2.231,0.952,0.0,0.292,0.76,0.341,0.7,13.6,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+1.22,P4,mapa,2.021,0.952,0.0,0.421,1.43,0.71,1.4,28.4,50.0,10.4,0.945,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P1,reactivo,2.167,0.952,0.0,0.317,0.87,0.401,0.8,16.0,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P1,mapa,2.167,0.952,0.0,0.317,0.87,0.401,0.8,16.0,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P2,reactivo,2.551,0.952,0.0,0.298,0.9,0.354,0.9,14.2,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P2,mapa,2.551,0.952,0.0,0.298,0.9,0.354,0.9,14.2,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P3,reactivo,2.246,0.952,0.0,0.312,0.88,0.39,0.9,15.6,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P3,mapa,2.246,0.952,0.0,0.312,0.88,0.39,0.9,15.6,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P4,reactivo,1.885,0.952,0.0,0.334,0.84,0.447,0.8,17.9,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P4,mapa,1.885,0.952,0.0,0.334,0.84,0.447,0.8,17.9,50.0,18.54,1.567,"calculado sobre datos del motor verificados y térmicos ESTIMADOS (Rth, Cth)"
+3.1,P1,ABUSO frenado a ITRIP 2.44 A,2.167,2.44,0.044,0.346,1.04,0.48,1.0,19.2,50.0,29.96,2.44,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P2,ABUSO frenado a ITRIP 2.44 A,2.551,2.44,0.0,0.0,0.0,0.0,0.0,0.0,50.0,29.96,2.44,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P3,ABUSO frenado a ITRIP 2.44 A,2.246,2.44,0.03,0.282,0.71,0.317,0.7,12.7,50.0,29.96,2.44,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P4,ABUSO frenado a ITRIP 2.44 A,1.885,2.44,0.175,0.743,4.16,2.206,4.1,88.2,50.0,29.96,2.44,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P1,ABUSO frenado a ITRIP 1.56 A,2.167,1.56,0.071,0.282,0.69,0.318,0.7,12.7,50.0,18.45,1.56,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P2,ABUSO frenado a ITRIP 1.56 A,2.551,1.56,0.0,0.0,0.0,0.0,0.0,0.0,50.0,18.45,1.56,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P3,ABUSO frenado a ITRIP 1.56 A,2.246,1.56,0.049,0.229,0.47,0.211,0.5,8.4,50.0,18.45,1.56,calculado: solo el calor de los frenados (cota inferior del caso de abuso)
+3.1,P4,ABUSO frenado a ITRIP 1.56 A,1.885,1.56,0.284,0.605,2.76,1.464,2.7,58.6,50.0,18.45,1.56,calculado: solo el calor de los frenados (cota inferior del caso de abuso)

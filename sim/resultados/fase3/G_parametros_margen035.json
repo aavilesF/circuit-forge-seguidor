@@ -1,0 +1,43 @@
+{
+ "kw": {
+  "control": "C3m",
+  "barra": "recta8_tcrt",
+  "mcu": "esp32_analogread",
+  "motor": "chihai_n20_12v_2200_i10",
+  "succion": false
+ },
+ "prm": {
+  "v_max": 0.9939871784607082,
+  "a_lat": 5.328367328325026,
+  "a_lon": 3.0642829340022226,
+  "k_pp": 0.9698105402949612,
+  "kp": 71.13459902258704,
+  "kd": 20.0,
+  "tau_k": 0.025813653212606594,
+  "piso": -0.12468377911037853,
+  "tau_d": 0.004,
+  "fuente_k": "modelo"
+ },
+ "validacion": {
+  "configuracion": "margen 0.35 (validados a 0.40 m/s)",
+  "corridas": 200,
+  "exito": 0.985,
+  "ic95_bajo": 0.957,
+  "ic95_alto": 0.995,
+  "t_medio_s": 5.566,
+  "E_s": 9.98,
+  "v_media_ms": 0.762,
+  "v_max_ms": 1.0,
+  "I_max_A": 0.341,
+  "n_ocp": 0,
+  "mAh_vuelta": 0.479,
+  "V_min": 7.519,
+  "desliz_max_ms": 0.433,
+  "fallas": "derrape: 3",
+  "P1_t_s": 5.298,
+  "P2_t_s": 6.431,
+  "P3_t_s": 5.722,
+  "P4_t_s": 4.777,
+  "parametros": "{\"v_max\": 0.9939871784607082, \"a_lat\": 5.328367328325026, \"a_lon\": 3.0642829340022226, \"k_pp\": 0.9698105402949612, \"kp\": 71.13459902258704, \"kd\": 20.0, \"tau_k\": 0.025813653212606594, \"piso\": -0.12468377911037853, \"tau_d\": 0.004, \"fuente_k\": \"modelo\"}"
+ }
+}

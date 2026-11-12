@@ -1,0 +1,9 @@
+Etapa T: candidatos
+  Fase 2: Pololu 12V 15:1 + arco16c          éxito 1.000 [0.981] t 5.697 s  I_max 0.463 A  
+  GA12-N20 6V + arco16c                      éxito 1.000 [0.981] t 5.958 s  I_max 0.519 A  
+  Chihai 12V i10 + arco16c                   éxito 0.975 [0.943] t 5.495 s  I_max 0.316 A  derrape: 5
+  Pololu 12V 15:1 + recta8 TCRT              éxito 0.950 [0.910] t 5.309 s  I_max 0.462 A  derrape: 10
+  GA12-N20 6V + recta8 TCRT                  éxito 1.000 [0.981] t 5.636 s  I_max 0.589 A  
+  Chihai 12V i10 + recta8 TCRT               éxito 1.000 [0.981] t 5.26 s  I_max 0.34 A  
+  -> sim/resultados/fase3/T_candidatos.csv
+exit 0

@@ -1,0 +1,4 @@
+modo,ciclo,v_inicial_ms,desaceleracion_media_ms2,distancia_al_20pct_m,I_max_A
+freno con piso del control,-0.0737,2.174,4.01,0.568,0.307
+freno corto (ciclo 0),0.0,2.174,3.91,0.573,0.307
+inverso total (−1),-1.0,2.174,4.01,0.567,0.556

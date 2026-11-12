@@ -1,0 +1,13 @@
+tau_s,factor_plan,v_planeada_ms,t_hasta_derrape_ms,tipo
+0.05,0.8,0.976,47.8,calculado
+0.05,0.9,1.098,19.7,calculado
+0.05,1.0,1.22,0.0,calculado
+0.1,0.8,0.976,95.7,calculado
+0.1,0.9,1.098,39.3,calculado
+0.1,1.0,1.22,0.0,calculado
+0.2,0.8,0.976,191.4,calculado
+0.2,0.9,1.098,78.6,calculado
+0.2,1.0,1.22,0.0,calculado
+0.4,0.8,0.976,382.8,calculado
+0.4,0.9,1.098,157.3,calculado
+0.4,1.0,1.22,0.0,calculado

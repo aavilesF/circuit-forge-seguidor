@@ -1,0 +1,9338 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "7aeda2d1-ee9d-59d8-8625-9286cc55b187")
+	(paper "A2")
+	(title_block
+		(title "Speed Follower V2 — Barra de sensores — 16 sensores QRE1113GR")
+		(date "2026-11-04")
+		(rev "V2-A")
+		(company "Circuit Forge — Robolympics RMX2026")
+		(comment 1 "Generado por hardware/v2/electronica/generador (no editar a mano)")
+	)
+	(lib_symbols
+		(symbol "circuitforge_v2:QRE1113GR"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "QRE1113GR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+				(at 0 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "QRE1113GR_0_1"
+				(rectangle
+					(start -3.81 3.81)
+					(end 3.81 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "QRE1113GR_1_1"
+				(pin passive line
+					(at -6.35 1.27 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 -1.27 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 1.27 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 -1.27 180)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:+3V3"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3V3"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3V3_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54)
+						(xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 -1.27)
+						(xy 1.27 -1.27)
+						(xy 0 -2.54)
+						(xy -1.27 -1.27)
+						(xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "16 sensores QRE1113GR"
+		(exclude_from_sim no)
+		(at 25.4 25.4 0)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left)
+		)
+		(uuid "82ccd8dc-8dbd-591b-9232-3e7fa474918b")
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "47eb71bc-0c81-5ef3-b4d4-6a5e838fd576")
+		(property "Reference" "U1"
+			(at 55.88 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cd9f5afa-d572-5ab6-949a-4729fdac71f3")
+		)
+		(pin "2"
+			(uuid "eeafb319-a062-5879-9785-992e1b4b856a")
+		)
+		(pin "3"
+			(uuid "99556f55-00d0-52ea-8f54-7b23158812ca")
+		)
+		(pin "4"
+			(uuid "1e5b94e1-b19d-5626-8975-3421789d3c38")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 48.26)
+			(xy 46.99 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbdc0bd5-8315-5fb8-b2e2-08e30c50772f")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 48.26 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "16add800-9120-5098-bc74-75000dab7c33")
+		(property "Reference" "#PWR_SEN001"
+			(at 46.99 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cac4114c-aab6-583b-b638-a3a17f630321")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN001")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 50.8)
+			(xy 46.99 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2abb7ea0-e800-5fd1-9463-4b18ffe25a63")
+	)
+	(label "K1"
+		(at 46.99 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "418d7417-ecf2-5c01-a66e-88d814dc902a")
+	)
+	(wire
+		(pts
+			(xy 62.23 48.26)
+			(xy 64.77 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e006865d-ca85-5a19-975f-7802e125083d")
+	)
+	(global_label "S1"
+		(shape passive)
+		(at 64.77 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dfe2e964-f7dc-586b-96a5-7d3c5c2ed774")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 50.8)
+			(xy 64.77 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb4c4b07-7d4d-57f7-9341-a042de30d414")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "1958689a-0e90-503b-a77a-363316bbf1f6")
+		(property "Reference" "#PWR_SEN002"
+			(at 64.77 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4cd59e62-f256-500d-87f9-68a18c1d761f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN002")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "38ea820b-b693-5d42-be07-2d65d546aef5")
+		(property "Reference" "R1"
+			(at 114.3 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e24471bf-7d0c-5010-a03b-3a2458d984f9")
+		)
+		(pin "2"
+			(uuid "5f718568-2bc4-52b0-ad29-a35a4c4a8023")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 46.99)
+			(xy 107.95 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4514c8d5-d80f-5e92-a72a-ffffcf727b4d")
+	)
+	(label "K1"
+		(at 107.95 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "368a95e5-019c-5e74-a8fb-7f6cb9765aea")
+	)
+	(wire
+		(pts
+			(xy 118.11 46.99)
+			(xy 120.65 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf8c3a7-3c08-5f64-9695-d96671838600")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "39cb0d82-9ffc-5abf-b409-66dcf0a56058")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f19aede1-f99d-514a-954c-b3f085529719")
+		(property "Reference" "R17"
+			(at 168.91 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "52ccd198-f857-5d29-ba95-6bcc006173ff")
+		)
+		(pin "2"
+			(uuid "9f06d926-7630-5711-89bb-2f5e4c54925f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 46.99)
+			(xy 162.56 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6194ffb-bc5b-5772-a073-d5646d80a12e")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "7546e45a-4e19-5387-96b4-0fce2f9ea67c")
+		(property "Reference" "#PWR_SEN003"
+			(at 162.56 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9e3ae232-e58f-5bf6-af3a-1abab0a11d53")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN003")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 46.99)
+			(xy 175.26 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2571ecd7-7b05-5d4b-900c-bcd9bd5fef67")
+	)
+	(global_label "S1"
+		(shape passive)
+		(at 175.26 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5c80c802-06ef-52a1-b5d9-acd141c0f30c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 227.33 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "59ec1a13-c1a9-57e8-a82f-84e02793cd66")
+		(property "Reference" "U2"
+			(at 227.33 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 227.33 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 227.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 227.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 227.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 227.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 227.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "664a081f-c6c5-5fad-bec0-62c17abf968b")
+		)
+		(pin "2"
+			(uuid "2db668a7-3522-552b-8857-eddc93baf5bf")
+		)
+		(pin "3"
+			(uuid "060fdfcc-3406-5dcd-8257-2504b02a0a1f")
+		)
+		(pin "4"
+			(uuid "663125fa-fd06-50f1-91c8-16f028f068bd")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 48.26)
+			(xy 218.44 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1c990b9-3e06-5f93-916a-d025589c2e15")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 218.44 48.26 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "9bcee99e-ee67-5ce9-932a-b107bf5531dd")
+		(property "Reference" "#PWR_SEN004"
+			(at 218.44 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 218.44 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1fabf9b2-674a-54b2-8f60-eb02b7bde32a")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN004")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 50.8)
+			(xy 218.44 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd4aa48a-d36c-52d6-8f31-d0e813fc7501")
+	)
+	(label "K2"
+		(at 218.44 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "08bb5dd3-4348-52ed-96f4-6a2523f2ed74")
+	)
+	(wire
+		(pts
+			(xy 233.68 48.26)
+			(xy 236.22 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15b10683-85d8-5254-91e7-b3a986992296")
+	)
+	(global_label "S2"
+		(shape passive)
+		(at 236.22 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1b28a67b-143b-5205-8e8a-1acd48dfedc3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 233.68 50.8)
+			(xy 236.22 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5502ec7-63e9-55b7-bac1-b102fe9f4f45")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 236.22 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "29f06cb4-7d47-5547-bb52-6b9af82e45d9")
+		(property "Reference" "#PWR_SEN005"
+			(at 236.22 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4f48bb29-53a4-5ea1-bcee-0ff5224ab773")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN005")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285.75 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ab0a15b0-fb44-5a3f-aac4-d634012f3b78")
+		(property "Reference" "R2"
+			(at 285.75 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 285.75 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 285.75 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 285.75 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 285.75 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 285.75 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 285.75 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f6e1bf99-7b89-59f0-b40f-7be1ffbcc64e")
+		)
+		(pin "2"
+			(uuid "6cecac2d-bfaa-50c9-a2e9-566ef806faaa")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 281.94 46.99)
+			(xy 279.4 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "764b3998-aa4f-513d-adcf-40fd953a0b1f")
+	)
+	(label "K2"
+		(at 279.4 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0e161130-9616-53c4-a64a-e5317f6635e4")
+	)
+	(wire
+		(pts
+			(xy 289.56 46.99)
+			(xy 292.1 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f9357fd-7f74-5460-ac0c-32e0686e4bd8")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 292.1 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "65cc0fdd-54d4-5a04-bc4e-3a179c863907")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 292.1 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 341.63 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d2f82d85-b7c4-5f19-af0c-ea79a3e054e8")
+		(property "Reference" "R18"
+			(at 341.63 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 341.63 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 341.63 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 341.63 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 341.63 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 341.63 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 341.63 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "88edec24-7940-506b-8ca2-629725b91bf9")
+		)
+		(pin "2"
+			(uuid "810d0424-3d19-5bdc-940d-e5c2de39122b")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 46.99)
+			(xy 335.28 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e0aa41d-0c84-549b-8de1-475cabfeb72c")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 335.28 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "804ec31b-cc6a-520d-9f6f-4e28c51d3e2d")
+		(property "Reference" "#PWR_SEN006"
+			(at 335.28 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 335.28 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fd334f9b-abec-541d-99a3-c94c90f9c05b")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN006")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 345.44 46.99)
+			(xy 347.98 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "387c7761-ee51-584d-a9d3-7b83475e8b95")
+	)
+	(global_label "S2"
+		(shape passive)
+		(at 347.98 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6cf2220a-8eab-569f-bd62-80ffbd5d830a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 347.98 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 400.05 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c1ae3345-3748-5195-9ad6-a4a59874683c")
+		(property "Reference" "U3"
+			(at 400.05 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 400.05 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 400.05 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 400.05 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 400.05 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 400.05 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 400.05 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "321a03d9-9edc-5981-9a5e-389a5ed99475")
+		)
+		(pin "2"
+			(uuid "7632266f-9c97-58de-976b-0345d634bb35")
+		)
+		(pin "3"
+			(uuid "e813b1be-6575-5093-9a34-cbdc52116071")
+		)
+		(pin "4"
+			(uuid "6365cf3f-62da-5783-b571-a711b78e1e1c")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 48.26)
+			(xy 391.16 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1359e528-386a-51e6-acbe-d65347cd7170")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 391.16 48.26 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "eb69c07a-3554-58e7-900a-5fd7ec55bb65")
+		(property "Reference" "#PWR_SEN007"
+			(at 391.16 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 391.16 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5b67b4f9-7baa-5f00-a790-4c3bb604ebb9")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN007")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 50.8)
+			(xy 391.16 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4605474a-7b25-5544-82bf-2549cf593c62")
+	)
+	(label "K3"
+		(at 391.16 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e32e4b2c-be94-5dea-9100-a9f7457a5666")
+	)
+	(wire
+		(pts
+			(xy 406.4 48.26)
+			(xy 408.94 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f24a0bc6-81c1-5feb-8a00-9841cb7a8524")
+	)
+	(global_label "S3"
+		(shape passive)
+		(at 408.94 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7546b02c-bf68-5fb6-aee0-c51274de7e58")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 50.8)
+			(xy 408.94 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "902aea68-3211-566e-bce8-c1621844fda6")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 408.94 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "8de8bf88-ea9b-5be6-a417-0929bf471ede")
+		(property "Reference" "#PWR_SEN008"
+			(at 408.94 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 408.94 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4575b86b-ccef-5750-a760-138862903aed")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN008")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 457.2 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00c6ac27-25c1-5556-986a-2af48adeb04e")
+		(property "Reference" "R3"
+			(at 457.2 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 457.2 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 457.2 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 457.2 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 457.2 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 457.2 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 457.2 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4dc53529-4b6f-5eee-a6c6-daafd410ff60")
+		)
+		(pin "2"
+			(uuid "3ba9e1b4-2957-5d52-b2a3-511cf006974b")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 453.39 46.99)
+			(xy 450.85 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b308abc5-dd63-54f3-98e9-118874be5843")
+	)
+	(label "K3"
+		(at 450.85 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2baffabf-b75a-51f0-9249-ef41d2bb45ed")
+	)
+	(wire
+		(pts
+			(xy 461.01 46.99)
+			(xy 463.55 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e671ccf-04b2-5f1b-95b0-21d2a553564c")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 463.55 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4317cc05-dded-5fbc-aa98-95e9f2dd7548")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 463.55 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 513.08 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca4f3bc6-1537-58e4-972a-177e5ec40a26")
+		(property "Reference" "R19"
+			(at 513.08 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 513.08 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 513.08 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 513.08 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 513.08 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 513.08 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 513.08 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "29700b6d-1003-5dda-8cdf-6f3dd60beb77")
+		)
+		(pin "2"
+			(uuid "360ec1fd-32ee-56bf-a856-dff918d647e3")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 509.27 46.99)
+			(xy 506.73 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c34db41-6905-517e-9500-b7e166c19ded")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 506.73 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "459cc47f-f937-5f97-98bb-e7996534e12c")
+		(property "Reference" "#PWR_SEN009"
+			(at 506.73 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 506.73 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e9c48c7c-a027-5577-9006-a9f05bb74bcf")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN009")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 516.89 46.99)
+			(xy 519.43 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f1b19d5-d136-5d73-b722-f8ed987d9cb4")
+	)
+	(global_label "S3"
+		(shape passive)
+		(at 519.43 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "42e0deeb-738e-581d-a0a1-2e188ed5dc0b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.43 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 73.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8bce8c91-a518-5e6a-bac3-058362e18093")
+		(property "Reference" "U4"
+			(at 55.88 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0d031199-2088-5a8c-8d74-106288a7c1b6")
+		)
+		(pin "2"
+			(uuid "cf3770bb-193c-5a68-8427-ada67645708d")
+		)
+		(pin "3"
+			(uuid "c4f4fe51-2b73-5dc0-88f5-7c4c43f1f657")
+		)
+		(pin "4"
+			(uuid "2bbb54de-fef2-5465-89c6-faf38575dbe4")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 72.39)
+			(xy 46.99 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3276a2cb-77d2-5333-9519-c6c16a7154be")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 72.39 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f6268942-1bea-5d28-a736-4170d2a40062")
+		(property "Reference" "#PWR_SEN010"
+			(at 46.99 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "21fbeb36-c2c3-5769-b25a-c9618b0378ef")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 74.93)
+			(xy 46.99 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b79ac722-6080-570f-91f6-7e131990a3ee")
+	)
+	(label "K4"
+		(at 46.99 74.93 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f70fb0c1-8956-5b36-a946-4beefc0a1b01")
+	)
+	(wire
+		(pts
+			(xy 62.23 72.39)
+			(xy 64.77 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd43cbd7-bfbf-5caf-a8f2-39cfe4c18376")
+	)
+	(global_label "S4"
+		(shape passive)
+		(at 64.77 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3baa4378-6b53-547f-b2c8-3c5e89719055")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 74.93)
+			(xy 64.77 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8fa5790f-8e3f-5734-99d6-b52d22068368")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "44d9a10b-199e-5536-8999-3041e2cea948")
+		(property "Reference" "#PWR_SEN011"
+			(at 64.77 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "54f3b2eb-7561-5b54-a11b-3cd95fe80ba4")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e502ebf9-c2a4-5472-b1b5-a8b4b2aeb284")
+		(property "Reference" "R4"
+			(at 114.3 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc230573-2890-564d-a6da-6fbaf04c11c0")
+		)
+		(pin "2"
+			(uuid "731cb562-a911-5d47-8013-85d2639277d0")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 71.12)
+			(xy 107.95 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "064d208b-c999-5871-9855-c6b8dab5738b")
+	)
+	(label "K4"
+		(at 107.95 71.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "80422920-cb79-5575-adbe-b597f808db87")
+	)
+	(wire
+		(pts
+			(xy 118.11 71.12)
+			(xy 120.65 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2652fe32-b0b6-5020-9524-a3f79285eed0")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "714c5b86-af31-594d-b649-b7e38f7bf82f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "91ec35d5-0b53-5510-ab4a-f42e1b97aae7")
+		(property "Reference" "R20"
+			(at 168.91 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4ecb894-1650-512a-8bcf-6f76283971c1")
+		)
+		(pin "2"
+			(uuid "92579db8-4278-519e-a4ea-fab0224f5707")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 71.12)
+			(xy 162.56 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "791e998d-985d-5d15-a16a-74032f7d48e0")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "bc4e90e2-0770-5e1a-bcfd-825878d86fab")
+		(property "Reference" "#PWR_SEN012"
+			(at 162.56 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "31fd6a35-3cc2-5899-96a4-a1b13d27c2ee")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 71.12)
+			(xy 175.26 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4beeb814-4d26-56ff-a7c5-5d2a7c9ebd9e")
+	)
+	(global_label "S4"
+		(shape passive)
+		(at 175.26 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "028fb2fe-632c-5140-8d35-fbb1f3ee7442")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 227.33 73.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e18283f5-a7a4-5fb0-9060-61e5221de173")
+		(property "Reference" "U5"
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 227.33 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 227.33 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 227.33 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 227.33 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 227.33 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 227.33 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "43f141b4-7d99-568d-8b06-9677f2b1c014")
+		)
+		(pin "2"
+			(uuid "732f8933-57cc-5d71-a985-2ea1f91838b6")
+		)
+		(pin "3"
+			(uuid "1dcd82ca-6ee5-57e0-889c-4bd01530994d")
+		)
+		(pin "4"
+			(uuid "f44bb44b-2b04-54b7-acce-f8053c4908ce")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 72.39)
+			(xy 218.44 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93c95ca4-6395-589c-bc8d-1e924490009c")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 218.44 72.39 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "aa4cec26-4abe-578e-812d-ad7a02b5db7c")
+		(property "Reference" "#PWR_SEN013"
+			(at 218.44 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 218.44 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8919b0c6-87b4-5bdf-a2a9-280f042784bc")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 74.93)
+			(xy 218.44 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "795c4ddc-de68-5f7c-bd36-ef195022b56c")
+	)
+	(label "K5"
+		(at 218.44 74.93 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "815cfb04-c312-5f03-b0f9-85cf7ee7dc6c")
+	)
+	(wire
+		(pts
+			(xy 233.68 72.39)
+			(xy 236.22 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b97bae1d-31a7-5493-b40a-d50387f8b21f")
+	)
+	(global_label "S5"
+		(shape passive)
+		(at 236.22 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4f8be1b4-ce8d-5a0c-b0c8-845bbaf784c1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 233.68 74.93)
+			(xy 236.22 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb8a2892-3599-543d-a625-521e21124afd")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 236.22 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "8270639d-25f6-595c-bfb7-a5d4419be373")
+		(property "Reference" "#PWR_SEN014"
+			(at 236.22 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e4112b9b-ea40-51ad-ab78-b94bdc0ca0b9")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285.75 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8bdf5f67-1fc7-5551-b536-cd4951b78928")
+		(property "Reference" "R5"
+			(at 285.75 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 285.75 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 285.75 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 285.75 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 285.75 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 285.75 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 285.75 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19d7f8ee-444f-556c-98b0-604852bcb0e2")
+		)
+		(pin "2"
+			(uuid "9a87e903-9a54-5524-b3b8-37b8a7ca1fec")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 281.94 71.12)
+			(xy 279.4 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79ef507d-cc68-5cc6-9472-33e55fa8d18f")
+	)
+	(label "K5"
+		(at 279.4 71.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "557b80e2-6eae-53ac-babd-c2f23be09aaa")
+	)
+	(wire
+		(pts
+			(xy 289.56 71.12)
+			(xy 292.1 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39ea6c1f-01a6-5f81-a048-bb8f7a89e65c")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 292.1 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "072032a3-0c8d-57ba-a3c9-49e9b52144b7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 292.1 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 341.63 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7de13136-b209-5ca9-9bee-42f2934c24b3")
+		(property "Reference" "R21"
+			(at 341.63 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 341.63 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 341.63 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 341.63 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 341.63 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 341.63 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 341.63 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d5ac9b45-9440-52ff-84e2-3db2fc119e22")
+		)
+		(pin "2"
+			(uuid "489c6b7f-98f7-556f-a476-c037f60c1714")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 71.12)
+			(xy 335.28 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8c39020-32b4-5aab-823f-3971e162235a")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 335.28 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "d36057e8-d1bf-5bdc-be8f-18374139443f")
+		(property "Reference" "#PWR_SEN015"
+			(at 335.28 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 335.28 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d93341bb-f1ce-5901-954c-9087365b6c28")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 345.44 71.12)
+			(xy 347.98 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f4aa330-d2d5-59b9-9076-bea8898094c6")
+	)
+	(global_label "S5"
+		(shape passive)
+		(at 347.98 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6c368e4f-8762-5b79-bce9-16eb3d1b4997")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 347.98 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 400.05 73.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5d067f91-764b-5e98-8f66-a56915445ea0")
+		(property "Reference" "U6"
+			(at 400.05 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 400.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 400.05 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 400.05 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 400.05 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 400.05 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 400.05 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "705f46d1-826c-5645-86af-90ea8a233307")
+		)
+		(pin "2"
+			(uuid "ff359d9d-520c-5cec-b4dc-55d3336b70b3")
+		)
+		(pin "3"
+			(uuid "c1324f8f-0ec8-5b95-8e72-f499aa4173af")
+		)
+		(pin "4"
+			(uuid "077d5c13-1409-587e-81bb-a5db655c1c50")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 72.39)
+			(xy 391.16 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f93903a-49ff-574b-8e81-d4bffd89e3b7")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 391.16 72.39 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "880f4569-cc2a-50bc-9614-3fb75365e1e1")
+		(property "Reference" "#PWR_SEN016"
+			(at 391.16 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 391.16 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6843071a-c5fb-56fe-93b9-041afaf884c5")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 74.93)
+			(xy 391.16 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0db9c5e5-0fcc-5f83-9ff2-3beb3780723b")
+	)
+	(label "K6"
+		(at 391.16 74.93 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ee6c108f-b827-5407-ab7e-8194df6a44af")
+	)
+	(wire
+		(pts
+			(xy 406.4 72.39)
+			(xy 408.94 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c502870-d50c-5b85-8413-d9666fd8be9a")
+	)
+	(global_label "S6"
+		(shape passive)
+		(at 408.94 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d001dbb9-9420-56d2-9cbf-aec938e2999f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 74.93)
+			(xy 408.94 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f0a03d45-10ae-5e1d-93ea-8f6503698425")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 408.94 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "7a76f44e-d3bc-5527-916f-560c7eeb82cf")
+		(property "Reference" "#PWR_SEN017"
+			(at 408.94 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 408.94 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e36d8138-0e16-5803-985d-57018c186356")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 457.2 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c9cd590b-ffed-5aff-87e5-e6b162e7163f")
+		(property "Reference" "R6"
+			(at 457.2 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 457.2 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 457.2 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 457.2 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 457.2 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 457.2 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 457.2 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3138f188-1c51-50dd-9009-5e67a3ba3dcb")
+		)
+		(pin "2"
+			(uuid "28fed39e-cefa-566e-8391-76987ef63ea9")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 453.39 71.12)
+			(xy 450.85 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c3ad3a6-97ce-5737-9bc3-31773e7f1cec")
+	)
+	(label "K6"
+		(at 450.85 71.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d88abd7f-da72-5ed6-890f-bdfc49c018b3")
+	)
+	(wire
+		(pts
+			(xy 461.01 71.12)
+			(xy 463.55 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e78c49d-38f9-5781-84e9-041c8f1b3d01")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 463.55 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "254c363d-9d98-5bae-83c7-3f66905affa6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 463.55 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 513.08 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "77ed5342-6e6f-57b0-abe7-2f3e7d0a8993")
+		(property "Reference" "R22"
+			(at 513.08 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 513.08 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 513.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 513.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 513.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 513.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 513.08 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2eda6143-4534-5533-afb1-c80253171db9")
+		)
+		(pin "2"
+			(uuid "60caff8c-5db8-5054-8286-c9c68f6b3afa")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 509.27 71.12)
+			(xy 506.73 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7cc88203-3719-5540-b7e6-314d56437719")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 506.73 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "0bae5089-7adf-5c7c-aa3f-8052393c8dc8")
+		(property "Reference" "#PWR_SEN018"
+			(at 506.73 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 506.73 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8018fd3d-87f7-5848-9f38-f9d60b0e9e04")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 516.89 71.12)
+			(xy 519.43 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aebfb98c-3028-5553-b6cc-79d19c55927f")
+	)
+	(global_label "S6"
+		(shape passive)
+		(at 519.43 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "59e63d4f-f272-5260-8786-af0e38226390")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.43 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "168bf19d-4298-5f84-9afe-592b441a53ca")
+		(property "Reference" "U7"
+			(at 55.88 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aaf7837d-bc18-5d8d-9a7e-f2dd53d3ea44")
+		)
+		(pin "2"
+			(uuid "71793769-057c-5e21-9a1d-be4ba463e365")
+		)
+		(pin "3"
+			(uuid "13a07793-a66b-544b-9825-b723793933e1")
+		)
+		(pin "4"
+			(uuid "6c1781f6-4c12-5170-8567-161cb38100dd")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 95.25)
+			(xy 46.99 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7aaa7b97-834a-59b1-aa9a-3dc1bab2f976")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "1b531d06-835d-5519-b048-520d3978c9b7")
+		(property "Reference" "#PWR_SEN019"
+			(at 46.99 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0bd27da8-6f1c-551e-b96c-39a71590411e")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN019")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 97.79)
+			(xy 46.99 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ab4de4c-0dcb-5b38-8be1-0886035b8300")
+	)
+	(label "K7"
+		(at 46.99 97.79 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "69bdba3d-9ee8-5537-bd49-43b8bf7baa47")
+	)
+	(wire
+		(pts
+			(xy 62.23 95.25)
+			(xy 64.77 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd1f5564-c065-51f8-94d5-661ca9855f70")
+	)
+	(global_label "S7"
+		(shape passive)
+		(at 64.77 95.25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "253496cb-be9e-58bd-bac3-df2b6a47217d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 97.79)
+			(xy 64.77 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc511064-9002-50e4-8a9c-fee5cd7a9d12")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 97.79 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "90b08df8-32de-52c0-8bd2-f5adf671234d")
+		(property "Reference" "#PWR_SEN020"
+			(at 64.77 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "140358a7-36c9-5c61-b7f8-f64a2bce96ab")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7ad2879b-8b25-5f65-b77c-665e0fe976fa")
+		(property "Reference" "R7"
+			(at 114.3 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e163714c-57b1-5a24-b034-e1eedd86c4a8")
+		)
+		(pin "2"
+			(uuid "c07ef555-1c89-5865-890d-ad6683b6f746")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 93.98)
+			(xy 107.95 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "211f6ca9-295f-558d-98b6-8625e84bc494")
+	)
+	(label "K7"
+		(at 107.95 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "dbf08998-91b2-50be-b89c-59d32399854d")
+	)
+	(wire
+		(pts
+			(xy 118.11 93.98)
+			(xy 120.65 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05449f5e-3c7e-5d79-97d6-4140581c4266")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "77c2cf5f-d1c7-5388-bec0-2fd86c23e160")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ae6769c2-9ad5-5664-88a7-4d2a4c418fae")
+		(property "Reference" "R23"
+			(at 168.91 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "600a69a4-813b-55d6-b634-9fddc8be3128")
+		)
+		(pin "2"
+			(uuid "e23bcd26-e431-5cc9-af94-baf6bc97af1f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 93.98)
+			(xy 162.56 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08f994de-ec42-50d3-be04-d15b66c51797")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f1f8ddbd-3b54-5393-8a71-9bddaf6af1bd")
+		(property "Reference" "#PWR_SEN021"
+			(at 162.56 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "716784c4-13ac-5aae-b7df-2cc7d96aa9a4")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 93.98)
+			(xy 175.26 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51171113-b37a-54fc-8167-b0512f85a491")
+	)
+	(global_label "S7"
+		(shape passive)
+		(at 175.26 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "926e7a73-890d-59f9-b5f0-9d991d311e67")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 227.33 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20078b27-508a-5da9-acaf-636dfcd30f1f")
+		(property "Reference" "U8"
+			(at 227.33 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 227.33 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 227.33 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 227.33 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 227.33 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 227.33 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 227.33 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "47bcc8d8-7a7f-52f0-ba2a-d7e750b7929e")
+		)
+		(pin "2"
+			(uuid "76b37bc7-98b0-501f-bf8d-7b96b0808af9")
+		)
+		(pin "3"
+			(uuid "6fcccda9-126e-5fbf-9392-e14d96e5a471")
+		)
+		(pin "4"
+			(uuid "7b12ce81-db99-5d83-8a33-4919b3297d12")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 95.25)
+			(xy 218.44 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4f72e09-4d8e-5a72-bd38-39a06806c6f4")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 218.44 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "a2199fdf-9746-5417-940a-030e624d94c9")
+		(property "Reference" "#PWR_SEN022"
+			(at 218.44 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 218.44 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "57616bcf-5db1-5336-9cc7-0ad46278f6c1")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 97.79)
+			(xy 218.44 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a80b6179-8f2a-5dfc-b6d1-a0306459010c")
+	)
+	(label "K8"
+		(at 218.44 97.79 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "695b0393-d8de-53d3-846e-54685a9f5a85")
+	)
+	(wire
+		(pts
+			(xy 233.68 95.25)
+			(xy 236.22 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f658105b-9461-5ef3-9b57-ccf030ad14bf")
+	)
+	(global_label "S8"
+		(shape passive)
+		(at 236.22 95.25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "45c4b20b-947c-5777-8292-f4df5c910f38")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 233.68 97.79)
+			(xy 236.22 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01707ab1-498e-5da7-8bcf-f2b10d762c16")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 236.22 97.79 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "7598146b-a02b-5e11-af16-d3b7fde37dc5")
+		(property "Reference" "#PWR_SEN023"
+			(at 236.22 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ddce9ae0-5f27-508a-b94f-d73c0b73c99b")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285.75 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f9597eee-6ed6-59c2-9989-c316b54497cb")
+		(property "Reference" "R8"
+			(at 285.75 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 285.75 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 285.75 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 285.75 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 285.75 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 285.75 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 285.75 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3f496447-9d08-556c-bb74-d8d179cd65b5")
+		)
+		(pin "2"
+			(uuid "9d07fa22-eeeb-559b-a352-be6c8dcebdbc")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 281.94 93.98)
+			(xy 279.4 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52ef672b-49f4-585f-81d8-a1578fdd8adb")
+	)
+	(label "K8"
+		(at 279.4 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ec7b198b-7248-59ff-a415-1d45d3c61405")
+	)
+	(wire
+		(pts
+			(xy 289.56 93.98)
+			(xy 292.1 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c1c45a7-9d31-5b56-b407-dbe3f31fbae1")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 292.1 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "834dd1a4-b99e-58f1-b95f-696c529804db")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 292.1 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 341.63 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1049639e-4004-56f7-829d-ad8c34116287")
+		(property "Reference" "R24"
+			(at 341.63 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 341.63 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 341.63 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 341.63 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 341.63 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 341.63 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 341.63 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9077af29-87b9-5f58-874d-a82a42d47189")
+		)
+		(pin "2"
+			(uuid "9aa2f656-fd3d-5482-a2d5-2ba483ab5c9b")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 93.98)
+			(xy 335.28 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3053870-eaba-514f-bd98-a4ddcd8ec067")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 335.28 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f7ef0374-5ac7-5265-a83e-92e475225ab5")
+		(property "Reference" "#PWR_SEN024"
+			(at 335.28 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 335.28 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "714f18c3-3460-5b76-a669-33059ccc3f84")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 345.44 93.98)
+			(xy 347.98 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ff0a021-e601-5f7e-9644-0114f1e8a30c")
+	)
+	(global_label "S8"
+		(shape passive)
+		(at 347.98 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2191df01-69d0-5d98-9e32-4dd0a894e391")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 347.98 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 400.05 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06c9fbb0-114e-5b77-a830-549f51ce30ad")
+		(property "Reference" "U9"
+			(at 400.05 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 400.05 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 400.05 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 400.05 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 400.05 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 400.05 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 400.05 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3efa045a-f3d8-58b7-83d6-fd47de93d90f")
+		)
+		(pin "2"
+			(uuid "08b52769-582e-59f0-b1b7-d4e646f9d0f5")
+		)
+		(pin "3"
+			(uuid "d12c7713-df31-555b-b00b-05520ac312df")
+		)
+		(pin "4"
+			(uuid "3e2bd882-0e13-530c-9ab3-0757c5d75034")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 95.25)
+			(xy 391.16 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "294d5381-38a6-52f0-9329-f18726bdd353")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 391.16 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c564912a-7772-5f01-85e7-c1086d9e7bd3")
+		(property "Reference" "#PWR_SEN025"
+			(at 391.16 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 391.16 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "720ce8b6-105c-572e-8eab-0ccb252b04a2")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 97.79)
+			(xy 391.16 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "afd51807-3461-5630-bf75-233ee6f611ee")
+	)
+	(label "K9"
+		(at 391.16 97.79 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "180b7a8e-68f6-58d0-b118-fc7bde53d2c9")
+	)
+	(wire
+		(pts
+			(xy 406.4 95.25)
+			(xy 408.94 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69f5a86f-fe12-5d10-9a96-fba5b0c66e75")
+	)
+	(global_label "S9"
+		(shape passive)
+		(at 408.94 95.25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c3c63a1d-644a-5699-b208-ff5a4ee34074")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 97.79)
+			(xy 408.94 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ff1e178-e7fc-5af2-a581-e84d6201e68f")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 408.94 97.79 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c9b86965-9963-569c-b604-43ef8ef611d2")
+		(property "Reference" "#PWR_SEN026"
+			(at 408.94 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 408.94 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bf493223-3675-5ee1-b1a3-4adbf27b1d18")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 457.2 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "748f3654-d58f-5549-a6e2-f6990adb9d3b")
+		(property "Reference" "R9"
+			(at 457.2 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 457.2 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 457.2 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 457.2 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 457.2 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 457.2 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 457.2 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3391aca5-abef-5953-a5ca-bc2eac5f1dc6")
+		)
+		(pin "2"
+			(uuid "fed0a239-f192-5103-8571-55261c1029e1")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 453.39 93.98)
+			(xy 450.85 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6efd158-f153-58f1-aefe-1d819cc7b409")
+	)
+	(label "K9"
+		(at 450.85 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "24721729-33d3-50e3-b834-261e10f4a1f3")
+	)
+	(wire
+		(pts
+			(xy 461.01 93.98)
+			(xy 463.55 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38c5f787-c507-564b-9dac-763ea24bdac2")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 463.55 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "12d8ac1d-e8e0-5ae2-b78b-3cfff94d0878")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 463.55 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 513.08 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d0c86d66-2725-59f1-8c14-180d48d228c1")
+		(property "Reference" "R25"
+			(at 513.08 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 513.08 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 513.08 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 513.08 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 513.08 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 513.08 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 513.08 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cb370598-23bb-5e5e-b615-172a34d8d91c")
+		)
+		(pin "2"
+			(uuid "45ce3790-2a67-59fe-875b-ff52a9fd7c51")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 509.27 93.98)
+			(xy 506.73 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "542da80f-e736-5e9d-a227-ffb9bd019e24")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 506.73 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f2994bd9-25df-5a2c-bdc0-a23a42e7cf62")
+		(property "Reference" "#PWR_SEN027"
+			(at 506.73 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 506.73 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6f5dda31-8221-59ff-abb7-5e3af0a32204")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN027")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 516.89 93.98)
+			(xy 519.43 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b1a01dd-ca44-5064-b7a2-4d01fbe8b058")
+	)
+	(global_label "S9"
+		(shape passive)
+		(at 519.43 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2835b681-5835-5683-9302-b6d3ec7b5daf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.43 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b8296a6-1a9a-57e0-bdfc-6474e34ebe2a")
+		(property "Reference" "U10"
+			(at 55.88 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9154adb7-0f58-5d70-ba7a-649a0d78ab34")
+		)
+		(pin "2"
+			(uuid "6d84af7a-6c2d-55f0-8b44-0f661641f056")
+		)
+		(pin "3"
+			(uuid "c8049f60-7ec6-58b7-aa23-1374bd94407e")
+		)
+		(pin "4"
+			(uuid "9ff0fbc2-9642-5498-b257-d19c7bc59b98")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 119.38)
+			(xy 46.99 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5af3f8b7-6d69-5268-a18b-398a2e56fd63")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 119.38 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "3319f250-f2ec-526f-9106-20fd0961a0f5")
+		(property "Reference" "#PWR_SEN028"
+			(at 46.99 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "68a65880-739c-5004-9570-d34dc7e6366d")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN028")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 121.92)
+			(xy 46.99 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f36dfa81-d317-5a36-a27f-fa39ef1ef075")
+	)
+	(label "K10"
+		(at 46.99 121.92 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b8f8bab2-e1c0-59f6-881c-53ce15c7fb52")
+	)
+	(wire
+		(pts
+			(xy 62.23 119.38)
+			(xy 64.77 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "831be3c6-7fd2-59ea-9595-9fa982f71028")
+	)
+	(global_label "S10"
+		(shape passive)
+		(at 64.77 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "090c49f3-f55d-5196-a7ce-7ea9e9a3348d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 121.92)
+			(xy 64.77 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d178ac73-221e-587b-b651-553c98ba488c")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 121.92 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "a43f59ea-3ed5-54bd-8126-da919626fe52")
+		(property "Reference" "#PWR_SEN029"
+			(at 64.77 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b3a42f4a-1c18-5ccd-b244-69fa2a7c1926")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN029")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c6b7355e-c5b1-5b42-a480-9821c1657c94")
+		(property "Reference" "R10"
+			(at 114.3 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3c1c083-39dd-5018-bfd7-f756d83d4d4f")
+		)
+		(pin "2"
+			(uuid "12ada291-1d53-5138-9929-1302dc9387ff")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 118.11)
+			(xy 107.95 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48b7b0f2-2c8f-5928-a46c-592a90fa78a8")
+	)
+	(label "K10"
+		(at 107.95 118.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "553acbb0-0490-5537-b1f1-320f35288fc9")
+	)
+	(wire
+		(pts
+			(xy 118.11 118.11)
+			(xy 120.65 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf28389d-abb1-5755-b591-7d802cff7c66")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3a76efba-582b-509a-8543-ef2ba87b463e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d165c65d-216e-5b0f-bfc8-a959a1441e8f")
+		(property "Reference" "R26"
+			(at 168.91 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d42e7954-1292-5948-87b4-7a9ea8e1d947")
+		)
+		(pin "2"
+			(uuid "db245982-15ee-5c4d-8141-630970eeb5f8")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 118.11)
+			(xy 162.56 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfbef671-1395-56de-a72b-58a0b20d8f56")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c6e743ca-2f42-5595-903b-f4557af33913")
+		(property "Reference" "#PWR_SEN030"
+			(at 162.56 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e179aa59-404f-5829-8214-a9b7f97bba35")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN030")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 118.11)
+			(xy 175.26 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06be61d7-57ab-5dfa-bf4a-106655cf4782")
+	)
+	(global_label "S10"
+		(shape passive)
+		(at 175.26 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bea15999-012e-59cb-b18d-ad7ba95d2f7b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 227.33 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3da0dabb-0def-5df7-800e-cc1d184f6212")
+		(property "Reference" "U11"
+			(at 227.33 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 227.33 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 227.33 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 227.33 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 227.33 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 227.33 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 227.33 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "41e16596-584d-5247-bbee-7cec06c8913e")
+		)
+		(pin "2"
+			(uuid "7b6e913e-7a4c-5f31-b2e6-bfcf353486b5")
+		)
+		(pin "3"
+			(uuid "e6f6f251-49c0-509b-951e-6d2a2c659aba")
+		)
+		(pin "4"
+			(uuid "5eef5da7-dee6-56e9-b658-bc28313e54e6")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 119.38)
+			(xy 218.44 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "839d5703-8f6e-515c-aa71-36a61842ccc4")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 218.44 119.38 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "db6d9b08-d3e2-572e-aa82-d1d92f05a408")
+		(property "Reference" "#PWR_SEN031"
+			(at 218.44 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 218.44 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67d116a5-4591-56bc-8aa8-5d5e7f8d8df9")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 121.92)
+			(xy 218.44 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34554f06-f2c4-5fe3-b047-4972ef184bcd")
+	)
+	(label "K11"
+		(at 218.44 121.92 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "06451b5a-937c-5891-9ad3-bb0449b9445c")
+	)
+	(wire
+		(pts
+			(xy 233.68 119.38)
+			(xy 236.22 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d847373b-548b-5141-999d-b3df935a01af")
+	)
+	(global_label "S11"
+		(shape passive)
+		(at 236.22 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6f5cc573-d3ef-510a-bfae-2e8a2827074d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 233.68 121.92)
+			(xy 236.22 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ed99299-5f6a-5411-9cc8-4265e276a798")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 236.22 121.92 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "a6a4630e-5e2e-5dc7-88f7-b998cda494f3")
+		(property "Reference" "#PWR_SEN032"
+			(at 236.22 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5950bf58-9876-5555-ac44-6e44fe049fa7")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN032")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285.75 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7333bed7-27a9-5319-ab0f-7142f5c4ef4c")
+		(property "Reference" "R11"
+			(at 285.75 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 285.75 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 285.75 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 285.75 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 285.75 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 285.75 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 285.75 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d4d8f2ad-6524-5817-aef1-268939292621")
+		)
+		(pin "2"
+			(uuid "33806e53-c6a1-5e84-a6bf-8dba2936458e")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 281.94 118.11)
+			(xy 279.4 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "472e04dd-90a9-56eb-9537-ab2e0ea9261c")
+	)
+	(label "K11"
+		(at 279.4 118.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7769bcd1-c21c-5ee0-a93e-f4dcea26d234")
+	)
+	(wire
+		(pts
+			(xy 289.56 118.11)
+			(xy 292.1 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7742f36-c9c4-540f-baa2-62013582b1ce")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 292.1 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "95b43e98-975c-5755-8bbc-1763a0eb825a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 292.1 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 341.63 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "188e7ac8-aa9b-5bc8-bad5-8ea8c583db50")
+		(property "Reference" "R27"
+			(at 341.63 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 341.63 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 341.63 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 341.63 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 341.63 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 341.63 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 341.63 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06ced4c5-25cc-5771-b7f1-d0f09fbf34e0")
+		)
+		(pin "2"
+			(uuid "2f33f587-6619-5cbb-9098-1b3684576883")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 118.11)
+			(xy 335.28 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "949acf01-e46e-5194-8c86-8e4fd25db2d6")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 335.28 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "23b459b6-3575-5f0c-a1c8-56d2a0c99ea2")
+		(property "Reference" "#PWR_SEN033"
+			(at 335.28 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 335.28 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2112b99b-b992-5b67-88da-46cef9e8b910")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 345.44 118.11)
+			(xy 347.98 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "142f72a9-8783-5c45-be0f-011bfbac90b8")
+	)
+	(global_label "S11"
+		(shape passive)
+		(at 347.98 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "96ab7a8e-d08c-5e94-9b3a-ba36157a1f20")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 347.98 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 400.05 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a9632bf5-88cf-584f-9391-c96b89d02c31")
+		(property "Reference" "U12"
+			(at 400.05 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 400.05 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 400.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 400.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 400.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 400.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 400.05 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9bd9982-d255-56a7-a3c6-80cbb12f1adb")
+		)
+		(pin "2"
+			(uuid "7ad8ea77-d463-570a-86ee-2f0915e34610")
+		)
+		(pin "3"
+			(uuid "24bf389c-a9b0-59fc-a6ed-c94bb8b0209c")
+		)
+		(pin "4"
+			(uuid "639807b3-b9de-5eec-a3d6-bfa4208f1d5a")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 119.38)
+			(xy 391.16 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfc6b1d5-e958-5552-838e-263ade240f1e")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 391.16 119.38 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "3269d23a-9a41-5c71-8f33-370fdf5ae64c")
+		(property "Reference" "#PWR_SEN034"
+			(at 391.16 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 391.16 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "92a78fb7-22a0-55ed-a8da-8fcdf8c8e3fd")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 121.92)
+			(xy 391.16 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff9c1042-d3fa-53f1-aa94-1c9243869f7c")
+	)
+	(label "K12"
+		(at 391.16 121.92 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2ed009ce-f7a4-506e-bb35-1470d7a0fe18")
+	)
+	(wire
+		(pts
+			(xy 406.4 119.38)
+			(xy 408.94 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39ea109a-1269-5e03-ab82-10dcd3eb4716")
+	)
+	(global_label "S12"
+		(shape passive)
+		(at 408.94 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e4a4520d-69d0-53b7-bea5-3648e80d7e6e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 121.92)
+			(xy 408.94 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5241f290-23c4-52db-9492-cbcfbd30dc2b")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 408.94 121.92 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "221d893d-0e5e-5f46-80d9-5185944e2745")
+		(property "Reference" "#PWR_SEN035"
+			(at 408.94 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 408.94 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1b68a410-2bfe-5447-94f3-12c6378fe13f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 457.2 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "01824d3f-4d00-5052-9093-e9c838d0dd8b")
+		(property "Reference" "R12"
+			(at 457.2 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 457.2 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 457.2 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 457.2 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 457.2 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 457.2 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 457.2 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e2403417-1e43-55ec-82ab-f77bf507a79e")
+		)
+		(pin "2"
+			(uuid "c2d7cbf7-cd45-57dd-9f3e-466b8faf2583")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 453.39 118.11)
+			(xy 450.85 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "049f006a-009f-52f4-b23c-2defbcbb13a6")
+	)
+	(label "K12"
+		(at 450.85 118.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3d0efe39-3c22-5a06-a147-e00a11a2e270")
+	)
+	(wire
+		(pts
+			(xy 461.01 118.11)
+			(xy 463.55 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d078f7b4-bb3a-5692-865e-371d9250b8a9")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 463.55 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "744ec754-37a0-57db-a36c-066e919f0f6b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 463.55 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 513.08 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "90e18cdf-f2e7-5664-af41-4e41965d08bb")
+		(property "Reference" "R28"
+			(at 513.08 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 513.08 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 513.08 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 513.08 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 513.08 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 513.08 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 513.08 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "95b7c984-824b-5d80-9fc3-01a457974554")
+		)
+		(pin "2"
+			(uuid "3093e110-f252-5d18-b011-2451869cfca6")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 509.27 118.11)
+			(xy 506.73 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aef86197-a035-578e-b8d3-a006d8031f8d")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 506.73 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c823bfe2-4e77-56d0-9ea9-85005ea475eb")
+		(property "Reference" "#PWR_SEN036"
+			(at 506.73 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 506.73 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9af4387f-17e1-54c2-896d-66a060eac923")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 516.89 118.11)
+			(xy 519.43 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4128f541-5e3f-5bfb-8284-f61546b69627")
+	)
+	(global_label "S12"
+		(shape passive)
+		(at 519.43 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "636f71fb-98f6-5041-b78e-052244745ffa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.43 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7f9f682c-bf87-5986-ab24-cdf1c2ea059a")
+		(property "Reference" "U13"
+			(at 55.88 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2800f271-d1c5-5540-b6dd-5e1e3bcb30a1")
+		)
+		(pin "2"
+			(uuid "890ac600-c344-51c8-8528-ad999902f6a4")
+		)
+		(pin "3"
+			(uuid "aa85c0f3-d973-58a8-ba54-2e5b70320583")
+		)
+		(pin "4"
+			(uuid "e28cc987-8460-52e3-886b-d891a192ddb1")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 143.51)
+			(xy 46.99 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c39f7aa-3715-5f80-9e96-38b2238f67fa")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 143.51 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "4312556c-6c84-5971-bf81-4ec61877828d")
+		(property "Reference" "#PWR_SEN037"
+			(at 46.99 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a732ebf6-eace-544d-bc78-4f5592276a63")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 146.05)
+			(xy 46.99 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92d880bd-3ff3-5400-89ec-500ef3a04c77")
+	)
+	(label "K13"
+		(at 46.99 146.05 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "163760c9-4c9f-57ce-8d0e-63ebf09a679b")
+	)
+	(wire
+		(pts
+			(xy 62.23 143.51)
+			(xy 64.77 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15b9d01e-f2e9-5a55-8b81-3b26e282a0a8")
+	)
+	(global_label "S13"
+		(shape passive)
+		(at 64.77 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4c6bec0b-4731-592f-bf62-79c816c9a5ef")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 146.05)
+			(xy 64.77 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ed6fa45-fef1-5fe9-895c-55460b1edadb")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "c4055c6e-dc9e-563d-abf0-4f65cf27d7e2")
+		(property "Reference" "#PWR_SEN038"
+			(at 64.77 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "46298961-0c98-553d-95c4-d94d55d3a00f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f5d6077-8456-57a7-9bc3-6e32e3db152f")
+		(property "Reference" "R13"
+			(at 114.3 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4c16639d-6829-54cf-b26d-addee448cdaa")
+		)
+		(pin "2"
+			(uuid "32d4cefe-7202-5901-9918-f2ac65dcbe6c")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 140.97)
+			(xy 107.95 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "721a5466-6882-5aac-ae3e-3c73212dd96f")
+	)
+	(label "K13"
+		(at 107.95 140.97 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "51e2dee3-fc44-5975-96e3-f5f914f5822d")
+	)
+	(wire
+		(pts
+			(xy 118.11 140.97)
+			(xy 120.65 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "816ea27a-0384-54b4-ac7b-99183ff68bf1")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e0b54a65-2a82-5954-b8fa-5f75897ee50f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "841c64b7-71dc-51b8-a530-924533837f39")
+		(property "Reference" "R29"
+			(at 168.91 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5da09921-5203-518b-93a9-28395c63e7c4")
+		)
+		(pin "2"
+			(uuid "f23d491f-0afd-53cd-84e9-c737db188ef6")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 140.97)
+			(xy 162.56 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ed7ae6c-4402-5760-bffe-2aa2f22b9a21")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "afad92f4-b437-5504-a0c4-af9778246c68")
+		(property "Reference" "#PWR_SEN039"
+			(at 162.56 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "379d00cb-f022-5bb8-8abc-cbcb5d47e616")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN039")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 140.97)
+			(xy 175.26 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d87865f1-703f-5d2b-8b5f-05b6147ca7a6")
+	)
+	(global_label "S13"
+		(shape passive)
+		(at 175.26 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "06af9857-37de-503c-9ea9-7b3b1fd03bdf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 227.33 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9a33f57e-7963-5b7c-b677-11fbbb218e04")
+		(property "Reference" "U14"
+			(at 227.33 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 227.33 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 227.33 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 227.33 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 227.33 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 227.33 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 227.33 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ffcc9cc8-0fed-5252-88b3-ac5ab9771f1d")
+		)
+		(pin "2"
+			(uuid "84c96d24-f0e0-517c-9c51-815848bb5436")
+		)
+		(pin "3"
+			(uuid "4684783a-85e5-58fa-9ab1-d1910d62c867")
+		)
+		(pin "4"
+			(uuid "644a17bd-b209-54d9-8918-84d2afc19f47")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 143.51)
+			(xy 218.44 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28df7906-16b1-5d91-8f31-349cb5555cbf")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 218.44 143.51 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "7cb89db7-ca8c-5458-ba9b-5d5fda38b6f3")
+		(property "Reference" "#PWR_SEN040"
+			(at 218.44 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 218.44 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df137a7a-cdce-5890-a47d-4d2c1d2ed0f6")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN040")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 220.98 146.05)
+			(xy 218.44 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46ac5167-01ab-5b3c-a3ee-995069dbcd43")
+	)
+	(label "K14"
+		(at 218.44 146.05 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "daeb48cf-cd26-5c6f-a938-018ae2fc303a")
+	)
+	(wire
+		(pts
+			(xy 233.68 143.51)
+			(xy 236.22 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11bb8125-8162-512a-89ed-a3906e877472")
+	)
+	(global_label "S14"
+		(shape passive)
+		(at 236.22 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1ef02b65-1cc7-5c73-a35f-1b9392c63722")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 233.68 146.05)
+			(xy 236.22 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a856f3ce-dc78-5356-bb11-f5b3061eddf0")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 236.22 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "b181a782-ebff-590f-b1b4-3af360eb8f7a")
+		(property "Reference" "#PWR_SEN041"
+			(at 236.22 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d6b55c51-0fd5-5780-8d2e-31ca788da057")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN041")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 285.75 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2cab3cdf-7943-5fe3-a1e9-fd57cfe29acb")
+		(property "Reference" "R14"
+			(at 285.75 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 285.75 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 285.75 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 285.75 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 285.75 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 285.75 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 285.75 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5243877c-3418-59b6-a288-db986babbf65")
+		)
+		(pin "2"
+			(uuid "24a61d37-5be8-514c-9026-2b52827b1df0")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 281.94 140.97)
+			(xy 279.4 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97def37c-51a6-5b77-947f-caaf71edabee")
+	)
+	(label "K14"
+		(at 279.4 140.97 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cd5b6693-c63c-5189-b4d6-08e7c9f3b2cb")
+	)
+	(wire
+		(pts
+			(xy 289.56 140.97)
+			(xy 292.1 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23e36d68-f41c-5c42-814f-d6855d5211f5")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 292.1 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "42e906eb-a154-5a5a-885e-71a3a3a93d8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 292.1 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 341.63 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "68c15732-56e3-5742-9dc6-326767cdd72c")
+		(property "Reference" "R30"
+			(at 341.63 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 341.63 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 341.63 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 341.63 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 341.63 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 341.63 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 341.63 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4f68bb4a-7ae5-5972-9a63-c80523ab9387")
+		)
+		(pin "2"
+			(uuid "ee5e1644-94dd-589c-9671-0c316e991ef5")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 140.97)
+			(xy 335.28 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc354335-4ea2-5519-ae9f-adf749b9b245")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 335.28 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "894281db-b267-5739-80c5-15961da11bd0")
+		(property "Reference" "#PWR_SEN042"
+			(at 335.28 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 335.28 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1755f111-8ab3-5d51-a602-ada06efdd489")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN042")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 345.44 140.97)
+			(xy 347.98 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d9ad096-d29d-511c-bb75-7917cd3f9c65")
+	)
+	(global_label "S14"
+		(shape passive)
+		(at 347.98 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "eedcdf74-f133-5fbf-b507-9ff898c149e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 347.98 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 400.05 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b5b52b9-599b-5027-988e-cd35183aaa27")
+		(property "Reference" "U15"
+			(at 400.05 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 400.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 400.05 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 400.05 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 400.05 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 400.05 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 400.05 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25224201-3a9f-59bb-b232-a19f1a07cffc")
+		)
+		(pin "2"
+			(uuid "415e2444-e585-5605-9602-36853e6f4b60")
+		)
+		(pin "3"
+			(uuid "8831d1a8-f30d-54c9-9812-ee4f1634c8a9")
+		)
+		(pin "4"
+			(uuid "2aeca6ac-c29e-5bf5-b9a4-90ca36a99c83")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 143.51)
+			(xy 391.16 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65f85669-a7ab-5c8f-b05e-502a24018e94")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 391.16 143.51 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "aed647e7-0fd2-51a3-aade-122572bf54d3")
+		(property "Reference" "#PWR_SEN043"
+			(at 391.16 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 391.16 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e53b73c2-a6da-5d00-8cf2-f2e54bde2bb0")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN043")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 393.7 146.05)
+			(xy 391.16 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "065175dc-5078-50e7-baac-d01cab065092")
+	)
+	(label "K15"
+		(at 391.16 146.05 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "abf6e5f8-3df5-5ebe-a4c2-a39105ed3eab")
+	)
+	(wire
+		(pts
+			(xy 406.4 143.51)
+			(xy 408.94 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bc9d763-4a8a-5bb7-a1f6-54d9f1edc7cd")
+	)
+	(global_label "S15"
+		(shape passive)
+		(at 408.94 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6e534d2e-7b08-5c3e-9518-3b0d90ab873f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 146.05)
+			(xy 408.94 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96ffa55a-5966-5bd8-9fe7-30e525f33981")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 408.94 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "666ddbd2-e6eb-5c79-b15d-df1ff45ccb10")
+		(property "Reference" "#PWR_SEN044"
+			(at 408.94 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 408.94 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "49e3c63a-5cf5-5a43-818b-208fd55a1e1f")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN044")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 457.2 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b86c0721-e766-5b99-a043-19d588671733")
+		(property "Reference" "R15"
+			(at 457.2 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 457.2 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 457.2 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 457.2 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 457.2 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 457.2 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 457.2 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4dc241aa-fcdb-5fb4-bae9-b30856194a48")
+		)
+		(pin "2"
+			(uuid "56194113-93f2-5616-85da-1a376b868cbe")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 453.39 140.97)
+			(xy 450.85 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b609b0e-f42e-54c6-aa30-259422a4dae5")
+	)
+	(label "K15"
+		(at 450.85 140.97 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b12711b9-e2d0-579b-a02f-1aec4b0718c7")
+	)
+	(wire
+		(pts
+			(xy 461.01 140.97)
+			(xy 463.55 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45cdde1e-250c-52c1-827f-4e3987f76b99")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 463.55 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "63b9e982-663d-526a-a3bc-9589919ed1b0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 463.55 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 513.08 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "09aaad91-e286-58f8-a5ac-0537b2903e92")
+		(property "Reference" "R31"
+			(at 513.08 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 513.08 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 513.08 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 513.08 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 513.08 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 513.08 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 513.08 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "209ba4b2-3e08-504f-bbc4-6a911498b492")
+		)
+		(pin "2"
+			(uuid "aa340b19-eb5e-57e3-bd35-77b7097a8d40")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 509.27 140.97)
+			(xy 506.73 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60979d6a-9be5-5275-81e5-e927e208a427")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 506.73 140.97 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "f0fb3deb-65cc-5791-91fa-7afb09524dc0")
+		(property "Reference" "#PWR_SEN045"
+			(at 506.73 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 506.73 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c6e8fc46-f46c-53e6-85eb-7bd2db8789b6")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 516.89 140.97)
+			(xy 519.43 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53af0745-5a43-586d-a31a-806b58543f94")
+	)
+	(global_label "S15"
+		(shape passive)
+		(at 519.43 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d6a69560-f333-5a98-ba6f-ba67551a22d8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.43 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "circuitforge_v2:QRE1113GR")
+		(at 55.88 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4656f255-f700-508a-80fa-74a68f9b65d2")
+		(property "Reference" "U16"
+			(at 55.88 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "QRE1113GR"
+			(at 55.88 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
+			(at 55.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf"
+			(at 55.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY"
+			(at 55.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "onsemi"
+			(at 55.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "QRE1113GR"
+			(at 55.88 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "73b0c2a3-8ed3-5394-9749-0c2243b6342e")
+		)
+		(pin "2"
+			(uuid "ec155c0b-a683-5f1b-baae-f0f5a9e2d836")
+		)
+		(pin "3"
+			(uuid "234d8de1-a2e8-54f3-8fbd-1f4e07649e04")
+		)
+		(pin "4"
+			(uuid "ece67518-c7a4-5340-910b-3274111716e9")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "U16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 166.37)
+			(xy 46.99 166.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2475b701-3d02-5a7d-a3b3-54d7a22a3c4c")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 46.99 166.37 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "29ac2c9d-d3ee-5dd9-beab-3ff03622b9a7")
+		(property "Reference" "#PWR_SEN046"
+			(at 46.99 163.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 46.99 168.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4d96f0cd-2990-5f09-bb2c-68db236a1df3")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN046")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 168.91)
+			(xy 46.99 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97b38e5c-8f94-5a75-b51a-cb8c85320468")
+	)
+	(label "K16"
+		(at 46.99 168.91 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "70b1e538-b6dd-558f-ae40-1f989c54ed2a")
+	)
+	(wire
+		(pts
+			(xy 62.23 166.37)
+			(xy 64.77 166.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9566abc-3101-5629-9424-72f2883161fd")
+	)
+	(global_label "S16"
+		(shape passive)
+		(at 64.77 166.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "71b47adf-986b-5514-af0b-1075786f4b3e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 168.91)
+			(xy 64.77 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8876afe4-5fbb-5fd8-b093-6378b0ac634a")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 168.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "030160e9-9776-5874-b1f3-74e06ec17269")
+		(property "Reference" "#PWR_SEN047"
+			(at 64.77 166.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 171.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "806deb12-658c-500c-a5b9-de9c6349cc2a")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN047")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 114.3 165.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c281016-8e0f-5d37-a1d4-3b22d3daa717")
+		(property "Reference" "R16"
+			(at 114.3 162.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "75Ω"
+			(at 114.3 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 114.3 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 114.3 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 75Ω 1 % 0603"
+			(at 114.3 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 114.3 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0775RL"
+			(at 114.3 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "96b33454-9200-5956-9cf2-10b136645fed")
+		)
+		(pin "2"
+			(uuid "69738e6a-9e13-582b-b318-4d41287c680a")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 110.49 165.1)
+			(xy 107.95 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a58e163-99c0-590b-a8e7-7b2a75f3f02b")
+	)
+	(label "K16"
+		(at 107.95 165.1 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7927207a-f4da-5514-919c-6dbb674b7ff1")
+	)
+	(wire
+		(pts
+			(xy 118.11 165.1)
+			(xy 120.65 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cadc49ab-ae38-5d5a-890e-541995ac77d7")
+	)
+	(global_label "EMIT_K"
+		(shape passive)
+		(at 120.65 165.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6078b7bf-a48c-57da-8e28-ecf5734e0900")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 165.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a4b51ef3-4f66-53bd-b48d-94a093daba93")
+		(property "Reference" "R32"
+			(at 168.91 162.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 168.91 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 168.91 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf"
+			(at 168.91 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistencia 10kΩ 1 % 0402"
+			(at 168.91 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Fabricante" "YAGEO"
+			(at 168.91 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0402FR-0710KL"
+			(at 168.91 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0346391b-534b-51ab-af86-db1e3635a687")
+		)
+		(pin "2"
+			(uuid "494458d8-f532-564c-8dad-113821d79061")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "R32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 165.1 165.1)
+			(xy 162.56 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1534e20e-17f6-57d2-a8cd-70d9e5232035")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 162.56 165.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "3ab589fc-b6d0-55e2-91d4-e0bca743beac")
+		(property "Reference" "#PWR_SEN048"
+			(at 162.56 162.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 162.56 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "abda0a0a-30d8-5f94-9c37-887cd5be2554")
+		)
+		(instances
+			(project "barra_sensores"
+				(path "/7cb43436-1830-51c4-a715-753453b34231/7aeda2d1-ee9d-59d8-8625-9286cc55b187"
+					(reference "#PWR_SEN048")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 172.72 165.1)
+			(xy 175.26 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52fb27c8-6d3e-5c72-856d-162acff9868c")
+	)
+	(global_label "S16"
+		(shape passive)
+		(at 175.26 165.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3e6438a8-e99f-5e7e-8f18-cf6f113897c8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,10 @@
+Etapa A: controles
+  A C1: E 9.47 s, éxito 0.98, t 4.549 s (65 s)
+  A C2: E 4.30 s, éxito 1.00, t 4.300 s (44 s)
+  A C3m: E 4.42 s, éxito 1.00, t 4.416 s (43 s)
+  A C3g: E 4.24 s, éxito 1.00, t 4.244 s (43 s)
+  -> sim/resultados/fase2/A_controles.csv
+  -> sim/resultados/fase2/A_corridas.csv
+Etapa B: barras y MCU
+  B recta8 + esp32_analogread: E 300.00, éxito 0.00, t nan, T_ctrl 1.22 ms
+  B recta8 + stm32g431: E 9.05, éxito 0.98, t 4.126, T_ctrl 1.00 ms

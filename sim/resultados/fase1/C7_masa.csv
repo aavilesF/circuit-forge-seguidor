@@ -1,0 +1,13 @@
+subsistema,masa_g,fraccion_pct
+chasis,44.0,28.4
+bateria,36.0,23.2
+motores,22.0,14.2
+electronica_varios,20.0,12.9
+mcu,11.0,7.1
+apoyo,10.0,6.5
+llantas,6.4,4.1
+barra_sensores,5.5,3.6
+TOTAL,154.9,100.0
+TOTAL + succión (opción),184.9,
+límite de diseño,450.0,
+límite reglamento,500.0,

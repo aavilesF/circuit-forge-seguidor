@@ -1,0 +1,3013 @@
+{
+ "proy": "principal",
+ "titulo": "Speed Follower V2 \u2014 PCB principal",
+ "capas": 4,
+ "espesor": 1.6,
+ "origen_aux": [
+  -42.0,
+  135.0
+ ],
+ "tipo_capas": {
+  "In1.Cu": "power",
+  "In2.Cu": "power"
+ },
+ "contorno": [
+  [
+   6.5,
+   66.5
+  ],
+  [
+   6.4489,
+   66.1118
+  ],
+  [
+   6.299,
+   65.75
+  ],
+  [
+   6.0607,
+   65.4393
+  ],
+  [
+   5.75,
+   65.201
+  ],
+  [
+   5.3882,
+   65.0511
+  ],
+  [
+   5.0,
+   65.0
+  ],
+  [
+   -40.5,
+   65.0
+  ],
+  [
+   -40.8882,
+   65.0511
+  ],
+  [
+   -41.25,
+   65.201
+  ],
+  [
+   -41.5607,
+   65.4393
+  ],
+  [
+   -41.799,
+   65.75
+  ],
+  [
+   -41.9489,
+   66.1118
+  ],
+  [
+   -42.0,
+   66.5
+  ],
+  [
+   -42.0,
+   133.5
+  ],
+  [
+   -41.9489,
+   133.8882
+  ],
+  [
+   -41.799,
+   134.25
+  ],
+  [
+   -41.5607,
+   134.5607
+  ],
+  [
+   -41.25,
+   134.799
+  ],
+  [
+   -40.8882,
+   134.9489
+  ],
+  [
+   -40.5,
+   135.0
+  ],
+  [
+   5.0,
+   135.0
+  ],
+  [
+   5.3882,
+   134.9489
+  ],
+  [
+   5.75,
+   134.799
+  ],
+  [
+   6.0607,
+   134.5607
+  ],
+  [
+   6.299,
+   134.25
+  ],
+  [
+   6.4489,
+   133.8882
+  ],
+  [
+   6.5,
+   133.5
+  ]
+ ],
+ "partes": [
+  {
+   "ref": "A1",
+   "valor": "WeAct STM32G474CEU6",
+   "lib": "circuitforge_v2",
+   "fp": "WeAct_STM32G474_CoreBoard_Zocalo",
+   "X": -23.86,
+   "Y": 100.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "A3": "GND",
+    "A4": "GND",
+    "A5": "DRV_nFAULT",
+    "A6": "MUX_S0",
+    "A7": "MUX_S1",
+    "A8": "MUX_S2",
+    "A10": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL",
+    "A11": "EN_D",
+    "A12": "EN_I",
+    "A15": "ENC_D_A",
+    "A16": "PH_I",
+    "A17": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA",
+    "A18": "ENC_D_B",
+    "A19": "DRV_nSLEEP",
+    "A20": "PH_D",
+    "A21": "ENC_I_A",
+    "A22": "ENC_I_B",
+    "A23": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB",
+    "A24": "ESC_SEN",
+    "B1": "+3V3",
+    "B2": "+3V3",
+    "B3": "GND",
+    "B4": "GND",
+    "B5": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO",
+    "B7": "IPROPI_D",
+    "B9": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE",
+    "B10": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO",
+    "B12": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_START",
+    "B13": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_CAL",
+    "B15": "IPROPI_I",
+    "B16": "EMIT",
+    "B17": "SENS_B",
+    "B18": "VBAT_MED",
+    "B19": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/NRST",
+    "B20": "SENS_A"
+   },
+   "en_bom": true,
+   "mpn": "STM32G474CEU6 Core Board V1.0",
+   "fabricante": "WeAct Studio",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "J1",
+   "valor": "XT30UPB-M",
+   "lib": "Connector_AMASS",
+   "fp": "AMASS_XT30UPB-M_1x02_P5.0mm_Vertical",
+   "X": -38.8,
+   "Y": 131.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/Alimentaci\u00f3n y protecciones/VBAT_IN"
+   },
+   "en_bom": true,
+   "mpn": "XT30UPB-M",
+   "fabricante": "Changzhou Amass Electronics",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "F1",
+   "valor": "10A",
+   "lib": "Fuse",
+   "fp": "Fuse_Blade_Mini_directSolder",
+   "X": -22.4,
+   "Y": 132.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VBAT_IN",
+    "2": "/Alimentaci\u00f3n y protecciones/VBAT_F"
+   },
+   "en_bom": true,
+   "mpn": "0297010.WXNV",
+   "fabricante": "Littelfuse",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "Q1",
+   "valor": "DMP3013SFV",
+   "lib": "Package_SON",
+   "fp": "Diodes_PowerDI3333-8",
+   "X": -9.2,
+   "Y": 132.6,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "2": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "3": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "4": "/Alimentaci\u00f3n y protecciones/PFET_G",
+    "5": "/Alimentaci\u00f3n y protecciones/VBAT_F"
+   },
+   "en_bom": true,
+   "mpn": "DMP3013SFV-7",
+   "fabricante": "Diodes Incorporated",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "Q2",
+   "valor": "DMP3013SFV",
+   "lib": "Package_SON",
+   "fp": "Diodes_PowerDI3333-8",
+   "X": -4.6,
+   "Y": 132.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "2": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "3": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "4": "/Alimentaci\u00f3n y protecciones/PFET_G",
+    "5": "VBAT_SW"
+   },
+   "en_bom": true,
+   "mpn": "DMP3013SFV-7",
+   "fabricante": "Diodes Incorporated",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R1",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -8.2,
+   "Y": 128.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+    "2": "/Alimentaci\u00f3n y protecciones/PFET_G"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R2",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -6.6,
+   "Y": 128.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/PFET_G",
+    "2": "/Alimentaci\u00f3n y protecciones/SW_COM"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "SW1",
+   "valor": "ENCENDIDO",
+   "lib": "Button_Switch_THT",
+   "fp": "SW_Slide_SPDT_Angled_CK_OS102011MA1Q",
+   "X": -35.4,
+   "Y": 119.0,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/Alimentaci\u00f3n y protecciones/SW_COM"
+   },
+   "en_bom": true,
+   "mpn": "OS102011MA1QN1",
+   "fabricante": "C&K",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "D1",
+   "valor": "SMAJ9.0A",
+   "lib": "Diode_SMD",
+   "fp": "D_SMA",
+   "X": 4.6,
+   "Y": 131.3,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "SMAJ9.0A",
+   "fabricante": "Littelfuse",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C1",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -1.3,
+   "Y": 132.6,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C2",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": 0.9,
+   "Y": 132.6,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R3",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -26.0,
+   "Y": 102.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "VBAT_MED"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R4",
+   "valor": "33k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -26.0,
+   "Y": 103.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_MED",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0733KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C3",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -26.0,
+   "Y": 104.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_MED",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "D2",
+   "valor": "MBR0540",
+   "lib": "Diode_SMD",
+   "fp": "D_SOD-123",
+   "X": -20.6,
+   "Y": 126.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+    "2": "VBAT_SW"
+   },
+   "en_bom": true,
+   "mpn": "MBR0540T1G",
+   "fabricante": "onsemi",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "U1",
+   "valor": "TPS563200",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23-6",
+   "X": -17.0,
+   "Y": 122.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/Alimentaci\u00f3n y protecciones/BUCK_SW",
+    "3": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+    "4": "/Alimentaci\u00f3n y protecciones/BUCK_FB",
+    "5": "/Alimentaci\u00f3n y protecciones/BUCK_EN",
+    "6": "/Alimentaci\u00f3n y protecciones/BUCK_BST"
+   },
+   "en_bom": true,
+   "mpn": "TPS563200DDCR",
+   "fabricante": "Texas Instruments",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C4",
+   "valor": "10\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -20.6,
+   "Y": 122.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E106KA73L",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C5",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -17.0,
+   "Y": 124.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R5",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -15.0,
+   "Y": 124.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+    "2": "/Alimentaci\u00f3n y protecciones/BUCK_EN"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C6",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -19.0,
+   "Y": 119.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/BUCK_BST",
+    "2": "/Alimentaci\u00f3n y protecciones/BUCK_SW"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "L1",
+   "valor": "2.2\u00b5H",
+   "lib": "Inductor_SMD",
+   "fp": "L_Wuerth_MAPI-4030",
+   "X": -11.6,
+   "Y": 122.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/BUCK_SW",
+    "2": "+3V3"
+   },
+   "en_bom": true,
+   "mpn": "74438357022",
+   "fabricante": "W\u00fcrth Elektronik",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R6",
+   "valor": "33.2k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -16.2,
+   "Y": 119.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/Alimentaci\u00f3n y protecciones/BUCK_FB"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0733K2L",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R7",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -16.2,
+   "Y": 117.8,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Alimentaci\u00f3n y protecciones/BUCK_FB",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C7",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -7.9,
+   "Y": 121.6,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "C8",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -7.9,
+   "Y": 125.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "D3",
+   "valor": "PWR",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "X": -24.0,
+   "Y": 66.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/Alimentaci\u00f3n y protecciones/LED_PWR_A"
+   },
+   "en_bom": true,
+   "mpn": "APT1608SGC",
+   "fabricante": "Kingbright",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "R8",
+   "valor": "1k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -24.0,
+   "Y": 67.9,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/Alimentaci\u00f3n y protecciones/LED_PWR_A"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071KL",
+   "fabricante": "YAGEO",
+   "hoja": "alimentacion",
+   "ref_visible": false
+  },
+  {
+   "ref": "TP1",
+   "valor": "+3V3",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "X": -27.5,
+   "Y": 115.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3"
+   },
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "TP2",
+   "valor": "GND",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "X": -25.0,
+   "Y": 115.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND"
+   },
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "TP3",
+   "valor": "VBAT_SW",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "X": -22.5,
+   "Y": 115.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW"
+   },
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "TP4",
+   "valor": "GND",
+   "lib": "TestPoint",
+   "fp": "TestPoint_Pad_D1.0mm",
+   "X": -20.0,
+   "Y": 115.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND"
+   },
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "alimentacion",
+   "ref_visible": true
+  },
+  {
+   "ref": "U2",
+   "valor": "ISM330DHCXTR",
+   "lib": "Package_LGA",
+   "fp": "LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
+   "X": -15.0,
+   "Y": 100.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_SA0",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_AUX",
+    "3": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_AUX",
+    "5": "+3V3",
+    "6": "GND",
+    "7": "GND",
+    "8": "+3V3",
+    "12": "+3V3",
+    "13": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL",
+    "14": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA"
+   },
+   "en_bom": true,
+   "mpn": "ISM330DHCXTR",
+   "fabricante": "STMicroelectronics",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C9",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -17.4,
+   "Y": 99.7,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R29",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -11.8,
+   "Y": 99.4,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_SA0",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R30",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -11.8,
+   "Y": 101.6,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_AUX",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C10",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -12.9,
+   "Y": 97.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "U3",
+   "valor": "LPS22DFTR",
+   "lib": "Package_LGA",
+   "fp": "ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y",
+   "X": -20.0,
+   "Y": 78.0,
+   "rot": 0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL",
+    "3": "GND",
+    "4": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA",
+    "5": "+3V3",
+    "6": "+3V3",
+    "8": "GND",
+    "9": "GND",
+    "10": "+3V3"
+   },
+   "en_bom": true,
+   "mpn": "LPS22DFTR",
+   "fabricante": "STMicroelectronics",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "U4",
+   "valor": "LPS22DFTR",
+   "lib": "Package_LGA",
+   "fp": "ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y",
+   "X": -20.5,
+   "Y": 102.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL",
+    "3": "GND",
+    "4": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA",
+    "5": "GND",
+    "6": "+3V3",
+    "8": "GND",
+    "9": "GND",
+    "10": "+3V3"
+   },
+   "en_bom": true,
+   "mpn": "LPS22DFTR",
+   "fabricante": "STMicroelectronics",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C11",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -20.0,
+   "Y": 72.5,
+   "rot": 0,
+   "lado": "B",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C12",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -22.7,
+   "Y": 102.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R9",
+   "valor": "2.2k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -15.0,
+   "Y": 103.7,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-072K2L",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R10",
+   "valor": "2.2k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -15.0,
+   "Y": 104.8,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-072K2L",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "SW2",
+   "valor": "START",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_Omron_B3FS-100xP",
+   "X": -36.4,
+   "Y": 77.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_START",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "B3FS-1000P",
+   "fabricante": "Omron",
+   "hoja": "control",
+   "ref_visible": true
+  },
+  {
+   "ref": "SW3",
+   "valor": "CAL",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_Omron_B3FS-100xP",
+   "X": -36.4,
+   "Y": 69.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_CAL",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "B3FS-1000P",
+   "fabricante": "Omron",
+   "hoja": "control",
+   "ref_visible": true
+  },
+  {
+   "ref": "R11",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -29.6,
+   "Y": 78.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_START"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C13",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -29.6,
+   "Y": 77.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_START",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R12",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -29.6,
+   "Y": 75.4,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_CAL"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "C14",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -29.6,
+   "Y": 74.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_CAL",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "SW4",
+   "valor": "RESET",
+   "lib": "Button_Switch_SMD",
+   "fp": "SW_SPST_B3U-1000P",
+   "X": -39.0,
+   "Y": 83.0,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/NRST",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "B3U-1000P",
+   "fabricante": "Omron",
+   "hoja": "control",
+   "ref_visible": true
+  },
+  {
+   "ref": "D4",
+   "valor": "VERDE",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "X": -21.0,
+   "Y": 66.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE_A"
+   },
+   "en_bom": true,
+   "mpn": "APT1608SGC",
+   "fabricante": "Kingbright",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R13",
+   "valor": "1k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -21.0,
+   "Y": 67.9,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE_A"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "D5",
+   "valor": "AMARILLO",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "X": -18.0,
+   "Y": 66.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO_A"
+   },
+   "en_bom": true,
+   "mpn": "APT1608YC",
+   "fabricante": "Kingbright",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R14",
+   "valor": "1k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -18.0,
+   "Y": 67.9,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO_A"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "D6",
+   "valor": "ROJO",
+   "lib": "LED_SMD",
+   "fp": "LED_0603_1608Metric",
+   "X": -15.0,
+   "Y": 66.2,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO_A"
+   },
+   "en_bom": true,
+   "mpn": "APT1608EC",
+   "fabricante": "Kingbright",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R15",
+   "valor": "1k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -15.0,
+   "Y": 67.9,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO_A"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "LS1",
+   "valor": "PKLCS1212E4001",
+   "lib": "Buzzer_Beeper",
+   "fp": "Buzzer_Murata_PKLCS1212E",
+   "X": -12.0,
+   "Y": 77.5,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_D",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "PKLCS1212E4001-R1",
+   "fabricante": "Murata",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "Q3",
+   "valor": "AO3400A",
+   "lib": "Package_TO_SOT_SMD",
+   "fp": "SOT-23",
+   "X": -22.6,
+   "Y": 82.7,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_G",
+    "2": "GND",
+    "3": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_D"
+   },
+   "en_bom": true,
+   "mpn": "AO3400A",
+   "fabricante": "Alpha & Omega Semiconductor",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R16",
+   "valor": "2.2k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -20.0,
+   "Y": 84.6,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_D"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-072K2L",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R17",
+   "valor": "100\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -25.3,
+   "Y": 82.2,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB",
+    "2": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_G"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100RL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "R18",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -26.6,
+   "Y": 82.2,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_G",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "control",
+   "ref_visible": false
+  },
+  {
+   "ref": "U5",
+   "valor": "DRV8874PWPR",
+   "lib": "Package_SO",
+   "fp": "HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm",
+   "X": -2.6,
+   "Y": 87.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "EN_I",
+    "2": "PH_I",
+    "3": "DRV_nSLEEP",
+    "4": "DRV_nFAULT",
+    "5": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF",
+    "6": "IPROPI_I",
+    "7": "/Puentes H, motores, ESC y barra de sensores/IMODE_I",
+    "16": "GND",
+    "11": "VBAT_SW",
+    "12": "/Puentes H, motores, ESC y barra de sensores/VCP_I",
+    "13": "/Puentes H, motores, ESC y barra de sensores/CPH_I",
+    "14": "/Puentes H, motores, ESC y barra de sensores/CPL_I",
+    "8": "/Puentes H, motores, ESC y barra de sensores/MOT_I_1",
+    "10": "/Puentes H, motores, ESC y barra de sensores/MOT_I_2",
+    "9": "GND",
+    "15": "GND",
+    "17": "GND"
+   },
+   "en_bom": true,
+   "mpn": "DRV8874PWPR",
+   "fabricante": "Texas Instruments",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C15",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.42,
+   "Y": 79.65,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C16",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -3.7,
+   "Y": 79.6,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C17",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.9,
+   "Y": 81.1,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/VCP_I",
+    "2": "VBAT_SW"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C18",
+   "valor": "22nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -3.35,
+   "Y": 82.4,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/CPH_I",
+    "2": "/Puentes H, motores, ESC y barra de sensores/CPL_I"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H223KA12D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R19",
+   "valor": "1.5k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -1.63,
+   "Y": 91.85,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "IPROPI_I",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071K5L",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R20",
+   "valor": "0\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -0.98,
+   "Y": 93.75,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/IMODE_I",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402JR-070RL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "J3",
+   "valor": "MOTOR_I",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical",
+   "X": 3.8,
+   "Y": 87.0,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "ENC_I_B",
+    "3": "ENC_I_A",
+    "4": "+3V3",
+    "5": "/Puentes H, motores, ESC y barra de sensores/MOT_I_2",
+    "6": "/Puentes H, motores, ESC y barra de sensores/MOT_I_1",
+    "MP": "GND"
+   },
+   "en_bom": true,
+   "mpn": "BM06B-SRSS-TB",
+   "fabricante": "JST",
+   "hoja": "motores",
+   "ref_visible": true
+  },
+  {
+   "ref": "C31",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -4.5,
+   "Y": 99.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_I_A",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C32",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -3.2,
+   "Y": 99.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_I_B",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "U6",
+   "valor": "DRV8874PWPR",
+   "lib": "Package_SO",
+   "fp": "HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask2.46x2.31mm",
+   "X": -2.6,
+   "Y": 113.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "EN_D",
+    "2": "PH_D",
+    "3": "DRV_nSLEEP",
+    "4": "DRV_nFAULT",
+    "5": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF",
+    "6": "IPROPI_D",
+    "7": "/Puentes H, motores, ESC y barra de sensores/IMODE_D",
+    "16": "GND",
+    "11": "VBAT_SW",
+    "12": "/Puentes H, motores, ESC y barra de sensores/VCP_D",
+    "13": "/Puentes H, motores, ESC y barra de sensores/CPH_D",
+    "14": "/Puentes H, motores, ESC y barra de sensores/CPL_D",
+    "8": "/Puentes H, motores, ESC y barra de sensores/MOT_D_1",
+    "10": "/Puentes H, motores, ESC y barra de sensores/MOT_D_2",
+    "9": "GND",
+    "15": "GND",
+    "17": "GND"
+   },
+   "en_bom": true,
+   "mpn": "DRV8874PWPR",
+   "fabricante": "Texas Instruments",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C19",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.42,
+   "Y": 105.65,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C20",
+   "valor": "22\u00b5F",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0805_2012Metric",
+   "X": -3.7,
+   "Y": 105.6,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM21BR61E226ME44L",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C21",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.9,
+   "Y": 107.1,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/VCP_D",
+    "2": "VBAT_SW"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C22",
+   "valor": "22nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -3.35,
+   "Y": 108.4,
+   "rot": 180,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/CPH_D",
+    "2": "/Puentes H, motores, ESC y barra de sensores/CPL_D"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H223KA12D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R21",
+   "valor": "1.5k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -1.63,
+   "Y": 117.85,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "IPROPI_D",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-071K5L",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R22",
+   "valor": "0\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -0.98,
+   "Y": 119.75,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/IMODE_D",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402JR-070RL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "J4",
+   "valor": "MOTOR_D",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical",
+   "X": 3.8,
+   "Y": 113.0,
+   "rot": -90,
+   "lado": "F",
+   "redes": {
+    "1": "GND",
+    "2": "ENC_D_B",
+    "3": "ENC_D_A",
+    "4": "+3V3",
+    "5": "/Puentes H, motores, ESC y barra de sensores/MOT_D_2",
+    "6": "/Puentes H, motores, ESC y barra de sensores/MOT_D_1",
+    "MP": "GND"
+   },
+   "en_bom": true,
+   "mpn": "BM06B-SRSS-TB",
+   "fabricante": "JST",
+   "hoja": "motores",
+   "ref_visible": true
+  },
+  {
+   "ref": "C33",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.9,
+   "Y": 99.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_D_A",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C34",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -0.6,
+   "Y": 99.8,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "ENC_D_B",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R23",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -4.5,
+   "Y": 102.6,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "DRV_nFAULT"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R24",
+   "valor": "100k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -3.2,
+   "Y": 102.6,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "DRV_nSLEEP",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100KL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R25",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -4.5,
+   "Y": 97.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R26",
+   "valor": "4.7k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -3.2,
+   "Y": 97.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-074K7L",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C23",
+   "valor": "100nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -1.9,
+   "Y": 97.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71C104KA88D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "J5",
+   "valor": "ESC_POT",
+   "lib": "Connector_Wire",
+   "fp": "SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm",
+   "X": 4.7,
+   "Y": 125.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "VBAT_SW",
+    "2": "GND"
+   },
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "motores",
+   "ref_visible": true
+  },
+  {
+   "ref": "J6",
+   "valor": "ESC_SE\u00d1AL",
+   "lib": "Connector_PinHeader_2.54mm",
+   "fp": "PinHeader_1x03_P2.54mm_Vertical",
+   "X": -30.0,
+   "Y": 119.5,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/ESC_SEN_C",
+    "3": "GND"
+   },
+   "en_bom": true,
+   "mpn": "Cabecera macho 1\u00d73, paso 2.54 mm (n\u00famero de parte por elegir)",
+   "fabricante": "gen\u00e9rico",
+   "hoja": "motores",
+   "ref_visible": true
+  },
+  {
+   "ref": "R27",
+   "valor": "100\u03a9",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -21.9,
+   "Y": 118.3,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "ESC_SEN",
+    "2": "/Puentes H, motores, ESC y barra de sensores/ESC_SEN_C"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-07100RL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "R28",
+   "valor": "10k",
+   "lib": "Resistor_SMD",
+   "fp": "R_0402_1005Metric",
+   "X": -21.9,
+   "Y": 117.1,
+   "rot": 0,
+   "lado": "F",
+   "redes": {
+    "1": "/Puentes H, motores, ESC y barra de sensores/ESC_SEN_C",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "RC0402FR-0710KL",
+   "fabricante": "YAGEO",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "J2",
+   "valor": "SENSORES",
+   "lib": "Connector_JST",
+   "fp": "JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical",
+   "X": 3.8,
+   "Y": 100.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "+3V3",
+    "2": "EMIT",
+    "3": "MUX_S0",
+    "4": "MUX_S1",
+    "5": "MUX_S2",
+    "6": "SENS_A",
+    "7": "SENS_B",
+    "8": "GND",
+    "MP": "GND"
+   },
+   "en_bom": true,
+   "mpn": "BM08B-SRSS-TB",
+   "fabricante": "JST",
+   "hoja": "motores",
+   "ref_visible": true
+  },
+  {
+   "ref": "C35",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -0.6,
+   "Y": 97.0,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "SENS_A",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "C36",
+   "valor": "1nF",
+   "lib": "Capacitor_SMD",
+   "fp": "C_0402_1005Metric",
+   "X": -0.6,
+   "Y": 102.6,
+   "rot": 90,
+   "lado": "F",
+   "redes": {
+    "1": "SENS_B",
+    "2": "GND"
+   },
+   "en_bom": true,
+   "mpn": "GRM155R71H102KA01D",
+   "fabricante": "Murata",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "H1",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": -28.0,
+   "Y": 70.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "H2",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": -28.0,
+   "Y": 130.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "H3",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": 0.0,
+   "Y": 73.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "motores",
+   "ref_visible": false
+  },
+  {
+   "ref": "H4",
+   "valor": "M2",
+   "lib": "MountingHole",
+   "fp": "MountingHole_2.2mm_M2",
+   "X": 0.0,
+   "Y": 127.0,
+   "rot": 0.0,
+   "lado": "F",
+   "redes": {},
+   "en_bom": false,
+   "mpn": "\u2014",
+   "fabricante": "\u2014",
+   "hoja": "motores",
+   "ref_visible": false
+  }
+ ],
+ "clases": {
+  "Default": {
+   "pista": 0.2,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.6,
+   "taladro": 0.3,
+   "patrones": []
+  },
+  "Planos": {
+   "pista": 0.3,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.6,
+   "taladro": 0.3,
+   "patrones": [
+    "GND",
+    "+3V3"
+   ]
+  },
+  "Bateria": {
+   "pista": 0.4,
+   "separacion": 0.2,
+   "separacion_drc": 0.2,
+   "via": 0.8,
+   "taladro": 0.4,
+   "patrones": [
+    "*VBAT_IN",
+    "*VBAT_F",
+    "*VBAT_S"
+   ]
+  },
+  "Motor": {
+   "pista": 0.45,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.8,
+   "taladro": 0.4,
+   "patrones": [
+    "*MOT_*",
+    "VBAT_SW"
+   ]
+  },
+  "Buck": {
+   "pista": 0.5,
+   "separacion": 0.2,
+   "separacion_drc": 0.15,
+   "via": 0.8,
+   "taladro": 0.4,
+   "patrones": [
+    "*VIN_BUCK",
+    "*BUCK_SW"
+   ]
+  }
+ },
+ "planos": [
+  {
+   "capa": "In1.Cu",
+   "red": "GND"
+  },
+  {
+   "capa": "In2.Cu",
+   "red": "+3V3"
+  },
+  {
+   "capa": "B",
+   "red": "GND"
+  },
+  {
+   "capa": "F",
+   "red": "GND"
+  }
+ ],
+ "zonas": [
+  {
+   "red": "/Alimentaci\u00f3n y protecciones/VBAT_IN",
+   "capas": [
+    "F",
+    "B"
+   ],
+   "prioridad": 2,
+   "puntos": [
+    [
+     -36.0,
+     134.75
+    ],
+    [
+     -19.4,
+     134.75
+    ],
+    [
+     -19.4,
+     129.6
+    ],
+    [
+     -36.0,
+     129.6
+    ]
+   ]
+  },
+  {
+   "red": "/Alimentaci\u00f3n y protecciones/VBAT_F",
+   "capas": [
+    "F"
+   ],
+   "prioridad": 2,
+   "puntos": [
+    [
+     -17.3,
+     134.75
+    ],
+    [
+     -8.6,
+     134.75
+    ],
+    [
+     -8.6,
+     130.3
+    ],
+    [
+     -17.3,
+     130.3
+    ]
+   ]
+  },
+  {
+   "red": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+   "capas": [
+    "F"
+   ],
+   "prioridad": 2,
+   "puntos": [
+    [
+     -8.15,
+     133.95
+    ],
+    [
+     -7.05,
+     133.95
+    ],
+    [
+     -7.05,
+     133.16
+    ],
+    [
+     -5.65,
+     133.16
+    ],
+    [
+     -5.65,
+     131.25
+    ],
+    [
+     -6.75,
+     131.25
+    ],
+    [
+     -6.75,
+     132.04
+    ],
+    [
+     -8.15,
+     132.04
+    ]
+   ]
+  },
+  {
+   "red": "VBAT_SW",
+   "capas": [
+    "F"
+   ],
+   "prioridad": 2,
+   "puntos": [
+    [
+     -5.25,
+     134.2
+    ],
+    [
+     -2.4,
+     134.2
+    ],
+    [
+     -2.4,
+     132.4
+    ],
+    [
+     6.25,
+     132.4
+    ],
+    [
+     6.25,
+     123.6
+    ],
+    [
+     3.4,
+     123.6
+    ],
+    [
+     3.4,
+     129.6
+    ],
+    [
+     -5.25,
+     129.6
+    ]
+   ]
+  }
+ ],
+ "agujeros": [
+  {
+   "X": -28.0,
+   "Y": 70.0,
+   "r": 2.5
+  },
+  {
+   "X": -28.0,
+   "Y": 130.0,
+   "r": 2.5
+  },
+  {
+   "X": 0.0,
+   "Y": 73.0,
+   "r": 2.5
+  },
+  {
+   "X": 0.0,
+   "Y": 127.0,
+   "r": 2.5
+  }
+ ],
+ "sin_vias": [
+  {
+   "X": -20.0,
+   "Y": 78.0,
+   "r": 4.4
+  }
+ ],
+ "vias": [
+  {
+   "ref": "U5",
+   "pad": "17",
+   "red": "GND",
+   "taladro": 0.3,
+   "diametro": 0.6,
+   "offsets": [
+    [
+     -0.6,
+     -1.2
+    ],
+    [
+     -0.6,
+     0.0
+    ],
+    [
+     -0.6,
+     1.2
+    ],
+    [
+     0.6,
+     -1.2
+    ],
+    [
+     0.6,
+     0.0
+    ],
+    [
+     0.6,
+     1.2
+    ]
+   ]
+  },
+  {
+   "ref": "U6",
+   "pad": "17",
+   "red": "GND",
+   "taladro": 0.3,
+   "diametro": 0.6,
+   "offsets": [
+    [
+     -0.6,
+     -1.2
+    ],
+    [
+     -0.6,
+     0.0
+    ],
+    [
+     -0.6,
+     1.2
+    ],
+    [
+     0.6,
+     -1.2
+    ],
+    [
+     0.6,
+     0.0
+    ],
+    [
+     0.6,
+     1.2
+    ]
+   ]
+  }
+ ],
+ "pistas_fijas": [
+  {
+   "pad": [
+    "U5",
+    "14"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -3.58,
+     15.86
+    ],
+    [
+     -3.58,
+     17.6
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "13"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -2.92,
+     15.86
+    ],
+    [
+     -2.92,
+     17.6
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "12"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -2.28,
+     15.86
+    ],
+    [
+     -2.28,
+     18.9
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "11"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -1.63,
+     15.86
+    ],
+    [
+     -1.63,
+     18.9
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "11"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -1.42,
+     18.9
+    ],
+    [
+     -1.42,
+     19.87
+    ],
+    [
+     -2.4,
+     19.87
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "10"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -0.98,
+     15.86
+    ],
+    [
+     -0.98,
+     17.3
+    ],
+    [
+     0.7,
+     17.3
+    ],
+    [
+     0.7,
+     11.5
+    ],
+    [
+     "pad",
+     "J3",
+     "5"
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "8"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -0.33,
+     10.14
+    ],
+    [
+     -0.33,
+     9.0
+    ],
+    [
+     1.6,
+     9.0
+    ],
+    [
+     1.6,
+     10.5
+    ],
+    [
+     "pad",
+     "J3",
+     "6"
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "6"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -1.63,
+     10.14
+    ],
+    [
+     -1.63,
+     8.63
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U5",
+    "7"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -0.98,
+     10.14
+    ],
+    [
+     -0.98,
+     6.73
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "14"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -3.58,
+     -10.14
+    ],
+    [
+     -3.58,
+     -8.4
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "13"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -2.92,
+     -10.14
+    ],
+    [
+     -2.92,
+     -8.4
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "12"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -2.28,
+     -10.14
+    ],
+    [
+     -2.28,
+     -7.1
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "11"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -1.63,
+     -10.14
+    ],
+    [
+     -1.63,
+     -7.1
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "11"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -1.42,
+     -7.1
+    ],
+    [
+     -1.42,
+     -6.13
+    ],
+    [
+     -2.4,
+     -6.13
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "10"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -0.98,
+     -10.14
+    ],
+    [
+     -0.98,
+     -8.7
+    ],
+    [
+     0.7,
+     -8.7
+    ],
+    [
+     0.7,
+     -14.5
+    ],
+    [
+     "pad",
+     "J4",
+     "5"
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "8"
+   ],
+   "ancho": 0.45,
+   "puntos": [
+    [
+     -0.33,
+     -15.86
+    ],
+    [
+     -0.33,
+     -17.0
+    ],
+    [
+     1.6,
+     -17.0
+    ],
+    [
+     1.6,
+     -15.5
+    ],
+    [
+     "pad",
+     "J4",
+     "6"
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "6"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -1.63,
+     -15.86
+    ],
+    [
+     -1.63,
+     -17.37
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U6",
+    "7"
+   ],
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -0.98,
+     -15.86
+    ],
+    [
+     -0.98,
+     -19.27
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U3",
+    "5"
+   ],
+   "capa": "B",
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -19.5,
+     22.76
+    ],
+    [
+     -19.5,
+     23.2
+    ],
+    [
+     -18.8,
+     23.2
+    ],
+    [
+     -18.8,
+     22.25
+    ],
+    [
+     "pad",
+     "U3",
+     "6"
+    ]
+   ]
+  },
+  {
+   "pad": [
+    "U3",
+    "10"
+   ],
+   "capa": "B",
+   "ancho": 0.2,
+   "puntos": [
+    [
+     -20.5,
+     21.24
+    ],
+    [
+     -20.5,
+     20.8
+    ],
+    [
+     -21.2,
+     20.8
+    ],
+    [
+     -21.2,
+     21.75
+    ],
+    [
+     "pad",
+     "U3",
+     "1"
+    ]
+   ]
+  }
+ ],
+ "abanico": [
+  {
+   "red": "GND",
+   "diametro": 0.6,
+   "taladro": 0.3,
+   "pista": 0.3,
+   "separacion": 0.25,
+   "excluir_pads": [
+    "17"
+   ],
+   "unir_a_pad": {
+    "U5": "17",
+    "U6": "17"
+   }
+  },
+  {
+   "red": "+3V3",
+   "diametro": 0.6,
+   "taladro": 0.3,
+   "pista": 0.3,
+   "separacion": 0.25
+  }
+ ],
+ "redes_plano": [
+  "GND",
+  "+3V3"
+ ],
+ "conexion_solida": [
+  [
+   "U3",
+   "3"
+  ],
+  [
+   "U3",
+   "8"
+  ],
+  [
+   "U3",
+   "9"
+  ]
+ ],
+ "holgura_local": {
+  "U2": 0.127,
+  "U3": 0.127,
+  "U4": 0.127
+ },
+ "nombres_red": {
+  "GND": "GND",
+  "DRV_nFAULT": "DRV_nFAULT",
+  "MUX_S0": "MUX_S0",
+  "MUX_S1": "MUX_S1",
+  "MUX_S2": "MUX_S2",
+  "I2C_SCL": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SCL",
+  "EN_D": "EN_D",
+  "EN_I": "EN_I",
+  "ENC_D_A": "ENC_D_A",
+  "PH_I": "PH_I",
+  "I2C_SDA": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/I2C_SDA",
+  "ENC_D_B": "ENC_D_B",
+  "DRV_nSLEEP": "DRV_nSLEEP",
+  "PH_D": "PH_D",
+  "ENC_I_A": "ENC_I_A",
+  "ENC_I_B": "ENC_I_B",
+  "ZUMB": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB",
+  "ESC_SEN": "ESC_SEN",
+  "+3V3": "+3V3",
+  "LED_ROJO": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO",
+  "IPROPI_D": "IPROPI_D",
+  "LED_VERDE": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE",
+  "LED_AMARILLO": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO",
+  "BTN_START": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_START",
+  "BTN_CAL": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/BTN_CAL",
+  "IPROPI_I": "IPROPI_I",
+  "EMIT": "EMIT",
+  "SENS_B": "SENS_B",
+  "VBAT_MED": "VBAT_MED",
+  "NRST": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/NRST",
+  "SENS_A": "SENS_A",
+  "VBAT_IN": "/Alimentaci\u00f3n y protecciones/VBAT_IN",
+  "VBAT_F": "/Alimentaci\u00f3n y protecciones/VBAT_F",
+  "VBAT_S": "/Alimentaci\u00f3n y protecciones/VBAT_S",
+  "PFET_G": "/Alimentaci\u00f3n y protecciones/PFET_G",
+  "VBAT_SW": "VBAT_SW",
+  "SW_COM": "/Alimentaci\u00f3n y protecciones/SW_COM",
+  "SW_OFF": "/Alimentaci\u00f3n y protecciones/SW_OFF",
+  "VIN_BUCK": "/Alimentaci\u00f3n y protecciones/VIN_BUCK",
+  "BUCK_SW": "/Alimentaci\u00f3n y protecciones/BUCK_SW",
+  "BUCK_FB": "/Alimentaci\u00f3n y protecciones/BUCK_FB",
+  "BUCK_EN": "/Alimentaci\u00f3n y protecciones/BUCK_EN",
+  "BUCK_BST": "/Alimentaci\u00f3n y protecciones/BUCK_BST",
+  "LED_PWR_A": "/Alimentaci\u00f3n y protecciones/LED_PWR_A",
+  "IMU_SA0": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_SA0",
+  "IMU_AUX": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/IMU_AUX",
+  "LED_VERDE_A": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_VERDE_A",
+  "LED_AMARILLO_A": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_AMARILLO_A",
+  "LED_ROJO_A": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/LED_ROJO_A",
+  "ZUMB_D": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_D",
+  "ZUMB_G": "/MCU (m\u00f3dulo WeAct), sensores e interfaz/ZUMB_G",
+  "DRV_VREF": "/Puentes H, motores, ESC y barra de sensores/DRV_VREF",
+  "IMODE_I": "/Puentes H, motores, ESC y barra de sensores/IMODE_I",
+  "VCP_I": "/Puentes H, motores, ESC y barra de sensores/VCP_I",
+  "CPH_I": "/Puentes H, motores, ESC y barra de sensores/CPH_I",
+  "CPL_I": "/Puentes H, motores, ESC y barra de sensores/CPL_I",
+  "MOT_I_1": "/Puentes H, motores, ESC y barra de sensores/MOT_I_1",
+  "MOT_I_2": "/Puentes H, motores, ESC y barra de sensores/MOT_I_2",
+  "IMODE_D": "/Puentes H, motores, ESC y barra de sensores/IMODE_D",
+  "VCP_D": "/Puentes H, motores, ESC y barra de sensores/VCP_D",
+  "CPH_D": "/Puentes H, motores, ESC y barra de sensores/CPH_D",
+  "CPL_D": "/Puentes H, motores, ESC y barra de sensores/CPL_D",
+  "MOT_D_1": "/Puentes H, motores, ESC y barra de sensores/MOT_D_1",
+  "MOT_D_2": "/Puentes H, motores, ESC y barra de sensores/MOT_D_2",
+  "ESC_SEN_C": "/Puentes H, motores, ESC y barra de sensores/ESC_SEN_C"
+ },
+ "textos": [
+  {
+   "texto": "CIRCUIT FORGE V2 \u00b7 PCB PRINCIPAL \u00b7 REV A",
+   "X": -23.86,
+   "Y": 96.0,
+   "rot": 0,
+   "lado": "B",
+   "tam": 1.0
+  },
+  {
+   "texto": "START",
+   "X": -36.4,
+   "Y": 72.4,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "CAL",
+   "X": -29.0,
+   "Y": 66.0,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "RST",
+   "X": -35.0,
+   "Y": 83.0,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "P",
+   "X": -24.0,
+   "Y": 69.5,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "V",
+   "X": -21.0,
+   "Y": 69.5,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "A",
+   "X": -18.0,
+   "Y": 69.5,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "R",
+   "X": -15.0,
+   "Y": 69.5,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "ESC",
+   "X": 2.1,
+   "Y": 122.7,
+   "rot": 90,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "+",
+   "X": 2.6,
+   "Y": 125.6,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.2
+  },
+  {
+   "texto": "-",
+   "X": 2.6,
+   "Y": 119.6,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.2
+  },
+  {
+   "texto": "ESC SE\u00d1AL",
+   "X": -27.5,
+   "Y": 122.3,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "BAT+",
+   "X": -33.8,
+   "Y": 127.8,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  },
+  {
+   "texto": "ON",
+   "X": -40.0,
+   "Y": 115.0,
+   "rot": 0,
+   "lado": "F",
+   "tam": 1.0
+  }
+ ]
+}

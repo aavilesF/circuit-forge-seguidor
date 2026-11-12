@@ -1,0 +1,60 @@
+Etapa E
+  C3m: E con incertidumbre 5.478 s, éxito 1.000
+  C3m v_max 0.8165: nominal                  éxito 1.000 [0.981] t 5.808 s  I_max 0.478 A  
+  C3m v_max 0.8165: J_rotor ×0.5             éxito 0.983 [0.941] t 5.791 s  I_max 0.477 A  derrape: 2
+  C3m v_max 0.8165: J_rotor ×2               éxito 1.000 [0.969] t 5.876 s  I_max 0.471 A  
+  C3m v_max 0.8165: I_bloqueo ×0.8           éxito 1.000 [0.969] t 5.822 s  I_max 0.382 A  
+  C3m v_max 0.8165: I_bloqueo ×1.2           éxito 1.000 [0.969] t 5.798 s  I_max 0.565 A  
+  C3m v_max 0.8165: μ 0.70                   éxito 1.000 [0.969] t 5.82 s  I_max 0.475 A  
+  C3m v_max 0.8875: nominal                  éxito 1.000 [0.981] t 5.479 s  I_max 0.475 A  
+  C3m v_max 0.8875: J_rotor ×0.5             éxito 0.975 [0.929] t 5.466 s  I_max 0.475 A  derrape: 3
+  C3m v_max 0.8875: J_rotor ×2               éxito 1.000 [0.969] t 5.546 s  I_max 0.471 A  
+  C3m v_max 0.8875: I_bloqueo ×0.8           éxito 1.000 [0.969] t 5.492 s  I_max 0.382 A  
+  C3m v_max 0.8875: I_bloqueo ×1.2           éxito 1.000 [0.969] t 5.468 s  I_max 0.566 A  
+  C3m v_max 0.8875: μ 0.70                   éxito 1.000 [0.969] t 5.492 s  I_max 0.476 A  
+  C3m v_max 0.9407: nominal                  éxito 1.000 [0.981] t 5.297 s  I_max 0.474 A  
+  C3m v_max 0.9407: J_rotor ×0.5             éxito 0.967 [0.917] t 5.29 s  I_max 0.478 A  derrape: 4
+  C3m v_max 0.9407: J_rotor ×2               éxito 1.000 [0.969] t 5.361 s  I_max 0.472 A  
+  C3m v_max 0.9407: I_bloqueo ×0.8           éxito 1.000 [0.969] t 5.31 s  I_max 0.383 A  
+  C3m v_max 0.9407: I_bloqueo ×1.2           éxito 1.000 [0.969] t 5.285 s  I_max 0.562 A  
+  C3m v_max 0.9407: μ 0.70                   éxito 0.900 [0.833] t 5.368 s  I_max 0.477 A  derrape: 12
+  C3e: E con incertidumbre 6.569 s, éxito 1.000
+  C3e v_max 0.6327: nominal                  éxito 1.000 [0.981] t 7.156 s  I_max 0.427 A  
+  C3e v_max 0.6327: J_rotor ×0.5             éxito 1.000 [0.969] t 7.135 s  I_max 0.421 A  
+  C3e v_max 0.6327: J_rotor ×2               éxito 1.000 [0.969] t 7.208 s  I_max 0.423 A  
+  C3e v_max 0.6327: I_bloqueo ×0.8           éxito 1.000 [0.969] t 7.164 s  I_max 0.349 A  
+  C3e v_max 0.6327: I_bloqueo ×1.2           éxito 1.000 [0.969] t 7.156 s  I_max 0.512 A  
+  C3e v_max 0.6327: μ 0.70                   éxito 1.000 [0.969] t 7.175 s  I_max 0.424 A  
+  C3e v_max 0.6877: nominal                  éxito 1.000 [0.981] t 6.573 s  I_max 0.425 A  
+  C3e v_max 0.6877: J_rotor ×0.5             éxito 1.000 [0.969] t 6.548 s  I_max 0.42 A  
+  C3e v_max 0.6877: J_rotor ×2               éxito 1.000 [0.969] t 6.626 s  I_max 0.426 A  
+  C3e v_max 0.6877: I_bloqueo ×0.8           éxito 1.000 [0.969] t 6.576 s  I_max 0.348 A  
+  C3e v_max 0.6877: I_bloqueo ×1.2           éxito 1.000 [0.969] t 6.571 s  I_max 0.493 A  
+  C3e v_max 0.6877: μ 0.70                   éxito 0.983 [0.941] t 6.637 s  I_max 0.409 A  derrape: 2
+  C3e v_max 0.729: nominal                   éxito 0.875 [0.822] t 6.304 s  I_max 0.404 A  derrape: 25
+  C3e v_max 0.729: J_rotor ×0.5              éxito 0.767 [0.683] t 6.385 s  I_max 0.423 A  derrape: 28
+  C3e v_max 0.729: J_rotor ×2                éxito 0.850 [0.775] t 6.46 s  I_max 0.411 A  derrape: 18
+  C3e v_max 0.729: I_bloqueo ×0.8            éxito 0.875 [0.804] t 6.314 s  I_max 0.344 A  derrape: 15
+  C3e v_max 0.729: I_bloqueo ×1.2            éxito 0.892 [0.823] t 6.275 s  I_max 0.458 A  derrape: 13
+  C3e v_max 0.729: μ 0.70                    éxito 0.667 [0.578] t 6.583 s  I_max 0.394 A  derrape: 40
+  -> sim/resultados/final/E_fuente_curvatura.csv
+  elegido: C3e, peor E 7.21 s, nominal 7.156 s (1.0)
+Etapa F
+  nominal                                    éxito 1.000 [0.981] t 7.156 s  I_max 0.427 A  
+  μ 0.70 (−12 %)                             éxito 1.000 [0.969] t 7.175 s  I_max 0.424 A  
+  μ 0.60 (−25 %)                             éxito 1.000 [0.969] t 7.224 s  I_max 0.423 A  
+  CG 10 mm más adelante                      éxito 0.642 [0.553] t 7.625 s  I_max 0.404 A  derrape: 43
+  CG 10 mm más atrás                         éxito 1.000 [0.969] t 7.245 s  I_max 0.434 A  
+  masa +10 g (batería de 37 g)               éxito 1.000 [0.969] t 7.19 s  I_max 0.432 A  
+  masa +40 g                                 éxito 1.000 [0.969] t 7.284 s  I_max 0.418 A  
+  sensor más alto: mancha ×1.6               éxito 1.000 [0.969] t 7.159 s  I_max 0.426 A  
+  ruido de sensores ×2                       éxito 1.000 [0.969] t 7.159 s  I_max 0.426 A  
+  ruido de sensores ×3                       éxito 1.000 [0.969] t 7.159 s  I_max 0.428 A  
+  fototransistor lento: t_emisor 400 µs      éxito 1.000 [0.969] t 7.159 s  I_max 0.422 A  
+  encoder desconectado (CPR 0)               éxito 1.000 [0.969] t 7.159 s  I_max 0.427 A  
+  batería baja (6.9 V)                       éxito 1.000 [0.969] t 7.165 s  I_max 0.358 A  
+  latencia +1 ms                             éxito 1.000 [0.969] t 7.158 s  I_max 0.447 A  
+  motores desparejos ±10 %                   éxito 1.000 [0.969] t 7.224 s  I_max 0.411 A  
+  I de bloqueo ×0.8                          éxito 1.000 [0.969] t 7.164 s  I_max 0.349 A  
+  I de bloqueo ×1.2                          éxito 1.000 [0.969] t 7.156 s  I_max 0.512 A  
+  -> sim/resultados/final/F_validacion_robustez.csv

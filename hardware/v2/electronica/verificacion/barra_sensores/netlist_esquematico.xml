@@ -1,0 +1,1785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/barra_sensores/barra_sensores.kicad_sch</source>
+    <date>2026-11-05T07:23:09-0600</date>
+    <tool>Eeschema 9.0.8+dfsg-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Speed Follower V2 — Barra de sensores — Hoja principal</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>barra_sensores.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/">
+      <title_block>
+        <title>Speed Follower V2 — Barra de sensores — 16 sensores QRE1113GR</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>sensores.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/">
+      <title_block>
+        <title>Speed Follower V2 — Barra de sensores — Multiplexores, emisores y conector</title>
+        <company>Circuit Forge — Robolympics RMX2026</company>
+        <rev>V2-A</rev>
+        <date>2026-11-04</date>
+        <source>interfaz.kicad_sch</source>
+        <comment number="1" value="Generado por hardware/v2/electronica/generador (no editar a mano)"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="R1">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>38ea820b-b693-5d42-be07-2d65d546aef5</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>ab0a15b0-fb44-5a3f-aac4-d634012f3b78</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>00c6ac27-25c1-5556-986a-2af48adeb04e</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>e502ebf9-c2a4-5472-b1b5-a8b4b2aeb284</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>8bdf5f67-1fc7-5551-b536-cd4951b78928</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>c9cd590b-ffed-5aff-87e5-e6b162e7163f</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>7ad2879b-8b25-5f65-b77c-665e0fe976fa</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>f9597eee-6ed6-59c2-9989-c316b54497cb</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>748f3654-d58f-5549-a6e2-f6990adb9d3b</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>c6b7355e-c5b1-5b42-a480-9821c1657c94</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>7333bed7-27a9-5319-ab0f-7142f5c4ef4c</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>01824d3f-4d00-5052-9093-e9c838d0dd8b</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>6f5d6077-8456-57a7-9bc3-6e32e3db152f</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>2cab3cdf-7943-5fe3-a1e9-fd57cfe29acb</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>b86c0721-e766-5b99-a043-19d588671733</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>75Ω</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 75Ω 1 % 0603</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0603FR-0775RL</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 75Ω 1 % 0603</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-0775RL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>8c281016-8e0f-5d37-a1d4-3b22d3daa717</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>f19aede1-f99d-514a-954c-b3f085529719</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>d2f82d85-b7c4-5f19-af0c-ea79a3e054e8</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>ca4f3bc6-1537-58e4-972a-177e5ec40a26</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>91ec35d5-0b53-5510-ab4a-f42e1b97aae7</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>7de13136-b209-5ca9-9bee-42f2934c24b3</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>77ed5342-6e6f-57b0-abe7-2f3e7d0a8993</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>ae6769c2-9ad5-5664-88a7-4d2a4c418fae</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>1049639e-4004-56f7-829d-ad8c34116287</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>d0c86d66-2725-59f1-8c14-180d48d228c1</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>d165c65d-216e-5b0f-bfc8-a959a1441e8f</tstamps>
+    </comp>
+    <comp ref="R27">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>188e7ac8-aa9b-5bc8-bad5-8ea8c583db50</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>90e18cdf-f2e7-5664-af41-4e41965d08bb</tstamps>
+    </comp>
+    <comp ref="R29">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>841c64b7-71dc-51b8-a530-924533837f39</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>68c15732-56e3-5742-9dc6-326767cdd72c</tstamps>
+    </comp>
+    <comp ref="R31">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>09aaad91-e286-58f8-a5ac-0537b2903e92</tstamps>
+    </comp>
+    <comp ref="R32">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 10kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 10kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0710KL"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>a4b51ef3-4f66-53bd-b48d-94a093daba93</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>47eb71bc-0c81-5ef3-b4d4-6a5e838fd576</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>59ec1a13-c1a9-57e8-a82f-84e02793cd66</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>c1ae3345-3748-5195-9ad6-a4a59874683c</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>8bce8c91-a518-5e6a-bac3-058362e18093</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>e18283f5-a7a4-5fb0-9060-61e5221de173</tstamps>
+    </comp>
+    <comp ref="U6">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>5d067f91-764b-5e98-8f66-a56915445ea0</tstamps>
+    </comp>
+    <comp ref="U7">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>168bf19d-4298-5f84-9afe-592b441a53ca</tstamps>
+    </comp>
+    <comp ref="U8">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>20078b27-508a-5da9-acaf-636dfcd30f1f</tstamps>
+    </comp>
+    <comp ref="U9">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>06c9fbb0-114e-5b77-a830-549f51ce30ad</tstamps>
+    </comp>
+    <comp ref="U10">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>5b8296a6-1a9a-57e0-bdfc-6474e34ebe2a</tstamps>
+    </comp>
+    <comp ref="U11">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>3da0dabb-0def-5df7-800e-cc1d184f6212</tstamps>
+    </comp>
+    <comp ref="U12">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>a9632bf5-88cf-584f-9391-c96b89d02c31</tstamps>
+    </comp>
+    <comp ref="U13">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>7f9f682c-bf87-5986-ab24-cdf1c2ea059a</tstamps>
+    </comp>
+    <comp ref="U14">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>9a33f57e-7963-5b7c-b677-11fbbb218e04</tstamps>
+    </comp>
+    <comp ref="U15">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>7b5b52b9-599b-5027-988e-cd35183aaa27</tstamps>
+    </comp>
+    <comp ref="U16">
+      <value>QRE1113GR</value>
+      <footprint>OptoDevice:OnSemi_CASE100CY</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</datasheet>
+      <description>Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Fabricante">onsemi</field>
+        <field name="MPN">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet">https://www.onsemi.com/pdf/datasheet/qre1113-d.pdf</field>
+        <field name="Description">Sensor reflectivo IR (LED 940 nm + fototransistor), CASE 100CY</field>
+      </fields>
+      <libsource lib="circuitforge_v2" part="QRE1113GR" description="Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY"/>
+      <property name="Fabricante" value="onsemi"/>
+      <property name="MPN" value="QRE1113GR"/>
+      <property name="Sheetname" value="16 sensores QRE1113GR"/>
+      <property name="Sheetfile" value="sensores.kicad_sch"/>
+      <sheetpath names="/16 sensores QRE1113GR/" tstamps="/7aeda2d1-ee9d-59d8-8625-9286cc55b187/"/>
+      <tstamps>4656f255-f700-508a-80fa-74a68f9b65d2</tstamps>
+    </comp>
+    <comp ref="C1">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>a14044ad-3d03-59c6-8ac2-856dc25ea1d2</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>f28d8890-3199-58ea-9041-0a41733fbd26</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>10µF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 10µF 25 V X5R 0805</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM21BR61E106KA73L</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 10µF 25 V X5R 0805</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM21BR61E106KA73L"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>e7f51696-a497-560d-bf25-634dd25aa4b9</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</datasheet>
+      <description>Condensador cerámico 100nF 16 V X7R 0402</description>
+      <fields>
+        <field name="Fabricante">Murata</field>
+        <field name="MPN">GRM155R71C104KA88D</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet">https://www.murata.com/en-us/products/capacitor/ceramiccapacitor</field>
+        <field name="Description">Condensador cerámico 100nF 16 V X7R 0402</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Fabricante" value="Murata"/>
+      <property name="MPN" value="GRM155R71C104KA88D"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>5972b23c-b742-5d8a-af7a-3c4ab30e67f6</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 (fija barra + cachucha a la placa del chasis)</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 (fija barra + cachucha a la placa del chasis)</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>b16b792f-86e4-5cd6-8cea-f75f15b796b4</tstamps>
+    </comp>
+    <comp ref="H2">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 (fija barra + cachucha a la placa del chasis)</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 (fija barra + cachucha a la placa del chasis)</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>aaa1b902-9590-5e4b-a644-106494bc055a</tstamps>
+    </comp>
+    <comp ref="H3">
+      <value>M2</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Agujero M2 (fija barra + cachucha a la placa del chasis)</description>
+      <fields>
+        <field name="Fabricante">—</field>
+        <field name="MPN">—</field>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Agujero M2 (fija barra + cachucha a la placa del chasis)</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Fabricante" value="—"/>
+      <property name="MPN" value="—"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>fe2952e4-e48e-580e-ac09-857bf8cd222e</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>SENSORES</value>
+      <footprint>Connector_JST:JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical</footprint>
+      <datasheet>https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</datasheet>
+      <description>Conector JST SH 8 vías vertical (cable a la PCB principal)</description>
+      <fields>
+        <field name="Fabricante">JST</field>
+        <field name="MPN">BM08B-SRSS-TB</field>
+        <field name="Footprint">Connector_JST:JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical</field>
+        <field name="Datasheet">https://www.jst-mfg.com/product/pdf/eng/eSH.pdf</field>
+        <field name="Description">Conector JST SH 8 vías vertical (cable a la PCB principal)</field>
+      </fields>
+      <libsource lib="Connector_Generic_MountingPin" part="Conn_01x08_MountingPin" description="Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Fabricante" value="JST"/>
+      <property name="MPN" value="BM08B-SRSS-TB"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??-1MP*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>ca47df36-ef7a-5d99-af8c-b41ce8e42692</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>AO3400A</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.aosmd.com/res/datasheets/AO3400A.pdf</datasheet>
+      <description>MOSFET N 30 V 5.7 A SOT-23: conmuta los 16 emisores (≈ 0.45 A)</description>
+      <fields>
+        <field name="Fabricante">Alpha &amp; Omega Semiconductor</field>
+        <field name="MPN">AO3400A</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.aosmd.com/res/datasheets/AO3400A.pdf</field>
+        <field name="Description">MOSFET N 30 V 5.7 A SOT-23: conmuta los 16 emisores (≈ 0.45 A)</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="AO3400A" description="30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"/>
+      <property name="Fabricante" value="Alpha &amp; Omega Semiconductor"/>
+      <property name="MPN" value="AO3400A"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="N-Channel MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>c84c46b0-ea6f-5e4a-a0c3-f92fb73a4941</tstamps>
+    </comp>
+    <comp ref="R33">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</datasheet>
+      <description>Resistencia 100kΩ 1 % 0402</description>
+      <fields>
+        <field name="Fabricante">YAGEO</field>
+        <field name="MPN">RC0402FR-07100KL</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet">https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf</field>
+        <field name="Description">Resistencia 100kΩ 1 % 0402</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Fabricante" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-07100KL"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>796fd514-63e5-5439-bdaa-003f223577e0</tstamps>
+    </comp>
+    <comp ref="U17">
+      <value>74HC4051PW</value>
+      <footprint>Package_SO:TSSOP-16_4.4x5mm_P0.65mm</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/74HC_HCT4051.pdf</datasheet>
+      <description>Multiplexor analógico 8:1 (2-10 V), TSSOP-16</description>
+      <fields>
+        <field name="Fabricante">Nexperia</field>
+        <field name="MPN">74HC4051PW,118</field>
+        <field name="Footprint">Package_SO:TSSOP-16_4.4x5mm_P0.65mm</field>
+        <field name="Datasheet">https://assets.nexperia.com/documents/data-sheet/74HC_HCT4051.pdf</field>
+        <field name="Description">Multiplexor analógico 8:1 (2-10 V), TSSOP-16</field>
+      </fields>
+      <libsource lib="74xx" part="74HC4051" description="8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16"/>
+      <property name="Fabricante" value="Nexperia"/>
+      <property name="MPN" value="74HC4051PW,118"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="HCMOS Multiplexer Demultiplexer Analog"/>
+      <property name="ki_fp_filters" value="DIP*W7.62mm* SOIC*3.9x9.9mm*P1.27mm* SOIC*5.3x10.2mm*P1.27mm* TSSOP*4.4x5mm*P0.65mm*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>6ea68d42-b32d-506f-a2d7-14770b56e933</tstamps>
+    </comp>
+    <comp ref="U18">
+      <value>74HC4051PW</value>
+      <footprint>Package_SO:TSSOP-16_4.4x5mm_P0.65mm</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/74HC_HCT4051.pdf</datasheet>
+      <description>Multiplexor analógico 8:1 (2-10 V), TSSOP-16</description>
+      <fields>
+        <field name="Fabricante">Nexperia</field>
+        <field name="MPN">74HC4051PW,118</field>
+        <field name="Footprint">Package_SO:TSSOP-16_4.4x5mm_P0.65mm</field>
+        <field name="Datasheet">https://assets.nexperia.com/documents/data-sheet/74HC_HCT4051.pdf</field>
+        <field name="Description">Multiplexor analógico 8:1 (2-10 V), TSSOP-16</field>
+      </fields>
+      <libsource lib="74xx" part="74HC4051" description="8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16"/>
+      <property name="Fabricante" value="Nexperia"/>
+      <property name="MPN" value="74HC4051PW,118"/>
+      <property name="Sheetname" value="Multiplexores, emisores y conector"/>
+      <property name="Sheetfile" value="interfaz.kicad_sch"/>
+      <property name="ki_keywords" value="HCMOS Multiplexer Demultiplexer Analog"/>
+      <property name="ki_fp_filters" value="DIP*W7.62mm* SOIC*3.9x9.9mm*P1.27mm* SOIC*5.3x10.2mm*P1.27mm* TSSOP*4.4x5mm*P0.65mm*"/>
+      <sheetpath names="/Multiplexores, emisores y conector/" tstamps="/9bcf8772-a952-54f4-9943-a068cfae21e6/"/>
+      <tstamps>06cd53d8-f38a-584c-8fe3-d15f82167f41</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="74xx" part="74HC4051">
+      <description>8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16</description>
+      <docs>http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf</docs>
+      <footprints>
+        <fp>DIP*W7.62mm*</fp>
+        <fp>SOIC*3.9x9.9mm*P1.27mm*</fp>
+        <fp>SOIC*5.3x10.2mm*P1.27mm*</fp>
+        <fp>TSSOP*4.4x5mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74HC4051</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf</field>
+        <field name="Description">8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A4" type="passive"/>
+        <pin num="2" name="A6" type="passive"/>
+        <pin num="3" name="A" type="passive"/>
+        <pin num="4" name="A7" type="passive"/>
+        <pin num="5" name="A5" type="passive"/>
+        <pin num="6" name="~{E}" type="input"/>
+        <pin num="7" name="VEE" type="power_in"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="S2" type="input"/>
+        <pin num="10" name="S1" type="input"/>
+        <pin num="11" name="S0" type="input"/>
+        <pin num="12" name="A3" type="passive"/>
+        <pin num="13" name="A0" type="passive"/>
+        <pin num="14" name="A1" type="passive"/>
+        <pin num="15" name="A2" type="passive"/>
+        <pin num="16" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic_MountingPin" part="Conn_01x08_MountingPin">
+      <description>Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??-1MP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x08_MountingPin</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Generic connectable mounting pin connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="MP" name="MountPin" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">~</field>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
+    </libpart>
+    <libpart lib="Transistor_FET" part="AO3400A">
+      <description>30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23</description>
+      <docs>http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">AO3400A</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf</field>
+        <field name="Description">30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="circuitforge_v2" part="QRE1113GR">
+      <description>Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY</description>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">QRE1113GR</field>
+        <field name="Footprint">OptoDevice:OnSemi_CASE100CY</field>
+        <field name="Datasheet"/>
+        <field name="Description">Sensor reflectivo IR onsemi QRE1113GR (LED + fototransistor), CASE 100CY</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="K" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+        <pin num="4" name="E" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="74xx">
+      <uri>/usr/share/kicad/symbols//74xx.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic_MountingPin">
+      <uri>/usr/share/kicad/symbols//Connector_Generic_MountingPin.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>/usr/share/kicad/symbols//Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>/usr/share/kicad/symbols//Transistor_FET.kicad_sym</uri>
+    </library>
+    <library logical="circuitforge_v2">
+      <uri>/home/claude/circuit-forge-seguidor/hardware/v2/electronica/kicad/barra_sensores/circuitforge_v2.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3" class="Default">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+      <node ref="R24" pin="1" pintype="passive"/>
+      <node ref="R25" pin="1" pintype="passive"/>
+      <node ref="R26" pin="1" pintype="passive"/>
+      <node ref="R27" pin="1" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="R31" pin="1" pintype="passive"/>
+      <node ref="R32" pin="1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U10" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U11" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U12" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U13" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U14" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U15" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U16" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U17" pin="16" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U18" pin="16" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U2" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U3" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U4" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U5" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U6" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U7" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U8" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U9" pin="1" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="2" name="/16 sensores QRE1113GR/K1" class="Default">
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="3" name="/16 sensores QRE1113GR/K2" class="Default">
+      <node ref="R2" pin="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="4" name="/16 sensores QRE1113GR/K3" class="Default">
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="5" name="/16 sensores QRE1113GR/K4" class="Default">
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="U4" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="6" name="/16 sensores QRE1113GR/K5" class="Default">
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U5" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="7" name="/16 sensores QRE1113GR/K6" class="Default">
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="U6" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="8" name="/16 sensores QRE1113GR/K7" class="Default">
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="U7" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="9" name="/16 sensores QRE1113GR/K8" class="Default">
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="U8" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="10" name="/16 sensores QRE1113GR/K9" class="Default">
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U9" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="11" name="/16 sensores QRE1113GR/K10" class="Default">
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="U10" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="12" name="/16 sensores QRE1113GR/K11" class="Default">
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="U11" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="13" name="/16 sensores QRE1113GR/K12" class="Default">
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="U12" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="14" name="/16 sensores QRE1113GR/K13" class="Default">
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="U13" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="15" name="/16 sensores QRE1113GR/K14" class="Default">
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="U14" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="16" name="/16 sensores QRE1113GR/K15" class="Default">
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="U15" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="17" name="/16 sensores QRE1113GR/K16" class="Default">
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="U16" pin="2" pinfunction="K" pintype="passive"/>
+    </net>
+    <net code="18" name="/Multiplexores, emisores y conector/EMIT" class="Default">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R33" pin="1" pintype="passive"/>
+    </net>
+    <net code="19" name="/Multiplexores, emisores y conector/MUX_S0" class="Default">
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U17" pin="11" pinfunction="S0" pintype="input"/>
+      <node ref="U18" pin="11" pinfunction="S0" pintype="input"/>
+    </net>
+    <net code="20" name="/Multiplexores, emisores y conector/MUX_S1" class="Default">
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="U17" pin="10" pinfunction="S1" pintype="input"/>
+      <node ref="U18" pin="10" pinfunction="S1" pintype="input"/>
+    </net>
+    <net code="21" name="/Multiplexores, emisores y conector/MUX_S2" class="Default">
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U17" pin="9" pinfunction="S2" pintype="input"/>
+      <node ref="U18" pin="9" pinfunction="S2" pintype="input"/>
+    </net>
+    <net code="22" name="/Multiplexores, emisores y conector/SENS_A" class="Default">
+      <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U17" pin="3" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="23" name="/Multiplexores, emisores y conector/SENS_B" class="Default">
+      <node ref="J1" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="U18" pin="3" pinfunction="A" pintype="passive"/>
+    </net>
+    <net code="24" name="EMIT_K" class="Default">
+      <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+    </net>
+    <net code="25" name="GND" class="Default">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="J1" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="J1" pin="MP" pinfunction="MountPin" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R33" pin="2" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U10" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U11" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U12" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U13" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U14" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U15" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U16" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U17" pin="6" pinfunction="~{E}" pintype="input"/>
+      <node ref="U17" pin="7" pinfunction="VEE" pintype="power_in"/>
+      <node ref="U17" pin="8" pinfunction="GND" pintype="power_in"/>
+      <node ref="U18" pin="6" pinfunction="~{E}" pintype="input"/>
+      <node ref="U18" pin="7" pinfunction="VEE" pintype="power_in"/>
+      <node ref="U18" pin="8" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U4" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U5" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U6" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U7" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U8" pin="4" pinfunction="E" pintype="passive"/>
+      <node ref="U9" pin="4" pinfunction="E" pintype="passive"/>
+    </net>
+    <net code="26" name="S1" class="Default">
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U17" pin="13" pinfunction="A0" pintype="passive"/>
+    </net>
+    <net code="27" name="S2" class="Default">
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="U17" pin="14" pinfunction="A1" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="28" name="S3" class="Default">
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="U17" pin="15" pinfunction="A2" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="29" name="S4" class="Default">
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="U17" pin="12" pinfunction="A3" pintype="passive"/>
+      <node ref="U4" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="30" name="S5" class="Default">
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="U17" pin="1" pinfunction="A4" pintype="passive"/>
+      <node ref="U5" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="31" name="S6" class="Default">
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="U17" pin="5" pinfunction="A5" pintype="passive"/>
+      <node ref="U6" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="32" name="S7" class="Default">
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="U17" pin="2" pinfunction="A6" pintype="passive"/>
+      <node ref="U7" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="33" name="S8" class="Default">
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="U17" pin="4" pinfunction="A7" pintype="passive"/>
+      <node ref="U8" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="34" name="S9" class="Default">
+      <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="U18" pin="4" pinfunction="A7" pintype="passive"/>
+      <node ref="U9" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="35" name="S10" class="Default">
+      <node ref="R26" pin="2" pintype="passive"/>
+      <node ref="U10" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="2" pinfunction="A6" pintype="passive"/>
+    </net>
+    <net code="36" name="S11" class="Default">
+      <node ref="R27" pin="2" pintype="passive"/>
+      <node ref="U11" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="5" pinfunction="A5" pintype="passive"/>
+    </net>
+    <net code="37" name="S12" class="Default">
+      <node ref="R28" pin="2" pintype="passive"/>
+      <node ref="U12" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="1" pinfunction="A4" pintype="passive"/>
+    </net>
+    <net code="38" name="S13" class="Default">
+      <node ref="R29" pin="2" pintype="passive"/>
+      <node ref="U13" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="12" pinfunction="A3" pintype="passive"/>
+    </net>
+    <net code="39" name="S14" class="Default">
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="U14" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="15" pinfunction="A2" pintype="passive"/>
+    </net>
+    <net code="40" name="S15" class="Default">
+      <node ref="R31" pin="2" pintype="passive"/>
+      <node ref="U15" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="14" pinfunction="A1" pintype="passive"/>
+    </net>
+    <net code="41" name="S16" class="Default">
+      <node ref="R32" pin="2" pintype="passive"/>
+      <node ref="U16" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="U18" pin="13" pinfunction="A0" pintype="passive"/>
+    </net>
+  </nets>
+</export>

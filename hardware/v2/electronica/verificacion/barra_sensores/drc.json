@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-05T07:23:09-0600",
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "9.0.8",
+    "schematic_parity": [],
+    "source": "barra_sensores.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [S16] on B.Cu, length 1.1691 mm",
+                    "pos": {
+                        "x": 108.3871,
+                        "y": 134.6787
+                    },
+                    "uuid": "d44c328c-1d98-4840-b8c4-52d9597fed96"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [/Multiplexores, emisores y conector/SENS_A] on F.Cu, length 1.7113 mm",
+                    "pos": {
+                        "x": 105.1853,
+                        "y": 103.0186
+                    },
+                    "uuid": "2946efa8-cb76-4ab9-87b9-a2d4c31c3974"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        }
+    ]
+}

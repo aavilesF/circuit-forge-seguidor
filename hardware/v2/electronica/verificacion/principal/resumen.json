@@ -1,0 +1,15 @@
+{
+ "conectividad_errores": [],
+ "erc": {},
+ "drc": {
+  "silk_overlap (warning)": 15,
+  "silk_over_copper (warning)": 5,
+  "silk_edge_clearance (warning)": 4,
+  "unconnected_items (error)": 141
+ },
+ "drc_conteos": {
+  "DRC violations": 24,
+  "unconnected pads": 141,
+  "Footprint errors": 0
+ }
+}

@@ -1,0 +1,31 @@
+# V2 · Fase 2 — datos para la selección de componentes. Cada valor: {valor, tipo, fuente}.
+# Tipos: verificado (hoja de datos o página del fabricante citada) · calculado · estimado · supuesto · pendiente.
+# Lo usa sim/v2/fase2_motores.py junto con config/v2/parametros_fase1.yaml (geometría de estudio y adherencia).
+
+diseno:
+  succion_N:        {valor: 3.1,   tipo: calculado, fuente: "requisito de la Fase 1 (T3b: L 110 mm, 200 g, μ 0.8, succión sobre el eje). NO es una medición"}
+  mu:               {valor: 0.8,   tipo: supuesto,  fuente: "escenario central de la Fase 1; pendiente de medición con las llantas reales sobre fórmica"}
+  masas_kg:         {valor: [0.15, 0.20], tipo: supuesto, fuente: "0.20 = tope de diseño; 0.15 ≈ presupuesto estimado de la Fase 2 (§6 de FASE2_COMPONENTES.md)"}
+  v_meta_ms:        {valor: 2.0,   tipo: supuesto,  fuente: "meta de la misión V2"}
+  v_salida_curva_ms: {valor: 1.1,  tipo: calculado, fuente: "velocidad en la curva de R 150 mm con succión nominal (FASE1_FISICA §8)"}
+  D_llanta_m:       {valor: 0.032, tipo: verificado, fuente: "Pololu #1087, llanta 32 × 7 mm (la de V1)"}
+  V_bat_nominal:    {valor: 7.4,   tipo: verificado, fuente: "LiPo 2S nominal"}
+  V_bat_min_carga:  {valor: 6.4,   tipo: supuesto,  fuente: "3.2 V por celda bajo carga, fin de uso; pendiente de medir la caída real"}
+
+# Motorreductores Pololu Micro Metal HPCB (escobillas de carbón). Datos a la tensión nominal de cada uno:
+# página de comparación https://www.pololu.com/category/60/micro-metal-gearmotors (consultada el 4 nov 2026) y
+# https://www.pololu.com/product/5183/specs (relación exacta 15.25:1, 11 g, 10 × 12 × 32 mm).
+# V_ef = tensión efectiva que aplica el firmware (PWM con tope = V_ef / V_bat medida).
+motores:
+  - {nombre: "V1: 10:1 HPCB 12V (#3048)",          pn: "3048 (V1); con encoder 5206/5207", V_nom: 12, rpm0: 3400, par_kgcm: 0.17, I_bloq: 0.75, V_ef: 7.4, tipo: verificado}
+  - {nombre: "10:1 HPCB 6V con encoder",            pn: "5180 (atrás) / 5181 (lateral)",  V_nom: 6,  rpm0: 3300, par_kgcm: 0.17, I_bloq: 1.5,  V_ef: 6.0, tipo: verificado}
+  - {nombre: "15:1 HPCB 6V con encoder",            pn: "5182 (atrás) / 5183 (lateral)",  V_nom: 6,  rpm0: 2100, par_kgcm: 0.25, I_bloq: 1.5,  V_ef: 6.0, tipo: verificado}
+  - {nombre: "30:1 HPCB 6V con encoder",            pn: "5184 (atrás) / 5185 (lateral)",  V_nom: 6,  rpm0: 1100, par_kgcm: 0.45, I_bloq: 1.5,  V_ef: 6.0, tipo: verificado}
+  - {nombre: "15:1 HPCB 12V con encoder",           pn: "5208 (atrás) / 5209 (lateral)",  V_nom: 12, rpm0: 2200, par_kgcm: 0.25, I_bloq: 0.75, V_ef: 7.4, tipo: verificado}
+
+# Límite de frecuencia eléctrica de los controladores de BLDC integrados de TI (para el motor del ventilador)
+ventilador_driver:
+  MCT8316A_fe_max_Hz: {valor: 3000, tipo: verificado, fuente: "ti.com/product/MCT8316A: 'Up to 3 kHz (electrical frequency)'"}
+  MCF8316A_fe_max_Hz: {valor: 1500, tipo: verificado, fuente: "foro TI E2E (consultado en la Fase 2): límite de 1.5 kHz eléctricos del MCF8316A"}
+  rpm_requeridas:     {valor: [20000, 30000, 40000], tipo: estimado, fuente: "ANALISIS_VENTILADOR §2: ≈ 30 000-40 000 RPM para ΔP₀ ≥ 850 Pa en León con el rotor entregado"}
+  pares_de_polos:     {valor: [1, 2, 3, 6, 7], tipo: supuesto, fuente: "6 = 9N12P (típico 11xx, p. ej. Darwin 1104); 7 = 12N14P; 1-3 = motores de alta velocidad de pocos polos"}

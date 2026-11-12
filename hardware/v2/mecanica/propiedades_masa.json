@@ -1,0 +1,224 @@
+{
+ "masa_total_g": 155.2,
+ "cg_mm": [
+  24.2,
+  0.1,
+  15.3
+ ],
+ "x_apoyo_mm": 92.0,
+ "a_max_sin_levantar_apoyo_ms2_sin_succion": 15.5,
+ "carga_estatica_apoyo_N": 0.401,
+ "densidad_impresas": "PLA sólido 1.24 g/cm³ (cota superior)",
+ "piezas": [
+  {
+   "pieza": "chasis",
+   "masa_g": 31.04,
+   "centro_mm": [
+    33.6,
+    0.5,
+    7.0
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "faldon_camara",
+   "masa_g": 1.0,
+   "centro_mm": [
+    15.0,
+    -0.0,
+    3.9
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "tapa_motor_izq",
+   "masa_g": 1.99,
+   "centro_mm": [
+    -0.0,
+    28.5,
+    17.9
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "tapa_motor_der",
+   "masa_g": 1.99,
+   "centro_mm": [
+    -0.0,
+    -28.5,
+    17.9
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "cachucha_sensores",
+   "masa_g": 2.17,
+   "centro_mm": [
+    116.1,
+    0.0,
+    2.8
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "tapa_rueda_loca",
+   "masa_g": 0.12,
+   "centro_mm": [
+    92.0,
+    0.0,
+    7.4
+   ],
+   "tipo": "calculado (volumen CAD × 1.24 g/cm³, PLA sólido)"
+  },
+  {
+   "pieza": "motor_izq",
+   "masa_g": 11.0,
+   "centro_mm": [
+    0.0,
+    25.5,
+    16.0
+   ],
+   "tipo": "verificado (Pololu #5183)"
+  },
+  {
+   "pieza": "motor_der",
+   "masa_g": 11.0,
+   "centro_mm": [
+    0.0,
+    -25.5,
+    16.0
+   ],
+   "tipo": "verificado (Pololu #5183)"
+  },
+  {
+   "pieza": "rueda_izq",
+   "masa_g": 3.12,
+   "centro_mm": [
+    0.0,
+    42.5,
+    16.0
+   ],
+   "tipo": "verificado (Pololu #1087, par 6.24 g)"
+  },
+  {
+   "pieza": "rueda_der",
+   "masa_g": 3.12,
+   "centro_mm": [
+    0.0,
+    -42.5,
+    16.0
+   ],
+   "tipo": "verificado (Pololu #1087)"
+  },
+  {
+   "pieza": "bateria",
+   "masa_g": 28.4,
+   "centro_mm": [
+    59.0,
+    0.0,
+    14.6
+   ],
+   "tipo": "verificado (vendedor; la tabla también dice 37 g)"
+  },
+  {
+   "pieza": "esc",
+   "masa_g": 4.0,
+   "centro_mm": [
+    -21.0,
+    0.0,
+    10.1
+   ],
+   "tipo": "supuesto (ESC 20 A de un canal)"
+  },
+  {
+   "pieza": "bola",
+   "masa_g": 1.05,
+   "centro_mm": [
+    92.0,
+    0.0,
+    3.2
+   ],
+   "tipo": "verificado (V1)"
+  },
+  {
+   "pieza": "ventilador_motor",
+   "masa_g": 6.0,
+   "centro_mm": [
+    27.5,
+    0.0,
+    24.1
+   ],
+   "tipo": "estimado (1104 de referencia 5.1-5.9 g)"
+  },
+  {
+   "pieza": "ventilador_rotor",
+   "masa_g": 2.01,
+   "centro_mm": [
+    27.5,
+    0.0,
+    13.4
+   ],
+   "tipo": "calculado (malla del usuario, PA12)"
+  },
+  {
+   "pieza": "ventilador_montaje",
+   "masa_g": 3.64,
+   "centro_mm": [
+    27.5,
+    0.0,
+    19.5
+   ],
+   "tipo": "calculado (mallas del usuario, PA12)"
+  },
+  {
+   "pieza": "pcb_principal_placa",
+   "masa_g": 10.05,
+   "centro_mm": [
+    -17.8,
+    0.0,
+    24.8
+   ],
+   "tipo": "calculado (FR-4 1.85 g/cm³)"
+  },
+  {
+   "pieza": "pcb_principal_componentes",
+   "masa_g": 8.0,
+   "centro_mm": [
+    -17.8,
+    0.0,
+    24.8
+   ],
+   "tipo": "estimado"
+  },
+  {
+   "pieza": "modulo_weact_y_zocalos",
+   "masa_g": 8.0,
+   "centro_mm": [
+    -21.1,
+    0.0,
+    29.9
+   ],
+   "tipo": "estimado"
+  },
+  {
+   "pieza": "barra_sensores_pcba",
+   "masa_g": 9.52,
+   "centro_mm": [
+    111.2,
+    0.0,
+    4.2
+   ],
+   "tipo": "calculado (FR-4) + 1.5 g de componentes"
+  },
+  {
+   "pieza": "tornilleria_cables_cinta",
+   "masa_g": 8.0,
+   "centro_mm": [
+    -17.8,
+    0.0,
+    24.8
+   ],
+   "tipo": "estimado"
+  }
+ ]
+}

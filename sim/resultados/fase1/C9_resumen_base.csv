@@ -1,0 +1,12 @@
+dato,valor
+motor,Pololu HPCB 12V 15:1
+R_motor_ohm,16.0
+Ke_Vs_rad,0.04653
+Kt_Nm_A,0.03659
+masa_kg,0.1549
+a_max_agarre_ms2,5.18
+v_libre_ms,2.171
+vuelta_P1,2.9693 s; media 1.3951 m/s; max 2.116 m/s
+vuelta_P2,3.1994 s; media 1.5357 m/s; max 2.1021 m/s
+vuelta_P3,3.3894 s; media 1.2689 m/s; max 2.0587 m/s
+vuelta_P4,3.3301 s; media 1.0751 m/s; max 1.6683 m/s

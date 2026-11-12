@@ -1,0 +1,106 @@
+F_succion_N,x_succion_m,caso,ax_ms2,ay_ms2,N_eje_N,N_rueda_interior_N,N_rueda_exterior_N,N_apoyo_N,uso_adherencia,ay_vuelco_ms2,tipo
+0.0,0.0,estático,0.0,0.0,1.472,0.736,0.736,0.49,0.0,15.6,calculado
+0.0,0.0,aceleración máxima,7.01,0.0,1.752,0.876,0.876,0.21,1.0,15.6,calculado
+0.0,0.0,frenado máximo,-5.07,0.0,1.269,0.634,0.634,0.693,1.0,15.6,calculado
+0.0,0.0,curva al límite,0.0,5.89,1.472,0.459,1.013,0.49,1.0,15.6,calculado
+0.0,0.0,frenado en curva (ay = 50 % del límite),-4.29,2.94,1.3,0.512,0.789,0.662,1.0,15.6,calculado
+0.0,0.03,estático,0.0,0.0,1.472,0.736,0.736,0.49,0.0,15.6,calculado
+0.0,0.03,aceleración máxima,7.01,0.0,1.752,0.876,0.876,0.21,1.0,15.6,calculado
+0.0,0.03,frenado máximo,-5.07,0.0,1.269,0.634,0.634,0.693,1.0,15.6,calculado
+0.0,0.03,curva al límite,0.0,5.89,1.472,0.459,1.013,0.49,1.0,15.6,calculado
+0.0,0.03,frenado en curva (ay = 50 % del límite),-4.29,2.94,1.3,0.512,0.789,0.662,1.0,15.6,calculado
+0.0,0.06,estático,0.0,0.0,1.472,0.736,0.736,0.49,0.0,15.6,calculado
+0.0,0.06,aceleración máxima,7.01,0.0,1.752,0.876,0.876,0.21,1.0,15.6,calculado
+0.0,0.06,frenado máximo,-5.07,0.0,1.269,0.634,0.634,0.693,1.0,15.6,calculado
+0.0,0.06,curva al límite,0.0,5.89,1.472,0.459,1.013,0.49,1.0,15.6,calculado
+0.0,0.06,frenado en curva (ay = 50 % del límite),-4.29,2.94,1.3,0.512,0.789,0.662,1.0,15.6,calculado
+0.5,0.0,estático,0.0,0.0,1.972,0.986,0.986,0.49,0.0,20.9,calculado
+0.5,0.0,aceleración máxima,9.39,0.0,2.347,1.174,1.174,0.115,1.0,20.9,calculado
+0.5,0.0,frenado máximo,-6.8,0.0,1.7,0.85,0.85,0.762,1.0,20.9,calculado
+0.5,0.0,curva al límite,0.0,7.89,1.972,0.615,1.357,0.49,1.0,20.9,calculado
+0.5,0.0,frenado en curva (ay = 50 % del límite),-5.74,3.94,1.742,0.685,1.056,0.72,1.0,20.9,calculado
+0.5,0.03,estático,0.0,0.0,1.822,0.911,0.911,0.64,0.0,19.4,calculado
+0.5,0.03,aceleración máxima,8.67,0.0,2.168,1.084,1.084,0.294,1.0,19.4,calculado
+0.5,0.03,frenado máximo,-6.28,0.0,1.57,0.785,0.785,0.892,1.0,19.4,calculado
+0.5,0.03,curva al límite,0.0,7.29,1.822,0.568,1.254,0.64,1.0,19.4,calculado
+0.5,0.03,frenado en curva (ay = 50 % del límite),-5.31,3.64,1.609,0.633,0.976,0.853,1.0,19.4,calculado
+0.5,0.06,estático,0.0,0.0,1.672,0.836,0.836,0.79,0.0,17.8,calculado
+0.5,0.06,aceleración máxima,7.96,0.0,1.99,0.995,0.995,0.472,1.0,17.8,calculado
+0.5,0.06,frenado máximo,-5.76,0.0,1.441,0.72,0.72,1.021,1.0,17.8,calculado
+0.5,0.06,curva al límite,0.0,6.69,1.672,0.521,1.15,0.79,1.0,17.8,calculado
+0.5,0.06,frenado en curva (ay = 50 % del límite),-4.87,3.34,1.477,0.581,0.896,0.985,1.0,17.8,calculado
+1.0,0.0,estático,0.0,0.0,2.472,1.236,1.236,0.49,0.0,26.3,calculado
+1.0,0.0,aceleración máxima,11.77,0.0,2.942,1.471,1.471,0.02,1.0,26.3,calculado
+1.0,0.0,frenado máximo,-8.52,0.0,2.131,1.065,1.065,0.831,1.0,26.3,calculado
+1.0,0.0,curva al límite,0.0,9.89,2.472,0.771,1.701,0.49,1.0,26.3,calculado
+1.0,0.0,frenado en curva (ay = 50 % del límite),-7.2,4.94,2.183,0.859,1.324,0.779,1.0,26.3,calculado
+1.0,0.03,estático,0.0,0.0,2.172,1.086,1.086,0.79,0.0,23.1,calculado
+1.0,0.03,aceleración máxima,10.34,0.0,2.585,1.293,1.293,0.377,1.0,23.1,calculado
+1.0,0.03,frenado máximo,-7.49,0.0,1.872,0.936,0.936,1.09,1.0,23.1,calculado
+1.0,0.03,curva al límite,0.0,8.69,2.172,0.677,1.495,0.79,1.0,23.1,calculado
+1.0,0.03,frenado en curva (ay = 50 % del límite),-6.33,4.34,1.918,0.755,1.164,1.044,1.0,23.1,calculado
+1.0,0.06,estático,0.0,0.0,1.872,0.936,0.936,1.09,0.0,19.9,calculado
+1.0,0.06,aceleración máxima,8.91,0.0,2.228,1.114,1.114,0.734,1.0,19.9,calculado
+1.0,0.06,frenado máximo,-6.45,0.0,1.613,0.807,0.807,1.349,1.0,19.9,calculado
+1.0,0.06,curva al límite,0.0,7.49,1.872,0.583,1.288,1.09,1.0,19.9,calculado
+1.0,0.06,frenado en curva (ay = 50 % del límite),-5.45,3.74,1.653,0.651,1.003,1.309,1.0,19.9,calculado
+2.0,0.0,estático,0.0,0.0,3.472,1.736,1.736,0.49,0.0,36.9,calculado
+2.0,0.0,aceleración máxima,16.53,0.0,4.133,2.066,2.066,-0.171,1.0,36.9,calculado
+2.0,0.0,frenado máximo,-11.97,0.0,2.993,1.496,1.496,0.969,1.0,36.9,calculado
+2.0,0.0,curva al límite,0.0,13.89,3.472,1.082,2.389,0.49,1.0,36.9,calculado
+2.0,0.0,frenado en curva (ay = 50 % del límite),-10.11,6.94,3.067,1.207,1.86,0.895,1.0,36.9,calculado
+2.0,0.03,estático,0.0,0.0,2.872,1.436,1.436,1.091,0.0,30.5,calculado
+2.0,0.03,aceleración máxima,13.67,0.0,3.418,1.709,1.709,0.544,1.0,30.5,calculado
+2.0,0.03,frenado máximo,-9.9,0.0,2.475,1.238,1.238,1.487,1.0,30.5,calculado
+2.0,0.03,curva al límite,0.0,11.49,2.872,0.895,1.976,1.091,1.0,30.5,calculado
+2.0,0.03,frenado en curva (ay = 50 % del límite),-8.37,5.74,2.537,0.998,1.539,1.425,1.0,30.5,calculado
+2.0,0.06,estático,0.0,0.0,2.272,1.136,1.136,1.69,0.0,24.1,calculado
+2.0,0.06,aceleración máxima,10.82,0.0,2.704,1.352,1.352,1.258,1.0,24.1,calculado
+2.0,0.06,frenado máximo,-7.83,0.0,1.958,0.979,0.979,2.004,1.0,24.1,calculado
+2.0,0.06,curva al límite,0.0,9.09,2.272,0.708,1.563,1.69,1.0,24.1,calculado
+2.0,0.06,frenado en curva (ay = 50 % del límite),-6.62,4.54,2.007,0.79,1.217,1.955,1.0,24.1,calculado
+3.0,0.0,estático,0.0,0.0,4.472,2.236,2.236,0.49,0.0,47.5,calculado
+3.0,0.0,aceleración máxima,21.29,0.0,5.323,2.662,2.662,-0.361,1.0,47.5,calculado
+3.0,0.0,frenado máximo,-15.42,0.0,3.855,1.927,1.927,1.107,1.0,47.5,calculado
+3.0,0.0,curva al límite,0.0,17.89,4.472,1.394,3.077,0.49,1.0,47.5,calculado
+3.0,0.0,frenado en curva (ay = 50 % del límite),-13.03,8.94,3.95,1.554,2.396,1.012,1.0,47.5,calculado
+3.0,0.03,estático,0.0,0.0,3.572,1.786,1.786,1.39,0.0,37.9,calculado
+3.0,0.03,aceleración máxima,17.01,0.0,4.252,2.126,2.126,0.71,1.0,37.9,calculado
+3.0,0.03,frenado máximo,-12.32,0.0,3.079,1.539,1.539,1.883,1.0,37.9,calculado
+3.0,0.03,curva al límite,0.0,14.29,3.572,1.113,2.458,1.39,1.0,37.9,calculado
+3.0,0.03,frenado en curva (ay = 50 % del límite),-10.41,7.14,3.155,1.242,1.914,1.807,1.0,37.9,calculado
+3.0,0.06,estático,0.0,0.0,2.672,1.336,1.336,2.29,0.0,28.4,calculado
+3.0,0.06,aceleración máxima,12.72,0.0,3.18,1.59,1.59,1.782,1.0,28.4,calculado
+3.0,0.06,frenado máximo,-9.21,0.0,2.303,1.152,1.152,2.659,1.0,28.4,calculado
+3.0,0.06,curva al límite,0.0,10.69,2.672,0.833,1.839,2.29,1.0,28.4,calculado
+3.0,0.06,frenado en curva (ay = 50 % del límite),-7.78,5.34,2.36,0.929,1.432,2.602,1.0,28.4,calculado
+4.0,0.0,estático,0.0,0.0,5.472,2.736,2.736,0.49,0.0,58.1,calculado
+4.0,0.0,aceleración máxima,26.05,0.0,6.514,3.257,3.257,-0.552,1.0,58.1,calculado
+4.0,0.0,frenado máximo,-18.87,0.0,4.717,2.358,2.358,1.245,1.0,58.1,calculado
+4.0,0.0,curva al límite,0.0,21.89,5.472,1.706,3.766,0.49,1.0,58.1,calculado
+4.0,0.0,frenado en curva (ay = 50 % del límite),-15.94,10.94,4.834,1.902,2.932,1.128,1.0,58.1,calculado
+4.0,0.03,estático,0.0,0.0,4.272,2.136,2.136,1.69,0.0,45.4,calculado
+4.0,0.03,aceleración máxima,20.34,0.0,5.085,2.543,2.543,0.877,1.0,45.4,calculado
+4.0,0.03,frenado máximo,-14.73,0.0,3.682,1.841,1.841,2.28,1.0,45.4,calculado
+4.0,0.03,curva al límite,0.0,17.09,4.272,1.332,2.94,1.69,1.0,45.4,calculado
+4.0,0.03,frenado en curva (ay = 50 % del límite),-12.44,8.54,3.774,1.485,2.289,2.188,1.0,45.4,calculado
+4.0,0.06,estático,0.0,0.0,3.072,1.536,1.536,2.89,0.0,32.6,calculado
+4.0,0.06,aceleración máxima,14.63,0.0,3.657,1.828,1.828,2.305,1.0,32.6,calculado
+4.0,0.06,frenado máximo,-10.59,0.0,2.648,1.324,1.324,3.314,1.0,32.6,calculado
+4.0,0.06,curva al límite,0.0,12.29,3.072,0.958,2.114,2.89,1.0,32.6,calculado
+4.0,0.06,frenado en curva (ay = 50 % del límite),-8.95,6.14,2.714,1.068,1.646,3.248,1.0,32.6,calculado
+6.0,0.0,estático,0.0,0.0,7.472,3.736,3.736,0.49,0.0,79.4,calculado
+6.0,0.0,aceleración máxima,35.58,0.0,8.895,4.447,4.447,-0.933,1.0,79.4,calculado
+6.0,0.0,frenado máximo,-25.76,0.0,6.441,3.22,3.22,1.521,1.0,79.4,calculado
+6.0,0.0,curva al límite,0.0,29.89,7.472,2.329,5.142,0.49,1.0,79.4,calculado
+6.0,0.0,frenado en curva (ay = 50 % del límite),-21.77,14.94,6.601,2.597,4.004,1.361,1.0,79.4,calculado
+6.0,0.03,estático,0.0,0.0,5.671,2.836,2.836,2.29,0.0,60.3,calculado
+6.0,0.03,aceleración máxima,27.01,0.0,6.752,3.376,3.376,1.21,1.0,60.3,calculado
+6.0,0.03,frenado máximo,-19.56,0.0,4.889,2.445,2.445,3.073,1.0,60.3,calculado
+6.0,0.03,curva al límite,0.0,22.69,5.671,1.768,3.903,2.29,1.0,60.3,calculado
+6.0,0.03,frenado en curva (ay = 50 % del límite),-16.52,11.34,5.011,1.971,3.039,2.951,1.0,60.3,calculado
+6.0,0.06,estático,0.0,0.0,3.872,1.936,1.936,4.09,0.0,41.1,calculado
+6.0,0.06,aceleración máxima,18.44,0.0,4.609,2.304,2.304,3.353,1.0,41.1,calculado
+6.0,0.06,frenado máximo,-13.35,0.0,3.338,1.669,1.669,4.624,1.0,41.1,calculado
+6.0,0.06,curva al límite,0.0,15.49,3.872,1.207,2.665,4.09,1.0,41.1,calculado
+6.0,0.06,frenado en curva (ay = 50 % del límite),-11.28,7.74,3.42,1.346,2.075,4.542,1.0,41.1,calculado

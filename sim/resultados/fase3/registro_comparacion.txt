@@ -1,0 +1,5 @@
+  Fase 2 (Pololu 12V 15:1 + arco16c), ajuste robusto éxito 1.000 [0.981] t 6.215 s  I_max 0.444 A  
+  Fase 3 (Chihai 12V i10 + recta8), ajuste robusto éxito 1.000 [0.981] t 6.85 s  I_max 0.339 A  
+  Fase 3 vigente (v_max 0.66)                éxito 1.000 [0.981] t 6.353 s  I_max 0.339 A  
+  -> sim/resultados/fase3/C_anterior_vs_nueva.csv
+exit 0

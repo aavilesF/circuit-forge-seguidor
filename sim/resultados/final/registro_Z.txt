@@ -1,0 +1,17 @@
+Etapa Z
+  Pololu HPCB 12V 15:1 (#4789) v_max 0.836   éxito 1.000 [0.981] t 5.883 s  I_max 0.493 A  
+  Pololu HPCB 12V 15:1 (#4789) v_max 0.9288  éxito 1.000 [0.981] t 5.556 s  I_max 0.493 A  
+  Pololu HPCB 12V 15:1 (#4789) v_max 1.0031  éxito 0.950 [0.910] t 5.373 s  I_max 0.485 A  derrape: 10
+  Pololu HPCB 12V 15:1 (#4789) v_max 1.0775  éxito 0.665 [0.597] t 5.393 s  I_max 0.485 A  derrape: 67
+  Pololu HPCB 12V 10:1 (#3048) v_max 0.7433  éxito 1.000 [0.981] t 6.194 s  I_max 0.51 A  
+  Pololu HPCB 12V 10:1 (#3048) v_max 0.8259  éxito 1.000 [0.981] t 5.701 s  I_max 0.51 A  
+  Pololu HPCB 12V 10:1 (#3048) v_max 0.892   éxito 1.000 [0.981] t 5.389 s  I_max 0.51 A  
+  Pololu HPCB 12V 10:1 (#3048) v_max 0.9581  éxito 0.980 [0.950] t 5.164 s  I_max 0.51 A  derrape: 4
+  Chihai N20 12V i10 v_max 0.7817            éxito 1.000 [0.981] t 5.807 s  I_max 0.339 A  
+  Chihai N20 12V i10 v_max 0.8686            éxito 1.000 [0.981] t 5.328 s  I_max 0.339 A  
+  Chihai N20 12V i10 v_max 0.9381            éxito 1.000 [0.981] t 5.035 s  I_max 0.339 A  
+  Chihai N20 12V i10 v_max 1.0076            éxito 0.895 [0.845] t 4.837 s  I_max 0.339 A  derrape: 21
+  -> sim/resultados/fase3/Z_motores.csv
+  Pololu HPCB 12V 15:1 (#4789)     mejor: E 5.56 s, éxito 1.0, t 5.556 s
+  Pololu HPCB 12V 10:1 (#3048)     mejor: E 5.39 s, éxito 1.0, t 5.389 s
+  Chihai N20 12V i10               mejor: E 5.04 s, éxito 1.0, t 5.035 s

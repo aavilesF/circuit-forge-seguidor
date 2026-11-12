@@ -1,0 +1,5 @@
+pista,largo_linea_m,cierre_mm,giro_total_grados,extension_x_m,extension_y_m,cabe_en_tablero,separacion_min_m,radio_min_m,arco_max_grados,cumple
+P1 óvalo R150,4.142,0.0,360.0,1.9,0.3,True,0.3,0.15,180,True
+P2 óvalo R400,4.913,0.0,360.0,2.0,0.8,True,0.546,0.4,180,True
+P3 S y cambios de radio,4.301,0.0,360.0,1.664,0.794,True,0.485,0.2,180,True
+P4 exigente R150,3.58,0.0,360.0,1.586,0.44,True,0.3,0.15,180,True
