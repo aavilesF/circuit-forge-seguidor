@@ -1,0 +1,55 @@
+== 1. Configuración maestra y pines sincronizados con el firmware (YAML + diseño eléctrico -> encabezados)
+config_maestra.h y pines_generados.h sincronizadas con el YAML y el diseño de la PCB
+== 2. Física del simulador contra soluciones analíticas
+Configuración: Pololu HPCB 12V 10:1, masa 113.0 g, x_cg 20.1 mm, f_motriz 0.782, h_cg 15.4 mm, dt 87 µs
+
+[OK ] velocidad final en recta (ciclo 1): simulado 3.1817, referencia 3.1823, error 0.02 % (tol 1.0 %)
+[OK ] velocidad final en recta (ciclo 0.5): simulado 1.2323, referencia 1.2328, error 0.04 % (tol 1.0 %)
+      aceleración máxima simulada 5.46 m/s² ≤ cota de agarre 6.86 m/s²
+[OK ] ω_z = (v_R − v_L)/W en régimen (deslizamiento regularizado < 5 %): simulado 1.9054, referencia 1.8495, error 3.02 % (tol 5.0 %)
+[OK ] radio del eje = ((v_L + v_R)/2)/ω_z: simulado 0.4123, referencia 0.4124, error 0.02 % (tol 3.0 %)
+      círculo: radio 412 mm, a_lat 1.41 m/s²; rueda interior arrastrada 231 mm/s sobre su velocidad libre (momento del CG adelantado)
+      giro forzado: |a| del CG (percentil 99) 5.09 m/s²; cota mu·g + c_rr·g = 8.00 m/s²
+      frenado con inverso: 4.56 m/s² ≤ agarre con transferencia hacia el apoyo 5.67 m/s²
+      energía: batería 4.493 J ≥ cinética 0.652 J
+      arco16: latencia 2.86 ms = periodo 2.86 ms: avance 5.05 m (completa), la salida cambió en 2659/2661 ciclos
+      recta12: latencia 2.26 ms = periodo 2.26 ms: avance 5.05 m (completa), la salida cambió en 3362/3363 ciclos
+
+TODAS LAS PRUEBAS DE FÍSICA PASAN
+== 3. Controlador del simulador = controlador del firmware (vectores dorados)
+pololu15: 3000 pasos, diferencia máxima 5.66e-08
+ga12_6v: 3000 pasos, diferencia máxima 2.84e-08
+C2 del simulador = C2 del firmware (referencia dorada)
+== 4. Lógica del firmware en C++ (ASan/UBSan) contra Python y contra el simulador
+control vs Python: diferencia máxima 1.93e-05 en 12000 pasos (4 configuraciones)
+11 pruebas, 0 fallos
+fuente 0: diferencia máxima 1.44e-06
+fuente 1: diferencia máxima 4.29e-06
+fuente 2: diferencia máxima 1.48e-06
+fuente 3: diferencia máxima 1.51e-06
+estimar_coord: 500 casos, diferencia máxima 7.29e-09 m, banderas distintas 0
+firmware = simulador (C2, C3m, C3g, C3e, estimar_coord)
+== 5. Compilación real del firmware para el STM32G431 (arm-none-eabi-gcc, -Werror)
+arm-none-eabi-objcopy -O binary build/speed_follower.elf build/speed_follower.bin
+arm-none-eabi-size build/speed_follower.elf
+   text	   data	    bss	    dec	    hex	filename
+  16100	     88	   4620	  20808	   5148	build/speed_follower.elf
+vectores TIM6 y USART1 resueltos a las rutinas del firmware
+== 6. Pistas sintéticas dentro del reglamento
+4/4 pistas cumplen el reglamento
+== 7. Diseño eléctrico: reglas propias y conectividad diseño = esquemático = PCB
+131 partes, 78 redes; ADC: {'PF0': 'S16', 'PF1': 'S15', 'PA0': 'S14', 'PA1': 'S13', 'PA2': 'S12', 'PA3': 'S11', 'PA4': 'S10', 'PA5': 'S9', 'PA6': 'S8', 'PA7': 'S7', 'PB0': 'S6', 'PB1': 'S5', 'PB2': 'S4', 'PB11': 'S3', 'PB12': 'S2', 'PB14': 'S1', 'PB15': 'VBAT_MED'}
+ERRORES: ninguno
+Esquemático: 78 redes, 346 conexiones; diseño: 78 redes, 346 conexiones
+PCB: 365 pads con red comprobados
+CONECTIVIDAD OK
+== 8. ERC/DRC guardados de KiCad 9 sin errores sin justificar
+RESUMEN.md: sin errores
+== 9. Huellas oficiales y modelos 3D presentes; STEP exportado sin modelos faltantes
+131 huellas; 109 con modelo 3D; STEP exportado con 24 modelos distintos; 109 componentes del STEP comparados en posición, cara y giro contra la PCB; avisos de modelos en la exportación: 0
+== 10. Mecánica: caja del reglamento, interferencias, CG y masa del CAD contra el YAML
+masa CAD 112.9 g vs sim 113.0 g (-0.1 %); x_CG 20.1 vs 20.1 mm (-0.0); huella 132.0 × 92.0 mm; interferencias 0; tapados 0
+RESULTADO: CUMPLE (validación CAD)
+== 11. BOM final consistente con el diseño (referencias, cantidades, números de parte)
+BOM sincronizada con el diseño
+TODO OK

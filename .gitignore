@@ -70,3 +70,19 @@ Testing/
 # compilados locales
 .build/
 __pycache__/
+
+# Vectores dorados del Speed Follower: se regeneran en cada corrida de pruebas/sf/ejecutar.sh
+pruebas/sf/dorados_*.csv
+.build/
+# registro en curso de la optimización (se versiona una copia al terminar)
+sim/resultados/fase2/registro_experimentos_BCD.txt
+sim/resultados/fase2/registro_etapaF.txt
+sim/resultados/fase3/registro_*.txt
+
+# Firmware STM32: el Makefile propio sí se versiona (la regla "Makefile" de arriba es para CMake)
+!firmware/stm32/Makefile
+# Salidas temporales de KiCad
+*-backups/
+fp-info-cache
+*.kicad_prl
+hardware/electronics/kicad/#auto_saved_files#*

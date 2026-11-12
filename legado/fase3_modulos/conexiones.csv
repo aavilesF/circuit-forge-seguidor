@@ -1,0 +1,32 @@
+red,origen,origen_pin,destino,destino_pin,dominio_V,corriente_max_mA,notas
+VBAT,Batería LiPo 2S (+),JST-RC,PTC 1.5 A,entrada,6.4-8.4,1100,"Bloqueo doble a 8.4 V ≈ 0.85 A (GA12 limitado a 6 V) + lógica 0.25 A"
+VBAT_SW,PTC 1.5 A,salida,Interruptor KCD1,común,6.4-8.4,1100,
+VM,Interruptor KCD1,salida,TB6612,VM,6.4-8.4,1100,"470 µF/16 V junto a VM y GND; TB6612 VM ≤ 13.5 V recomendado (15 V absoluto)"
+VM,Interruptor KCD1,salida,MP1584,IN+,6.4-8.4,250,"Entrada del regulador"
+VM,Interruptor KCD1,salida,Divisor 100k,extremo alto,6.4-8.4,0.1,
+5V,MP1584,OUT+,ESP32 DevKit,VIN (5V),5.0,250,"Ajustar a 5.0 V ANTES de conectar el ESP32"
+5V,MP1584,OUT+,Barra de sensores,VCC,5.0,200,"Clon QTR-8A: 3-5 V, 100 mA según vendedor; con 5 V los LED dan más señal"
+3V3,ESP32 DevKit,3V3,TB6612,VCC,3.3,5,"Lógica del driver a 3.3 V"
+3V3,ESP32 DevKit,3V3,74HC4067,VCC,3.3,1,"El mux trabaja a 3.3 V: su salida nunca supera el ADC"
+GND,Batería LiPo 2S (−),JST-RC,TB6612/MP1584/ESP32/barra/mux,GND,0,1100,"Estrella en la placa perforada; retorno de motores directo al negativo de batería"
+MUX_S0,ESP32 DevKit,GPIO25,74HC4067,S0,3.3,1,
+MUX_S1,ESP32 DevKit,GPIO26,74HC4067,S1,3.3,1,
+MUX_S2,ESP32 DevKit,GPIO27,74HC4067,S2,3.3,1,
+MUX_S3,ESP32 DevKit,GPIO33,74HC4067,S3,3.3,1,
+MUX_SIG,74HC4067,SIG,ESP32 DevKit,GPIO34 (ADC1_CH6),3.3,0,"Solo entrada; ADC1 (funciona con radio apagada o encendida)"
+MUX_EN,74HC4067,EN,GND,—,0,0,"Habilitado siempre"
+S0..S7,Barra de sensores,OUT1..OUT8,74HC4067,C0..C7,≤3.3,0,"ATENCIÓN: con la barra a 5 V, su salida analógica puede pasar de 3.3 V. Resistencia de 10 kΩ en serie por canal o alimentar la barra a 3.3 V (ver verificar_electrica.py)"
+EMISORES,ESP32 DevKit,GPIO13,AO3400A,compuerta,3.3,0.1,"Solo si la barra tiene pin de control de LED (LEDON/IR). El clon no lo documenta: MEDIR (auditoría H06). Nunca manejar los LED directo desde el GPIO"
+PWMA,ESP32 DevKit,GPIO18,TB6612,PWMA,3.3,1,"LEDC 20 kHz, 10 bits"
+AIN1,ESP32 DevKit,GPIO19,TB6612,AIN1,3.3,1,
+AIN2,ESP32 DevKit,GPIO21,TB6612,AIN2,3.3,1,
+PWMB,ESP32 DevKit,GPIO17,TB6612,PWMB,3.3,1,"GPIO17 libre en ESP32-WROOM-32 (no WROVER)"
+BIN1,ESP32 DevKit,GPIO22,TB6612,BIN1,3.3,1,
+BIN2,ESP32 DevKit,GPIO23,TB6612,BIN2,3.3,1,
+STBY,ESP32 DevKit,GPIO16,TB6612,STBY,3.3,1,"Bajo = motores libres"
+AO1/AO2,TB6612,AO1-AO2,Motor izquierdo,+/−,VM,1000,"Capacitor cerámico 100 nF entre terminales del motor (ruido de escobillas)"
+BO1/BO2,TB6612,BO1-BO2,Motor derecho,+/−,VM,1000,
+START,Botón START,1,ESP32 DevKit,GPIO4,3.3,0,"A GND; pull-up interno"
+CAL,Botón CAL,1,ESP32 DevKit,GPIO14,3.3,0,"A GND; pull-up interno"
+LED,ESP32 DevKit,GPIO2,LED de la placa,—,3.3,5,"GPIO2 es de arranque: el LED de la placa a GND no interfiere"
+VBAT_MED,Divisor 100k/33k,punto medio,ESP32 DevKit,GPIO36 (ADC1_CH0),≤2.1,0,"8.4 V → 2.08 V; 100 nF del punto medio a GND (auditoría H23)"

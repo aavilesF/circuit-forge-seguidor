@@ -1,0 +1,253 @@
+# Configuración maestra del Speed Follower (Circuit Forge, RMX2026) — versión 3 (cierre de ingeniería).
+# ÚNICA fuente de parámetros para la simulación (sim/), el firmware (firmware/config_maestra.h, generado con
+# herramientas/generar_config_firmware.py), la PCB (hardware/electronics/generador/) y el CAD (hardware/mechanical/).
+# Versiones anteriores congeladas como evidencia: v1 (Fase 1) sim/fase1/robot_maestro_v1.yaml,
+# v2 (Fase 3, presupuesto de $2,000) sim/fase3/robot_maestro_v2.yaml.
+#
+# Origen de cada valor:
+#   [R]  Reglamento oficial RMX2026 (consultado 31 oct 2026)
+#   [F]  Fabricante / hoja de datos
+#   [FX] Fabricante, valor extrapolado por el propio fabricante
+#   [T]  Medición de terceros (foros, notas de aplicación); no oficial
+#   [E]  Estimado (cálculo o geometría, sin medir)
+#   [S]  Supuesto de diseño (sin fuente; debe medirse)
+#   [D]  Decisión de diseño
+#   [O]  Resultado de optimización por simulación (sim/resultados/fase2)
+# Unidades SI. Marco del cuerpo: x hacia adelante desde el centro del eje de ruedas, y a la izquierda, z hacia arriba.
+
+version: 3
+
+reglamento:                       # [R]
+  largo_max: 0.200
+  ancho_max: 0.100
+  masa_max: 0.500
+  tablero: [2.44, 1.22]
+  ancho_linea: 0.025
+  radio_min_linea: 0.150
+  hueco_max: 0.005
+  separacion_min: 0.20
+  t_preparacion: 15.0
+  t_max_intento: 300.0
+  primer_metro: 1.0
+
+diseno:
+  masa_limite_diseno: 0.450       # [D]
+  margen_caja: 0.004              # [D] por lado
+
+arquitectura:                     # [D] arquitectura DEFINITIVA (cierre de ingeniería), justificada en docs/ARQUITECTURA.md
+  motor: pololu_hpcb12_10         # Pololu #3048. Cerrado con el hardware final: sim/resultados/final/ etapas Z y R (ARQUITECTURA.md)
+  barra: arco16q                  # 16 × QRE1113GR en arco sobre la PCB-chasis
+  mcu: stm32g431                  # STM32G431CBT6, sin radio
+  control: C3m
+  succion: false                  # sin succión (decisión de la Fase 3, sin autorización documentada)
+
+geometria:
+  L_cuello: 0.110                 # [O] eje -> arco de sensores (radio del arco); etapas D y F de la Fase 2
+  W_via: 0.085                    # [D] entre centros de llanta
+  D_llanta: 0.032                 # [F] Pololu #1087, 32 × 7 mm (llanta de silicón)
+  ancho_llanta: 0.007             # [F]
+  x_apoyo: 0.092                  # [D] rueda loca Pololu #951 sobre el eje x (detrás del arco de sensores)
+  x_succion: 0.015                # [D] sin uso (opción B descartada)
+
+mecanica:                         # [D] disposición definitiva (hardware/geometria.py la usa para la PCB y el CAD); mm salvo indicación
+  pcb_espesor: 1.6                # [D] FR-4 4 capas
+  z_pcb_inferior: 4.5             # [D] cara inferior de la PCB sobre el piso: sensor (1.45 mm [F, modelo KiCad]) a 3.05 mm del piso
+  cara_reductora_y: 37.0          # [D] |y| de la cara de la reductora (eje de salida de 9 mm [F] → ras con la cara exterior de la llanta)
+  motor_seccion: [12.0, 10.0]     # [F] Pololu: 12 (x) × 10 (z) mm
+  largo_reductora: 9.0            # [F] diagrama 0J949
+  largo_motor: 15.4               # [F] HPCB
+  largo_encoder: 5.0              # [F] #4760: sobresale ≈ 5 mm de la tapa
+  encoder_tarjeta: [11.6, 12.8]   # [F] #4760: ancho 11.6 mm; sobresale 2.8 mm de la sección de 10 mm (hacia abajo)
+  soporte_ancho_x: 24.0           # [D] base del soporte de motor (x ±12)
+  agujeros_soporte: [[10.0, 16.0], [10.0, 34.0], [-10.0, 16.0], [-10.0, 34.0]]   # [D] (x, |y|) M2, por motor
+  bateria_dim: [16.0, 61.0, 15.0] # [F-vendedor] Tattu 450 mAh 2S "long": x × y × z
+  bola_diametro: 6.35             # [D] bola de acero al cromo de 1/4 in (ISO 3290 G25) de la rueda loca impresa
+  agujeros_rueda_loca: [[92.0, 6.0], [92.0, -6.0]]
+  contorno: {x_trasero: -14.0, y_trasero: 37.0, x_hombro: 20.0, x_cuello: 32.0, y_cuello: 30.0, x_cuello_fin: 80.0,
+             y_max: 46.0, r_exterior: 116.0}
+  r_resistencias: 104.4           # [D] radio de las resistencias de cada sensor (cara inferior, radiales)
+
+traccion:
+  mu: 0.80                        # [S] llanta-fórmica; MEDIR (M1)
+  c_rodadura: 0.015               # [S] fracción de la carga normal
+  eps_deslizamiento: 0.02         # [S] m/s, regularización del modelo de Coulomb (ver docs/SIMULACION_DINAMICA.md)
+  mu_cinetico_rel: 0.80           # [S] μ al deslizar / μ estático (caucho típico 0.7-0.9); MEDIR con el plano inclinado (M1)
+  v_stribeck: 0.05                # [S] m/s de deslizamiento a la que μ baja hacia el valor cinético
+  desliz_valido: 0.40             # [D] m/s: una vuelta con más deslizamiento de llanta cuenta como FALLA (derrape:
+                                  #     el modelo de llanta no es confiable ahí y en la pista real es inestable)
+
+succion:                          # opción B, no adoptada
+  F_down_gf: 100                  # [S] valor de estudio; MEDIR (M3)
+  masa: 0.030                     # [S] ventilador + controlador + cableado
+  I_media: 2.0                    # [S] A
+
+bateria:
+  celdas: 2
+  V_llena: 8.40                   # [F]
+  V_nominal: 7.40                 # [F]
+  V_baja: 6.80                    # [D] parada por batería baja
+  R_interna: 0.20                 # [S] paquete + PTC (≤ 0.12 Ω) + 2 MOSFET + pistas (MEDIR M4)
+  I_logica: 0.06                  # [E] 3.3 V: MCU 25 mA + emisores pulsados (≈ 75 mA medios) + encoders; buck al 90 %
+  modelo: "Tattu TA-75C-450-2S1P-L-XT30"   # [F-vendedor] SKU TAA4502S75X3L: 450 mAh, 61 × 16 × 15 mm, 28.4 g
+
+# Componentes con posición: la masa total, el centro de masa (x, z) y la inercia de guiñada se CALCULAN de aquí.
+# Valores de la disposición definitiva; hardware/mechanical/verificar_mecanica.py los recalcula desde el CAD y la PCB
+# y falla si difieren (masa ±3 %, x ±2 mm). par: true = la masa se reparte en ±y. Iz_propio: inercia propia (kg·m²).
+componentes:                      # masa kg, x/y/z m; dim = [largo en x, ancho en y] m
+  motores:     {masa: 0.0204, x: -0.0000, y: 0.0237, z: 0.0158, par: true, dim: [0.012, 0.029], origen: "[F] 2 × (9.5 g motor #3048 + 0.7 g encoder #4760); posición del CAD (hardware/mechanical/propiedades_masa.json)"}
+  llantas:     {masa: 0.0062, x: -0.0000, y: 0.0425, z: 0.0160, par: true, dim: [0.032, 0.007], origen: "[F] Pololu #1087, 0.11 oz c/u; posición del CAD"}
+  bateria:     {masa: 0.0284, x: 0.0000, y: 0.0000, z: 0.0317, dim: [0.016, 0.061], origen: "[F-vendedor] Tattu 450 mAh 2S, 28.4 g (la tabla del vendedor dice 37 g ±20: se prueba +10 g en la validación); altura del CAD (sobre los soportes)"}
+  pcb:         {masa: 0.0351, x: 0.0515, y: 0.0000, z: 0.0053, Iz_propio: 4.0e-5, origen: "[E] FR-4 4 capas 1.6 mm, 0.39 g/cm² × área del contorno real menos el agujero de la bola; CG del contorno (CAD)"}
+  electronica: {masa: 0.0048, x: 0.0504, y: 0.0153, z: 0.0065, origen: "[E] componentes de la PCBA: suma de masas unitarias de la BOM en la posición de cada huella (masa_componentes.json)"}
+  impresos:    {masa: 0.0086, x: -0.0000, y: 0.0249, z: 0.0116, dim: [0.024, 0.0224], origen: "[CAD] 2 bases + 2 tapas de los soportes de motor en PA12 MJF (volumen CAD × 1.01 g/cm³)"}
+  rueda_loca:  {masa: 0.0014, x: 0.0920, y: 0.0000, z: 0.0035, origen: "[CAD] carcasa + tapa PA12 (volumen CAD) + bola de acero Ø 6.35 mm (1.05 g [E])"}
+  tornilleria: {masa: 0.0049, x: 0.0148, y: 0.0220, z: 0.0081, origen: "[E] 8 × M2×12 + 2 × M2×8 + 10 tuercas M2 (masas ISO estimadas), posiciones del CAD"}
+  cables:      {masa: 0.0032, x: 0.0063, y: 0.0000, z: 0.0163, origen: "[E] 2 cables Pololu #4765 (10 cm) + 2 piezas de Dual Lock"}
+
+motores:
+  # rpm, par e I de bloqueo a V_nom; relación exacta; J_rotor del motor sin reductora.
+  pololu_hpcb12_10:
+    nombre: "Pololu HPCB 12V 10:1"
+    V_nom: 12.0
+    rpm: 3400
+    par_kgcm: 0.17
+    I_bloqueo: 0.75
+    I_vacio: 0.08
+    relacion: 9.96
+    masa: 0.0095
+    masa_encoder: 0.0007          # [F] #4761: 1.5 g el par (tarjeta 0.4 g + disco 0.3 g)
+    cpr_motor: 12                 # [F] #4761: 12 cuentas por vuelta del motor (todos los flancos A y B)
+    limite_V: null
+    origen: "[F] Pololu #3048 (eje extendido): 3400 rpm, 0.08 A, 0.75 A y 0.17 kg·cm a 12 V (bloqueo teórico)"
+  pololu_hpcb12_15:
+    nombre: "Pololu HPCB 12V 15:1"
+    V_nom: 12.0
+    rpm: 2200
+    par_kgcm: 0.25
+    I_bloqueo: 0.75
+    I_vacio: 0.08
+    relacion: 15.25
+    masa: 0.0095
+    masa_encoder: 0.0007          # [F] #4761
+    cpr_motor: 12                 # [F] #4761
+    limite_V: null
+    origen: "[F] Pololu #4789 (eje extendido): 2200 rpm, 0.08 A, 0.75 A y 0.25 kg·cm a 12 V (bloqueo teórico)"
+  pololu_hpcb6_15:
+    nombre: "Pololu HPCB 6V 15:1 (PWM limitado a 6 V)"
+    V_nom: 6.0
+    rpm: 2100
+    par_kgcm: 0.25
+    I_bloqueo: 1.5
+    I_vacio: 0.17
+    relacion: 15.25
+    masa: 0.0095
+    limite_V: 6.0
+    origen: "[F] tabla Pololu"
+  pololu_hpcb6_30:
+    nombre: "Pololu HPCB 6V 30:1 (PWM limitado a 6 V)"
+    V_nom: 6.0
+    rpm: 1100
+    par_kgcm: 0.45
+    I_bloqueo: 1.5
+    I_vacio: 0.17
+    relacion: 29.86
+    masa: 0.0095
+    limite_V: 6.0
+    origen: "[F] tabla Pololu"
+  # ---- Candidatos económicos (Fase 3). El vendedor NO publica bloqueo ni par: el par se ESTIMA con
+  #      T_bl = eta·Ke·(I_bl − I0), eta = 0.79 (eficiencia que resulta de los datos del Pololu 12 V 15:1).
+  #      I_bloqueo es [S] y se barre en el análisis de sensibilidad (sim/fase3.py). MEDIR (M7) al recibir.
+  ga12_n20_6v_1000:
+    nombre: "GA12-N20 6V 1000 RPM (genérico; PWM limitado a 6 V)"
+    V_nom: 6.0
+    rpm: 1000                     # [F-vendedor] ±10 %
+    par_kgcm: null                # se calcula con eta
+    eta: 0.79                     # [E]
+    I_bloqueo: 0.60               # [S] rango de estudio 0.35-1.0 A
+    I_vacio: 0.10                 # [F-vendedor] "≤ 0.2 A"; [S] 0.10
+    relacion: 15.0                # [S] no publicada
+    masa: 0.010                   # [E]
+    limite_V: 6.0
+    origen: "[F-vendedor] 6 V, 1000 rpm ±10 %, I0 ≤ 0.2 A, par ≥ 0.15 kg·cm; bloqueo y relación [S]"
+  chihai_n20_12v_2200_i10:
+    nombre: "Chihai CHF-GM12-N20 12V 2200 RPM i10 (con encoder)"
+    V_nom: 12.0
+    rpm: 2200                     # [F-vendedor]
+    par_kgcm: null
+    eta: 0.79                     # [E]
+    I_bloqueo: 0.50               # [S] rango de estudio 0.3-0.8 A
+    I_vacio: 0.05                 # [S]
+    relacion: 10.0                # [F-vendedor] "i10"
+    masa: 0.012                   # [E] con encoder
+    masa_encoder: 0.0
+    cpr_motor: 28                 # [F-vendedor] encoder de 7 PPR, cuadratura ×4
+    limite_V: null
+    origen: "[F-vendedor] 12 V, 2200 rpm, 1:10, escobillas de carbón, encoder 7 PPR; par, bloqueo e I0 [S]"
+
+J_rotor: 2.4e-8                   # [S] kg·m² (rotor de ~3 g y 4 mm de radio); Pololu no lo publica
+J_llanta: 3.7e-7                  # [E] kg·m² (3.1 g, r 16 mm, masa concentrada en llanta de silicón y aro)
+
+conductor:
+  modelo: DRV8833                 # [D] DRV8833PWPR (HTSSOP-16 con PowerPAD) soldado en la PCB
+  VM_max_recomendado: 10.8        # [F]
+  VM_max_absoluto: 11.8           # [F]
+  I_rms_PWP: 1.5                  # [F]
+  I_rms_PW: 0.5                   # [F]
+  I_ocp_min: 2.0                  # [F] la protección dispara a partir de 2 A
+  f_pwm: 20000                    # [D] Hz (TIM1 del STM32, inaudible)
+  TB6612_VM_max_absoluto: 15.0    # [F]
+  TB6612_I_canal: 1.0             # [F]
+
+barras:                           # geometría de sensores (y = lateral, x = adelante del eje)
+  recta8:  {tipo: recta, n: 8,  paso: 0.009525, origen: "[F] paso de la QTR-8A (0.375 in)"}
+  recta12: {tipo: recta, n: 12, paso: 0.008,    origen: "[D]"}
+  arco13:  {tipo: arco,  n: 13, paso: 0.008,    origen: "[D] paso medido sobre el arco"}
+  arco16:  {tipo: arco,  n: 16, paso: 0.00635,  origen: "[D] 16 canales de un multiplexor"}
+  arco16c: {tipo: arco,  n: 16, paso: 0.0060,   masa: 0.007, origen: "[D] arco16 con paso de 6.0 mm: con L = 110 mm deja los centros a ±43.7 mm (caja de 100 mm); PCB propia con 16 × QRE1113"}
+  arco16q: {tipo: arco, n: 16, paso: 0.0059, radio_mancha: 0.003, ruido: 0.03, resta_ambiente: true,
+            origen: "[D] 16 × onsemi QRE1113GR en arco de radio L sobre la PCB-chasis, paso 5.9 mm (centros a ±43.1 mm, cobre a ±45.4 mm); cara del sensor a 3.05 mm del piso; mancha y ruido [S] (MEDIR M8)"}
+  recta8_tcrt: {tipo: recta, n: 8, paso: 0.0085, masa: 0.0055, radio_mancha: 0.005, ruido: 0.04, resta_ambiente: false,
+                origen: "[F-vendedor] módulo QTR-8A clon (TCRT5000, 65.7 × 16 mm, 8-12 mm al piso, 5.5 g); paso [S] 8.5 mm (MEDIR); sin pin de emisores documentado: sin resta de luz ambiente [S]"}
+
+optica:
+  radio_mancha: 0.003             # [S] radio del área que ve cada sensor a ~3 mm del piso
+  ruido: 0.03                     # [S] desviación estándar de la lectura normalizada
+  umbral: 0.25                    # [D] igual al firmware (estimar)
+  t_emisor: 200.0e-6              # [S] establecimiento del fototransistor con 10 kΩ al conmutar emisores (tr = 20 µs con 1 kΩ [F]); MEDIR M8
+  resta_ambiente: true            # [D] lectura con emisor encendido y apagado (R06)
+
+mcu:
+  esp32_analogread:
+    t_canal: 75.0e-6              # [T] 42-100 µs por analogRead (foros Arduino/ESP32; no oficial) + 15 µs de establecimiento del mux (firmware)
+    t_calculo: 60.0e-6            # [E]
+    origen: "[T] forum.arduino.cc/t/esp32-analogread-very-slow/1028266"
+  stm32g431:
+    n_adc: 2                      # [F] ADC1 y ADC2 convierten en paralelo (8 canales cada uno)
+    t_canal: 3.0e-6               # [E] 0.25 µs de conversión [F, st.com] + muestreo (conservador para 10 kΩ)
+    t_calculo: 30.0e-6            # [E] Cortex-M4F a 170 MHz con FPU [F]
+    origen: "[F] st.com STM32G431KB: 2 ADC, 0.25 µs, hasta 23 canales"
+
+control:                          # parámetros de los controladores; C3m es el vigente ([O], sim/resultados/fase3/T_parametros.json); C2 = ajuste de la Fase 2
+  T_min: 0.001                    # [D] periodo mínimo; el real es max(T_min, lectura + cálculo)
+  t_perdida: 0.30                 # [D] s sin línea antes de detener (C07)
+  C1:  {b0: 0.55, k_freno: 0.4, e_ref: 0.03, kp: 25.0, kd: 0.8, rueda_min: -0.3}
+  C2:  {v_max: 0.709, a_lat: 7.2063, a_lon: 2.5446, k_pp: 1.2587, kp: 34.6271, kd: 1.6762, tau_d: 0.004, tau_k: 0.0248, piso: -0.1944}   # [O] respaldo: ajuste final (G) con la misma arquitectura
+  C3m: {v_max: 0.8165, a_lat: 7.6438, a_lon: 2.2819, k_pp: 0.2917, kp: 82.4472, kd: 5.6277, tau_d: 0.004, tau_k: 0.0728, fuente_k: modelo, piso: -0.1295}   # [O] VIGENTE: cierre de ingeniería, competencia (sim/resultados/final/E_eleccion.json)
+  C3m_ga12: {v_max: 0.8089, a_lat: 7.2024, a_lon: 2.0, k_pp: 1.2222, kp: 38.5776, kd: 3.1796, tau_d: 0.004, tau_k: 0.0191, fuente_k: modelo, piso: -0.1868}   # [O] respaldo si se usa el GA12-N20 6 V local
+  C3e: {v_max: 0.6327, a_lat: 4.9703, a_lon: 4.3242, k_pp: 1.1744, kp: 33.6163, kd: 0.2319, tau_d: 0.004, tau_k: 0.0214, fuente_k: encoder, piso: -0.3905}   # [O] VIGENTE: MODO SEGURO (100 % en las 6 plantas, E_eleccion.json)
+  C3g: {v_max: 1.8, a_lat: 4.5, a_lon: 4.0, k_pp: 1.0, kp: 30.0, kd: 1.0, tau_d: 0.004, tau_k: 0.030, fuente_k: giroscopio, piso: 0.0}
+
+firmware:                         # [D] parámetros del firmware STM32 (firmware/config_maestra.h)
+  uart_baudios: 115200
+  t_calibracion_max: 10.0         # s (regla C03: 15 s para calibrar y colocar)
+  rango_cal_min: 150              # cuentas ADC blanco-negro mínimas por sensor para aceptar la calibración
+  invertir_motor_izq: false       # [S] se confirma en la prueba de giro del manual de ensamblaje (paso E7)
+  invertir_motor_der: true        # [S] los motores van en espejo: con el mismo cable uno gira al revés
+  invertir_encoder_izq: false     # [S] idem (paso E7)
+  invertir_encoder_der: true      # [S]
+  t_bloqueo: 0.30                 # s con ciclo > 0.5 y rueda sin girar (encoder) = motor trabado: se detiene
+  v_bateria_critica: 6.4          # V (3.2 V por celda) sostenidos 0.5 s: parada
+
+giroscopio:
+  ruido: 0.02                     # [S] rad/s RMS
+  sesgo: 0.03                     # [S] rad/s

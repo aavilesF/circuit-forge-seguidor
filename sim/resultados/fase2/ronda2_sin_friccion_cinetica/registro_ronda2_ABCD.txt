@@ -1,0 +1,39 @@
+Etapa A: controles
+  A C1: E 9.47 s, éxito 0.98, t 4.549 s (68 s)
+  A C2: E 4.24 s, éxito 1.00, t 4.243 s (48 s)
+  A C3m: E 4.33 s, éxito 1.00, t 4.333 s (53 s)
+  A C3g: E 9.15 s, éxito 0.98, t 4.223 s (48 s)
+  -> sim/resultados/fase2/A_controles.csv
+  -> sim/resultados/fase2/A_corridas.csv
+Etapa B: barras y MCU
+  B recta8 + esp32_analogread: E 48.44, éxito 0.85, t 4.075, T_ctrl 1.22 ms
+  B recta8 + stm32g431: E 4.22, éxito 1.00, t 4.219, T_ctrl 1.00 ms
+  B recta12 + esp32_analogread: E 4.33, éxito 1.00, t 4.326, T_ctrl 1.70 ms
+  B recta12 + stm32g431: E 18.97, éxito 0.95, t 4.185, T_ctrl 1.00 ms
+  B arco13 + esp32_analogread: E 4.24, éxito 1.00, t 4.241, T_ctrl 1.82 ms
+  B arco13 + stm32g431: E 4.28, éxito 1.00, t 4.283, T_ctrl 1.00 ms
+  B arco16 + esp32_analogread: E 9.05, éxito 0.98, t 4.125, T_ctrl 2.18 ms
+  B arco16 + stm32g431: E 4.29, éxito 1.00, t 4.286, T_ctrl 1.00 ms
+  -> sim/resultados/fase2/B_barras_mcu.csv
+  -> sim/resultados/fase2/B_corridas.csv
+Etapa C: motores y succión
+  C pololu_hpcb12_10 sin succión: E 4.37, éxito 1.00, t 4.369, I_max 0.51 A
+  C pololu_hpcb12_10 con succión: E 3.45, éxito 1.00, t 3.445, I_max 0.49 A
+  C pololu_hpcb12_15 sin succión: E 4.22, éxito 1.00, t 4.219, I_max 0.60 A
+  C pololu_hpcb12_15 con succión: E 3.38, éxito 1.00, t 3.383, I_max 0.50 A
+  C pololu_hpcb6_15 sin succión: E 4.19, éxito 1.00, t 4.190, I_max 1.53 A
+  C pololu_hpcb6_15 con succión: E 8.04, éxito 0.98, t 3.093, I_max 2.15 A
+  C pololu_hpcb6_30 sin succión: E 4.14, éxito 1.00, t 4.138, I_max 1.51 A
+  C pololu_hpcb6_30 con succión: E 3.15, éxito 1.00, t 3.153, I_max 2.50 A
+  -> sim/resultados/fase2/C_motores_succion.csv
+  -> sim/resultados/fase2/C_corridas.csv
+Etapa D: cuello
+  D L = 80 mm: E 9.23, éxito 0.98, t 4.298
+  D L = 90 mm: E 9.15, éxito 0.98, t 4.217
+  D L = 100 mm: E 4.14, éxito 1.00, t 4.138
+  D L = 110 mm: E 4.02, éxito 1.00, t 4.021
+  D L = 120 mm: E 8.87, éxito 0.98, t 3.927
+  -> sim/resultados/fase2/D_cuello.csv
+  -> sim/resultados/fase2/D_corridas.csv
+Selección: {"control": "C2", "barra": "recta8", "mcu": "stm32g431", "motor": "pololu_hpcb6_30", "motor_con_succion": "pololu_hpcb6_30", "L": 0.11, "prm": {"v_max": 1.2016628330277443, "a_lat": 9.78103051058364, "a_lon": 9.119484445764165, "k_pp": 1.2335607413146057, "kp": 58.74480263663647, "kd": 4.647458392786077, "tau_k": 0.06613164051028156, "piso": -0.07646984021653047, "tau_d": 0.004}}
+exit 0

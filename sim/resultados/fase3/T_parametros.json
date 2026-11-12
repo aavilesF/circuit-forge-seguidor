@@ -1,0 +1,128 @@
+{
+ "Fase 2: Pololu 12V 15:1 + arco16c": {
+  "kw": {
+   "control": "C3m",
+   "barra": "arco16c",
+   "mcu": "esp32_analogread",
+   "motor": "pololu_hpcb12_15",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.8200310058970615,
+   "a_lat": 7.612609756255413,
+   "a_lon": 2.0,
+   "k_pp": 1.2426247621510982,
+   "kp": 34.04120147822317,
+   "kd": 4.389483264727042,
+   "tau_d": 0.004,
+   "tau_k": 0.016051391547752723,
+   "fuente_k": "modelo",
+   "piso": -0.23235461764823806
+  }
+ },
+ "GA12-N20 6V + arco16c": {
+  "kw": {
+   "control": "C3m",
+   "barra": "arco16c",
+   "mcu": "esp32_analogread",
+   "motor": "ga12_n20_6v_1000",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.7511670258074103,
+   "a_lat": 6.809581470645347,
+   "a_lon": 2.7883070461081894,
+   "k_pp": 1.273995122389529,
+   "kp": 26.873098988753316,
+   "kd": 2.622471926097978,
+   "tau_k": 0.022099462168384612,
+   "piso": -0.17865989044801173,
+   "tau_d": 0.004,
+   "fuente_k": "modelo"
+  }
+ },
+ "Chihai 12V i10 + arco16c": {
+  "kw": {
+   "control": "C3m",
+   "barra": "arco16c",
+   "mcu": "esp32_analogread",
+   "motor": "chihai_n20_12v_2200_i10",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.8719691190134692,
+   "a_lat": 6.718434978777092,
+   "a_lon": 3.036724556846407,
+   "k_pp": 1.237081945641349,
+   "kp": 49.980603845053885,
+   "kd": 3.986941338373128,
+   "tau_k": 0.015524793722697522,
+   "piso": -0.07777090012020547,
+   "tau_d": 0.004,
+   "fuente_k": "modelo"
+  }
+ },
+ "Pololu 12V 15:1 + recta8 TCRT": {
+  "kw": {
+   "control": "C3m",
+   "barra": "recta8_tcrt",
+   "mcu": "esp32_analogread",
+   "motor": "pololu_hpcb12_15",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.9100006914703203,
+   "a_lat": 7.22003789132238,
+   "a_lon": 2.0,
+   "k_pp": 1.3032920967950297,
+   "kp": 36.28615885029397,
+   "kd": 3.0362155025175586,
+   "tau_d": 0.004,
+   "tau_k": 0.019808861480892427,
+   "fuente_k": "modelo",
+   "piso": -0.22284229599426095
+  }
+ },
+ "GA12-N20 6V + recta8 TCRT": {
+  "kw": {
+   "control": "C3m",
+   "barra": "recta8_tcrt",
+   "mcu": "esp32_analogread",
+   "motor": "ga12_n20_6v_1000",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.8089,
+   "a_lat": 7.2024,
+   "a_lon": 2.0,
+   "k_pp": 1.2222,
+   "kp": 38.5776,
+   "kd": 3.1796,
+   "tau_d": 0.004,
+   "tau_k": 0.0191,
+   "fuente_k": "modelo",
+   "piso": -0.1868
+  }
+ },
+ "Chihai 12V i10 + recta8 TCRT": {
+  "kw": {
+   "control": "C3m",
+   "barra": "recta8_tcrt",
+   "mcu": "esp32_analogread",
+   "motor": "chihai_n20_12v_2200_i10",
+   "succion": false
+  },
+  "prm": {
+   "v_max": 0.9588367026207864,
+   "a_lat": 9.692004454526366,
+   "a_lon": 2.0,
+   "k_pp": 1.5,
+   "kp": 48.716600927877074,
+   "kd": 8.046119321732805,
+   "tau_d": 0.004,
+   "tau_k": 0.02127921007321825,
+   "fuente_k": "modelo",
+   "piso": -0.353057545358465
+  }
+ }
+}

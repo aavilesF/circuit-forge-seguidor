@@ -1,0 +1,242 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "ef61ae34-8318-51ab-baf4-43c7f17ab7e6")
+	(paper "A3")
+	(title_block
+		(title "Speed Follower — Hoja principal")
+		(date "2026-11-01")
+		(rev "1.0")
+		(company "Circuit Forge — Robolympics RMX2026")
+		(comment 1 "Generado por hardware/electronics/generador/esquematico.py desde diseno.py")
+	)
+	(lib_symbols)
+	(text "Speed Follower Circuit Forge — PCB-chasis. Diseño fuente: hardware/electronics/generador/diseno.py"
+		(exclude_from_sim no)
+		(at 25.4 25.4 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+			(justify left)
+		)
+		(uuid "e8e4541d-b318-508f-b570-f4e8280def7c")
+	)
+	(sheet
+		(at 25.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e4ee4140-96cf-53bb-9d05-39c0995165c8")
+		(property "Sheetname" "Alimentación y protecciones"
+			(at 25.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "alimentacion.kicad_sch"
+			(at 25.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "speed_follower"
+				(path "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "d0b3148c-3a3e-54a2-adc2-1a69a3406451")
+		(property "Sheetname" "MCU, programación e interfaz"
+			(at 85.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 85.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "speed_follower"
+				(path "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 145.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa")
+		(property "Sheetname" "Puente H y encoders"
+			(at 145.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "motores.kicad_sch"
+			(at 145.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "speed_follower"
+				(path "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 205.4 50.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "2952d349-a9aa-585a-9097-419d58cd28bd")
+		(property "Sheetname" "Barra de 16 sensores"
+			(at 205.4 50.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sensores.kicad_sch"
+			(at 205.4 76.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "speed_follower"
+				(path "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.4 90.8)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "377b0dc6-4be9-512b-bad5-4ee99abaeaed")
+		(property "Sheetname" "Agujeros y puntos de prueba"
+			(at 25.4 90.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mecanica.kicad_sch"
+			(at 25.4 116.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "speed_follower"
+				(path "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

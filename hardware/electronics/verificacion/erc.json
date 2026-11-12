@@ -1,0 +1,91 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-02T01:46:15-0600",
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "9.0.8",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6",
+            "violations": []
+        },
+        {
+            "path": "/Alimentación y protecciones/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6/e4ee4140-96cf-53bb-9d05-39c0995165c8",
+            "violations": []
+        },
+        {
+            "path": "/MCU, programación e interfaz/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6/d0b3148c-3a3e-54a2-adc2-1a69a3406451",
+            "violations": []
+        },
+        {
+            "path": "/Puente H y encoders/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6/683cadcd-1ccc-5e3d-b153-dd7a7cddf2aa",
+            "violations": [
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U3 Pin 3 [AISEN, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.5588
+                            },
+                            "uuid": "1741d919-f9f3-552e-b32d-f2f1a1ef25e9"
+                        },
+                        {
+                            "description": "Symbol #FLG_ALI002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 0.4445,
+                                "y": 0.4699
+                            },
+                            "uuid": "cb3524d5-5bbe-5231-a63e-69a6e940ba88"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U3 Pin 6 [BISEN, Bidirectional, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.5842
+                            },
+                            "uuid": "5a9fa754-516e-55ff-b8c7-bfcf90a9266a"
+                        },
+                        {
+                            "description": "Symbol #FLG_ALI002 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 0.4445,
+                                "y": 0.4699
+                            },
+                            "uuid": "cb3524d5-5bbe-5231-a63e-69a6e940ba88"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/Barra de 16 sensores/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6/2952d349-a9aa-585a-9097-419d58cd28bd",
+            "violations": []
+        },
+        {
+            "path": "/Agujeros y puntos de prueba/",
+            "uuid_path": "/ef61ae34-8318-51ab-baf4-43c7f17ab7e6/377b0dc6-4be9-512b-bad5-4ee99abaeaed",
+            "violations": []
+        }
+    ],
+    "source": "speed_follower.kicad_sch"
+}

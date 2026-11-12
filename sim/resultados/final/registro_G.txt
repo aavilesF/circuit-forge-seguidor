@@ -1,0 +1,10 @@
+Etapa G
+  C3e nominal                                éxito 1.000 [0.981] t 7.157 s  I_max 0.428 A  
+  C3e CG 5 mm más adelante                   éxito 1.000 [0.969] t 7.134 s  I_max 0.426 A  
+  C3e CG 10 mm más adelante                  éxito 0.600 [0.511] t 7.69 s  I_max 0.401 A  derrape: 48
+  C3e μ 0.60 (−25 %)                         éxito 1.000 [0.969] t 7.23 s  I_max 0.43 A  
+  C3e masa +10 g                             éxito 1.000 [0.969] t 7.19 s  I_max 0.421 A  
+  C3m CG 3 mm más adelante                   éxito 1.000 [0.969] t 5.846 s  I_max 0.475 A  
+  C3m CG 5 mm más adelante                   éxito 1.000 [0.969] t 5.872 s  I_max 0.473 A  
+  C3m CG 7 mm más adelante                   éxito 0.983 [0.941] t 5.918 s  I_max 0.472 A  derrape: 2
+  -> sim/resultados/final/G_modo_seguro.csv
