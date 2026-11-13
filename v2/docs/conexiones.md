@@ -34,14 +34,16 @@ KiCad 10.0.8 por el MCP (principal: 0 errores, 0 avisos; sensores: 0 errores, 4 
 | A1 8, 9, 10, 7 (GPIO25, 26, 27, 33) | J6.3–6 | S0–S3 | Eligen cuál de los 16 canales del multiplexor se lee |
 | A1 4 (GPIO34) | J6.7 | SIG | Regresa la lectura analógica del sensor elegido (ADC1) |
 | A1 13 (GPIO13) | J6.8 | EMIT_EN | Orden de prender/apagar los LED de los sensores |
+| U1 OUT+ (+5V) | J6.9 | +5V | Alimenta los LED de los sensores directo del regulador, sin pasar por el ESP32 (aprobado 13 nov) |
 | PWR_FLAG | VBAT_SW, +5V, +6V_MOT, ESP_5V, GND, +3V3 | — | Solo avisan al ERC que esas redes tienen fuente; no son piezas |
 
 ## B. PCB de sensores
 | Origen | Destino | Red | ¿Por qué? |
 |---|---|---|---|
-| J1.1 (+3V3) | R1–R12 (330 Ω), R13–R24 (10 k), U1 VCC, C1 | +3V3 | Alimenta LED, resistencias de pull-up y el multiplexor |
+| J1.1 (+3V3) | R13–R24 (10 k), U1 VCC, C1 | +3V3 | Pull-ups y multiplexor a 3.3 V: así SIG nunca supera 3.3 V |
 | J1.2 | Todos los GND | GND | Tierra común con la placa principal |
-| R_n (330 Ω) | OP_n ánodo (A) | LEDA_n | La resistencia limita la corriente del LED infrarrojo |
+| J1.9 (+5V) | R1–R12 (220 Ω) | +5V | Los LED toman su corriente del regulador de 5 V de la principal |
+| R_n (220 Ω) | OP_n ánodo (A) | LEDA_n | Limita cada LED a ~17 mA: (5 − 1.2 − 0.1)/220 |
 | OP1–OP12 cátodo (CATH) | Q1 colector | EMIT_K | Los 12 LED regresan juntos por el transistor: si Q1 está apagado, ningún LED prende |
 | OP_n colector (COLL) | R(12+n) 10 k a +3V3 y U1 C(n−1) | SEN_n | El fototransistor baja el voltaje cuando ve luz reflejada (blanco); el pull-up lo sube en negro. Cada sensor entra a un canal del mux |
 | OP_n emisor (E) | GND | GND | Retorno del fototransistor |
@@ -50,11 +52,11 @@ KiCad 10.0.8 por el MCP (principal: 0 errores, 0 avisos; sensores: 0 errores, 4 
 | U1 S0–S3 | J1.3–6 | S0–S3 | Vienen del ESP32 |
 | U1 SIG | J1.7 | SIG | Salida común: el canal elegido llega aquí y viaja al ESP32 |
 | C1 100 nF | +3V3 a GND junto a U1 | — | Desacople del multiplexor |
-| J1.8 → R25 1 k | Q1 base | EMIT_EN / BASE_Q1 | El GPIO solo da ~2.6 mA a la base; el transistor maneja la corriente de los LED |
+| J1.8 → R25 470 Ω | Q1 base | EMIT_EN / BASE_Q1 | El GPIO da ~5.5 mA a la base; el 2N2222 (600 mA máx.) conduce los ~200 mA de los LED |
 | R26 10 k | base a GND | BASE_Q1 | LED apagados si el cable se desconecta o el ESP32 está arrancando |
 | Q1 emisor | GND | GND | Retorno |
 
-## C. Alimentación de los LED: 3.3 V (actual) contra 5 V (propuesta, sin aplicar)
+## C. Alimentación de los LED: 5 V (aprobado y aplicado el 13 nov; antes 3.3 V)
 - **Hoy:** cada LED toma corriente de **+3V3** (el regulador de 3.3 V del DevKit) por su 330 Ω: (3.3 − 1.2 − 0.1)/330 ≈ 6 mA × 12 ≈ **72 mA**. El GPIO13 **no** da esa corriente: solo manda ~2.6 mA a la base del 2N2222, que es el que conduce los 72 mA.
 - **Riesgo real:** no es el GPIO sino el pequeño regulador de 3.3 V del DevKit, que también alimenta al ESP32 (≈ 80–250 mA con picos). Aguanta, pero se calienta más y la luz de los LED es débil.
 - **Propuesta (recomendada):** alimentar los ánodos desde **+5V** (salida del MP1584 #1, que da hasta ~3 A) con un **9.º hilo** en el cable, y cambiar R1–R12 a **220 Ω**: (5 − 1.2 − 0.1)/220 ≈ 17 mA × 12 ≈ **200 mA** (TCRT5000: máx. 60 mA por LED, Vishay). El 2N2222 aguanta 600 mA; para saturarlo con 200 mA conviene bajar R25 a **470 Ω** (~5.5 mA de base, β forzada ≈ 36).

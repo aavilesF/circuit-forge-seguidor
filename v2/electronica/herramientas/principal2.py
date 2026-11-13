@@ -42,8 +42,8 @@ s.add('Transistor_FET:IRLZ44N','Q1','IRLZ44N',P(320),P(160),{'1':'FAN_G','2':'FA
 s.add('Diode:1N5822','D1','1N5822',P(340),P(135),{'1':'VBAT_SW','2':'FAN_SW'})
 s.add('Connector_Generic:Conn_01x02','J5','Ventilador',P(360),P(150),{'1':'VBAT_SW','2':'FAN_SW'})
 s.add('Motor:Fan','M3','4010 12V (EXTERNO)',P(385),P(152),{'1':'VBAT_SW','2':'FAN_SW'},board=False)
-T('8. CABLE A PCB DE SENSORES (8 hilos)',P(255),P(195),2)
-s.add('Connector_Generic:Conn_01x08','J6','A sensores',P(300),P(225),{'1':'+3V3','2':'GND','3':'S0','4':'S1','5':'S2','6':'S3','7':'SIG','8':'EMIT_EN'})
+T('8. CABLE A PCB DE SENSORES (9 hilos)',P(255),P(195),2)
+s.add('Connector_Generic:Conn_01x09','J6','A sensores',P(300),P(225),{'1':'+3V3','2':'GND','3':'S0','4':'S1','5':'S2','6':'S3','7':'SIG','8':'EMIT_EN','9':'+5V'})
 for i,n in enumerate(['VBAT_SW','+5V','+6V_MOT','ESP_5V']):
     s.add('power:PWR_FLAG',f'#FLG0{i+1}','PWR_FLAG',P(30+i*18),P(190),{'1':n})
 s.add('power:PWR_FLAG','#FLG05','PWR_FLAG',P(30),P(225),{'1':'GND'})

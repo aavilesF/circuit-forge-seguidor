@@ -19,3 +19,5 @@
 | D-V2-16 | TCRT5000: símbolo de Alan + **huella oficial de KiCad**. Pines confirmados (M20) | Alan, 12 nov |
 | D-V2-17 | Fichas de UNIT valen como medida oficial hasta medir con vernier | Alan, 12 nov |
 | D-V2-18 | Esquemáticos con cables reales; etiquetas solo de complemento (cable entre placas) | Alan, 12 nov |
+| D-V2-19 | LED de los TCRT5000 a **+5V** (9.º hilo, 220 Ω, R25 470 Ω); mux y pull-ups siguen en 3.3 V | Alan, 13 nov |
+| D-V2-20 | Esquemáticos V2 terminados (13 nov) | Alan aprueba la presentación |

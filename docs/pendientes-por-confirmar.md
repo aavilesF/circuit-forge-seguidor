@@ -21,7 +21,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-04 | LED de los sensores: seguir en +3V3 o pasar a +5V | Decisión de Alan. Recomendación: +5V con 9.º hilo y resistencias de 220 Ω (ver `v2/docs/conexiones.md`) | **sí, para cerrar el esquema de sensores** | Alan aprueba o no | Alan |
+| P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-12 | Huella de los MP1584 (nuevo) | Se corrigió la numeración (1 IN+, 2 IN−, 3 OUT−, 4 OUT+). Falta confirmar con la serigrafía del módulo que + queda arriba en ambos lados | no (PCB) | Mirar el módulo al colocarlo | Alan |
 | P-V2-13 | Huella oficial del TCRT5000 (nuevo) | Usar la huella oficial de KiCad 10; su numeración (1–4) debe emparejarse con el símbolo (A, CATH, COLL, E) | no (PCB) | Etapa 2 | Claude |
@@ -103,6 +103,8 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-08 | Módulos soldados vs. removibles | Removibles con tira hembra (P-V2-07) | 12 nov | Alan |
 | P-V2-09 | Símbolo TCRT5000 | KiCad 10 no tiene símbolo oficial (comprobado con el MCP); se usa el de Alan (pines A, CATH, COLL, E). La huella sí será la oficial | 12 nov | MCP + Alan |
 | P-V2-10 | Medidas de la placa de sensores | Se definen en la etapa 2 dentro del reglamento | 12 nov | — |
+| P-V2-04 | LED de sensores a 5 V | **Aprobado (13 nov) y aplicado**: ánodos a +5V (salida del MP1584 de 5 V) por un 9.º hilo; R1–R12 = 220 Ω (~17 mA c/u, ~200 mA total); R25 = 470 Ω. Pull-ups de 10 k y mux siguen en +3V3: SIG nunca pasa de 3.3 V | 13 nov | Alan |
+| P-V2-15 | ¿Esquemáticos terminados? | **Sí (13 nov)**: ERC KiCad 10 principal 0/0; sensores 0 errores, 4 avisos sin efecto. Vistas en `v2/electronica/vistas/` | 13 nov | ERC MCP |
 | P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
 ---
 

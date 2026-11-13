@@ -14,7 +14,7 @@ Compras: ticket Valtierra 5 nov y pedido UNIT 7 nov (ver `robot-casero/materiale
 | R1, R2, R4, R5 | 100 k, 33 k, 100 Ω, 10 k | por comprar |
 | F1 | PTC reseteable 1.5 A ≥ 16 V | por comprar |
 | SW2, SW3, SW4 | Pulsadores START / CAL / RESET | 3 / 3 |
-| J1–J6 | Headers para cables (5 × 1x2, 1 × 1x8) | tira macho y hembra 2.54 mm (Alan, 12 nov) |
+| J1–J6 | Headers para cables (5 × 1x2, 1 × 1x9) | tira macho y hembra 2.54 mm (Alan, 12 nov) |
 
 ## B. Montados en PCB de sensores
 | Ref | Pieza | Usadas / compradas |
@@ -22,13 +22,13 @@ Compras: ticket Valtierra 5 nov y pedido UNIT 7 nov (ver `robot-casero/materiale
 | OP1–OP12 | TCRT5000 | 12 / 14 |
 | U1 | Módulo CD74HC4067 | 1 / 2 |
 | Q1 | 2N2222 (H331, E-B-C) | 1 / 6 |
-| R1–R12 | 330 Ω | por comprar |
+| R1–R12 | 220 Ω | por comprar |
 | R13–R24, R26 | 10 kΩ | por comprar |
-| R25 | 1 kΩ | por comprar |
+| R25 | 470 Ω | por comprar |
 | C1 | 100 nF | ver arriba |
 | J1 | Header 1x8 | ver P-V2-07 |
 
-**Resistencias a comprar (total):** 12 × 330 Ω, 14 × 10 kΩ, 1 × 1 kΩ, 1 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ (+ repuestos a criterio).
+**Resistencias a comprar (total):** 12 × 220 Ω, 14 × 10 kΩ, 1 × 470 Ω, 1 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ (+ repuestos a criterio).
 Se quitaron del listado viejo: 2 × 1 kΩ sobrantes→ ahora 1, 1 × 100 Ω sobrante, R3 de nSLEEP.
 
 ## C. Eléctricos externos (en el esquema, sin huella; llegan por cable)
