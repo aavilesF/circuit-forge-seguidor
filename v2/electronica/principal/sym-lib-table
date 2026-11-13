@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "Simbolos") (type "KiCad") (uri "C:/Users/choco/Documents/Seguidor de Línea V2 Casero/SDL V2 General/KiCAD/Librerias/Símbolos/Simbolos.kicad_sym") (options "") (descr "Simbolos proporcionados por Alan"))
+)

@@ -1,0 +1,17 @@
+# Seguidor de Línea V2 — rama `seguidor-caseroV2`
+
+Creada el 12 nov 2026 desde `engineering/robot-casero` (commit f9a4700). **Todo lo vigente está en `v2/`.**
+El resto de carpetas del repositorio (docs/, electronica/kicad/, mecanica/, firmware/, robot-casero/) se heredó de la rama
+anterior y es **HISTÓRICO**: sirve de consulta, no es diseño vigente. No se borró nada.
+
+| Carpeta | Contenido | Estado |
+|---|---|---|
+| `v2/docs/decisiones.md` | Decisiones vigentes (D-V2-xx) con su origen | vigente |
+| `v2/docs/componentes.md` | Instalados / repuestos / por comprar / mecánicos / insumos | vigente |
+| `v2/docs/pendientes.md` | Pendientes revisados uno por uno (P-V2-xx) | vigente |
+| `v2/docs/bibliotecas.md` | Qué símbolo usa cada pieza y de dónde viene | vigente |
+| `v2/docs/migracion.md` | Qué se migró, qué se corrigió y qué queda histórico | vigente |
+| `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | **en revisión de Alan** |
+| `v2/electronica/herramientas/` | Script que generó los esquemáticos (solo esquemas; no PCB) | — |
+
+Etapas: 1 esquemáticos (en revisión) → 2 PCB de doble cara → 3 compatibilidad mecánica.
