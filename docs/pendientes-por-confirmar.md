@@ -1,7 +1,7 @@
-# Pendientes por confirmar (robot casero) — versión 7
+# Pendientes por confirmar (robot casero) — versión 8 (rama seguidor-caseroV2)
 
-Rama `engineering/robot-casero`. Actualizado: **11 nov 2026** con las medidas de vernier y las respuestas por ID de Alan.
-Copia íntegra de la v6 (la última publicada): `docs/historial/pendientes-v6_2026-11-07_pre-compra-unit.md`.
+Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
+Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
 
 **Cómo leer este archivo**
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
@@ -17,60 +17,26 @@ Decisiones: `decisiones-robot-casero.md`. **Quién:** Alan, salvo que se diga ot
 
 ## A. Pendientes activos
 
-### Medidas y piezas (M)
-| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
+Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, válida por decisión de Alan) · **datasheet** · **estimado**.
+
+| ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| M14 | LiPo 2S: medidas y peso | Elegir y comprar el pack (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso y conector | Alan |
-| M15 | LiPo: conectores | Que el conector de descarga de la LiPo coincida con el JST-RC comprado y que traiga balanceo JST-XH de 3 pines | no (J1 es un header de 2 pines con cable) | Comparar al comprar la LiPo | Alan |
-| M16 | 74HC4067: medida con vernier | Por ahora se usan las de la ficha UNIT (40 × 20 mm), como pidió Alan | no | Medir con vernier cuando se pueda; si difiere más de 0.5 mm se corrige la huella | Alan |
-| M17 | 74HC4067: orden y separación de sus pines | La huella supone: fila de control VCC, GND, S0, S1, S2, S3, SIG, EN y fila de canales C0–C15, a 15.24 mm. **Sin fuente** | **sí** (placa de sensores) | Foto de las dos caras del módulo, donde se lea la serigrafía de los pines, y distancia entre las dos filas | Alan |
-| M19 | TCRT5000: posición de las patas | Ya se sabe que son 2 filas de 2. Faltan **2 medidas** (ver C.1) | **sí** (placa de sensores) | (a) distancia entre las 2 patas de una misma fila; (b) distancia entre las dos filas. Centro a centro, con vernier | Alan |
-| M20 | TCRT5000: qué pata es cuál (A, K, C, E) | Saber cuál es el ánodo y cátodo del LED y el colector y emisor del sensor (ver C.2) | **sí** (si se invierte, el sensor no funciona) | Prueba de C.2 con multímetro, o foto de abajo del sensor | Alan |
-| M21 | Ventilador 4010: consumo real con la LiPo | Es de 12 V; con 7.4–8.4 V gira más lento y puede no arrancar (ver C.3) | no | Conectarlo a la batería y medir la corriente | Alan |
-| M22 | Ventilador: peso y sujeción | Ficha: 16 g. Más de 10 g que se caiga es falta (ver C.4) | no | Pesarlo (C04) y sujetarlo con sus 4 tornillos M3 | Alan |
-| M28 | Fusible reseteable (PTC): elegir la pieza | Tipo decidido: **reseteable** (P16). Faltan los datos para comprarlo: corriente de mantenimiento (aprox. 2–3 A [E]), voltaje máximo ≥ 16 V, encapsulado radial y paso de patas | no (huella **provisional** F1 de 5.08 mm) | Buscar un PTC radial ≥ 16 V de 2–3 A; al comprarlo, medir el paso de patas y cambiar la huella | Alan / Claude |
-| M33 | MP1584: posición de sus 4 agujeros (nuevo) | La huella supone 19.5 mm entre los agujeros IN y OUT y 13.5 mm entre + y −. Sin fuente | **sí** (placa principal) | Con vernier: distancia de IN+ a IN− y de IN+ a OUT+, centro a centro | Alan |
-
-### Preguntas (P)
-| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
-|---|---|---|---|---|---|
-| P13 | Señal de falla del DRV8833 (pin ULT) | Saber si se puede conectar al ESP32 sin dañarlo (ver C.5). Hoy la PCB **no** la conecta | no | Multímetro en resistencia entre ULT y VCC del DRV8833, sin alimentar | Alan |
-| P18 | Mapa de pines del firmware | La PCB de KiCad manda (START = GPIO4, ventilador = GPIO17, 12 sensores con multiplexor, sin zumbador ni nFAULT). Falta pasar eso a `firmware/robot-casero/casero/config.h`, que hoy dice START = GPIO18, zumbador en GPIO4, nFAULT en GPIO15 y 8 sensores directos | no | Trabajo de Claude en la siguiente tanda (con pruebas del firmware) | Claude |
-| P19 | Eje del motor contra agujero del rin (nuevo) | P09 dice agujero de **2.3 mm**; el BOM y la ficha de UNIT dicen motor con **eje en D de 3 mm**. Un eje de 3 mm no entra en 2.3 mm | no (es mecánico) | Medir el diámetro del eje de los motores cuando lleguen (o el de los motores de referencia) | Alan |
-
-### Chasis (C)
-| ID | Tema | Qué falta | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
-|---|---|---|---|---|---|
-| C01 | Espesor del acrílico | Ideal: **3 mm máximo** (Alan) | no | Confirmar con el taller | Equipo |
-| C02 | Material de la base | Acrílico, MDF o PLA | no | Decidir | Equipo |
-| C04 | Peso total | Alan irá pesando las piezas; Claude las suma | no | Mandar pesos | Alan |
-| C05 | Holgura de corte | Láser −0.2 mm; PLA +0.3 mm en agujeros | no | Pieza de prueba | Equipo |
-| C07 | Falda del ventilador | Decidir si se usa (ver C.6) | no | Depende de R01 y de la prueba de succión | Equipo |
-| C09 | Tornillos M2 y M3 | Dónde va cada uno (ver C.8) | no | — | — |
-| C10 | Reacomodo mecánico por las PCB nuevas (nuevo) | La placa de sensores creció de 94 × 50 a **94 × 75 mm** porque ahora lleva el multiplexor (P15). Con el arreglo actual el robot pasaría de 200 mm de largo. También se corrigió en `generar_dxf.py` un desfase de 3.81 mm de las ventanas de los sensores. Falta regenerar los DXF | no para grabar; **sí** para fijar dónde van los agujeros de montaje | Elegir una opción de R01 y reacomodar en AutoCAD | Alan / Claude |
-
-### Eléctrico (E)
-| ID | Tema | Valor | ¿Bloquea las PCB? | Cómo resolverlo | Quién |
-|---|---|---|---|---|---|
-| E01 | MP1584 #1 (5 V) | Ajustar la salida a **5.0 V** antes de conectar nada | no | Alimentar IN+/IN− con 7–8.4 V sin nada en OUT; girar el tornillito hasta 5.00 V con el multímetro en OUT | Alan |
-| E02 | MP1584 #2 (6 V motores) | Ajustar a **6.0 V** antes de conectar el DRV8833 | no | Igual que E01 | Alan |
-| E03 | Diodos 1N5822 | Directa ~0.15–0.30 V, inversa OL | no | Sección D | Alan |
-| E04 | ERC y DRC oficiales en KiCad 10 | **Hechos el 11 nov con KiCad 10.0.8 por el servidor MCP** (sin intervención de Alan): 0 errores de ERC y de DRC en las dos placas, 0 conexiones faltantes; solo avisos esperados. Informes en `electronica/kicad/<placa>/verificacion_kicad10/` | no | Se repiten cada vez que se regeneren las PCB (huellas confirmadas) | Claude (MCP) |
-| E05 | Divisor de batería | 8.4 V → 2.08 V | no | Medir con la LiPo cargada | Alan |
-| E06 | Corriente total | < 1.5 A estimado | no | Multímetro en serie | Alan |
-| E07 | Corto antes de la LiPo | +VBAT–GND abierto | no | Multímetro | Alan |
-| E08 | Brocas | 0.8 mm (resistencias, sensores, vías), 1.0 mm (headers, módulos, TO-220, PTC), 1.3 mm (1N5822), 3.2 mm (M3) | no | Comprar las que falten | Alan |
-| E09 | Ruteo de las PCB de doble cara | **Las dos placas quedaron ruteadas al 100 %** (11 nov): sensores 0 conexiones faltantes, 37 vías; principal 0 faltantes, 29 vías (se reacomodó: ESP32 a la derecha, DRV8833 girado 180° de frente a él, J5 y botones junto a la columna de señales). DRC KiCad 7: 0 errores en ambas (solo avisos de serigrafía). Estado **C** (verificadas); pasan a **D** cuando se confirmen las huellas provisionales M17, M19, M20 y M33 y se regenere | ya no bloquea | Regenerar con `generar_pcb.py` tras cada medida nueva; archivos 1:1 en `electronica/kicad/<placa>/fabricacion/` | Claude |
-
-### Riesgos (R)
-| ID | Riesgo | Situación | Qué hacer | Quién |
-|---|---|---|---|---|
-| R01 | Posición del ventilador | Hoy va sobre un hueco de 34 mm de la PCB principal. Alan pide evaluar moverlo hacia adelante (ver C.7) | Alan elige una opción de C.7 | Alan |
-| R03 | Altura de la rueda loca (15 mm) | **Sí hay problema**: la base queda a ~3.9 mm del piso y la rueda loca mide 15 mm (ver C.9) | Medir lo que pide C.9 y decidir cómo montarla | Alan |
-| R04 | Verificación física de medidas y el límite de 200 × 100 mm | Alan medirá en físico; las medidas conocidas ya están en `mecanica/autocad/parametros.yaml` | Medir el robot armado | Alan |
-| V01 | Medidas con vernier | Ya están todas, salvo el multiplexor (M16) | — | Alan |
-
----
+| P-V2-04 | LED de los sensores: seguir en +3V3 o pasar a +5V | Decisión de Alan. Recomendación: +5V con 9.º hilo y resistencias de 220 Ω (ver `v2/docs/conexiones.md`) | **sí, para cerrar el esquema de sensores** | Alan aprueba o no | Alan |
+| P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
+| P-V2-12 | Huella de los MP1584 (nuevo) | Se corrigió la numeración (1 IN+, 2 IN−, 3 OUT−, 4 OUT+). Falta confirmar con la serigrafía del módulo que + queda arriba en ambos lados | no (PCB) | Mirar el módulo al colocarlo | Alan |
+| P-V2-13 | Huella oficial del TCRT5000 (nuevo) | Usar la huella oficial de KiCad 10; su numeración (1–4) debe emparejarse con el símbolo (A, CATH, COLL, E) | no (PCB) | Etapa 2 | Claude |
+| P-V2-14 | Distancia entre filas del módulo mux | UNIT da 40 × 20 mm pero no acota la separación de filas | no (PCB) | Estimar con la plantilla 1:1 o vernier | Alan |
+| M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
+| M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
+| M21 | Ventilador: corriente real a 7.4–8.4 V | Medir | no | Multímetro en serie | Alan |
+| M22 | Ventilador: peso y 4 tornillos M3 | Pesar | no | Báscula | Alan |
+| M28 | PTC | **Elegido: radial reseteable 1.5 A de mantenimiento, ≥ 16 V. No comprado** | no | Comprar; medir paso de patas | Alan |
+| M33 | MP1584: posición de agujeros | Ahora la da la huella de Alan (19.5–20.5 mm entre lados, 2.54 mm entre agujero cuadrado y redondo); verificar al montar | no | Plantilla 1:1 | Alan |
+| P13 | ULT (nFAULT) del DRV8833 | Sigue sin conectar | no | Medir ULT–VCC sin alimentar | Alan |
+| P18 | Firmware | Pasar el mapa de pines V2 a `config.h` (no autorizado aún) | no | Etapa futura | Claude |
+| C01, C02, C04, C05, C07, C09, C10 | Chasis | Igual que v7 (sección C) | no | Etapa 3 | Equipo |
+| R01, R03, R04 | Ventilador, altura de rueda loca, verificación física | Igual que v7 | no | Etapa 3 | Alan |
+| E01–E08 | Pruebas eléctricas al armar | Igual que v7 | no | Al armar | Alan |
 
 ## B. Resueltos y obsoletos (no se borran)
 | ID | Tema | Resolución | Fecha | Dónde quedó |
@@ -119,6 +85,25 @@ Decisiones: `decisiones-robot-casero.md`. **Quién:** Alan, salvo que se diga ot
 | C08 | Cambio del reglamento | No cambiará (Alan) | 11 nov | — |
 | R02 | Puentes de alambre | Se resuelve con **PCB de doble cara** (D18) | 11 nov | E09 |
 
+| M16 | 74HC4067: medida | **40 × 20 mm, ficha UNIT** (vale como oficial, D17 y 12 nov) | 12 nov | Imagen "Dimensiones 74HC4067" UNIT |
+| M17 | 74HC4067: orden de pines | **Resuelto**: lado izquierdo C15…C0 (arriba→abajo); lado derecho SIG, S3, S2, S1, S0, EN, VCC, GND (arriba→abajo). EN activo en bajo con pull-down de 10 k en el módulo (esquemático UNIT); se ata a GND. El símbolo de Alan usa esos mismos nombres | 12 nov | Pinout y esquemático UNIT + datasheet 74HC4067 |
+| M18 | TCRT5000: cuerpo | 10 × 5 mm (UNIT); 10.2 × 5.8 × 7 mm (Vishay) | 12 nov | UNIT + Vishay |
+| M19 | TCRT5000: posición de patas | **Resuelto**: 2 × 2, se usará la **huella oficial de KiCad**, que corresponde al sensor comprado (Alan) | 12 nov | Alan + KiCad oficial (P-V2-13) |
+| M20 | TCRT5000: A, K, C, E | **Resuelto**: con las patas hacia el observador y los ópticos al frente: arriba-izq. **ÁNODO**, arriba-der. **COLECTOR**, abajo-izq. **CÁTODO**, abajo-der. **EMISOR**. LED (A–K) y fototransistor (C–E) quedan en lados opuestos, como en el datasheet y la foto de UNIT (lente azul = LED) | 12 nov | Alan + pinout UNIT + Vishay |
+| M28 | PTC (selección) | Referencia de compra elegida: 1.5 A, ≥ 16 V (sigue en A hasta comprarlo) | 12 nov | Alan |
+| P19 | Eje del motor vs rin | **Resuelto**: el eje mide **≈ 2.3 mm de diámetro**; los "3 mm" eran una longitud. Entra en el rin de 2.3 mm. El eje sobresale 8.5 mm (M05) | 12 nov | Alan |
+| E09 | Ruteo de las PCB anteriores | **Obsoleto**: las PCB de `electronica/kicad/` son históricas; la V2 se diseña desde cero | 12 nov | `v2/README.md` |
+| E04 | ERC/DRC de la versión anterior | **Obsoleto** (diseño anterior). ERC V2: ver `v2/docs/conexiones.md` | 12 nov | — |
+| V01 | Medidas con vernier | Las fichas UNIT valen como oficiales mientras tanto | 12 nov | Alan |
+| P-V2-01 | MP1584: pin IN+ sin número | **Resuelto**: el símbolo tenía IN+ con número vacío y la huella numeraba sus 8 agujeros solo 1 y 2 (habría unido IN+ con OUT+). Corregido: símbolo IN+ = 1; huella 1 IN+, 2 IN−, 3 OUT−, 4 OUT+ (cada borne tiene 2 agujeros con el mismo número). Copias de respaldo `.bak` en la biblioteca | 12 nov | Autorización de Alan |
+| P-V2-02 | DRV8833: dibujo de pines | **Sin cambio**: no es error eléctrico. Los 12 pines tienen nombre y número correctos (1 EEP, 2–5 OUT1–4, 6 ULT, 7 IN1, 8 IN2, 9 GND, 10 VCC, 11 IN3, 12 IN4) y la huella usa los mismos números. Solo el extremo de conexión queda dentro del recuadro | 12 nov | Revisión |
+| P-V2-03 | Valor del PTC | Ver M28 | 12 nov | Alan |
+| P-V2-05 | IRLZ44N a 3.3 V | Apto para el ventilador de 100 mA; no se cambia | 12 nov | Datasheet IR: VGS(th) ≤ 2 V |
+| P-V2-06 | Botón RESET | **Se queda** en la PCB (SW4 a EN) | 12 nov | Alan |
+| P-V2-08 | Módulos soldados vs. removibles | Removibles con tira hembra (P-V2-07) | 12 nov | Alan |
+| P-V2-09 | Símbolo TCRT5000 | KiCad 10 no tiene símbolo oficial (comprobado con el MCP); se usa el de Alan (pines A, CATH, COLL, E). La huella sí será la oficial | 12 nov | MCP + Alan |
+| P-V2-10 | Medidas de la placa de sensores | Se definen en la etapa 2 dentro del reglamento | 12 nov | — |
+| P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
 ---
 
 ## C. Explicaciones detalladas

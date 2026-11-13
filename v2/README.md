@@ -8,7 +8,8 @@ anterior y es **HISTÓRICO**: sirve de consulta, no es diseño vigente. No se bo
 |---|---|---|
 | `v2/docs/decisiones.md` | Decisiones vigentes (D-V2-xx) con su origen | vigente |
 | `v2/docs/componentes.md` | Instalados / repuestos / por comprar / mecánicos / insumos | vigente |
-| `v2/docs/pendientes.md` | Pendientes revisados uno por uno (P-V2-xx) | vigente |
+| `docs/pendientes-por-confirmar.md` | **Lista única de pendientes** (v8, incluye P-V2-xx) | vigente |
+| `v2/docs/conexiones.md` | Qué se conecta con qué y por qué; análisis 3.3 V vs 5 V | vigente |
 | `v2/docs/bibliotecas.md` | Qué símbolo usa cada pieza y de dónde viene | vigente |
 | `v2/docs/migracion.md` | Qué se migró, qué se corrigió y qué queda histórico | vigente |
 | `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | **en revisión de Alan** |

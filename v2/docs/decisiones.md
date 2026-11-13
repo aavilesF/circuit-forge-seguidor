@@ -13,3 +13,9 @@
 | D-V2-10 | Se usa 1 rueda loca 3Pi N20 (otra de repuesto) | Alan, 12 nov |
 | D-V2-11 | Eje del N20: **diámetro ≈ 2.3 mm** (entra en el rin de 2.3 mm). El "3 mm" anterior era una longitud, no diámetro. Sobresale 8.5 mm (M05) | Alan, 12 nov (cierra P19) |
 | D-V2-12 | Nunca se borran IDs; los de la rama anterior quedan en sus archivos históricos | D11 |
+| D-V2-13 | PTC de referencia: radial reseteable **1.5 A de mantenimiento, ≥ 16 V** (no comprado) | Alan, 12 nov |
+| D-V2-14 | Botón RESET (SW4 a EN) se queda en la PCB aunque el DevKit tenga el suyo | Alan, 12 nov |
+| D-V2-15 | ESP32, MP1584, DRV8833 y mux irán sobre **tira hembra** en la PCB (los módulos usan sus pines macho) para poder cambiarlos. No se dibuja en el esquema | Alan, 12 nov |
+| D-V2-16 | TCRT5000: símbolo de Alan + **huella oficial de KiCad**. Pines confirmados (M20) | Alan, 12 nov |
+| D-V2-17 | Fichas de UNIT valen como medida oficial hasta medir con vernier | Alan, 12 nov |
+| D-V2-18 | Esquemáticos con cables reales; etiquetas solo de complemento (cable entre placas) | Alan, 12 nov |

@@ -12,9 +12,9 @@ Compras: ticket Valtierra 5 nov y pedido UNIT 7 nov (ver `robot-casero/materiale
 | C1, C2 | 470 µF 16 V | 2 / 2 |
 | C3, C4, C5 | 100 nF cerámico | 3 (+1 en sensores) / 5 |
 | R1, R2, R4, R5 | 100 k, 33 k, 100 Ω, 10 k | por comprar |
-| F1 | PTC reseteable | por comprar (P-V2-03) |
+| F1 | PTC reseteable 1.5 A ≥ 16 V | por comprar |
 | SW2, SW3, SW4 | Pulsadores START / CAL / RESET | 3 / 3 |
-| J1–J6 | Headers para cables (5 × 1x2, 1 × 1x8) | confirmar existencia (P-V2-07) |
+| J1–J6 | Headers para cables (5 × 1x2, 1 × 1x8) | tira macho y hembra 2.54 mm (Alan, 12 nov) |
 
 ## B. Montados en PCB de sensores
 | Ref | Pieza | Usadas / compradas |
