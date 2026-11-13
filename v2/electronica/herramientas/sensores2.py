@@ -1,4 +1,8 @@
 from ruteo import *
+
+RV='Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical'
+Esq.FP={**{f'R{i}':RV for i in range(1,27)},**{f'OP{i}':'OptoDevice:Vishay_TCRT5000' for i in range(1,13)},
+ 'Q1':'Package_TO_SOT_THT:TO-92_Inline_Wide','C1':'Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm','J1':'Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical'}
 s=Esq('sensores','Seguidor V2 - PCB de sensores',W=405,H=282)
 def P(v): return round(v/2.54)*2.54
 T=s.text

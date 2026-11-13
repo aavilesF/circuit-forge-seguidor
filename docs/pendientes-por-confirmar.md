@@ -24,7 +24,13 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-12 | Huella de los MP1584 (nuevo) | Se corrigió la numeración (1 IN+, 2 IN−, 3 OUT−, 4 OUT+). Falta confirmar con la serigrafía del módulo que + queda arriba en ambos lados | no (PCB) | Mirar el módulo al colocarlo | Alan |
-| P-V2-13 | Huella oficial del TCRT5000 (nuevo) | Usar la huella oficial de KiCad 10; su numeración (1–4) debe emparejarse con el símbolo (A, CATH, COLL, E) | no (PCB) | Etapa 2 | Claude |
+| P-V2-17 | **Huella DRV8833 de la biblioteca de Alan no coincide con el módulo** (nuevo) | (1) paso de 2.50 mm (el módulo es 2.54, M09); (2) filas a 15.5 mm (vernier M32: 15.9 mm); (3) orden de IN invertido: la huella pone IN1 frente a EEP y el módulo tiene IN4 frente a EEP (M10) → IN1↔IN4 e IN2↔IN3 quedarían cruzados. VCC y GND sí coinciden | **sí, para rutear** | Alan autoriza corregir la huella o da otra | Alan |
+| P-V2-18 | **Multiplexor sin huella aprobada** (nuevo) | La huella del módulo HW-178 está en "No usar_ V_antiguas"; KiCad no tiene oficial. En la PCB de sensores quedó un espacio reservado de 40 × 20 mm | **sí, para rutear** | Alan da huella o autoriza usar 2 tiras oficiales (1×16 y 1×8) | Alan |
+| P-V2-13 | TCRT5000: símbolo vs huella oficial | La huella oficial numera 1 = C, 2 = E, 3 = A, 4 = K (Vishay); el símbolo usa A/CATH/COLL/E. En la PCB se asignaron las redes con esa equivalencia, pero el ERC de paridad marca 96 avisos hasta renumerar los pines del símbolo (A→3, CATH→4, COLL→1, E→2) | **sí, para rutear** | Alan autoriza renumerar el símbolo | Alan |
+| P-V2-19 | Cara de montaje de la placa de sensores (nuevo) | Los TCRT5000 deben mirar al piso: montar la placa invertida (todo por "arriba" en KiCad) o poner los sensores en la cara inferior | no (colocación) | Decidir con la mecánica | Alan |
+| P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
+| P-V2-21 | EN ESTUDIO: ¿vale la pena el ventilador? | Ver `v2/docs/evaluaciones.md`. No se quita; probar con báscula | no | Pruebas físicas | Alan |
+| P-V2-22 | Colocación de huellas preliminar (nuevo) | Principal 96 × 84 mm, sensores 96 × 56 mm, sin pistas. Revisar posiciones | no | Revisión de Alan | Alan |
 | P-V2-14 | Distancia entre filas del módulo mux | UNIT da 40 × 20 mm pero no acota la separación de filas | no (PCB) | Estimar con la plantilla 1:1 o vernier | Alan |
 | M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
 | M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
@@ -104,6 +110,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-09 | Símbolo TCRT5000 | KiCad 10 no tiene símbolo oficial (comprobado con el MCP); se usa el de Alan (pines A, CATH, COLL, E). La huella sí será la oficial | 12 nov | MCP + Alan |
 | P-V2-10 | Medidas de la placa de sensores | Se definen en la etapa 2 dentro del reglamento | 12 nov | — |
 | P-V2-04 | LED de sensores a 5 V | **Aprobado (13 nov) y aplicado**: ánodos a +5V (salida del MP1584 de 5 V) por un 9.º hilo; R1–R12 = 220 Ω (~17 mA c/u, ~200 mA total); R25 = 470 Ω. Pull-ups de 10 k y mux siguen en +3V3: SIG nunca pasa de 3.3 V | 13 nov | Alan |
+| P-V2-23 | Huellas asignadas en los esquemáticos | **Hecho (13 nov)**: campo Footprint lleno con huellas oficiales o de Alan; una etiqueta de nombre por red para que la PCB reciba los mismos nombres | 13 nov | DRC paridad |
 | P-V2-15 | ¿Esquemáticos terminados? | **Sí (13 nov)**: ERC KiCad 10 principal 0/0; sensores 0 errores, 4 avisos sin efecto. Vistas en `v2/electronica/vistas/` | 13 nov | ERC MCP |
 | P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
 ---

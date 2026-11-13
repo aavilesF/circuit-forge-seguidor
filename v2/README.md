@@ -13,6 +13,9 @@ anterior y es **HISTÓRICO**: sirve de consulta, no es diseño vigente. No se bo
 | `v2/docs/bibliotecas.md` | Qué símbolo usa cada pieza y de dónde viene | vigente |
 | `v2/docs/migracion.md` | Qué se migró, qué se corrigió y qué queda histórico | vigente |
 | `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | **en revisión de Alan** |
-| `v2/electronica/herramientas/` | Script que generó los esquemáticos (solo esquemas; no PCB) | — |
+| `v2/electronica/*/` `.kicad_pcb` | Colocación PRELIMINAR de huellas, sin pistas (13 nov) | en revisión |
+| `v2/electronica/vistas/` | SVG/PNG de esquemas y vistas 3D de la colocación | — |
+| `v2/docs/evaluaciones.md` | Encoders/aprendizaje y ventilador (EN ESTUDIO) | — |
+| `v2/electronica/herramientas/` | Scripts que generan esquemas y colocación (no rutean) | — |
 
 Etapas: 1 esquemáticos (en revisión) → 2 PCB de doble cara → 3 compatibilidad mecánica.

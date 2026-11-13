@@ -34,7 +34,9 @@ class Esq:
         s.W,s.H=W,H; s.blocked=set(); s.node={}; s.oh={}; s.ov={}; s.segs={}; s.npwr=0; s.esperado=[]; s.nc=[]; s.labels=[]; s.stub={}
         for i in range(C(283),C(410)):
             for j in range(C(236),C(290)): s.blocked.add((i,j))
+    FP={}
     def add(s,lid,ref,val,x,y,nets,fp='',board=True,power=('GND','+3V3')):
+        fp=fp or s.FP.get(ref,'')
         if lid not in s.libs: s.libs[lid]=libsym(lid)
         ls=s.libs[lid]; ps=pins(ls)
         props=[]
@@ -223,6 +225,11 @@ class Esq:
                 s.label(n,e,d)
             # tambien etiqueta en un punto del arbol principal
             cell,d,ref,num=s.pins[n][0]; L2=s.stub[(ref,num)]; s.label(n,(cell[0]+d[0]*L2,cell[1]+d[1]*L2),d)
+        # nombre explicito para cada red (asi la PCB recibe el mismo nombre): etiqueta en el extremo del primer pin
+        con_etq=set(n for n,_ in s.labels)
+        for n in s.pins:
+            if n in power_nets or n in con_etq or n in label_nets: continue
+            cell,d,ref,num=s.pins[n][0]; s.label(n,cell,d)
         for n in label_nets:
             if n in s.pins and n not in fallos and n not in power_nets:
                 for cell,d,ref,num in s.pins[n]:

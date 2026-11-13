@@ -1,4 +1,10 @@
 from ruteo import *
+
+R7='Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'; CD='Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm'
+CP='Capacitor_THT:CP_Radial_D8.0mm_P3.50mm'; H2='Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical'; DD='Diode_THT:D_DO-201AD_P15.24mm_Horizontal'
+Esq.FP=dict(U1='MP1584:MP1584module',U2='MP1584:MP1584module',C1=CP,C2=CP,D1=DD,D2=DD,R1=R7,R2=R7,R4=R7,R5=R7,C3=CD,C4=CD,C5=CD,
+ F1='Fuse:Fuse_BelFuse_0ZRE0150FF_L23.4mm_W5.3mm',J1=H2,J2=H2,J3=H2,J4=H2,J5=H2,J6='Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical',
+ U3='DRV8833:DRV8833',Q1='Package_TO_SOT_THT:TO-220-3_Vertical',A1='ESP32:ESP32-DevKit-USB-C',SW2='Button_Switch_THT:SW_PUSH-12mm',SW3='Button_Switch_THT:SW_PUSH_6mm',SW4='Button_Switch_THT:SW_PUSH_6mm')
 s=Esq('principal','Seguidor V2 - PCB principal',W=405,H=282)
 def P(v): return round(v/2.54)*2.54
 T=s.text
