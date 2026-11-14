@@ -22,8 +22,12 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
 | P-V2-27 | Revisión del ruteo (nuevo) | Ruteo automático hecho (doble cara, pista 0.8 mm señal / 1.0 mm potencia, separación 0.5 mm, vías Ø1.8/0.8). Alan revisa antes de generar patrones de planchado | **sí, para fabricar** | Revisión en KiCad 10 | Alan |
-| P-V2-28 | Huella ESP32 con dibujos en Edge.Cuts (nuevo) | Los agujeros/contorno del módulo están en la capa de corte; en las PCB se pasaron a Dwgs.User para no perforar la placa. Falta autorizar el mismo cambio en la biblioteca | no | Alan autoriza | Alan |
+| P-V2-28 | Huella ESP32 con dibujos en Edge.Cuts (explicado 14 nov: 4 círculos Ø3 mm de los agujeros del DevKit; en Edge.Cuts serían perforaciones en nuestra placa) | Los agujeros/contorno del módulo están en la capa de corte; en las PCB se pasaron a Dwgs.User para no perforar la placa. Falta autorizar el mismo cambio en la biblioteca | no | Alan autoriza | Alan |
 | P-V2-29 | Altura del ventilador / chasis | Se conserva el ventilador (decisión 13 nov). Su hueco y posición se definen en la mecánica | no | Etapa 3 | Equipo |
+| P-V2-30 | **USB-C del ESP32 bloqueado por SW2** (auditoría 14 nov) | El conector queda a ~4 mm del cuerpo de SW2; el enchufe del cable no entra. Propuesta: mover SW2 fuera del pasillo del USB o llevar el USB al borde | **sí, para fabricar** | Alan aprueba propuesta | Alan |
+| P-V2-31 | F1 grande | La huella oficial BelFuse 0ZRE0150FF es fiel a esa pieza (cuerpo de 23.4 mm, patas a 10.2 mm), pero es voluminosa. Elegir huella al comprar el PTC real | no (hasta comprarlo) | Comprar y medir | Alan |
+| P-V2-32 | Optimizar tamaño de las PCB (auditoría) | Sensores: contorno en curva y resistencias detrás → ~15–20 mm menos de largo. Principal: reagrupar → ~10–15 mm menos. Suma actual 84 + 88 mm frente a 200 mm de reglamento | no | Alan elige propuestas | Alan |
+| P-V2-33 | EN ESTUDIO: capucha para sensores | Pieza mecánica aparte, negra mate, curva, a 1–2 mm del piso; más compensación de luz ambiente por firmware (LED encendido − apagado) | no | Etapa 3 | Equipo |
 | P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
