@@ -21,6 +21,9 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
+| P-V2-24 | Interpretación de pines (MP1584, DRV8833, mux, TCRT5000) enviada a Alan (13 nov) | Esperando confirmación antes de tocar símbolos/huellas y rutear | **sí** | Alan confirma | Alan |
+| P-V2-25 | TCRT5000: dos descripciones de Alan no coinciden (emisor/cátodo intercambiados) | Ver respuesta del 13 nov | **sí (sensores)** | Alan confirma | Alan |
+| P-V2-26 | Separadores M3 del kit UNIT (6, 10, 15, 20 mm macho-hembra y hembra-hembra; tornillos M3×6; tuercas) | Pesar 1 de cada largo cuando se elija | no | Báscula | Alan |
 | P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-12 | Huella de los MP1584 (nuevo) | Se corrigió la numeración (1 IN+, 2 IN−, 3 OUT−, 4 OUT+). Falta confirmar con la serigrafía del módulo que + queda arriba en ambos lados | no (PCB) | Mirar el módulo al colocarlo | Alan |
@@ -31,11 +34,9 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
 | P-V2-21 | EN ESTUDIO: ¿vale la pena el ventilador? | Ver `v2/docs/evaluaciones.md`. No se quita; probar con báscula | no | Pruebas físicas | Alan |
 | P-V2-22 | Colocación de huellas preliminar (nuevo) | Principal 96 × 84 mm, sensores 96 × 56 mm, sin pistas. Revisar posiciones | no | Revisión de Alan | Alan |
-| P-V2-14 | Distancia entre filas del módulo mux | UNIT da 40 × 20 mm pero no acota la separación de filas | no (PCB) | Estimar con la plantilla 1:1 o vernier | Alan |
 | M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
 | M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
 | M21 | Ventilador: corriente real a 7.4–8.4 V | Medir | no | Multímetro en serie | Alan |
-| M22 | Ventilador: peso y 4 tornillos M3 | Pesar | no | Báscula | Alan |
 | M28 | PTC | **Elegido: radial reseteable 1.5 A de mantenimiento, ≥ 16 V. No comprado** | no | Comprar; medir paso de patas | Alan |
 | M33 | MP1584: posición de agujeros | Ahora la da la huella de Alan (19.5–20.5 mm entre lados, 2.54 mm entre agujero cuadrado y redondo); verificar al montar | no | Plantilla 1:1 | Alan |
 | P13 | ULT (nFAULT) del DRV8833 | Sigue sin conectar | no | Medir ULT–VCC sin alimentar | Alan |
@@ -112,6 +113,9 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-04 | LED de sensores a 5 V | **Aprobado (13 nov) y aplicado**: ánodos a +5V (salida del MP1584 de 5 V) por un 9.º hilo; R1–R12 = 220 Ω (~17 mA c/u, ~200 mA total); R25 = 470 Ω. Pull-ups de 10 k y mux siguen en +3V3: SIG nunca pasa de 3.3 V | 13 nov | Alan |
 | P-V2-23 | Huellas asignadas en los esquemáticos | **Hecho (13 nov)**: campo Footprint lleno con huellas oficiales o de Alan; una etiqueta de nombre por red para que la PCB reciba los mismos nombres | 13 nov | DRC paridad |
 | P-V2-15 | ¿Esquemáticos terminados? | **Sí (13 nov)**: ERC KiCad 10 principal 0/0; sensores 0 errores, 4 avisos sin efecto. Vistas en `v2/electronica/vistas/` | 13 nov | ERC MCP |
+| P-V2-14 | Mux: distancia entre filas | **15.7 mm** (Alan, vernier 13 nov). La huella HC4067 que dejó Alan tiene 14.99 mm → corregir al aprobar la interpretación | 13 nov | Alan |
+| M22 | Ventilador: peso | **15 g medido** (Alan, báscula 13 nov); la ficha decía 16 g | 13 nov | Alan |
+| M32 | DRV8833: medidas finales | Filas **15.7 mm** y paso **2.54 mm** (Alan 13 nov; sustituye 15.9 y 15.5) | 13 nov | Alan |
 | P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
 ---
 
