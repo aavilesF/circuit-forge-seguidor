@@ -13,3 +13,4 @@ Ningún ID se borra: si un ID ya no aparece en la versión actual, aquí está s
 | `pendientes-v6_2026-11-07_pre-compra-unit.md` | 7 nov, antes de la v7 | Después: pedido UNIT comprado; IDs nuevos P17 (ruedas 3Pi) y P18 (mapa de pines); E04 con instrucciones para KiCad 10; M30 anotado. Ese borrador v7 del 7 nov no se publicó (quedó en el commit local 64a89dd); la v7 publicada es la del 11 nov |
 | (v7 del 11 nov = archivo actual) | 11 nov | Reorganizada: activos arriba, resueltos y obsoletos abajo, explicaciones detalladas. Medidas de vernier, respuestas por ID de Alan; nuevos M33, P19, C10 |
 | pendientes-v7_2026-11-11_pre-V2.md | 12 nov 2026 | v8: rama seguidor-caseroV2; resueltos M16, M17, M19, M20, P19, P-V2-01/02/05/06/08/09; nuevos P-V2-12/13/14 |
+| pendientes-v8_2026-11-14_pre-optimizacion.md | 14 nov 2026 | v9: P-V2-28 y P-V2-30 resueltos; P-V2-27/29/32 actualizados; nuevos P-V2-34 a 38 |

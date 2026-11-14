@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 8 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 9 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -8,7 +8,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
 
-IDs nuevos en esta versión: **M33, P19, C10, D18–D24**. Medidas completas: `especificaciones-componentes.md`.
+v9 (14 nov): optimización de las dos PCB aprobada por Alan. Copia de la v8: `docs/historial/pendientes-v8_2026-11-14_pre-optimizacion.md`. IDs nuevos: **P-V2-34 a P-V2-38**.
+IDs nuevos en la v8: **M33, P19, C10, D18–D24**. Medidas completas: `especificaciones-componentes.md`.
 Decisiones: `decisiones-robot-casero.md`. **Quién:** Alan, salvo que se diga otra cosa.
 
 **¿Bloquea las PCB?** — **sí** = sin ese dato no se puede taladrar o planchar esa placa · **no** = la PCB puede avanzar.
@@ -21,13 +22,16 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-27 | Revisión del ruteo (nuevo) | Ruteo automático hecho (doble cara, pista 0.8 mm señal / 1.0 mm potencia, separación 0.5 mm, vías Ø1.8/0.8). Alan revisa antes de generar patrones de planchado | **sí, para fabricar** | Revisión en KiCad 10 | Alan |
-| P-V2-28 | Huella ESP32 con dibujos en Edge.Cuts (explicado 14 nov: 4 círculos Ø3 mm de los agujeros del DevKit; en Edge.Cuts serían perforaciones en nuestra placa) | Los agujeros/contorno del módulo están en la capa de corte; en las PCB se pasaron a Dwgs.User para no perforar la placa. Falta autorizar el mismo cambio en la biblioteca | no | Alan autoriza | Alan |
-| P-V2-29 | Altura del ventilador / chasis | Se conserva el ventilador (decisión 13 nov). Su hueco y posición se definen en la mecánica | no | Etapa 3 | Equipo |
-| P-V2-30 | **USB-C del ESP32 bloqueado por SW2** (auditoría 14 nov) | El conector queda a ~4 mm del cuerpo de SW2; el enchufe del cable no entra. Propuesta: mover SW2 fuera del pasillo del USB o llevar el USB al borde | **sí, para fabricar** | Alan aprueba propuesta | Alan |
+| P-V2-27 | Revisión del ruteo | **14 nov: placas reacomodadas y vueltas a rutear.** Principal 96 × 74 mm, 22 vías; sensores 96 × 68 mm con contorno curvo, 18 vías. DRC (KiCad 10): 0 errores, 0 conexiones pendientes en ambas. Alan revisa antes de generar patrones de planchado | **sí, para fabricar** | Revisión en KiCad 10 (carpeta `Esquemas V2/_opt_2026-11-14b`) | Alan |
+| P-V2-29 | Posición del ventilador / chasis | Se conserva el ventilador. 14 nov: evaluación preliminar sin cambiar la mecánica (ver P-V2-36). Falta que Alan elija la posición | no | Etapa 3 | Equipo |
 | P-V2-31 | F1 grande | La huella oficial BelFuse 0ZRE0150FF es fiel a esa pieza (cuerpo de 23.4 mm, patas a 10.2 mm), pero es voluminosa. Elegir huella al comprar el PTC real | no (hasta comprarlo) | Comprar y medir | Alan |
-| P-V2-32 | Optimizar tamaño de las PCB (auditoría) | Sensores: contorno en curva y resistencias detrás → ~15–20 mm menos de largo. Principal: reagrupar → ~10–15 mm menos. Suma actual 84 + 88 mm frente a 200 mm de reglamento | no | Alan elige propuestas | Alan |
+| P-V2-32 | Optimizar tamaño de las PCB | **Aplicado 14 nov** (aprobado por Alan): principal 84 → 74 mm; sensores 88 → 68 mm (alternativa de 59 mm, ver P-V2-38). Estado anterior en la etiqueta git `v2-pcb-antes-optimizacion-2026-11-14` (commit 3842103) | no | Alan revisa | Alan |
 | P-V2-33 | EN ESTUDIO: capucha para sensores | Pieza mecánica aparte, negra mate, curva, a 1–2 mm del piso; más compensación de luz ambiente por firmware (LED encendido − apagado) | no | Etapa 3 | Equipo |
+| P-V2-34 | **Ancho total del robot (ruedas)** | Con 2 N20 espalda con espalda: 2 × 24.5 mm de cuerpo + 2 × (~1 mm de holgura + 22.1 mm de rin) ≈ **95 mm**, sin contar las terminales traseras de los motores (~2 mm cada una más la soldadura del cable) → **~99–101 mm**. El reglamento permite 100 mm. Las PCB (96 mm) no son el límite: lo son ruedas y motores | **sí, para la mecánica** | Medir con vernier un motor con sus terminales y cable soldado, y la posición real del rin en el eje | Alan |
+| P-V2-35 | Resistencias de 220 Ω de los LED delante de los sensores | **No caben detrás sin cambiar el circuito:** entre dos TCRT5000 vecinos quedan 1.4 mm entre pads, y una pista de 0.8 mm con 0.5 mm de separación necesita 1.8 mm. El ánodo (par delantero) no puede salir hacia atrás. Se dejaron delante, con el contorno curvo pegado a ellas. Opción que requiere aprobación: poner la resistencia de cada LED del lado del cátodo (ánodos a un bus común de +5 V por delante); eléctricamente equivalente, pero cambia las conexiones del esquema | no | Alan decide si cambia el esquema | Alan |
+| P-V2-36 | Ventilador con una sola base | Evaluación 14 nov (sin cambios mecánicos): no cabe entre las ruedas sobre la línea del eje, porque ahí van los dos motores (~49–55 mm de ancho). Sí cabe **delante o detrás del eje**, atornillado **bajo** el acrílico: el piso de la base queda a ~18 mm del suelo (radio de rueda 13.4 + medio motor 5) y el ventilador mide 10 mm, así que quedarían ~8 mm de aire. La PCB principal encima, sobre separadores (ya necesarios por las soldaduras de abajo), deja salir el aire si los separadores miden ≥ 10 mm. Batería y placa de sensores no deben tapar la toma | no | Alan elige delante/detrás del eje en la etapa 3 | Alan |
+| P-V2-37 | Huella del 1N5822 (D1, D2) | El esquema V2 usa `D_DO-201AD_P15.24mm`; el M24 (11 nov) dice que Alan decidió 20.32 mm entre patas. No se cambió (no se autorizó cambiar componentes) | no | Alan confirma 15.24 o 20.32 mm | Alan |
+| P-V2-38 | Elegir versión de la placa de sensores | **A (recomendada):** 96 × 68 mm, 18 vías, J1 al centro atrás. **B:** 96 × 59 mm, 24 vías, J1 atrás a la derecha y Q1 atrás a la izquierda (`v2/electronica/sensores/alternativa_59mm`). Las dos: DRC 0 errores, 0 pendientes | no | Alan elige | Alan |
 | P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
@@ -46,6 +50,8 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 ## B. Resueltos y obsoletos (no se borran)
 | ID | Tema | Resolución | Fecha | Dónde quedó |
 |---|---|---|---|---|
+| P-V2-28 | Dibujos en Edge.Cuts de las huellas ESP32 y HC4067 | **Resuelto 14 nov (Alan aprueba):** eran 4 círculos de los agujeros del DevKit y el contorno de 40 × 20 mm del módulo; pasados a Dwgs.User en las PCB y en las bibliotecas de origen (copia `.antes_edgecuts_2026-11-14.bak`). Pads sin cambios (comprobado) | 14 nov | `Librerias/Footprints`, `v2/electronica/bibliotecas` |
+| P-V2-30 | USB-C bloqueado por SW2 | **Resuelto 14 nov:** el ESP32 se bajó hasta que su USB-C queda en el borde inferior de la PCB principal (en el dibujo); SW2 pasó a la derecha del USB y SW3/SW4 arriba del ESP32. Ningún componente queda en el camino del enchufe (pasillo libre de x 44 a 53 mm hacia fuera de la placa). Falta que la mecánica deje libres ~30 mm detrás del borde para el enchufe y la curva del cable | 14 nov | `v2/electronica/principal` |
 | M01 | ESP32: tamaño | 51.9 × 28.7 mm; 54 mm con USB-C (vernier) | 11 nov | Huella `ESP32_DevKit_30`; especificaciones |
 | M02 | ESP32: distancia entre filas | 25.5 mm (vernier) → huella a 25.4 mm (paso estándar) | 11 nov | Huella; especificaciones |
 | M03 | ESP32: orden de pines | Serigrafía + pinout (P07) | 7 nov | Especificaciones |

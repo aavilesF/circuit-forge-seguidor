@@ -65,7 +65,7 @@
 			(width 0.127)
 			(type solid)
 		)
-		(layer "Edge.Cuts")
+		(layer "Dwgs.User")
 		(uuid "80fd33a9-6774-48b7-ad1f-63f82435173e")
 	)
 	(fp_line
@@ -75,7 +75,7 @@
 			(width 0.127)
 			(type solid)
 		)
-		(layer "Edge.Cuts")
+		(layer "Dwgs.User")
 		(uuid "58d3ed38-7473-4edb-825a-cffd4d8b3f24")
 	)
 	(fp_line
@@ -85,7 +85,7 @@
 			(width 0.127)
 			(type solid)
 		)
-		(layer "Edge.Cuts")
+		(layer "Dwgs.User")
 		(uuid "aad861cd-eb96-481a-9901-8885e23f191b")
 	)
 	(fp_line
@@ -95,7 +95,7 @@
 			(width 0.127)
 			(type solid)
 		)
-		(layer "Edge.Cuts")
+		(layer "Dwgs.User")
 		(uuid "f1285a8e-caa7-474e-9ac6-d4ce2bbacafc")
 	)
 	(fp_text user "C15"

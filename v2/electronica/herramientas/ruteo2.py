@@ -11,6 +11,10 @@ def route_nc(s,power=(),pm=0.35,npm=0.4,G=0.5,wsig=0.8,wpow=1.0,clr=0.5,via_cost
     ek=int(math.ceil((1.0+wpow/2)/G))
     for L in(0,1):
         hard[L][:ek,:]=-1; hard[L][-ek:,:]=-1; hard[L][:,:ek]=-1; hard[L][:,-ek:]=-1
+    if hasattr(s,'inside'):   # contorno no rectangular: margen al borde
+        for i in range(W):
+            for j in range(H):
+                if s.inside(i*G,j*G)<1.0+wpow/2: hard[0][i,j]=-1; hard[1][i,j]=-1
     for p in s.pads:
         cx,cy=cell(p['x'],p['y']); n=nid.get(p['net'],-1) if not p['np'] else -1
         for i,j in disc((p['r']+0.25+npm+wsig/2) if p['np'] else (p['r']+clr+pm+wsig/2)):
