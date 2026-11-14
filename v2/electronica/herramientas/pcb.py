@@ -4,7 +4,7 @@ U=lambda: str(uuid.uuid4())
 H='/mnt/user-data/uploads/KiCAD/_tmp_huellas/'
 def loadfp(lid):
     lib,name=lid.split(':')
-    f={'ESP32':'ESP32__','DRV8833':'DRV8833__','MP1584':'MP1584__'}.get(lib,lib+'__')+name+'.kicad_mod'
+    f=lib+'__'+name+'.kicad_mod'
     return parse(open(H+f).read())
 def bbox(fp):
     xs=[];ys=[]
@@ -44,6 +44,7 @@ class Board:
         return s.nets[n]
     def place(s,ref,lid,val,x,y,rot=0,pinmap=None):
         fp=loadfp(lid); b=bbox(fp)
+        fp=parse(dump(fp).replace('"Edge.Cuts"','"Dwgs.User"'))
         c,sn=math.cos(math.radians(rot)),math.sin(math.radians(rot))
         pts=[(x+px*c+py*sn, y-px*sn+py*c) for px in(b[0],b[2]) for py in(b[1],b[3])]
         bx=(min(p[0] for p in pts),min(p[1] for p in pts),max(p[0] for p in pts),max(p[1] for p in pts))

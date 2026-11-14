@@ -66,3 +66,11 @@ KiCad 10.0.8 por el MCP (principal: 0 errores, 0 avisos; sensores: 0 errores, 4 
 ## D. IRLZ44N (RDS(on))
 RDS(on) es la resistencia del MOSFET encendido. IR la garantiza con 4–5 V de compuerta; a 3.3 V enciende (umbral máx. 2 V)
 pero con algo más de resistencia. Con un ventilador de ~100 mA la pérdida es de milivatios: **sirve, no se cambia**.
+
+## E. PCB ruteadas (14 nov 2026)
+| Placa | Medida | Pistas | Vías | DRC KiCad 10 | Sin conectar |
+|---|---|---|---|---|---|
+| Principal | 96 × 84 mm | 631 tramos | 23 | 0 errores (solo avisos de serigrafía) | 0 |
+| Sensores | 96 × 88 mm | 645 tramos | 16 | 0 errores (solo avisos de serigrafía/texto) | 0 |
+Reglas caseras: pista 0.8 mm (señal) / 1.0 mm (potencia), separación ≥ 0.5 mm, vías Ø1.8 mm con broca 0.8 mm (cada vía = alambre soldado en las dos caras).
+Módulos sobre tira hembra, headers, botones y electrolíticos: solo se conectan por la cara inferior. TCRT5000 (cara inferior): solo por la superior. Resistencias, diodos, TO-220, TO-92 y cerámicos: ambas caras.

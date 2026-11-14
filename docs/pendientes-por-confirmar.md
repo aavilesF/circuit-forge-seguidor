@@ -21,19 +21,13 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-24 | Interpretación de pines (MP1584, DRV8833, mux, TCRT5000) enviada a Alan (13 nov) | Esperando confirmación antes de tocar símbolos/huellas y rutear | **sí** | Alan confirma | Alan |
-| P-V2-25 | TCRT5000: dos descripciones de Alan no coinciden (emisor/cátodo intercambiados) | Ver respuesta del 13 nov | **sí (sensores)** | Alan confirma | Alan |
-| P-V2-26 | Separadores M3 del kit UNIT (6, 10, 15, 20 mm macho-hembra y hembra-hembra; tornillos M3×6; tuercas) | Pesar 1 de cada largo cuando se elija | no | Báscula | Alan |
+| P-V2-27 | Revisión del ruteo (nuevo) | Ruteo automático hecho (doble cara, pista 0.8 mm señal / 1.0 mm potencia, separación 0.5 mm, vías Ø1.8/0.8). Alan revisa antes de generar patrones de planchado | **sí, para fabricar** | Revisión en KiCad 10 | Alan |
+| P-V2-28 | Huella ESP32 con dibujos en Edge.Cuts (nuevo) | Los agujeros/contorno del módulo están en la capa de corte; en las PCB se pasaron a Dwgs.User para no perforar la placa. Falta autorizar el mismo cambio en la biblioteca | no | Alan autoriza | Alan |
+| P-V2-29 | Altura del ventilador / chasis | Se conserva el ventilador (decisión 13 nov). Su hueco y posición se definen en la mecánica | no | Etapa 3 | Equipo |
 | P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
-| P-V2-12 | Huella de los MP1584 (nuevo) | Se corrigió la numeración (1 IN+, 2 IN−, 3 OUT−, 4 OUT+). Falta confirmar con la serigrafía del módulo que + queda arriba en ambos lados | no (PCB) | Mirar el módulo al colocarlo | Alan |
-| P-V2-17 | **Huella DRV8833 de la biblioteca de Alan no coincide con el módulo** (nuevo) | (1) paso de 2.50 mm (el módulo es 2.54, M09); (2) filas a 15.5 mm (vernier M32: 15.9 mm); (3) orden de IN invertido: la huella pone IN1 frente a EEP y el módulo tiene IN4 frente a EEP (M10) → IN1↔IN4 e IN2↔IN3 quedarían cruzados. VCC y GND sí coinciden | **sí, para rutear** | Alan autoriza corregir la huella o da otra | Alan |
-| P-V2-18 | **Multiplexor sin huella aprobada** (nuevo) | La huella del módulo HW-178 está en "No usar_ V_antiguas"; KiCad no tiene oficial. En la PCB de sensores quedó un espacio reservado de 40 × 20 mm | **sí, para rutear** | Alan da huella o autoriza usar 2 tiras oficiales (1×16 y 1×8) | Alan |
-| P-V2-13 | TCRT5000: símbolo vs huella oficial | La huella oficial numera 1 = C, 2 = E, 3 = A, 4 = K (Vishay); el símbolo usa A/CATH/COLL/E. En la PCB se asignaron las redes con esa equivalencia, pero el ERC de paridad marca 96 avisos hasta renumerar los pines del símbolo (A→3, CATH→4, COLL→1, E→2) | **sí, para rutear** | Alan autoriza renumerar el símbolo | Alan |
-| P-V2-19 | Cara de montaje de la placa de sensores (nuevo) | Los TCRT5000 deben mirar al piso: montar la placa invertida (todo por "arriba" en KiCad) o poner los sensores en la cara inferior | no (colocación) | Decidir con la mecánica | Alan |
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
 | P-V2-21 | EN ESTUDIO: ¿vale la pena el ventilador? | Ver `v2/docs/evaluaciones.md`. No se quita; probar con báscula | no | Pruebas físicas | Alan |
-| P-V2-22 | Colocación de huellas preliminar (nuevo) | Principal 96 × 84 mm, sensores 96 × 56 mm, sin pistas. Revisar posiciones | no | Revisión de Alan | Alan |
 | M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
 | M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
 | M21 | Ventilador: corriente real a 7.4–8.4 V | Medir | no | Multímetro en serie | Alan |
@@ -113,9 +107,18 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-04 | LED de sensores a 5 V | **Aprobado (13 nov) y aplicado**: ánodos a +5V (salida del MP1584 de 5 V) por un 9.º hilo; R1–R12 = 220 Ω (~17 mA c/u, ~200 mA total); R25 = 470 Ω. Pull-ups de 10 k y mux siguen en +3V3: SIG nunca pasa de 3.3 V | 13 nov | Alan |
 | P-V2-23 | Huellas asignadas en los esquemáticos | **Hecho (13 nov)**: campo Footprint lleno con huellas oficiales o de Alan; una etiqueta de nombre por red para que la PCB reciba los mismos nombres | 13 nov | DRC paridad |
 | P-V2-15 | ¿Esquemáticos terminados? | **Sí (13 nov)**: ERC KiCad 10 principal 0/0; sensores 0 errores, 4 avisos sin efecto. Vistas en `v2/electronica/vistas/` | 13 nov | ERC MCP |
-| P-V2-14 | Mux: distancia entre filas | **15.7 mm** (Alan, vernier 13 nov). La huella HC4067 que dejó Alan tiene 14.99 mm → corregir al aprobar la interpretación | 13 nov | Alan |
 | M22 | Ventilador: peso | **15 g medido** (Alan, báscula 13 nov); la ficha decía 16 g | 13 nov | Alan |
 | M32 | DRV8833: medidas finales | Filas **15.7 mm** y paso **2.54 mm** (Alan 13 nov; sustituye 15.9 y 15.5) | 13 nov | Alan |
+| P-V2-12 | MP1584: huella | **Resuelto (13 nov, aprobado por Alan)**: vista superior → par de arriba (redondos) IN− izq./OUT− der.; par de abajo (cuadrados) IN+ izq./OUT+ der. Pads: 1 IN+ abajo-izq., 2 IN− arriba-izq., 3 OUT− arriba-der., 4 OUT+ abajo-der. Símbolo sin cambio | 13 nov | Fotos de Alan |
+| P-V2-13 | TCRT5000: símbolo vs huella oficial | **Resuelto**: símbolo renumerado COLL=1, E=2, A=3, CATH=4 (= Vishay y huella oficial). Conexiones sin cambio | 13 nov | Datasheet Vishay + Alan |
+| P-V2-14 | Mux: distancia entre filas | **Resuelto**: huella HC4067 de Alan corregida a **15.7 mm** (antes 14.99). Orden de pads ya coincidía con el módulo | 13 nov | Alan, vernier |
+| P-V2-17 | DRV8833: huella | **Resuelto**: paso 2.54, filas 15.7 mm, columna derecha renumerada (12 IN4, 11 IN3, 9 GND, 10 VCC, 8 IN2, 7 IN1 de arriba a abajo, vista superior). Símbolo sin cambio | 13 nov | Fotos + vernier Alan |
+| P-V2-18 | Mux: huella | **Resuelto**: se usa `HC4067:ANALOG_MUX_BREAKOUT_HC4067` (Alan, carpeta Footprints) | 13 nov | Alan |
+| P-V2-19 | Cara de los sensores | **Resuelto**: TCRT5000 en la cara inferior (B), mirando al piso; KiCad espeja la huella, cada pata en su pad; se sueldan por arriba. Pines confirmados = vista "patas hacia mí": A arriba-izq., C arriba-der., K abajo-izq., E abajo-der. | 13 nov | Alan |
+| P-V2-22 | Colocación | **Resuelto**: sensores en curva (radio 90 mm, 7.7 mm entre sensores), placas centradas en la hoja. Principal 96 × 84 mm, sensores 96 × 88 mm | 13 nov | — |
+| P-V2-24 | Interpretación de pines | **Aprobada por Alan (13 nov)** | 13 nov | Alan |
+| P-V2-25 | Contradicción TCRT5000 | **Resuelta**: vale la descripción del 12 nov | 13 nov | Alan |
+| P-V2-26 | Separadores M3 | **Pesados**: macho y hembra de 6 y 10 mm ≈ **1 g c/u** (Alan, báscula) | 13 nov | Alan |
 | P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
 ---
 

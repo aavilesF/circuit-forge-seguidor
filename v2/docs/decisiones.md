@@ -21,3 +21,6 @@
 | D-V2-18 | Esquemáticos con cables reales; etiquetas solo de complemento (cable entre placas) | Alan, 12 nov |
 | D-V2-19 | LED de los TCRT5000 a **+5V** (9.º hilo, 220 Ω, R25 470 Ω); mux y pull-ups siguen en 3.3 V | Alan, 13 nov |
 | D-V2-20 | Esquemáticos V2 terminados (13 nov) | Alan aprueba la presentación |
+| D-V2-21 | Se conserva el ventilador 4010 en el diseño (eficacia aún no comprobada) | Alan, 13 nov |
+| D-V2-22 | Correcciones de MP1584, DRV8833 (2.54 / 15.7 mm), mux (15.7 mm) y TCRT5000 aprobadas | Alan, 13 nov |
+| D-V2-23 | Sensores en curva, en la cara inferior, mirando al piso | Alan, 13 nov |

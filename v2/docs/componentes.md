@@ -41,3 +41,11 @@ Base (acrílico ≤ 3 mm), 2 llantas con rin, 1 rueda loca (+1 repuesto), 2 sopo
 Placa fenólica 20 × 20 (D-V2-03), cloruro férrico, brocas 0.8 (tengo) y 1.0/1.3/3.2 mm (por comprar), estaño, pasta, termofit,
 cable 18 AWG, cable 22–26 AWG, alambre para vías, papel de transferencia, cartulina y vinil para pista.
 **Por comprar:** LiPo 2S 450–500 mAh, PTC, resistencias, brocas, cable fino, cartulina, vinil.
+
+## F. Pesos medidos (Alan, báscula)
+| Pieza | Peso | Fuente |
+|---|---|---|
+| Ventilador 4010 | 15 g | medido 13 nov (ficha: 16 g) |
+| Separador M3 macho 6 mm / 10 mm | ≈ 1 g c/u | medido 13 nov |
+| Separador M3 hembra 6 mm / 10 mm | ≈ 1 g c/u | medido 13 nov |
+El peso final depende de cuántos se instalen.

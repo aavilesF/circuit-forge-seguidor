@@ -562,7 +562,7 @@
 			)
 		)
 	)
-	(pad "1" thru_hole rect
+	(pad "2" thru_hole rect
 		(at -10.25 -7.25)
 		(size 1.7 1.7)
 		(drill 1)
@@ -570,7 +570,7 @@
 		(remove_unused_layers no)
 		(uuid "16218ae4-6737-4849-be8a-afb61cdce6bd")
 	)
-	(pad "2" thru_hole rect
+	(pad "1" thru_hole rect
 		(at -10.25 3.475)
 		(size 1.7 1.7)
 		(drill 1)
@@ -578,7 +578,7 @@
 		(remove_unused_layers no)
 		(uuid "2aca21c0-cefd-4fe5-900b-1c94c0a4f7d7")
 	)
-	(pad "3" thru_hole rect
+	(pad "4" thru_hole rect
 		(at 8.25 3.48)
 		(size 1.7 1.7)
 		(drill 1)
@@ -586,7 +586,7 @@
 		(remove_unused_layers no)
 		(uuid "09dc4058-869c-4490-b049-46ad78b4b7da")
 	)
-	(pad "4" thru_hole rect
+	(pad "3" thru_hole rect
 		(at 8.27 -7.25)
 		(size 1.7 1.7)
 		(drill 1)
@@ -594,7 +594,7 @@
 		(remove_unused_layers no)
 		(uuid "3bacd559-e14b-47b6-a6c1-58d33a1bdb3b")
 	)
-	(pad "1" thru_hole circle
+	(pad "2" thru_hole circle
 		(at -10.25 -4.71)
 		(size 1.7 1.7)
 		(drill 1)
@@ -602,7 +602,7 @@
 		(remove_unused_layers no)
 		(uuid "287d42fc-bd80-45cc-bc3e-690c6f2c6dec")
 	)
-	(pad "2" thru_hole circle
+	(pad "1" thru_hole circle
 		(at -10.25 6.015)
 		(size 1.7 1.7)
 		(drill 1)
@@ -610,7 +610,7 @@
 		(remove_unused_layers no)
 		(uuid "f5210786-6641-41d2-8671-1c140ee4a5c9")
 	)
-	(pad "3" thru_hole circle
+	(pad "4" thru_hole circle
 		(at 8.25 6.02)
 		(size 1.7 1.7)
 		(drill 1)
@@ -618,7 +618,7 @@
 		(remove_unused_layers no)
 		(uuid "af0aad97-c43e-4c94-92bd-47e33c566d16")
 	)
-	(pad "4" thru_hole circle
+	(pad "3" thru_hole circle
 		(at 8.27 -4.71)
 		(size 1.7 1.7)
 		(drill 1)

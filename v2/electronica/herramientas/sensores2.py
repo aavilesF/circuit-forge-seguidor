@@ -2,7 +2,7 @@ from ruteo import *
 
 RV='Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical'
 Esq.FP={**{f'R{i}':RV for i in range(1,27)},**{f'OP{i}':'OptoDevice:Vishay_TCRT5000' for i in range(1,13)},
- 'Q1':'Package_TO_SOT_THT:TO-92_Inline_Wide','C1':'Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm','J1':'Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical'}
+ 'Q1':'Package_TO_SOT_THT:TO-92_Inline_Wide','C1':'Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm','J1':'Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical','U1':'HC4067:ANALOG_MUX_BREAKOUT_HC4067'}
 s=Esq('sensores','Seguidor V2 - PCB de sensores',W=405,H=282)
 def P(v): return round(v/2.54)*2.54
 T=s.text
@@ -11,7 +11,7 @@ for i in range(12):
     n=i+1; col=i%3; row=i//3
     x=P(45+col*85); y=P(40+row*45)
     s.add('Device:R',f'R{n}','220',x-P(22),y-P(5),{'1':'+5V','2':f'LEDA{n}'})
-    s.add('Simbolos:TCRT5000',f'OP{n}','TCRT5000',x,y,{'A':f'LEDA{n}','CATH':'EMIT_K','COLL':f'SEN{n}','E':'GND'})
+    s.add('Simbolos:TCRT5000',f'OP{n}','TCRT5000',x,y,{'3':f'LEDA{n}','4':'EMIT_K','1':f'SEN{n}','2':'GND'})
     s.add('Device:R',f'R{12+n}','10k',x+P(20),y-P(8),{'1':'+3V3','2':f'SEN{n}'})
 T('2. MULTIPLEXOR CD74HC4067 (modulo HW-178)',P(300),P(15),1.8)
 mux={'VCC':'+3V3','GND':'GND','EN':'GND','S0':'S0','S1':'S1','S2':'S2','S3':'S3','SIG':'SIG'}
