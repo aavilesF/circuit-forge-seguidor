@@ -1,6 +1,6 @@
 # Optimización de las PCB V2 — 14 nov 2026
 
-Aprobada por Alan el 14 nov. Estado anterior: etiqueta git `v2-pcb-antes-optimizacion-2026-11-14` (commit 3842103).
+Aprobada por Alan el 14 nov. Estado anterior: commit `3842103` de la rama (la etiqueta git no se pudo subir: el servidor solo acepta la rama).
 Comparar con `git diff 3842103 -- v2/electronica` o abrir los archivos de ese commit.
 
 | | Principal antes | Principal ahora | Sensores antes | Sensores ahora (A) | Sensores alternativa (B) |
