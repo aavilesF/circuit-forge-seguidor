@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 > **HISTÓRICO (11 nov 2026).** Este archivo describe el *plan B*: una sola placa fenólica de una cara, con 8 sensores directos y zumbador.
 > Quedó sustituido por las decisiones **D18** (PCB de doble cara), **D19** (sin zumbador) y **D20** (placa de sensores con multiplexor).
 > Las PCB vigentes están en `electronica/kicad/` (principal y sensores); la fabricación, en `electronica/kicad/FABRICACION_CASERA.md`.

@@ -1,0 +1,18 @@
+{
+ "v2/electronica/principal/principal.kicad_pcb": {
+  "md5": "a802f77c50571d1726f82d9295c45fb2",
+  "fecha": "2026-11-15",
+  "kicad": "10.0.8",
+  "errores": 0,
+  "sin_conectar": 0,
+  "informe": "v2/electronica/verificacion/principal_drc.json"
+ },
+ "v2/electronica/sensores/sensores.kicad_pcb": {
+  "md5": "fc65e738860c76cf061ef9a5f05144f7",
+  "fecha": "2026-11-15",
+  "kicad": "10.0.8",
+  "errores": 0,
+  "sin_conectar": 0,
+  "informe": "v2/electronica/verificacion/sensores_drc.json"
+ }
+}

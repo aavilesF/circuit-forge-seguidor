@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Faltantes y carrito de UNIT (6 nov 2026)
 
 Rama `engineering/robot-casero`. Tienda: <https://uelectronics.com/>. Este documento distingue **en carrito** de **comprado/recibido**: agregar al carrito no significa que el componente ya esté adquirido.

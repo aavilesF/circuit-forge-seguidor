@@ -1,5 +1,7 @@
 # circuit-forge-seguidor
 
+> **Rama `seguidor-caseroV2`: lo vigente está en `v2/` (ver `v2/README.md` y `CLAUDE.md`). El resto es histórico salvo excepciones documentadas en `v2/docs/ESTADO-DOCUMENTOS.md`.**
+
 Robot seguidor de línea para **Robolympics RMX2026** (Tecnológico de Monterrey, Campus León).
 Equipo **Circuit Forge**: diseño, firmware, pruebas y registro de resultados.
 

@@ -1,51 +1,47 @@
-# Componentes (V2)
-Compras: ticket Valtierra 5 nov y pedido UNIT 7 nov (ver `robot-casero/materiales/BOM.csv`, histórico).
+# Componentes (V2) — GENERADO desde `v2/inventario.csv`
 
-## A. Montados en PCB principal
-| Ref | Pieza | Usadas / compradas |
-|---|---|---|
-| A1 | ESP32 DevKit 30p USB-C | 1 / 1 |
-| U1, U2 | Módulo MP1584 (5.0 V y 6.0 V) | 2 / 2 (sin repuesto) |
-| U3 | Módulo DRV8833 | 1 / 2 |
-| D1, D2 | 1N5822 (rueda libre ventilador; aislamiento USB) | 2 / 3 (Alan; el BOM viejo dice 2 → conciliar) |
-| Q1 | IRLZ44N | 1 / 3 |
-| C1, C2 | 470 µF 16 V | 2 / 2 |
-| C3, C4, C5 | 100 nF cerámico | 3 (+1 en sensores) / 5 |
-| R1, R2, R4, R5 | 100 k, 33 k, 100 Ω, 10 k | por comprar |
-| F1 | PTC reseteable 1.5 A ≥ 16 V | por comprar |
-| SW2, SW3, SW4 | Pulsadores START / CAL / RESET | 3 / 3 |
-| J1–J6 | Headers para cables (5 × 1x2, 1 × 1x9) | tira macho y hembra 2.54 mm (Alan, 12 nov) |
+No editar a mano: se cambia `v2/inventario.csv` y se corre `python3 v2/herramientas/generar_componentes.py`.
+Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de precios en el BOM histórico `robot-casero/materiales/BOM.csv`).
+**Repuesto = comprada − usada.** *Usada* se verifica contra los esquemáticos con `v2/herramientas/validar_repo.py`.
 
-## B. Montados en PCB de sensores
-| Ref | Pieza | Usadas / compradas |
-|---|---|---|
-| OP1–OP12 | TCRT5000 | 12 / 14 |
-| U1 | Módulo CD74HC4067 | 1 / 2 |
-| Q1 | 2N2222 (H331, E-B-C) | 1 / 6 |
-| R1–R12 | 220 Ω | por comprar |
-| R13–R24, R26 | 10 kΩ | por comprar |
-| R25 | 470 Ω | por comprar |
-| C1 | 100 nF | ver arriba |
-| J1 | Header 1x8 | ver P-V2-07 |
+| Pieza | Comprada | Usada | Repuesto | Estado | Nota |
+|---|---|---|---|---|---|
+| ESP32 DevKit 30p USB-C | 1 | 1 | 0 | recibida y confirmada | Sobre tira hembra |
+| Módulo MP1584 (5.0 V y 6.0 V) | 2 | 2 | 0 | recibida y confirmada | Sin repuesto. Ajustar a 5.0 y 6.0 V (E01/E02) |
+| Módulo DRV8833 | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto |
+| Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB) | 2 | 2 | 0 | recepción sin confirmar | CONFLICTO: la migración del 12 nov anotó 3. Ver P-V2-39 |
+| MOSFET IRLZ44N (TO-220) | 3 | 1 | 2 | recepción sin confirmar | 2 de repuesto |
+| Transistor 2N2222 (TO-92; marcado H331; E-B-C) | 6 | 1 | 5 | recibida y confirmada | 5 de repuesto |
+| Capacitor electrolítico 470 µF 16 V | 2 | 2 | 0 | recepción sin confirmar | Sin repuesto |
+| Capacitor cerámico 100 nF | 5 | 4 | 1 | recepción sin confirmar | 3 en principal + 1 en sensores; 1 de repuesto |
+| Pulsador 4 patas (SW2 12 mm; SW3 y SW4 6 mm) | 3 | 3 | 0 | recepción sin confirmar | Sin repuesto |
+| Sensor TCRT5000 (individual) | 14 | 12 | 2 | recibida y confirmada | 2 de repuesto |
+| Módulo multiplexor CD74HC4067 | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto |
+| Resistencia 220 Ω 1/4 W | 0 | 12 | — | por comprar | Sensores R1-R12 |
+| Resistencia 10 kΩ 1/4 W | 0 | 14 | — | por comprar | Sensores R13-R24 y R26 + principal R5 |
+| Resistencia 470 Ω 1/4 W | 0 | 1 | — | por comprar | Sensores R25 |
+| Resistencia 100 Ω 1/4 W | 0 | 1 | — | por comprar | Principal R4 |
+| Resistencia 100 kΩ 1/4 W | 0 | 1 | — | por comprar | Principal R1 |
+| Resistencia 33 kΩ 1/4 W | 0 | 1 | — | por comprar | Principal R2 |
+| PTC reseteable Bel Fuse 0ZRE0150FF1A (F1) | 0 | 1 | — | por comprar | Ver P-V2-44 |
+| Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines | ? | 28 | ? | recepción sin confirmar | Ver P-V2-41 |
+| Tira hembra para ESP32/MP1584/DRV8833/mux | 80 | 74 | 6 | recepción sin confirmar | Ver P-V2-41 |
+| Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recepción sin confirmar | Conector de batería; 1 par de repuesto |
+| Motorreductor GA12-N20 6 V 1000 RPM | 2 | 2 | 0 | recibida y confirmada | Eje 2.3 mm medido (D-V2-11) |
+| Ventilador 4010 12 V | 1 | 1 | 0 | recibida y confirmada | Pesado 15 g el 13 nov |
+| Mini rueda universal 3Pi N20 (rueda loca) | 2 | 1 | 1 | recepción sin confirmar | 1 de repuesto (D-V2-10) |
+| Soporte motorreductor N20 con tornillos M2 | 2 | 2 | 0 | recepción sin confirmar |  |
+| Kit separadores de latón M3 (120 piezas) | 1 | 1 | 0 | recibida y confirmada | Pesados 13 nov |
+| Interruptor de balancín (BOM: SW-104S; diseño: KCD1 rojo) | 1 | 1 | 0 | recepción sin confirmar | Ver P-V2-42 |
+| LiPo 2S 7.4 V 450-500 mAh | 0 | 1 | — | por comprar | M14 |
+| Cable 18 AWG (potencia) | ? | ? | ? | recepción sin confirmar | Ver P-V2-43 |
 
-**Resistencias a comprar (total):** 12 × 220 Ω, 14 × 10 kΩ, 1 × 470 Ω, 1 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ (+ repuestos a criterio).
-Se quitaron del listado viejo: 2 × 1 kΩ sobrantes→ ahora 1, 1 × 100 Ω sobrante, R3 de nSLEEP.
+## Externos y mecánicos sin fila en el inventario
+Base de acrílico (≤ 3 mm), 2 llantas con rin (ya disponibles, M08), placa fenólica 20 × 20 cm doble cara (comprada), cloruro férrico, broca 0.8 mm, estaño, pasta, termofit (comprados).
+**Por comprar:** LiPo 2S, PTC, resistencias (30 en total: 12 × 220 Ω, 14 × 10 kΩ, 1 × 470 Ω, 1 × 100 Ω, 1 × 100 kΩ, 1 × 33 kΩ), brocas 1.0 / 1.3 / 3.2 mm, cable fino, alambre para vías, cartulina, vinil.
 
-## C. Eléctricos externos (en el esquema, sin huella; llegan por cable)
-BT1 LiPo 2S → J1 · SW1 KCD1 → J2 · M1/M2 motores N20 → J3/J4 · M3 ventilador 4010 → J5 · cable de 8 hilos J6 ↔ J1 sensores.
-
-## D. Mecánicos
-Base (acrílico ≤ 3 mm), 2 llantas con rin, 1 rueda loca (+1 repuesto), 2 soportes N20 con tornillos M2, kit separadores M3 UNIT, tornillos M3.
-
-## E. Insumos y herramientas
-Placa fenólica 20 × 20 (D-V2-03), cloruro férrico, brocas 0.8 (tengo) y 1.0/1.3/3.2 mm (por comprar), estaño, pasta, termofit,
-cable 18 AWG, cable 22–26 AWG, alambre para vías, papel de transferencia, cartulina y vinil para pista.
-**Por comprar:** LiPo 2S 450–500 mAh, PTC, resistencias, brocas, cable fino, cartulina, vinil.
-
-## F. Pesos medidos (Alan, báscula)
+## Pesos medidos (Alan, báscula)
 | Pieza | Peso | Fuente |
 |---|---|---|
-| Ventilador 4010 | 15 g | medido 13 nov (ficha: 16 g) |
-| Separador M3 macho 6 mm / 10 mm | ≈ 1 g c/u | medido 13 nov |
-| Separador M3 hembra 6 mm / 10 mm | ≈ 1 g c/u | medido 13 nov |
-El peso final depende de cuántos se instalen.
+| Ventilador 4010 | 15 g | 13 nov (ficha: 16 g) |
+| Separadores M3 macho/hembra 6 y 10 mm | ≈ 1 g c/u | 13 nov |

@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Plan de trabajo y arquitectura propuesta
 
 **Estado:** propuesta generada con ayuda de IA (DeepSeek) y corregida con Claude. **El equipo todavía no la ha aprobado.** Nada de lo que sigue es una decisión hasta que se anote como "Decidido" en `decisiones.md`. Las tareas que mencionan a personas son sugerencias, no compromisos aceptados.

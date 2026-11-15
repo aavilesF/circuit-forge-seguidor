@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 9 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 10 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -7,6 +7,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
+
+v10 (15 nov): sincronización total con el inventario (`v2/inventario.csv`) y las decisiones D-V2-24 a D-V2-32. Resueltos: P-V2-31, 32, 35, 36, 38. IDs nuevos: **P-V2-39 a P-V2-44**. Copia de la v9: `docs/historial/pendientes-v9_2026-11-15_pre-mantenimiento.md`. Fila duplicada de M18 unificada.
 
 v9 (14 nov): optimización de las dos PCB aprobada por Alan. Copia de la v8: `docs/historial/pendientes-v8_2026-11-14_pre-optimizacion.md`. IDs nuevos: **P-V2-34 a P-V2-38**.
 IDs nuevos en la v8: **M33, P19, C10, D18–D24**. Medidas completas: `especificaciones-componentes.md`.
@@ -22,30 +24,37 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-27 | Revisión del ruteo | **14 nov: placas reacomodadas y vueltas a rutear.** Principal 96 × 74 mm, 22 vías; sensores 96 × 68 mm con contorno curvo, 18 vías. DRC (KiCad 10): 0 errores, 0 conexiones pendientes en ambas. Alan revisa antes de generar patrones de planchado | **sí, para fabricar** | Revisión en KiCad 10 (carpeta `Esquemas V2/_opt_2026-11-14b`) | Alan |
-| P-V2-29 | Posición del ventilador / chasis | Se conserva el ventilador. 14 nov: evaluación preliminar sin cambiar la mecánica (ver P-V2-36). Falta que Alan elija la posición | no | Etapa 3 | Equipo |
-| P-V2-31 | F1 grande | La huella oficial BelFuse 0ZRE0150FF es fiel a esa pieza (cuerpo de 23.4 mm, patas a 10.2 mm), pero es voluminosa. Elegir huella al comprar el PTC real | no (hasta comprarlo) | Comprar y medir | Alan |
-| P-V2-32 | Optimizar tamaño de las PCB | **Aplicado 14 nov** (aprobado por Alan): principal 84 → 74 mm; sensores 88 → 68 mm (alternativa de 59 mm, ver P-V2-38). Estado anterior: commit `3842103` | no | Alan revisa | Alan |
-| P-V2-33 | EN ESTUDIO: capucha para sensores | Pieza mecánica aparte, negra mate, curva, a 1–2 mm del piso; más compensación de luz ambiente por firmware (LED encendido − apagado) | no | Etapa 3 | Equipo |
-| P-V2-34 | **Ancho total del robot (ruedas)** | Con 2 N20 espalda con espalda: 2 × 24.5 mm de cuerpo + 2 × (~1 mm de holgura + 22.1 mm de rin) ≈ **95 mm**, sin contar las terminales traseras de los motores (~2 mm cada una más la soldadura del cable) → **~99–101 mm**. El reglamento permite 100 mm. Las PCB (96 mm) no son el límite: lo son ruedas y motores | **sí, para la mecánica** | Medir con vernier un motor con sus terminales y cable soldado, y la posición real del rin en el eje | Alan |
-| P-V2-35 | Resistencias de 220 Ω de los LED delante de los sensores | **No caben detrás sin cambiar el circuito:** entre dos TCRT5000 vecinos quedan 1.4 mm entre pads, y una pista de 0.8 mm con 0.5 mm de separación necesita 1.8 mm. El ánodo (par delantero) no puede salir hacia atrás. Se dejaron delante, con el contorno curvo pegado a ellas. Opción que requiere aprobación: poner la resistencia de cada LED del lado del cátodo (ánodos a un bus común de +5 V por delante); eléctricamente equivalente, pero cambia las conexiones del esquema | no | Alan decide si cambia el esquema | Alan |
-| P-V2-36 | Ventilador con una sola base | Evaluación 14 nov (sin cambios mecánicos): no cabe entre las ruedas sobre la línea del eje, porque ahí van los dos motores (~49–55 mm de ancho). Sí cabe **delante o detrás del eje**, atornillado **bajo** el acrílico: el piso de la base queda a ~18 mm del suelo (radio de rueda 13.4 + medio motor 5) y el ventilador mide 10 mm, así que quedarían ~8 mm de aire. La PCB principal encima, sobre separadores (ya necesarios por las soldaduras de abajo), deja salir el aire si los separadores miden ≥ 10 mm. Batería y placa de sensores no deben tapar la toma | no | Alan elige delante/detrás del eje en la etapa 3 | Alan |
-| P-V2-37 | Huella del 1N5822 (D1, D2) | El esquema V2 usa `D_DO-201AD_P15.24mm`; el M24 (11 nov) dice que Alan decidió 20.32 mm entre patas. No se cambió (no se autorizó cambiar componentes) | no | Alan confirma 15.24 o 20.32 mm | Alan |
-| P-V2-38 | Elegir versión de la placa de sensores | **A (recomendada):** 96 × 68 mm, 18 vías, J1 al centro atrás. **B:** 96 × 59 mm, 24 vías, J1 atrás a la derecha y Q1 atrás a la izquierda (`v2/electronica/sensores/alternativa_59mm`). Las dos: DRC 0 errores, 0 pendientes | no | Alan elige | Alan |
-| P-V2-16 | Cable entre placas: 9 hilos (nuevo) | Antes 8. Conseguir cable de 9 hilos (o UTP + 1) y header 1×9 en cada placa | no | Compra | Alan |
+| P-V2-27 | Revisión del ruteo | **15 nov:** instaladas en tus archivos de KiCad (`Esquemas V2/principal` y `sensores`, con respaldo en `_respaldo_antes_de_opt_2026-11-15`): principal 96 × 74 mm y sensores opción B 96 × 59 mm. DRC y ERC KiCad 10 repetidos sobre esos archivos: 0 errores, 0 conexiones pendientes. Falta tu revisión final antes de generar los patrones de planchado (no generados) | **sí, para fabricar** | Revisar en KiCad | Alan |
+| P-V2-29 | Posición del ventilador / chasis | El ventilador se queda y se atornilla al acrílico (D-V2-26). Orden propuesto por Alan: ruedas atrás, PCB principal, ventilador, sensores al final; batería junto o sobre los motores (D-V2-27). Falta validarlo con medidas en AutoCAD; si los motores no dejan espacio, se quita | no | Etapa 3 (mecánica) | Equipo |
+| P-V2-33 | Capucha para sensores | Alan acepta la capucha, que puede ser algo plana, y mi ayuda (D-V2-30). Falta el diseño: pieza negra mate a 1–2 mm del piso y compensación de luz ambiente por firmware | no | Etapa 3 | Equipo |
+| P-V2-34 | **Ancho total del robot (ruedas)** | Con 2 N20 espalda con espalda ≈ 95 mm sin terminales; con terminales y cable soldado **~99–101 mm** (límite 100 mm). Alan decidió recortar el acrílico hacia dentro en la zona de los motores y dejarlos lo más juntos posible (D-V2-28). Falta medir | **sí, para la mecánica** | Medir con vernier un motor con terminales y cable soldado, y la posición del rin en el eje | Alan |
+| P-V2-37 | Huella del 1N5822 (D1, D2) | Alan: "deja la medida que yo te di" (~20 mm, D-V2-32). **Conflicto:** KiCad oficial solo trae DO-201AD con 15.24 mm (horizontal) y no existe de 20.32 mm; las reglas prohíben crear huellas. La PCB actual usa la oficial de 15.24 mm | no (PCB) | Alan decide: (a) autoriza la huella derivada de 20.32 mm (la de D21, taladro 1.3 mm) y se rehacen D1/D2, o (b) PCB con 15.24 mm y el diodo se dobla | Alan |
+| P-V2-16 | Cable entre placas: 9 hilos | Hace falta cable de 9 hilos y una tira de 1×9 por placa. **Cómo pedirlo en la tienda:** "cable plano de 10 conductores (se separa 1) o cable multiconductor 9 hilos, calibre 24–28 AWG, ~30 cm" y "tira de pines macho 2.54 mm, 1 fila, se corta a 9". Alternativa: cable UTP (8) + 1 hilo suelto | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
 | P-V2-21 | EN ESTUDIO: ¿vale la pena el ventilador? | Ver `v2/docs/evaluaciones.md`. No se quita; probar con báscula | no | Pruebas físicas | Alan |
 | M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
 | M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
 | M21 | Ventilador: corriente real a 7.4–8.4 V | Medir | no | Multímetro en serie | Alan |
-| M28 | PTC | **Elegido: radial reseteable 1.5 A de mantenimiento, ≥ 16 V. No comprado** | no | Comprar; medir paso de patas | Alan |
+| M28 | PTC | **Elegido (D-V2-24): Bel Fuse 0ZRE0150FF1A**, 1.5 A mantenimiento. No comprado; ver P-V2-44 | no | Comprar; medir paso de patas (10.2 mm esperado) | Alan |
 | M33 | MP1584: posición de agujeros | Ahora la da la huella de Alan (19.5–20.5 mm entre lados, 2.54 mm entre agujero cuadrado y redondo); verificar al montar | no | Plantilla 1:1 | Alan |
 | P13 | ULT (nFAULT) del DRV8833 | Sigue sin conectar | no | Medir ULT–VCC sin alimentar | Alan |
 | P18 | Firmware | Pasar el mapa de pines V2 a `config.h` (no autorizado aún) | no | Etapa futura | Claude |
 | C01, C02, C04, C05, C07, C09, C10 | Chasis | Igual que v7 (sección C) | no | Etapa 3 | Equipo |
 | R01, R03, R04 | Ventilador, altura de rueda loca, verificación física | Igual que v7 | no | Etapa 3 | Alan |
-| E01–E08 | Pruebas eléctricas al armar | Igual que v7 | no | Al armar | Alan |
+| E01 | MP1584 #1 (5 V) | Ajustar a 5.0 V antes de conectar nada | no | Sección C del historial v7; multímetro en OUT | Alan |
+| E02 | MP1584 #2 (6 V motores) | Ajustar a 6.0 V antes de conectar el DRV8833 | no | Igual que E01 | Alan |
+| E03 | Diodos 1N5822 | Directa ~0.15–0.30 V, inversa OL (sección D). Cuenta física: P-V2-39 | no | Sección D | Alan |
+| E05 | Divisor de batería | 8.4 V → 2.08 V | no | Medir con la LiPo cargada | Alan |
+| E06 | Corriente total | < 1.5 A estimado (relevante para el PTC de 1.5 A, D-V2-24) | no | Multímetro en serie | Alan |
+| E07 | Corto antes de la LiPo | +VBAT–GND abierto | no | Multímetro | Alan |
+| E08 | Brocas | 0.8 mm (resistencias, sensores, vías), 1.0 mm (headers, módulos, TO-220, PTC), 1.3 mm (1N5822), 3.2 mm (M3) | no | Comprar las que falten | Alan |
+| P-V2-39 | 1N5822: cantidad real | La compra del 5 nov (BOM y CHECKLIST) dice **2**; la migración del 12 nov anotó 3 sin fuente. El inventario usa 2 (y 0 de repuesto) | no | Contar los diodos físicos y decir cuántos hay | Alan |
+| P-V2-40 | Recepción del pedido UNIT | Confirmadas por tus medidas: ESP32, MP1584, DRV8833, mux, TCRT5000, motores, ventilador, kit de separadores, 2N2222. **Sin confirmar** que llegaron: IRLZ44N (3), rueda loca (2), soportes N20 (2), JST-RC (2 pares), 470 µF (2), 100 nF (5), pulsadores (3), interruptor | no | Decir cuáles tienes en mano y cuántos | Alan |
+| P-V2-41 | Conectores: ¿alcanzan? | Hacen falta 74 pines hembra según las huellas (ESP32 30 + MP1584 2 × 4 + DRV8833 12 + mux 24) y se compraron 2 tiras de 40 = 80 (alcanzan si cortas bien); y 28 pines macho (J1–J5 + J6 + J1 de sensores). Las 2 tiras "5030552" tienen tipo por confirmar. Cuenta calculada con las huellas por `validar_repo.py` | no | Decir qué son las "5030552" (macho/hembra, cuántos pines) y si los módulos ya traen sus pines | Alan |
+| P-V2-42 | Interruptor: ¿SW-104S es el KCD1? | El ticket dice "balancín SW-104S"; el diseño usa el KCD1 rojo (P06, M27) | no | Foto o medidas del interruptor comprado | Alan |
+| P-V2-43 | Cable 18 AWG ×3 | El ticket dice cantidad 3; no está la unidad (metros, piezas, colores) | no | Decir la unidad y el largo | Alan |
+| P-V2-44 | PTC: compra | 0ZRE0150FF1A: Digi-Key lo marca de 8–12 semanas si no hay existencia y no vi existencia en México; el competidor es el 21 nov. Datos de Digi-Key; no pude leer la hoja de datos del fabricante. Si no llega a tiempo: elegir otro PTC (su huella no sería oficial) o compra local | **sí, para el robot** | Alan revisa existencia y envío; si no hay, decidimos alternativa | Alan |
 
 ## B. Resueltos y obsoletos (no se borran)
 | ID | Tema | Resolución | Fecha | Dónde quedó |
@@ -65,7 +74,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | M11 | DRV8833: voltaje y corriente | VM 2.7–10.8 V, 1.5 A RMS por puente (datasheet TI) | 6 nov | Especificaciones |
 | M12 | MP1584: tamaño | 22.4 × 16.8 mm (vernier). Agujeros: M33 | 11 nov | Huella |
 | M13 | MP1584: terminales | OUT−/OUT+ y IN−/IN+ (confirmado en P03) | 11 nov | Huella |
-| M18 | TCRT5000: cuerpo | 10.2 × 5.8 × 7 mm (datasheet) | 6 nov | Huella |
 | M23 | Capacitores | Electrolítico ∅8 × 12.8 mm, 4.1 mm entre patas → huella de 3.8 mm; cerámico 5.5 mm → huella de 5.0 mm (paso estándar; las patas se acomodan) | 11 nov | Huellas en `generar_principal.py` y `generar_sensores.py` |
 | M24 | 1N5822: separación de patas | **Decisión de Alan: ~20 mm** → huella de 20.32 mm, taladro 1.3 mm (D1 y D2) | 11 nov | D21; huella |
 | M25 | 2N2222 H331: orden de patas | **E-B-C** viendo la cara plana. La huella TO-92_Inline_Wide coincide (pad 1 = E con la cara plana al frente) | 11 nov | Placa de sensores, Q1 |
@@ -74,7 +82,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | M29 | Paso de la "barra" | **Obsoleto**: no hay barra (D05) | 5 nov | — |
 | M30 | Rueda loca | **Mini rueda universal 3Pi N20** (UNIT): 22 × 16 × 15 mm, agujeros a 15 mm, 10 g. Medidas de la ficha como verdaderas | 11 nov | D23; `parametros.yaml`; ver R03 |
 | M31 | Asegurador de motor N20 | **Solo mecánico** (no va en la PCB): espesor 1.5 mm, 19.5 mm entre agujeros | 11 nov | `parametros.yaml` |
-| M32 | DRV8833: separación entre filas | **15.9 mm** (vernier) | 11 nov | Huella `Modulo_DRV8833` |
 | P01 | Tamaño del DRV8833 | Resuelto con M09 | 6 nov | — |
 | P02 | ¿La pieza de M12 es el MP1584? | Sí | 11 nov | M12 |
 | P03 | ¿El módulo OUT−/OUT+ e IN−/IN+ es el MP1584? | Sí (Alan) | 11 nov | M13 |
@@ -95,7 +102,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | C06 | Permiso para el ventilador | Confirmado (D08) | 5 nov | — |
 | C08 | Cambio del reglamento | No cambiará (Alan) | 11 nov | — |
 | R02 | Puentes de alambre | Se resuelve con **PCB de doble cara** (D18) | 11 nov | E09 |
-
 | M16 | 74HC4067: medida | **40 × 20 mm, ficha UNIT** (vale como oficial, D17 y 12 nov) | 12 nov | Imagen "Dimensiones 74HC4067" UNIT |
 | M17 | 74HC4067: orden de pines | **Resuelto**: lado izquierdo C15…C0 (arriba→abajo); lado derecho SIG, S3, S2, S1, S0, EN, VCC, GND (arriba→abajo). EN activo en bajo con pull-down de 10 k en el módulo (esquemático UNIT); se ata a GND. El símbolo de Alan usa esos mismos nombres | 12 nov | Pinout y esquemático UNIT + datasheet 74HC4067 |
 | M18 | TCRT5000: cuerpo | 10 × 5 mm (UNIT); 10.2 × 5.8 × 7 mm (Vishay) | 12 nov | UNIT + Vishay |
@@ -108,7 +114,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | V01 | Medidas con vernier | Las fichas UNIT valen como oficiales mientras tanto | 12 nov | Alan |
 | P-V2-01 | MP1584: pin IN+ sin número | **Resuelto**: el símbolo tenía IN+ con número vacío y la huella numeraba sus 8 agujeros solo 1 y 2 (habría unido IN+ con OUT+). Corregido: símbolo IN+ = 1; huella 1 IN+, 2 IN−, 3 OUT−, 4 OUT+ (cada borne tiene 2 agujeros con el mismo número). Copias de respaldo `.bak` en la biblioteca | 12 nov | Autorización de Alan |
 | P-V2-02 | DRV8833: dibujo de pines | **Sin cambio**: no es error eléctrico. Los 12 pines tienen nombre y número correctos (1 EEP, 2–5 OUT1–4, 6 ULT, 7 IN1, 8 IN2, 9 GND, 10 VCC, 11 IN3, 12 IN4) y la huella usa los mismos números. Solo el extremo de conexión queda dentro del recuadro | 12 nov | Revisión |
-| P-V2-03 | Valor del PTC | Ver M28 | 12 nov | Alan |
+| P-V2-03 | Valor del PTC | Ver M28 y D-V2-24 | 12 nov | Alan |
 | P-V2-05 | IRLZ44N a 3.3 V | Apto para el ventilador de 100 mA; no se cambia | 12 nov | Datasheet IR: VGS(th) ≤ 2 V |
 | P-V2-06 | Botón RESET | **Se queda** en la PCB (SW4 a EN) | 12 nov | Alan |
 | P-V2-08 | Módulos soldados vs. removibles | Removibles con tira hembra (P-V2-07) | 12 nov | Alan |
@@ -130,6 +136,11 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-25 | Contradicción TCRT5000 | **Resuelta**: vale la descripción del 12 nov | 13 nov | Alan |
 | P-V2-26 | Separadores M3 | **Pesados**: macho y hembra de 6 y 10 mm ≈ **1 g c/u** (Alan, báscula) | 13 nov | Alan |
 | P-V2-11 | Pendientes mecánicos | Siguen en la tabla A (C, R, M14/M15) | 12 nov | — |
+| P-V2-31 | F1 grande | **Resuelto 15 nov (Alan):** una huella grande es aceptable si es oficial; F1 usa la oficial Bel Fuse 0ZRE0150FF. Pieza a comprar: D-V2-24. Verificar existencia y plazo: P-V2-44 | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-32 | Optimizar tamaño de las PCB | **Resuelto 15 nov (Alan):** PCB optimizadas en tamaño: principal 96 × 74 mm, sensores 96 × 59 mm (opción B, D-V2-25). Estado previo: commit `3842103` | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-35 | Resistencias de 220 Ω delante de los sensores | **Resuelto 15 nov (Alan):** las resistencias de 220 Ω quedan delante de los sensores, sin cambiar el esquema (D-V2-29) | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-36 | Ventilador con una sola base | **Resuelto 15 nov (Alan):** el ventilador se queda, atornillado al acrílico (D-V2-26); posición en la secuencia de D-V2-27 | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-38 | Versión de la placa de sensores | **Resuelto 15 nov (Alan):** se elige la **opción B (96 × 59 mm, curva)** (D-V2-25). La A queda en `v2/electronica/sensores/alternativa_68mm_curva/` | 15 nov | `v2/docs/decisiones.md` |
 ---
 
 ## C. Explicaciones detalladas

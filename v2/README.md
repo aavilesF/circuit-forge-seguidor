@@ -7,15 +7,19 @@ anterior y es **HISTÓRICO**: sirve de consulta, no es diseño vigente. No se bo
 | Carpeta | Contenido | Estado |
 |---|---|---|
 | `v2/docs/decisiones.md` | Decisiones vigentes (D-V2-xx) con su origen | vigente |
-| `v2/docs/componentes.md` | Instalados / repuestos / por comprar / mecánicos / insumos | vigente |
-| `docs/pendientes-por-confirmar.md` | **Lista única de pendientes** (v8, incluye P-V2-xx) | vigente |
+| `v2/inventario.csv` | **Fuente maestra del inventario** (comprado / usado / recepción) | vigente |
+| `v2/docs/componentes.md` | Tabla **generada** desde el inventario; no se edita a mano | vigente |
+| `v2/docs/ESTADO-DOCUMENTOS.md` | Qué documentos son vigentes y cuáles históricos | vigente |
+| `v2/herramientas/validar_repo.py` | Validador de coherencia (inventario vs esquemas, términos obsoletos, IDs, DRC) | vigente |
+| `docs/pendientes-por-confirmar.md` | **Lista única de pendientes** (v10, incluye P-V2-xx) | vigente |
 | `v2/docs/conexiones.md` | Qué se conecta con qué y por qué; análisis 3.3 V vs 5 V | vigente |
 | `v2/docs/bibliotecas.md` | Qué símbolo usa cada pieza y de dónde viene | vigente |
 | `v2/docs/migracion.md` | Qué se migró, qué se corrigió y qué queda histórico | vigente |
-| `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | **en revisión de Alan** |
-| `v2/electronica/*/` `.kicad_pcb` | Colocación PRELIMINAR de huellas, sin pistas (13 nov) | en revisión |
+| `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | esquemas aprobados (D-V2-20) |
+| `v2/electronica/principal/` y `sensores/` `.kicad_pcb` | PCB ruteadas, DRC 0 errores (15 nov); sensores = opción B (D-V2-25); la A en `sensores/alternativa_68mm_curva/` | en revisión de Alan |
 | `v2/electronica/vistas/` | SVG/PNG de esquemas y vistas 3D de la colocación | — |
 | `v2/docs/evaluaciones.md` | Encoders/aprendizaje y ventilador (EN ESTUDIO) | — |
-| `v2/electronica/herramientas/` | Scripts que generan esquemas y colocación (no rutean) | — |
+| `v2/electronica/herramientas/` | Scripts que generan esquemas, colocación y ruteo | — |
 
-Etapas: 1 esquemáticos (en revisión) → 2 PCB de doble cara → 3 compatibilidad mecánica.
+Etapas: 1 esquemáticos (aprobados) → 2 PCB de doble cara (ruteadas, en revisión; sin archivos de fabricación) → 3 compatibilidad mecánica.
+Reglas de trabajo: `CLAUDE.md` en la raíz.

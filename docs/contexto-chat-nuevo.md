@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Contexto para un chat nuevo: Seguidor de Línea V2 (robot casero)
 
 Actualizado: 11 nov 2026 (noche). Rama: `engineering/robot-casero`. HEAD local: `668607a`. **Sin push** (Alan no autorizó el push al remoto).

@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Cómo funciona el multiplexor 74HC4067 (explicación sencilla)
 
 **Sí, es la pieza correcta.** Un *multiplexor analógico* (a veces llamado "traductor" para ahorrar pines) es un **selector**: tiene 16 entradas (los 16 sensores)

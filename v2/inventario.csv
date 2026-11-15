@@ -1,0 +1,30 @@
+clave,pieza,comprada,usada,recepcion,patron_valor,patron_ref,fuente,nota
+esp32,ESP32 DevKit 30p USB-C,1,1,confirmada,ESP32 DevKit,,Ticket/UNIT 7 nov; medido por Alan 11 nov,Sobre tira hembra
+mp1584,Módulo MP1584 (5.0 V y 6.0 V),2,2,confirmada,MP1584,,Ticket Valtierra 5 nov; medido por Alan 11-13 nov,Sin repuesto. Ajustar a 5.0 y 6.0 V (E01/E02)
+drv8833,Módulo DRV8833,2,1,confirmada,DRV8833,,Ticket Valtierra 5 nov; medido por Alan 13 nov,1 de repuesto
+d1n5822,Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB),2,2,sin_confirmar,1N5822,,Ticket Valtierra 5 nov (BOM y CHECKLIST: 2),CONFLICTO: la migración del 12 nov anotó 3. Ver P-V2-39
+irlz44n,MOSFET IRLZ44N (TO-220),3,1,sin_confirmar,IRLZ44N,,Pedido UNIT 7 nov,2 de repuesto
+n2222,Transistor 2N2222 (TO-92; marcado H331; E-B-C),6,1,confirmada,2N2222,,Ticket Valtierra 5 nov; patas probadas por Alan,5 de repuesto
+c470,Capacitor electrolítico 470 µF 16 V,2,2,sin_confirmar,470uF,,Ticket Valtierra 5 nov,Sin repuesto
+c100n,Capacitor cerámico 100 nF,5,4,sin_confirmar,100nF,,Ticket Valtierra 5 nov,3 en principal + 1 en sensores; 1 de repuesto
+pulsador,Pulsador 4 patas (SW2 12 mm; SW3 y SW4 6 mm),3,3,sin_confirmar,START|CAL|RESET,,Ticket Valtierra 5 nov,Sin repuesto
+tcrt5000,Sensor TCRT5000 (individual),14,12,confirmada,TCRT5000,,Pedido UNIT 7 nov; pines confirmados por Alan 13 nov,2 de repuesto
+mux,Módulo multiplexor CD74HC4067,2,1,confirmada,CD74HC4067,,Pedido UNIT 7 nov; medido por Alan 13 nov,1 de repuesto
+r220,Resistencia 220 Ω 1/4 W,0,12,por_comprar,^220$,,Sin compra,Sensores R1-R12
+r10k,Resistencia 10 kΩ 1/4 W,0,14,por_comprar,^10k$,,Sin compra,Sensores R13-R24 y R26 + principal R5
+r470,Resistencia 470 Ω 1/4 W,0,1,por_comprar,^470$,,Sin compra,Sensores R25
+r100,Resistencia 100 Ω 1/4 W,0,1,por_comprar,^100$,,Sin compra,Principal R4
+r100k,Resistencia 100 kΩ 1/4 W,0,1,por_comprar,^100k$,,Sin compra,Principal R1
+r33k,Resistencia 33 kΩ 1/4 W,0,1,por_comprar,^33k$,,Sin compra,Principal R2
+ptc,PTC reseteable Bel Fuse 0ZRE0150FF1A (F1),0,1,por_comprar,PTC,,Digi-Key 5923-0ZRE0150FF1A-ND (D-V2-24),Ver P-V2-44
+headers_cable,Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines,?,28,sin_confirmar,,^J\d$,Ticket Valtierra 5 nov (2 tiras '5030552': tipo por confirmar),Ver P-V2-41
+tira_hembra,Tira hembra para ESP32/MP1584/DRV8833/mux,80,74,sin_confirmar,,,Ticket Valtierra 5 nov (2 tiras CON-HH40 de 40 pines),Ver P-V2-41
+jst_rc,Conector JST-RC (pares macho/hembra),2,1,sin_confirmar,,,Pedido UNIT 7 nov,Conector de batería; 1 par de repuesto
+motor_n20,Motorreductor GA12-N20 6 V 1000 RPM,2,2,confirmada,,,Pedido UNIT 7 nov,Eje 2.3 mm medido (D-V2-11)
+ventilador,Ventilador 4010 12 V,1,1,confirmada,,,Pedido UNIT 7 nov,Pesado 15 g el 13 nov
+rueda_loca,Mini rueda universal 3Pi N20 (rueda loca),2,1,sin_confirmar,,,Pedido UNIT 7 nov,1 de repuesto (D-V2-10)
+soporte_n20,Soporte motorreductor N20 con tornillos M2,2,2,sin_confirmar,,,Pedido UNIT 7 nov,
+kit_separadores,Kit separadores de latón M3 (120 piezas),1,1,confirmada,,,Pedido UNIT 7 nov,Pesados 13 nov
+interruptor,Interruptor de balancín (BOM: SW-104S; diseño: KCD1 rojo),1,1,sin_confirmar,,,Ticket Valtierra 5 nov,Ver P-V2-42
+lipo,LiPo 2S 7.4 V 450-500 mAh,0,1,por_comprar,,,Sin compra,M14
+cable_18awg,Cable 18 AWG (potencia),?,?,sin_confirmar,,,Ticket Valtierra 5 nov (cantidad '3'; unidad no registrada),Ver P-V2-43

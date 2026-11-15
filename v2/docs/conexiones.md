@@ -57,7 +57,7 @@ KiCad 10.0.8 por el MCP (principal: 0 errores, 0 avisos; sensores: 0 errores, 4 
 | Q1 emisor | GND | GND | Retorno |
 
 ## C. Alimentación de los LED: 5 V (aprobado y aplicado el 13 nov; antes 3.3 V)
-- **Hoy:** cada LED toma corriente de **+3V3** (el regulador de 3.3 V del DevKit) por su 330 Ω: (3.3 − 1.2 − 0.1)/330 ≈ 6 mA × 12 ≈ **72 mA**. El GPIO13 **no** da esa corriente: solo manda ~2.6 mA a la base del 2N2222, que es el que conduce los 72 mA.
+- **Antes (3.3 V, ya no aplica):** cada LED tomaba corriente de **+3V3** (el regulador de 3.3 V del DevKit) por su 330 Ω: (3.3 − 1.2 − 0.1)/330 ≈ 6 mA × 12 ≈ **72 mA**. El GPIO13 **no** da esa corriente: solo manda ~2.6 mA a la base del 2N2222, que es el que conduce los 72 mA.
 - **Riesgo real:** no es el GPIO sino el pequeño regulador de 3.3 V del DevKit, que también alimenta al ESP32 (≈ 80–250 mA con picos). Aguanta, pero se calienta más y la luz de los LED es débil.
 - **Propuesta (recomendada):** alimentar los ánodos desde **+5V** (salida del MP1584 #1, que da hasta ~3 A) con un **9.º hilo** en el cable, y cambiar R1–R12 a **220 Ω**: (5 − 1.2 − 0.1)/220 ≈ 17 mA × 12 ≈ **200 mA** (TCRT5000: máx. 60 mA por LED, Vishay). El 2N2222 aguanta 600 mA; para saturarlo con 200 mA conviene bajar R25 a **470 Ω** (~5.5 mA de base, β forzada ≈ 36).
 - **¿Llega 5 V al ESP32?** No: los pull-up de 10 k y el multiplexor siguen en **+3V3**, así que SIG y los canales nunca pasan de 3.3 V. El 5 V solo toca los LED y el colector de Q1.
@@ -67,10 +67,11 @@ KiCad 10.0.8 por el MCP (principal: 0 errores, 0 avisos; sensores: 0 errores, 4 
 RDS(on) es la resistencia del MOSFET encendido. IR la garantiza con 4–5 V de compuerta; a 3.3 V enciende (umbral máx. 2 V)
 pero con algo más de resistencia. Con un ventilador de ~100 mA la pérdida es de milivatios: **sirve, no se cambia**.
 
-## E. PCB ruteadas (14 nov 2026)
-| Placa | Medida | Pistas | Vías | DRC KiCad 10 | Sin conectar |
-|---|---|---|---|---|---|
-| Principal | 96 × 84 mm | 631 tramos | 23 | 0 errores (solo avisos de serigrafía) | 0 |
-| Sensores | 96 × 88 mm | 645 tramos | 16 | 0 errores (solo avisos de serigrafía/texto) | 0 |
+## E. PCB ruteadas (verificadas el 15 nov 2026 con KiCad 10.0.8)
+| Placa | Medida | DRC | Sin conectar | ERC |
+|---|---|---|---|---|
+| Principal | 96 × 74 mm | 0 errores (solo avisos de serigrafía y paridad) | 0 | 0 |
+| Sensores (opción B, D-V2-25) | 96 × 59 mm | 0 errores (solo avisos de serigrafía/texto y paridad) | 0 | 0 errores, 4 avisos |
+Informes: `v2/electronica/verificacion/`; el registro con el md5 de cada PCB está en `registro_drc.json` y lo comprueba `validar_repo.py`. La alternativa A de sensores (96 × 68 mm) está en `v2/electronica/sensores/alternativa_68mm_curva/`.
 Reglas caseras: pista 0.8 mm (señal) / 1.0 mm (potencia), separación ≥ 0.5 mm, vías Ø1.8 mm con broca 0.8 mm (cada vía = alambre soldado en las dos caras).
 Módulos sobre tira hembra, headers, botones y electrolíticos: solo se conectan por la cara inferior. TCRT5000 (cara inferior): solo por la superior. Resistencias, diodos, TO-220, TO-92 y cerámicos: ambas caras.

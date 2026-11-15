@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Opciones de diseño del robot (6 nov 2026)
 
 Alan revisó en AutoCAD el diseño en "T" (placa de sensores colgada debajo de un travesaño) y no le gustó: quiere un robot **más unido**,

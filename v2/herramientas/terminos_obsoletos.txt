@@ -1,0 +1,10 @@
+# regex => motivo  (se buscan en archivos vigentes; las líneas que digan obsoleto/antes/histórico/etc. se ignoran)
+cable de 8 hilos => el cable es de 9 hilos (D-V2-19)
+Header 1x8 => el conector de sensores es 1x9
+8 hilos a la principal => son 9 hilos
+(LED|R1–R12).{0,80}330 ?Ω => los LED usan 220 Ω (D-V2-19)
+3 \+ 1 de repuesto => MP1584 no tiene repuesto
+PRELIMINAR sin pistas => las PCB ya están ruteadas
+versión 8 en adelante => la versión vigente de pendientes es la 10
+valor pendiente \(P-V2-03\) => el PTC ya está elegido (D-V2-24)
+2 / 3 \(Alan => 1N5822 comprado: 2 (P-V2-39)

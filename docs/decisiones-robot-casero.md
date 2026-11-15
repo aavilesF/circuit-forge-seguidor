@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Decisiones tomadas (robot casero)
 
 Registro de lo que **ya se decidió**. Si algo de aquí aparece en otro archivo como "pendiente", ese archivo está desactualizado.

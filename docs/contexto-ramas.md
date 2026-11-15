@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Contexto para chats independientes (rama `engineering/robot-casero`, 5 nov 2026)
 
 Pega el bloque que corresponda al abrir un chat nuevo. Reglas comunes: responder en español, no inventar medidas (marcarlas en
