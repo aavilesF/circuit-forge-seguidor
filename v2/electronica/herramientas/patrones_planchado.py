@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Patrones para transferencia de tóner (planchado) a escala 1:1 desde un .kicad_pcb.
 Uso: python3 patrones_planchado.py <pcb> <salida.pdf> <nombre>
-Página 1 = CARA DE ABAJO (B.Cu), sin espejo. Página 2 = CARA DE ARRIBA (F.Cu), EN ESPEJO.
+Cada hoja trae arriba la CARA DE ARRIBA (F.Cu, EN ESPEJO) y abajo la CARA DE ABAJO (B.Cu, sin espejo), con letrero. Dos hojas idénticas (la 2.ª es de repuesto).
 Ambas se imprimen sin escalar (100 %, 'tamaño real', sin 'ajustar a página') en láser con papel de transferencia.
 Negro = cobre que se queda. Punto blanco en cada pad/vía = guía de broca. Cruces fuera del borde = registro."""
 import sys, math, pathlib
@@ -57,8 +57,8 @@ for fp in find(o, 'footprint'):
         pads.append((p[3], fx+lx*c+ly*sn-x0, fy-lx*sn+ly*c-y0, w, h, dr))
 cv = canvas.Canvas(out, pagesize=A4)
 PW, PH = A4
-def pagina(lado, espejo):
-    ml = (PW/mm - W)/2; mt = 22                      # margen izquierdo (mm) y superior
+def cara(lado, espejo, mt, titulo):
+    ml = (PW/mm - W)/2                                # margen izquierdo (mm); mt = margen superior (mm)
     def X(x): return (ml + (W-x if espejo else x))*mm
     def Y(y): return PH - (mt + y)*mm
     cv.setFillColorRGB(0, 0, 0); cv.setStrokeColorRGB(0, 0, 0); cv.setLineCap(1)
@@ -75,15 +75,20 @@ def pagina(lado, espejo):
     cv.setFillColorRGB(1, 1, 1)
     for (x, y, d, dr) in vias: cv.circle(X(x), Y(y), 0.25*mm, stroke=0, fill=1)   # guía de broca 0.5 mm
     for (sh, x, y, w, h, dr) in pads: cv.circle(X(x), Y(y), 0.25*mm, stroke=0, fill=1)
-    cv.setStrokeColorRGB(0, 0, 0); cv.setLineWidth(0.15*mm)
+    cv.setStrokeColorRGB(0, 0, 0); cv.setFillColorRGB(0, 0, 0); cv.setLineWidth(0.15*mm)
     for l in borde:                                                                # borde de corte
         for (a, b) in zip(l, l[1:]): cv.line(X(a[0]-x0), Y(a[1]-y0), X(b[0]-x0), Y(b[1]-y0))
     for (cx, cy) in ((-4, -4), (W+4, -4), (-4, H+4), (W+4, H+4)):                  # cruces de registro
         px = X(cx); py = Y(cy); cv.line(px-2*mm, py, px+2*mm, py); cv.line(px, py-2*mm, px, py+2*mm)
-    cv.setFont('Helvetica', 9)
-    cv.drawString(15*mm, PH-10*mm, f"{nombre} - {'ARRIBA (F.Cu) EN ESPEJO' if espejo else 'ABAJO (B.Cu) SIN ESPEJO'} - {W:.0f} x {H:.0f} mm - imprimir al 100 %")
-    cv.drawString(15*mm, PH-15*mm, "Verifica con regla: la barra mide 50 mm.")
-    cv.setLineWidth(0.5*mm); cv.line(15*mm, PH-18*mm, 65*mm, PH-18*mm)
+    cv.setFont('Helvetica-Bold', 14)
+    cv.drawString(ml*mm, PH-(mt-7)*mm, titulo)                                     # letrero fuera de la placa
+
+def pagina():
+    cv.setFillColorRGB(0, 0, 0); cv.setFont('Helvetica', 8)
+    cv.drawString(15*mm, PH-8*mm, f"{nombre} - {W:.0f} x {H:.0f} mm - imprimir al 100 % (tamano real). Barra = 50 mm:")
+    cv.setLineWidth(0.5*mm); cv.line(125*mm, PH-7.2*mm, 175*mm, PH-7.2*mm)
+    cara('F.Cu', True, 24, 'CARA DE ARRIBA (F.Cu) - EN ESPEJO')
+    cara('B.Cu', False, 24+H+22, 'CARA DE ABAJO (B.Cu) - SIN ESPEJO')
     cv.showPage()
-pagina('B.Cu', False); pagina('F.Cu', True); cv.save()
+pagina(); pagina(); cv.save()
 print(out, f'{W:.1f}x{H:.1f} mm', len(segs), 'segmentos', len(vias), 'vias', len(pads), 'pads')
