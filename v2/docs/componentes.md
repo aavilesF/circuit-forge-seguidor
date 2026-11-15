@@ -9,7 +9,7 @@ Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de pre
 | ESP32 DevKit 30p USB-C | 1 | 1 | 0 | recibida y confirmada | Sobre tira hembra |
 | Módulo MP1584 (5.0 V y 6.0 V) | 2 | 2 | 0 | recibida y confirmada | Sin repuesto. Ajustar a 5.0 y 6.0 V (E01/E02) |
 | Módulo DRV8833 | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto |
-| Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB) | 3 | 2 | 1 | recepción sin confirmar | Comprados 3 (2 para D1/D2 + 1 de recambio, confirmado por Alan 15 nov, P-V2-39). Huella derivada de 20.32 mm autorizada (D-V2-33; pendiente de rehacer en PCB) |
+| Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB) | 3 | 2 | 1 | recepción sin confirmar | Comprados 3 (2 en D1/D2 + 1 de recambio; Alan 15 nov, P-V2-39). Huella derivada 20.32 mm aplicada en la PCB (D-V2-33), taladro 1.3 mm |
 | MOSFET IRLZ44N (TO-220) | 3 | 1 | 2 | recibida y confirmada | 2 de repuesto. Recibido según Alan 15 nov (P-V2-40) |
 | Transistor 2N2222 (TO-92; marcado H331; E-B-C) | 6 | 1 | 5 | recibida y confirmada | 5 de repuesto |
 | Capacitor electrolítico 470 µF 16 V | 2 | 2 | 0 | recepción sin confirmar | Sin repuesto |
@@ -24,8 +24,8 @@ Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de pre
 | Resistencia 100 kΩ 1/4 W | 0 | 1 | — | por comprar | Principal R1 |
 | Resistencia 33 kΩ 1/4 W | 0 | 1 | — | por comprar | Principal R2 |
 | PTC reseteable Bel Fuse 0ZRE0150FF1A (F1) | 0 | 1 | — | por comprar | Ver P-V2-44 |
-| Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines | ? | 28 | ? | recepción sin confirmar | Ver P-V2-41 |
-| Tira hembra para ESP32/MP1584/DRV8833/mux | 80 | 74 | 6 | recepción sin confirmar | Ver P-V2-41 |
+| Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines | ? | 28 | ? | recepción sin confirmar | P-V2-41 aparcado por Alan (sin peso para los componentes) |
+| Tira hembra para ESP32/MP1584/DRV8833/mux | 80 | 74 | 6 | recepción sin confirmar | P-V2-41 aparcado por Alan (sin peso para los componentes) |
 | Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recibida y confirmada | Conector de batería; 1 par de repuesto |
 | Motorreductor GA12-N20 6 V 1000 RPM | 2 | 2 | 0 | recibida y confirmada | Eje 2.3 mm medido (D-V2-11) |
 | Ventilador 4010 12 V | 1 | 1 | 0 | recibida y confirmada | Pesado 15 g el 13 nov |

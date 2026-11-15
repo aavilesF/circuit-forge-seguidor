@@ -70,7 +70,7 @@ pero con algo más de resistencia. Con un ventilador de ~100 mA la pérdida es d
 ## E. PCB ruteadas (verificadas el 15 nov 2026 con KiCad 10.0.8)
 | Placa | Medida | DRC | Sin conectar | ERC |
 |---|---|---|---|---|
-| Principal | 96 × 74 mm | 0 errores (solo avisos de serigrafía y paridad) | 0 | 0 |
+| Principal (D1/D2 a 20.32 mm, D-V2-33) | 96 × 74 mm | 0 errores (solo avisos de serigrafía y paridad) | 0 | 0 |
 | Sensores (opción B, D-V2-25) | 96 × 59 mm | 0 errores (solo avisos de serigrafía/texto y paridad) | 0 | 0 errores, 4 avisos |
 Informes: `v2/electronica/verificacion/`; el registro con el md5 de cada PCB está en `registro_drc.json` y lo comprueba `validar_repo.py`. La alternativa A de sensores (96 × 68 mm) está en `v2/electronica/sensores/alternativa_68mm_curva/`.
 Reglas caseras: pista 0.8 mm (señal) / 1.0 mm (potencia), separación ≥ 0.5 mm, vías Ø1.8 mm con broca 0.8 mm (cada vía = alambre soldado en las dos caras).

@@ -15,3 +15,4 @@ Ningún ID se borra: si un ID ya no aparece en la versión actual, aquí está s
 | pendientes-v7_2026-11-11_pre-V2.md | 12 nov 2026 | v8: rama seguidor-caseroV2; resueltos M16, M17, M19, M20, P19, P-V2-01/02/05/06/08/09; nuevos P-V2-12/13/14 |
 | pendientes-v8_2026-11-14_pre-optimizacion.md | 14 nov 2026 | v9: P-V2-28 y P-V2-30 resueltos; P-V2-27/29/32 actualizados; nuevos P-V2-34 a 38 |
 | pendientes-v9_2026-11-15_pre-mantenimiento.md | 15 nov 2026 | v10: sincronización con `v2/inventario.csv`; resueltos P-V2-31/32/35/36/38; nuevos P-V2-39 a 44; M18 unificado |
+| pendientes-v11_2026-11-15_pre-diodos-20mm.md | 15 nov 2026 | v12: huella 20.32 mm aplicada; P-V2-37/41/44 cerrados; P-V2-27 a la espera del OK final |

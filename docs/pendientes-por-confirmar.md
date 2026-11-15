@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 11 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 12 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -7,6 +7,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
+
+v12 (15 nov): P-V2-37, P-V2-41 y P-V2-44 pasan a resueltos/aparcados; P-V2-27 queda a la espera del OK final. Copia de la v11: `docs/historial/pendientes-v11_2026-11-15_pre-diodos-20mm.md`.
 
 v11 (15 nov, tarde): respuestas de Alan: P-V2-39, 40, 42, 43 resueltos; P-V2-37 autorizado (D-V2-33, falta ejecutar); nuevo P-V2-45.
 
@@ -26,11 +28,10 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-27 | Revisión del ruteo | **15 nov:** instaladas en tus archivos de KiCad (`Esquemas V2/principal` y `sensores`, con respaldo en `_respaldo_antes_de_opt_2026-11-15`): principal 96 × 74 mm y sensores opción B 96 × 59 mm. DRC y ERC KiCad 10 repetidos sobre esos archivos: 0 errores, 0 conexiones pendientes. Falta tu revisión final antes de generar los patrones de planchado (no generados) | **sí, para fabricar** | Revisar en KiCad | Alan |
+| P-V2-27 | Revisión final de las PCB / exportar para planchar | Alan (15 nov): las PCB le gustaron y no habría más cambios. La principal cambió esa tarde solo en D1/D2 (huella 20.32 mm): falta que la abra y confirme. Al confirmar se generan los patrones de planchado (no generados todavía) | **sí, para fabricar** | OK final de Alan sobre la principal y los sensores | Alan |
 | P-V2-29 | Posición del ventilador / chasis | El ventilador se queda y se atornilla al acrílico (D-V2-26). Orden propuesto por Alan: ruedas atrás, PCB principal, ventilador, sensores al final; batería junto o sobre los motores (D-V2-27). Falta validarlo con medidas en AutoCAD; si los motores no dejan espacio, se quita | no | Etapa 3 (mecánica) | Equipo |
 | P-V2-33 | Capucha para sensores | Alan acepta la capucha, que puede ser algo plana, y mi ayuda (D-V2-30). Falta el diseño: pieza negra mate a 1–2 mm del piso y compensación de luz ambiente por firmware | no | Etapa 3 | Equipo |
 | P-V2-34 | **Ancho total del robot (ruedas)** | Con 2 N20 espalda con espalda ≈ 95 mm sin terminales; con terminales y cable soldado **~99–101 mm** (límite 100 mm). Alan decidió recortar el acrílico hacia dentro en la zona de los motores y dejarlos lo más juntos posible (D-V2-28). Falta medir | **sí, para la mecánica** | Medir con vernier un motor con terminales y cable soldado, y la posición del rin en el eje | Alan |
-| P-V2-37 | Huella del 1N5822 (D1, D2) | **Autorizada 15 nov (D-V2-33): huella derivada de 20.32 mm.** Falta ejecutar: rehacer D1/D2 en la PCB principal con esa huella y repetir DRC | no (PCB) | Claude rehace la huella (solo la autorizada) y repite DRC; Alan revisa | Claude / Alan |
 | P-V2-16 | Cable entre placas: 9 hilos | Hace falta cable de 9 hilos y una tira de 1×9 por placa. **Cómo pedirlo en la tienda:** "cable plano de 10 conductores (se separa 1) o cable multiconductor 9 hilos, calibre 24–28 AWG, ~30 cm" y "tira de pines macho 2.54 mm, 1 fila, se corta a 9". Alternativa: cable UTP (8) + 1 hilo suelto | no | Compra | Alan |
 | P-V2-07 | Headers | Alan usará **tira hembra** en la PCB para ESP32, MP1584, DRV8833 y mux (módulos con pines macho). No se dibujan en el esquema | no (PCB) | Considerar alturas y pasos en la etapa 2 | Claude |
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
@@ -51,8 +52,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | E06 | Corriente total | < 1.5 A estimado (relevante para el PTC de 1.5 A, D-V2-24) | no | Multímetro en serie | Alan |
 | E07 | Corto antes de la LiPo | +VBAT–GND abierto | no | Multímetro | Alan |
 | E08 | Brocas | 0.8 mm (resistencias, sensores, vías), 1.0 mm (headers, módulos, TO-220, PTC), 1.3 mm (1N5822), 3.2 mm (M3) | no | Comprar las que falten | Alan |
-| P-V2-41 | Conectores: ¿alcanzan? | Hacen falta 74 pines hembra según las huellas (ESP32 30 + MP1584 2 × 4 + DRV8833 12 + mux 24) y se compraron 2 tiras de 40 = 80 (alcanzan si cortas bien); y 28 pines macho (J1–J5 + J6 + J1 de sensores). Las 2 tiras "5030552" tienen tipo por confirmar. Cuenta calculada con las huellas por `validar_repo.py` | no | Decir qué son las "5030552" (macho/hembra, cuántos pines) y si los módulos ya traen sus pines | Alan |
-| P-V2-44 | PTC: compra | 0ZRE0150FF1A: Digi-Key lo marca de 8–12 semanas si no hay existencia y no vi existencia en México; el competidor es el 21 nov. Datos de Digi-Key; no pude leer la hoja de datos del fabricante. Si no llega a tiempo: elegir otro PTC (su huella no sería oficial) o compra local | **sí, para el robot** | Alan revisa existencia y envío; si no hay, decidimos alternativa | Alan |
 | P-V2-45 | Pieza no anotada por la electrónica | Alan dice que la tienda le vendió una pieza que se olvidó anotar y que, si no es necesaria, no hay problema; si al armar hace falta, avisa. **Falta saber cuál es.** | no | Alan dice qué pieza fue | Alan |
 
 ## B. Resueltos y obsoletos (no se borran)
@@ -144,6 +143,9 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-40 | Recepción del pedido UNIT | Respondido 15 nov: todo lo pedido a UNIT está recibido. Inventario actualizado (D-V2-36). Alan comenta que una pieza que le vendió la electrónica no se anotó (no dijo cuál); el ID P-V2-21 es el de la evaluación del ventilador, así que se pregunta aparte (ver P-V2-45) | 15 nov | `v2/inventario.csv`, `v2/docs/decisiones.md` |
 | P-V2-42 | Interruptor: ¿SW-104S es el KCD1? | Respondido 15 nov: el SW-104S es el interruptor KCD1 (D-V2-35) | 15 nov | `v2/inventario.csv`, `v2/docs/decisiones.md` |
 | P-V2-43 | Cable 18 AWG ×3 | Respondido 15 nov: 3 m en total, 1.5 m rojo y 1.5 m negro, de reserva (D-V2-35) | 15 nov | `v2/inventario.csv`, `v2/docs/decisiones.md` |
+| P-V2-37 | Huella del 1N5822 (D1, D2) | **Resuelto 15 nov:** huella derivada de 20.32 mm aplicada a D1 y D2 (D-V2-33, D-V2-37). PCB principal rehecha: mismas conexiones, ERC 0, DRC 0 errores | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-41 | Conectores: ¿alcanzan? | **Aparcado por Alan (15 nov):** "olvídalo por el momento, no tiene peso en nuestros componentes". Sin acción. Si se vuelve a necesitar: tipo de las tiras "5030552" y pines (cuenta calculada: 74 hembra necesarias, 80 compradas) | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-44 | PTC: compra | **Resuelto 15 nov:** Alan se apega a conseguir ese fusible (Bel Fuse 0ZRE0150FF1A, D-V2-38). Riesgo conocido: plazo de entrega si no hay existencia | 15 nov | `v2/docs/decisiones.md` |
 ---
 
 ## C. Explicaciones detalladas

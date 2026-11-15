@@ -16,3 +16,6 @@
 Los símbolos con "extends" (1N5822, IRLZ44N, PN2222A) se incrustaron aplanados; KiCad da un aviso `lib_symbol_mismatch` sin efecto eléctrico.
 
 Copia de la biblioteca de Alan usada: `v2/electronica/bibliotecas/` (símbolos y huella del MP1584 corregida).
+
+## RobotCasero.pretty (huella aprobada por Alan)
+`D_DO-201AD_P20.32mm_Taladro1.3`: 1N5822 acostado, 20.32 mm entre patas, taladro 1.3 mm (Alan, 11 y 15 nov, D-V2-33/37). Pin 1 = cátodo (franja). Usada por D1 y D2 en la PCB principal.
