@@ -9,8 +9,8 @@ Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de pre
 | ESP32 DevKit 30p USB-C | 1 | 1 | 0 | recibida y confirmada | Sobre tira hembra |
 | Módulo MP1584 (5.0 V y 6.0 V) | 2 | 2 | 0 | recibida y confirmada | Sin repuesto. Ajustar a 5.0 y 6.0 V (E01/E02) |
 | Módulo DRV8833 | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto |
-| Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB) | 2 | 2 | 0 | recepción sin confirmar | CONFLICTO: la migración del 12 nov anotó 3. Ver P-V2-39 |
-| MOSFET IRLZ44N (TO-220) | 3 | 1 | 2 | recepción sin confirmar | 2 de repuesto |
+| Diodo 1N5822 (D1 rueda libre ventilador; D2 aislamiento USB) | 3 | 2 | 1 | recepción sin confirmar | Comprados 3 (2 para D1/D2 + 1 de recambio, confirmado por Alan 15 nov, P-V2-39). Huella derivada de 20.32 mm autorizada (D-V2-33; pendiente de rehacer en PCB) |
+| MOSFET IRLZ44N (TO-220) | 3 | 1 | 2 | recibida y confirmada | 2 de repuesto. Recibido según Alan 15 nov (P-V2-40) |
 | Transistor 2N2222 (TO-92; marcado H331; E-B-C) | 6 | 1 | 5 | recibida y confirmada | 5 de repuesto |
 | Capacitor electrolítico 470 µF 16 V | 2 | 2 | 0 | recepción sin confirmar | Sin repuesto |
 | Capacitor cerámico 100 nF | 5 | 4 | 1 | recepción sin confirmar | 3 en principal + 1 en sensores; 1 de repuesto |
@@ -26,15 +26,15 @@ Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de pre
 | PTC reseteable Bel Fuse 0ZRE0150FF1A (F1) | 0 | 1 | — | por comprar | Ver P-V2-44 |
 | Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines | ? | 28 | ? | recepción sin confirmar | Ver P-V2-41 |
 | Tira hembra para ESP32/MP1584/DRV8833/mux | 80 | 74 | 6 | recepción sin confirmar | Ver P-V2-41 |
-| Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recepción sin confirmar | Conector de batería; 1 par de repuesto |
+| Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recibida y confirmada | Conector de batería; 1 par de repuesto |
 | Motorreductor GA12-N20 6 V 1000 RPM | 2 | 2 | 0 | recibida y confirmada | Eje 2.3 mm medido (D-V2-11) |
 | Ventilador 4010 12 V | 1 | 1 | 0 | recibida y confirmada | Pesado 15 g el 13 nov |
-| Mini rueda universal 3Pi N20 (rueda loca) | 2 | 1 | 1 | recepción sin confirmar | 1 de repuesto (D-V2-10) |
-| Soporte motorreductor N20 con tornillos M2 | 2 | 2 | 0 | recepción sin confirmar |  |
+| Mini rueda universal 3Pi N20 (rueda loca) | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto (D-V2-10) |
+| Soporte motorreductor N20 con tornillos M2 | 2 | 2 | 0 | recibida y confirmada |  |
 | Kit separadores de latón M3 (120 piezas) | 1 | 1 | 0 | recibida y confirmada | Pesados 13 nov |
-| Interruptor de balancín (BOM: SW-104S; diseño: KCD1 rojo) | 1 | 1 | 0 | recepción sin confirmar | Ver P-V2-42 |
+| Interruptor de balancín (BOM: SW-104S; diseño: KCD1 rojo) | 1 | 1 | 0 | recibida y confirmada | Es el interruptor KCD1 del diseño (confirmado por Alan 15 nov, P-V2-42) |
 | LiPo 2S 7.4 V 450-500 mAh | 0 | 1 | — | por comprar | M14 |
-| Cable 18 AWG (potencia) | ? | ? | ? | recepción sin confirmar | Ver P-V2-43 |
+| Cable 18 AWG (potencia) | 3 | n/a | — | recibida y confirmada | 3 m totales: 1.5 m rojo + 1.5 m negro, de reserva para conexiones (Alan 15 nov, P-V2-43). No se cuenta en el diseño |
 
 ## Externos y mecánicos sin fila en el inventario
 Base de acrílico (≤ 3 mm), 2 llantas con rin (ya disponibles, M08), placa fenólica 20 × 20 cm doble cara (comprada), cloruro férrico, broca 0.8 mm, estaño, pasta, termofit (comprados).

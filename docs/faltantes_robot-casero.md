@@ -99,3 +99,15 @@ La tienda física cuesta más que UNIT (en el ticket, MP1584 a 30 contra 19 y DR
 
 **Impacto en firmware:** `firmware/seguidor/pines.h` y `hardware.cpp` están escritos para TB6612 y 8 o 24 sensores. Habrá que
 adaptarlos al DRV8833 y a 12 sensores. No se modificaron en esta rama.
+
+
+## Actualización 15 nov 2026 (respuestas de Alan)
+Fuente vigente de cantidades: **`v2/inventario.csv`** (este archivo solo conserva la lista original de la rama anterior).
+- **Recibido en UNIT (7 nov):** todo el pedido, confirmado por Alan (D-V2-36). Incluye IRLZ44N, ruedas locas 3Pi, soportes N20, JST-RC, motores, ventilador, separadores y mux.
+- **Diodos 1N5822:** se compraron 3; 2 en uso y 1 de recambio (D-V2-34, P-V2-39).
+- **Interruptor:** el SW-104S comprado es el KCD1 del diseño (D-V2-35, P-V2-42).
+- **Cable 18 AWG:** 3 m en total, 1.5 m rojo y 1.5 m negro, de reserva (D-V2-35, P-V2-43).
+- **Por comprar:** LiPo 2S (M14), PTC Bel Fuse 0ZRE0150FF1A (D-V2-24, P-V2-44), resistencias (ver `componentes.md`), brocas 1.0 / 1.3 / 3.2 mm, cable 22–26 AWG, alambre para vías, cartulina y vinil.
+- **Por aclarar:** conectores "5030552" (P-V2-41) y una pieza que la tienda no anotó (P-V2-45).
+
+---

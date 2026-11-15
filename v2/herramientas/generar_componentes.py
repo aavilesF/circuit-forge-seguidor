@@ -12,7 +12,7 @@ out = ["# Componentes (V2) — GENERADO desde `v2/inventario.csv`", "",
 for f in rows:
     c, u = f['comprada'], f['usada']
     rep = str(int(c)-int(u)) if c.isdigit() and u.isdigit() else '?'
-    if f['recepcion'] == 'por_comprar': rep = '—'
+    if f['recepcion'] == 'por_comprar' or u == 'n/a': rep = '—'
     out.append(f"| {f['pieza']} | {c} | {u} | {rep} | {ET[f['recepcion']]} | {f['nota']} |")
 out += ["", "## Externos y mecánicos sin fila en el inventario",
  "Base de acrílico (≤ 3 mm), 2 llantas con rin (ya disponibles, M08), placa fenólica 20 × 20 cm doble cara (comprada), cloruro férrico, broca 0.8 mm, estaño, pasta, termofit (comprados).",

@@ -32,4 +32,8 @@
 | D-V2-29 | Las resistencias de 220 Ω de los LED quedan **delante** de los sensores (sin cambiar el esquema) | Alan, 14 nov (P-V2-35) |
 | D-V2-30 | Se acepta explorar una capucha para los sensores, que puede ser algo plana; Claude ayuda con el diseño. El diseño sigue abierto | Alan, 14 nov (P-V2-33) |
 | D-V2-31 | Un PTC grande es aceptable si su huella es oficial de KiCad | Alan, 14 nov (P-V2-31) |
-| D-V2-32 | Un diodo 1N5822 por posición con la separación de patas que Alan dio (~20 mm). La huella oficial más cercana es de 15.24 mm; queda abierto P-V2-37 | Alan, 14 nov |
+| D-V2-32 | Un diodo 1N5822 por posición con la separación de patas que Alan dio (~20 mm). La huella oficial más cercana es de 15.24 mm; P-V2-37 autorizado el 15 nov (D-V2-33) | Alan, 14 nov |
+| D-V2-33 | **Huella derivada de 20.32 mm para D1 y D2 (1N5822)**, taladro 1.3 mm, autorizada. Sustituye a la oficial de 15.24 mm en la PCB principal. Pendiente de ejecutar: rehacer D1/D2 en `principal.kicad_pcb` y repetir DRC (ver P-V2-37) | Alan, 15 nov (P-V2-37) |
+| D-V2-34 | Diodos 1N5822: se compraron **3**; 2 se usan (D1, D2) y **1 queda de recambio** | Alan, 15 nov (P-V2-39) |
+| D-V2-35 | Interruptor SW1: el **SW-104S** comprado es el interruptor KCD1 del diseño. Cable 18 AWG: **3 m** (1.5 m rojo + 1.5 m negro) de reserva para conexiones | Alan, 15 nov (P-V2-42, P-V2-43) |
+| D-V2-36 | Todo lo pedido a UNIT el 7 nov está recibido | Alan, 15 nov (P-V2-40) |
