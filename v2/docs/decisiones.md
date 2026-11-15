@@ -39,3 +39,4 @@
 | D-V2-36 | Todo lo pedido a UNIT el 7 nov está recibido | Alan, 15 nov (P-V2-40) |
 | D-V2-37 | Se usa la huella aprobada `RobotCasero:D_DO-201AD_P20.32mm_Taladro1.3` (biblioteca `v2/electronica/bibliotecas/RobotCasero.pretty`). Su geometría es la de Alan (11 nov); solo se pasó el archivo al formato de KiCad 10 (propiedades Reference/Value). El esquemático asigna esa huella a D1 y D2 | Alan, 15 nov (P-V2-37) |
 | D-V2-38 | PTC: Alan conseguirá un fusible reseteable de ese tipo (Bel Fuse 0ZRE0150FF1A, D-V2-24) | Alan, 15 nov (P-V2-44) |
+| D-V2-39 | **PCB principal (96 × 74 mm) y de sensores (opción B, 96 × 59 mm) aprobadas para fabricar.** Patrones de planchado 1:1 en `v2/electronica/fabricacion/planchado/` (abajo sin espejo, arriba en espejo), generados con `herramientas/patrones_planchado.py` | Alan, 15 nov (P-V2-27) |

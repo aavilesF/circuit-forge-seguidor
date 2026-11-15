@@ -16,3 +16,4 @@ Ningún ID se borra: si un ID ya no aparece en la versión actual, aquí está s
 | pendientes-v8_2026-11-14_pre-optimizacion.md | 14 nov 2026 | v9: P-V2-28 y P-V2-30 resueltos; P-V2-27/29/32 actualizados; nuevos P-V2-34 a 38 |
 | pendientes-v9_2026-11-15_pre-mantenimiento.md | 15 nov 2026 | v10: sincronización con `v2/inventario.csv`; resueltos P-V2-31/32/35/36/38; nuevos P-V2-39 a 44; M18 unificado |
 | pendientes-v11_2026-11-15_pre-diodos-20mm.md | 15 nov 2026 | v12: huella 20.32 mm aplicada; P-V2-37/41/44 cerrados; P-V2-27 a la espera del OK final |
+| pendientes-v12_2026-11-15_pre-planchado.md | 15 nov 2026 | v13: P-V2-27 resuelto, PCB aprobadas, patrones de planchado |

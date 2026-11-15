@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 12 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 13 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -7,6 +7,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
+
+v13 (15 nov, tarde): P-V2-27 resuelto; PCB aprobadas por Alan; patrones de planchado generados (D-V2-39). Copia de la v12: `docs/historial/pendientes-v12_2026-11-15_pre-planchado.md`.
 
 v12 (15 nov): P-V2-37, P-V2-41 y P-V2-44 pasan a resueltos/aparcados; P-V2-27 queda a la espera del OK final. Copia de la v11: `docs/historial/pendientes-v11_2026-11-15_pre-diodos-20mm.md`.
 
@@ -28,7 +30,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 
 | ID | Tema | Qué falta | ¿Bloquea? | Cómo resolverlo | Quién |
 |---|---|---|---|---|---|
-| P-V2-27 | Revisión final de las PCB / exportar para planchar | Alan (15 nov): las PCB le gustaron y no habría más cambios. La principal cambió esa tarde solo en D1/D2 (huella 20.32 mm): falta que la abra y confirme. Al confirmar se generan los patrones de planchado (no generados todavía) | **sí, para fabricar** | OK final de Alan sobre la principal y los sensores | Alan |
 | P-V2-29 | Posición del ventilador / chasis | El ventilador se queda y se atornilla al acrílico (D-V2-26). Orden propuesto por Alan: ruedas atrás, PCB principal, ventilador, sensores al final; batería junto o sobre los motores (D-V2-27). Falta validarlo con medidas en AutoCAD; si los motores no dejan espacio, se quita | no | Etapa 3 (mecánica) | Equipo |
 | P-V2-33 | Capucha para sensores | Alan acepta la capucha, que puede ser algo plana, y mi ayuda (D-V2-30). Falta el diseño: pieza negra mate a 1–2 mm del piso y compensación de luz ambiente por firmware | no | Etapa 3 | Equipo |
 | P-V2-34 | **Ancho total del robot (ruedas)** | Con 2 N20 espalda con espalda ≈ 95 mm sin terminales; con terminales y cable soldado **~99–101 mm** (límite 100 mm). Alan decidió recortar el acrílico hacia dentro en la zona de los motores y dejarlos lo más juntos posible (D-V2-28). Falta medir | **sí, para la mecánica** | Medir con vernier un motor con terminales y cable soldado, y la posición del rin en el eje | Alan |
@@ -146,6 +147,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-37 | Huella del 1N5822 (D1, D2) | **Resuelto 15 nov:** huella derivada de 20.32 mm aplicada a D1 y D2 (D-V2-33, D-V2-37). PCB principal rehecha: mismas conexiones, ERC 0, DRC 0 errores | 15 nov | `v2/docs/decisiones.md` |
 | P-V2-41 | Conectores: ¿alcanzan? | **Aparcado por Alan (15 nov):** "olvídalo por el momento, no tiene peso en nuestros componentes". Sin acción. Si se vuelve a necesitar: tipo de las tiras "5030552" y pines (cuenta calculada: 74 hembra necesarias, 80 compradas) | 15 nov | `v2/docs/decisiones.md` |
 | P-V2-44 | PTC: compra | **Resuelto 15 nov:** Alan se apega a conseguir ese fusible (Bel Fuse 0ZRE0150FF1A, D-V2-38). Riesgo conocido: plazo de entrega si no hay existencia | 15 nov | `v2/docs/decisiones.md` |
+| P-V2-27 | Revisión final de las PCB / exportar para planchar | **Resuelto 15 nov:** Alan vio la principal y los sensores (opción B) y los aprobó; patrones de planchado generados (D-V2-39) | 15 nov | `v2/electronica/fabricacion/planchado/` |
 ---
 
 ## C. Explicaciones detalladas
