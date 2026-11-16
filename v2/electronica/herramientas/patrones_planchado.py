@@ -55,8 +55,14 @@ for fp in find(o, 'footprint'):
         if round(tot) == 90: w, h = h, w
         d = find(p, 'drill')[0]; dr = f(d[2]) if d[1] == 'oval' else f(d[1])
         pads.append((p[3], fx+lx*c+ly*sn-x0, fy-lx*sn+ly*c-y0, w, h, dr))
-cv = canvas.Canvas(out, pagesize=A4)
-PW, PH = A4
+MARGEN = 20                       # mm a cada lado de la placa
+G = 34                            # mm de separación entre caras (incluye la barra de 50 mm)
+TOP = 24                          # mm desde arriba hasta la primera cara
+MT2 = TOP + H + G                 # cara de abajo: margen superior
+PWmm = W + 2*MARGEN
+PHmm = MT2 + H + MARGEN
+PW, PH = PWmm*mm, PHmm*mm
+cv = canvas.Canvas(out, pagesize=(PW, PH))
 def cara(lado, espejo, mt, titulo):
     ml = (PW/mm - W)/2                                # margen izquierdo (mm); mt = margen superior (mm)
     def X(x): return (ml + (W-x if espejo else x))*mm
@@ -84,11 +90,16 @@ def cara(lado, espejo, mt, titulo):
     cv.drawString(ml*mm, PH-(mt-7)*mm, titulo)                                     # letrero fuera de la placa
 
 def pagina():
-    cv.setFillColorRGB(0, 0, 0); cv.setFont('Helvetica', 8)
-    cv.drawString(15*mm, PH-8*mm, f"{nombre} - {W:.0f} x {H:.0f} mm - imprimir al 100 % (tamano real). Barra = 50 mm:")
-    cv.setLineWidth(0.5*mm); cv.line(125*mm, PH-7.2*mm, 175*mm, PH-7.2*mm)
-    cara('F.Cu', True, 34, 'CARA DE ARRIBA (F.Cu) - EN ESPEJO')
-    cara('B.Cu', False, PH/mm-24-H, 'CARA DE ABAJO (B.Cu) - SIN ESPEJO')
+    cv.setFillColorRGB(0, 0, 0); cv.setFont('Helvetica', 7)
+    cv.drawCentredString(PW/2, PH-6*mm, f"{nombre} {W:.0f} x {H:.0f} mm - imprimir SIN AJUSTAR (tamano real 100 %) - la barra debe medir 50 mm")
+    cara('F.Cu', True, TOP, 'CARA DE ARRIBA (F.Cu) - EN ESPEJO')
+    cara('B.Cu', False, MT2, 'CARA DE ABAJO (B.Cu) - SIN ESPEJO')
+    # barra de verificación de 50 mm, centrada en la hoja, en el hueco entre caras
+    yb = PH - (TOP+H+G/2)*mm
+    cv.setLineWidth(0.6*mm); cv.line(PW/2-25*mm, yb, PW/2+25*mm, yb)
+    cv.setLineWidth(0.3*mm)
+    for xx in (PW/2-25*mm, PW/2+25*mm): cv.line(xx, yb-2*mm, xx, yb+2*mm)
+    cv.setFont('Helvetica', 7); cv.drawCentredString(PW/2, yb+2.5*mm, "50 mm")
     cv.showPage()
 pagina(); pagina(); cv.save()
 print(out, f'{W:.1f}x{H:.1f} mm', len(segs), 'segmentos', len(vias), 'vias', len(pads), 'pads')
