@@ -43,3 +43,4 @@
 | D-V2-40 | **Prototipo de emergencia en placa perforada** (esquemas en `v2/electronica/prototipo-emergencia/`), alternativa al diseño de PCB, que sigue como referencia. Motivo: fallas al planchar y 2 días para la competencia | Alan, 19 nov |
 | D-V2-41 | Emergencia: **8 TCRT5000** (no 12), conservando el CD74HC4067 (C0–C7) | Alan, 19 nov |
 | D-V2-42 | Emergencia: **sin PTC F1**; protección con fusible en línea externo si se consigue | Alan, 19 nov |
+| D-V2-43 | **Esquema de emergencia unificado:** principal y sensores en un solo esquema (`v2/electronica/prototipo-emergencia/robot_emergencia_unificado.kicad_sch`, hoja A2, sin J6/J1). Los dos esquemas separados se conservan como versión anterior | Alan, 19 nov |

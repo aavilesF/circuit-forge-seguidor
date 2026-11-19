@@ -8,7 +8,7 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
 
-v13 (15 nov, tarde): P-V2-27 resuelto; PCB aprobadas por Alan; patrones de planchado generados (D-V2-39). Copia de la v12: `docs/historial/pendientes-v12_2026-11-15_pre-planchado.md`.
+v13 (19 nov, esquema de emergencia unificado, D-V2-43; copia previa: `docs/historial/pendientes-v13_2026-11-19_pre-esquema-unificado.md`). v13 (15 nov, tarde): P-V2-27 resuelto; PCB aprobadas por Alan; patrones de planchado generados (D-V2-39). Copia de la v12: `docs/historial/pendientes-v12_2026-11-15_pre-planchado.md`.
 
 v12 (15 nov): P-V2-37, P-V2-41 y P-V2-44 pasan a resueltos/aparcados; P-V2-27 queda a la espera del OK final. Copia de la v11: `docs/historial/pendientes-v11_2026-11-15_pre-diodos-20mm.md`.
 
@@ -159,7 +159,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | EM-03 | Fusible en línea 3 A | Recomendado; si no hay, seguir las verificaciones de seguridad del README | no | Comprar portafusible | Alan |
 | EM-04 | Ajustar MP1584 a 5.0 V y 6.0 V antes de soldar | Igual que E01/E02 | **sí** | Multímetro | Alan |
 | EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | No se tocó el firmware (sin autorización) | **sí, para que siga la línea** | Alan autoriza cambiar el firmware | Alan |
-| EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica | sí, para montar | Después del circuito | Equipo |
+| EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica. El esquema ya es único (D-V2-43); si la barra va en placa aparte, el cable sigue siendo de 9 hilos (README del prototipo) | sí, para montar | Después del circuito | Equipo |
 
 ## C. Explicaciones detalladas
 

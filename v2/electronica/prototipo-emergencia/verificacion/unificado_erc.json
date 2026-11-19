@@ -1,0 +1,137 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-19T11:42:16",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.8",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/3357fad3-3ea6-4aa1-b01a-1a3bdbf02318",
+            "violations": [
+                {
+                    "description": "Symbol 'PN2222A' doesn't match copy in library 'Transistor_BJT'",
+                    "items": [
+                        {
+                            "description": "Symbol Q1 [PN2222A]",
+                            "pos": {
+                                "x": 83.82,
+                                "y": 386.08
+                            },
+                            "uuid": "3d4f11c9-ed89-43ba-be49-88260718ea1d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_mismatch"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RobotCasero'",
+                    "items": [
+                        {
+                            "description": "Symbol D2 [1N5822]",
+                            "pos": {
+                                "x": 88.9,
+                                "y": 91.44
+                            },
+                            "uuid": "33c329e6-cb76-4292-bfa7-8b2ad7929c7a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U4 Pin EN [EN, Bidirectional, Line]",
+                            "pos": {
+                                "x": 533.4,
+                                "y": 215.9
+                            },
+                            "uuid": "6d999634-74e9-4915-a3d7-5efc352526a0"
+                        },
+                        {
+                            "description": "Symbol #FLG05 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 30.48,
+                                "y": 226.06
+                            },
+                            "uuid": "49a89796-49ee-4ac1-9666-f5c7cdad599e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U4 Pin VCC [VCC, Bidirectional, Line]",
+                            "pos": {
+                                "x": 533.4,
+                                "y": 226.06
+                            },
+                            "uuid": "76d0bdb5-1a07-4ce9-9f7b-fb9be8d96c30"
+                        },
+                        {
+                            "description": "Symbol #FLG06 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 50.8,
+                                "y": 226.06
+                            },
+                            "uuid": "cbe113eb-3dd5-4620-b0cc-784f1377635e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U4 Pin GND [GND, Bidirectional, Line]",
+                            "pos": {
+                                "x": 533.4,
+                                "y": 236.22
+                            },
+                            "uuid": "828a964d-19a9-430e-845e-debe7a131561"
+                        },
+                        {
+                            "description": "Symbol #FLG05 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 30.48,
+                                "y": 226.06
+                            },
+                            "uuid": "49a89796-49ee-4ac1-9666-f5c7cdad599e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        }
+    ],
+    "source": "robot_emergencia_unificado.kicad_sch"
+}

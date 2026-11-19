@@ -29,11 +29,13 @@ def bbox(ls):
     walk(ls)
     return (min(xs),min(ys),max(xs),max(ys)) if xs else None
 class Esq:
-    def __init__(s,proj,title,W=330,H=230):
+    def __init__(s,proj,title,W=330,H=230,paper='A3'):
         s.proj=proj; s.title=title; s.root=U(); s.libs={}; s.comps=[]; s.items=[]; s.pins={}  # net->list of (cell, dir, ref, num)
-        s.W,s.H=W,H; s.blocked=set(); s.node={}; s.oh={}; s.ov={}; s.segs={}; s.npwr=0; s.esperado=[]; s.nc=[]; s.labels=[]; s.stub={}
-        for i in range(C(283),C(410)):
-            for j in range(C(236),C(290)): s.blocked.add((i,j))
+        s.W,s.H,s.paper=W,H,paper; s.blocked=set(); s.node={}; s.oh={}; s.ov={}; s.segs={}; s.npwr=0; s.esperado=[]; s.nc=[]; s.labels=[]; s.stub={}
+        # cuadro de titulo (abajo a la derecha). A3: hoja 420x297, W=405,H=282 -> bloque 283..410 x 236..290
+        x0,x1,y0,y1=(283,410,236,290) if paper=='A3' else (W-122,W+5,H-46,H+8)
+        for i in range(C(x0),C(x1)):
+            for j in range(C(y0),C(y1)): s.blocked.add((i,j))
     FP={}
     def add(s,lid,ref,val,x,y,nets,fp='',board=True,power=('GND','+3V3')):
         fp=fp or s.FP.get(ref,'')
@@ -192,7 +194,7 @@ class Esq:
                 s.items.append(f'(wire (pts (xy {a[0]*G:.2f} {a[1]*G:.2f}) (xy {b[0]*G:.2f} {b[1]*G:.2f})) (stroke (width 0) (type default)) (uuid "{U()}"))')
     def save(s,path):
         libs='\n'.join(dump(v,1) for v in s.libs.values())
-        out=f'''(kicad_sch (version 20231120) (generator "eeschema") (generator_version "8.0") (uuid "{s.root}") (paper "A3")
+        out=f'''(kicad_sch (version 20231120) (generator "eeschema") (generator_version "8.0") (uuid "{s.root}") (paper "{s.paper}")
 (title_block (title "{s.title}") (date "2026-11-12") (rev "V2-B") (company "Seguidor de Linea V2") (comment 1 "Rama seguidor-caseroV2. Cables reales. Pendiente de revision de Alan."))
 (lib_symbols
 {libs}
@@ -200,7 +202,7 @@ class Esq:
 '''+'\n'.join(s.items)+'\n(sheet_instances (path "/" (page "1")))\n)\n'
         open(path,'w').write(out)
         json.dump(dict(esperado=s.esperado,nc=s.nc),open(path+'.esperado.json','w'),ensure_ascii=False)
-    def build(s,power_nets,label_nets=()):
+    def build(s,power_nets,label_nets=(),solo_etiqueta=()):
         """power_nets: {net: lib_id}. label_nets: nets que llevan ademas etiqueta en cada pin (interfaz entre placas)."""
         fallos={}
         order=sorted([n for n in s.pins if n not in power_nets],key=lambda n:(len(s.pins[n])>3, len(s.pins[n])))
@@ -215,6 +217,15 @@ class Esq:
                 for k in range(L2+1,L2+4):
                     s.blocked.add((cell[0]+d[0]*k,cell[1]+d[1]*k))
                     for q in(-1,1): s.blocked.add((cell[0]+d[0]*k+d[1]*q,cell[1]+d[1]*k+d[0]*q))
+        # redes solo-etiqueta: cada pin lleva un tramo corto y una etiqueta; se reservan las celdas antes de rutear
+        for n in solo_etiqueta:
+            for cell,d,ref,num in s.pins.get(n,[]):
+                L2=s.stub[(ref,num)]; e=(cell[0]+d[0]*L2,cell[1]+d[1]*L2)
+                s.wire(n,cell,e); s.mark(n,[(cell[0]+d[0]*k,cell[1]+d[1]*k) for k in range(L2+1)])
+                s.label(n,e,d)
+                for k in range(1,L2+9):
+                    for q in(-1,0,1): s.blocked.add((cell[0]+d[0]*k+d[1]*q,cell[1]+d[1]*k+d[0]*q))
+        order=[n for n in order if n not in solo_etiqueta]
         for n in order:
             f=s.route(n)
             if f: fallos[n]=f

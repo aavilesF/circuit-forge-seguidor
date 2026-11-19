@@ -2,13 +2,14 @@
 
 **Motivo:** las PCB por planchado no salieron bien y faltan 2 días para la competencia (21 nov). Esta es una **alternativa** de montaje rápido en placa perforada. El diseño de PCB (`v2/electronica/principal/` y `sensores/`) **sigue vigente como referencia** y no se modificó.
 
-Solo esquemáticos (no hay PCB, ruteo ni patrones). Generados con `herramientas/emergencia_principal.py` y `emergencia_sensores.py`, a partir de los esquemas aprobados.
+Solo esquemáticos (no hay PCB, ruteo ni patrones). **Esquema vigente: `robot_emergencia_unificado.kicad_sch` (principal + sensores en una sola hoja A2, D-V2-43).** Se genera con `herramientas/emergencia_unificado.py`. Los dos esquemas separados del 19 nov (`principal_emergencia`, `sensores_emergencia`, generados con `emergencia_principal.py` y `emergencia_sensores.py`) se conservan como versión anterior; tienen las mismas conexiones.
 
 ## Archivos
 | Archivo | Qué es |
 |---|---|
-| `principal_emergencia.kicad_sch` / `.pdf` / `.svg` | Placa principal: alimentación, MP1584, ESP32, DRV8833, botones, conector J6 |
-| `sensores_emergencia.kicad_sch` / `.pdf` / `.svg` | Barra de 8 TCRT5000 + CD74HC4067 + 2N2222, conector J1 |
+| **`robot_emergencia_unificado.kicad_sch` / `.pdf` / `.svg`** | **Esquema único vigente** (A2): todo el circuito, sin conectores J6/J1 entre placas; ERC en `verificacion/unificado_erc.json` |
+| `principal_emergencia.kicad_sch` / `.pdf` / `.svg` | (versión anterior, separada) Placa principal: alimentación, MP1584, ESP32, DRV8833, botones, conector J6 |
+| `sensores_emergencia.kicad_sch` / `.pdf` / `.svg` | (versión anterior, separada) Barra de 8 TCRT5000 + CD74HC4067 + 2N2222, conector J1 |
 | `verificacion/` | ERC de KiCad 10.0.8 |
 
 ## Cambios respecto al diseño de PCB
@@ -59,3 +60,9 @@ Solo esquemáticos (no hay PCB, ruteo ni patrones). Generados con `herramientas/
 
 ## Seguridad sin fusible (si no consiguen el portafusible)
 Una LiPo en corto entrega decenas de amperes: calienta cables, quema pistas y puede incendiar la batería. Antes de conectarla: (1) multímetro en continuidad entre VBAT y GND con el KCD1 encendido y apagado: debe estar **abierto**; (2) MP1584 ajustados **antes** de soldarlos (5.0 V y 6.0 V) con fuente de laboratorio o la batería por cable con pinzas; (3) primera conexión con el ESP32 y el DRV8833 **fuera** de sus zócalos; (4) nunca dejar la batería conectada sin vigilancia ni cargar sobre material inflamable.
+
+## Esquema unificado: qué cambió respecto a los dos separados
+- Desaparecen los conectores J6 (principal) y J1 (sensores): las redes `S0–S3`, `SIG`, `EMIT_EN` se unen por etiqueta con el mismo nombre; `+5V`, `+3V3` y `GND` por símbolo de alimentación. Las conexiones eléctricas son las mismas (comparadas red por red; solo se quitaron 3 `PWR_FLAG` repetidos).
+- En lo físico, si la barra de sensores va en una placa aparte (EM-06), siguen siendo **9 hilos**: 1 +3V3, 2 GND, 3 S0, 4 S1, 5 S2, 6 S3, 7 SIG, 8 EMIT_EN, 9 +5V. Si todo va en una sola placa, esos hilos no hacen falta.
+- Renumeración de los designadores de sensores para no chocar con la principal: R1/R2 (divisor 100k/33k) no cambian; 220 Ω de los LED: **R3–R10** (antes R1–R8); pull-ups 10 kΩ: **R11–R18** (antes R9–R16); base del 2N2222: **R19 = 470 Ω**, **R20 = 10 kΩ** (antes R17, R18); capacitor del mux: **C6** (antes C1); mux: **U4** (antes U1). OP1–OP8 y Q1 igual.
+- Verificación: ERC de KiCad 10.0.8 = 0 errores y 5 avisos (los mismos que los esquemas separados: huella de D2, símbolo PN2222A y 3 avisos pin a pin del mux con PWR_FLAG). Que el ERC salga limpio no garantiza que funcione: probar continuidad al armar.
