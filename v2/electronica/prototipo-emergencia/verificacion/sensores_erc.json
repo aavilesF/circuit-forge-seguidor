@@ -1,0 +1,122 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-19T11:26:02",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.8",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/d8493742-d73e-4a2f-9e34-d425bf57c2d2",
+            "violations": [
+                {
+                    "description": "Symbol 'PN2222A' doesn't match copy in library 'Transistor_BJT'",
+                    "items": [
+                        {
+                            "description": "Symbol Q1 [PN2222A]",
+                            "pos": {
+                                "x": 83.82,
+                                "y": 231.14
+                            },
+                            "uuid": "c2c59c0a-4239-4d53-871c-e4c2e484794b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_mismatch"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin EN [EN, Bidirectional, Line]",
+                            "pos": {
+                                "x": 368.3,
+                                "y": 129.54
+                            },
+                            "uuid": "40f30ed3-2216-409a-95dc-527588ccf437"
+                        },
+                        {
+                            "description": "Symbol #FLG01 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 391.16,
+                                "y": 248.92
+                            },
+                            "uuid": "3fbc357d-7615-45a0-bfaa-6d530ec257b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin VCC [VCC, Bidirectional, Line]",
+                            "pos": {
+                                "x": 368.3,
+                                "y": 139.7
+                            },
+                            "uuid": "9df60262-0589-45d8-a4e7-953a2fdc97b0"
+                        },
+                        {
+                            "description": "Symbol #FLG02 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 375.92,
+                                "y": 248.92
+                            },
+                            "uuid": "dea88351-044d-47ad-99c6-9eee811d94d2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin GND [GND, Bidirectional, Line]",
+                            "pos": {
+                                "x": 368.3,
+                                "y": 149.86
+                            },
+                            "uuid": "9bade6c2-bf41-4500-9aaa-b5da1a1a96f1"
+                        },
+                        {
+                            "description": "Symbol #FLG01 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 391.16,
+                                "y": 248.92
+                            },
+                            "uuid": "3fbc357d-7615-45a0-bfaa-6d530ec257b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        }
+    ],
+    "source": "sensores_emergencia.kicad_sch"
+}

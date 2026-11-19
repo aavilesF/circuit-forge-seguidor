@@ -40,3 +40,6 @@
 | D-V2-37 | Se usa la huella aprobada `RobotCasero:D_DO-201AD_P20.32mm_Taladro1.3` (biblioteca `v2/electronica/bibliotecas/RobotCasero.pretty`). Su geometría es la de Alan (11 nov); solo se pasó el archivo al formato de KiCad 10 (propiedades Reference/Value). El esquemático asigna esa huella a D1 y D2 | Alan, 15 nov (P-V2-37) |
 | D-V2-38 | PTC: Alan conseguirá un fusible reseteable de ese tipo (Bel Fuse 0ZRE0150FF1A, D-V2-24) | Alan, 15 nov (P-V2-44) |
 | D-V2-39 | **PCB principal (96 × 74 mm) y de sensores (opción B, 96 × 59 mm) aprobadas para fabricar.** Patrones de planchado 1:1 en `v2/electronica/fabricacion/planchado/` (cada hoja: arriba la cara de arriba en espejo y abajo la cara de abajo; 2 hojas idénticas, una de repuesto), generados con `herramientas/patrones_planchado.py` | Alan, 15 nov (P-V2-27) |
+| D-V2-40 | **Prototipo de emergencia en placa perforada** (esquemas en `v2/electronica/prototipo-emergencia/`), alternativa al diseño de PCB, que sigue como referencia. Motivo: fallas al planchar y 2 días para la competencia | Alan, 19 nov |
+| D-V2-41 | Emergencia: **8 TCRT5000** (no 12), conservando el CD74HC4067 (C0–C7) | Alan, 19 nov |
+| D-V2-42 | Emergencia: **sin PTC F1**; protección con fusible en línea externo si se consigue | Alan, 19 nov |

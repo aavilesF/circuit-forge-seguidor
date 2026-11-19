@@ -150,6 +150,17 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-27 | Revisión final de las PCB / exportar para planchar | **Resuelto 15 nov:** Alan vio la principal y los sensores (opción B) y los aprobó; patrones de planchado generados (D-V2-39) | 15 nov | `v2/electronica/fabricacion/planchado/` |
 ---
 
+
+## E. Prototipo de emergencia (placa perforada, 19 nov) — separado del diseño de PCB
+| ID | Tema | Estado / qué falta | ¿Bloquea? | Cómo resolver | Quién |
+|---|---|---|---|---|---|
+| EM-01 | Quitar el ventilador | **Propuesta de Claude, sin decidir.** El esquema de emergencia se dibujó sin ventilador; si Alan lo quiere, se vuelve a poner el bloque del diseño anterior | no | Alan dice sí o no | Alan |
+| EM-02 | Comprar placa perforada, LiPo 2S, resistencias y (si no tienen) cargador 2S | Lista en `v2/electronica/prototipo-emergencia/README.md` | **sí** | Comprar | Alan |
+| EM-03 | Fusible en línea 3 A | Recomendado; si no hay, seguir las verificaciones de seguridad del README | no | Comprar portafusible | Alan |
+| EM-04 | Ajustar MP1584 a 5.0 V y 6.0 V antes de soldar | Igual que E01/E02 | **sí** | Multímetro | Alan |
+| EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | No se tocó el firmware (sin autorización) | **sí, para que siga la línea** | Alan autoriza cambiar el firmware | Alan |
+| EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica | sí, para montar | Después del circuito | Equipo |
+
 ## C. Explicaciones detalladas
 
 ### C.1 — M19: posición de las patas del TCRT5000
