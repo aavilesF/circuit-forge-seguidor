@@ -1,6 +1,6 @@
 # Firmware del prototipo de EMERGENCIA — versión 2.0 (vigente)
 
-**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC. **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
+**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC (última ejecución exitosa; la repetición posterior quedó bloqueada por Windows, sección 9). **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
 
 **Hardware (no cambia):** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V sin encoder, 8 TCRT5000 con CD74HC4067, MP1584 a 5 V (lógica y sensores) y MP1584 a 6 V (motores), botones START y CAL, y medición de batería. **No hay** zumbador, ventilador ni `nFAULT`.
 
@@ -241,7 +241,7 @@ Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12
 | Todos los sensores negros más de `t_negro` (robot levantado) | PARADA |
 | Batería < `bat_critica` sostenida 0.5 s, o sin batería en marcha | ERROR 1: frena y duerme el puente |
 | Un ciclo de control de más de 25 ms en marcha | ERROR 2: frena y duerme el puente |
-| `loop()` colgado más de 1 s | El **watchdog** reinicia el ESP32; el DRV8833 queda dormido por su pull-down |
+| `loop()` colgado más de 1 s | El **watchdog** reinicia el ESP32. Los GPIO quedan en alta impedancia y el LEDC se detiene; los pull-down internos del DRV8833 (nSLEEP e IN1–IN4) lo dejan dormido; `setup()` pone primero nSLEEP = 0 y los 4 PWM en 0 |
 
 **Arranque:** `setup()` deja nSLEEP en 0 y las 4 entradas del puente en 0 antes de cualquier otra cosa. El puente solo despierta en LISTO, en marcha y durante el frenado. START se rechaza sin calibración, sin batería, con batería crítica o con un diagnóstico activo.
 
@@ -286,18 +286,34 @@ Revisado sin problemas: pinout (14 señales = esquema), selección del mux (S0 =
 
 ## 9. Qué se verificó y qué falta
 
-| Prueba (20 nov 2026, en PC) | Resultado |
+### Verificado por compilación (20 nov 2026, desde cero, PlatformIO)
+| Entorno | Resultado |
 |---|---|
-| `pruebas/ejecutar.sh` (g++ 16.2, `-Wall -Wextra -Werror`) | **1773/1773** comprobaciones |
-| Simulación en lazo cerrado, 3 perfiles × 3 curvas | Nunca pierde la línea; desvío máx. 5.1 / 6.0 / 6.5 mm |
-| Simulación de `autocal` | Lista en 0.6 s y centrada (+2°). Falla correctamente sin línea (1 s) y con los motores al revés (aborta enseguida, sin calibración falsa) |
-| `verificar_pines.py` | 14 señales = esquema; LED en pata libre; 24 archivos sin WiFi/Bluetooth ni restos del histórico |
-| PlatformIO `esp32dev`, compilación limpia | arduino-esp32 3.3.12: **0 advertencias propias**, flash 324 915 B (24.8 %), RAM 24 072 B (7.3 %) |
-| PlatformIO `esp32dev_nucleo2`, compilación limpia | arduino-esp32 2.0.17: **0 advertencias propias**, flash 326 061 B (24.9 %), RAM 23 472 B (7.2 %) |
+| `esp32dev`: arduino-esp32 3.3.12 (IDF 5) | 11 fuentes, **0 advertencias propias** con `-Wall -Wextra`; flash 324 943 B (24.8 %), RAM 24 072 B (7.3 %) |
+| `esp32dev_nucleo2`: arduino-esp32 2.0.17 (IDF 4.4) | 11 fuentes, **0 advertencias propias**; flash 326 085 B (24.9 %), RAM 23 472 B (7.2 %) |
 
-No se compiló dentro de Arduino IDE en sí: usa los mismos núcleos y la misma placa, pero la primera carga lo confirmará.
+La compilación confirma que el watchdog usa la API correcta en cada núcleo: `esp_task_wdt_reconfigure`/`init(&cfg)` en IDF 5 y `esp_task_wdt_init(segundos, panic)` en IDF 4.4. También confirma que los dos tienen `CONFIG_ESP_SYSTEM_PANIC_PRINT_REBOOT` (reinicio inmediato al vencer). No se compiló dentro de Arduino IDE en sí: usa los mismos núcleos y la misma placa, pero la primera carga lo confirmará.
 
-**Falta, con el robot (EM-08):** la secuencia de la sección 5. En especial:
+### Verificado por pruebas en PC
+| Prueba | Resultado |
+|---|---|
+| `pruebas/ejecutar.sh` (g++ 16.2, `-Wall -Wextra -Werror`), **última ejecución exitosa: 20 nov 2026, 07:14** | **1773/1773** comprobaciones |
+| … dentro de eso: simulación en lazo cerrado, 3 perfiles × 3 curvas | Nunca pierde la línea; desvío máx. 5.1 / 6.0 / 6.5 mm |
+| … dentro de eso: simulación de `autocal` | Lista en 0.6 s y centrada (+2°). Falla correctamente sin línea (1 s) y con los motores al revés (aborta enseguida, sin calibración falsa) |
+| `verificar_pines.py` (Python) | 14 señales = esquema; LED en pata libre; 24 archivos sin WiFi/Bluetooth ni restos del histórico |
+| `v2/herramientas/validar_repo.py` (clon LF) | 0 errores, 2 avisos de inventario que ya existían |
+
+**La repetición posterior NO se cuenta como aprobada:** Windows (Smart App Control) bloqueó el `.exe` recién compilado ("Una directiva de Control de aplicaciones bloqueó este archivo"). Las pruebas sí volvieron a **compilar** sin advertencias con `-Werror`, pero no se pudieron **ejecutar**. La evidencia válida es la ejecución de las 07:14. Después de ella no cambió ningún archivo que esas pruebas compilan; solo cambiaron `hw.cpp` (capa del ESP32, que no entra en las pruebas de PC), Python y documentación.
+
+### Pendiente de verificar en el robot físico (EM-08)
+- **Watchdog:** `ver` debe decir `watchdog activo`. Que el reinicio por cuelgue deje el DRV8833 dormido sale de la ficha y del código; no se ha visto en el robot:
+  - en el reinicio el ESP32 deja los GPIO en alta impedancia y el LEDC se detiene;
+  - el DRV8833 tiene pull-down interno en nSLEEP y en IN1–IN4;
+  - `setup()` llama primero a `hw::iniciar()`, que pone nSLEEP = 0 y los 4 PWM en 0.
+
+  Hasta que vence (1 s) el PWM sigue como estaba. Comprobación sugerida: multímetro en nSLEEP (GPIO16) al oprimir EN, debe dar ~0 V.
+
+Además, la secuencia de la sección 5. En especial:
 - el orden de los sensores (`inv_sens`);
 - las inversiones de motores (`inv_izq`, `inv_der`, `cruzar`);
 - los tiempos reales (`perf`);

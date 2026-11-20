@@ -129,8 +129,13 @@ bool boton_cal() { return digitalRead(PIN_CAL) == LOW; }
 void led(bool e) { digitalWrite(PIN_LED, e ? HIGH : LOW); }
 
 // ---- watchdog. Los dos núcleos lo arrancan a 5 s vigilando solo la tarea ociosa del núcleo 0; aquí se acorta y se
-// suscribe la tarea de loop() (setup() corre en ella).
+// suscribe la tarea de loop() (setup() corre en ella). Al vencer: pánico → reinicio inmediato
+// (CONFIG_ESP_SYSTEM_PANIC_PRINT_REBOOT en 2.0.17 y 3.x). En el reinicio los GPIO quedan en alta impedancia, el LEDC
+// se detiene y los pull-down internos del DRV8833 (nSLEEP e INx) lo dejan dormido; setup() llama primero a iniciar().
+static bool suscrito = false;
+
 bool vigilante_iniciar(uint32_t ms) {
+  suscrito = false;
 #if ESP_IDF_VERSION_MAJOR >= 5
   esp_task_wdt_config_t cfg = {};
   cfg.timeout_ms = ms;
@@ -144,10 +149,12 @@ bool vigilante_iniciar(uint32_t ms) {
   if (esp_task_wdt_init(s, true) != ESP_OK) return false;
 #endif
   const esp_err_t a = esp_task_wdt_add(nullptr);
-  return a == ESP_OK || a == ESP_ERR_INVALID_ARG;   // INVALID_ARG = ya estaba suscrita
+  suscrito = (a == ESP_OK || a == ESP_ERR_INVALID_ARG);   // INVALID_ARG = ya estaba suscrita
+  return suscrito;
 }
 
-void vigilante_alimentar() { esp_task_wdt_reset(); }
+// Solo si la tarea quedó suscrita (si no, IDF 5 registraría un error en cada llamada).
+void vigilante_alimentar() { if (suscrito) esp_task_wdt_reset(); }
 
 uint32_t cpu_mhz() { return getCpuFrequencyMhz(); }
 
