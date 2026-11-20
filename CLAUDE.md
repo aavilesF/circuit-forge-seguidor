@@ -15,7 +15,8 @@ Antes de cerrar cualquier tarea que modifique el repositorio:
 4. Ejecutar las validaciones disponibles.
 5. Registrar los cambios confirmados en el mismo commit.
 
-No convertir propuestas en decisiones sin autorización.
+No convertir propuestas en decisiones sin que un integrante del equipo con acceso al repositorio las apruebe (no hace falta que sea Alan; Alan lo dejó abierto a todo el equipo el 19 nov).
+Cualquier integrante con acceso puede modificar cualquier parte del repositorio, incluido el firmware, en la rama `seguidor-caseroV2`.
 No modificar main.
 No realizar merges ni force push.
 

@@ -1,9 +1,9 @@
 # Guía de firmware — Prototipo de EMERGENCIA (placa perforada)
 
-**Para:** Alejandro (equipo). **Estado:** documento de trabajo, 19 nov 2026.
+**Para:** Alejandro y cualquier integrante del equipo. **Estado:** documento de trabajo, 19 nov 2026.
 **Esquema de referencia:** `robot_emergencia_unificado.kicad_sch` (principal + 8 sensores en una sola hoja A2).
 
-> **Antes de cambiar código:** el firmware del diseño V2 no se ha tocado y **cualquier cambio requiere autorización de Alan** (pendiente **EM-05**). Esta guía describe qué debe hacer el código; no lo modifica. Hay además una pregunta abierta sobre qué base de firmware usar (**EM-07**, ver sección 6).
+> **Permisos:** Alan autorizó el 19 nov que **cualquier integrante del equipo con acceso al repositorio** modifique cualquier archivo, incluido el firmware (EM-05 queda autorizado). Siguen vigentes las reglas de seguridad: trabajar en la rama `seguidor-caseroV2`, no tocar `main`, sin merges ni force push. Queda abierta la elección de la base de firmware (**EM-07**, sección 6).
 
 ---
 
@@ -100,18 +100,21 @@ En el esquema, SEN1 está a la izquierda y SEN8 a la derecha. **Confirmar con Al
 
 ---
 
-## 6. Base de código: pregunta abierta (EM-07)
+## 6. Base de código (EM-07)
 
-El repositorio tiene una carpeta `firmware/robot-casero/`, pero está marcada como **HISTÓRICA** (ver `v2/docs/ESTADO-DOCUMENTOS.md`): es de un diseño anterior. Su `config.h` **no coincide** con el diseño V2 en estos pines:
+No hay zumbador en este robot (D-V2-05): ni en el diseño V2 ni en el de emergencia. GPIO4 es el botón START.
 
-| Señal | Diseño V2 y emergencia | `firmware/robot-casero/config.h` (histórico) |
-|---|---|---|
-| START | GPIO4 | GPIO18 |
-| Zumbador | no existe | GPIO4 |
+El repositorio tiene `firmware/robot-casero/`, marcado como **HISTÓRICO** (`v2/docs/ESTADO-DOCUMENTOS.md`). Su `config.h` difiere del esquema unificado en:
 
-Por eso **no conviene copiar `config.h` tal cual**. Antes de escribir código hay que confirmar con Alan qué base usar (EM-07). Mientras tanto, usa la tabla de la sección 2 como fuente de pines.
+| Señal | Esquema unificado | `firmware/robot-casero/config.h` | Qué hacer al adaptarlo |
+|---|---|---|---|
+| START | GPIO4 | GPIO18 | Cambiar a GPIO4 |
+| Zumbador (`PIN_ZUMBADOR` GPIO4, `CANAL_ZUMB`) | no existe | GPIO4 | **Quitarlo** (también su código en indicadores/motor si lo usan) |
+| `NUM_SENSORES` (modo mux) | 8 | 12 | Cambiar a 8 (canales C0–C7) |
+| Motores AIN/BIN, `PIN_NSLEEP` | 19, 21, 22, 23, 16 | 19, 21, 22, 23, 16 | Coinciden |
+| Mux S0–S3, SIG, emisores, CAL, batería | 25, 26, 27, 33, 34, 13, 14, 36 | igual | Coinciden |
 
-En el firmware histórico, `NUM_SENSORES` está en 12 en modo multiplexor. Para emergencia debe ser **8**. Los demás GPIO del modo multiplexor (25, 26, 27, 33, 34, 13, 14) coinciden con esta guía.
+Quien programe puede adaptar ese firmware o escribir uno nuevo; la tabla de la sección 2 manda sobre cualquier `config.h`. Conviene anotar en EM-07 qué base se eligió.
 
 ---
 
@@ -130,7 +133,7 @@ En el firmware histórico, `NUM_SENSORES` está en 12 en modo multiplexor. Para 
 - No cambiar pines ni conexiones del esquema desde el código. Si un pin no sirve, se reporta con un ID en pendientes.
 - No subir cambios a `main` ni hacer merge. El trabajo va a la rama `seguidor-caseroV2`.
 - No dar por verificado el código solo porque compila. Falta probarlo con el robot.
-- No usar el firmware histórico de `firmware/robot-casero/` sin revisar los pines (sección 6).
+- No usar el firmware histórico de `firmware/robot-casero/` sin adaptar los pines (sección 6): quitar el zumbador y poner START en GPIO4.
 
 ---
 
