@@ -29,9 +29,10 @@
 
 using namespace robot;
 
-static const char* VERSION_FW = "emergencia 2.0 (20 nov 2026)";
+static const char* VERSION_FW = "emergencia 2.1 (20 nov 2026)";
 
 static Ajustes aj;
+static Turbo tb;                       // turbo de recta: clave de memoria propia ("t")
 static Maquina maq;
 static ControladorLinea ctl(param_por_defecto());
 static motor::Accionamiento acc;
@@ -80,7 +81,7 @@ static void espejar_calibracion() {       // inv_sens cambió: el sensor lógico
 }
 
 static void aplicar_ajustes() {
-  ctl.fijar(a_control(aj));
+  ctl.fijar(a_control(aj, tb));
   acc.configurar(a_modelo(aj), a_limites(aj));
   maq.fijar_tiempos(a_tiempos(aj));
   geom = posicion::geometria_recta(NUM_SENSORES, aj.paso_mm, DIST_SENSOR_EJE_MM);
@@ -105,8 +106,12 @@ static void guardar() {
     g.cal_max[i] = i < cal.n ? cal.maximo[i] : 0.0f;
   }
   sellar(g);
+  GuardadoTurbo gt{};
+  gt.t = tb;
+  sellar(gt);
   nvs.begin("emergencia", false);
   nvs.putBytes("g", &g, sizeof(g));
+  nvs.putBytes("t", &gt, sizeof(gt));     // clave aparte: el formato de "g" no cambia
   nvs.end();
 }
 
@@ -122,6 +127,17 @@ static bool cargar() {                    // ajustes y calibración se guardan j
   if (g.n_cal == NUM_SENSORES)
     for (int i = 0; i < NUM_SENSORES; ++i) { cal.minimo[i] = g.cal_min[i]; cal.maximo[i] = g.cal_max[i]; }
   return true;
+}
+
+// Turbo: si no hay datos válidos (firmware anterior o memoria vacía) queda de fábrica = DESACTIVADO.
+static bool cargar_turbo() {
+  GuardadoTurbo gt;
+  nvs.begin("emergencia", true);
+  const bool ok =
+      nvs.getBytesLength("t") == sizeof(gt) && nvs.getBytes("t", &gt, sizeof(gt)) == sizeof(gt) && valido(gt);
+  nvs.end();
+  tb = ok ? gt.t : Turbo();
+  return ok;
 }
 
 // ------------------------------------------------------------------ sensores y batería
@@ -299,9 +315,19 @@ static void autocalibrar() {
 static char linea[96];
 static int n_linea = 0;
 
-static void imprimir_ajuste(const EntradaAjuste& e, bool con_rango) {
-  if (con_rango) Serial.printf("%-13s = %-9g [%g .. %g]  %s\n", e.nombre, *campo(aj, e), e.min, e.max, e.ayuda);
-  else Serial.printf("%s=%g", e.nombre, *campo(aj, e));
+static float* valor_de(const EntradaAjuste& e, bool es_turbo) { return es_turbo ? campo(tb, e) : campo(aj, e); }
+
+static void imprimir_ajuste(const EntradaAjuste& e, bool con_rango, bool es_turbo = false) {
+  const float v = *valor_de(e, es_turbo);
+  if (con_rango) Serial.printf("%-13s = %-9g [%g .. %g]  %s\n", e.nombre, v, e.min, e.max, e.ayuda);
+  else Serial.printf("%s=%g", e.nombre, v);
+}
+
+static void imprimir_turbo_estado() {
+  if (tb.v_recta > aj.vbase)
+    Serial.printf("turbo ACTIVO en recta: vbase %.2f -> v_recta %.2f en %.2f s (tras %.2f s de recta limpia)\n", aj.vbase,
+                  tb.v_recta, tb.recta_t_acel, tb.recta_t_conf);
+  else Serial.printf("turbo APAGADO (v_recta %.2f <= vbase %.2f)\n", tb.v_recta, aj.vbase);
 }
 
 static void imprimir_ajustes() {
@@ -309,6 +335,10 @@ static void imprimir_ajustes() {
   const EntradaAjuste* t = tabla_ajustes(&n);
   for (int i = 0; i < n; ++i) { imprimir_ajuste(t[i], false); Serial.print((i % 6 == 5) ? "\n" : "  "); }
   Serial.println();
+  t = tabla_turbo(&n);
+  for (int i = 0; i < n; ++i) { imprimir_ajuste(t[i], false, true); Serial.print("  "); }
+  Serial.println();
+  imprimir_turbo_estado();
 }
 
 static void imprimir_pines() {
@@ -355,6 +385,7 @@ static void imprimir_estado() {
                 vbat_f, hay_bat ? (bat_crit ? " (CRITICA)" : (bat_baja ? " (BAJA)" : (bat_alta ? " (SOBRE 8.6 V: revisar)" : "")))
                                 : " (solo USB)",
                 diag_activo() ? " · DIAGNOSTICO (emis/mux): START bloqueado" : "");
+  imprimir_turbo_estado();
 }
 
 static void diag_canal(int c, bool es_sensor) {
@@ -416,38 +447,59 @@ static void ejecutar(char* l) {
   else if (!strcmp(c, "get")) {
     if (!a1) imprimir_ajustes();
     else if (const EntradaAjuste* e = buscar(a1)) imprimir_ajuste(*e, true);
+    else if (const EntradaAjuste* et = buscar_turbo(a1)) imprimir_ajuste(*et, true, true);
     else Serial.println("clave desconocida (escribe: rangos)");
   } else if (!strcmp(c, "rangos")) {
     int n;
     const EntradaAjuste* t = tabla_ajustes(&n);
     for (int i = 0; i < n; ++i) imprimir_ajuste(t[i], true);
+    t = tabla_turbo(&n);
+    for (int i = 0; i < n; ++i) imprimir_ajuste(t[i], true, true);
   } else if (!strcmp(c, "set")) {
     const char* motivo = nullptr;
     const EntradaAjuste* e = a1 ? buscar(a1) : nullptr;
-    if (!e || !util::leer_float(a2, &fa)) Serial.println("uso: set <clave> <numero>   (claves y rangos: rangos)");
-    else if (!(fa >= e->min && fa <= e->max)) Serial.printf("%s fuera de rango [%g .. %g]\n", a1, e->min, e->max);
-    else if (!fijar(aj, a1, fa)) {
+    const EntradaAjuste* et = (a1 && !e) ? buscar_turbo(a1) : nullptr;
+    const EntradaAjuste* x = e ? e : et;
+    if (!x || !util::leer_float(a2, &fa)) Serial.println("uso: set <clave> <numero>   (claves y rangos: rangos)");
+    else if (!(fa >= x->min && fa <= x->max)) Serial.printf("%s fuera de rango [%g .. %g]\n", a1, x->min, x->max);
+    else if (e && !fijar(aj, a1, fa)) {
       Ajustes p = aj;
       *campo(p, *e) = fa;
+      coherente(p, &motivo);
+      Serial.printf("rechazado: %s\n", motivo ? motivo : "?");
+    } else if (et && !fijar(tb, a1, fa)) {
+      Turbo p = tb;
+      *campo(p, *et) = fa;
       coherente(p, &motivo);
       Serial.printf("rechazado: %s\n", motivo ? motivo : "?");
     } else {
       aplicar_ajustes();
       Serial.printf("%s=%g (falta `save` para guardarlo)%s\n", a1, fa,
                     !strcmp(a1, "inv_sens") ? " · calibracion espejada" : "");
+      if (et || !strcmp(a1, "vbase")) imprimir_turbo_estado();
     }
   } else if (!strcmp(c, "perfil")) {
-    if (!a1 || !aplicar_perfil(aj, a1)) Serial.println("uso: perfil seguro | normal | rapido");
+    if (!a1 || !aplicar_perfil(aj, tb, a1)) Serial.println("uso: perfil seguro | normal | rapido");
     else {
       aplicar_ajustes();
-      Serial.printf("perfil %s: vbase=%g pwm_max=%g rampa=%g/%g kp=%g kd=%g freno=%g (falta `save`)\n", a1, aj.vbase,
-                    aj.pwm_max, aj.rampa, aj.rampa_freno, aj.kp, aj.kd, aj.freno);
+      Serial.printf("perfil %s: vbase=%g pwm_max=%g rampa=%g/%g kp=%g kd=%g freno=%g v_recta=%g (falta `save`)\n", a1,
+                    aj.vbase, aj.pwm_max, aj.rampa, aj.rampa_freno, aj.kp, aj.kd, aj.freno, tb.v_recta);
+      imprimir_turbo_estado();
     }
-  } else if (!strcmp(c, "save")) { guardar(); Serial.println("guardado (ajustes y calibracion)"); }
+  } else if (!strcmp(c, "save")) { guardar(); Serial.println("guardado (ajustes, calibracion y turbo)"); }
   else if (!strcmp(c, "load")) {
-    if (cargar()) { aplicar_ajustes(); Serial.println("cargado"); }
-    else Serial.println("no hay datos validos guardados");
-  } else if (!strcmp(c, "defecto")) { aj = Ajustes(); aplicar_ajustes(); Serial.println("valores de fabrica (falta `save`)"); }
+    const bool ok = cargar();
+    const bool ok_t = cargar_turbo();
+    if (ok) aplicar_ajustes();
+    Serial.printf("%s · turbo %s\n", ok ? "cargado" : "no hay ajustes validos guardados",
+                  ok_t ? "cargado" : "de fabrica (apagado)");
+    if (!ok && ok_t) aplicar_ajustes();
+  } else if (!strcmp(c, "defecto")) {
+    aj = Ajustes();
+    tb = Turbo();
+    aplicar_ajustes();
+    Serial.println("valores de fabrica, turbo apagado (falta `save`)");
+  }
   else if (!strcmp(c, "sens")) imprimir_sensores();
   else if (!strcmp(c, "crudo")) imprimir_crudo();
   else if (!strcmp(c, "cal")) imprimir_calibracion();
@@ -505,7 +557,8 @@ static void ejecutar(char* l) {
     if (!util::leer_int(a1, 0, 1, &ia)) Serial.println("uso: tel 0 | tel 1");
     else {
       telemetria = ia == 1;
-      if (telemetria) Serial.println("telemetria en marcha (100 Hz): t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat");
+      if (telemetria)
+        Serial.println("telemetria en marcha (100 Hz): t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat,turbo,v");
     }
   } else if (!strcmp(c, "m")) {
     if (!util::leer_float(a1, &fa) || !util::leer_float(a2, &fb) || fa < -1 || fa > 1 || fb < -1 || fb > 1 ||
@@ -548,6 +601,7 @@ void setup() {
   Serial.begin(115200);
   cal.reiniciar(NUM_SENSORES);
   const bool hay = cargar();
+  cargar_turbo();                              // clave aparte; si no hay datos válidos, turbo apagado
   aplicar_ajustes();
   b_start.ms_estable = b_cal.ms_estable = ANTIRREBOTE_MS;
   maq.reiniciar(millis());
@@ -558,6 +612,7 @@ void setup() {
   Serial.printf("ajustes %s · calibracion %s · watchdog %s · vbase=%g. Escribe 'ayuda'.\n",
                 hay ? "guardados" : "de fabrica (perfil seguro)", cal_valida ? "guardada" : "NO", vigilante_ok ? "ok" : "FALLO",
                 aj.vbase);
+  imprimir_turbo_estado();
 }
 
 void loop() {
@@ -581,7 +636,11 @@ void loop() {
   const bool todo_negro = n_oscuros > 0 && n_oscuros >= util::contar_activos(mask, NUM_SENSORES);
   if (todo_negro && maq.motores()) { if (!t_todo_negro) t_todo_negro = t ? t : 1; }
   else t_todo_negro = 0;
-  if (maq.motores()) sal = ctl.actualizar(est, dt);
+  // Permiso del turbo: solo en SIGUIENDO (no en recuperación), con batería sin aviso, ciclo a tiempo (≤ 2 periodos),
+  // sin "todo negro", sin tecla USB pendiente y sin diagnóstico. Si falta cualquiera, el control lo cancela al instante.
+  const bool turbo_ok = maq.estado() == Estado::SIGUIENDO && hay_bat && !bat_baja && !bat_crit &&
+                        dt_us <= 2 * par::PERIODO_CONTROL_US && !todo_negro && !parar_usb && !diag_activo();
+  if (maq.motores()) sal = ctl.actualizar(est, dt, turbo_ok);
 
   Entradas in;
   in.start = b_start.pulso(hw::boton_start(), t);
@@ -613,7 +672,7 @@ void loop() {
       else { cal = cal_respaldo; actualizar_cal_valida(); }   // faltó contraste: se conserva la anterior
       Serial.printf("calibracion %s\n", maq.fin_cal() == FinCal::BIEN ? "OK (guardada)" : "INSUFICIENTE: repetir (escribe `cal`)");
     }
-    if (e == Estado::SIGUIENDO && antes == Estado::LISTO) { ctl.fijar(a_control(aj)); ctl.reiniciar(); acc.reiniciar(); sal = SalidaControl{}; }
+    if (e == Estado::SIGUIENDO && antes == Estado::LISTO) { ctl.fijar(a_control(aj, tb)); ctl.reiniciar(); acc.reiniciar(); sal = SalidaControl{}; }
     if (e == Estado::PARADA || e == Estado::ERROR) {
       if (e == Estado::ERROR) Serial.printf("ERROR %d: %s\n", (int)maq.error(), nombre(maq.motivo()));
       else Serial.printf("parada: %s\n", nombre(maq.motivo()));
@@ -639,8 +698,8 @@ void loop() {
   hw::led(indicar(cx).led);
 
   if (telemetria && maq.motores() && (++n_ciclos % 4 == 0))
-    Serial.printf("%lu,%s,%.1f,%d,%.3f,%.3f,%.3f,%.2f\n", (unsigned long)t, nombre(e), est.pos_mm, (int)est.linea_visible,
-                  sal.u, ciclo_rueda(0), ciclo_rueda(1), vbat_f);
+    Serial.printf("%lu,%s,%.1f,%d,%.3f,%.3f,%.3f,%.2f,%.2f,%.3f\n", (unsigned long)t, nombre(e), est.pos_mm,
+                  (int)est.linea_visible, sal.u, ciclo_rueda(0), ciclo_rueda(1), vbat_f, sal.turbo, sal.v);
   if (monitor != Monitor::NADA && !maq.motores() && t - t_monitor >= 100) { t_monitor = t; imprimir_monitor(); }
   const uint32_t dur = micros() - ahora;
   if (dur > t_ciclo_max_us) t_ciclo_max_us = dur;

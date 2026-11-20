@@ -1,6 +1,6 @@
-# Firmware del prototipo de EMERGENCIA — versión 2.0 (vigente)
+# Firmware del prototipo de EMERGENCIA — versión 2.1 (vigente)
 
-**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC (última ejecución exitosa; la repetición posterior quedó bloqueada por Windows, sección 9). **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
+**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC (última ejecución exitosa; la repetición posterior quedó bloqueada por Windows, sección 9). La versión 2.1 agrega un **turbo de recta** opcional, apagado de fábrica (sección 6.1): sus pruebas en C++ solo compilaron y lo valida un modelo en Python. **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
 
 **Hardware (no cambia):** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V sin encoder, 8 TCRT5000 con CD74HC4067, MP1584 a 5 V (lógica y sensores) y MP1584 a 6 V (motores), botones START y CAL, y medición de batería. **No hay** zumbador, ventilador ni `nFAULT`.
 
@@ -19,11 +19,11 @@ Todo está en `v2/firmware/emergencia/emergencia/`. Arduino IDE necesita que los
 | `hw.h`, `hw.cpp` | Capa del ESP32: mux optimizado, ADC, PWM (LEDC 2.x y 3.x), botones, LED, watchdog | Nuevo |
 | `utiles.h` | Bits del mux, orden físico, máscara de sensores, batería, lectura estricta de números y antirrebote | Nuevo |
 | `autocal.h`, `autocal.cpp` | Autocalibración girando sobre la línea, guiada por los sensores | Nuevo |
-| `ajustes.h`, `ajustes.cpp` | 48 parámetros con rango y ayuda, coherencia entre ellos, perfiles y guardado con CRC32 | Adaptado |
+| `ajustes.h`, `ajustes.cpp` | 48 parámetros + 5 del turbo, con rango y ayuda, coherencia, perfiles y guardado con CRC32 (el turbo en su propia clave de memoria) | Adaptado |
 | `estados.h`, `estados.cpp` | Máquina de estados: arranque diferido y todas las paradas con su motivo | Adaptado |
 | `indicadores.h`, `indicadores.cpp` | Patrones del LED integrado (GPIO2) | Adaptado |
 | `motor.h`, `motor.cpp` | Tope de PWM, rampas de aceleración y frenado, y límite de corriente estimada | Adaptado |
-| `control.h`, `control.cpp` | Control de línea: PID, freno en curva, retención en huecos y búsqueda | Lógica V1 probada |
+| `control.h`, `control.cpp` | Control de línea: PID, freno en curva, retención en huecos, búsqueda y turbo de recta (2.1) | Lógica V1 probada + turbo |
 | `pid.h`, `pid.cpp` | PID con anti-windup y derivada filtrada | Lógica V1, sin cambios |
 | `posicion.h`, `posicion.cpp` | Calibración por sensor y posición de la línea (promedio ponderado) | Lógica V1, sin cambios |
 | `filtro.h`, `filtro.cpp` | Mediana de 3 + pasa-bajas por sensor | Sin cambios de lógica |
@@ -36,6 +36,7 @@ Fuera del sketch:
 | `platformio.ini` | Entornos `esp32dev` (núcleo 3.3.12) y `esp32dev_nucleo2` (2.0.17) |
 | `pruebas/test_emergencia.cpp` | Pruebas en PC, con simulación en lazo cerrado y de la autocalibración |
 | `pruebas/verificar_pines.py` | Compara `config.h` con el esquema. Prohíbe WiFi/Bluetooth y los restos del firmware histórico |
+| `pruebas/modelo_pista.py` | Modelo en Python del control (puerto 1:1) en la pista recta → R150 → recta → R200, sin y con turbo. Falla si sus constantes difieren del firmware |
 | `pruebas/ejecutar.sh` / `ejecutar.ps1` | Corren todo lo anterior |
 
 El firmware histórico `firmware/robot-casero/` no se usa ni se modificó.
@@ -94,7 +95,7 @@ Si Windows responde "Una directiva de Control de aplicaciones bloqueó este arch
 | Ajustes | `rangos` | Todos los parámetros con valor, rango y explicación |
 | | `get` / `get <clave>` | Ver todos o uno |
 | | `set <clave> <valor>` | Cambiar (rechaza texto, fuera de rango o incoherente). **No se guarda hasta `save`** |
-| | `perfil seguro` / `normal` / `rapido` | Velocidad, PWM, rampas, kp, kd y freno en curva de una vez |
+| | `perfil seguro` / `normal` / `rapido` | Velocidad, PWM, rampas, kp, kd, freno en curva y turbo (`v_recta`) de una vez |
 | | `save` / `load` / `defecto` | Guardar ajustes y calibración / recargar / volver a fábrica |
 | Sensores | `sens` | Oscuridad 0–1 de izquierda a derecha, posición (mm, + = derecha) y cuántos están negros |
 | | `crudo` | ADC con LED encendidos y apagados, y la diferencia (grande = blanco) |
@@ -110,7 +111,7 @@ Si Windows responde "Una directiva de Control de aplicaciones bloqueó este arch
 | | `stop` | Suelta los motores y duerme el DRV8833 |
 | Otros | `botones` | Lectura directa de START y CAL |
 | | `bat` | ADC crudo de GPIO36, voltaje en VP, factor aplicado (medido) y nominal, batería ahora y filtrada, umbrales y voltaje estimado en el puente |
-| | `tel 1` / `tel 0` | Telemetría en marcha a 100 Hz: `t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat` |
+| | `tel 1` / `tel 0` | Telemetría en marcha a 100 Hz: `t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat,turbo,v` (turbo 0..1 y velocidad base efectiva) |
 | | `reiniciar` | Reinicia el ESP32 |
 
 ---
@@ -161,6 +162,11 @@ Se cambian con `set <clave> <valor>`, se ven con `rangos` y quedan guardados con
 | `t_cal_max` / `t_cal_extra` | 15 / 1 | s | Calibración: máximo / extra tras ver contraste |
 | `ac_u` / `ac_t` | 0.20 / 1.0 | — | Giro y s máximos por fase de `autocal` |
 | `t_arranque` | 0.5 | 0 – 5 | s entre START y arrancar (para retirar la mano); 0 = inmediato |
+| **Turbo de recta** (clave de memoria aparte) | | | |
+| `v_recta` | 0 (apagado) | 0 – 1 | Velocidad en recta confiable. Si es ≤ `vbase`, el turbo está **apagado** |
+| `recta_e_in` / `recta_e_out` | 3 / 6 | mm | Error para entrar a modo recta / error que lo cancela (2 ciclos seguidos). Debe cumplirse in < out |
+| `recta_t_conf` | 0.15 | 0 – 2 | s seguidos de recta limpia antes de acelerar |
+| `recta_t_acel` | 0.5 | 0.05 – 5 | s para subir de `vbase` a `v_recta` (la bajada es inmediata) |
 
 Lo que **sí** requiere recompilar está en `config.h`: los pines (no se tocan; mandan el esquema), la frecuencia y resolución del PWM, el antirrebote (25 ms) y los valores de fábrica de los [P]. En `parametros.h` están el período de control (2.5 ms), el límite de ciclo (25 ms) y el watchdog (1 s).
 
@@ -204,11 +210,11 @@ Cada paso dice qué debe salir. Si algo no coincide, paren y revisen el cableado
 
 Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12.7 mm y un N20 **supuesto** de 1000 rpm con ruedas de 28 mm. Con otro N20 las velocidades en m/s cambian, pero el orden de los pasos es el mismo.
 
-| Perfil | `vbase` | `pwm_max` | `rampa` / `rampa_freno` | `kp` | `kd` | `freno` | Simulación (desvío máx. / velocidad) |
-|---|---|---|---|---|---|---|---|
-| **seguro** (fábrica) | 0.25 | 0.80 | 4 / 8 | 0.010 | 0.0004 | 0.30 | 5.1 mm / ~0.30 m/s |
-| **normal** | 0.35 | 0.90 | 6 / 12 | 0.010 | 0.0004 | 0.30 | 6.0 mm / ~0.46 m/s |
-| **rapido** | 0.50 | 1.00 | 8 / 16 | 0.012 | 0.0006 | 0.40 | 6.5 mm / ~0.70 m/s |
+| Perfil | `vbase` | `v_recta` (turbo) | `pwm_max` | `rampa` / `rampa_freno` | `kp` | `kd` | `freno` | Simulación en círculos (desvío / velocidad) |
+|---|---|---|---|---|---|---|---|---|
+| **seguro** (fábrica) | 0.25 | apagado | 0.80 | 4 / 8 | 0.010 | 0.0004 | 0.30 | 5.1 mm / ~0.30 m/s |
+| **normal** | 0.35 | 0.42 | 0.90 | 6 / 12 | 0.010 | 0.0004 | 0.30 | 6.0 mm / ~0.46 m/s |
+| **rapido** | 0.50 | 0.55 | 1.00 | 8 / 16 | 0.012 | 0.0006 | 0.40 | 6.5 mm / ~0.70 m/s |
 
 **Primera prueba segura:** perfil `seguro`, más `t_arranque 0.5`, `t_negro 0.5` y `t_busq 1.5` (todos de fábrica).
 
@@ -221,6 +227,49 @@ Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12
 6. **Tarda en acelerar:** subir `rampa` (8–12). Mantener `rampa_freno` ≥ `rampa`.
 7. Si el robot se apaga o se reinicia al acelerar (caída de batería o del regulador), bajar `rampa`, `i_max` o `i_total`.
 
+### 6.1 Turbo de recta (versión 2.1)
+Sin encoders: decide solo con los sensores (error, confianza y derivada del error), el estado, la batería y el tiempo del ciclo (`control.cpp`, `ControladorLinea::actualizar`).
+
+- **Entra** cuando durante `recta_t_conf` (0.15 s) seguidos se cumple todo esto:
+  - línea visible con confianza ≥ 1.2;
+  - |error| < `recta_e_in` (3 mm);
+  - |derivada del error| < 40 mm/s, con una derivada propia filtrada a 40 ms, distinta de la del PID;
+  - el programa lo permite: estado **SIGUIENDO** (no RECUPERACIÓN), batería sin aviso de baja ni crítica, ciclo de control ≤ 5 ms, sin "todo negro", sin tecla USB pendiente y sin diagnóstico.
+- **Acelera despacio:** la velocidad base sube de `vbase` a `v_recta` en `recta_t_acel` (0.5 s).
+- **Se cancela al instante** (vuelve a `vbase` en el mismo ciclo; la caída física la dan `rampa_freno` y el freno en curva):
+  - no ve la línea (también en un hueco);
+  - confianza < 0.8;
+  - búsqueda;
+  - permiso retirado: batería, ciclo, START, CAL o tecla USB.
+- **Se cancela tras 5 ms** (2 ciclos seguidos, para ignorar picos de ruido) si |error| > `recta_e_out` (6 mm), o si el error ya pasó 3 mm y se aleja del centro a > 150 mm/s.
+- **Histéresis:** entrar es más estricto que seguir; con 3–6 mm de error no entra, pero si ya estaba en recta, sigue.
+- **No toca** el PID, el PWM máximo, las rampas, el límite de corriente, el watchdog, las paradas, la búsqueda, las inversiones ni la calibración.
+
+**Modelo de pista** (`pruebas/modelo_pista.py`: recta 1 m → R150 → recta 0.6 m → R200 → recta 0.6 m, ruido de sensores y picos; N20 de 1000 rpm supuesto):
+
+| Perfil | Vuelta sin / con turbo | Desvío máx. sin / con | Velocidad al entrar a R150 | El turbo se cancela, dentro de la curva | Pérdidas de línea |
+|---|---|---|---|---|---|
+| seguro | 9.55 s / (apagado) | 6.3 mm | 0.32 m/s | — | 0 |
+| normal (`v_recta` 0.42) | 6.16 s / **5.73 s (−7 %)** | 8.1 / 8.1 mm | 0.50 → 0.60 m/s | 43 mm (R150), 68 mm (R200) | 0 |
+| rápido (`v_recta` 0.55) | 4.00 s / **3.88 s (−3 %)** | 8.8 / 9.3 mm | 0.79 → 0.87 m/s | 45 mm, 71 mm | 0 |
+
+- **Por qué la cancelación dentro de la curva es aceptable:** la barra va 100 mm por delante del eje, así que cancelar a < 100 mm de la entrada frena antes de que el eje llegue a la curva.
+- **Cómo se eligieron los valores** (barrido con 5 semillas de ruido): en normal, más de 0.45 empieza a subir el desvío; en rápido, 0.60 sube 1.3 mm y 0.65 satura las ruedas.
+- **Ruido triple** (3 % de picos) en una recta de 4 m: el turbo no parpadea (1 y 3 cambios).
+- **Línea borrada 120 ms:** busca, la reencuentra y termina.
+
+**Cómo usarlo:**
+- `perfil normal` o `perfil rapido` lo activan; `perfil seguro` o `set v_recta 0` lo apagan.
+- `save` lo guarda en su propia clave de memoria; las inversiones y la calibración no cambian de formato.
+- Con `get` o `estado` se ve si está activo; con `tel 1`, las columnas `turbo` y `v`.
+
+**Primera prueba física con turbo:** solo después de que el robot complete vueltas estables con el mismo perfil **sin** turbo (`set v_recta 0`). Luego actívenlo y con `tel 1` comprueben:
+- que `turbo` suba de 0 a 1 solo en rectas largas;
+- que vuelva a 0 **antes** de que el eje llegue a cada curva;
+- que en curvas cerradas no aparezca RECUPERACIÓN.
+
+Si se sale o aparece RECUPERACIÓN, bajen `v_recta` 0.03 o suban `recta_t_conf`.
+
 ---
 
 ## 7. Cómo funciona
@@ -229,7 +278,7 @@ Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12
 1. **Lectura:** LED IR apagados → los 8 canales (luz ambiente); LED encendidos → los 8 canales. En cada canal: espera del mux, `descartes` lecturas tiradas y `sobremuestreo` lecturas promediadas. Solo se escriben los bits S0–S2 que cambian; S3 queda fijo en 0.
 2. **Tratamiento:** reflectancia = apagados − encendidos (sin luz ambiente), luego mediana de 3 + pasa-bajas por sensor, normalización con la calibración (0 = blanco, 1 = negro) y la máscara.
 3. **Posición:** promedio ponderado (mm, + = derecha).
-4. **Control:** PID con anti-windup y derivada filtrada, freno proporcional al error en curva, retención en huecos (`t_ret`) y, si no hay línea, búsqueda girando hacia el último lado visto (`t_busq`).
+4. **Control:** PID con anti-windup y derivada filtrada, freno proporcional al error en curva, retención en huecos (`t_ret`), búsqueda girando hacia el último lado visto (`t_busq`) y, si está activo, turbo de recta (sección 6.1).
 5. **Motores:** tope (`pwm_max`), rampas, límite de corriente estimada por motor y total → DRV8833 en decaimiento lento a 20 kHz.
 
 **Paradas** (todas imprimen su motivo; `estado` lo repite):
@@ -312,6 +361,15 @@ La compilación confirma que el watchdog usa la API correcta en cada núcleo: `e
 - 8.6 V dentro del rango del ADC.
 
 Compilan con `-Werror`, pero Windows volvió a bloquear el `.exe` (código 126). La 1773/1773 no las incluye. Los cálculos de la tabla de batería se hicieron a mano con los mismos valores.
+
+### Turbo de recta (versión 2.1): qué se ejecutó y qué no
+| Evidencia | Estado |
+|---|---|
+| Pruebas C++ anteriores (`test_emergencia.cpp`, 20 nov 07:14) | **1773/1773 ejecutadas**, sin el turbo |
+| Pruebas C++ nuevas del turbo (`prueba_turbo_control`, `prueba_turbo_ajustes`, `prueba_pista`) | **Solo compiladas** con `-Werror`. Windows bloquea el `.exe` y WSL no está instalado. **No cuentan como aprobadas** |
+| Modelo Python (`pruebas/modelo_pista.py`) | **Ejecutado, todas sus comprobaciones OK**. Es un puerto 1:1 de la lógica; antes de simular comprueba que 10 constantes del turbo, 31 ajustes y los 3 perfiles coinciden con `control.h`, `ajustes.h` y `ajustes.cpp` |
+| Compilación `esp32dev` y `esp32dev_nucleo2` | Sin advertencias propias |
+| Robot físico | **Pendiente**: ver "Primera prueba física con turbo", sección 6.1 |
 
 ### Batería y su medición (20 nov 2026)
 **Batería definitiva:** pack 2S de 18650 Li-ion, 7.4 V nominal, ~2500 mAh. Cargada: 8.4 V (4.2 V por celda).

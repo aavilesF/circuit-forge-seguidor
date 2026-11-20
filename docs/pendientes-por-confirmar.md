@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 15 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 16 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -7,6 +7,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
+
+v16 (20 nov): firmware **2.1** con turbo de recta opcional (apagado de fábrica; `perfil normal`/`rapido` lo activan). Validado solo con el modelo Python `pruebas/modelo_pista.py`; sus pruebas C++ compilan pero no se pudieron ejecutar (Windows bloquea el .exe, sin WSL). EM-08 ampliado. Copia previa: `docs/historial/pendientes-v15_2026-11-20_pre-turbo.md`.
 
 v15 (20 nov): firmware de emergencia **2.0** (revisión de producción del 1.0, 16 correcciones; todo lo del montaje se ajusta por consola); EM-05 y EM-08 actualizados. Copia previa: `docs/historial/pendientes-v14_2026-11-20_pre-firmware-2.md`.
 
@@ -165,7 +167,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | **Versión 2.0 (20 nov)** en `v2/firmware/emergencia/`: compila sin advertencias propias para ESP32 Dev Module con arduino-esp32 3.3.12 y 2.0.17, 1773/1773 pruebas en PC (incluida simulación del seguimiento y de `autocal`) y pines iguales al esquema (`verificar_pines.py`). Watchdog, paradas con motivo, arranque diferido, robot levantado, perfiles y consola completa. **No se ha cargado en el robot:** EM-08 | no (falta EM-08) | Cargarlo y seguir EM-08 | Alejandro |
 | EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica. El esquema ya es único (D-V2-43); si la barra va en placa aparte, el cable sigue siendo de 9 hilos (README del prototipo) | sí, para montar | Después del circuito | Equipo |
 | EM-07 | Base de firmware para emergencia | **Sin zumbador** (Alan, 19 nov; D-V2-05). `firmware/robot-casero/` es HISTÓRICO y difiere del esquema unificado en START (GPIO18 → debe ser GPIO4), zumbador en GPIO4 (quitarlo) y 12 sensores (→ 8). Tabla de adaptación en `GUIA-FIRMWARE.md`, sección 6. **Elegido (Alejandro, 19 nov): adaptar** la lógica del histórico en una carpeta nueva `v2/firmware/emergencia/` (el histórico no se tocó). Se quitaron zumbador, nFAULT y la caída de D1; START en GPIO4; 8 sensores por mux; motores siempre a 6 V | Resuelto | — | Alejandro |
-| EM-08 | Prueba física del firmware de emergencia | Secuencia exacta en `v2/firmware/emergencia/README.md`, sección 5 (USB → batería con ruedas en el aire → calibración → primera vuelta con el perfil seguro). Se ajusta **sin recompilar**: orden de sensores (`inv_sens`), sentido y lado de motores (`inv_izq`, `inv_der`, `cruzar`), sensor dañado (`mascara`), `paso_mm`, `vm_fijo`, `m_R`, umbrales de batería y ganancias (`perfil`, `set`, `save`). Siguen sin medir: distancia barra–eje (EM-06), paso real, corriente de bloqueo del N20, `vm_fijo` real y umbrales de batería (6.8 / 6.4 V, estimados) | **sí, para competir** | Con el robot armado, ruedas en el aire primero | Alejandro y equipo |
+| EM-08 | Prueba física del firmware de emergencia | Secuencia exacta en `v2/firmware/emergencia/README.md`, sección 5 (USB → batería con ruedas en el aire → calibración → primera vuelta con el perfil seguro). Se ajusta **sin recompilar**: orden de sensores (`inv_sens`), sentido y lado de motores (`inv_izq`, `inv_der`, `cruzar`), sensor dañado (`mascara`), `paso_mm`, `vm_fijo`, `m_R`, umbrales de batería y ganancias (`perfil`, `set`, `save`). Siguen sin medir: distancia barra–eje (EM-06), paso real, corriente de bloqueo del N20, `vm_fijo` real y umbrales de batería (6.8 / 6.4 V, estimados) **Turbo (2.1):** probarlo solo después de vueltas estables con el mismo perfil sin turbo (`set v_recta 0`); con `tel 1`, el turbo debe volver a 0 antes de que el eje llegue a cada curva (README del firmware, sección 6.1). Sus pruebas C++ nuevas deben ejecutarse en otra PC | **sí, para competir** | Con el robot armado, ruedas en el aire primero | Alejandro y equipo |
 
 ## C. Explicaciones detalladas
 

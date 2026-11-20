@@ -1,5 +1,6 @@
-// Lógica V1 (firmware/seguidor, rama main) probada en PC. Único cambio: los valores de param_por_defecto(), que solo
-// se usan hasta que el firmware aplica `Ajustes` (ajustes.h manda; son los mismos valores).
+// Lógica V1 (firmware/seguidor, rama main) probada en PC. Cambios: los valores de param_por_defecto() (solo se usan
+// hasta que el firmware aplica `Ajustes`) y el turbo de recta (v2.1, ver control.h). Con v_recta ≤ vbase la salida es
+// la misma que la V1.
 #include "control.h"
 #include <math.h>
 
@@ -37,9 +38,12 @@ void ControladorLinea::reiniciar() {
   ultimo_error_ = 0.0f;
   ultima_u_ = 0.0f;
   ultimo_signo_ = 1.0f;
+  cancelar_turbo();
+  de_t_ = e_t_ = 0.0f;
+  ini_t_ = false;
 }
 
-SalidaControl ControladorLinea::actualizar(const posicion::Estimacion& est, float dt_s) {
+SalidaControl ControladorLinea::actualizar(const posicion::Estimacion& est, float dt_s, bool turbo_permitido) {
   SalidaControl s{};
   float u;
   float v_rel = 1.0f;
@@ -74,6 +78,44 @@ SalidaControl ControladorLinea::actualizar(const posicion::Estimacion& est, floa
   s.error_mm = est.linea_visible ? est.pos_mm : ultimo_error_;
   s.u = u;
 
+  // Turbo de recta. Para entrar exige t_confirmar_s seguidos de recta limpia; las condiciones duras lo cancelan en el
+  // acto y el error o su crecimiento, tras recta_n_out ciclos seguidos (histéresis: entrar es más estricto que salir).
+  if (est.linea_visible) {           // derivada propia del turbo, en mm/s
+    if (ini_t_ && dt_s > 0.0f) {
+      const float a = dt_s / (p_.recta_tau_de_s + dt_s);
+      de_t_ += a * ((est.pos_mm - e_t_) / dt_s - de_t_);
+    } else {
+      ini_t_ = true;
+      de_t_ = 0.0f;
+    }
+    e_t_ = est.pos_mm;
+  } else {
+    ini_t_ = false;
+    de_t_ = 0.0f;
+  }
+  const float de = de_t_;
+  const bool se_aleja = est.pos_mm * de > 0.0f && fabsf(est.pos_mm) > p_.recta_e_in;
+  const bool fuera = fabsf(est.pos_mm) > p_.recta_e_out || (fabsf(de) > p_.recta_de_out && se_aleja);
+  n_fuera_ = (est.linea_visible && fuera) ? n_fuera_ + 1 : 0;
+  const bool cancelar = !turbo_permitido || !est.linea_visible || s.buscando || !(p_.v_recta > p_.vbase) ||
+                        est.confianza < p_.recta_conf_out || n_fuera_ >= p_.recta_n_out;
+  if (cancelar) {
+    cancelar_turbo();
+  } else {
+    if (!recta_) {
+      const bool entra = fabsf(est.pos_mm) < p_.recta_e_in && fabsf(de) < p_.recta_de_in &&
+                         est.confianza >= p_.recta_conf_in;
+      t_ok_ = entra ? t_ok_ + dt_s : 0.0f;
+      if (t_ok_ >= p_.t_confirmar_s) recta_ = true;
+    }
+    if (recta_) {
+      g_ += (p_.t_acel_s > 1e-3f) ? dt_s / p_.t_acel_s : 1.0f;
+      if (g_ > 1.0f) g_ = 1.0f;
+    }
+  }
+  const float vbase_ef = p_.vbase + g_ * (p_.v_recta - p_.vbase);
+  s.turbo = g_;
+
   // Frenado proporcional al error: en curva cerrada se reduce la velocidad base.
   if (!s.buscando) {
     float frac = fabsf(s.error_mm) / p_.error_ref_mm;
@@ -81,7 +123,8 @@ SalidaControl ControladorLinea::actualizar(const posicion::Estimacion& est, floa
     v_rel = 1.0f - p_.freno_error * frac;
     if (v_rel < p_.vmin_rel) v_rel = p_.vmin_rel;
   }
-  const float v = p_.vbase * v_rel;
+  const float v = (s.buscando ? p_.vbase : vbase_ef) * v_rel;   // en búsqueda nunca hay turbo (g = 0)
+  s.v = v;
 
   float izq = v + u;
   float der = v - u;

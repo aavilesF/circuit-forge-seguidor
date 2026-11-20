@@ -783,6 +783,298 @@ static void prueba_ajustes2() {
   CHECK(a_tiempos(Ajustes()).arranque_ms == 500, "t_arranque 0.5 s → 500 ms");
 }
 
+// ------------------------------------------------------------------------------------------------ turbo de recta (v2.1)
+static posicion::Estimacion est_linea(float pos, float conf = 2.0f, bool vis = true) {
+  return posicion::Estimacion{pos, conf, vis};
+}
+
+static ParamControl param_turbo(const char* perfil) {
+  Ajustes a;
+  Turbo t;
+  aplicar_perfil(a, t, perfil);
+  return a_control(a, t);
+}
+
+static void prueba_turbo_control() {
+  const float dt = 0.0025f;
+  // 1. apagado (v_recta <= vbase): salida idéntica a la V1, turbo siempre 0
+  {
+    ParamControl p0 = param_turbo("seguro");
+    ParamControl p1 = p0;
+    p1.v_recta = p1.vbase;
+    ControladorLinea a(p0), b(p1);
+    std::mt19937 rng(5);
+    std::uniform_real_distribution<float> u(-40.0f, 40.0f), u01(0.0f, 1.0f);
+    bool iguales = true;
+    for (int k = 0; k < 4000; ++k) {
+      const posicion::Estimacion e = est_linea(u(rng), 2.0f, u01(rng) > 0.05f);
+      const SalidaControl sa = a.actualizar(e, dt), sb = b.actualizar(e, dt);
+      iguales = iguales && sa.izq == sb.izq && sa.der == sb.der && sa.turbo == 0.0f && sb.turbo == 0.0f;
+    }
+    CHECK(iguales, "turbo apagado: salida idéntica y turbo = 0");
+  }
+  for (const char* perfil : {"normal", "rapido"}) {
+    const ParamControl p = param_turbo(perfil);
+    CHECK(p.v_recta > p.vbase, "%s: turbo activo en el perfil", perfil);
+    // 2. aceleración progresiva: espera t_confirmar y sube a ritmo dt/t_acel; llega a 1
+    ControladorLinea c(p);
+    float g_prev = 0.0f, salto = 0.0f;
+    int ciclos_sin = 0;
+    for (int k = 0; k < 400; ++k) {
+      const float g = c.actualizar(est_linea(0.0f), dt).turbo;
+      if (g == 0.0f) ++ciclos_sin;
+      salto = fmaxf(salto, g - g_prev);
+      g_prev = g;
+    }
+    CHECK(ciclos_sin >= (int)(p.t_confirmar_s / dt) - 1, "%s: confirma la recta antes de acelerar (%d ciclos)", perfil,
+          ciclos_sin);
+    CHECK(salto <= dt / p.t_acel_s + 1e-6f, "%s: el turbo sube progresivo (salto %.4f)", perfil, salto);
+    CHECK(g_prev == 1.0f, "%s: llega al turbo completo", perfil);
+    const SalidaControl lleno = c.actualizar(est_linea(0.0f), dt);
+    CERCA(lleno.v, p.v_recta, 1e-5);
+    // 3. cancelaciones inmediatas (mismo ciclo)
+    auto lleno_otra_vez = [&]() { for (int k = 0; k < 400; ++k) c.actualizar(est_linea(0.0f), dt); };
+    CHECK(c.actualizar(est_linea(0.0f, 0.0f, false), dt).turbo == 0.0f, "%s: se cancela al no ver la línea (hueco)", perfil);
+    lleno_otra_vez();
+    CHECK(c.actualizar(est_linea(0.0f, 0.5f), dt).turbo == 0.0f, "%s: se cancela con confianza baja", perfil);
+    lleno_otra_vez();
+    CHECK(c.actualizar(est_linea(0.0f), dt, false).turbo == 0.0f, "%s: se cancela sin permiso (batería/ciclo/estado)", perfil);
+    lleno_otra_vez();
+    // 4. error fuera: un ciclo suelto (ruido) no cancela; dos seguidos (5 ms) sí
+    CHECK(c.actualizar(est_linea(8.0f), dt).turbo > 0.0f, "%s: un pico de 8 mm no lo cancela", perfil);
+    CHECK(c.actualizar(est_linea(8.0f), dt).turbo == 0.0f, "%s: 8 mm sostenidos 5 ms lo cancelan", perfil);
+    // 5. histéresis: con 4.5 mm (entre in y out) no entra, pero si ya estaba dentro sigue
+    ControladorLinea h(p);
+    for (int k = 0; k < 400; ++k) h.actualizar(est_linea(4.5f), dt);
+    CHECK(h.actualizar(est_linea(4.5f), dt).turbo == 0.0f, "%s: con 4.5 mm no entra", perfil);
+    for (int k = 0; k < 400; ++k) h.actualizar(est_linea(0.0f), dt);
+    CHECK(h.actualizar(est_linea(4.5f), dt).turbo > 0.0f && h.actualizar(est_linea(4.5f), dt).turbo > 0.0f,
+          "%s: dentro del modo recta, 4.5 mm no lo cancela (histéresis)", perfil);
+    // 6. error que cambia rápido cerca del centro: no entra
+    ControladorLinea d(p);
+    float tq = 0.0f;
+    bool entro = false;
+    for (int k = 0; k < 400; ++k, tq += dt) entro |= d.actualizar(est_linea(2.5f * sinf(2.0f * 3.14159f * 8.0f * tq)), dt).turbo > 0.0f;
+    CHECK(!entro, "%s: con el error oscilando rápido no entra", perfil);
+    // 7. reiniciar (cada arranque) lo apaga; la búsqueda nunca tiene turbo
+    lleno_otra_vez();
+    c.reiniciar();
+    CHECK(c.actualizar(est_linea(0.0f), dt).turbo == 0.0f, "%s: reiniciar apaga el turbo", perfil);
+    lleno_otra_vez();
+    SalidaControl sb{};
+    for (int k = 0; k < 40; ++k) sb = c.actualizar(est_linea(0.0f, 0.0f, false), dt);
+    CHECK(sb.buscando && sb.turbo == 0.0f && fabsf(sb.v - p.vbase * p.vbusqueda_rel) < 1e-5f,
+          "%s: en búsqueda no hay turbo (v = vbase·v_busq)", perfil);
+  }
+}
+
+static void prueba_turbo_ajustes() {
+  // el bloque "g" no cambia de formato: inversiones y calibración guardadas siguen válidas
+  CHECK(sizeof(Ajustes) == 48 * sizeof(float), "Ajustes sigue con 48 campos (%zu B)", sizeof(Ajustes));
+  CHECK(VERSION == 2, "versión del bloque g sin cambios");
+  Turbo t0;
+  CHECK(!(t0.v_recta > Ajustes().vbase), "de fábrica el turbo está apagado");
+  CHECK(!(a_control(Ajustes()).v_recta > a_control(Ajustes()).vbase), "a_control sin turbo: apagado");
+  struct { const char* p; float vr; } esperado[] = {{"seguro", 0.0f}, {"normal", 0.42f}, {"rapido", 0.55f}};
+  for (const auto& e : esperado) {
+    Ajustes a;
+    Turbo t;
+    a.inv_izq = 1.0f;
+    CHECK(aplicar_perfil(a, t, e.p) && t.v_recta == e.vr && a.inv_izq == 1.0f, "perfil %s: v_recta %.2f", e.p, e.vr);
+  }
+  int n;
+  const EntradaAjuste* tt = tabla_turbo(&n);
+  CHECK(n * sizeof(float) == sizeof(Turbo), "la tabla del turbo cubre todos sus campos");
+  Turbo d;
+  for (int i = 0; i < n; ++i) {
+    const float v = *campo(d, tt[i]);
+    CHECK(v >= tt[i].min && v <= tt[i].max, "turbo %s de fábrica fuera de rango", tt[i].nombre);
+    CHECK(buscar(tt[i].nombre) == nullptr, "turbo %s choca con un nombre de Ajustes", tt[i].nombre);
+  }
+  CHECK(!fijar(d, "recta_e_in", 8.0f), "histéresis: recta_e_in >= recta_e_out rechazado");
+  CHECK(fijar(d, "v_recta", 0.40f) && d.v_recta == 0.40f, "v_recta por consola");
+  GuardadoTurbo g{};
+  g.t = d;
+  sellar(g);
+  CHECK(valido(g), "imagen del turbo válida");
+  g.t.v_recta = 0.5f;
+  CHECK(!valido(g), "un cambio rompe el CRC del turbo");
+  g.t = d;
+  g.t.recta_e_in = 50.0f;
+  sellar(g);
+  CHECK(!valido(g), "no se carga un turbo fuera de rango aunque el CRC esté bien");
+}
+
+// ------------------------------------------------------------------------------------------------ pista con curvas
+// recta 1 m → curva R150 a la izquierda (180°) → recta 0.6 m → curva R200 a la derecha (180°) → recta 0.6 m.
+// Igual que pruebas/modelo_pista.py (rectas paralelas a ≥ 20 cm, como pide el reglamento).
+struct Prim { bool arco; double ax, ay, ux, uy, L, cx, cy, R, a0, barrido, s0, largo; };
+struct PistaS {
+  Prim p[5];
+  int n = 0;
+  double largo = 0.0, entrada[2] = {0, 0};
+  void recta(double ax, double ay, double ux, double uy, double L) {
+    p[n++] = Prim{false, ax, ay, ux, uy, L, 0, 0, 0, 0, 0, largo, L};
+    largo += L;
+  }
+  void arco(double cx, double cy, double R, double a0, double barrido) {
+    p[n++] = Prim{true, 0, 0, 0, 0, 0, cx, cy, R, a0, barrido, largo, R * fabs(barrido)};
+    largo += R * fabs(barrido);
+  }
+  explicit PistaS(double l1 = 1.0, double r1 = 0.15, double l2 = 0.6, double r2 = 0.20, double l3 = 0.6) {
+    recta(0, 0, 0, 1, l1);
+    entrada[0] = largo;
+    arco(-r1, l1, r1, 0.0, M_PI);
+    recta(-2 * r1, l1, 0, -1, l2);
+    entrada[1] = largo;
+    arco(-2 * r1 - r2, l1 - l2, r2, 0.0, -M_PI);
+    recta(-2 * r1 - 2 * r2, l1 - l2, 0, 1, l3);
+  }
+  double dist(double px, double py, double* s) const {
+    double mejor = 1e9, sm = 0;
+    for (int i = 0; i < n; ++i) {
+      const Prim& q = p[i];
+      double d, sc;
+      if (!q.arco) {
+        double t = (px - q.ax) * q.ux + (py - q.ay) * q.uy;
+        t = t < 0 ? 0 : (t > q.L ? q.L : t);
+        d = hypot(px - (q.ax + t * q.ux), py - (q.ay + t * q.uy));
+        sc = q.s0 + t;
+      } else {
+        const double phi = atan2(py - q.cy, px - q.cx);
+        double delta = q.barrido > 0 ? phi - q.a0 : q.a0 - phi;
+        delta = fmod(fmod(delta, 2 * M_PI) + 2 * M_PI, 2 * M_PI);
+        if (delta <= fabs(q.barrido)) {
+          d = fabs(hypot(px - q.cx, py - q.cy) - q.R);
+          sc = q.s0 + q.R * delta;
+        } else {
+          const double a1 = q.a0 + q.barrido;
+          const double e0 = hypot(px - (q.cx + q.R * cos(q.a0)), py - (q.cy + q.R * sin(q.a0)));
+          const double e1 = hypot(px - (q.cx + q.R * cos(a1)), py - (q.cy + q.R * sin(a1)));
+          d = e0 < e1 ? e0 : e1;
+          sc = e0 < e1 ? q.s0 : q.s0 + q.largo;
+        }
+      }
+      if (d < mejor) { mejor = d; sm = sc; }
+    }
+    if (s) *s = sm;
+    return mejor;
+  }
+};
+
+struct ResPista {
+  bool termino = false, perdio = false, turbo_en_curva = false;
+  int busquedas = 0, cambios = 0;
+  double peor = 0, t = 0, cancel_mm[2] = {-1, -1};
+};
+
+static ResPista simular_pista(const ParamControl& pc, const Ajustes& aj, const PistaS& pista, double ruido, double picos,
+                              double t_max, int borrar_desde_ms = -1, int borrar_hasta_ms = -1) {
+  const double r = 0.014, W = 0.080, tau_real = 0.05, dt = 0.0025, V = 6.0;
+  const int N = 8;
+  posicion::Geometria g = posicion::geometria_recta(N, aj.paso_mm, DIST_SENSOR_EJE_MM);
+  posicion::Calibracion cal;
+  cal.reiniciar(N);
+  for (int i = 0; i < N; ++i) { cal.minimo[i] = 200; cal.maximo[i] = 3700; }
+  filtro::Arreglo fil;
+  ControladorLinea ctl(pc);
+  ctl.reiniciar();
+  motor::Accionamiento acc;
+  acc.configurar(a_modelo(aj), a_limites(aj));
+  acc.reiniciar();
+  std::mt19937 rng(7);
+  std::normal_distribution<double> nd(0.0, ruido);
+  std::uniform_real_distribution<double> u01(0.0, 1.0);
+  const posicion::ModoSensor modo = {true, true, 4095};
+  Sim s{0.0, 0.0, M_PI / 2};
+  ResPista res;
+  int k_entrada = 0;
+  double dist = 0, d_entrada = 0;
+  bool buscando_prev = false, en_curva_con_turbo = false;
+  float turbo_prev = 0.0f;
+  for (int k = 0; k * dt < t_max; ++k) {
+    float refl[16];
+    const double hx = cos(s.th), hy = sin(s.th), rx = sin(s.th), ry = -cos(s.th);
+    for (int i = 0; i < N; ++i) {
+      const double px = s.x + (g.y[i] * hx + g.x[i] * rx) / 1000.0, py = s.y + (g.y[i] * hy + g.x[i] * ry) / 1000.0;
+      const double d = pista.dist(px, py, nullptr) * 1000.0;
+      double osc = (15.0 - d) / 5.0;
+      osc = osc < 0 ? 0 : (osc > 1 ? 1 : osc);
+      double on = 300 + osc * 3500 + nd(rng);
+      if (u01(rng) < picos) on += 2000;
+      refl[i] = posicion::reflectancia(modo, (int)on, (int)(4000 + nd(rng)));
+    }
+    fil.aplicar(refl, N, aj.alfa);
+    float osc[16];
+    posicion::normalizar(cal, refl, osc);
+    const int ms = (int)(k * dt * 1000.0);
+    if (ms >= borrar_desde_ms && ms < borrar_hasta_ms) for (int i = 0; i < N; ++i) osc[i] = 0.0f;
+    const posicion::Estimacion e = posicion::estimar_posicion(g, osc, aj.umbral, aj.confianza);
+    const SalidaControl sc = ctl.actualizar(e, (float)dt);
+    if (sc.linea_perdida) { res.perdio = true; break; }
+    if (sc.buscando && !buscando_prev) ++res.busquedas;
+    buscando_prev = sc.buscando;
+    if ((sc.turbo > 0.0f) != (turbo_prev > 0.0f)) ++res.cambios;
+    acc.actualizar(sc.izq, sc.der, (float)V, (float)dt);
+    s.wl += dt / (tau_real + dt) * (acc.ciclo(0) * V / aj.m_ke - s.wl);
+    s.wr += dt / (tau_real + dt) * (acc.ciclo(1) * V / aj.m_ke - s.wr);
+    const double v = r * (s.wl + s.wr) / 2;
+    s.x += v * cos(s.th) * dt;
+    s.y += v * sin(s.th) * dt;
+    s.th += r * (s.wr - s.wl) / W * dt;
+    dist += v * dt;
+    const double bx = s.x + 0.100 * cos(s.th), by = s.y + 0.100 * sin(s.th);
+    double sb;
+    const double db = pista.dist(bx, by, &sb) * 1000.0;
+    if (k * dt > 0.5) res.peor = fmax(res.peor, db);
+    if (k_entrada < 2 && sb >= pista.entrada[k_entrada]) {   // la barra entra a la curva
+      en_curva_con_turbo = sc.turbo > 0.0f;
+      d_entrada = dist;
+      res.cancel_mm[k_entrada] = en_curva_con_turbo ? -2 : 0;   // -2 = pendiente de cancelar
+      ++k_entrada;
+    }
+    if (en_curva_con_turbo && sc.turbo == 0.0f) {
+      res.cancel_mm[k_entrada - 1] = (dist - d_entrada) * 1000.0;
+      en_curva_con_turbo = false;
+    }
+    turbo_prev = sc.turbo;
+    if (sb >= pista.largo - 0.15) { res.termino = true; res.t = (k + 1) * dt; break; }
+  }
+  res.turbo_en_curva = en_curva_con_turbo || res.cancel_mm[0] == -2 || res.cancel_mm[1] == -2;
+  return res;
+}
+
+static void prueba_pista() {
+  const PistaS pista;
+  for (const char* perfil : {"seguro", "normal", "rapido"}) {
+    Ajustes a;
+    Turbo t;
+    aplicar_perfil(a, t, perfil);
+    const ResPista sin = simular_pista(a_control(a), a, pista, 40.0, 0.01, 30.0);
+    const ResPista con = simular_pista(a_control(a, t), a, pista, 40.0, 0.01, 30.0);
+    printf("  pista %-6s: sin turbo %.2f s / %.1f mm · con turbo %.2f s / %.1f mm · cancelado %.0f y %.0f mm dentro\n",
+           perfil, sin.t, sin.peor, con.t, con.peor, con.cancel_mm[0], con.cancel_mm[1]);
+    for (const ResPista* r : {&sin, &con}) {
+      CHECK(r->termino && !r->perdio && r->busquedas == 0, "%s: completa la pista sin perder la línea", perfil);
+      CHECK(r->peor < 30.0, "%s: desvío %.1f mm", perfil, r->peor);
+    }
+    CHECK(!con.turbo_en_curva, "%s: el turbo no sigue activo dentro de la curva", perfil);
+    for (double c : con.cancel_mm) CHECK(c < 100.0, "%s: turbo cancelado %.0f mm dentro (el eje está a 100 mm)", perfil, c);
+    if (t.v_recta > a.vbase) {
+      CHECK(con.t < sin.t, "%s: el turbo acorta la vuelta (%.2f vs %.2f s)", perfil, con.t, sin.t);
+      CHECK(con.peor <= sin.peor + 5.0, "%s: el turbo no aumenta el desvío más de 5 mm", perfil);
+      // ruido triple en una recta larga: el turbo no parpadea
+      const ResPista rr = simular_pista(a_control(a, t), a, PistaS(4.0), 120.0, 0.03, 6.0);
+      CHECK(rr.cambios <= 6, "%s: el turbo parpadea con ruido (%d cambios)", perfil, rr.cambios);
+      // línea borrada 120 ms en la recta: busca, la encuentra y termina
+      const ResPista rb = simular_pista(a_control(a, t), a, pista, 40.0, 0.01, 30.0, 1500, 1620);
+      CHECK(rb.termino && !rb.perdio && rb.busquedas >= 1, "%s: se recupera tras perder la línea", perfil);
+    } else {
+      CHECK(fabs(con.t - sin.t) < 1e-9 && fabs(con.peor - sin.peor) < 1e-9, "%s: sin turbo = igual que antes", perfil);
+    }
+  }
+}
+
 #ifdef BARRIDO
 // Barrido de ganancias por velocidad: imprime el peor desvío y la velocidad mínima en las 3 curvas.
 int main() {
@@ -819,6 +1111,9 @@ int main() {
   prueba_ajustes2();
   prueba_autocal();
   prueba_lazo();
+  prueba_turbo_control();
+  prueba_turbo_ajustes();
+  prueba_pista();
   printf("%d/%d comprobaciones OK\n", total - fallas, total);
   return fallas ? 1 : 0;
 }

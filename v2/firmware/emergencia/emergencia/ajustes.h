@@ -94,4 +94,34 @@ uint32_t crc32(const void* datos, size_t n);
 void sellar(Guardado& g);                 // pone magia, versión y CRC
 bool valido(const Guardado& g);
 
+// ---- Turbo de recta (v2.1). Se guarda en su PROPIA clave de memoria ("t"): el bloque "g" (Ajustes, inversiones y
+// calibración) no cambia de formato, así que lo ya guardado sigue siendo válido sin migración. Si "t" no existe o
+// está dañada, el turbo queda desactivado. Solo lo ajustable va aquí; el resto son constantes de ParamControl
+// (derivada propia 40 ms, |de/dt| 40/150 mm/s, confianza 1.2/0.8, 2 ciclos), validadas en pruebas/modelo_pista.py.
+struct Turbo {
+  float v_recta = 0.0f;        // velocidad en recta confiable; ≤ vbase = DESACTIVADO (perfil seguro y fábrica)
+  float recta_e_in = 3.0f;     // mm: |error| para entrar a modo recta
+  float recta_e_out = 6.0f;    // mm: |error| que lo cancela (2 ciclos seguidos)
+  float recta_t_conf = 0.15f;  // s seguidos de recta limpia antes de acelerar
+  float recta_t_acel = 0.5f;   // s para pasar de vbase a v_recta (la caída es inmediata)
+};
+const EntradaAjuste* tabla_turbo(int* n);
+float* campo(Turbo& t, const EntradaAjuste& e);
+const EntradaAjuste* buscar_turbo(const char* nombre);
+bool coherente(const Turbo& t, const char** motivo);
+bool fijar(Turbo& t, const char* nombre, float valor);
+ParamControl a_control(const Ajustes& a, const Turbo& t);
+// Perfil completo: además de lo de aplicar_perfil(a, …) fija v_recta (seguro = desactivado).
+bool aplicar_perfil(Ajustes& a, Turbo& t, const char* nombre);
+
+struct GuardadoTurbo {
+  uint32_t magia, version;
+  Turbo t;
+  uint32_t crc;
+};
+constexpr uint32_t MAGIA_TURBO = 0x5455524Bu;   // "TURK"
+constexpr uint32_t VERSION_TURBO = 1;
+void sellar(GuardadoTurbo& g);
+bool valido(const GuardadoTurbo& g);
+
 }  // namespace robot

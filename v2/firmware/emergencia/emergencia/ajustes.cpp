@@ -84,11 +84,14 @@ bool fijar(Ajustes& a, const char* nombre, float v) {
 
 // Perfiles [S]: simulación en lazo cerrado (curvas de 200–600 mm, 8 sensores a 12.7 mm, N20 de 1000 rpm [E]).
 // El robot real puede necesitar otros valores: se parte de aquí y se ajusta con `set`.
-struct Perfil { const char* nombre; float vbase, pwm_max, rampa, rampa_freno, kp, kd, freno; };
+// v_recta [S] (turbo, v2.1): elegido con pruebas/modelo_pista.py (pista recta → R150 → recta → R200, 5 semillas de
+// ruido): normal 0.42 = vuelta −7 % con el mismo desvío; rápido 0.55 = −3 % y +0.5 mm (0.60 ya sube 1.3 mm y 0.65
+// satura ruedas). seguro: desactivado.
+struct Perfil { const char* nombre; float vbase, pwm_max, rampa, rampa_freno, kp, kd, freno, v_recta; };
 static const Perfil PERFILES[] = {
-    {"seguro", 0.25f, 0.80f, 4.0f, 8.0f, 0.010f, 0.0004f, 0.30f},
-    {"normal", 0.35f, 0.90f, 6.0f, 12.0f, 0.010f, 0.0004f, 0.30f},
-    {"rapido", 0.50f, 1.00f, 8.0f, 16.0f, 0.012f, 0.0006f, 0.40f},
+    {"seguro", 0.25f, 0.80f, 4.0f, 8.0f, 0.010f, 0.0004f, 0.30f, 0.0f},
+    {"normal", 0.35f, 0.90f, 6.0f, 12.0f, 0.010f, 0.0004f, 0.30f, 0.42f},
+    {"rapido", 0.50f, 1.00f, 8.0f, 16.0f, 0.012f, 0.0006f, 0.40f, 0.55f},
 };
 
 bool aplicar_perfil(Ajustes& a, const char* nombre) {
@@ -100,6 +103,13 @@ bool aplicar_perfil(Ajustes& a, const char* nombre) {
     return true;
   }
   return false;
+}
+
+bool aplicar_perfil(Ajustes& a, Turbo& t, const char* nombre) {
+  if (!aplicar_perfil(a, nombre)) return false;
+  for (const Perfil& p : PERFILES)
+    if (strcmp(p.nombre, nombre) == 0) t.v_recta = p.v_recta;
+  return true;
 }
 
 ParamControl a_control(const Ajustes& a) {
@@ -132,6 +142,16 @@ Tiempos a_tiempos(const Ajustes& a) {
   return t;
 }
 
+ParamControl a_control(const Ajustes& a, const Turbo& t) {
+  ParamControl p = a_control(a);
+  p.v_recta = t.v_recta;
+  p.recta_e_in = t.recta_e_in;
+  p.recta_e_out = t.recta_e_out;
+  p.t_confirmar_s = t.recta_t_conf;
+  p.t_acel_s = t.recta_t_acel;
+  return p;
+}
+
 uint32_t mascara(const Ajustes& a) { return static_cast<uint32_t>(a.mascara) & 0xFFu; }
 
 uint32_t crc32(const void* datos, size_t n) {
@@ -153,6 +173,69 @@ void sellar(Guardado& g) {
 bool valido(const Guardado& g) {
   return g.magia == MAGIA && g.version == VERSION && g.crc == crc32(&g, offsetof(Guardado, crc)) &&
          g.n_cal >= 0 && g.n_cal <= MAX_CAL && coherente(g.a, nullptr);
+}
+
+// ---- turbo
+#define T(campo_, mn, mx, txt) {#campo_, offsetof(Turbo, campo_), mn, mx, txt}
+static const EntradaAjuste TABLA_TURBO[] = {
+    T(v_recta, 0.0f, 1.0f, "turbo: velocidad en recta (<= vbase = apagado)"),
+    T(recta_e_in, 0.5f, 10.0f, "turbo: mm de error para entrar"),
+    T(recta_e_out, 1.0f, 20.0f, "turbo: mm de error que lo cancela"),
+    T(recta_t_conf, 0.0f, 2.0f, "turbo: s de recta limpia antes de acelerar"),
+    T(recta_t_acel, 0.05f, 5.0f, "turbo: s para llegar a v_recta"),
+};
+#undef T
+
+const EntradaAjuste* tabla_turbo(int* n) {
+  *n = static_cast<int>(sizeof(TABLA_TURBO) / sizeof(TABLA_TURBO[0]));
+  return TABLA_TURBO;
+}
+
+float* campo(Turbo& t, const EntradaAjuste& e) {
+  return reinterpret_cast<float*>(reinterpret_cast<char*>(&t) + e.desp);
+}
+
+const EntradaAjuste* buscar_turbo(const char* nombre) {
+  int n;
+  const EntradaAjuste* t = tabla_turbo(&n);
+  for (int i = 0; i < n; ++i) if (strcmp(t[i].nombre, nombre) == 0) return &t[i];
+  return nullptr;
+}
+
+bool coherente(const Turbo& t, const char** motivo) {
+  const char* m = nullptr;
+  if (!(t.recta_e_in < t.recta_e_out)) m = "recta_e_in debe ser menor que recta_e_out (histeresis)";
+  if (motivo) *motivo = m;
+  return m == nullptr;
+}
+
+bool fijar(Turbo& t, const char* nombre, float v) {
+  const EntradaAjuste* e = buscar_turbo(nombre);
+  if (!e || !(v >= e->min && v <= e->max)) return false;
+  Turbo prueba = t;
+  *campo(prueba, *e) = v;
+  if (!coherente(prueba, nullptr)) return false;
+  t = prueba;
+  return true;
+}
+
+void sellar(GuardadoTurbo& g) {
+  g.magia = MAGIA_TURBO;
+  g.version = VERSION_TURBO;
+  g.crc = crc32(&g, offsetof(GuardadoTurbo, crc));
+}
+
+bool valido(const GuardadoTurbo& g) {
+  if (g.magia != MAGIA_TURBO || g.version != VERSION_TURBO || g.crc != crc32(&g, offsetof(GuardadoTurbo, crc)))
+    return false;
+  int n;
+  const EntradaAjuste* tb = tabla_turbo(&n);
+  Turbo t = g.t;
+  for (int i = 0; i < n; ++i) {
+    const float v = *campo(t, tb[i]);
+    if (!(v >= tb[i].min && v <= tb[i].max)) return false;
+  }
+  return coherente(g.t, nullptr);
 }
 
 }  // namespace robot

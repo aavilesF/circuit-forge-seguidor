@@ -11,4 +11,6 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & ..\.build\test_emergencia.exe
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & python verificar_pines.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& python modelo_pista.py   # modelo Python de la pista con turbo (comprueba que sus constantes = firmware)
 exit $LASTEXITCODE

@@ -13,3 +13,4 @@ g++ -std=c++17 -Wall -Wextra -Werror -O1 $SAN -I"$S" test_emergencia.cpp \
 ../.build/test_emergencia
 PY=$(command -v python3 || command -v python)
 "$PY" verificar_pines.py
+"$PY" modelo_pista.py   # modelo Python de la pista con turbo (comprueba que sus constantes = firmware)
