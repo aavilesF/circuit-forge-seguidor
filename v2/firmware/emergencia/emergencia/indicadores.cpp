@@ -1,6 +1,6 @@
 #include "indicadores.h"
 
-namespace casero {
+namespace robot {
 
 static bool parpadeo(uint32_t t, uint32_t periodo) { return (t % periodo) < periodo / 2; }
 
@@ -11,7 +11,7 @@ Indicacion indicar(const Contexto& c) {
     case Estado::INICIO: r.led = true; break;
     case Estado::ESPERA: r.led = parpadeo(t, 1000); break;
     case Estado::CALIBRACION: r.led = parpadeo(t, te + 3000 >= c.cal_max_ms ? 100 : 200); break;
-    case Estado::LISTO: r.led = true; break;
+    case Estado::LISTO: r.led = c.armando ? parpadeo(t, 80) : true; break;
     case Estado::SIGUIENDO: r.led = c.linea_visible; break;
     case Estado::RECUPERACION: r.led = parpadeo(t, 120); break;
     case Estado::PARADA: r.led = parpadeo(t, 250); break;
@@ -34,4 +34,4 @@ Indicacion indicar(const Contexto& c) {
   return r;
 }
 
-}  // namespace casero
+}  // namespace robot

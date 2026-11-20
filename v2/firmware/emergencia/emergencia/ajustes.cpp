@@ -2,20 +2,40 @@
 
 #include <string.h>
 
-namespace casero {
+namespace robot {
 
-#define E(campo_, mn, mx) {#campo_, offsetof(Ajustes, campo_), mn, mx}
+#define E(campo_, mn, mx, txt) {#campo_, offsetof(Ajustes, campo_), mn, mx, txt}
 static const EntradaAjuste TABLA[] = {
-    E(kp, 0.0f, 1.0f), E(ki, 0.0f, 5.0f), E(kd, 0.0f, 0.1f), E(vbase, 0.0f, 1.0f),
-    E(freno, 0.0f, 1.0f), E(error_ref, 1.0f, 100.0f), E(vmin_rel, 0.0f, 1.0f), E(u_max, 0.05f, 2.0f),
-    E(rueda_min, -1.0f, 0.5f), E(tau_d, 0.0f, 0.2f), E(t_ret, 0.0f, 0.5f), E(t_busq, 0.0f, 5.0f),
-    E(u_busq, 0.0f, 1.0f), E(v_busq, 0.0f, 1.0f),
-    E(pwm_max, 0.1f, 1.0f), E(v_motor_max, 1.0f, 9.0f), E(i_max, 0.1f, 1.5f), E(i_total, 0.2f, 3.0f),
-    E(rampa, 0.5f, 100.0f), E(m_R, 0.5f, 50.0f), E(m_ke, 0.005f, 0.5f), E(m_tau, 0.005f, 1.0f),
-    E(vm_fijo, 2.7f, 10.8f), E(inv_izq, 0.0f, 1.0f), E(inv_der, 0.0f, 1.0f),
-    E(lento, 0.0f, 1.0f), E(alfa, 0.05f, 1.0f), E(sobremuestreo, 1.0f, 4.0f), E(t_emisor_us, 20.0f, 1000.0f),
-    E(bat_baja, 5.0f, 9.0f), E(bat_critica, 5.0f, 9.0f),
-    E(t_cal_max, 2.0f, 15.0f), E(t_cal_extra, 0.0f, 5.0f),
+    // control
+    E(kp, 0.0f, 1.0f, "PID: proporcional (por mm)"), E(ki, 0.0f, 5.0f, "PID: integral"),
+    E(kd, 0.0f, 0.1f, "PID: derivada"), E(vbase, 0.0f, 1.0f, "velocidad base (fraccion del maximo)"),
+    E(freno, 0.0f, 1.0f, "fraccion de vbase que se quita en curva"), E(error_ref, 1.0f, 100.0f, "mm con freno de curva completo"),
+    E(vmin_rel, 0.0f, 1.0f, "piso de velocidad en curva"), E(u_max, 0.05f, 2.0f, "saturacion de la correccion"),
+    E(rueda_min, -1.0f, 0.5f, "minimo por rueda (negativo = reversa)"), E(tau_d, 0.0f, 0.2f, "s, filtro de la derivada"),
+    E(t_ret, 0.0f, 0.5f, "s, retencion en huecos"), E(t_busq, 0.0f, 5.0f, "s, busqueda antes de parar"),
+    E(u_busq, 0.0f, 1.0f, "giro durante la busqueda"), E(v_busq, 0.0f, 1.0f, "velocidad relativa en la busqueda"),
+    // motores
+    E(pwm_max, 0.1f, 1.0f, "tope de ciclo PWM"), E(v_motor_max, 1.0f, 9.0f, "V maximos sobre el motor"),
+    E(i_max, 0.1f, 1.5f, "A estimados por motor"), E(i_total, 0.2f, 3.0f, "A estimados entre los dos"),
+    E(rampa, 0.5f, 100.0f, "1/s al acelerar"), E(rampa_freno, 0.5f, 100.0f, "1/s al frenar o invertir"),
+    E(m_R, 0.5f, 50.0f, "ohm del N20 (6 V / I bloqueo)"), E(m_ke, 0.005f, 0.5f, "V*s/rad del N20"),
+    E(m_tau, 0.005f, 1.0f, "s, constante de velocidad estimada"), E(vm_fijo, 2.7f, 10.8f, "V del MP1584 de motores"),
+    E(caida_reg, 0.0f, 2.0f, "V de caida del MP1584 de motores"), E(inv_izq, 0.0f, 1.0f, "1 = invierte motor izquierdo"),
+    E(inv_der, 0.0f, 1.0f, "1 = invierte motor derecho"), E(cruzar, 0.0f, 1.0f, "1 = intercambia motores izq/der"),
+    E(lento, 0.0f, 1.0f, "1 = decaimiento lento, 0 = rapido"),
+    // sensores
+    E(inv_sens, 0.0f, 1.0f, "1 = SEN1 a la derecha"), E(mascara, 1.0f, 255.0f, "bits de sensores en uso"),
+    E(paso_mm, 5.0f, 30.0f, "mm entre sensores"), E(alfa, 0.05f, 1.0f, "pasa-bajas (1 = sin filtro)"),
+    E(sobremuestreo, 1.0f, 4.0f, "lecturas ADC promediadas"), E(descartes, 0.0f, 3.0f, "lecturas tiradas al cambiar canal"),
+    E(t_emisor_us, 20.0f, 1000.0f, "us tras prender/apagar los LED IR"), E(t_mux_us, 1.0f, 100.0f, "us tras cambiar el canal"),
+    E(umbral, 0.0f, 0.5f, "oscuridad ignorada"), E(confianza, 0.05f, 4.0f, "suma minima para ver la linea"),
+    E(contraste, 20.0f, 3000.0f, "cuentas minimas blanco-negro"), E(t_negro, 0.0f, 3.0f, "s todo negro antes de parar (0 = no)"),
+    // batería
+    E(bat_baja, 5.0f, 9.0f, "V de aviso"), E(bat_critica, 5.0f, 9.0f, "V de parada"),
+    // calibración y arranque
+    E(t_cal_max, 2.0f, 15.0f, "s maximos de calibracion"), E(t_cal_extra, 0.0f, 5.0f, "s extra tras ver contraste"),
+    E(ac_u, 0.05f, 0.6f, "giro de autocal"), E(ac_t, 0.3f, 5.0f, "s maximos por fase de autocal"),
+    E(t_arranque, 0.0f, 5.0f, "s entre START y arrancar"),
 };
 #undef E
 
@@ -28,15 +48,56 @@ float* campo(Ajustes& a, const EntradaAjuste& e) {
   return reinterpret_cast<float*>(reinterpret_cast<char*>(&a) + e.desp);
 }
 
-bool fijar(Ajustes& a, const char* nombre, float v) {
+const EntradaAjuste* buscar(const char* nombre) {
   int n;
   const EntradaAjuste* t = tabla_ajustes(&n);
-  for (int i = 0; i < n; ++i) {
-    if (strcmp(t[i].nombre, nombre) == 0) {
-      if (!(v >= t[i].min && v <= t[i].max)) return false;   // también rechaza NaN
-      *campo(a, t[i]) = v;
-      return true;
-    }
+  for (int i = 0; i < n; ++i) if (strcmp(t[i].nombre, nombre) == 0) return &t[i];
+  return nullptr;
+}
+
+static bool es_bit(float v) { return v == 0.0f || v == 1.0f; }
+
+bool coherente(const Ajustes& a, const char** motivo) {
+  const char* m = nullptr;
+  if (!(a.bat_critica < a.bat_baja)) m = "bat_critica debe ser menor que bat_baja";
+  else if (!es_bit(a.inv_izq) || !es_bit(a.inv_der) || !es_bit(a.cruzar) || !es_bit(a.lento) || !es_bit(a.inv_sens))
+    m = "inv_izq, inv_der, cruzar, lento e inv_sens solo valen 0 o 1";
+  else if (a.mascara != static_cast<float>(static_cast<int>(a.mascara))) m = "mascara debe ser entera (1..255)";
+  else if (a.sobremuestreo != static_cast<float>(static_cast<int>(a.sobremuestreo)) ||
+           a.descartes != static_cast<float>(static_cast<int>(a.descartes)))
+    m = "sobremuestreo y descartes deben ser enteros";
+  else if (a.rueda_min > a.vbase) m = "rueda_min no puede pasar de vbase";
+  if (motivo) *motivo = m;
+  return m == nullptr;
+}
+
+bool fijar(Ajustes& a, const char* nombre, float v) {
+  const EntradaAjuste* e = buscar(nombre);
+  if (!e) return false;
+  if (!(v >= e->min && v <= e->max)) return false;   // también rechaza NaN
+  Ajustes prueba = a;
+  *campo(prueba, *e) = v;
+  if (!coherente(prueba, nullptr)) return false;
+  a = prueba;
+  return true;
+}
+
+// Perfiles [S]: simulación en lazo cerrado (curvas de 200–600 mm, 8 sensores a 12.7 mm, N20 de 1000 rpm [E]).
+// El robot real puede necesitar otros valores: se parte de aquí y se ajusta con `set`.
+struct Perfil { const char* nombre; float vbase, pwm_max, rampa, rampa_freno, kp, kd, freno; };
+static const Perfil PERFILES[] = {
+    {"seguro", 0.25f, 0.80f, 4.0f, 8.0f, 0.010f, 0.0004f, 0.30f},
+    {"normal", 0.35f, 0.90f, 6.0f, 12.0f, 0.010f, 0.0004f, 0.30f},
+    {"rapido", 0.50f, 1.00f, 8.0f, 16.0f, 0.012f, 0.0006f, 0.40f},
+};
+
+bool aplicar_perfil(Ajustes& a, const char* nombre) {
+  for (const Perfil& p : PERFILES) {
+    if (strcmp(p.nombre, nombre) != 0) continue;
+    a.vbase = p.vbase; a.pwm_max = p.pwm_max; a.rampa = p.rampa; a.rampa_freno = p.rampa_freno;
+    a.kp = p.kp; a.kd = p.kd; a.freno = p.freno;
+    if (a.rueda_min > a.vbase) a.rueda_min = -0.30f;
+    return true;
   }
   return false;
 }
@@ -58,7 +119,8 @@ motor::Modelo a_modelo(const Ajustes& a) {
 
 motor::Limites a_limites(const Ajustes& a) {
   motor::Limites l;
-  l.pwm_max = a.pwm_max; l.v_motor_max = a.v_motor_max; l.i_max = a.i_max; l.i_total = a.i_total; l.rampa = a.rampa;
+  l.pwm_max = a.pwm_max; l.v_motor_max = a.v_motor_max; l.i_max = a.i_max; l.i_total = a.i_total;
+  l.rampa = a.rampa; l.rampa_freno = a.rampa_freno;
   return l;
 }
 
@@ -66,8 +128,11 @@ Tiempos a_tiempos(const Ajustes& a) {
   Tiempos t;
   t.cal_max_ms = static_cast<uint32_t>(a.t_cal_max * 1000.0f + 0.5f);
   t.cal_extra_ms = static_cast<uint32_t>(a.t_cal_extra * 1000.0f + 0.5f);
+  t.arranque_ms = static_cast<uint32_t>(a.t_arranque * 1000.0f + 0.5f);
   return t;
 }
+
+uint32_t mascara(const Ajustes& a) { return static_cast<uint32_t>(a.mascara) & 0xFFu; }
 
 uint32_t crc32(const void* datos, size_t n) {
   const uint8_t* p = static_cast<const uint8_t*>(datos);
@@ -87,7 +152,7 @@ void sellar(Guardado& g) {
 
 bool valido(const Guardado& g) {
   return g.magia == MAGIA && g.version == VERSION && g.crc == crc32(&g, offsetof(Guardado, crc)) &&
-         g.n_cal >= 0 && g.n_cal <= MAX_CAL;
+         g.n_cal >= 0 && g.n_cal <= MAX_CAL && coherente(g.a, nullptr);
 }
 
-}  // namespace casero
+}  // namespace robot

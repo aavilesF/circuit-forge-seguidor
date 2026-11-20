@@ -1,4 +1,4 @@
-// Copiado sin cambios de firmware/seguidor/pid.h (rama main, lógica V1 probada en PC).
+// Lógica V1 (firmware/seguidor/pid.h, rama main), sin cambios; probada en PC.
 // Controlador PID discreto con saturación, anti-windup y derivada filtrada.
 // C++ puro: se prueba en la computadora y lo usa el simulador.
 #pragma once

@@ -10,6 +10,7 @@
 #include <random>
 
 #include "../emergencia/ajustes.h"
+#include "../emergencia/autocal.h"
 #include "../emergencia/config.h"
 #include "../emergencia/control.h"
 #include "../emergencia/estados.h"
@@ -32,7 +33,7 @@ static int fallas = 0, total = 0;
   } while (0)
 #define CERCA(a, b, tol) CHECK(fabs((a) - (b)) <= (tol), "%g vs %g", (double)(a), (double)(b))
 
-using namespace casero;
+using namespace robot;
 
 // ------------------------------------------------------------------------------------------------ filtro
 static void prueba_filtro() {
@@ -237,7 +238,7 @@ static void prueba_estados() {
 
 // ------------------------------------------------------------------------------------------------ indicadores
 static Contexto ctx(Estado e, uint32_t te, uint32_t t) {
-  return Contexto{e, Error::NINGUNO, te, t, false, FinCal::NINGUNO, 100000, false, 100000, false, 15000};
+  return Contexto{e, Error::NINGUNO, te, t, false, FinCal::NINGUNO, 100000, false, 100000, false, false, 15000};
 }
 
 static int flancos_led(Contexto c, uint32_t desde, uint32_t hasta) {
@@ -487,50 +488,329 @@ static double simular(double Rc, double v_fuente, double segundos, bool* perdio,
   return peor;
 }
 
+static Ajustes con_perfil(const char* p) {
+  Ajustes a;
+  aplicar_perfil(a, p);
+  return a;
+}
+
 static void prueba_lazo() {
-  for (double Rc : {600.0, 300.0, 200.0}) {
-    for (double vf : {6.0}) {        // el DRV8833 siempre recibe +6V_MOT del MP1584 U2
+  // velocidad media mínima esperada por perfil (N20 de 1000 rpm [E]; con otro motor cambia la escala, no la forma)
+  const struct { const char* p; double vmin; } casos[] = {{"seguro", 0.20}, {"normal", 0.30}, {"rapido", 0.45}};
+  for (const auto& c : casos) {
+    const Ajustes a = con_perfil(c.p);
+    for (double Rc : {600.0, 300.0, 200.0}) {
       bool perdio;
       double vm;
-      const double peor = simular(Rc, vf, 6.0, &perdio, &vm);
-      printf("  lazo: R=%3.0f mm VM=%.1f V → desvío máx. de la barra %.1f mm, %.2f m/s%s\n", Rc, vf, peor, vm,
+      const double peor = simular(Rc, 6.0, 6.0, &perdio, &vm, a);
+      printf("  lazo %-6s: R=%3.0f mm → desvío máx. de la barra %4.1f mm, %.2f m/s%s\n", c.p, Rc, peor, vm,
              perdio ? " (PERDIÓ LA LÍNEA)" : "");
-      CHECK(!perdio, "perdió la línea en R=%g", Rc);
-      CHECK(peor < 25.0, "desvío %.1f mm en R=%g", peor, Rc);
-      CHECK(vm > 0.3, "velocidad media %.2f m/s", vm);
+      CHECK(!perdio, "%s perdió la línea en R=%g", c.p, Rc);
+      CHECK(peor < 15.0, "%s: desvío %.1f mm en R=%g", c.p, peor, Rc);
+      CHECK(vm > c.vmin, "%s: velocidad media %.2f m/s", c.p, vm);
     }
   }
 }
 
-#ifdef BARRIDO
-int main() {
-  for (float vb : {0.35f, 0.5f, 0.7f})
-  for (float kp : {0.008f, 0.010f, 0.012f})
-    for (float kd : {0.0002f, 0.0004f, 0.0008f}) {
-      Ajustes a;
-      a.kp = kp; a.kd = kd; a.vbase = vb;
-      printf("vbase=%.2f ", vb);
-      double peor = 0, vmin = 9;
-      bool p_any = false;
-      for (double Rc : {600.0, 300.0, 200.0}) for (double vf : {6.0}) {
-        bool p; double vm;
-        peor = fmax(peor, simular(Rc, vf, 6.0, &p, &vm, a));
-        vmin = fmin(vmin, vm); p_any |= p;
-      }
-      printf("kp=%.4f kd=%.4f peor=%.1f vmin=%.2f %s\n", kp, kd, peor, vmin, p_any ? "PERDIO" : "");
+// ------------------------------------------------------------------------------------------------ autocalibración
+// Robot parado sobre una recta (línea en x = 0, robot mirando a +y). Gira en el sitio con el mismo modelo de motor.
+struct ResAutocal { autocal::Fase fase; bool cal_ok, centrado, al_reves; double t_s, angulo_final_deg; };
+
+static ResAutocal simular_autocal(bool hay_linea, bool motores_al_reves, uint32_t mascara_s) {
+  const double r = 0.014, W = 0.080, tau_real = 0.05, dt = 0.0025;
+  const int N = 8;
+  Ajustes aj;
+  posicion::Geometria g = posicion::geometria_recta(N, aj.paso_mm, DIST_SENSOR_EJE_MM);
+  posicion::Calibracion cal;
+  filtro::Arreglo fil;
+  motor::Accionamiento acc;
+  acc.configurar(a_modelo(aj), a_limites(aj));
+  acc.reiniciar();
+  autocal::Param p;
+  p.u = aj.ac_u; p.t_max_s = aj.ac_t; p.contraste = aj.contraste; p.mascara = mascara_s;
+  autocal::AutoCal ac;
+  ac.iniciar(N, p, cal);
+  std::mt19937 rng(11);
+  std::normal_distribution<double> ruido(0.0, 40.0);
+  const posicion::ModoSensor modo = {true, true, 4095};
+  Sim s{0.0, 0.0, M_PI / 2};
+  autocal::Salida o;
+  double t = 0;
+  for (int k = 0; k < 8000; ++k, t += dt) {
+    float refl[16];
+    const double hx = cos(s.th), rx = sin(s.th);
+    for (int i = 0; i < N; ++i) {
+      const double px = s.x + (g.y[i] * hx + g.x[i] * rx) / 1000.0;
+      const double d = hay_linea ? fabs(px * 1000.0) : 1e9;
+      double osc = (15.0 - d) / 5.0;
+      osc = osc < 0 ? 0 : (osc > 1 ? 1 : osc);
+      refl[i] = posicion::reflectancia(modo, (int)(300 + osc * 3500 + ruido(rng)), (int)(4000 + ruido(rng)));
     }
+    fil.aplicar(refl, N, aj.alfa);
+    o = ac.paso(refl, cal, g, (float)dt);
+    if (o.termino) break;
+    const float iz = motores_al_reves ? -o.izq : o.izq, de = motores_al_reves ? -o.der : o.der;
+    acc.actualizar(iz, de, 6.0f, (float)dt);
+    s.wl += dt / (tau_real + dt) * (acc.ciclo(0) * 6.0 / aj.m_ke - s.wl);
+    s.wr += dt / (tau_real + dt) * (acc.ciclo(1) * 6.0 / aj.m_ke - s.wr);
+    s.th += r * (s.wr - s.wl) / W * dt;
+  }
+  return ResAutocal{ac.fase(), o.cal_ok, o.centrado, ac.al_reves(), t, (s.th - M_PI / 2) * 180.0 / M_PI};
+}
+
+static void prueba_autocal() {
+  ResAutocal r = simular_autocal(true, false, 0xFF);
+  printf("  autocal: %s en %.2f s, cal_ok=%d centrado=%d, ángulo final %+.1f°\n", autocal::nombre(r.fase), r.t_s, r.cal_ok,
+         r.centrado, r.angulo_final_deg);
+  CHECK(r.fase == autocal::Fase::LISTA && r.cal_ok && r.centrado, "autocal sobre la línea");
+  CHECK(r.t_s < 6.0, "autocal tardó %.2f s", r.t_s);
+  CHECK(fabs(r.angulo_final_deg) < 10.0, "termina casi derecho (%.1f°)", r.angulo_final_deg);
+  r = simular_autocal(true, false, 0xFF & ~(1u << 4));   // 5.º sensor ignorado
+  CHECK(r.fase == autocal::Fase::LISTA && r.cal_ok, "autocal con un sensor ignorado");
+  r = simular_autocal(false, false, 0xFF);
+  CHECK(r.fase == autocal::Fase::FALLA && !r.cal_ok, "sin línea: FALLA");
+  CHECK(r.t_s <= 1.1 && !r.al_reves, "sin línea: falla por tiempo de la fase 1 (%.2f s)", r.t_s);
+  r = simular_autocal(true, true, 0xFF);
+  CHECK(r.fase == autocal::Fase::FALLA && !r.cal_ok && r.al_reves, "motores al revés: FALLA (no da una calibración falsa)");
+  CHECK(r.t_s < 0.5 && fabs(r.angulo_final_deg) < 60.0, "motores al revés: aborta pronto (%.2f s, %.0f°)", r.t_s,
+        r.angulo_final_deg);
+  posicion::Calibracion c;
+  autocal::AutoCal a;
+  autocal::Param p;
+  p.mascara = 0x01;   // un solo sensor: no hay posición
+  a.iniciar(8, p, c);
+  CHECK(a.fase() == autocal::Fase::FALLA, "con un solo sensor activo no empieza");
+}
+
+// ------------------------------------------------------------------------------------------------ nuevas (v2.0)
+static void prueba_utiles2() {
+  CHECK(util::contar_activos(0xFF, 8) == 8 && util::contar_activos(0xEF, 8) == 7, "contar activos");
+  CHECK(util::primer_activo(0xFE, 8) == 1 && util::ultimo_activo(0x7F, 8) == 6, "extremos activos");
+  posicion::Calibracion c;
+  c.reiniciar(8);
+  for (int i = 0; i < 8; ++i) { c.minimo[i] = 200; c.maximo[i] = 3000; }
+  CHECK(util::cal_lista(c, 150, 0xFF), "calibración completa");
+  c.maximo[3] = 250;   // el 4.º sensor no vio blanco
+  CHECK(!util::cal_lista(c, 150, 0xFF), "un sensor sin contraste invalida la calibración");
+  CHECK(util::cal_lista(c, 150, 0xFF & ~(1u << 3)), "…salvo que esté ignorado en la máscara");
+  CHECK(!util::cal_lista(c, 150, 0x08), "con un solo sensor (el malo) no sirve");
+  float o[8] = {1, 1, 1, 1, 1, 1, 1, 1};
+  util::enmascarar(o, 8, 0x7F);
+  CHECK(o[7] == 0.0f && o[6] == 1.0f, "enmascarar pone en blanco el ignorado");
+  CHECK(util::contar_oscuros(o, 8, 0.7f, 0x7F) == 7, "todos los activos negros");
+  CERCA(util::v_puente(true, 8.0f, 6.0f, 0.6f), 6.0, 1e-6);
+  CERCA(util::v_puente(true, 6.2f, 6.0f, 0.6f), 5.6, 1e-5);   // el regulador ya no alcanza
+  CERCA(util::v_puente(false, 8.0f, 6.0f, 0.6f), 0.0, 1e-6);
+  float f;
+  int k;
+  CHECK(util::leer_float("0.012", &f) && fabsf(f - 0.012f) < 1e-7f, "número válido");
+  CHECK(!util::leer_float("x", &f) && !util::leer_float("0.1x", &f) && !util::leer_float("", &f) &&
+            !util::leer_float(nullptr, &f) && !util::leer_float("nan", &f),
+        "texto inválido rechazado (antes atof daba 0)");
+  CHECK(util::leer_int("7", 0, 15, &k) && k == 7, "entero válido");
+  CHECK(!util::leer_int("16", 0, 15, &k) && !util::leer_int("2.5", 0, 15, &k) && !util::leer_int("-1", 0, 15, &k),
+        "entero fuera de rango o con decimales");
+}
+
+static void prueba_rampa_freno() {
+  motor::Accionamiento a;
+  motor::Limites l;
+  l.rampa = 4.0f;
+  l.rampa_freno = 12.0f;
+  l.pwm_max = 1.0f;
+  l.i_max = 1.5f;
+  l.i_total = 3.0f;
+  motor::Modelo m = motor::Modelo::desde_ficha(6.0f, 1000.0f, 0.5f, 0.05f, 0.08f);   // motor suave: no limita corriente
+  a.configurar(m, l);
+  a.reiniciar();
+  a.actualizar(1.0f, 1.0f, 6.0f, 0.010f);
+  CERCA(a.ciclo(0), 0.04, 1e-5);                 // acelera con rampa (4/s)
+  for (int i = 0; i < 400; ++i) a.actualizar(0.6f, 0.6f, 6.0f, 0.0025f);
+  CERCA(a.ciclo(0), 0.6, 1e-4);
+  a.actualizar(0.0f, 0.0f, 6.0f, 0.010f);
+  CERCA(a.ciclo(0), 0.48, 1e-4);                 // frena con rampa_freno (12/s)
+  for (int i = 0; i < 400; ++i) a.actualizar(-0.6f, -0.6f, 6.0f, 0.0025f);
+  CHECK(a.ciclo(0) < -0.59f, "llega a reversa");
+  a.actualizar(0.6f, 0.6f, 6.0f, 0.010f);
+  CHECK(a.ciclo(0) > -0.6f + 0.11f, "salir de reversa también es frenar (%.3f)", a.ciclo(0));
+}
+
+static void prueba_estados2() {
+  // arranque diferido
+  Maquina m;
+  Tiempos tp;
+  tp.arranque_ms = 500;
+  m.fijar_tiempos(tp);
+  Entradas in;
+  m.reiniciar(0);
+  m.paso(in, 900);
+  in.cal_valida = true;
+  in.start = true;
+  m.paso(in, 1000);                           // ESPERA → LISTO
+  m.paso(in, 1010);                           // START en LISTO: arma
+  in.start = false;
+  CHECK(m.estado() == Estado::LISTO && m.armando() && !m.motores(), "START arma sin mover");
+  m.paso(in, 1500);
+  CHECK(m.armando(), "a los 490 ms sigue esperando");
+  m.paso(in, 1510);
+  CHECK(m.estado() == Estado::SIGUIENDO && !m.armando(), "a los 500 ms arranca");
+  // cancelar con START, CAL, o por perder la batería
+  Maquina c;
+  c.fijar_tiempos(tp);
+  c.reiniciar(0);
+  c.paso(in, 900);
+  in.start = true;
+  c.paso(in, 1000);
+  c.paso(in, 1010);
+  in.start = false;
+  CHECK(c.armando(), "armado");
+  in.start = true;
+  c.paso(in, 1100);
+  in.start = false;
+  CHECK(c.estado() == Estado::LISTO && !c.armando(), "segundo START cancela");
+  c.paso(in, 2000);
+  CHECK(c.estado() == Estado::LISTO, "no arranca solo después de cancelar");
+  in.start = true;
+  c.paso(in, 2010);
+  in.start = false;
+  in.cal = true;
+  c.paso(in, 2020);
+  in.cal = false;
+  CHECK(c.estado() == Estado::CALIBRACION, "CAL cancela y calibra");
+  Maquina b;
+  b.fijar_tiempos(tp);
+  b.reiniciar(0);
+  b.paso(in, 900);
+  in.start = true;
+  b.paso(in, 1000);
+  b.paso(in, 1010);
+  in.start = false;
+  in.hay_bateria = false;
+  b.paso(in, 1100);
+  CHECK(b.estado() == Estado::LISTO && !b.armando() && b.rechazo(), "sin batería durante la espera: no arranca");
+  in.hay_bateria = true;
+
+  // paradas en marcha con su motivo
+  struct { const char* que; void (*poner)(Entradas&); Estado fin; Motivo mot; } casos[] = {
+      {"CAL", [](Entradas& e) { e.cal = true; }, Estado::PARADA, Motivo::CAL},
+      {"USB", [](Entradas& e) { e.parar = true; }, Estado::PARADA, Motivo::USB},
+      {"levantado", [](Entradas& e) { e.levantado = true; }, Estado::PARADA, Motivo::LEVANTADO},
+      {"línea perdida", [](Entradas& e) { e.linea_perdida = true; }, Estado::PARADA, Motivo::LINEA_PERDIDA},
+      {"sin batería", [](Entradas& e) { e.hay_bateria = false; }, Estado::ERROR, Motivo::SIN_BATERIA},
+      {"batería crítica", [](Entradas& e) { e.bat_critica = true; }, Estado::ERROR, Motivo::BATERIA},
+      {"ciclo", [](Entradas& e) { e.falla_ciclo = true; }, Estado::ERROR, Motivo::CICLO},
+  };
+  for (const auto& k : casos) {
+    Maquina q;
+    Entradas e;
+    e.cal_valida = true;
+    q.reiniciar(0);
+    q.paso(e, 900);
+    e.start = true;
+    q.paso(e, 1000);
+    q.paso(e, 1010);
+    e.start = false;
+    q.paso(e, 1020);
+    CHECK(q.estado() == Estado::SIGUIENDO, "%s: corre", k.que);
+    k.poner(e);
+    q.paso(e, 1030);
+    CHECK(q.estado() == k.fin && q.motivo() == k.mot && !q.motores(), "%s: para con su motivo", k.que);
+    CHECK(q.frenando(1100) && q.despierto(1100), "%s: frena al parar", k.que);
+    CHECK(!q.frenando(1400) && !q.despierto(1400), "%s: luego suelta y duerme el puente", k.que);
+    CHECK(nombre(q.motivo()) && strlen(nombre(q.motivo())) > 2, "%s: motivo con texto", k.que);
+  }
+  // ERROR fuera de marcha no frena (no hay nada que frenar); calibración externa
+  Maquina x;
+  x.reiniciar(0);
+  CHECK(!x.calibracion_externa(true, 10), "en INICIO no se acepta calibración externa");
+  x.paso(in, 900);
+  CHECK(x.calibracion_externa(true, 1000) && x.estado() == Estado::LISTO && x.fin_cal() == FinCal::BIEN,
+        "autocal buena → LISTO");
+  CHECK(x.calibracion_externa(false, 1100) && x.estado() == Estado::ESPERA, "autocal mala → ESPERA");
+}
+
+static void prueba_indicadores2() {
+  Contexto a = ctx(Estado::LISTO, 100, 0);
+  a.armando = true;
+  CHECK(flancos_led(a, 0, 1000) >= 12, "esperando el arranque: parpadeo muy rápido (%d)", flancos_led(a, 0, 1000));
+  a.armando = false;
+  CHECK(flancos_led(a, 0, 1000) <= 1, "LISTO normal: fijo");
+}
+
+static void prueba_ajustes2() {
+  Ajustes a;
+  const char* motivo = nullptr;
+  CHECK(coherente(a, &motivo), "fábrica coherente (%s)", motivo ? motivo : "");
+  CHECK(!fijar(a, "bat_critica", 7.0f), "bat_critica ≥ bat_baja rechazado");
+  CHECK(!fijar(a, "inv_izq", 0.5f), "inversión solo 0/1");
+  CHECK(!fijar(a, "mascara", 100.5f), "máscara entera");
+  CHECK(!fijar(a, "sobremuestreo", 2.5f), "sobremuestreo entero");
+  CHECK(fijar(a, "inv_sens", 1.0f) && a.inv_sens == 1.0f, "inv_sens por consola");
+  CHECK(fijar(a, "mascara", 239.0f) && mascara(a) == 239u, "máscara por consola");
+  int n;
+  const EntradaAjuste* t = tabla_ajustes(&n);
+  for (int i = 0; i < n; ++i) CHECK(t[i].ayuda && strlen(t[i].ayuda) > 3, "%s sin ayuda", t[i].nombre);
+  CHECK(buscar("kp") && !buscar("zumb_activo") && !buscar("usar_nfault") && !buscar("caida_d1") && !buscar("vm_bateria"),
+        "sin parámetros del hardware histórico");
+  for (const char* p : {"seguro", "normal", "rapido"}) {
+    Ajustes b;
+    b.inv_izq = 1.0f; b.mascara = 127.0f;
+    CHECK(aplicar_perfil(b, p), "perfil %s existe", p);
+    CHECK(coherente(b, nullptr), "perfil %s coherente", p);
+    CHECK(b.inv_izq == 1.0f && b.mascara == 127.0f, "perfil %s no toca inversiones ni sensores", p);
+    for (int i = 0; i < n; ++i) {
+      const float v = *campo(b, t[i]);
+      CHECK(v >= t[i].min && v <= t[i].max, "perfil %s: %s=%g fuera de rango", p, t[i].nombre, v);
+    }
+  }
+  Ajustes s = con_perfil("seguro"), r = con_perfil("rapido");
+  CHECK(s.vbase < r.vbase && s.pwm_max <= r.pwm_max, "el perfil rápido es más rápido");
+  Ajustes d;
+  CHECK(d.vbase == s.vbase && d.pwm_max == s.pwm_max && d.rampa == s.rampa, "fábrica = perfil seguro");
+  CHECK(!aplicar_perfil(d, "turbo"), "perfil desconocido");
+  Guardado g{};
+  g.a = Ajustes();
+  g.a.bat_critica = 8.0f;   // incoherente (corrupción o versión vieja)
+  sellar(g);
+  CHECK(!valido(g), "no se cargan ajustes incoherentes aunque el CRC esté bien");
+  CHECK(a_tiempos(Ajustes()).arranque_ms == 500, "t_arranque 0.5 s → 500 ms");
+}
+
+#ifdef BARRIDO
+// Barrido de ganancias por velocidad: imprime el peor desvío y la velocidad mínima en las 3 curvas.
+int main() {
+  for (float vb : {0.25f, 0.35f, 0.50f, 0.60f})
+    for (float kp : {0.008f, 0.010f, 0.012f, 0.014f})
+      for (float kd : {0.0002f, 0.0004f, 0.0006f, 0.0008f}) {
+        Ajustes a = con_perfil(vb < 0.3f ? "seguro" : (vb < 0.45f ? "normal" : "rapido"));
+        a.kp = kp; a.kd = kd; a.vbase = vb;
+        double peor = 0, vmin = 9;
+        bool p_any = false;
+        for (double Rc : {600.0, 300.0, 200.0}) {
+          bool p; double vm;
+          peor = fmax(peor, simular(Rc, 6.0, 6.0, &p, &vm, a));
+          vmin = fmin(vmin, vm); p_any |= p;
+        }
+        printf("vbase=%.2f kp=%.4f kd=%.4f peor=%5.1f vmin=%.2f %s\n", vb, kp, kd, peor, vmin, p_any ? "PERDIO" : "");
+      }
 }
 #else
 int main() {
   prueba_filtro();
   prueba_drv8833();
   prueba_accionamiento();
+  prueba_rampa_freno();
   prueba_estados();
+  prueba_estados2();
   prueba_indicadores();
+  prueba_indicadores2();
   prueba_config();
   prueba_utiles();
+  prueba_utiles2();
   prueba_paradas();
   prueba_ajustes();
+  prueba_ajustes2();
+  prueba_autocal();
   prueba_lazo();
   printf("%d/%d comprobaciones OK\n", total - fallas, total);
   return fallas ? 1 : 0;

@@ -1,4 +1,4 @@
-// Copiado sin cambios de firmware/seguidor/control.h (rama main, lógica V1 probada en PC).
+// Lógica V1 (firmware/seguidor, rama main), sin cambios; probada en PC.
 // Controlador de seguimiento de línea: convierte la posición estimada de la línea
 // en órdenes de velocidad para las dos ruedas. C++ puro (lo usa también el simulador).
 //

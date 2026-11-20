@@ -1,16 +1,14 @@
-// Copiado sin cambios de firmware/seguidor/control.cpp (rama main, lógica V1 probada en PC).
+// Lógica V1 (firmware/seguidor, rama main) probada en PC. Único cambio: los valores de param_por_defecto(), que solo
+// se usan hasta que el firmware aplica `Ajustes` (ajustes.h manda; son los mismos valores).
 #include "control.h"
 #include <math.h>
 
 ParamControl param_por_defecto() {
   ParamControl p;
-  // Punto de partida obtenido en simulación (ver docs/simulacion.md): kp=0.04 y kd=0.002
-  // dieron el menor error en el barrido. El modelo es ideal; con el robot real hay que
-  // volver a ajustarlos. vbase=0.40 es una primera vuelta prudente, no la velocidad final.
-  p.kp = 0.04f;
+  p.kp = 0.010f;
   p.ki = 0.0f;
-  p.kd = 0.002f;
-  p.vbase = 0.40f;
+  p.kd = 0.0004f;
+  p.vbase = 0.30f;
   p.freno_error = 0.30f;
   p.error_ref_mm = 30.0f;
   p.vmin_rel = 0.50f;

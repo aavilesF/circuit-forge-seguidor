@@ -1,6 +1,6 @@
 #include "estados.h"
 
-namespace casero {
+namespace robot {
 
 const char* nombre(Estado e) {
   switch (e) {
@@ -16,13 +16,31 @@ const char* nombre(Estado e) {
   return "?";
 }
 
+const char* nombre(Motivo m) {
+  switch (m) {
+    case Motivo::NINGUNO: return "-";
+    case Motivo::START: return "boton START";
+    case Motivo::CAL: return "boton CAL";
+    case Motivo::USB: return "tecla por USB";
+    case Motivo::LINEA_PERDIDA: return "linea perdida (fin de la busqueda)";
+    case Motivo::LEVANTADO: return "todos los sensores negros (robot levantado?)";
+    case Motivo::BATERIA: return "bateria critica";
+    case Motivo::SIN_BATERIA: return "sin bateria (KCD1 apagado o cable suelto)";
+    case Motivo::CICLO: return "ciclo de control atrasado";
+  }
+  return "?";
+}
+
 void Maquina::reiniciar(uint32_t t) {
   e_ = Estado::INICIO;
   err_ = Error::NINGUNO;
+  motivo_ = Motivo::NINGUNO;
   t_entrada_ = t;
   entro_ = true;
   lista_ = false;
   rechazo_ = false;
+  armado_ = false;
+  freno_error_ = false;
   fin_cal_ = FinCal::NINGUNO;
 }
 
@@ -30,10 +48,18 @@ void Maquina::ir(Estado e, uint32_t t) {
   e_ = e;
   t_entrada_ = t;
   entro_ = true;
+  armado_ = false;
   if (e == Estado::CALIBRACION) {
     lista_ = false;
     fin_cal_ = FinCal::NINGUNO;
   }
+}
+
+void Maquina::parar(Estado e, Motivo m, uint32_t t) {
+  freno_error_ = motores();   // en ERROR solo se frena si venía en marcha
+  motivo_ = m;
+  if (e == Estado::ERROR) err_ = (m == Motivo::CICLO) ? Error::CICLO : Error::BATERIA;
+  ir(e, t);
 }
 
 bool Maquina::despierto(uint32_t t) const {
@@ -41,19 +67,29 @@ bool Maquina::despierto(uint32_t t) const {
     case Estado::LISTO:
     case Estado::SIGUIENDO:
     case Estado::RECUPERACION: return true;
-    case Estado::PARADA: return frenando(t);
+    case Estado::PARADA:
+    case Estado::ERROR: return frenando(t);
     default: return false;
   }
+}
+
+bool Maquina::calibracion_externa(bool bien, uint32_t t) {
+  if (e_ != Estado::ESPERA && e_ != Estado::LISTO && e_ != Estado::PARADA) return false;
+  fin_cal_ = bien ? FinCal::BIEN : FinCal::MAL;
+  t_fin_cal_ = t;
+  ir(bien ? Estado::LISTO : Estado::ESPERA, t);
+  return true;
 }
 
 Estado Maquina::paso(const Entradas& in, uint32_t t) {
   const Estado antes = e_;
   const uint32_t en_estado = desde(t);
 
-  // fallas que detienen los motores en cualquier estado de marcha
+  // fallas que detienen los motores en cualquier estado de marcha (prioridad sobre todo lo demás)
   if (motores()) {
-    if (in.falla_ciclo) { err_ = Error::CICLO; ir(Estado::ERROR, t); }
-    else if (in.bat_critica) { err_ = Error::BATERIA; ir(Estado::ERROR, t); }
+    if (in.falla_ciclo) parar(Estado::ERROR, Motivo::CICLO, t);
+    else if (!in.hay_bateria) parar(Estado::ERROR, Motivo::SIN_BATERIA, t);
+    else if (in.bat_critica) parar(Estado::ERROR, Motivo::BATERIA, t);
   }
 
   if (e_ == antes) {
@@ -87,22 +123,30 @@ Estado Maquina::paso(const Entradas& in, uint32_t t) {
         break;
       }
 
-      case Estado::LISTO:
-        if (in.cal) ir(Estado::CALIBRACION, t);
-        else if (in.start) {
-          if (!in.hay_bateria || in.bat_critica) { rechazo_ = true; t_rechazo_ = t; }
-          else ir(Estado::SIGUIENDO, t);
+      case Estado::LISTO: {
+        const bool no_puede = !in.hay_bateria || in.bat_critica || !in.cal_valida;
+        if (in.cal) ir(Estado::CALIBRACION, t);                  // también cancela un arranque pendiente
+        else if (armado_) {
+          if (in.start) armado_ = false;                         // segundo START: cancela
+          else if (no_puede) { armado_ = false; rechazo_ = true; t_rechazo_ = t; }
+          else if (t - t_armado_ >= tp_.arranque_ms) { motivo_ = Motivo::NINGUNO; ir(Estado::SIGUIENDO, t); }
+        } else if (in.start) {
+          if (no_puede) { rechazo_ = true; t_rechazo_ = t; }
+          else if (tp_.arranque_ms == 0) { motivo_ = Motivo::NINGUNO; ir(Estado::SIGUIENDO, t); }
+          else { armado_ = true; t_armado_ = t; }
         }
         break;
+      }
 
       case Estado::SIGUIENDO:
-        if (in.start || in.parar || in.linea_perdida) ir(Estado::PARADA, t);
-        else if (in.buscando) ir(Estado::RECUPERACION, t);
-        break;
-
       case Estado::RECUPERACION:
-        if (in.start || in.parar || in.linea_perdida) ir(Estado::PARADA, t);
-        else if (in.linea_visible && !in.buscando) ir(Estado::SIGUIENDO, t);
+        if (in.start) parar(Estado::PARADA, Motivo::START, t);
+        else if (in.cal) parar(Estado::PARADA, Motivo::CAL, t);
+        else if (in.parar) parar(Estado::PARADA, Motivo::USB, t);
+        else if (in.levantado) parar(Estado::PARADA, Motivo::LEVANTADO, t);
+        else if (in.linea_perdida) parar(Estado::PARADA, Motivo::LINEA_PERDIDA, t);
+        else if (e_ == Estado::SIGUIENDO && in.buscando) ir(Estado::RECUPERACION, t);
+        else if (e_ == Estado::RECUPERACION && in.linea_visible && !in.buscando) ir(Estado::SIGUIENDO, t);
         break;
 
       case Estado::PARADA:
@@ -120,4 +164,4 @@ Estado Maquina::paso(const Entradas& in, uint32_t t) {
   return e_;
 }
 
-}  // namespace casero
+}  // namespace robot

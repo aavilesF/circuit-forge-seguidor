@@ -1,7 +1,7 @@
 // Robot de emergencia · LED azul integrado del DevKit (GPIO2) según el estado. Función pura del estado y el tiempo.
 // No hay zumbador (D-V2-05): todos los avisos son con el LED (y por la consola USB).
 //
-//   INICIO        fijo                                      LISTO         fijo
+//   INICIO        fijo                                      LISTO         fijo; esperando t_arranque: 12 Hz
 //   ESPERA        parpadeo lento (1 Hz)                     SIGUIENDO     encendido = ve la línea
 //   CALIBRACION   rápido (5 Hz); en los últimos 3 s, 10 Hz  RECUPERACION  muy rápido (8 Hz)
 //   PARADA        4 Hz                                      ERROR         N destellos + pausa (1 = batería, 2 = ciclo)
@@ -13,7 +13,7 @@
 
 #include "estados.h"
 
-namespace casero {
+namespace robot {
 
 struct Indicacion {
   bool led = false;
@@ -30,9 +30,10 @@ struct Contexto {
   bool rechazo;
   uint32_t t_desde_rechazo;
   bool bat_baja;
+  bool armando;              // LISTO con START oprimido, esperando t_arranque
   uint32_t cal_max_ms;
 };
 
 Indicacion indicar(const Contexto& c);
 
-}  // namespace casero
+}  // namespace robot

@@ -24,6 +24,9 @@ RED_A_MACRO = {
     "DRV_SLEEP": "PIN_NSLEEP", "AIN1": "PIN_AIN1", "AIN2": "PIN_AIN2", "BIN1": "PIN_BIN1", "BIN2": "PIN_BIN2",
 }
 PROHIBIDAS = ["PIN_ZUMBADOR", "PIN_NFAULT", "PIN_VENTILADOR", "PIN_FAN", "CANAL_ZUMB"]
+INCLUDES_PROHIBIDOS = ["WiFi.h", "BluetoothSerial.h", "BLEDevice.h", "esp_wifi.h", "esp_bt.h", "esp_now.h"]
+RESIDUOS = ["PIN_ZUMBADOR", "CANAL_ZUMB", "zumbador", "zumb_activo", "PIN_NFAULT", "usar_nfault", "driver_falla",
+            "falla_driver", "caida_d1", "vm_bateria", "SENSORES_DIRECTOS", "PINES_SENSORES", "casero", "hw_casero"]
 
 
 def gpio_por_pata(texto: str) -> dict:
@@ -43,6 +46,13 @@ def gpio_por_pata(texto: str) -> dict:
         elif "SENSOR_VN" in nombre or nombre.endswith("VN"):
             patas[numero] = 39
     return patas
+
+
+def solo_codigo(texto: str) -> str:
+    """Quita comentarios // y /* */ y literales de texto "..." (aproximado, suficiente para este código)."""
+    texto = re.sub(r"/\*.*?\*/", " ", texto, flags=re.S)
+    texto = re.sub(r'"(?:\\.|[^"\\\n])*"', '""', texto)
+    return re.sub(r"//[^\n]*", "", texto)
 
 
 def macros(texto: str) -> dict:
@@ -90,12 +100,25 @@ def main() -> int:
     if int(cfg.get("NUM_SENSORES", 0)) != sum(1 for r, p, _ in netlist["esperado"] if r == "U4" and p[:1] == "C"):
         errores.append("NUM_SENSORES no coincide con los canales conectados del mux")
 
+    # código del firmware: sin radio (reglamento) y sin restos del hardware histórico
+    fuentes = sorted(p for p in CONFIG.parent.iterdir() if p.suffix in (".h", ".cpp", ".ino"))
+    for p in fuentes:
+        texto = p.read_text(encoding="utf-8")
+        for inc in INCLUDES_PROHIBIDOS:
+            if re.search(r'#\s*include\s*[<"]' + re.escape(inc) + r'[>"]', texto):
+                errores.append(f"{p.name} incluye {inc}: el reglamento prohíbe radio (WiFi/Bluetooth)")
+        codigo = solo_codigo(texto)   # los comentarios y mensajes pueden mencionar lo que se quitó
+        for ident in RESIDUOS:
+            if re.search(r"\b" + re.escape(ident) + r"\b", codigo):
+                errores.append(f"{p.name} usa `{ident}` (hardware o código del firmware histórico)")
+
     if errores:
         print("DIFERENCIAS entre config.h y el esquema:")
         for e in errores:
             print("  -", e)
         return 1
     print(f"pines: config.h coincide con {ESQ.name} ({len(vistas)} señales, LED en pata libre, mux C0..C7)")
+    print(f"codigo: {len(fuentes)} archivos sin WiFi/Bluetooth ni identificadores del hardware historico")
     return 0
 
 

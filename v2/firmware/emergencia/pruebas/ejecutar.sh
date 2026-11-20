@@ -9,7 +9,7 @@ SAN="-fsanitize=address,undefined"
 case "$(uname -s)" in MINGW*|MSYS*|CYGWIN*) SAN="" ;; esac   # MinGW no trae los sanitizers
 g++ -std=c++17 -Wall -Wextra -Werror -O1 $SAN -I"$S" test_emergencia.cpp \
   "$S/posicion.cpp" "$S/pid.cpp" "$S/control.cpp" "$S/filtro.cpp" "$S/motor.cpp" "$S/estados.cpp" \
-  "$S/indicadores.cpp" "$S/ajustes.cpp" -o ../.build/test_emergencia
+  "$S/indicadores.cpp" "$S/ajustes.cpp" "$S/autocal.cpp" -o ../.build/test_emergencia
 ../.build/test_emergencia
 PY=$(command -v python3 || command -v python)
 "$PY" verificar_pines.py

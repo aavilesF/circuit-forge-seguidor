@@ -80,7 +80,7 @@ S3 es el bit más significativo y S0 el menos significativo (es el orden estánd
 El firmware vigente (`v2/firmware/emergencia/`, `hw.cpp`) hace esta secuencia con sobremuestreo y un tiempo de encendido del emisor ajustable (`t_emisor_us`).
 
 ### Orden físico
-En el esquema, SEN1 está a la izquierda y SEN8 a la derecha. **Confirmar con Alan** si ese orden coincide con la izquierda y la derecha reales del robot, porque depende de cómo se mire la barra. Cambiarlo en el código es fácil; equivocarse en la fila de sensores hace que el robot gire al revés.
+En el esquema, SEN1 está a la izquierda y SEN8 a la derecha. **Confirmar con Alan** si ese orden coincide con la izquierda y la derecha reales del robot, porque depende de cómo se mire la barra. En el firmware vigente se corrige sin recompilar con `set inv_sens 1` y `save` (`v2/firmware/emergencia/README.md`, sección 5); equivocarse en la fila de sensores hace que el robot gire al revés.
 
 ---
 

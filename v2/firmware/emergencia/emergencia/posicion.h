@@ -1,4 +1,4 @@
-// Copiado sin cambios de firmware/seguidor/posicion.h (rama main, lógica V1 probada en PC).
+// Lógica V1 (firmware/seguidor/posicion.h, rama main), sin cambios; probada en PC.
 // Calibración de sensores y estimación de la posición de la línea.
 // C++ puro: se prueba en la computadora y lo usa el simulador.
 #pragma once
@@ -24,7 +24,7 @@ Geometria geometria_arco(int n, float paso_arco_mm, float radio_mm, float dist_e
 // ---- De cuentas ADC a reflectancia ---------------------------------------
 struct ModoSensor {
   bool resta_ambiente;   // true: se lee con emisores encendidos y apagados y se restan
-  bool luz_baja_voltaje; // true: más luz reflejada = menos voltaje (fototransistor tipo QTR-A)
+  bool luz_baja_voltaje; // true: más luz reflejada = menos voltaje (fototransistor con pull-up, como el TCRT5000 de este robot)
   int  adc_max;
 };
 

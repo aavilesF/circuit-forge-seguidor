@@ -1,6 +1,6 @@
-// Robot casero · filtro de las lecturas de los sensores (C++ puro, se prueba en la PC).
+// Robot de emergencia · filtro de las lecturas de los sensores (C++ puro, se prueba en la PC).
 //
-// Por qué: en placa fenólica los cables de los sensores son largos y pasan junto a los del motor (PWM de 20 kHz);
+// Por qué: en la placa perforada los cables de los sensores pasan junto a los de los motores (PWM de 20 kHz);
 // aparecen picos sueltos y ruido. Por canal se hace:
 //   1. mediana de las 3 últimas muestras → quita un pico aislado sin retrasar un escalón más de 1 periodo;
 //   2. pasa-bajas de primer orden  y += a·(m − y)  → a = 1 lo desactiva; a = 0.5 a 400 Hz ≈ 3.6 ms de constante.

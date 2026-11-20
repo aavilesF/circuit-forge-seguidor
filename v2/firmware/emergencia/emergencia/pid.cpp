@@ -1,4 +1,4 @@
-// Copiado sin cambios de firmware/seguidor/pid.cpp (rama main, lógica V1 probada en PC).
+// Lógica V1 (firmware/seguidor/pid.cpp, rama main), sin cambios; probada en PC.
 #include "pid.h"
 #include <math.h>
 

@@ -13,20 +13,21 @@
 #define PIN_MUX_S3 33           // DevKit pin 7  [V esquema]
 #define PIN_MUX_SIG 34          // DevKit pin 4, ADC1_CH6, solo entrada [V esquema]
 #define PIN_EMISORES 13         // EMIT_EN, DevKit pin 13: alto = LED IR encendidos (2N2222 Q1) [V esquema]
-#define MUX_ASENTAMIENTO_US 5   // espera tras cambiar S0..S3 antes de leer SIG [E: CD74HC4067 conmuta en < 1 µs]
-
-// Orden físico. En el esquema SEN1 está a la izquierda y SEN8 a la derecha; FALTA CONFIRMARLO con la barra
-// montada (GUIA, sección 3) [P]. Si el robot gira al revés con `sens` (la línea a la derecha debe dar pos > 0),
-// poner 1 y volver a compilar. 0: SEN1 = izquierda · 1: SEN1 = derecha.
-#define SENSORES_INVERTIDOS 0
-
 // TCRT5000 con pull-up de 10 kΩ a 3V3 y emisor a GND: más reflejo = menos voltaje [V esquema].
 #define LUZ_BAJA_VOLTAJE 1
 #define RESTA_AMBIENTE 1        // lee con emisores encendidos y apagados y resta (luz del lugar)
 
-// Geometría de la barra recta (marco del robot: x a la derecha, y hacia adelante desde el eje de ruedas)
-#define PASO_SENSORES_MM 12.7f    // 5 agujeros de placa perforada (README del prototipo) [V documento, P medir]
-#define DIST_SENSOR_EJE_MM 100.0f // [P] medir en el chasis armado (EM-06)
+// ---- Valores INICIALES de lo que depende del montaje real. Todos se cambian sin recompilar con
+// `set <clave> <valor>` + `save` (la clave va entre corchetes). Cambiarlos aquí solo cambia los de fábrica.
+// Orden físico [inv_sens]: en el esquema SEN1 está a la izquierda y SEN8 a la derecha; FALTA confirmarlo con la
+// barra montada (GUIA, sección 3) [P]. Con la línea bajo el lado DERECHO, `sens` debe dar pos > 0; si no, `set inv_sens 1`.
+#define SENSORES_INVERTIDOS 0
+#define PASO_SENSORES_MM 12.7f    // [paso_mm] 5 agujeros de placa perforada (README del prototipo) [P medir]
+#define DIST_SENSOR_EJE_MM 100.0f // solo informativo (la posición usa x); medir en el chasis armado (EM-06) [P]
+#define MUX_ASENTAMIENTO_US 5     // [t_mux_us] espera tras cambiar S0..S3 [E: el CD74HC4067 conmuta en < 1 µs]
+#define MOTOR_IZQ_INVERTIDO 0     // [inv_izq] [P] verificar con `m 0.3 0` (ruedas en el aire)
+#define MOTOR_DER_INVERTIDO 1     // [inv_der] [P] los N20 van espejados; verificar con `m 0 0.3`
+#define MOTORES_CRUZADOS 0        // [cruzar] 1 si el motor de AIN (M1) quedó montado del lado DERECHO
 
 // ============================================================ DRV8833 (módulo) [V TI SLVSAR1, V esquema]
 #define PIN_AIN1 19   // DevKit pin 25 · IN1 → OUT1/OUT2 = motor IZQUIERDO (M1)

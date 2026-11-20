@@ -1,5 +1,6 @@
-// Robot de emergencia · constantes que comparten la lógica, las pruebas en PC y el firmware (sin Arduino).
-// Mismos nombres que firmware/seguidor/parametros.h (V1) para usar posicion/pid/control sin cambios.
+// Robot de emergencia · constantes fijas que comparten la lógica, las pruebas en PC y el firmware (sin Arduino).
+// Los nombres vienen de la lógica V1 (firmware/seguidor, rama main) para usar posicion/pid sin cambios.
+// Lo que depende del montaje real NO está aquí: está en `Ajustes` (consola `set`) con su valor inicial en config.h.
 #pragma once
 
 namespace par {
@@ -12,10 +13,10 @@ constexpr float HUECO_MAX_MM       = 5.0f;
 
 constexpr unsigned long PERIODO_CONTROL_US = 2500;  // 400 Hz (SIG está en el ADC1; 8 canales × 2 lecturas caben)
 constexpr unsigned long CICLO_MAX_US       = 25000; // en marcha, un ciclo más largo que esto → ERROR 2 (parada segura)
+constexpr unsigned long WDT_MS             = 1000;  // watchdog de hardware: si loop() se cuelga, el ESP32 se reinicia
+                                                    // (y el DRV8833 queda dormido por su pull-down de nSLEEP)
 
 constexpr int   ADC_MAX            = 4095;    // 12 bits
-constexpr float UMBRAL_RUIDO       = 0.10f;   // oscuridad menor a esto se ignora (V1)
-constexpr float CONFIANZA_MIN      = 0.30f;   // suma mínima de oscuridad para "ver" la línea (V1)
-constexpr float RANGO_CAL_MIN      = 150.0f;  // cuentas: contraste mínimo blanco-negro por sensor (V1)
+constexpr float OSCURO_TODOS       = 0.70f;   // oscuridad para contar un sensor como "negro" al detectar robot levantado
 
 }  // namespace par

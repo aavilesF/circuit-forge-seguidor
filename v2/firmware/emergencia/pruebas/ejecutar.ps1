@@ -6,7 +6,7 @@ New-Item -ItemType Directory -Force ..\.build | Out-Null
 $S = "..\emergencia"
 & g++ -std=c++17 -Wall -Wextra -Werror -O1 "-I$S" test_emergencia.cpp `
   "$S\posicion.cpp" "$S\pid.cpp" "$S\control.cpp" "$S\filtro.cpp" "$S\motor.cpp" "$S\estados.cpp" `
-  "$S\indicadores.cpp" "$S\ajustes.cpp" -o ..\.build\test_emergencia.exe
+  "$S\indicadores.cpp" "$S\ajustes.cpp" "$S\autocal.cpp" -o ..\.build\test_emergencia.exe
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & ..\.build\test_emergencia.exe
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

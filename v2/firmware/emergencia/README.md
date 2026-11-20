@@ -1,146 +1,308 @@
-# Firmware del prototipo de EMERGENCIA (vigente)
+# Firmware del prototipo de EMERGENCIA — versión 2.0 (vigente)
 
-**Estado:** compilado y probado en PC el 19 nov 2026. **Todavía no se ha cargado en el robot real**: falta la prueba física (sección 7).
-**Hardware:** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V y 8 TCRT5000 con el CD74HC4067.
-**Fuente de verdad del hardware:** [`GUIA-FIRMWARE.md`](../../electronica/prototipo-emergencia/GUIA-FIRMWARE.md) y `robot_emergencia_unificado.kicad_sch`. Si algo de aquí contradice al esquema, manda el esquema.
+**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC. **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
 
-## 1. De dónde sale (EM-07)
-Se **adaptó** el firmware histórico `firmware/robot-casero/` en lugar de escribir uno nuevo. Esa lógica ya tenía pruebas en PC: posición de la línea, PID con anti-windup, filtro de sensores, límites del motor, máquina de estados y ajustes con CRC. El histórico **no se modificó** y sigue siendo HISTÓRICO.
+**Hardware (no cambia):** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V sin encoder, 8 TCRT5000 con CD74HC4067, MP1584 a 5 V (lógica y sensores) y MP1584 a 6 V (motores), botones START y CAL, y medición de batería. **No hay** zumbador, ventilador ni `nFAULT`.
 
-| Tema | Histórico (`firmware/robot-casero`) | Este firmware |
+**Fuente de verdad:** [`GUIA-FIRMWARE.md`](../../electronica/prototipo-emergencia/GUIA-FIRMWARE.md) y `robot_emergencia_unificado.kicad_sch`. `pruebas/verificar_pines.py` comprueba que `config.h` coincide con el esquema.
+
+---
+
+## 1. Archivos del firmware final
+
+Todo está en `v2/firmware/emergencia/emergencia/`. Arduino IDE necesita que los archivos estén en la misma carpeta que el `.ino`.
+
+| Archivo | Qué hace | Origen |
 |---|---|---|
-| Sensores | 8 directos al ESP32 por defecto, o 12 por mux | **8 por el CD74HC4067**, canales C0–C7 |
-| START | GPIO18 | **GPIO4** |
-| Zumbador | GPIO4, melodías y tonos | **Eliminado** (D-V2-05). Los avisos usan el LED del DevKit (GPIO2) y la consola |
-| nFAULT | GPIO15, ajuste `usar_nfault`, error 2 | **Eliminado** (P13: no está conectado) |
-| Ventilador | No existía | No existe (EM-01). GPIO15 y GPIO17 quedan libres |
-| Batería | Le sumaba 0.35 V por la caída del diodo D1 | **Medida directa**: el divisor 100k/33k va a `VBAT_SW` sin diodo |
-| Voltaje del puente | Opción de alimentar VM directo de la batería | **Siempre 6.0 V** (MP1584 U2) |
-| Paso de sensores | 9.525 mm (QTR-8A) | **12.7 mm** (barra recta de placa perforada) |
-| Paradas | START o línea perdida | Además: **cualquier tecla por USB** y **ciclo de control atrasado** (error 2) |
-| Memoria | Espacio `casero` | Espacio `emergencia` con otra firma: no carga datos viejos |
+| `emergencia.ino` | Programa principal: ciclo de control a 400 Hz, paradas, consola USB, memoria, prueba de motores y `autocal` | Nuevo |
+| `config.h` | **Pines** (iguales al esquema) y valores **iniciales** de lo que depende del montaje | Nuevo |
+| `hw.h`, `hw.cpp` | Capa del ESP32: mux optimizado, ADC, PWM (LEDC 2.x y 3.x), botones, LED, watchdog | Nuevo |
+| `utiles.h` | Bits del mux, orden físico, máscara de sensores, batería, lectura estricta de números y antirrebote | Nuevo |
+| `autocal.h`, `autocal.cpp` | Autocalibración girando sobre la línea, guiada por los sensores | Nuevo |
+| `ajustes.h`, `ajustes.cpp` | 48 parámetros con rango y ayuda, coherencia entre ellos, perfiles y guardado con CRC32 | Adaptado |
+| `estados.h`, `estados.cpp` | Máquina de estados: arranque diferido y todas las paradas con su motivo | Adaptado |
+| `indicadores.h`, `indicadores.cpp` | Patrones del LED integrado (GPIO2) | Adaptado |
+| `motor.h`, `motor.cpp` | Tope de PWM, rampas de aceleración y frenado, y límite de corriente estimada | Adaptado |
+| `control.h`, `control.cpp` | Control de línea: PID, freno en curva, retención en huecos y búsqueda | Lógica V1 probada |
+| `pid.h`, `pid.cpp` | PID con anti-windup y derivada filtrada | Lógica V1, sin cambios |
+| `posicion.h`, `posicion.cpp` | Calibración por sensor y posición de la línea (promedio ponderado) | Lógica V1, sin cambios |
+| `filtro.h`, `filtro.cpp` | Mediana de 3 + pasa-bajas por sensor | Sin cambios de lógica |
+| `parametros.h` | Constantes fijas: período, watchdog y límites de tiempo | Adaptado |
 
-## 2. Archivos
+Fuera del sketch:
+
 | Archivo | Qué es |
 |---|---|
-| `emergencia/emergencia.ino` | Programa principal: ciclo de control a 400 Hz, consola USB, memoria |
-| `emergencia/config.h` | **Pines y opciones de hardware** (lo único que se toca al armar) |
-| `emergencia/hw.*` | Capa del ESP32: mux, ADC, PWM (LEDC, núcleos 2.x y 3.x), botones, LED |
-| `emergencia/utiles.h` | Bits del mux, orden físico, voltaje de batería y antirrebote (C++ puro, probado) |
-| `emergencia/posicion.*`, `pid.*`, `control.*`, `filtro.*`, `motor.*` | Lógica copiada del histórico **sin cambios** |
-| `emergencia/estados.*`, `indicadores.*`, `ajustes.*`, `parametros.h` | Lógica del histórico **adaptada** (ver tabla de la sección 1) |
-| `pruebas/test_emergencia.cpp` | 849 comprobaciones en PC, incluida una simulación en lazo cerrado |
-| `pruebas/verificar_pines.py` | Compara `config.h` con el esquema (símbolo del ESP32 + netlist esperado) |
-| `pruebas/ejecutar.sh` / `ejecutar.ps1` | Ejecutan las pruebas y la verificación de pines |
-| `platformio.ini` | Compilación con PlatformIO: núcleo 3.x (`esp32dev`) y 2.0.17 (`esp32dev_nucleo2`) |
+| `platformio.ini` | Entornos `esp32dev` (núcleo 3.3.12) y `esp32dev_nucleo2` (2.0.17) |
+| `pruebas/test_emergencia.cpp` | Pruebas en PC, con simulación en lazo cerrado y de la autocalibración |
+| `pruebas/verificar_pines.py` | Compara `config.h` con el esquema. Prohíbe WiFi/Bluetooth y los restos del firmware histórico |
+| `pruebas/ejecutar.sh` / `ejecutar.ps1` | Corren todo lo anterior |
 
-## 3. Cargar el programa
+El firmware histórico `firmware/robot-casero/` no se usa ni se modificó.
 
-### Arduino IDE (2.x)
-1. Instalen el soporte del ESP32: *Herramientas → Placa → Gestor de placas*, busquen **esp32 de Espressif Systems** e instalen. Sirven la versión 3.x y la 2.0.x.
-2. Abran `v2/firmware/emergencia/emergencia/emergencia.ino`. Las demás pestañas (`config.h`, `hw.cpp`, …) se abren solas: tienen que quedarse en la misma carpeta.
-3. *Herramientas → Placa → esp32 →* **ESP32 Dev Module**. Dejen los valores por defecto: Upload Speed 921600, Flash 4 MB y Partition Scheme "Default 4MB with spiffs".
-4. Elijan el puerto COM del DevKit y suban el programa. Si se queda en `Connecting....`, mantengan oprimido el botón **BOOT** del DevKit hasta que empiece a escribir.
-5. Abran el *Monitor Serie* a **115200** baudios con fin de línea **"Nueva línea"** y escriban `ayuda`.
+---
 
-No hacen falta bibliotecas externas. `Preferences` viene con el núcleo del ESP32.
+## 2. Compilar y cargar
 
-### PlatformIO
+### Arduino IDE 2.x
+1. *Herramientas → Placa → Gestor de placas* → **esp32** de Espressif Systems. Sirven la 3.x y la 2.0.17.
+2. *Archivo → Abrir* → `v2/firmware/emergencia/emergencia/emergencia.ino`.
+3. *Herramientas → Placa → esp32 →* **ESP32 Dev Module**. Dejen los valores por defecto: CPU 240 MHz, Flash 4 MB, Partition "Default 4MB with spiffs" y Upload Speed 921600.
+4. *Herramientas → Puerto*: el COM del DevKit.
+5. **Subir** (→). Si se queda en `Connecting....`, mantengan oprimido **BOOT** hasta que empiece a escribir.
+6. *Herramientas → Monitor Serie*: **115200** baudios, cualquier fin de línea. Escriban `ver`.
+
+No hacen falta bibliotecas externas.
+
+### PlatformIO (PowerShell, desde la raíz del repositorio)
+```powershell
+cd v2\firmware\emergencia
 ```
-cd v2/firmware/emergencia
-pio run                      # compila (núcleo 3.x)
-pio run -t upload            # compila y carga
-pio device monitor           # consola a 115200
-pio run -e esp32dev_nucleo2  # opcional: compila con el núcleo 2.0.17
+```powershell
+pio run -e esp32dev -t upload
 ```
+```powershell
+pio device monitor
+```
+- Solo compilar: `pio run -e esp32dev`. Con el núcleo 2.0.17: `pio run -e esp32dev_nucleo2 -t upload`.
+- Si hay varios puertos: `pio run -e esp32dev -t upload --upload-port COM5` (cambien el número).
+- Cierren el monitor serie antes de cargar: si está abierto, el puerto está ocupado.
 
 ### Pruebas en la PC (sin robot)
+```powershell
+cd v2\firmware\emergencia\pruebas
 ```
-cd v2/firmware/emergencia/pruebas
-./ejecutar.sh          # Linux, macOS o Git Bash
-.\ejecutar.ps1         # PowerShell; requiere g++ (MinGW/WinLibs) y Python en el PATH
+```powershell
+.\ejecutar.ps1
 ```
+Necesita g++ (MinGW/WinLibs) y Python en el PATH. En Git Bash o Linux: `./ejecutar.sh`. Barrido de ganancias: compilar `test_emergencia.cpp` con `-DBARRIDO`.
+Si Windows responde "Una directiva de Control de aplicaciones bloqueó este archivo" (Smart App Control), el `.exe` de las pruebas no se puede ejecutar en esa PC. Córranlas en otra máquina o en Linux. No hace falta para cargar el robot: PlatformIO y Arduino IDE no se ven afectados.
 
-## 4. Uso en la competencia
-1. Enciendan con el KCD1. El LED del DevKit parpadea lento: estado ESPERA.
-2. **CAL**: pasen la barra 2 o 3 veces sobre la línea; el LED parpadea rápido. La calibración termina sola 1 s después de que los 8 sensores vieron blanco y negro (LED fijo 0.6 s). También termina con CAL o START, o a los 15 s como máximo. Si faltó contraste, el LED da 3 destellos rápidos y se conserva la calibración anterior.
-3. Pongan el robot en la línea. En estado LISTO el LED queda fijo.
-4. **START** arranca.
-5. El robot se detiene con **START**, con **cualquier tecla** por el cable USB o solo, si pierde la línea más de ~1.5 s.
+---
 
-La calibración queda guardada. Si no hay tiempo, START en ESPERA usa la anterior.
+## 3. Comandos USB (115200 baudios)
 
-| LED | Significado |
+**En marcha la consola no responde: cualquier tecla PARA el robot.** También cancela la espera de arranque.
+
+| Grupo | Comando | Qué hace |
+|---|---|---|
+| Información | `ayuda` | Lista de comandos |
+| | `ver` | Versión, núcleo, MHz de la CPU y si el watchdog quedó activo |
+| | `pines` | Pines compilados, inversiones y máscara |
+| | `estado` | Estado, motivo de la última parada, calibración y batería |
+| | `perf` | µs de lectura de sensores y ciclo máximo (luego lo reinicia) |
+| Ajustes | `rangos` | Todos los parámetros con valor, rango y explicación |
+| | `get` / `get <clave>` | Ver todos o uno |
+| | `set <clave> <valor>` | Cambiar (rechaza texto, fuera de rango o incoherente). **No se guarda hasta `save`** |
+| | `perfil seguro` / `normal` / `rapido` | Velocidad, PWM, rampas, kp, kd y freno en curva de una vez |
+| | `save` / `load` / `defecto` | Guardar ajustes y calibración / recargar / volver a fábrica |
+| Sensores | `sens` | Oscuridad 0–1 de izquierda a derecha, posición (mm, + = derecha) y cuántos están negros |
+| | `crudo` | ADC con LED encendidos y apagados, y la diferencia (grande = blanco) |
+| | `sensor <1-8>` | Prueba un TCRT5000 (SENn = canal Cn−1) con LED encendido y apagado, con diagnóstico |
+| | `canal <0-15>` | Lo mismo por canal del mux |
+| | `mux <0-15>` / `mux off` | Deja el mux fijo para medir SIG (GPIO34) con multímetro |
+| | `emis 1` / `emis 0` | LED IR encendidos fijos (se ven con la cámara del celular) |
+| | `mon sens` · `mon crudo` · `mon pos` · `mon bat` · `mon bot` | Muestra en vivo a 10 Hz; cualquier tecla lo detiene |
+| Calibración | `calibrar` | Igual que el botón CAL (barrido a mano) |
+| | `autocal` | Calibra **girando solo** sobre la línea (requiere las inversiones ya verificadas) |
+| | `cal` | Negro, blanco y contraste de cada sensor, y cuál falta |
+| Motores | `m <izq> <der> [ms]` | Prueba con **ruedas en el aire**: −1..1, 50–3000 ms (1000 por defecto); cualquier tecla corta |
+| | `stop` | Suelta los motores y duerme el DRV8833 |
+| Otros | `botones` | Lectura directa de START y CAL |
+| | `bat` | Batería, mV en el pin, umbrales y voltaje estimado en el puente |
+| | `tel 1` / `tel 0` | Telemetría en marcha a 100 Hz: `t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat` |
+| | `reiniciar` | Reinicia el ESP32 |
+
+---
+
+## 4. Parámetros ajustables sin recompilar
+
+Se cambian con `set <clave> <valor>`, se ven con `rangos` y quedan guardados con `save`, junto con la calibración (memoria interna con CRC32). Los valores de fábrica son el **perfil seguro**. Los marcados [P] dependen del montaje real.
+
+| Clave | Fábrica | Rango | Qué es |
+|---|---|---|---|
+| **Control** | | | |
+| `kp` | 0.010 | 0 – 1 | PID proporcional (por mm de error) |
+| `ki` | 0 | 0 – 5 | PID integral (dejar en 0 salvo deriva constante) |
+| `kd` | 0.0004 | 0 – 0.1 | PID derivativo |
+| `vbase` | 0.25 | 0 – 1 | Velocidad base (fracción del máximo) |
+| `freno` | 0.30 | 0 – 1 | Fracción de `vbase` que se quita en curva |
+| `error_ref` | 30 | 1 – 100 | mm de error con freno de curva completo |
+| `vmin_rel` | 0.50 | 0 – 1 | Piso de velocidad en curva |
+| `u_max` | 0.60 | 0.05 – 2 | Saturación de la corrección del PID |
+| `rueda_min` | −0.30 | −1 – 0.5 | Mínimo por rueda (negativo = puede ir en reversa en curva cerrada) |
+| `tau_d` | 0.010 | 0 – 0.2 | s, filtro de la derivada |
+| `t_ret` | 0.060 | 0 – 0.5 | s, retención en huecos de la línea |
+| `t_busq` | 1.5 | 0 – 5 | s de búsqueda antes de parar por línea perdida |
+| `u_busq` / `v_busq` | 0.35 / 0.40 | 0 – 1 | Giro y velocidad relativa durante la búsqueda |
+| **Motores** | | | |
+| `pwm_max` | 0.80 | 0.1 – 1 | Tope de ciclo PWM |
+| `rampa` / `rampa_freno` | 4 / 8 | 0.5 – 100 | 1/s al acelerar / al frenar o invertir |
+| `i_max` / `i_total` | 1.2 / 2.0 | 0.1 – 1.5 / 0.2 – 3 | A estimados por motor / entre los dos |
+| `inv_izq` / `inv_der` [P] | 0 / 1 | 0 – 1 | Invierte el sentido de la rueda izquierda / derecha |
+| `cruzar` [P] | 0 | 0 – 1 | Intercambia los lados (si M1 quedó a la derecha) |
+| `vm_fijo` [P] | 6.0 | 2.7 – 10.8 | V reales del MP1584 de motores (medir con el multímetro) |
+| `caida_reg` | 0.6 | 0 – 2 | V que pierde ese MP1584 con la batería baja |
+| `m_R` / `m_ke` / `m_tau` [P] | 6 / 0.0533 / 0.08 | — | Modelo del N20 para el límite de corriente (`m_R` = 6 V / corriente de bloqueo) |
+| `v_motor_max` | 6.0 | 1 – 9 | V máximos sobre el motor |
+| `lento` | 1 | 0 – 1 | 1 = decaimiento lento (más lineal), 0 = rápido |
+| **Sensores** | | | |
+| `inv_sens` [P] | 0 | 0 – 1 | 1 = SEN1 está a la derecha. Al cambiarlo, la calibración se espeja sola |
+| `mascara` [P] | 255 | 1 – 255 | Sensores en uso: bit 1 = el de la izquierda … bit 128 = el de la derecha (239 ignora el 5.º) |
+| `paso_mm` [P] | 12.7 | 5 – 30 | mm entre sensores |
+| `alfa` | 0.6 | 0.05 – 1 | Pasa-bajas (1 = sin filtro) |
+| `sobremuestreo` / `descartes` | 2 / 1 | 1 – 4 / 0 – 3 | Lecturas ADC promediadas / descartadas al cambiar de canal |
+| `t_emisor_us` / `t_mux_us` | 150 / 5 | µs | Esperas de los LED IR y del mux |
+| `umbral` / `confianza` | 0.10 / 0.30 | — | Oscuridad ignorada / suma mínima para "ver" la línea |
+| `contraste` | 150 | 20 – 3000 | Cuentas mínimas blanco–negro por sensor para aceptar la calibración |
+| `t_negro` | 0.50 | 0 – 3 | s con todos los sensores negros (robot levantado) antes de parar; 0 = desactivado |
+| **Batería y arranque** | | | |
+| `bat_baja` / `bat_critica` | 6.8 / 6.4 | 5 – 9 | V de aviso / de parada (se exige `bat_critica` < `bat_baja`) |
+| `t_cal_max` / `t_cal_extra` | 15 / 1 | s | Calibración: máximo / extra tras ver contraste |
+| `ac_u` / `ac_t` | 0.20 / 1.0 | — | Giro y s máximos por fase de `autocal` |
+| `t_arranque` | 0.5 | 0 – 5 | s entre START y arrancar (para retirar la mano); 0 = inmediato |
+
+Lo que **sí** requiere recompilar está en `config.h`: los pines (no se tocan; mandan el esquema), la frecuencia y resolución del PWM, el antirrebote (25 ms) y los valores de fábrica de los [P]. En `parametros.h` están el período de control (2.5 ms), el límite de ciclo (25 ms) y el watchdog (1 s).
+
+---
+
+## 5. Primera conexión: secuencia exacta
+
+Cada paso dice qué debe salir. Si algo no coincide, paren y revisen el cableado contra el esquema antes de seguir.
+
+**A. Sin batería, solo USB** (KCD1 apagado; los motores no tienen voltaje, así que no se pueden mover)
+1. Carguen el firmware (sección 2) y abran el monitor serie. Al reiniciar debe salir `Robot de emergencia · emergencia 2.0 … watchdog ok`. El LED parpadea lento (ESPERA).
+2. `ver` → `arduino-esp32 3.x` o `2.0.17`, `CPU 240 MHz`, `watchdog activo`.
+3. `estado` → `bateria=0.00 V (solo USB)`, `cal=NO`.
+4. `botones`, oprimiendo y soltando cada botón → `START=OPRIMIDO` / `CAL=OPRIMIDO`. También pueden usar `mon bot` y probar en vivo.
+5. `emis 1` → con la cámara del celular se ven los 8 LED IR encendidos. `emis 0` para terminar.
+6. Pongan la barra sobre **blanco**: `sensor 1` … `sensor 8`, uno por uno. Cada uno debe dar `dif` de varios cientos o más. Sobre **negro**, `dif` debe ser pequeña. Si dice "SIG casi en 0", revisen el pull-up de 10 kΩ. Si dice "casi sin reflejo" sobre blanco, revisen el LED, su 220 Ω o la altura de la barra.
+7. `crudo` sobre blanco: los 8 valores de `dif` deben ser parecidos. Uno muy distinto indica un sensor mal soldado o torcido. Si uno está dañado, se puede ignorar con la máscara: `set mascara 239` ignora el 5.º.
+8. **Orden de los sensores:** `mon pos` y muevan una tira negra de **izquierda a derecha** bajo la barra (mirando el robot desde atrás). `pos` debe ir de **negativo a positivo**. Si va al revés: `set inv_sens 1`. Antes de calibrar `pos` puede no aparecer; si no aparece, usen `crudo` y vean qué columna cambia: la 1.ª columna debe ser la de la izquierda.
+
+**B. Con batería (KCD1 encendido) y RUEDAS EN EL AIRE**
+9. `bat` → entre 7.0 y 8.4 V con la LiPo cargada. Compárenlo con el multímetro; ±0.2 V es normal.
+10. `m 0.3 0` → solo la rueda **izquierda** gira, **hacia adelante**.
+    - Si gira la derecha en lugar de la izquierda: `set cruzar 1` y repitan.
+    - Si gira la correcta pero hacia atrás: `set inv_izq 1` (o 0 si ya estaba en 1).
+11. `m 0 0.3` → solo la rueda **derecha**, **hacia adelante**. Si va hacia atrás, cambien `inv_der` (de 1 a 0, o al revés).
+12. `m 0.3 0.3` → las dos hacia adelante. `m 0.3 -0.3` → el robot giraría a la **derecha** (izquierda adelante, derecha atrás).
+13. `save` (guarda las inversiones).
+
+**C. Calibración y primera vuelta**
+14. Pongan el robot **centrado sobre la línea**, en el piso.
+15. Calibren con **CAL** (o `calibrar`) y pasen el robot a mano de lado a lado 2–3 veces sobre la línea. El LED da 0.6 s fijo si salió bien. Con `cal`, todos los sensores deben decir `ok`. Si alguno dice `<- FALTA`, repitan con barridos más amplios.
+    - Alternativa: `autocal` (el robot gira solo). Si dice "giro al revés", vuelvan a los pasos 8 y 10–12.
+16. `sens` sobre la línea centrada → `pos` cerca de 0 y `visible=1`. Moviendo el robot a mano, `pos` debe seguir a la línea con el signo correcto.
+17. `perf` → la lectura de sensores debe tardar < 1500 µs y el ciclo máximo < 2500 µs. Si no, bajen `sobremuestreo` a 1.
+18. Primera vuelta con el **perfil seguro** (ya está de fábrica): START, retiren la mano (arranca a los 0.5 s) y estén listos para oprimir START o cualquier tecla. Si oscila (zigzag), bajen `kp` o suban `kd` (sección 6). Si se sale en curva, suban `freno` o bajen `vbase`.
+19. `save`.
+
+---
+
+## 6. Valores iniciales y cómo ir más rápido
+
+Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12.7 mm y un N20 **supuesto** de 1000 rpm con ruedas de 28 mm. Con otro N20 las velocidades en m/s cambian, pero el orden de los pasos es el mismo.
+
+| Perfil | `vbase` | `pwm_max` | `rampa` / `rampa_freno` | `kp` | `kd` | `freno` | Simulación (desvío máx. / velocidad) |
+|---|---|---|---|---|---|---|---|
+| **seguro** (fábrica) | 0.25 | 0.80 | 4 / 8 | 0.010 | 0.0004 | 0.30 | 5.1 mm / ~0.30 m/s |
+| **normal** | 0.35 | 0.90 | 6 / 12 | 0.010 | 0.0004 | 0.30 | 6.0 mm / ~0.46 m/s |
+| **rapido** | 0.50 | 1.00 | 8 / 16 | 0.012 | 0.0006 | 0.40 | 6.5 mm / ~0.70 m/s |
+
+**Primera prueba segura:** perfil `seguro`, más `t_arranque 0.5`, `t_negro 0.5` y `t_busq 1.5` (todos de fábrica).
+
+**Para buscar más velocidad** (un cambio a la vez, probando cada uno en la pista con `tel 1`):
+1. `perfil normal`, una vuelta. Luego `perfil rapido`.
+2. Subir `vbase` de 0.05 en 0.05. En la simulación, `vbase 0.60` con `kp 0.012–0.014` y `kd 0.0004` todavía sigue bien (≤ 7.3 mm de desvío).
+3. **Zigzag en recta:** bajar `kp` 0.002, o subir `kd` 0.0002. En la simulación, `kd` ≥ 0.0008 con `kp` 0.014 ya empieza a oscilar.
+4. **Se sale en curvas cerradas:** subir `freno` (0.4–0.5), bajar `error_ref` (20–25 mm) o subir `kp`.
+5. **Pierde la línea en curvas muy cerradas:** bajar `rueda_min` (−0.5) para que la rueda interior frene más.
+6. **Tarda en acelerar:** subir `rampa` (8–12). Mantener `rampa_freno` ≥ `rampa`.
+7. Si el robot se apaga o se reinicia al acelerar (caída de batería o del regulador), bajar `rampa`, `i_max` o `i_total`.
+
+---
+
+## 7. Cómo funciona
+
+**Ciclo de control (400 Hz):**
+1. **Lectura:** LED IR apagados → los 8 canales (luz ambiente); LED encendidos → los 8 canales. En cada canal: espera del mux, `descartes` lecturas tiradas y `sobremuestreo` lecturas promediadas. Solo se escriben los bits S0–S2 que cambian; S3 queda fijo en 0.
+2. **Tratamiento:** reflectancia = apagados − encendidos (sin luz ambiente), luego mediana de 3 + pasa-bajas por sensor, normalización con la calibración (0 = blanco, 1 = negro) y la máscara.
+3. **Posición:** promedio ponderado (mm, + = derecha).
+4. **Control:** PID con anti-windup y derivada filtrada, freno proporcional al error en curva, retención en huecos (`t_ret`) y, si no hay línea, búsqueda girando hacia el último lado visto (`t_busq`).
+5. **Motores:** tope (`pwm_max`), rampas, límite de corriente estimada por motor y total → DRV8833 en decaimiento lento a 20 kHz.
+
+**Paradas** (todas imprimen su motivo; `estado` lo repite):
+
+| Causa | Resultado |
+|---|---|
+| START, CAL o cualquier tecla por USB en marcha | PARADA: frena 0.3 s, luego suelta los motores y duerme el DRV8833 |
+| Línea perdida (fin de `t_busq`) | PARADA |
+| Todos los sensores negros más de `t_negro` (robot levantado) | PARADA |
+| Batería < `bat_critica` sostenida 0.5 s, o sin batería en marcha | ERROR 1: frena y duerme el puente |
+| Un ciclo de control de más de 25 ms en marcha | ERROR 2: frena y duerme el puente |
+| `loop()` colgado más de 1 s | El **watchdog** reinicia el ESP32; el DRV8833 queda dormido por su pull-down |
+
+**Arranque:** `setup()` deja nSLEEP en 0 y las 4 entradas del puente en 0 antes de cualquier otra cosa. El puente solo despierta en LISTO, en marcha y durante el frenado. START se rechaza sin calibración, sin batería, con batería crítica o con un diagnóstico activo.
+
+| LED (GPIO2) | Significado |
 |---|---|
 | Parpadeo lento (1 Hz) | ESPERA |
-| Rápido (5 Hz); 10 Hz en los últimos 3 s | Calibrando |
-| Fijo | LISTO (o la calibración salió bien) |
+| 5 Hz; 10 Hz en los últimos 3 s | Calibrando |
+| Fijo | LISTO (o calibración buena) |
+| 12 Hz | START oprimido, esperando `t_arranque` |
 | Encendido / apagado en marcha | Ve / no ve la línea |
-| Muy rápido (8 Hz) | Buscando la línea |
+| 8 Hz | Buscando la línea |
 | 4 Hz | PARADA |
-| 1 destello + pausa | ERROR 1: batería crítica |
-| 2 destellos + pausa | ERROR 2: el ciclo de control se atrasó |
-| 2 apagones cortos cada 3 s (en ESPERA o LISTO) | Batería baja |
+| 1 o 2 destellos + pausa | ERROR 1 (batería) o ERROR 2 (ciclo) |
+| 2 apagones cada 3 s (en ESPERA o LISTO) | Batería baja |
 
-## 5. Seguridad incluida
-- **Arranque seguro:** lo primero que hace `setup()` es poner nSLEEP (GPIO16) en 0 y las 4 entradas del DRV8833 en 0. El puente solo despierta en LISTO, SIGUIENDO, RECUPERACIÓN y durante el frenado de PARADA.
-- **El robot no se mueve sin START**, y START se rechaza sin calibración, sin batería (solo USB), con batería crítica o con un diagnóstico activo (`emis`/`mux`).
-- **Paradas:** START, cualquier byte por USB, línea perdida → PARADA: frena 0.3 s y después suelta los motores y duerme el puente. Batería crítica sostenida 0.5 s, o un ciclo de control de más de 25 ms en marcha → ERROR: motores sueltos y puente dormido.
-- **Límites de PWM** (`motor.h`): tope de ciclo `pwm_max` = 0.90 y `v_motor_max / 6 V`; rampa `rampa` = 6/s (0 → 100 % en ~170 ms); corriente estimada ≤ 1.2 A por motor y ≤ 2.0 A en total. PWM a 20 kHz y 10 bits, en decaimiento lento.
-- **Antirrebote:** 25 ms de lectura estable (`ANTIRREBOTE_MS`); una pulsación da un solo evento.
-- **Prueba de motores** (`m`): máximo 3 s y se corta con cualquier tecla.
+---
 
-## 6. Consola USB (115200, fin de línea "Nueva línea")
-Mientras el robot corre, la consola no responde: cualquier tecla lo **detiene**.
+## 8. Revisión del commit `de1290f` (firmware 1.0) y correcciones
 
-| Comando | Qué hace |
+| # | Problema encontrado | Riesgo | Corrección en 2.0 |
+|---|---|---|---|
+| 1 | Sin watchdog: si `loop()` se cuelga, el PWM por hardware sigue moviendo los motores (el chequeo de ciclo solo corre si `loop()` corre) | Robot sin control | Watchdog de 1 s en la tarea de `loop()` (IDF 4.4 e IDF 5) |
+| 2 | Robot levantado: sin piso, los TCRT5000 leen "negro" en todos, la línea parece centrada y sigue a toda velocidad | Ruedas a tope en la mano | `t_negro`: todos negros más de 0.5 s → PARADA |
+| 3 | ERROR (batería o ciclo) soltaba los motores a toda velocidad, sin frenar | Sigue rodando | ERROR frena 0.3 s y luego duerme el puente |
+| 4 | Si la batería se desconecta en marcha, el estado seguía en SIGUIENDO | Estado imposible | → ERROR 1 "sin batería" |
+| 5 | `set kp x` dejaba kp = 0 (`atof`). Lo mismo con `canal x` (canal 0) | Robot sin control tras un error de tecleo | Lectura estricta: rechaza texto, NaN, fuera de rango e incoherencias (`bat_critica` ≥ `bat_baja`, inversiones que no sean 0/1…) |
+| 6 | START arrancaba en el acto, con la mano encima | Golpe o arranque torcido | `t_arranque` (0.5 s); START o cualquier tecla lo cancela |
+| 7 | Inversión de sensores, paso, umbrales y contraste solo cambiaban recompilando | Mañana habría que recompilar | Todo por consola. Al cambiar `inv_sens` la calibración se espeja sola |
+| 8 | Sin forma de ignorar un sensor dañado | Un TCRT5000 malo invalidaba la calibración | `mascara` |
+| 9 | Mux: escribía los 4 bits en cada canal y no descartaba la primera lectura (el ADC conserva carga del canal anterior; fuente de 10 kΩ) | Lecturas cruzadas entre sensores | Solo cambian los bits necesarios; `descartes` y `t_mux_us` |
+| 10 | La rampa limitaba igual al frenar que al acelerar | Frenado lento antes de curvas | `rampa_freno` separada |
+| 11 | El puente se suponía siempre a 6 V aunque la batería ya no alcanzara al regulador | Límite de corriente mal estimado | `v_puente = min(vm_fijo, vbat − caida_reg)` |
+| 12 | `m` permitido con batería crítica; `canal` movía el mux fijado con `mux` | Pruebas engañosas | Bloqueado / se restaura el canal |
+| 13 | CAL en marcha no hacía nada | Un botón menos para parar | CAL también para |
+| 14 | Con fin de línea "CR" en el Monitor Serie no se ejecutaba ningún comando | Consola "muerta" | Acepta LF, CR y CRLF |
+| 15 | Telemetría a 100 Hz podía bloquear esperando al UART | Falso ERROR 2 | Búfer de envío de 2 KB |
+| 16 | Restos del histórico: namespace `casero`, comentarios "MP1584 #2", "DRV8874", "placa fenólica", valores por defecto de otro robot en `control.cpp` | Confusión | Limpiado; `verificar_pines.py` falla si vuelven a aparecer |
+
+Revisado sin problemas: pinout (14 señales = esquema), selección del mux (S0 = LSB), signos (error > 0 = línea a la derecha → rueda izquierda más rápida), saturación diferencial de ruedas, anti-windup del PID, resta de luz ambiente con fototransistor con pull-up, PWM 100 % real en los dos núcleos y ausencia de condiciones de carrera (todo corre en la tarea de `loop()`, sin interrupciones propias).
+
+---
+
+## 9. Qué se verificó y qué falta
+
+| Prueba (20 nov 2026, en PC) | Resultado |
 |---|---|
-| `ayuda` | Lista de comandos |
-| `ver` / `pines` | Versión del firmware / mapa de pines compilado |
-| `estado` | Estado, error, calibración y batería |
-| `get` / `set <clave> <valor>` / `save` / `load` / `defecto` | Ver, cambiar (con rango), guardar, recargar o volver a los valores de fábrica |
-| `sens` | Oscuridad 0–1 de cada sensor, de izquierda a derecha, y la posición de la línea (mm; + = derecha) |
-| `crudo` | Lecturas del ADC con los LED IR encendidos y apagados |
-| `cal` | Mínimo, máximo y contraste de cada sensor en la calibración guardada |
-| `canal <0-15>` | Lee un canal del mux 16 veces con LED encendidos y apagados |
-| `mux <0-15>` / `mux off` | Deja el mux fijo en un canal para medir `SIG` con el multímetro (bloquea START) |
-| `emis 1` / `emis 0` | Deja los LED IR encendidos para medirlos o verlos con la cámara del celular (bloquea START) |
-| `botones` | Lectura directa de START y CAL |
-| `bat` | Voltaje de la batería, mV en el pin y umbrales |
-| `perf` | Tiempo de lectura de sensores y ciclo máximo |
-| `m <izq> <der> [ms]` | Prueba de motores, −1..1, **con las ruedas en el aire**. Pasa por el tope, la rampa y el límite de corriente |
-| `stop` | Suelta los motores y duerme el puente |
-| `tel 1` / `tel 0` | Telemetría en marcha a 100 Hz: `pos_mm,visible,ciclo_izq,ciclo_der,vbat` |
+| `pruebas/ejecutar.sh` (g++ 16.2, `-Wall -Wextra -Werror`) | **1773/1773** comprobaciones |
+| Simulación en lazo cerrado, 3 perfiles × 3 curvas | Nunca pierde la línea; desvío máx. 5.1 / 6.0 / 6.5 mm |
+| Simulación de `autocal` | Lista en 0.6 s y centrada (+2°). Falla correctamente sin línea (1 s) y con los motores al revés (aborta enseguida, sin calibración falsa) |
+| `verificar_pines.py` | 14 señales = esquema; LED en pata libre; 24 archivos sin WiFi/Bluetooth ni restos del histórico |
+| PlatformIO `esp32dev`, compilación limpia | arduino-esp32 3.3.12: **0 advertencias propias**, flash 324 915 B (24.8 %), RAM 24 072 B (7.3 %) |
+| PlatformIO `esp32dev_nucleo2`, compilación limpia | arduino-esp32 2.0.17: **0 advertencias propias**, flash 326 061 B (24.9 %), RAM 23 472 B (7.2 %) |
 
-Parámetros principales (todos con `get`; los rangos están en `ajustes.cpp`): `kp` 0.010, `kd` 0.0004, `ki` 0, `vbase` 0.35, `pwm_max` 0.90, `rampa` 6, `i_max` 1.2 A, `i_total` 2.0 A, `inv_izq` 0, `inv_der` 1, `bat_baja` 6.8 V, `bat_critica` 6.4 V, `alfa` 0.6, `t_emisor_us` 150.
+No se compiló dentro de Arduino IDE en sí: usa los mismos núcleos y la misma placa, pero la primera carga lo confirmará.
 
-## 7. Qué se verificó y qué falta
-
-### Verificado (19 nov 2026, en PC, sin robot)
-| Prueba | Resultado |
-|---|---|
-| `pruebas/ejecutar.sh` (g++ 16.2, `-Wall -Wextra -Werror`) | 849/849 comprobaciones: filtro, tabla del DRV8833, límites del motor, estados, paradas por USB y por ciclo atrasado, LED, ajustes y CRC, mapa de pines, bits del mux, orden físico, batería y antirrebote |
-| Simulación en lazo cerrado (8 sensores a 12.7 mm, motores a 6 V, ruido y picos) | Sin perder la línea. Desvío máximo de la barra: 5.1 / 5.5 / 6.0 mm en curvas de 600 / 300 / 200 mm a ~0.47 m/s |
-| `pruebas/verificar_pines.py` | Las 14 señales de `config.h` coinciden con el esquema unificado. GPIO2 (LED) está libre y SEN1..SEN8 van en C0..C7 |
-| Compilación para **ESP32 Dev Module** | Ver la tabla de abajo |
-
-| Entorno | Núcleo | Resultado |
-|---|---|---|
-| PlatformIO `esp32dev` (espressif32 8.0.0) | arduino-esp32 3.3.12 | **Compila** desde cero, 0 advertencias con `-Wall -Wextra`. Flash 313 339 B (23.9 %), RAM 23 904 B (7.3 %) |
-| PlatformIO `esp32dev_nucleo2` (espressif32 6.9.0) | arduino-esp32 2.0.17 | **Compila**, 0 advertencias en el código del robot. Flash 314 301 B (24.0 %), RAM 23 320 B (7.1 %) |
-
-No se compiló con Arduino IDE en sí. Usa el mismo núcleo y la misma placa (`esp32dev` = ESP32 Dev Module), así que debería dar el mismo resultado, pero la primera carga lo confirmará.
-
-### Falta probar con el robot [P]
-Hagan las pruebas en orden, siguiendo la sección 9 de la GUIA:
-1. Continuidad de cada pin contra el esquema, con la placa **sin batería**.
-2. Con solo USB: `ver`, `pines`, `botones` (oprimir START y CAL) y `bat` (debe decir "solo USB").
-3. Emisores: `emis 1` y ver los LED IR con la cámara del celular; `emis 0`.
-4. Mux: `mux 0` … `mux 7` midiendo `SIG` con el multímetro sobre blanco y negro; `mux off`. Después, `canal 0` … `canal 7`.
-5. **Orden de los sensores:** `sens` con la línea bajo el lado **derecho** del robot debe dar `pos` > 0. Si da negativo, pongan `SENSORES_INVERTIDOS 1` en `config.h` y vuelvan a cargar.
-6. Con batería y **las ruedas en el aire**: `m 0.3 0` debe mover la rueda **izquierda hacia adelante** y `m 0 0.3` la **derecha hacia adelante**. Si alguna gira al revés: `set inv_izq 1` o `set inv_der 0` y `save`.
-7. `bat` con la batería cargada: comparar con el multímetro. El divisor y el ADC pueden diferir ±0.1–0.2 V.
-8. `perf`: la lectura de sensores debería tardar menos de 1.5 ms y el ciclo, menos de 2.5 ms.
-9. Calibrar y correr primero con `vbase` 0.25. Subir `vbase` y afinar `kp`/`kd` en la pista con `tel 1`.
-
-Datos que siguen sin medirse: distancia de la barra al eje (`DIST_SENSOR_EJE_MM`, EM-06), paso real de los sensores, sentido de los motores, corriente de bloqueo del N20 (`m_R`), umbrales de batería (definirlos con Alan) y las ganancias en la pista.
+**Falta, con el robot (EM-08):** la secuencia de la sección 5. En especial:
+- el orden de los sensores (`inv_sens`);
+- las inversiones de motores (`inv_izq`, `inv_der`, `cruzar`);
+- los tiempos reales (`perf`);
+- `vm_fijo` medido;
+- la corriente de bloqueo del N20 (`m_R`);
+- la distancia de la barra al eje y el paso real;
+- los umbrales de batería con Alan;
+- las ganancias en la pista.

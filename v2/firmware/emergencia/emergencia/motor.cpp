@@ -42,8 +42,10 @@ void Accionamiento::actualizar(float cmd_izq, float cmd_der, float v, float dt) 
   float d[2];
   for (int k = 0; k < 2; ++k) {
     float x = cmd[k] * tp;                                    // 1. tope
-    const float paso = l_.rampa * dt;
-    x = lim(x, d_[k] - paso, d_[k] + paso);                   // 2. rampa
+    // 2. rampa: frenar = moverse hacia el lado contrario del ciclo actual (bajar |d| o invertir)
+    const bool frenando = (x - d_[k]) * d_[k] < 0.0f;
+    const float paso = (frenando ? l_.rampa_freno : l_.rampa) * dt;
+    x = lim(x, d_[k] - paso, d_[k] + paso);
     const float e = m_.ke * w_[k];                            // 3. corriente por motor
     x = lim(x, (e - l_.i_max * m_.R) / v, (e + l_.i_max * m_.R) / v);
     d[k] = lim(x, -tp, tp);
