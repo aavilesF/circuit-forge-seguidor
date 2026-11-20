@@ -5,6 +5,7 @@
 Solo esquemáticos (no hay PCB, ruteo ni patrones). **Esquema vigente: `robot_emergencia_unificado.kicad_sch` (principal + sensores en una sola hoja A2, D-V2-43).** Se genera con `herramientas/emergencia_unificado.py`. Los dos esquemas separados del 19 nov (`principal_emergencia`, `sensores_emergencia`, generados con `emergencia_principal.py` y `emergencia_sensores.py`) se conservan como versión anterior; tienen las mismas conexiones.
 
 ## Archivos
+| `GUIA-FIRMWARE.md` | Guía para el firmware de emergencia: pines GPIO, mux de sensores, pruebas (EM-05, EM-07) |
 | Archivo | Qué es |
 |---|---|
 | **`robot_emergencia_unificado.kicad_sch` / `.pdf` / `.svg`** | **Esquema único vigente** (A2): todo el circuito, sin conectores J6/J1 entre placas; ERC en `verificacion/unificado_erc.json` |

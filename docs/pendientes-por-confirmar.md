@@ -158,8 +158,9 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | EM-02 | Comprar placa perforada, LiPo 2S, resistencias y (si no tienen) cargador 2S | Lista en `v2/electronica/prototipo-emergencia/README.md` | **sí** | Comprar | Alan |
 | EM-03 | Fusible en línea 3 A | Recomendado; si no hay, seguir las verificaciones de seguridad del README | no | Comprar portafusible | Alan |
 | EM-04 | Ajustar MP1584 a 5.0 V y 6.0 V antes de soldar | Igual que E01/E02 | **sí** | Multímetro | Alan |
-| EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | No se tocó el firmware (sin autorización) | **sí, para que siga la línea** | Alan autoriza cambiar el firmware | Alan |
+| EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | No se tocó el firmware (sin autorización). Guía para Alejandro: `v2/electronica/prototipo-emergencia/GUIA-FIRMWARE.md` | **sí, para que siga la línea** | Alan autoriza cambiar el firmware | Alan |
 | EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica. El esquema ya es único (D-V2-43); si la barra va en placa aparte, el cable sigue siendo de 9 hilos (README del prototipo) | sí, para montar | Después del circuito | Equipo |
+| EM-07 | Base de firmware para emergencia: ¿cuál usar? | La carpeta `firmware/robot-casero/` es HISTÓRICA y su `config.h` no coincide con el diseño V2 en START (GPIO18 contra GPIO4) y usa GPIO4 para un zumbador que el diseño V2 no tiene (en V2, GPIO4 es START). Ver `GUIA-FIRMWARE.md`, sección 6 | **sí, para que Alejandro escriba código** | Alan indica qué base usar, o autoriza un firmware nuevo para V2 | Alan |
 
 ## C. Explicaciones detalladas
 
