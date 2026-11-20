@@ -20,7 +20,7 @@ T=s.text
 T('1. ALIMENTACION (fusible EN LINEA externo, sin PTC)',P(15),P(15),2)
 s.add('Device:Battery','BT1','LiPo 2S 7.4V (EXTERNA)',P(25),P(45),{'1':'VBAT_RAW','2':'GND'},board=False)
 s.add('Device:Fuse','F2','Fusible en linea 3A (EXTERNO, en el cable)',P(40),P(28),{'1':'VBAT_RAW','2':'VBAT_F'},board=False)
-s.add('Connector_Generic:Conn_01x02','J1','Bateria JST-RC',P(60),P(43),{'1':'VBAT_F','2':'GND'})
+s.add('Connector_Generic:Conn_01x02','J1','Bateria JST-RC',P(60),P(43),{'1':'VBAT_RAW','2':'GND'})
 s.add('Connector_Generic:Conn_01x02','J2','Interruptor KCD1',P(100),P(43),{'1':'VBAT_F','2':'VBAT_SW'})
 s.add('Switch:SW_SPST','SW1','KCD1 rojo (EXTERNO)',P(100),P(25),{'1':'VBAT_F','2':'VBAT_SW'},board=False)
 s.add('Device:C_Polarized','C1','470uF 16V',P(130),P(45),{'1':'VBAT_SW','2':'GND'})
