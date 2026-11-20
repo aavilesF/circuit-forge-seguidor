@@ -47,9 +47,21 @@
 // Sin zumbador (D-V2-05) y sin ventilador (EM-01): no hay pines para ellos. GPIO15 y GPIO17 quedan libres.
 
 // ============================================================ batería 2S
+// Batería definitiva: pack 2S de 18650 Li-ion, 7.4 V nominal, ~2500 mAh. 8.4 V cargada (4.2 V/celda).
 #define PIN_BATERIA 36    // VP, DevKit pin 2 · VBAT_SENSE [V esquema]
-// Divisor R1 = 100 kΩ / R2 = 33 kΩ conectado DIRECTO a VBAT_SW (después del KCD1, sin diodo): no se suma caída.
-#define DIVISOR_BATERIA ((100.0f + 33.0f) / 33.0f)   // [C] 8.4 V → 2.08 V en el pin
+// Divisor NOMINAL del esquema: R1 = 100 kΩ (VBAT_SW → VBAT_SENSE) / R2 = 33 kΩ (→ GND), conectado DIRECTO a VBAT_SW
+// (después del KCD1, sin diodo): no se suma caída. Factor nominal 133/33 = 4.030 (8.4 V → 2.08 V en el pin).
+#define DIVISOR_BATERIA ((100.0f + 33.0f) / 33.0f)   // [C] solo referencia
+// Factor EMPÍRICO que usa el firmware: punto de calibración físico del 20 nov 2026, medido al mismo tiempo, con el
+// mismo GND y con el KCD1 encendido: fuente de 10.0 V → 2.1 V en VP/GPIO36 → 10.0 / 2.1 = 4.7619, offset 0 V.
+// Esos 10.0 V son SOLO el punto de calibración (no el voltaje de la batería definitiva). No coincide con el nominal
+// (con 4.030, 2.1 V serían 8.46 V): el divisor soldado no es exactamente 100k/33k. Pendiente: comparar `bat` con el
+// multímetro usando la batería definitiva. Para volver al nominal: usar DIVISOR_BATERIA aquí.
+#define FACTOR_BATERIA 4.7619f                        // [M] medido, punto único
+// Máximo razonable de una 2S Li-ion: 8.4 V cargada + ~0.2 V de tolerancia (ADC calibrado de fábrica ±1–2 % y
+// calibración de un solo punto). Por encima, la consola avisa (otra batería, cargador mal o lectura mal calibrada).
+// Solo es aviso: no bloquea ni cambia ninguna protección.
+#define BAT_MAX_2S 8.6f
 
 // ============================================================ canales LEDC (solo arduino-esp32 2.x)
 #define CANAL_AIN1 0

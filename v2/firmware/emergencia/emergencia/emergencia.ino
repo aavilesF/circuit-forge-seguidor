@@ -50,7 +50,7 @@ static posicion::Estimacion est{0.0f, 0.0f, false};
 static int n_oscuros = 0;
 static SalidaControl sal{};
 static float vbat_f = 0.0f;
-static bool hay_bat = false, bat_baja = false, bat_crit = false, aviso_bat = false;
+static bool hay_bat = false, bat_baja = false, bat_crit = false, aviso_bat = false, bat_alta = false, aviso_alta = false;
 static uint32_t t_bat_crit = 0, t_bat_med = 0, t_todo_negro = 0;
 static bool telemetria = false, armando_antes = false;
 static uint32_t t_lectura_us = 0, t_ciclo_max_us = 0, n_ciclos = 0;
@@ -149,9 +149,14 @@ static void medir_bateria(uint32_t t) {
   bat_baja = hay_bat && vbat_f < aj.bat_baja;
   if (hay_bat && vbat_f < aj.bat_critica) { if (!t_bat_crit) t_bat_crit = t ? t : 1; }
   else t_bat_crit = 0;
-  bat_crit = t_bat_crit && (t - t_bat_crit > 500);   // la LiPo baja de golpe al acelerar: se exige 0.5 s
+  bat_crit = t_bat_crit && (t - t_bat_crit > 500);   // la batería baja de golpe al acelerar: se exige 0.5 s
   if (bat_baja && !aviso_bat) Serial.printf("AVISO: bateria baja %.2f V (umbral %.2f V)\n", vbat_f, aj.bat_baja);
   aviso_bat = bat_baja;
+  bat_alta = hay_bat && vbat_f > BAT_MAX_2S;   // solo aviso: no bloquea nada
+  if (bat_alta && !aviso_alta)
+    Serial.printf("AVISO: bateria %.2f V supera %.1f V, el maximo razonable de una 2S Li-ion (8.4 V cargada). "
+                  "Revisa la bateria/fuente o la calibracion (escribe `bat`)\n", vbat_f, BAT_MAX_2S);
+  aviso_alta = bat_alta;
 }
 
 // ------------------------------------------------------------------ motores
@@ -347,7 +352,8 @@ static void imprimir_calibracion() {
 static void imprimir_estado() {
   Serial.printf("estado=%s%s error=%d ultima parada: %s · cal=%s · bateria=%.2f V%s%s\n", nombre(maq.estado()),
                 maq.armando() ? " (arrancando)" : "", (int)maq.error(), nombre(maq.motivo()), cal_valida ? "si" : "NO",
-                vbat_f, hay_bat ? (bat_crit ? " (CRITICA)" : (bat_baja ? " (BAJA)" : "")) : " (solo USB)",
+                vbat_f, hay_bat ? (bat_crit ? " (CRITICA)" : (bat_baja ? " (BAJA)" : (bat_alta ? " (SOBRE 8.6 V: revisar)" : "")))
+                                : " (solo USB)",
                 diag_activo() ? " · DIAGNOSTICO (emis/mux): START bloqueado" : "");
 }
 
@@ -376,7 +382,8 @@ static void imprimir_monitor() {
     case Monitor::CRUDO: imprimir_crudo(); break;
     case Monitor::POS: Serial.printf("pos=%+6.1f mm visible=%d confianza=%.2f negros=%d\n", est.pos_mm, est.linea_visible,
                                      est.confianza, n_oscuros); break;
-    case Monitor::BAT: Serial.printf("bateria %.2f V (pin %.0f mV)\n", vbat_f, hw::mv_pin_bateria()); break;
+    case Monitor::BAT: Serial.printf("bateria %.2f V · VP %.0f mV · ADC %d · factor %.4f\n", vbat_f, hw::mv_pin_bateria(),
+                                     hw::adc_crudo_bateria(), FACTOR_BATERIA); break;
     case Monitor::BOT: Serial.printf("START=%d CAL=%d\n", hw::boton_start(), hw::boton_cal()); break;
     case Monitor::NADA: break;
   }
@@ -480,9 +487,16 @@ static void ejecutar(char* l) {
     Serial.printf("START=%s CAL=%s (lectura directa del pin)\n", hw::boton_start() ? "OPRIMIDO" : "suelto",
                   hw::boton_cal() ? "OPRIMIDO" : "suelto");
   } else if (!strcmp(c, "bat")) {
-    Serial.printf("bateria %.2f V (pin GPIO36 %.0f mV x %.3f)%s · baja < %.2f V, critica < %.2f V · puente %.2f V\n", vbat_f,
-                  hw::mv_pin_bateria(), DIVISOR_BATERIA, hay_bat ? "" : " · solo USB", aj.bat_baja, aj.bat_critica,
-                  util::v_puente(hay_bat, vbat_f, aj.vm_fijo, aj.caida_reg));
+    const int crudo = hw::adc_crudo_bateria();
+    const float mv = hw::mv_pin_bateria();
+    Serial.printf("ADC crudo GPIO36 = %d / 4095 · VP = %.3f V\n", crudo, mv * 0.001f);
+    Serial.printf("factor aplicado = %.4f (medido 10.0 V / 2.1 V) · nominal 100k/33k = %.3f (solo referencia)\n",
+                  FACTOR_BATERIA, DIVISOR_BATERIA);
+    Serial.printf("bateria = %.2f V ahora, %.2f V filtrada%s\n", util::volts_bateria(mv, FACTOR_BATERIA), vbat_f,
+                  !hay_bat ? " · solo USB (KCD1 apagado o sin bateria)"
+                           : (bat_alta ? " · SOBRE el maximo de una 2S Li-ion: revisar" : ""));
+    Serial.printf("umbrales: baja < %.2f V · critica < %.2f V (0.5 s, para en marcha) · aviso > %.1f V · puente %.2f V\n",
+                  aj.bat_baja, aj.bat_critica, BAT_MAX_2S, util::v_puente(hay_bat, vbat_f, aj.vm_fijo, aj.caida_reg));
   } else if (!strcmp(c, "perf")) {
     Serial.printf("lectura de sensores %lu us, ciclo maximo %lu us (periodo %lu us, limite en marcha %lu us)\n",
                   (unsigned long)t_lectura_us, (unsigned long)t_ciclo_max_us, par::PERIODO_CONTROL_US, par::CICLO_MAX_US);

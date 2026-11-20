@@ -122,7 +122,13 @@ float mv_pin_bateria() {
   return mv / 4.0f;
 }
 
-float v_bateria() { return util::volts_bateria(mv_pin_bateria(), DIVISOR_BATERIA); }
+float v_bateria() { return util::volts_bateria(mv_pin_bateria(), FACTOR_BATERIA); }   // calibración medida (config.h)
+
+int adc_crudo_bateria() {
+  int s = 0;
+  for (int k = 0; k < 8; ++k) s += analogRead(PIN_BATERIA);
+  return (s + 4) / 8;
+}
 
 bool boton_start() { return digitalRead(PIN_START) == LOW; }
 bool boton_cal() { return digitalRead(PIN_CAL) == LOW; }

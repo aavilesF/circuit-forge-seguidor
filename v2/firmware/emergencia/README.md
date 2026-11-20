@@ -109,7 +109,7 @@ Si Windows responde "Una directiva de Control de aplicaciones bloqueó este arch
 | Motores | `m <izq> <der> [ms]` | Prueba con **ruedas en el aire**: −1..1, 50–3000 ms (1000 por defecto); cualquier tecla corta |
 | | `stop` | Suelta los motores y duerme el DRV8833 |
 | Otros | `botones` | Lectura directa de START y CAL |
-| | `bat` | Batería, mV en el pin, umbrales y voltaje estimado en el puente |
+| | `bat` | ADC crudo de GPIO36, voltaje en VP, factor aplicado (medido) y nominal, batería ahora y filtrada, umbrales y voltaje estimado en el puente |
 | | `tel 1` / `tel 0` | Telemetría en marcha a 100 Hz: `t_ms,estado,pos_mm,visible,u,ciclo_izq,ciclo_der,vbat` |
 | | `reiniciar` | Reinicia el ESP32 |
 
@@ -181,7 +181,7 @@ Cada paso dice qué debe salir. Si algo no coincide, paren y revisen el cableado
 8. **Orden de los sensores:** `mon pos` y muevan una tira negra de **izquierda a derecha** bajo la barra (mirando el robot desde atrás). `pos` debe ir de **negativo a positivo**. Si va al revés: `set inv_sens 1`. Antes de calibrar `pos` puede no aparecer; si no aparece, usen `crudo` y vean qué columna cambia: la 1.ª columna debe ser la de la izquierda.
 
 **B. Con batería (KCD1 encendido) y RUEDAS EN EL AIRE**
-9. `bat` → entre 7.0 y 8.4 V con la LiPo cargada. Compárenlo con el multímetro; ±0.2 V es normal.
+9. `bat` → muestra el ADC crudo, el voltaje en VP, el factor aplicado (4.7619, medido), la batería y los umbrales. Compárenlo con el multímetro en la batería 2S definitiva (8.4 V cargada; ±0.2 V es normal). Si pasa de 8.6 V, avisa: revisen la batería o la calibración. Vean "Batería y su medición" en la sección 9.
 10. `m 0.3 0` → solo la rueda **izquierda** gira, **hacia adelante**.
     - Si gira la derecha en lugar de la izquierda: `set cruzar 1` y repitan.
     - Si gira la correcta pero hacia atrás: `set inv_izq 1` (o 0 si ya estaba en 1).
@@ -303,7 +303,40 @@ La compilación confirma que el watchdog usa la API correcta en cada núcleo: `e
 | `verificar_pines.py` (Python) | 14 señales = esquema; LED en pata libre; 24 archivos sin WiFi/Bluetooth ni restos del histórico |
 | `v2/herramientas/validar_repo.py` (clon LF) | 0 errores, 2 avisos de inventario que ya existían |
 
-**La repetición posterior NO se cuenta como aprobada:** Windows (Smart App Control) bloqueó el `.exe` recién compilado ("Una directiva de Control de aplicaciones bloqueó este archivo"). Las pruebas sí volvieron a **compilar** sin advertencias con `-Werror`, pero no se pudieron **ejecutar**. La evidencia válida es la ejecución de las 07:14. Después de ella no cambió ningún archivo que esas pruebas compilan; solo cambiaron `hw.cpp` (capa del ESP32, que no entra en las pruebas de PC), Python y documentación.
+**La repetición posterior NO se cuenta como aprobada:** Windows (Smart App Control) bloqueó el `.exe` recién compilado ("Una directiva de Control de aplicaciones bloqueó este archivo"). Las pruebas sí volvieron a **compilar** sin advertencias con `-Werror`, pero no se pudieron **ejecutar**. La evidencia válida es la ejecución de las 07:14. Hasta el commit `b4eb31f` no cambió ningún archivo que esas pruebas compilan; solo cambiaron `hw.cpp` (capa del ESP32, que no entra en las pruebas de PC), Python y documentación.
+
+**Cambio de batería (después de `b4eb31f`): solo compilado, NO ejecutado.** Se agregaron a `test_emergencia.cpp` cuatro comprobaciones:
+- 2100 mV × 4.7619 ≈ 10.0 V;
+- umbrales ordenados para 2S Li-ion;
+- `bat_critica` ≥ 3.0 V/celda;
+- 8.6 V dentro del rango del ADC.
+
+Compilan con `-Werror`, pero Windows volvió a bloquear el `.exe` (código 126). La 1773/1773 no las incluye. Los cálculos de la tabla de batería se hicieron a mano con los mismos valores.
+
+### Batería y su medición (20 nov 2026)
+**Batería definitiva:** pack 2S de 18650 Li-ion, 7.4 V nominal, ~2500 mAh. Cargada: 8.4 V (4.2 V por celda).
+
+| Dato | Valor | Origen |
+|---|---|---|
+| Divisor del esquema | R1 = 100 kΩ (VBAT_SW → VBAT_SENSE), R2 = 33 kΩ (→ GND), C3 = 100 nF; mide después del KCD1, sin diodo | Esquema unificado (**nominal**) |
+| Factor nominal | 133 / 33 = **4.030** (`DIVISOR_BATERIA`, solo referencia) | Calculado del esquema |
+| Voltaje medido en la fuente de calibración | **10.0 V** | Multímetro (equipo) |
+| Voltaje medido en VP / GPIO36 | **2.1 V** | Multímetro (equipo); misma medición, mismo GND, KCD1 encendido (**confirmado**) |
+| Factor empírico | 10.0 / 2.1 = **4.7619**, offset 0 V | Calculado de las dos medidas |
+| Lo que usa el firmware | `FACTOR_BATERIA = 4.7619` en `config.h` | Código. Con 2.1 V en GPIO36, `bat` reporta ≈ 10.0 V (comprobado en PC) |
+| Lectura esperada con la batería definitiva | 8.4 V → 1.76 V en VP; 6.4 V → 1.34 V | Calculado con el factor medido; dentro del rango del ADC |
+
+**Los 10.0 V son solo el punto de calibración**, no el voltaje normal de la batería definitiva, que nunca pasa de 8.4 V. El factor medido no coincide con el nominal (con 4.030, 2.1 V serían 8.46 V): el divisor soldado no es exactamente 100k/33k. El factor está en una constante de `config.h`, no en la memoria del ESP32, así que **no invalida** las inversiones ni la calibración ya guardadas. Para volver al nominal se cambia `FACTOR_BATERIA` por `DIVISOR_BATERIA` y se recompila.
+
+**Umbrales (no cambiaron, son adecuados para 2S Li-ion):**
+
+| Umbral | Valor | Por celda | Por qué |
+|---|---|---|---|
+| `bat_baja` | 6.8 V | 3.4 V | Aviso cuando queda poca carga. Queda muy por encima del corte de una 18650 (2.5–3.0 V/celda) |
+| `bat_critica` | 6.4 V sostenidos 0.5 s | 3.2 V | Para el robot en marcha (ERROR 1). Deja margen sobre el corte de la celda y para la caída bajo carga; con más carga, el regulador de 5 V del ESP32 sigue regulando |
+| Aviso de sobrevoltaje | > 8.6 V (`BAT_MAX_2S`) | 4.3 V | 8.4 V cargada + ~0.2 V de tolerancia (ADC ±1–2 % y calibración de un solo punto). **Solo avisa** por consola (al cruzar el valor y en `bat` / `estado`); no bloquea nada |
+
+**Todavía NO está calibrada definitivamente:** falta comparar `bat` con el multímetro **usando la batería final 2S de 7.4 V**, a dos cargas distintas (por ejemplo, llena ≈ 8.4 V y a media carga ≈ 7.4 V). Si difieren más de ±0.2 V, se ajusta `FACTOR_BATERIA` con un nuevo punto medido y se recompila.
 
 ### Pendiente de verificar en el robot físico (EM-08)
 - **Watchdog:** `ver` debe decir `watchdog activo`. Que el reinicio por cuelgue deje el DRV8833 dormido sale de la ficha y del código; no se ha visto en el robot:
@@ -320,5 +353,5 @@ Además, la secuencia de la sección 5. En especial:
 - `vm_fijo` medido;
 - la corriente de bloqueo del N20 (`m_R`);
 - la distancia de la barra al eje y el paso real;
-- los umbrales de batería con Alan;
+- `bat` contra el multímetro con la batería 2S Li-ion definitiva (calibración definitiva) y los umbrales con Alan;
 - las ganancias en la pista.

@@ -31,7 +31,8 @@ bool driver_esta_despierto();
 
 // ---- medidas
 float v_bateria();                         // V de la batería (divisor directo a VBAT_SW), promedio de 4
-float mv_pin_bateria();                    // mV en GPIO36
+float mv_pin_bateria();                    // mV en GPIO36 (calibración de fábrica del ADC)
+int adc_crudo_bateria();                   // cuentas crudas 0..4095 en GPIO36, promedio de 8 (diagnóstico)
 
 // ---- interfaz
 bool boton_start();                        // true = oprimido (sin rebote: lo filtra quien llama)

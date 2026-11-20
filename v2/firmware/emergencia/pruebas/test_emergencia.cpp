@@ -335,6 +335,13 @@ static void prueba_utiles() {
   // batería: 8.4 V → 2.084 V en el pin (100k/33k), sin caída de diodo
   CERCA(util::volts_bateria(2084.2f, DIVISOR_BATERIA), 8.40, 0.01);
   CERCA(util::volts_bateria(0.0f, DIVISOR_BATERIA), 0.0, 1e-6);
+  // calibración medida (20 nov): 2.1 V en GPIO36 → ~10.0 V de batería
+  CERCA(util::volts_bateria(2100.0f, FACTOR_BATERIA), 10.0, 0.01);
+  // batería definitiva 2S Li-ion (8.4 V cargada): umbrales ordenados, ≥ 3.0 V/celda y máximo dentro del ADC
+  const Ajustes ab;
+  CHECK(ab.bat_critica < ab.bat_baja && ab.bat_baja < 8.4f && 8.4f < BAT_MAX_2S, "umbrales 2S Li-ion ordenados");
+  CHECK(ab.bat_critica / 2.0f >= 3.0f, "bat_critica >= 3.0 V por celda");
+  CHECK(BAT_MAX_2S / FACTOR_BATERIA < 3.0f, "el maximo esperado cabe en el rango del ADC (11 dB)");
   // antirrebote: un rebote de 10 ms no cuenta; oprimido estable 25 ms → un solo pulso
   util::Boton b;
   int pulsos = 0;
