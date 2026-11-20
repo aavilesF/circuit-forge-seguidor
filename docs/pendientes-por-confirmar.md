@@ -38,7 +38,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | P-V2-20 | EN ESTUDIO: encoders y aprendizaje de pista | Ver `v2/docs/evaluaciones.md`. Recomendación: no cambiar hardware; opcional reservar 4 GPIO en un header | no | Alan decide | Alan |
 | P-V2-21 | EN ESTUDIO: ¿vale la pena el ventilador? | Ver `v2/docs/evaluaciones.md`. No se quita; probar con báscula | no | Pruebas físicas | Alan |
 | M14 | LiPo 2S | Comprar (7.4 V, 450–500 mAh) | no | Al comprarla: medidas, peso, conector | Alan |
-| M15 | Conector de la LiPo | Que coincida con el JST-RC comprado | no | Al comprar | Alan |
+| M15 | Conector de la LiPo | Que coincida con el JST-RC comprado (solo diseño V2; el prototipo de emergencia no usa JST-RC, D-V2-45) | no | Al comprar | Alan |
 | M21 | Ventilador: corriente real a 7.4–8.4 V | Medir | no | Multímetro en serie | Alan |
 | M28 | PTC | **Elegido (D-V2-24): Bel Fuse 0ZRE0150FF1A**, 1.5 A mantenimiento. No comprado; ver P-V2-44 | no | Comprar; medir paso de patas (10.2 mm esperado) | Alan |
 | M33 | MP1584: posición de agujeros | Ahora la da la huella de Alan (19.5–20.5 mm entre lados, 2.54 mm entre agujero cuadrado y redondo); verificar al montar | no | Plantilla 1:1 | Alan |
@@ -58,6 +58,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 ## B. Resueltos y obsoletos (no se borran)
 | ID | Tema | Resolución | Fecha | Dónde quedó |
 |---|---|---|---|---|
+| EM-03 | Fusible en línea 3 A (emergencia) | **Obsoleto 19 nov (Alan):** no se usa fusible ni conector JST-RC en el robot de emergencia; la batería va directo a KCD1 y de ahí a los MP1584. Riesgo: sin protección ante corto, ver "Seguridad sin fusible" del README | 19 nov | D-V2-45; `v2/electronica/prototipo-emergencia/README.md` |
 | P-V2-28 | Dibujos en Edge.Cuts de las huellas ESP32 y HC4067 | **Resuelto 14 nov (Alan aprueba):** eran 4 círculos de los agujeros del DevKit y el contorno de 40 × 20 mm del módulo; pasados a Dwgs.User en las PCB y en las bibliotecas de origen (copia `.antes_edgecuts_2026-11-14.bak`). Pads sin cambios (comprobado) | 14 nov | `Librerias/Footprints`, `v2/electronica/bibliotecas` |
 | P-V2-30 | USB-C bloqueado por SW2 | **Resuelto 14 nov:** el ESP32 se bajó hasta que su USB-C queda en el borde inferior de la PCB principal (en el dibujo); SW2 pasó a la derecha del USB y SW3/SW4 arriba del ESP32. Ningún componente queda en el camino del enchufe (pasillo libre de x 44 a 53 mm hacia fuera de la placa). Falta que la mecánica deje libres ~30 mm detrás del borde para el enchufe y la curva del cable | 14 nov | `v2/electronica/principal` |
 | M01 | ESP32: tamaño | 51.9 × 28.7 mm; 54 mm con USB-C (vernier) | 11 nov | Huella `ESP32_DevKit_30`; especificaciones |
@@ -156,7 +157,6 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 |---|---|---|---|---|---|
 | EM-01 | Quitar el ventilador | **Propuesta de Claude, sin decidir.** El esquema de emergencia se dibujó sin ventilador; si Alan lo quiere, se vuelve a poner el bloque del diseño anterior | no | Alan dice sí o no | Alan |
 | EM-02 | Comprar placa perforada, LiPo 2S, resistencias y (si no tienen) cargador 2S | Lista en `v2/electronica/prototipo-emergencia/README.md` | **sí** | Comprar | Alan |
-| EM-03 | Fusible en línea 3 A | Recomendado; si no hay, seguir las verificaciones de seguridad del README | no | Comprar portafusible | Alan |
 | EM-04 | Ajustar MP1584 a 5.0 V y 6.0 V antes de soldar | Igual que E01/E02 | **sí** | Multímetro | Alan |
 | EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | **Autorizado el 19 nov por Alan para todo el equipo.** Falta escribirlo (Alejandro). Guía: `v2/electronica/prototipo-emergencia/GUIA-FIRMWARE.md` | **sí, para que siga la línea** | Alejandro (o cualquier integrante) | Alejandro |
 | EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica. El esquema ya es único (D-V2-43); si la barra va en placa aparte, el cable sigue siendo de 9 hilos (README del prototipo) | sí, para montar | Después del circuito | Equipo |

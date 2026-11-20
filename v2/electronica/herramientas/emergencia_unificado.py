@@ -10,19 +10,17 @@ R7='Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'; RV='Resistor
 CD='Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm'; CP='Capacitor_THT:CP_Radial_D8.0mm_P3.50mm'
 H2='Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical'; DD='RobotCasero:D_DO-201AD_P20.32mm_Taladro1.3'
 Esq.FP=dict(U1='MP1584:MP1584module',U2='MP1584:MP1584module',U3='DRV8833:DRV8833',U4='HC4067:ANALOG_MUX_BREAKOUT_HC4067',
- A1='ESP32:ESP32-DevKit-USB-C',C1=CP,C2=CP,D2=DD,R1=R7,R2=R7,C3=CD,C4=CD,C5=CD,C6=CD,J1=H2,J2=H2,J3=H2,J4=H2,
+ A1='ESP32:ESP32-DevKit-USB-C',C1=CP,C2=CP,D2=DD,R1=R7,R2=R7,C3=CD,C4=CD,C5=CD,C6=CD,J2=H2,J3=H2,J4=H2,
  SW2='Button_Switch_THT:SW_PUSH-12mm',SW3='Button_Switch_THT:SW_PUSH_6mm',Q1='Package_TO_SOT_THT:TO-92_Inline_Wide',
  **{f'R{i}':RV for i in range(3,21)},**{f'OP{i}':'OptoDevice:Vishay_TCRT5000' for i in range(1,9)})
 s=Esq('robot_emergencia_unificado','Seguidor V2 EMERGENCIA - esquema unico',W=580,H=406,paper='A2')
 def P(v): return round(v/2.54)*2.54
 T=s.text
 # ---------------- PARTE PRINCIPAL (igual que principal_emergencia, sin J6) ----------------
-T('1. ALIMENTACION (fusible EN LINEA externo, sin PTC)',P(15),P(15),2)
-s.add('Device:Battery','BT1','LiPo 2S 7.4V (EXTERNA)',P(25),P(45),{'1':'VBAT_RAW','2':'GND'},board=False)
-s.add('Device:Fuse','F2','Fusible en linea 3A (EXTERNO, en el cable)',P(40),P(28),{'1':'VBAT_RAW','2':'VBAT_F'},board=False)
-s.add('Connector_Generic:Conn_01x02','J1','Bateria JST-RC',P(60),P(43),{'1':'VBAT_RAW','2':'GND'})
-s.add('Connector_Generic:Conn_01x02','J2','Interruptor KCD1',P(100),P(43),{'1':'VBAT_F','2':'VBAT_SW'})
-s.add('Switch:SW_SPST','SW1','KCD1 rojo (EXTERNO)',P(100),P(25),{'1':'VBAT_F','2':'VBAT_SW'},board=False)
+T('1. ALIMENTACION (bateria -> KCD1 -> MP1584; sin fusible ni conector JST-RC)',P(15),P(15),2)
+s.add('Device:Battery','BT1','LiPo 2S 7.4V (EXTERNA, cables soldados directo a la placa)',P(25),P(45),{'1':'VBAT_RAW','2':'GND'},board=False)
+s.add('Connector_Generic:Conn_01x02','J2','Interruptor KCD1',P(100),P(43),{'1':'VBAT_RAW','2':'VBAT_SW'})
+s.add('Switch:SW_SPST','SW1','KCD1 rojo (EXTERNO)',P(100),P(25),{'1':'VBAT_RAW','2':'VBAT_SW'},board=False)
 s.add('Device:C_Polarized','C1','470uF 16V',P(130),P(45),{'1':'VBAT_SW','2':'GND'})
 T('2. MEDICION DE BATERIA (8.4 V -> 2.08 V)',P(145),P(15),2)
 s.add('Device:R','R1','100k',P(155),P(35),{'1':'VBAT_SW','2':'VBAT_SENSE'})
@@ -72,6 +70,7 @@ for i,n in enumerate(['VBAT_SW','+5V','+6V_MOT','ESP_5V']):
 s.add('power:PWR_FLAG','#FLG05','PWR_FLAG',P(30),P(225),{'1':'GND'})
 s.add('power:PWR_FLAG','#FLG06','PWR_FLAG',P(50),P(225),{'1':'+3V3'})
 s.add('power:PWR_FLAG','#FLG07','PWR_FLAG',P(68),P(225),{'1':'VBAT_RAW'})
+T('Sin JST-RC ni fusible (19 nov): rojo de la bateria -> KCD1 (J2.1); negro -> linea GND de la placa. Los dos MP1584 comparten GND.',P(15),P(242),1.5)
 T('EXTERNO = va fuera de la placa, por cable. Potencia (bateria, KCD1, MP1584, DRV8833, motores) con cable 18-22 AWG; senales con cable fino.',P(15),P(250),1.5)
 T('Las redes S0-S3, SIG y EMIT_EN se unen por ETIQUETA (mismo nombre = mismo cable) entre el ESP32 y la barra de sensores. +5V, +3V3 y GND por simbolo de alimentacion.',P(15),P(258),1.5)
 T('En fisico la barra de sensores sigue siendo una placa aparte (EM-06): sus 9 hilos son +3V3, GND, S0-S3, SIG, EMIT_EN y +5V (la numeracion ya no es de un conector del esquema).',P(15),P(266),1.5)

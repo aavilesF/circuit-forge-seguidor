@@ -14,7 +14,7 @@
 | Sensores | 12 TCRT5000 | **8 TCRT5000**, canales C0–C7 del mux (decisión D-V2-41) |
 | Ventilador | GPIO17 (`FAN_PWM`) controla el MOSFET | **Sin ventilador** (propuesta EM-01, pendiente de OK). GPIO17 queda libre |
 | Botón RESET | SW4 a EN | **Sin botón**; se usa el botón EN del DevKit |
-| Fusible | PTC F1 en la placa | **Fusible en línea externo** de 3 A (D-V2-42) |
+| Fusible y conector de batería | PTC F1 y JST-RC | **Ninguno** (D-V2-45): batería → KCD1 → MP1584, cables soldados directo |
 | Pines GPIO del ESP32 | — | Los mismos del diseño V2 aprobado para START, CAL, EMIT_EN, SIG, S0–S3, motores y batería |
 
 **Qué significa para el código:** solo cambian la cantidad de sensores (12 → 8) y, si se confirma EM-01, la línea del ventilador. El resto de los GPIO se mantiene.

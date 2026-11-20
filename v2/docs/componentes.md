@@ -26,7 +26,7 @@ Compras: ticket Electrónica Valtierra 5 nov y pedido UNIT 7 nov (detalle de pre
 | PTC reseteable Bel Fuse 0ZRE0150FF1A (F1) | 0 | 1 | — | por comprar | Ver P-V2-44 |
 | Header macho 1x2 (J1-J5) y 1x9 (J6 y sensores J1): 28 pines | ? | 28 | ? | recepción sin confirmar | P-V2-41 aparcado por Alan (sin peso para los componentes) |
 | Tira hembra para ESP32/MP1584/DRV8833/mux | 80 | 74 | 6 | recepción sin confirmar | P-V2-41 aparcado por Alan (sin peso para los componentes) |
-| Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recibida y confirmada | Conector de batería; 1 par de repuesto |
+| Conector JST-RC (pares macho/hembra) | 2 | 1 | 1 | recibida y confirmada | Conector de batería; el prototipo de emergencia no lo usa (D-V2-45); el diseño V2 sí |
 | Motorreductor GA12-N20 6 V 1000 RPM | 2 | 2 | 0 | recibida y confirmada | Eje 2.3 mm medido (D-V2-11) |
 | Ventilador 4010 12 V | 1 | 1 | 0 | recibida y confirmada | Pesado 15 g el 13 nov |
 | Mini rueda universal 3Pi N20 (rueda loca) | 2 | 1 | 1 | recibida y confirmada | 1 de repuesto (D-V2-10) |

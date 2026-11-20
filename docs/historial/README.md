@@ -18,3 +18,4 @@ Ningún ID se borra: si un ID ya no aparece en la versión actual, aquí está s
 | pendientes-v11_2026-11-15_pre-diodos-20mm.md | 15 nov 2026 | v12: huella 20.32 mm aplicada; P-V2-37/41/44 cerrados; P-V2-27 a la espera del OK final |
 | pendientes-v12_2026-11-15_pre-planchado.md | 15 nov 2026 | v13: P-V2-27 resuelto, PCB aprobadas, patrones de planchado |
 | pendientes-v13_2026-11-19_pre-esquema-unificado.md | 19 nov 2026 | v13 (misma numeración): esquema de emergencia unificado, D-V2-43; EM-06 aclarado |
+| pendientes-v13_2026-11-19_pre-sin-jst-fusible.md | 19 nov 2026 | v13 (misma numeración): sin JST-RC ni fusible en el robot de emergencia; EM-03 obsoleto; M15 aclarado |
