@@ -1,4 +1,4 @@
-# Pendientes por confirmar (robot casero) — versión 13 (rama seguidor-caseroV2)
+# Pendientes por confirmar (robot casero) — versión 14 (rama seguidor-caseroV2)
 
 Rama `engineering/robot-casero`. Actualizado: **12 nov 2026** con las respuestas de Alan, fichas oficiales de UNIT y datasheets (TCRT5000 Vishay, 74HC4067 Philips).
 Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Los IDs P-V2-xx vienen de `v2/docs/`.
@@ -7,6 +7,8 @@ Copia íntegra de la v7: `docs/historial/pendientes-v7_2026-11-11_pre-V2.md`. Lo
 1. **Sección A — Activos:** lo único que falta. Cada fila dice qué falta, por qué importa y cómo se resuelve.
 2. **Sección B — Resueltos y obsoletos:** ningún ID se borra. Aquí queda la respuesta de cada uno y dónde se aplicó.
 3. **Sección C — Explicaciones detalladas** de los IDs que Alan pidió entender mejor (M19, M20, M21, M22, P13, C07, R01, R03).
+
+v14 (19 nov, noche): firmware de emergencia escrito, compilado y probado en PC (`v2/firmware/emergencia/`); EM-05 y EM-07 cambian de estado; nuevo **EM-08** (prueba física del firmware). Copia previa: `docs/historial/pendientes-v13_2026-11-19_pre-firmware-emergencia.md`.
 
 v13 (19 nov, esquema de emergencia unificado, D-V2-43; copia previa: `docs/historial/pendientes-v13_2026-11-19_pre-esquema-unificado.md`). v13 (15 nov, tarde): P-V2-27 resuelto; PCB aprobadas por Alan; patrones de planchado generados (D-V2-39). Copia de la v12: `docs/historial/pendientes-v12_2026-11-15_pre-planchado.md`.
 
@@ -43,7 +45,7 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | M28 | PTC | **Elegido (D-V2-24): Bel Fuse 0ZRE0150FF1A**, 1.5 A mantenimiento. No comprado; ver P-V2-44 | no | Comprar; medir paso de patas (10.2 mm esperado) | Alan |
 | M33 | MP1584: posición de agujeros | Ahora la da la huella de Alan (19.5–20.5 mm entre lados, 2.54 mm entre agujero cuadrado y redondo); verificar al montar | no | Plantilla 1:1 | Alan |
 | P13 | ULT (nFAULT) del DRV8833 | Sigue sin conectar | no | Medir ULT–VCC sin alimentar | Alan |
-| P18 | Firmware | Pasar el mapa de pines V2 a `config.h` (autorizado para todo el equipo el 19 nov; ver EM-05 y EM-07) | no | Etapa futura | Claude |
+| P18 | Firmware | Prototipo de emergencia: **hecho** en `v2/firmware/emergencia/` (19 nov; ver EM-05, EM-07). Falta solo para el diseño de PCB V2 (12 sensores y ventilador), que no se fabricará antes de la competencia | no | Etapa futura | Equipo |
 | C01, C02, C04, C05, C07, C09, C10 | Chasis | Igual que v7 (sección C) | no | Etapa 3 | Equipo |
 | R01, R03, R04 | Ventilador, altura de rueda loca, verificación física | Igual que v7 | no | Etapa 3 | Alan |
 | E01 | MP1584 #1 (5 V) | Ajustar a 5.0 V antes de conectar nada | no | Sección C del historial v7; multímetro en OUT | Alan |
@@ -158,9 +160,10 @@ Estados de medida: **vernier** (Alan) · **UNIT** (ficha oficial del vendedor, v
 | EM-01 | Quitar el ventilador | **Propuesta de Claude, sin decidir.** El esquema de emergencia se dibujó sin ventilador; si Alan lo quiere, se vuelve a poner el bloque del diseño anterior | no | Alan dice sí o no | Alan |
 | EM-02 | Comprar placa perforada, LiPo 2S, resistencias y (si no tienen) cargador 2S | Lista en `v2/electronica/prototipo-emergencia/README.md` | **sí** | Comprar | Alan |
 | EM-04 | Ajustar MP1584 a 5.0 V y 6.0 V antes de soldar | Igual que E01/E02 | **sí** | Multímetro | Alan |
-| EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | **Autorizado el 19 nov por Alan para todo el equipo.** Falta escribirlo (Alejandro). Guía: `v2/electronica/prototipo-emergencia/GUIA-FIRMWARE.md` | **sí, para que siga la línea** | Alejandro (o cualquier integrante) | Alejandro |
+| EM-05 | Firmware para 8 sensores (canales 0–7 del mux) | **Escrito el 19 nov (noche)** en `v2/firmware/emergencia/`: compila para ESP32 Dev Module, 849/849 pruebas en PC y pines iguales al esquema (`verificar_pines.py`). **No se ha cargado en el robot:** la prueba física es EM-08 | no (falta EM-08) | Cargarlo y seguir EM-08 | Alejandro |
 | EM-06 | Soporte de la barra recta de sensores (el brazo DXF es para la PCB curva) | No se inició la mecánica. El esquema ya es único (D-V2-43); si la barra va en placa aparte, el cable sigue siendo de 9 hilos (README del prototipo) | sí, para montar | Después del circuito | Equipo |
-| EM-07 | Base de firmware para emergencia | **Sin zumbador** (Alan, 19 nov; D-V2-05). `firmware/robot-casero/` es HISTÓRICO y difiere del esquema unificado en START (GPIO18 → debe ser GPIO4), zumbador en GPIO4 (quitarlo) y 12 sensores (→ 8). Tabla de adaptación en `GUIA-FIRMWARE.md`, sección 6. Falta elegir: adaptar ese firmware o escribir uno nuevo | **sí, para programar** | Quien programe elige y lo anota aquí | Alejandro |
+| EM-07 | Base de firmware para emergencia | **Sin zumbador** (Alan, 19 nov; D-V2-05). `firmware/robot-casero/` es HISTÓRICO y difiere del esquema unificado en START (GPIO18 → debe ser GPIO4), zumbador en GPIO4 (quitarlo) y 12 sensores (→ 8). Tabla de adaptación en `GUIA-FIRMWARE.md`, sección 6. **Elegido (Alejandro, 19 nov): adaptar** la lógica del histórico en una carpeta nueva `v2/firmware/emergencia/` (el histórico no se tocó). Se quitaron zumbador, nFAULT y la caída de D1; START en GPIO4; 8 sensores por mux; motores siempre a 6 V | Resuelto | — | Alejandro |
+| EM-08 | Prueba física del firmware de emergencia | Lista de pasos en `v2/firmware/emergencia/README.md`, sección 7: continuidad, botones, emisores, mux, **orden de sensores** (`SENSORES_INVERTIDOS`), **sentido de motores** (`inv_izq`/`inv_der`), batería, `perf` y ganancias en pista. Siguen sin medir: distancia barra–eje (EM-06), paso real, corriente de bloqueo del N20 y umbrales de batería (se usan 6.8 / 6.4 V, estimados) | **sí, para competir** | Con el robot armado, ruedas en el aire primero | Alejandro y equipo |
 
 ## C. Explicaciones detalladas
 

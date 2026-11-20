@@ -17,6 +17,8 @@ anterior y es **HISTÓRICO**: sirve de consulta, no es diseño vigente. No se bo
 | `v2/docs/migracion.md` | Qué se migró, qué se corrigió y qué queda histórico | vigente |
 | `v2/electronica/principal/` y `sensores/` | Esquemáticos KiCad 10 (copia de los de `SDL V2 General/KiCAD/Esquemas V2`) | esquemas aprobados (D-V2-20) |
 | `v2/electronica/principal/` y `sensores/` `.kicad_pcb` | PCB ruteadas, DRC 0 errores (15 nov); sensores = opción B (D-V2-25); la A en `sensores/alternativa_68mm_curva/` | en revisión de Alan |
+| `v2/electronica/prototipo-emergencia/` | Prototipo de emergencia en placa perforada: esquema unificado y `GUIA-FIRMWARE.md` | vigente, alternativa (D-V2-40) |
+| `v2/firmware/emergencia/` | **Firmware vigente** del prototipo de emergencia (carga, consola, pruebas en PC) | compilado y probado en PC; falta prueba física (EM-08) |
 | `v2/electronica/vistas/` | SVG/PNG de esquemas y vistas 3D de la colocación | — |
 | `v2/docs/evaluaciones.md` | Encoders/aprendizaje y ventilador (EN ESTUDIO) | — |
 | `v2/electronica/herramientas/` | Scripts que generan esquemas, colocación y ruteo | — |

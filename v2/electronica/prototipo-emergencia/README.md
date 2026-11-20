@@ -5,7 +5,7 @@
 Solo esquemáticos (no hay PCB, ruteo ni patrones). **Esquema vigente: `robot_emergencia_unificado.kicad_sch` (principal + sensores en una sola hoja A2, D-V2-43).** Se genera con `herramientas/emergencia_unificado.py`. Los dos esquemas separados del 19 nov (`principal_emergencia`, `sensores_emergencia`, generados con `emergencia_principal.py` y `emergencia_sensores.py`) se conservan como versión anterior; tienen las mismas conexiones.
 
 ## Archivos
-| `GUIA-FIRMWARE.md` | Guía para el firmware de emergencia: pines GPIO, mux de sensores, pruebas (EM-05, EM-07) |
+| `GUIA-FIRMWARE.md` | Guía para el firmware de emergencia: pines GPIO, mux de sensores, pruebas (EM-05, EM-07). Firmware vigente: `v2/firmware/emergencia/` |
 | Archivo | Qué es |
 |---|---|
 | **`robot_emergencia_unificado.kicad_sch` / `.pdf` / `.svg`** | **Esquema único vigente** (A2): todo el circuito, sin conectores J6/J1 entre placas; ERC en `verificacion/unificado_erc.json` |
@@ -22,7 +22,7 @@ Solo esquemáticos (no hay PCB, ruteo ni patrones). **Esquema vigente: `robot_em
 | Sin ventilador (Q1 IRLZ44N, R4, R5, D1, J5, M3) | **Recomendación de Claude, pendiente de OK (EM-01)**. GPIO del ventilador queda libre |
 | Sin SW4 (RESET) | El DevKit ya trae el botón EN; el pin EN queda sin conexión |
 | Se conservan | MP1584 ×2, D2, C1/C2 470 µF, divisor de batería R1/R2/C3, C4/C5 de motores, mux, 2N2222, cable de 9 hilos (mismo orden que antes) |
-| Mismos GPIO del ESP32 | El firmware no necesita cambiar pines (no se tocó el firmware) |
+| Mismos GPIO del ESP32 | El firmware de emergencia (`v2/firmware/emergencia/`) usa estos pines; el histórico `firmware/robot-casero/` no se tocó |
 
 ## Lista de componentes (versión de emergencia)
 | Pieza | Cant. | ¿La tenemos? |

@@ -3,7 +3,7 @@
 **Para:** Alejandro y cualquier integrante del equipo. **Estado:** documento de trabajo, 19 nov 2026.
 **Esquema de referencia:** `robot_emergencia_unificado.kicad_sch` (principal + 8 sensores en una sola hoja A2).
 
-> **Permisos:** Alan autorizó el 19 nov que **cualquier integrante del equipo con acceso al repositorio** modifique cualquier archivo, incluido el firmware (EM-05 queda autorizado). Siguen vigentes las reglas de seguridad: trabajar en la rama `seguidor-caseroV2`, no tocar `main`, sin merges ni force push. Queda abierta la elección de la base de firmware (**EM-07**, sección 6).
+> **Permisos:** Alan autorizó el 19 nov que **cualquier integrante del equipo con acceso al repositorio** modifique cualquier archivo, incluido el firmware (EM-05 queda autorizado). Siguen vigentes las reglas de seguridad: trabajar en la rama `seguidor-caseroV2`, no tocar `main`, sin merges ni force push. **EM-07 resuelto:** el firmware vigente está en `v2/firmware/emergencia/` (adaptado del histórico, sección 6).
 
 ---
 
@@ -77,7 +77,7 @@ S3 es el bit más significativo y S0 el menos significativo (es el orden estánd
 3. Para cada sensor: poner S0–S3, esperar un instante corto a que el mux conmute, y leer `SIG` con el ADC.
 4. Apagar LED al terminar, si no se usan.
 
-El firmware histórico (`firmware/robot-casero/`) ya tiene una función de lectura con resta de luz ambiente, sobremuestreo y un parámetro de tiempo de encendido del emisor. Puede servir de referencia, pero solo después de resolver EM-07 (sección 6).
+El firmware vigente (`v2/firmware/emergencia/`, `hw.cpp`) hace esta secuencia con sobremuestreo y un tiempo de encendido del emisor ajustable (`t_emisor_us`).
 
 ### Orden físico
 En el esquema, SEN1 está a la izquierda y SEN8 a la derecha. **Confirmar con Alan** si ese orden coincide con la izquierda y la derecha reales del robot, porque depende de cómo se mire la barra. Cambiarlo en el código es fácil; equivocarse en la fila de sensores hace que el robot gire al revés.
@@ -114,7 +114,7 @@ El repositorio tiene `firmware/robot-casero/`, marcado como **HISTÓRICO** (`v2/
 | Motores AIN/BIN, `PIN_NSLEEP` | 19, 21, 22, 23, 16 | 19, 21, 22, 23, 16 | Coinciden |
 | Mux S0–S3, SIG, emisores, CAL, batería | 25, 26, 27, 33, 34, 13, 14, 36 | igual | Coinciden |
 
-Quien programe puede adaptar ese firmware o escribir uno nuevo; la tabla de la sección 2 manda sobre cualquier `config.h`. Conviene anotar en EM-07 qué base se eligió.
+**Base elegida (19 nov, EM-07): adaptar.** El firmware vigente es `v2/firmware/emergencia/` (`emergencia/emergencia.ino`). Aplica esta tabla y además quita nFAULT (no está conectado, P13) y la suma de la caída de D1 al medir la batería (en emergencia el divisor va directo a `VBAT_SW`). `firmware/robot-casero/` sigue sin cambios y es HISTÓRICO. La tabla de la sección 2 manda sobre cualquier `config.h`; `v2/firmware/emergencia/pruebas/verificar_pines.py` comprueba que coincidan con el esquema.
 
 ---
 
@@ -149,5 +149,6 @@ Quien programe puede adaptar ese firmware o escribir uno nuevo; la tabla de la s
 - Esquema: `robot_emergencia_unificado.kicad_sch` (y `.pdf`).
 - Conexiones del diseño V2 aprobado: `v2/docs/conexiones.md`.
 - Decisiones: `v2/docs/decisiones.md` (D-V2-05, D-V2-40 a D-V2-43).
-- Pendientes: `docs/pendientes-por-confirmar.md`, sección E (EM-01 a EM-07).
+- Pendientes: `docs/pendientes-por-confirmar.md`, sección E (EM-01 a EM-08).
+- Firmware vigente: `v2/firmware/emergencia/` (README con carga, consola y prueba física).
 - Compras y componentes: `README.md` de esta carpeta.
