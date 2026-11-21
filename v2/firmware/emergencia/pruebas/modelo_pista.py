@@ -26,6 +26,17 @@ PERFILES = {
 }
 
 
+def _num_sensores():
+    """NUM_SENSORES de emergencia/config.h: el modelo usa siempre la misma cantidad que el firmware."""
+    import pathlib
+    import re
+    txt = (pathlib.Path(__file__).resolve().parent.parent / "emergencia" / "config.h").read_text(encoding="utf-8")
+    return int(re.search(r"^#define\s+NUM_SENSORES\s+(\d+)", txt, re.M).group(1))
+
+
+N_SENSORES = _num_sensores()
+
+
 def ajustes(perfil, **extra):
     a = dict(BASE)
     a.update(PERFILES[perfil])
@@ -276,8 +287,8 @@ def simular(a, pista=None, ruido=40.0, picos=0.01, semilla=7, t_max=30.0, permit
     pista = pista or Pista()
     rng = random.Random(semilla)
     r_rueda, W, tau_real, dt, V = 0.014, 0.080, 0.05, 0.0025, 6.0
-    n = 8
-    xs = [(i - 3.5) * a["paso_mm"] for i in range(n)]
+    n = N_SENSORES                                           # de config.h (NUM_SENSORES)
+    xs = [(i - (n - 1) / 2.0) * a["paso_mm"] for i in range(n)]   # geometria_recta de posicion.cpp
     y_barra = 100.0
     fil = [Canal() for _ in range(n)]
     ctl = Control(a)

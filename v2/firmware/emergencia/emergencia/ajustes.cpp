@@ -24,7 +24,7 @@ static const EntradaAjuste TABLA[] = {
     E(inv_der, 0.0f, 1.0f, "1 = invierte motor derecho"), E(cruzar, 0.0f, 1.0f, "1 = intercambia motores izq/der"),
     E(lento, 0.0f, 1.0f, "1 = decaimiento lento, 0 = rapido"),
     // sensores
-    E(inv_sens, 0.0f, 1.0f, "1 = SEN1 a la derecha"), E(mascara, 1.0f, 255.0f, "bits de sensores en uso"),
+    E(inv_sens, 0.0f, 1.0f, "1 = SEN1 a la derecha"), E(mascara, 1.0f, (float)MASCARA_TODOS, "bits de sensores en uso (63 = los 6)"),
     E(paso_mm, 5.0f, 30.0f, "mm entre sensores"), E(alfa, 0.05f, 1.0f, "pasa-bajas (1 = sin filtro)"),
     E(sobremuestreo, 1.0f, 4.0f, "lecturas ADC promediadas"), E(descartes, 0.0f, 3.0f, "lecturas tiradas al cambiar canal"),
     E(t_emisor_us, 20.0f, 1000.0f, "us tras prender/apagar los LED IR"), E(t_mux_us, 1.0f, 100.0f, "us tras cambiar el canal"),
@@ -62,7 +62,7 @@ bool coherente(const Ajustes& a, const char** motivo) {
   if (!(a.bat_critica < a.bat_baja)) m = "bat_critica debe ser menor que bat_baja";
   else if (!es_bit(a.inv_izq) || !es_bit(a.inv_der) || !es_bit(a.cruzar) || !es_bit(a.lento) || !es_bit(a.inv_sens))
     m = "inv_izq, inv_der, cruzar, lento e inv_sens solo valen 0 o 1";
-  else if (a.mascara != static_cast<float>(static_cast<int>(a.mascara))) m = "mascara debe ser entera (1..255)";
+  else if (a.mascara != static_cast<float>(static_cast<int>(a.mascara))) m = "mascara debe ser entera (1..63)";
   else if (a.sobremuestreo != static_cast<float>(static_cast<int>(a.sobremuestreo)) ||
            a.descartes != static_cast<float>(static_cast<int>(a.descartes)))
     m = "sobremuestreo y descartes deben ser enteros";
@@ -82,7 +82,8 @@ bool fijar(Ajustes& a, const char* nombre, float v) {
   return true;
 }
 
-// Perfiles [S]: simulación en lazo cerrado (curvas de 200–600 mm, 8 sensores a 12.7 mm, N20 de 1000 rpm [E]).
+// Perfiles [S]: simulación en lazo cerrado (curvas de 200–600 mm con 8 sensores; pista recta → R150 → R200 con 6
+// sensores en pruebas/modelo_pista.py; paso 12.7 mm, N20 de 1000 rpm [E]).
 // El robot real puede necesitar otros valores: se parte de aquí y se ajusta con `set`.
 // v_recta [S] (turbo, v2.1): elegido con pruebas/modelo_pista.py (pista recta → R150 → recta → R200, 5 semillas de
 // ruido): normal 0.42 = vuelta −7 % con el mismo desvío; rápido 0.55 = −3 % y +0.5 mm (0.60 ya sube 1.3 mm y 0.65
@@ -152,7 +153,7 @@ ParamControl a_control(const Ajustes& a, const Turbo& t) {
   return p;
 }
 
-uint32_t mascara(const Ajustes& a) { return static_cast<uint32_t>(a.mascara) & 0xFFu; }
+uint32_t mascara(const Ajustes& a) { return static_cast<uint32_t>(a.mascara) & MASCARA_TODOS; }
 
 uint32_t crc32(const void* datos, size_t n) {
   const uint8_t* p = static_cast<const uint8_t*>(datos);
@@ -173,6 +174,23 @@ void sellar(Guardado& g) {
 bool valido(const Guardado& g) {
   return g.magia == MAGIA && g.version == VERSION && g.crc == crc32(&g, offsetof(Guardado, crc)) &&
          g.n_cal >= 0 && g.n_cal <= MAX_CAL && coherente(g.a, nullptr);
+}
+
+bool adaptar_a_sensores(Guardado& g, int n) {
+  const uint32_t todos = (n >= 32) ? 0xFFFFFFFFu : ((1u << n) - 1u);
+  bool cambio = false;
+  if (g.n_cal != n) {                       // calibración de otra barra: no se reutiliza
+    g.n_cal = 0;
+    for (int i = 0; i < MAX_CAL; ++i) g.cal_min[i] = g.cal_max[i] = 0.0f;
+    g.a.mascara = static_cast<float>(todos);
+    cambio = true;
+  }
+  const uint32_t m = static_cast<uint32_t>(g.a.mascara);
+  if ((m & ~todos) != 0u || (m & todos) == 0u) {   // bits de sensores que ya no existen, o ninguno activo
+    g.a.mascara = static_cast<float>((m & todos) ? (m & todos) : todos);
+    cambio = true;
+  }
+  return cambio;
 }
 
 // ---- turbo

@@ -49,6 +49,9 @@ Alimentación del DevKit: pin 15 (5V) y pin 16 (3V3), GND en el pin 14 y 17.
 
 ## 3. Sensores: 8 TCRT5000 con el multiplexor CD74HC4067
 
+> **Montaje vigente: 6 sensores (equipo, 21 nov 2026).** El firmware usa SEN1–SEN6 en C0–C5; C6–C15 no se leen. SEN7/SEN8 (C6/C7) siguen dibujados en el esquema y en esta guía, pero no se montan: actualizar el esquema es el pendiente EM-09. El mux y sus pines no cambian.
+
+
 ### Conexiones
 - Cada sensor `SEN n` entra al canal **C(n−1)** del mux. Es decir: SEN1 → C0, …, SEN8 → C7. C8–C15 no se usan.
 - El mux recibe `S0–S3` del ESP32 y devuelve la lectura por `SIG` (GPIO34).
@@ -110,7 +113,7 @@ El repositorio tiene `firmware/robot-casero/`, marcado como **HISTÓRICO** (`v2/
 |---|---|---|---|
 | START | GPIO4 | GPIO18 | Cambiar a GPIO4 |
 | Zumbador (`PIN_ZUMBADOR` GPIO4, `CANAL_ZUMB`) | no existe | GPIO4 | **Quitarlo** (también su código en indicadores/motor si lo usan) |
-| `NUM_SENSORES` (modo mux) | 8 | 12 | Cambiar a 8 (canales C0–C7) |
+| `NUM_SENSORES` (modo mux) | 8 (montaje vigente: **6**, C0–C5) | 12 | El firmware vigente usa 6 (canales C0–C5) |
 | Motores AIN/BIN, `PIN_NSLEEP` | 19, 21, 22, 23, 16 | 19, 21, 22, 23, 16 | Coinciden |
 | Mux S0–S3, SIG, emisores, CAL, batería | 25, 26, 27, 33, 34, 13, 14, 36 | igual | Coinciden |
 

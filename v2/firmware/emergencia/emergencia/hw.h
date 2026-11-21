@@ -10,7 +10,7 @@ void iniciar();   // primero deja el DRV8833 dormido y las 4 entradas del puente
 // ---- sensores
 struct ConfigLectura {
   bool resta_ambiente = true;
-  bool invertidos = false;     // true: el sensor lógico 0 (izquierda) es SEN8 (C7)
+  bool invertidos = false;     // true: el sensor lógico 0 (izquierda) es el último (SEN6, C5)
   uint32_t t_emisor_us = 150;  // espera tras prender/apagar los LED IR
   uint32_t t_mux_us = 5;       // espera tras cambiar el canal
   int sobremuestreo = 2;       // lecturas promediadas por canal (1..4)

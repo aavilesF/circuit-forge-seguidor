@@ -57,7 +57,7 @@ void iniciar() {
 void emisores(bool on) { digitalWrite(PIN_EMISORES, on ? HIGH : LOW); emis_on = on; }
 bool emisores_encendidos() { return emis_on; }
 
-// Solo se escriben los bits de selección que cambian (de C0 a C7, S3 no se toca nunca).
+// Solo se escriben los bits de selección que cambian (de C0 a C5, S3 no se toca nunca).
 void seleccionar_canal(int canal, uint32_t t_mux_us) {
   canal &= 0x0F;
   if (canal == canal_actual) return;

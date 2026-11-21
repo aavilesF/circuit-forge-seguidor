@@ -42,7 +42,7 @@ struct Ajustes {
   float lento = 1.0f;          // 1 = decaimiento lento (freno entre pulsos; más lineal), 0 = rápido
   // ---- sensores
   float inv_sens = SENSORES_INVERTIDOS;   // 1 = SEN1 está a la DERECHA [P]
-  float mascara = 255.0f;      // bits de sensores en uso (1 = izquierda … 128 = derecha); ej. 239 ignora el 5.º
+  float mascara = (float)MASCARA_TODOS;   // bits de sensores en uso (1 = izquierda … 32 = derecha); ej. 47 ignora el 5.º
   float paso_mm = PASO_SENSORES_MM;       // separación entre sensores [P]
   float alfa = 0.6f;           // pasa-bajas (1 = sin filtro)
   float sobremuestreo = 2.0f;  // lecturas del ADC promediadas por canal y ciclo (1..4)
@@ -93,6 +93,12 @@ constexpr uint32_t VERSION = 2;           // 2: parámetros de sensores, arranqu
 uint32_t crc32(const void* datos, size_t n);
 void sellar(Guardado& g);                 // pone magia, versión y CRC
 bool valido(const Guardado& g);
+
+// Compatibilidad con lo guardado por un firmware con OTRA cantidad de sensores (p. ej. la versión de 8): el formato
+// de "g" es el mismo, así que los ajustes (inversiones, PID, batería, etc.) se conservan; pero si g.n_cal != n la
+// calibración no sirve (los índices de sensor cambiaron): se descarta (n_cal = 0, hay que recalibrar) y la máscara
+// vuelve a "todos". También recorta una máscara con bits fuera de los n sensores. Devuelve true si descartó algo.
+bool adaptar_a_sensores(Guardado& g, int n);
 
 // ---- Turbo de recta (v2.1). Se guarda en su PROPIA clave de memoria ("t"): el bloque "g" (Ajustes, inversiones y
 // calibración) no cambia de formato, así que lo ya guardado sigue siendo válido sin migración. Si "t" no existe o

@@ -1,11 +1,11 @@
-// Robot de EMERGENCIA (placa perforada, D-V2-40) · ESP32 DevKit 30 pines + DRV8833 + 2 × N20 6 V + 8 TCRT5000 con
+// Robot de EMERGENCIA (placa perforada, D-V2-40) · ESP32 DevKit 30 pines + DRV8833 + 2 × N20 6 V + 6 TCRT5000 con
 // CD74HC4067. Hardware: v2/electronica/prototipo-emergencia/GUIA-FIRMWARE.md y robot_emergencia_unificado.kicad_sch.
 //
 // Base (EM-07): lógica probada en PC (posición, PID, control, filtro, motor) del firmware histórico, adaptada al
-// hardware vigente: 8 sensores por mux, START en GPIO4, sin zumbador, sin ventilador, sin nFAULT, batería medida
+// hardware vigente: 6 sensores por mux (C0..C5), START en GPIO4, sin zumbador, sin ventilador, sin nFAULT, batería medida
 // directo (sin diodo) y motores a +6V_MOT (MP1584 U2).
 //
-// Ciclo de control a 400 Hz: leer 8 sensores (luz ambiente restada, sobremuestreo, mediana + pasa-bajas) →
+// Ciclo de control a 400 Hz: leer los 6 sensores (luz ambiente restada, sobremuestreo, mediana + pasa-bajas) →
 // posición de la línea → PID con freno en curva, retención en huecos y búsqueda → tope de PWM, rampas y límite de
 // corriente → DRV8833 en decaimiento lento.
 //
@@ -29,7 +29,7 @@
 
 using namespace robot;
 
-static const char* VERSION_FW = "emergencia 2.1 (20 nov 2026)";
+static const char* VERSION_FW = "emergencia 2.2, 6 sensores (21 nov 2026)";
 
 static Ajustes aj;
 static Turbo tb;                       // turbo de recta: clave de memoria propia ("t")
@@ -42,7 +42,7 @@ static bool cal_valida = false;
 static filtro::Arreglo filt;
 static Preferences nvs;
 static hw::ConfigLectura cfg_lect;
-static uint32_t mask = 0xFFu;
+static uint32_t mask = MASCARA_TODOS;
 static bool inv_aplicado = SENSORES_INVERTIDOS != 0;
 
 static int crudo_on[par::MAX_SENSORES], crudo_off[par::MAX_SENSORES];
@@ -121,6 +121,10 @@ static bool cargar() {                    // ajustes y calibración se guardan j
   const bool ok = nvs.getBytesLength("g") == sizeof(g) && nvs.getBytes("g", &g, sizeof(g)) == sizeof(g) && valido(g);
   nvs.end();
   if (!ok) return false;
+  const int n_guardado = g.n_cal;
+  if (adaptar_a_sensores(g, NUM_SENSORES))   // p. ej. datos del firmware de 8 sensores: ajustes sí, calibración no
+    Serial.printf("AVISO: calibracion guardada de %d sensores descartada (ahora %d): RECALIBRAR. Se conservan "
+                  "inversiones y demas ajustes; mascara = todos\n", n_guardado, NUM_SENSORES);
   aj = g.a;
   inv_aplicado = aj.inv_sens > 0.5f;      // la calibración guardada ya está en el orden de estos ajustes
   cal.reiniciar(NUM_SENSORES);
@@ -423,7 +427,7 @@ static void imprimir_monitor() {
 static void ayuda() {
   Serial.println("--- informacion:  ver | pines | estado | perf");
   Serial.println("--- ajustes:      get [clave] | rangos | set <clave> <valor> | save | load | defecto | perfil seguro|normal|rapido");
-  Serial.println("--- sensores:     sens | crudo | sensor <1-8> | canal <0-15> | mux <0-15>|off | emis 0|1 | mon sens|crudo|pos|bat|bot");
+  Serial.println("--- sensores:     sens | crudo | sensor <1-6> | canal <0-15> | mux <0-15>|off | emis 0|1 | mon sens|crudo|pos|bat|bot");
   Serial.println("--- calibracion:  calibrar (igual que CAL) | autocal (gira solo sobre la linea) | cal (ver resultado)");
   Serial.println("--- motores:      m <izq> <der> [ms]  (-1..1, RUEDAS EN EL AIRE) | stop");
   Serial.println("--- otros:        botones | bat | tel 0|1 | reiniciar");
@@ -506,7 +510,7 @@ static void ejecutar(char* l) {
   else if (!strcmp(c, "calibrar")) cal_consola = true;
   else if (!strcmp(c, "autocal")) autocalibrar();
   else if (!strcmp(c, "sensor")) {
-    if (!util::leer_int(a1, 1, NUM_SENSORES, &ia)) Serial.printf("uso: sensor <1-%d>   (SEN1 = C0 ... SEN8 = C7)\n", NUM_SENSORES);
+    if (!util::leer_int(a1, 1, NUM_SENSORES, &ia)) Serial.printf("uso: sensor <1-%d>   (SEN1 = C0 ... SEN%d = C%d)\n", NUM_SENSORES, NUM_SENSORES, NUM_SENSORES - 1);
     else diag_canal(ia - 1, true);
   } else if (!strcmp(c, "canal")) {
     if (!util::leer_int(a1, 0, 15, &ia)) Serial.println("uso: canal <0-15>");

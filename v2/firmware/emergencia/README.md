@@ -1,8 +1,8 @@
-# Firmware del prototipo de EMERGENCIA — versión 2.1 (vigente)
+# Firmware del prototipo de EMERGENCIA — versión 2.2 (vigente)
 
-**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC (última ejecución exitosa; la repetición posterior quedó bloqueada por Windows, sección 9). La versión 2.1 agrega un **turbo de recta** opcional, apagado de fábrica (sección 6.1): sus pruebas en C++ solo compilaron y lo valida un modelo en Python. **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
+**Estado (20 nov 2026):** completo, compilado sin advertencias propias para **ESP32 Dev Module** con arduino-esp32 **3.3.12** y **2.0.17**, y con **1773/1773** comprobaciones en PC (última ejecución exitosa; la repetición posterior quedó bloqueada por Windows, sección 9). La versión 2.2 trabaja con **6 sensores** (SEN1–SEN6 en C0–C5; sección 9). La versión 2.1 agregó un **turbo de recta** opcional, apagado de fábrica (sección 6.1): sus pruebas en C++ solo compilaron y lo valida un modelo en Python. **Todavía no se ha cargado en el robot.** Todo lo que depende del montaje real se ajusta por consola, sin recompilar (sección 4).
 
-**Hardware (no cambia):** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V sin encoder, 8 TCRT5000 con CD74HC4067, MP1584 a 5 V (lógica y sensores) y MP1584 a 6 V (motores), botones START y CAL, y medición de batería. **No hay** zumbador, ventilador ni `nFAULT`.
+**Hardware (no cambia):** ESP32 DevKit de 30 pines, DRV8833, 2 motores N20 de 6 V sin encoder, **6 TCRT5000** con CD74HC4067 (SEN1–SEN6 en C0–C5; C6–C15 sin usar), MP1584 a 5 V (lógica y sensores) y MP1584 a 6 V (motores), botones START y CAL, y medición de batería. **No hay** zumbador, ventilador ni `nFAULT`.
 
 **Fuente de verdad:** [`GUIA-FIRMWARE.md`](../../electronica/prototipo-emergencia/GUIA-FIRMWARE.md) y `robot_emergencia_unificado.kicad_sch`. `pruebas/verificar_pines.py` comprueba que `config.h` coincide con el esquema.
 
@@ -99,7 +99,7 @@ Si Windows responde "Una directiva de Control de aplicaciones bloqueó este arch
 | | `save` / `load` / `defecto` | Guardar ajustes y calibración / recargar / volver a fábrica |
 | Sensores | `sens` | Oscuridad 0–1 de izquierda a derecha, posición (mm, + = derecha) y cuántos están negros |
 | | `crudo` | ADC con LED encendidos y apagados, y la diferencia (grande = blanco) |
-| | `sensor <1-8>` | Prueba un TCRT5000 (SENn = canal Cn−1) con LED encendido y apagado, con diagnóstico |
+| | `sensor <1-6>` | Prueba un TCRT5000 (SENn = canal Cn−1, de C0 a C5) con LED encendido y apagado, con diagnóstico |
 | | `canal <0-15>` | Lo mismo por canal del mux |
 | | `mux <0-15>` / `mux off` | Deja el mux fijo para medir SIG (GPIO34) con multímetro |
 | | `emis 1` / `emis 0` | LED IR encendidos fijos (se ven con la cámara del celular) |
@@ -149,7 +149,7 @@ Se cambian con `set <clave> <valor>`, se ven con `rangos` y quedan guardados con
 | `lento` | 1 | 0 – 1 | 1 = decaimiento lento (más lineal), 0 = rápido |
 | **Sensores** | | | |
 | `inv_sens` [P] | 0 | 0 – 1 | 1 = SEN1 está a la derecha. Al cambiarlo, la calibración se espeja sola |
-| `mascara` [P] | 255 | 1 – 255 | Sensores en uso: bit 1 = el de la izquierda … bit 128 = el de la derecha (239 ignora el 5.º) |
+| `mascara` [P] | 63 | 1 – 63 | Sensores en uso: bit 1 = el de la izquierda … bit 32 = el de la derecha (47 ignora el 5.º) |
 | `paso_mm` [P] | 12.7 | 5 – 30 | mm entre sensores |
 | `alfa` | 0.6 | 0.05 – 1 | Pasa-bajas (1 = sin filtro) |
 | `sobremuestreo` / `descartes` | 2 / 1 | 1 – 4 / 0 – 3 | Lecturas ADC promediadas / descartadas al cambiar de canal |
@@ -181,9 +181,9 @@ Cada paso dice qué debe salir. Si algo no coincide, paren y revisen el cableado
 2. `ver` → `arduino-esp32 3.x` o `2.0.17`, `CPU 240 MHz`, `watchdog activo`.
 3. `estado` → `bateria=0.00 V (solo USB)`, `cal=NO`.
 4. `botones`, oprimiendo y soltando cada botón → `START=OPRIMIDO` / `CAL=OPRIMIDO`. También pueden usar `mon bot` y probar en vivo.
-5. `emis 1` → con la cámara del celular se ven los 8 LED IR encendidos. `emis 0` para terminar.
-6. Pongan la barra sobre **blanco**: `sensor 1` … `sensor 8`, uno por uno. Cada uno debe dar `dif` de varios cientos o más. Sobre **negro**, `dif` debe ser pequeña. Si dice "SIG casi en 0", revisen el pull-up de 10 kΩ. Si dice "casi sin reflejo" sobre blanco, revisen el LED, su 220 Ω o la altura de la barra.
-7. `crudo` sobre blanco: los 8 valores de `dif` deben ser parecidos. Uno muy distinto indica un sensor mal soldado o torcido. Si uno está dañado, se puede ignorar con la máscara: `set mascara 239` ignora el 5.º.
+5. `emis 1` → con la cámara del celular se ven los 6 LED IR encendidos. `emis 0` para terminar.
+6. Pongan la barra sobre **blanco**: `sensor 1` … `sensor 6`, uno por uno. Cada uno debe dar `dif` de varios cientos o más. Sobre **negro**, `dif` debe ser pequeña. Si dice "SIG casi en 0", revisen el pull-up de 10 kΩ. Si dice "casi sin reflejo" sobre blanco, revisen el LED, su 220 Ω o la altura de la barra.
+7. `crudo` sobre blanco: los 6 valores de `dif` deben ser parecidos. Uno muy distinto indica un sensor mal soldado o torcido. Si uno está dañado, se puede ignorar con la máscara: `set mascara 47` ignora el 5.º.
 8. **Orden de los sensores:** `mon pos` y muevan una tira negra de **izquierda a derecha** bajo la barra (mirando el robot desde atrás). `pos` debe ir de **negativo a positivo**. Si va al revés: `set inv_sens 1`. Antes de calibrar `pos` puede no aparecer; si no aparece, usen `crudo` y vean qué columna cambia: la 1.ª columna debe ser la de la izquierda.
 
 **B. Con batería (KCD1 encendido) y RUEDAS EN EL AIRE**
@@ -208,9 +208,9 @@ Cada paso dice qué debe salir. Si algo no coincide, paren y revisen el cableado
 
 ## 6. Valores iniciales y cómo ir más rápido
 
-Los valores salen de la simulación [S]: curvas de 200 a 600 mm, 8 sensores a 12.7 mm y un N20 **supuesto** de 1000 rpm con ruedas de 28 mm. Con otro N20 las velocidades en m/s cambian, pero el orden de los pasos es el mismo.
+Los valores salen de la simulación [S]: curvas de 200 a 600 mm con la barra de 8 sensores (C++, columna de la tabla), y la pista recta → R150 → R200 con **6 sensores** (modelo Python, sección 6.1); paso 12.7 mm y un N20 **supuesto** de 1000 rpm con ruedas de 28 mm. Con otro N20 las velocidades en m/s cambian, pero el orden de los pasos es el mismo.
 
-| Perfil | `vbase` | `v_recta` (turbo) | `pwm_max` | `rampa` / `rampa_freno` | `kp` | `kd` | `freno` | Simulación en círculos (desvío / velocidad) |
+| Perfil | `vbase` | `v_recta` (turbo) | `pwm_max` | `rampa` / `rampa_freno` | `kp` | `kd` | `freno` | Círculos con 8 sensores, versión anterior (desvío / velocidad) |
 |---|---|---|---|---|---|---|---|---|
 | **seguro** (fábrica) | 0.25 | apagado | 0.80 | 4 / 8 | 0.010 | 0.0004 | 0.30 | 5.1 mm / ~0.30 m/s |
 | **normal** | 0.35 | 0.42 | 0.90 | 6 / 12 | 0.010 | 0.0004 | 0.30 | 6.0 mm / ~0.46 m/s |
@@ -245,13 +245,13 @@ Sin encoders: decide solo con los sensores (error, confianza y derivada del erro
 - **Histéresis:** entrar es más estricto que seguir; con 3–6 mm de error no entra, pero si ya estaba en recta, sigue.
 - **No toca** el PID, el PWM máximo, las rampas, el límite de corriente, el watchdog, las paradas, la búsqueda, las inversiones ni la calibración.
 
-**Modelo de pista** (`pruebas/modelo_pista.py`: recta 1 m → R150 → recta 0.6 m → R200 → recta 0.6 m, ruido de sensores y picos; N20 de 1000 rpm supuesto):
+**Modelo de pista con 6 sensores** (`pruebas/modelo_pista.py`: recta 1 m → R150 → recta 0.6 m → R200 → recta 0.6 m, ruido de sensores y picos; N20 de 1000 rpm supuesto):
 
 | Perfil | Vuelta sin / con turbo | Desvío máx. sin / con | Velocidad al entrar a R150 | El turbo se cancela, dentro de la curva | Pérdidas de línea |
 |---|---|---|---|---|---|
-| seguro | 9.55 s / (apagado) | 6.3 mm | 0.32 m/s | — | 0 |
-| normal (`v_recta` 0.42) | 6.16 s / **5.73 s (−7 %)** | 8.1 / 8.1 mm | 0.50 → 0.60 m/s | 43 mm (R150), 68 mm (R200) | 0 |
-| rápido (`v_recta` 0.55) | 4.00 s / **3.88 s (−3 %)** | 8.8 / 9.3 mm | 0.79 → 0.87 m/s | 45 mm, 71 mm | 0 |
+| seguro | 9.55 s / (apagado) | 6.2 mm | 0.32 m/s | — | 0 |
+| normal (`v_recta` 0.42) | 6.16 s / **5.72 s (−7 %)** | 8.1 / 8.1 mm | 0.50 → 0.60 m/s | 50 mm (R150), 67 mm (R200) | 0 |
+| rápido (`v_recta` 0.55) | 4.00 s / **3.88 s (−3 %)** | 8.8 / 9.4 mm | 0.79 → 0.87 m/s | 54 mm, 70 mm | 0 |
 
 - **Por qué la cancelación dentro de la curva es aceptable:** la barra va 100 mm por delante del eje, así que cancelar a < 100 mm de la entrada frena antes de que el eje llegue a la curva.
 - **Cómo se eligieron los valores** (barrido con 5 semillas de ruido): en normal, más de 0.45 empieza a subir el desvío; en rápido, 0.60 sube 1.3 mm y 0.65 satura las ruedas.
@@ -275,7 +275,7 @@ Si se sale o aparece RECUPERACIÓN, bajen `v_recta` 0.03 o suban `recta_t_conf`.
 ## 7. Cómo funciona
 
 **Ciclo de control (400 Hz):**
-1. **Lectura:** LED IR apagados → los 8 canales (luz ambiente); LED encendidos → los 8 canales. En cada canal: espera del mux, `descartes` lecturas tiradas y `sobremuestreo` lecturas promediadas. Solo se escriben los bits S0–S2 que cambian; S3 queda fijo en 0.
+1. **Lectura:** LED IR apagados → los 6 canales C0–C5 (luz ambiente); LED encendidos → los mismos 6 canales. En cada canal: espera del mux, `descartes` lecturas tiradas y `sobremuestreo` lecturas promediadas. Solo se escriben los bits S0–S2 que cambian; S3 queda fijo en 0.
 2. **Tratamiento:** reflectancia = apagados − encendidos (sin luz ambiente), luego mediana de 3 + pasa-bajas por sensor, normalización con la calibración (0 = blanco, 1 = negro) y la máscara.
 3. **Posición:** promedio ponderado (mm, + = derecha).
 4. **Control:** PID con anti-windup y derivada filtrada, freno proporcional al error en curva, retención en huecos (`t_ret`), búsqueda girando hacia el último lado visto (`t_busq`) y, si está activo, turbo de recta (sección 6.1).
@@ -379,10 +379,32 @@ La compilación confirma que el watchdog usa la API correcta en cada núcleo: `e
 
 Compilan con `-Werror`, pero Windows volvió a bloquear el `.exe` (código 126). La 1773/1773 no las incluye. Los cálculos de la tabla de batería se hicieron a mano con los mismos valores.
 
+### Cambio a 6 sensores (versión 2.2, 21 nov 2026)
+**Montaje asumido por el equipo:**
+- SEN1 → C0 … SEN6 → C5, con SEN1 a la izquierda y SEN6 a la derecha.
+- C6–C15 no se usan.
+- No cambian el mux ni sus pines (S0 = 25, S1 = 26, S2 = 27, S3 = 33, SIG = 34, EMIT_EN = 13), ni los motores, la batería, el PID, el turbo, el watchdog, las paradas o la consola.
+
+| Qué | Detalle |
+|---|---|
+| Firmware | `NUM_SENSORES = 6` y `MASCARA_TODOS = 63` (`config.h`). El barrido, los filtros, la calibración, la máscara, la geometría (x = ±6.35, ±19.05, ±31.75 mm con paso 12.7) y "todo negro" usan `NUM_SENSORES` |
+| Memoria | El bloque guardado no cambia de formato. Si lo guardado trae una calibración de otra cantidad de sensores (la versión de 8), al arrancar avisa `AVISO: calibracion guardada de 8 sensores descartada (ahora 6): RECALIBRAR`. **Se conservan** inversiones, PID, batería y demás ajustes, y la máscara vuelve a 63 (`adaptar_a_sensores`). El turbo no se toca |
+| Pendiente de medir [P] | `paso_mm` (12.7 supuesto, igual que la barra de 8) y el orden físico (`inv_sens`). Ambos se ajustan por consola |
+| Esquema | Todavía dibuja SEN7/SEN8 en C6/C7 (D-V2-41). `verificar_pines.py` lo reporta como aviso: el firmware no los lee. Actualizarlo es el pendiente EM-09 |
+
+**Evidencia:**
+
+| Prueba | Resultado |
+|---|---|
+| `verificar_pines.py` | Exactamente 6 sensores, SEN1..SEN6 en C0..C5 según el esquema; el barrido no lee C6..C15; pines y mux iguales |
+| Modelo Python con 6 sensores (lee `NUM_SENSORES` de `config.h`) | **Ejecutado, todo OK**: los 3 perfiles, con y sin turbo, completan la pista sin perder la línea (también la R150); desvío máx. 6.2 / 8.1 / 9.4 mm, prácticamente igual que con 8. Tras borrar la línea 120 ms, el perfil normal buscó 2 veces y terminó |
+| Pruebas C++ (`prueba_seis_sensores` y las demás, con `N = NUM_SENSORES`) | **Solo compiladas** con `-Werror` (Windows bloquea el `.exe`; sin WSL). **No cuentan como aprobadas** |
+| `pio run -e esp32dev` y `-e esp32dev_nucleo2` | Compilan sin advertencias propias |
+
 ### Turbo de recta (versión 2.1): qué se ejecutó y qué no
 | Evidencia | Estado |
 |---|---|
-| Pruebas C++ anteriores (`test_emergencia.cpp`, 20 nov 07:14) | **1773/1773 ejecutadas**, sin el turbo |
+| Pruebas C++ anteriores (`test_emergencia.cpp`, 20 nov 07:14) | **1773/1773 ejecutadas**, sin el turbo y con 8 sensores |
 | Pruebas C++ nuevas del turbo (`prueba_turbo_control`, `prueba_turbo_ajustes`, `prueba_pista`) | **Solo compiladas** con `-Werror`. Windows bloquea el `.exe` y WSL no está instalado. **No cuentan como aprobadas** |
 | Modelo Python (`pruebas/modelo_pista.py`) | **Ejecutado, todas sus comprobaciones OK**. Es un puerto 1:1 de la lógica; antes de simular comprueba que 10 constantes del turbo, 31 ajustes y los 3 perfiles coinciden con `control.h`, `ajustes.h` y `ajustes.cpp` |
 | Compilación `esp32dev` y `esp32dev_nucleo2` | Sin advertencias propias |

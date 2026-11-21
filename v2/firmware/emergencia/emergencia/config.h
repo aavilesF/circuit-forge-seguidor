@@ -5,8 +5,11 @@
 // Marcas: [V] verificado en ficha/esquema · [C] calculado · [E] estimado · [P] pendiente de medir en el robot.
 #pragma once
 
-// ============================================================ sensores: 8 TCRT5000 por el CD74HC4067 (D-V2-41)
-#define NUM_SENSORES 8          // SEN1..SEN8 en los canales C0..C7 del mux; C8..C15 sin usar [V esquema]
+// ============================================================ sensores: 6 TCRT5000 por el CD74HC4067
+// Montaje vigente (equipo, 21 nov 2026): SEN1..SEN6 en C0..C5; C6..C15 NO se usan. El esquema unificado todavía dibuja
+// SEN7/SEN8 en C6/C7 (D-V2-41, 8 sensores): pendiente de actualizar el esquema (EM-09). Mux y pines no cambian.
+#define NUM_SENSORES 6          // SEN1..SEN6 en los canales C0..C5 del mux
+#define MASCARA_TODOS ((1u << NUM_SENSORES) - 1u)   // 0b111111 = 63: los 6 sensores en uso
 #define PIN_MUX_S0 25           // DevKit pin 8  [V esquema]
 #define PIN_MUX_S1 26           // DevKit pin 9  [V esquema]
 #define PIN_MUX_S2 27           // DevKit pin 10 [V esquema]
@@ -19,10 +22,10 @@
 
 // ---- Valores INICIALES de lo que depende del montaje real. Todos se cambian sin recompilar con
 // `set <clave> <valor>` + `save` (la clave va entre corchetes). Cambiarlos aquí solo cambia los de fábrica.
-// Orden físico [inv_sens]: en el esquema SEN1 está a la izquierda y SEN8 a la derecha; FALTA confirmarlo con la
-// barra montada (GUIA, sección 3) [P]. Con la línea bajo el lado DERECHO, `sens` debe dar pos > 0; si no, `set inv_sens 1`.
+// Orden físico [inv_sens]: SEN1 a la izquierda y SEN6 a la derecha (equipo); FALTA confirmarlo con la barra montada
+// [P]. Con la línea bajo el lado DERECHO, `sens` debe dar pos > 0; si no, `set inv_sens 1`.
 #define SENSORES_INVERTIDOS 0
-#define PASO_SENSORES_MM 12.7f    // [paso_mm] 5 agujeros de placa perforada (README del prototipo) [P medir]
+#define PASO_SENSORES_MM 12.7f    // [paso_mm] 5 agujeros de placa perforada, como la barra de 8 [P: medir la barra de 6]
 #define DIST_SENSOR_EJE_MM 100.0f // solo informativo (la posición usa x); medir en el chasis armado (EM-06) [P]
 #define MUX_ASENTAMIENTO_US 5     // [t_mux_us] espera tras cambiar S0..S3 [E: el CD74HC4067 conmuta en < 1 µs]
 #define MOTOR_IZQ_INVERTIDO 0     // [inv_izq] [P] verificar con `m 0.3 0` (ruedas en el aire)

@@ -23,6 +23,7 @@ RED_A_MACRO = {
     "EMIT_EN": "PIN_EMISORES", "START": "PIN_START", "CAL": "PIN_CAL", "VBAT_SENSE": "PIN_BATERIA",
     "DRV_SLEEP": "PIN_NSLEEP", "AIN1": "PIN_AIN1", "AIN2": "PIN_AIN2", "BIN1": "PIN_BIN1", "BIN2": "PIN_BIN2",
 }
+SENSORES_ESPERADOS = 6   # montaje vigente (equipo, 21 nov 2026): SEN1..SEN6 en C0..C5
 PROHIBIDAS = ["PIN_ZUMBADOR", "PIN_NFAULT", "PIN_VENTILADOR", "PIN_FAN", "CANAL_ZUMB"]
 INCLUDES_PROHIBIDOS = ["WiFi.h", "BluetoothSerial.h", "BLEDevice.h", "esp_wifi.h", "esp_bt.h", "esp_now.h"]
 RESIDUOS = ["PIN_ZUMBADOR", "CANAL_ZUMB", "zumbador", "zumb_activo", "PIN_NFAULT", "usar_nfault", "driver_falla",
@@ -61,6 +62,7 @@ def macros(texto: str) -> dict:
 
 def main() -> int:
     errores = []
+    avisos = []
     esq = ESQ.read_text(encoding="utf-8")
     patas = gpio_por_pata(esq)
     netlist = json.loads(ESPERADO.read_text(encoding="utf-8"))
@@ -92,13 +94,26 @@ def main() -> int:
     pata_led = next((p for p, g in patas.items() if g == int(cfg.get("PIN_LED", -1))), None)
     if pata_led is not None and pata_led not in nc:
         errores.append(f"PIN_LED (GPIO{cfg['PIN_LED']}) está conectado en el esquema (pata {pata_led})")
-    # canales del mux: SEN1..SEN8 en C0..C7
+    # sensores: exactamente 6, SEN1..SEN6 en C0..C5 (montaje del equipo, 21 nov); C6..C15 sin usar por el firmware
+    n_sens = int(cfg.get("NUM_SENSORES", 0))
+    if n_sens != SENSORES_ESPERADOS:
+        errores.append(f"NUM_SENSORES = {n_sens}; el montaje vigente usa {SENSORES_ESPERADOS} (SEN1..SEN6 en C0..C5)")
+    canales_esq = {}
     for ref, pata, red in netlist["esperado"]:
         if ref == "U4" and pata.startswith("C") and pata[1:].isdigit():
-            if red != f"SEN{int(pata[1:]) + 1}":
-                errores.append(f"mux {pata} -> {red} (se esperaba SEN{int(pata[1:]) + 1})")
-    if int(cfg.get("NUM_SENSORES", 0)) != sum(1 for r, p, _ in netlist["esperado"] if r == "U4" and p[:1] == "C"):
-        errores.append("NUM_SENSORES no coincide con los canales conectados del mux")
+            canales_esq[int(pata[1:])] = red
+    for c in range(SENSORES_ESPERADOS):   # los que usa el firmware deben existir en el esquema, en orden
+        if canales_esq.get(c) != f"SEN{c + 1}":
+            errores.append(f"mux C{c} -> {canales_esq.get(c)} en el esquema (el firmware espera SEN{c + 1})")
+    extra = sorted(c for c in canales_esq if c >= SENSORES_ESPERADOS)
+    if extra:   # informativo: el esquema todavía dibuja la barra de 8 (EM-09); el firmware no los lee
+        avisos.append("el esquema todavía conecta " + ", ".join(f"C{c} ({canales_esq[c]})" for c in extra) +
+                      " al mux; el firmware no los usa (montaje de 6 sensores, pendiente EM-09)")
+    # el firmware solo recorre i < NUM_SENSORES y el mapeo de canales va de 0 a n-1: nunca C6..C15
+    hw_src = (CONFIG.parent / "hw.cpp").read_text(encoding="utf-8")
+    if not re.search(r"for \(int i = 0; i < NUM_SENSORES; \+\+i\) v\[i\] = leer_canal\(util::canal_de_sensor\(i, "
+                     r"NUM_SENSORES,", hw_src):
+        errores.append("hw.cpp: el barrido del mux ya no recorre solo los NUM_SENSORES canales C0..C(n-1)")
 
     # código del firmware: sin radio (reglamento) y sin restos del hardware histórico
     fuentes = sorted(p for p in CONFIG.parent.iterdir() if p.suffix in (".h", ".cpp", ".ino"))
@@ -112,12 +127,16 @@ def main() -> int:
             if re.search(r"\b" + re.escape(ident) + r"\b", codigo):
                 errores.append(f"{p.name} usa `{ident}` (hardware o código del firmware histórico)")
 
+    for a in avisos:
+        print("AVISO:", a)
     if errores:
         print("DIFERENCIAS entre config.h y el esquema:")
         for e in errores:
             print("  -", e)
         return 1
-    print(f"pines: config.h coincide con {ESQ.name} ({len(vistas)} señales, LED en pata libre, mux C0..C7)")
+    print(f"pines: config.h coincide con {ESQ.name} ({len(vistas)} señales, LED en pata libre)")
+    print(f"sensores: exactamente {SENSORES_ESPERADOS}, SEN1..SEN{SENSORES_ESPERADOS} en C0..C{SENSORES_ESPERADOS - 1}; "
+          f"C{SENSORES_ESPERADOS}..C15 sin usar")
     print(f"codigo: {len(fuentes)} archivos sin WiFi/Bluetooth ni identificadores del hardware historico")
     return 0
 

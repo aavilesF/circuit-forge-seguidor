@@ -1,5 +1,5 @@
 // Robot de emergencia · pruebas de la lógica en la PC (sin Arduino).  Ejecutar: ./ejecutar.sh  o  .\ejecutar.ps1
-// Adaptadas de firmware/robot-casero/pruebas/test_casero.cpp (HISTÓRICO) al hardware vigente: 8 sensores por mux,
+// Adaptadas de firmware/robot-casero/pruebas/test_casero.cpp (HISTÓRICO) al hardware vigente: 6 sensores por mux (C0..C5),
 // paso 12.7 mm, motores siempre a 6 V, sin zumbador ni nFAULT. Nuevas: mapa de pines contra la GUIA, bits del mux,
 // orden físico, batería sin diodo, antirrebote, parada por USB y por ciclo atrasado.
 #define _USE_MATH_DEFINES   // M_PI en MinGW/MSVC
@@ -287,7 +287,7 @@ static void prueba_indicadores() {
 // ------------------------------------------------------------------------------------------------ hardware vigente
 // Mapa de pines de GUIA-FIRMWARE.md, sección 2 (también lo compara pruebas/verificar_pines.py con el esquema).
 static void prueba_config() {
-  CHECK(NUM_SENSORES == 8, "8 sensores (D-V2-41)");
+  CHECK(NUM_SENSORES == 6 && MASCARA_TODOS == 63u, "6 sensores (SEN1..SEN6 en C0..C5), máscara 63");
   CHECK(PIN_MUX_S0 == 25 && PIN_MUX_S1 == 26 && PIN_MUX_S2 == 27 && PIN_MUX_S3 == 33, "S0..S3 = 25, 26, 27, 33");
   CHECK(PIN_MUX_SIG == 34 && PIN_EMISORES == 13, "SIG = 34, EMIT_EN = 13");
   CHECK(PIN_START == 4 && PIN_CAL == 14, "START = 4, CAL = 14");
@@ -325,13 +325,21 @@ static void prueba_utiles() {
   }
   CHECK(util::bits_mux(5).s0 == 1 && util::bits_mux(5).s1 == 0 && util::bits_mux(5).s2 == 1 && util::bits_mux(5).s3 == 0,
         "SEN6 = C5 = 0101");
-  CHECK(util::bits_mux(7).s3 == 0, "los 8 sensores no usan S3");
-  // orden físico
-  CHECK(util::canal_de_sensor(0, 8, false) == 0 && util::canal_de_sensor(7, 8, false) == 7, "SEN1 a la izquierda");
-  CHECK(util::canal_de_sensor(0, 8, true) == 7 && util::canal_de_sensor(7, 8, true) == 0, "invertido: SEN8 a la izquierda");
-  bool usados[8] = {};
-  for (int i = 0; i < 8; ++i) usados[util::canal_de_sensor(i, 8, true)] = true;
-  for (int i = 0; i < 8; ++i) CHECK(usados[i], "invertido cubre C%d", i);
+  for (int c = 0; c < NUM_SENSORES; ++c) CHECK(util::bits_mux(c).s3 == 0, "C%d no usa S3", c);
+  // orden físico y canales: solo C0..C5, en los dos sentidos; C6..C15 nunca
+  const int n = NUM_SENSORES;
+  CHECK(util::canal_de_sensor(0, n, false) == 0 && util::canal_de_sensor(n - 1, n, false) == n - 1, "SEN1 a la izquierda");
+  CHECK(util::canal_de_sensor(0, n, true) == n - 1 && util::canal_de_sensor(n - 1, n, true) == 0,
+        "invertido: SEN6 a la izquierda");
+  for (bool inv : {false, true}) {
+    bool usados[16] = {};
+    for (int i = 0; i < n; ++i) {
+      const int c = util::canal_de_sensor(i, n, inv);
+      CHECK(c >= 0 && c < n, "sensor %d -> C%d fuera de C0..C5", i, c);
+      if (c >= 0 && c < 16) usados[c] = true;
+    }
+    for (int c = 0; c < 16; ++c) CHECK(usados[c] == (c < n), "C%d %s (invertido=%d)", c, c < n ? "no se lee" : "se usa", inv);
+  }
   // batería: 8.4 V → 2.084 V en el pin (100k/33k), sin caída de diodo
   CERCA(util::volts_bateria(2084.2f, DIVISOR_BATERIA), 8.40, 0.01);
   CERCA(util::volts_bateria(0.0f, DIVISOR_BATERIA), 0.0, 1e-6);
@@ -416,7 +424,7 @@ static void prueba_ajustes() {
   CHECK(n * sizeof(float) == sizeof(Ajustes), "la tabla cubre todos los campos (%d de %zu)", n, sizeof(Ajustes) / sizeof(float));
   Guardado g{};
   g.a = a;
-  g.n_cal = 8;
+  g.n_cal = NUM_SENSORES;
   sellar(g);
   CHECK(valido(g), "imagen sellada válida");
   g.a.kd += 0.001f;
@@ -427,7 +435,7 @@ static void prueba_ajustes() {
 }
 
 // ------------------------------------------------------------------------------------------------ lazo cerrado
-// Pista: círculo de radio Rc (línea de 25 mm). Robot: 2 ruedas de 28 mm a 80 mm [E], barra recta de 8 sensores a
+// Pista: círculo de radio Rc (línea de 25 mm). Robot: 2 ruedas de 28 mm a 80 mm [E], barra recta de NUM_SENSORES (6) sensores a
 // 12.7 mm, 100 mm delante del eje [P]. Sensores con ruido gaussiano y picos; motor real con τ distinto al del modelo del firmware.
 struct Sim {
   double x, y, th, wl = 0, wr = 0;
@@ -436,7 +444,7 @@ struct Sim {
 static double simular(double Rc, double v_fuente, double segundos, bool* perdio, double* v_media,
                       const Ajustes& aj = Ajustes()) {
   const double r = 0.014, W = 0.080, tau_real = 0.05;
-  const int N = 8;
+  const int N = NUM_SENSORES;
   posicion::Geometria g = posicion::geometria_recta(N, PASO_SENSORES_MM, DIST_SENSOR_EJE_MM);
   posicion::Calibracion cal;
   cal.reiniciar(N);
@@ -525,7 +533,7 @@ struct ResAutocal { autocal::Fase fase; bool cal_ok, centrado, al_reves; double 
 
 static ResAutocal simular_autocal(bool hay_linea, bool motores_al_reves, uint32_t mascara_s) {
   const double r = 0.014, W = 0.080, tau_real = 0.05, dt = 0.0025;
-  const int N = 8;
+  const int N = NUM_SENSORES;
   Ajustes aj;
   posicion::Geometria g = posicion::geometria_recta(N, aj.paso_mm, DIST_SENSOR_EJE_MM);
   posicion::Calibracion cal;
@@ -566,18 +574,18 @@ static ResAutocal simular_autocal(bool hay_linea, bool motores_al_reves, uint32_
 }
 
 static void prueba_autocal() {
-  ResAutocal r = simular_autocal(true, false, 0xFF);
+  ResAutocal r = simular_autocal(true, false, MASCARA_TODOS);
   printf("  autocal: %s en %.2f s, cal_ok=%d centrado=%d, ángulo final %+.1f°\n", autocal::nombre(r.fase), r.t_s, r.cal_ok,
          r.centrado, r.angulo_final_deg);
   CHECK(r.fase == autocal::Fase::LISTA && r.cal_ok && r.centrado, "autocal sobre la línea");
   CHECK(r.t_s < 6.0, "autocal tardó %.2f s", r.t_s);
   CHECK(fabs(r.angulo_final_deg) < 10.0, "termina casi derecho (%.1f°)", r.angulo_final_deg);
-  r = simular_autocal(true, false, 0xFF & ~(1u << 4));   // 5.º sensor ignorado
+  r = simular_autocal(true, false, MASCARA_TODOS & ~(1u << 4));   // 5.º sensor ignorado
   CHECK(r.fase == autocal::Fase::LISTA && r.cal_ok, "autocal con un sensor ignorado");
-  r = simular_autocal(false, false, 0xFF);
+  r = simular_autocal(false, false, MASCARA_TODOS);
   CHECK(r.fase == autocal::Fase::FALLA && !r.cal_ok, "sin línea: FALLA");
   CHECK(r.t_s <= 1.1 && !r.al_reves, "sin línea: falla por tiempo de la fase 1 (%.2f s)", r.t_s);
-  r = simular_autocal(true, true, 0xFF);
+  r = simular_autocal(true, true, MASCARA_TODOS);
   CHECK(r.fase == autocal::Fase::FALLA && !r.cal_ok && r.al_reves, "motores al revés: FALLA (no da una calibración falsa)");
   CHECK(r.t_s < 0.5 && fabs(r.angulo_final_deg) < 60.0, "motores al revés: aborta pronto (%.2f s, %.0f°)", r.t_s,
         r.angulo_final_deg);
@@ -585,26 +593,30 @@ static void prueba_autocal() {
   autocal::AutoCal a;
   autocal::Param p;
   p.mascara = 0x01;   // un solo sensor: no hay posición
-  a.iniciar(8, p, c);
+  a.iniciar(NUM_SENSORES, p, c);
   CHECK(a.fase() == autocal::Fase::FALLA, "con un solo sensor activo no empieza");
 }
 
 // ------------------------------------------------------------------------------------------------ nuevas (v2.0)
 static void prueba_utiles2() {
-  CHECK(util::contar_activos(0xFF, 8) == 8 && util::contar_activos(0xEF, 8) == 7, "contar activos");
-  CHECK(util::primer_activo(0xFE, 8) == 1 && util::ultimo_activo(0x7F, 8) == 6, "extremos activos");
+  const int n = NUM_SENSORES;
+  CHECK(util::contar_activos(MASCARA_TODOS, n) == n && util::contar_activos(MASCARA_TODOS & ~(1u << 4), n) == n - 1,
+        "contar activos");
+  CHECK(util::primer_activo(MASCARA_TODOS & ~1u, n) == 1 && util::ultimo_activo(MASCARA_TODOS >> 1, n) == n - 2,
+        "extremos activos");
   posicion::Calibracion c;
-  c.reiniciar(8);
-  for (int i = 0; i < 8; ++i) { c.minimo[i] = 200; c.maximo[i] = 3000; }
-  CHECK(util::cal_lista(c, 150, 0xFF), "calibración completa");
+  c.reiniciar(n);
+  for (int i = 0; i < n; ++i) { c.minimo[i] = 200; c.maximo[i] = 3000; }
+  CHECK(util::cal_lista(c, 150, MASCARA_TODOS), "calibración completa de los 6");
   c.maximo[3] = 250;   // el 4.º sensor no vio blanco
-  CHECK(!util::cal_lista(c, 150, 0xFF), "un sensor sin contraste invalida la calibración");
-  CHECK(util::cal_lista(c, 150, 0xFF & ~(1u << 3)), "…salvo que esté ignorado en la máscara");
+  CHECK(!util::cal_lista(c, 150, MASCARA_TODOS), "un sensor sin contraste invalida la calibración");
+  CHECK(util::cal_lista(c, 150, MASCARA_TODOS & ~(1u << 3)), "…salvo que esté ignorado en la máscara");
   CHECK(!util::cal_lista(c, 150, 0x08), "con un solo sensor (el malo) no sirve");
-  float o[8] = {1, 1, 1, 1, 1, 1, 1, 1};
-  util::enmascarar(o, 8, 0x7F);
-  CHECK(o[7] == 0.0f && o[6] == 1.0f, "enmascarar pone en blanco el ignorado");
-  CHECK(util::contar_oscuros(o, 8, 0.7f, 0x7F) == 7, "todos los activos negros");
+  float o[par::MAX_SENSORES];
+  for (int i = 0; i < n; ++i) o[i] = 1.0f;
+  util::enmascarar(o, n, MASCARA_TODOS >> 1);
+  CHECK(o[n - 1] == 0.0f && o[n - 2] == 1.0f, "enmascarar pone en blanco el ignorado");
+  CHECK(util::contar_oscuros(o, n, 0.7f, MASCARA_TODOS >> 1) == n - 1, "todos los activos negros");
   CERCA(util::v_puente(true, 8.0f, 6.0f, 0.6f), 6.0, 1e-6);
   CERCA(util::v_puente(true, 6.2f, 6.0f, 0.6f), 5.6, 1e-5);   // el regulador ya no alcanza
   CERCA(util::v_puente(false, 8.0f, 6.0f, 0.6f), 0.0, 1e-6);
@@ -750,10 +762,11 @@ static void prueba_ajustes2() {
   CHECK(coherente(a, &motivo), "fábrica coherente (%s)", motivo ? motivo : "");
   CHECK(!fijar(a, "bat_critica", 7.0f), "bat_critica ≥ bat_baja rechazado");
   CHECK(!fijar(a, "inv_izq", 0.5f), "inversión solo 0/1");
-  CHECK(!fijar(a, "mascara", 100.5f), "máscara entera");
+  CHECK(!fijar(a, "mascara", 20.5f), "máscara entera");
+  CHECK(!fijar(a, "mascara", 64.0f), "máscara con un 7.º sensor que no existe");
   CHECK(!fijar(a, "sobremuestreo", 2.5f), "sobremuestreo entero");
   CHECK(fijar(a, "inv_sens", 1.0f) && a.inv_sens == 1.0f, "inv_sens por consola");
-  CHECK(fijar(a, "mascara", 239.0f) && mascara(a) == 239u, "máscara por consola");
+  CHECK(fijar(a, "mascara", 47.0f) && mascara(a) == 47u, "máscara por consola (ignora el 5.º)");
   int n;
   const EntradaAjuste* t = tabla_ajustes(&n);
   for (int i = 0; i < n; ++i) CHECK(t[i].ayuda && strlen(t[i].ayuda) > 3, "%s sin ayuda", t[i].nombre);
@@ -761,10 +774,10 @@ static void prueba_ajustes2() {
         "sin parámetros del hardware histórico");
   for (const char* p : {"seguro", "normal", "rapido"}) {
     Ajustes b;
-    b.inv_izq = 1.0f; b.mascara = 127.0f;
+    b.inv_izq = 1.0f; b.mascara = 31.0f;
     CHECK(aplicar_perfil(b, p), "perfil %s existe", p);
     CHECK(coherente(b, nullptr), "perfil %s coherente", p);
-    CHECK(b.inv_izq == 1.0f && b.mascara == 127.0f, "perfil %s no toca inversiones ni sensores", p);
+    CHECK(b.inv_izq == 1.0f && b.mascara == 31.0f, "perfil %s no toca inversiones ni sensores", p);
     for (int i = 0; i < n; ++i) {
       const float v = *campo(b, t[i]);
       CHECK(v >= t[i].min && v <= t[i].max, "perfil %s: %s=%g fuera de rango", p, t[i].nombre, v);
@@ -781,6 +794,83 @@ static void prueba_ajustes2() {
   sellar(g);
   CHECK(!valido(g), "no se cargan ajustes incoherentes aunque el CRC esté bien");
   CHECK(a_tiempos(Ajustes()).arranque_ms == 500, "t_arranque 0.5 s → 500 ms");
+}
+
+// ------------------------------------------------------------------------------------------------ 6 sensores (C0..C5)
+static void prueba_seis_sensores() {
+  const int n = NUM_SENSORES;
+  const posicion::Geometria g = posicion::geometria_recta(n, PASO_SENSORES_MM, DIST_SENSOR_EJE_MM);
+  CHECK(g.n == 6, "geometría de 6 sensores");
+  CERCA(g.x[0], -2.5 * PASO_SENSORES_MM, 1e-4);
+  CERCA(g.x[n - 1], 2.5 * PASO_SENSORES_MM, 1e-4);
+  CERCA(g.x[2] + g.x[3], 0.0, 1e-4);
+  // posición: izquierda, centro, derecha, perdida y todo negro
+  float o[par::MAX_SENSORES] = {};
+  o[0] = 1.0f;
+  posicion::Estimacion e = posicion::estimar_posicion(g, o, 0.10f, 0.30f);
+  CHECK(e.linea_visible && e.pos_mm < -30.0f, "línea bajo SEN1 -> izquierda (%.1f mm)", e.pos_mm);
+  o[0] = 0.0f; o[2] = o[3] = 1.0f;
+  e = posicion::estimar_posicion(g, o, 0.10f, 0.30f);
+  CHECK(e.linea_visible && fabsf(e.pos_mm) < 1e-3f, "línea entre SEN3 y SEN4 -> centro (%.2f mm)", e.pos_mm);
+  o[2] = o[3] = 0.0f; o[n - 1] = 1.0f;
+  e = posicion::estimar_posicion(g, o, 0.10f, 0.30f);
+  CHECK(e.linea_visible && e.pos_mm > 30.0f, "línea bajo SEN6 -> derecha (%.1f mm)", e.pos_mm);
+  o[n - 1] = 0.0f;
+  e = posicion::estimar_posicion(g, o, 0.10f, 0.30f);
+  CHECK(!e.linea_visible, "todo blanco: línea perdida");
+  for (int i = 0; i < n; ++i) o[i] = 1.0f;
+  e = posicion::estimar_posicion(g, o, 0.10f, 0.30f);
+  CHECK(e.linea_visible && fabsf(e.pos_mm) < 1e-3f && util::contar_oscuros(o, n, 0.7f, MASCARA_TODOS) == n,
+        "todo negro: centro y los 6 cuentan para t_negro");
+  // calibración de 6 sensores sobre blanco (refl 3700) y negro (200)
+  posicion::Calibracion cal;
+  cal.reiniciar(n);
+  float r[par::MAX_SENSORES];
+  for (int i = 0; i < n; ++i) r[i] = 3700.0f;
+  cal.muestrear(r);
+  CHECK(!util::cal_lista(cal, 150, MASCARA_TODOS), "solo blanco: falta contraste");
+  for (int i = 0; i < n; ++i) r[i] = 200.0f;
+  cal.muestrear(r);
+  CHECK(cal.n == 6 && util::cal_lista(cal, 150, MASCARA_TODOS), "blanco y negro en los 6: calibración lista");
+  r[0] = 200.0f; for (int i = 1; i < n; ++i) r[i] = 3700.0f;
+  float osc[par::MAX_SENSORES];
+  posicion::normalizar(cal, r, osc);
+  CHECK(osc[0] == 1.0f && osc[1] == 0.0f && osc[n - 1] == 0.0f, "normaliza: SEN1 negro, el resto blanco");
+  // control con las posiciones de 6 sensores: signo, búsqueda y recuperación
+  ControladorLinea ctl(a_control(Ajustes()));
+  SalidaControl sc = ctl.actualizar(posicion::Estimacion{g.x[n - 1], 1.0f, true}, 0.0025f);
+  CHECK(sc.izq > sc.der, "línea a la derecha (SEN6) -> rueda izquierda más rápida");
+  ctl.reiniciar();
+  sc = ctl.actualizar(posicion::Estimacion{g.x[0], 1.0f, true}, 0.0025f);
+  CHECK(sc.der > sc.izq, "línea a la izquierda (SEN1) -> rueda derecha más rápida");
+  for (int k = 0; k < 40; ++k) sc = ctl.actualizar(posicion::Estimacion{0.0f, 0.0f, false}, 0.0025f);
+  CHECK(sc.buscando && !sc.linea_perdida && sc.der > sc.izq, "perdida a la izquierda: busca hacia la izquierda");
+  sc = ctl.actualizar(posicion::Estimacion{g.x[1], 1.0f, true}, 0.0025f);
+  CHECK(!sc.buscando && sc.turbo == 0.0f, "reencuentra la línea y sale de la búsqueda");
+  for (int k = 0; k < 800; ++k) sc = ctl.actualizar(posicion::Estimacion{0.0f, 0.0f, false}, 0.0025f);
+  CHECK(sc.linea_perdida && sc.izq == 0.0f && sc.der == 0.0f, "sin línea al terminar la búsqueda: para");
+  // compatibilidad con lo guardado por el firmware de 8 sensores: ajustes sí, calibración no
+  Guardado gv{};
+  gv.a = Ajustes();
+  gv.a.inv_izq = 1.0f; gv.a.inv_der = 0.0f; gv.a.kp = 0.02f; gv.a.mascara = 255.0f;
+  gv.n_cal = 8;
+  for (int i = 0; i < 8; ++i) { gv.cal_min[i] = 200.0f; gv.cal_max[i] = 3700.0f; }
+  sellar(gv);
+  CHECK(valido(gv), "lo guardado por la versión de 8 sensores sigue siendo legible (mismo formato)");
+  CHECK(adaptar_a_sensores(gv, n), "calibración de 8 sensores: se descarta");
+  CHECK(gv.n_cal == 0 && gv.cal_max[0] == 0.0f, "…y queda sin calibración (hay que recalibrar)");
+  CHECK(gv.a.inv_izq == 1.0f && gv.a.inv_der == 0.0f && gv.a.kp == 0.02f, "…conservando inversiones y ajustes");
+  CHECK(gv.a.mascara == (float)MASCARA_TODOS, "…y la máscara vuelve a los 6 sensores");
+  Guardado g6{};
+  g6.a = Ajustes();
+  g6.a.mascara = 47.0f;
+  g6.n_cal = n;
+  g6.cal_max[0] = 3700.0f;
+  CHECK(!adaptar_a_sensores(g6, n) && g6.n_cal == n && g6.a.mascara == 47.0f && g6.cal_max[0] == 3700.0f,
+        "calibración de 6 sensores: se conserva intacta");
+  g6.a.mascara = 192.0f;   // solo bits de C6/C7: ningún sensor válido
+  CHECK(adaptar_a_sensores(g6, n) && g6.a.mascara == (float)MASCARA_TODOS && g6.n_cal == n,
+        "máscara sin sensores válidos: vuelve a todos sin tocar la calibración");
 }
 
 // ------------------------------------------------------------------------------------------------ turbo de recta (v2.1)
@@ -971,7 +1061,7 @@ struct ResPista {
 static ResPista simular_pista(const ParamControl& pc, const Ajustes& aj, const PistaS& pista, double ruido, double picos,
                               double t_max, int borrar_desde_ms = -1, int borrar_hasta_ms = -1) {
   const double r = 0.014, W = 0.080, tau_real = 0.05, dt = 0.0025, V = 6.0;
-  const int N = 8;
+  const int N = NUM_SENSORES;
   posicion::Geometria g = posicion::geometria_recta(N, aj.paso_mm, DIST_SENSOR_EJE_MM);
   posicion::Calibracion cal;
   cal.reiniciar(N);
@@ -1114,6 +1204,7 @@ int main() {
   prueba_turbo_control();
   prueba_turbo_ajustes();
   prueba_pista();
+  prueba_seis_sensores();
   printf("%d/%d comprobaciones OK\n", total - fallas, total);
   return fallas ? 1 : 0;
 }

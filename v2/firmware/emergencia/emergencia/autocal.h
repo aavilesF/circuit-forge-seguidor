@@ -26,7 +26,7 @@ struct Param {
   float contraste = 150.0f; // cuentas mínimas blanco-negro por sensor
   float centro_mm = 4.0f;   // tolerancia para dar por centrado
   float umbral = 0.10f, confianza = 0.30f;   // los de la estimación de posición
-  uint32_t mascara = 0xFFu;
+  uint32_t mascara = 0xFFFFu; // todos (solo cuentan los bits de los n sensores)
 };
 
 struct Salida {
