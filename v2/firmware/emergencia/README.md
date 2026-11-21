@@ -156,7 +156,7 @@ Se cambian con `set <clave> <valor>`, se ven con `rangos` y quedan guardados con
 | `t_emisor_us` / `t_mux_us` | 150 / 5 | µs | Esperas de los LED IR y del mux |
 | `umbral` / `confianza` | 0.10 / 0.30 | — | Oscuridad ignorada / suma mínima para "ver" la línea |
 | `contraste` | 150 | 20 – 3000 | Cuentas mínimas blanco–negro por sensor para aceptar la calibración |
-| `t_negro` | 0.50 | 0 – 3 | s con todos los sensores negros (robot levantado) antes de parar; 0 = desactivado |
+| `t_negro` | 0.50 | 0 – 3 | s con todos los sensores negros (robot levantado) antes de parar; 0 = desactivado. Solo seguridad, no es meta |
 | **Batería y arranque** | | | |
 | `bat_baja` / `bat_critica` | 6.8 / 6.4 | 5 – 9 | V de aviso / de parada (se exige `bat_critica` < `bat_baja`) |
 | `t_cal_max` / `t_cal_extra` | 15 / 1 | s | Calibración: máximo / extra tras ver contraste |
@@ -287,7 +287,7 @@ Si se sale o aparece RECUPERACIÓN, bajen `v_recta` 0.03 o suban `recta_t_conf`.
 |---|---|
 | START, CAL o cualquier tecla por USB en marcha | PARADA: frena 0.3 s, luego suelta los motores y duerme el DRV8833 |
 | Línea perdida (fin de `t_busq`) | PARADA |
-| Todos los sensores negros más de `t_negro` (robot levantado) | PARADA |
+| Todos los sensores negros más de `t_negro` (robot levantado) | PARADA. Es solo de seguridad, **no** es detección de meta (ver 7.1) |
 | Batería < `bat_critica` sostenida 0.5 s, o sin batería en marcha | ERROR 1: frena y duerme el puente |
 | Un ciclo de control de más de 25 ms en marcha | ERROR 2: frena y duerme el puente |
 | `loop()` colgado más de 1 s | El **watchdog** reinicia el ESP32. Los GPIO quedan en alta impedancia y el LEDC se detiene; los pull-down internos del DRV8833 (nSLEEP e IN1–IN4) lo dejan dormido; `setup()` pone primero nSLEEP = 0 y los 4 PWM en 0 |
@@ -305,6 +305,23 @@ Si se sale o aparece RECUPERACIÓN, bajen `v_recta` 0.03 o suban `recta_t_conf`.
 | 4 Hz | PARADA |
 | 1 o 2 destellos + pausa | ERROR 1 (batería) o ERROR 2 (ciclo) |
 | 2 apagones cada 3 s (en ESPERA o LISTO) | Batería baja |
+
+### 7.1 Fin de la vuelta: parada manual con START
+Confirmado por el equipo (20 nov 2026): la pista **no requiere detección automática de meta**, y el firmware no la tiene ni se le agregará. El equipo detiene el robot a mano después de completar la vuelta.
+
+**Procedimiento normal al terminar:**
+1. Cuando el robot completa la vuelta, el operador oprime **START** una vez.
+2. El robot pasa a PARADA con el motivo "boton START": frena 0.3 s, luego suelta los motores y duerme el DRV8833.
+3. Confirmen que se detuvo:
+   - las ruedas están quietas;
+   - el LED parpadea a 4 Hz (PARADA);
+   - si hay consola, `estado` dice `ultima parada: boton START`.
+4. Con los motores detenidos, ya pueden retirar el robot de la pista. Para guardarlo, apaguen el KCD1.
+
+**Cuidados:**
+- **No vuelvan a oprimir START para "asegurarse".** Desde PARADA, un segundo START pasa a LISTO, y un tercero lo arranca a los `t_arranque` (0.5 s). Si se oprimió de más: con START o cualquier tecla por USB durante la espera se cancela; si no, apaguen el KCD1.
+- **`t_negro` no es detección de meta.** Es solo una parada de seguridad para cuando el robot queda levantado en marcha: los sensores sin piso leen "negro" y, tras 0.5 s, pasa a PARADA con el motivo "todos los sensores negros (robot levantado?)". No lo usen para terminar la vuelta: durante esos 0.5 s las ruedas siguen girando en la mano. El método normal es START.
+- Las demás paradas (línea perdida, batería, ciclo, watchdog, sección 7) son de seguridad y tampoco son una meta.
 
 ---
 
