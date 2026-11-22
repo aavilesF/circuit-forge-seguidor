@@ -1,0 +1,104 @@
+pieza,pata,red,se_puede_soldar_arriba,como_se_suelda
+OP1,A,/LEDA1,sí,solo arriba (pieza montada abajo)
+OP1,C,/SEN1,sí,solo arriba (pieza montada abajo)
+OP1,E,GND,sí,solo arriba (pieza montada abajo)
+OP1,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP10,A,/LEDA10,sí,solo arriba (pieza montada abajo)
+OP10,C,/SEN10,sí,solo arriba (pieza montada abajo)
+OP10,E,GND,sí,solo arriba (pieza montada abajo)
+OP10,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP11,A,/LEDA11,sí,solo arriba (pieza montada abajo)
+OP11,C,/SEN11,sí,solo arriba (pieza montada abajo)
+OP11,E,GND,sí,solo arriba (pieza montada abajo)
+OP11,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP12,A,/LEDA12,sí,solo arriba (pieza montada abajo)
+OP12,C,/SEN12,sí,solo arriba (pieza montada abajo)
+OP12,E,GND,sí,solo arriba (pieza montada abajo)
+OP12,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP2,A,/LEDA2,sí,solo arriba (pieza montada abajo)
+OP2,C,/SEN2,sí,solo arriba (pieza montada abajo)
+OP2,E,GND,sí,solo arriba (pieza montada abajo)
+OP2,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP3,A,/LEDA3,sí,solo arriba (pieza montada abajo)
+OP3,C,/SEN3,sí,solo arriba (pieza montada abajo)
+OP3,E,GND,sí,solo arriba (pieza montada abajo)
+OP3,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP4,A,/LEDA4,sí,solo arriba (pieza montada abajo)
+OP4,C,/SEN4,sí,solo arriba (pieza montada abajo)
+OP4,E,GND,sí,solo arriba (pieza montada abajo)
+OP4,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP5,A,/LEDA5,sí,solo arriba (pieza montada abajo)
+OP5,C,/SEN5,sí,solo arriba (pieza montada abajo)
+OP5,E,GND,sí,solo arriba (pieza montada abajo)
+OP5,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP6,A,/LEDA6,sí,solo arriba (pieza montada abajo)
+OP6,C,/SEN6,sí,solo arriba (pieza montada abajo)
+OP6,E,GND,sí,solo arriba (pieza montada abajo)
+OP6,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP7,A,/LEDA7,sí,solo arriba (pieza montada abajo)
+OP7,C,/SEN7,sí,solo arriba (pieza montada abajo)
+OP7,E,GND,sí,solo arriba (pieza montada abajo)
+OP7,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP8,A,/LEDA8,sí,solo arriba (pieza montada abajo)
+OP8,C,/SEN8,sí,solo arriba (pieza montada abajo)
+OP8,E,GND,sí,solo arriba (pieza montada abajo)
+OP8,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+OP9,A,/LEDA9,sí,solo arriba (pieza montada abajo)
+OP9,C,/SEN9,sí,solo arriba (pieza montada abajo)
+OP9,E,GND,sí,solo arriba (pieza montada abajo)
+OP9,K,/EMIT_K,sí,solo arriba (pieza montada abajo)
+Q1,1,GND,sí,por las DOS caras
+Q1,2,/BASE_Q1,sí,por las DOS caras
+Q1,3,/EMIT_K,sí,por las DOS caras
+R1,1,+3V3,sí,por las DOS caras
+R1,2,/LEDA1,sí,por las DOS caras
+R10,1,+3V3,sí,por las DOS caras
+R10,2,/LEDA10,sí,por las DOS caras
+R11,1,+3V3,sí,por las DOS caras
+R11,2,/LEDA11,sí,por las DOS caras
+R12,1,+3V3,sí,por las DOS caras
+R12,2,/LEDA12,sí,por las DOS caras
+R13,1,/SEN1,sí,por las DOS caras
+R13,2,+3V3,sí,por las DOS caras
+R14,1,/SEN2,sí,por las DOS caras
+R14,2,+3V3,sí,por las DOS caras
+R15,1,/SEN3,sí,por las DOS caras
+R15,2,+3V3,sí,por las DOS caras
+R16,1,/SEN4,sí,por las DOS caras
+R16,2,+3V3,sí,por las DOS caras
+R17,1,/SEN5,sí,por las DOS caras
+R17,2,+3V3,sí,por las DOS caras
+R18,1,/SEN6,sí,por las DOS caras
+R18,2,+3V3,sí,por las DOS caras
+R19,1,/SEN7,sí,por las DOS caras
+R19,2,+3V3,sí,por las DOS caras
+R2,1,+3V3,sí,por las DOS caras
+R2,2,/LEDA2,sí,por las DOS caras
+R20,1,/SEN8,sí,por las DOS caras
+R20,2,+3V3,sí,por las DOS caras
+R21,1,/SEN9,sí,por las DOS caras
+R21,2,+3V3,sí,por las DOS caras
+R22,1,/SEN10,sí,por las DOS caras
+R22,2,+3V3,sí,por las DOS caras
+R23,1,/SEN11,sí,por las DOS caras
+R23,2,+3V3,sí,por las DOS caras
+R24,1,/SEN12,sí,por las DOS caras
+R24,2,+3V3,sí,por las DOS caras
+R25,1,/EMIT_EN,sí,por las DOS caras
+R25,2,/BASE_Q1,sí,por las DOS caras
+R26,1,/BASE_Q1,sí,por las DOS caras
+R26,2,GND,sí,por las DOS caras
+R3,1,+3V3,sí,por las DOS caras
+R3,2,/LEDA3,sí,por las DOS caras
+R4,1,+3V3,sí,por las DOS caras
+R4,2,/LEDA4,sí,por las DOS caras
+R5,1,+3V3,sí,por las DOS caras
+R5,2,/LEDA5,sí,por las DOS caras
+R6,1,+3V3,sí,por las DOS caras
+R6,2,/LEDA6,sí,por las DOS caras
+R7,1,+3V3,sí,por las DOS caras
+R7,2,/LEDA7,sí,por las DOS caras
+R8,1,+3V3,sí,por las DOS caras
+R8,2,/LEDA8,sí,por las DOS caras
+R9,1,+3V3,sí,por las DOS caras
+R9,2,/LEDA9,sí,por las DOS caras

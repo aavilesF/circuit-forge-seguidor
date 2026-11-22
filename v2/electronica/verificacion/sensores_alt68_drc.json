@@ -1,0 +1,2660 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-14T15:12:48",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.8",
+    "schematic_parity": [
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 178.5,
+                        "y": 132.0
+                    },
+                    "uuid": "277bbeea-103d-4aab-8875-cb93d81c2890"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 138.5,
+                        "y": 134.5
+                    },
+                    "uuid": "79b9c5da-65a1-48f9-ab79-64f6c157ce04"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint Q1",
+                    "pos": {
+                        "x": 106.5,
+                        "y": 128.0
+                    },
+                    "uuid": "a5ded396-3213-46e5-b0e7-6ad398751a6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 108.954,
+                        "y": 86.271
+                    },
+                    "uuid": "f86dd2a4-31bf-4119-8426-b7c46b6be42c"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R2",
+                    "pos": {
+                        "x": 112.36,
+                        "y": 84.814
+                    },
+                    "uuid": "1fc7f365-0b26-465e-8b50-eceb80f71425"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R3",
+                    "pos": {
+                        "x": 120.113,
+                        "y": 82.052
+                    },
+                    "uuid": "60ffb98b-8e35-41af-ab22-9077c103db78"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 128.074,
+                        "y": 79.963
+                    },
+                    "uuid": "7b0e08c9-72f6-4f7e-84f7-2017df64b145"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R5",
+                    "pos": {
+                        "x": 136.184,
+                        "y": 78.561
+                    },
+                    "uuid": "9c7da8ac-467b-4970-bc87-0eafc9578554"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R6",
+                    "pos": {
+                        "x": 144.385,
+                        "y": 77.858
+                    },
+                    "uuid": "ef8182d0-72cb-443f-af23-24cf2a81da08"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R7",
+                    "pos": {
+                        "x": 152.615,
+                        "y": 77.858
+                    },
+                    "uuid": "ff6c9d25-a17e-4b90-ae83-d564d59904ef"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R8",
+                    "pos": {
+                        "x": 160.816,
+                        "y": 78.561
+                    },
+                    "uuid": "d7d0aab3-ad5c-4b31-b562-c7b0894ee3ae"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R9",
+                    "pos": {
+                        "x": 168.926,
+                        "y": 79.963
+                    },
+                    "uuid": "d38f90a3-619c-4fc8-866c-6a1aaa5d3abb"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R10",
+                    "pos": {
+                        "x": 176.887,
+                        "y": 82.052
+                    },
+                    "uuid": "a8432e9b-57da-4099-8292-6a939fe35056"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R11",
+                    "pos": {
+                        "x": 184.64,
+                        "y": 84.814
+                    },
+                    "uuid": "98869cf8-3020-4f56-814b-2a67d6823d64"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R12",
+                    "pos": {
+                        "x": 188.046,
+                        "y": 86.271
+                    },
+                    "uuid": "235f7f83-52a6-474e-8fb3-4ddffa8ea1ab"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R13",
+                    "pos": {
+                        "x": 113.712,
+                        "y": 105.609
+                    },
+                    "uuid": "23009327-a965-4c8d-b2d6-fc6913704fec"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R14",
+                    "pos": {
+                        "x": 119.683,
+                        "y": 102.887
+                    },
+                    "uuid": "10c39b4c-1f1e-4819-9cd3-43ca4c47b5b9"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R15",
+                    "pos": {
+                        "x": 125.865,
+                        "y": 100.684
+                    },
+                    "uuid": "805bbadb-b388-47bf-b2ce-95b6a7e6c1c2"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R16",
+                    "pos": {
+                        "x": 132.213,
+                        "y": 99.018
+                    },
+                    "uuid": "cadc0f14-aeac-4a22-b8eb-1b14a3df3b07"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R17",
+                    "pos": {
+                        "x": 138.68,
+                        "y": 97.901
+                    },
+                    "uuid": "f2d87f72-188b-44ac-b9d5-f610a0a4b5c1"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R18",
+                    "pos": {
+                        "x": 145.219,
+                        "y": 97.34
+                    },
+                    "uuid": "5d7a27c6-135a-473d-82d4-0ac10113a202"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R19",
+                    "pos": {
+                        "x": 151.781,
+                        "y": 97.34
+                    },
+                    "uuid": "9948992e-f93b-46b7-82fa-ebe717c8cb5d"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R20",
+                    "pos": {
+                        "x": 158.32,
+                        "y": 97.901
+                    },
+                    "uuid": "901215da-ff5d-4437-94e5-32a49d2d3eb7"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R21",
+                    "pos": {
+                        "x": 164.787,
+                        "y": 99.018
+                    },
+                    "uuid": "752c28cd-e7cc-404a-8f54-a6ecc4606cfe"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R22",
+                    "pos": {
+                        "x": 171.135,
+                        "y": 100.684
+                    },
+                    "uuid": "60cf1e16-9782-4465-a19f-f9e034057f2f"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R23",
+                    "pos": {
+                        "x": 177.317,
+                        "y": 102.887
+                    },
+                    "uuid": "f444e50a-27ce-4138-a798-d2dcd4fb418b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R24",
+                    "pos": {
+                        "x": 183.288,
+                        "y": 105.609
+                    },
+                    "uuid": "ddd08274-378c-415a-9f61-c72d9c2c2e3e"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R25",
+                    "pos": {
+                        "x": 115.5,
+                        "y": 132.0
+                    },
+                    "uuid": "f1e75992-83bf-4b34-807d-45613b3d46f0"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R26",
+                    "pos": {
+                        "x": 121.5,
+                        "y": 132.0
+                    },
+                    "uuid": "dd2e1ed7-c8d8-4a8e-86ce-ec410dc45e46"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_locked' in footprint",
+            "items": [
+                {
+                    "description": "Footprint U1",
+                    "pos": {
+                        "x": 148.5,
+                        "y": 117.5
+                    },
+                    "uuid": "5f2a57ee-6c55-4b4d-8f62-1afe1efe2d54"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-PadC12))",
+            "items": [
+                {
+                    "description": "PTH pad C12 [<no net>] of U1",
+                    "pos": {
+                        "x": 159.93,
+                        "y": 109.65
+                    },
+                    "uuid": "2d08b570-73c1-47ec-9927-1cc2aa213f7f"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-PadC13))",
+            "items": [
+                {
+                    "description": "PTH pad C13 [<no net>] of U1",
+                    "pos": {
+                        "x": 162.47,
+                        "y": 109.65
+                    },
+                    "uuid": "28532053-32cb-4219-b42d-782b44fae055"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-PadC14))",
+            "items": [
+                {
+                    "description": "PTH pad C14 [<no net>] of U1",
+                    "pos": {
+                        "x": 165.01,
+                        "y": 109.65
+                    },
+                    "uuid": "043a5e3a-a2fc-4a9b-af01-f3054d6eeef8"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-PadC15))",
+            "items": [
+                {
+                    "description": "PTH pad C15 [<no net>] of U1",
+                    "pos": {
+                        "x": 167.55,
+                        "y": 109.65
+                    },
+                    "uuid": "f0ebd8b6-76f2-497e-b116-907f04239734"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        }
+    ],
+    "source": "sensores.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [/EMIT_K] on F.Cu, length 0.7071 mm",
+                    "pos": {
+                        "x": 180.0,
+                        "y": 80.5
+                    },
+                    "uuid": "b2c6092f-fb4e-4e91-90fc-ab3af7836335"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP1",
+                    "pos": {
+                        "x": 110.074,
+                        "y": 95.657
+                    },
+                    "uuid": "74935e44-535f-4b73-bdc2-deb9cfdf10cf"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP2",
+                    "pos": {
+                        "x": 116.909,
+                        "y": 92.66
+                    },
+                    "uuid": "2e5f33ca-41ec-425d-bcec-1a45dd83f26d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP3",
+                    "pos": {
+                        "x": 123.976,
+                        "y": 90.258
+                    },
+                    "uuid": "142bc28a-118b-48aa-8bec-6ff634caf55d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP4",
+                    "pos": {
+                        "x": 131.221,
+                        "y": 88.469
+                    },
+                    "uuid": "14e5f774-e3c7-4c94-95f6-886d0a83514d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP5",
+                    "pos": {
+                        "x": 138.593,
+                        "y": 87.305
+                    },
+                    "uuid": "523d0a84-1e11-4e9b-bfff-ef89d2498c1e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP6",
+                    "pos": {
+                        "x": 146.038,
+                        "y": 86.776
+                    },
+                    "uuid": "c33ed4ee-6c4e-4a53-9be1-2d90cdd2fa4e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP7",
+                    "pos": {
+                        "x": 153.5,
+                        "y": 86.884
+                    },
+                    "uuid": "ef34efc6-2de6-4fd0-8cba-a489b51c3e75"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP8",
+                    "pos": {
+                        "x": 160.926,
+                        "y": 87.63
+                    },
+                    "uuid": "52286471-b3ff-4ae6-937d-1e6a929c77ec"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP9",
+                    "pos": {
+                        "x": 168.261,
+                        "y": 89.008
+                    },
+                    "uuid": "8817c46b-1e82-4e4a-8f9e-d86d9d64cc25"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP10",
+                    "pos": {
+                        "x": 175.451,
+                        "y": 91.007
+                    },
+                    "uuid": "4c540a3b-f796-4afe-8cc1-43a0fd168f83"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP11",
+                    "pos": {
+                        "x": 182.445,
+                        "y": 93.614
+                    },
+                    "uuid": "9e9508d4-4748-42ae-95ba-f0e92ab48440"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'Vishay_TCRT5000' does not match copy in library 'OptoDevice'",
+            "items": [
+                {
+                    "description": "Footprint OP12",
+                    "pos": {
+                        "x": 189.19,
+                        "y": 96.808
+                    },
+                    "uuid": "aa14623a-9fa7-47f2-b928-96c75bbce059"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C15)",
+                    "pos": {
+                        "x": 166.788,
+                        "y": 111.658
+                    },
+                    "uuid": "4a6b04f2-709a-4585-a25c-df2070d58972"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C15)",
+                    "pos": {
+                        "x": 166.788,
+                        "y": 111.658
+                    },
+                    "uuid": "4a6b04f2-709a-4585-a25c-df2070d58972"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C14)",
+                    "pos": {
+                        "x": 164.375,
+                        "y": 111.658
+                    },
+                    "uuid": "7a0779df-b1c7-414d-a71e-aafd77eceee4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C14)",
+                    "pos": {
+                        "x": 164.375,
+                        "y": 111.658
+                    },
+                    "uuid": "7a0779df-b1c7-414d-a71e-aafd77eceee4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C13)",
+                    "pos": {
+                        "x": 161.835,
+                        "y": 111.658
+                    },
+                    "uuid": "0ec21e10-3289-4eef-9291-84e194139af7"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C13)",
+                    "pos": {
+                        "x": 161.835,
+                        "y": 111.658
+                    },
+                    "uuid": "0ec21e10-3289-4eef-9291-84e194139af7"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C12)",
+                    "pos": {
+                        "x": 159.168,
+                        "y": 111.658
+                    },
+                    "uuid": "13d4df42-e788-4059-a72e-80ded96194a6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C12)",
+                    "pos": {
+                        "x": 159.168,
+                        "y": 111.658
+                    },
+                    "uuid": "13d4df42-e788-4059-a72e-80ded96194a6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (SIG)",
+                    "pos": {
+                        "x": 157.009,
+                        "y": 122.58
+                    },
+                    "uuid": "4df41ec5-392b-42be-8453-bde7fc1855a5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (SIG)",
+                    "pos": {
+                        "x": 157.009,
+                        "y": 122.58
+                    },
+                    "uuid": "4df41ec5-392b-42be-8453-bde7fc1855a5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C11)",
+                    "pos": {
+                        "x": 156.755,
+                        "y": 111.658
+                    },
+                    "uuid": "0876c642-4473-4bbd-9d1d-c622c3e2ded8"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C11)",
+                    "pos": {
+                        "x": 156.755,
+                        "y": 111.658
+                    },
+                    "uuid": "0876c642-4473-4bbd-9d1d-c622c3e2ded8"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S3)",
+                    "pos": {
+                        "x": 154.469,
+                        "y": 122.961
+                    },
+                    "uuid": "b656b57f-839a-4516-92cc-199b1455595b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S3)",
+                    "pos": {
+                        "x": 154.469,
+                        "y": 122.961
+                    },
+                    "uuid": "b656b57f-839a-4516-92cc-199b1455595b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C10)",
+                    "pos": {
+                        "x": 154.088,
+                        "y": 111.658
+                    },
+                    "uuid": "d25156ee-10e3-4189-8315-856f4399e9a4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C10)",
+                    "pos": {
+                        "x": 154.088,
+                        "y": 111.658
+                    },
+                    "uuid": "d25156ee-10e3-4189-8315-856f4399e9a4"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S2)",
+                    "pos": {
+                        "x": 151.929,
+                        "y": 122.961
+                    },
+                    "uuid": "21824621-d2d0-455e-8452-bd436a5c629e"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S2)",
+                    "pos": {
+                        "x": 151.929,
+                        "y": 122.961
+                    },
+                    "uuid": "21824621-d2d0-455e-8452-bd436a5c629e"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C9)",
+                    "pos": {
+                        "x": 151.802,
+                        "y": 111.658
+                    },
+                    "uuid": "c3de8c4c-ed9d-425e-8ebd-54a0bd237ee5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C9)",
+                    "pos": {
+                        "x": 151.802,
+                        "y": 111.658
+                    },
+                    "uuid": "c3de8c4c-ed9d-425e-8ebd-54a0bd237ee5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S1)",
+                    "pos": {
+                        "x": 149.389,
+                        "y": 122.961
+                    },
+                    "uuid": "d454328b-9dbd-4eb9-b17f-66d5d6debc96"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S1)",
+                    "pos": {
+                        "x": 149.389,
+                        "y": 122.961
+                    },
+                    "uuid": "d454328b-9dbd-4eb9-b17f-66d5d6debc96"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C8)",
+                    "pos": {
+                        "x": 149.262,
+                        "y": 111.658
+                    },
+                    "uuid": "194726d5-0bf5-4e24-b462-d86a4cf99cac"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C8)",
+                    "pos": {
+                        "x": 149.262,
+                        "y": 111.658
+                    },
+                    "uuid": "194726d5-0bf5-4e24-b462-d86a4cf99cac"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S0)",
+                    "pos": {
+                        "x": 146.976,
+                        "y": 122.961
+                    },
+                    "uuid": "78dcb61a-8a24-4f02-a6db-c41d54667405"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (S0)",
+                    "pos": {
+                        "x": 146.976,
+                        "y": 122.961
+                    },
+                    "uuid": "78dcb61a-8a24-4f02-a6db-c41d54667405"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C7)",
+                    "pos": {
+                        "x": 146.722,
+                        "y": 111.658
+                    },
+                    "uuid": "41fa14d4-d056-45bb-b0ff-9a1dd2827fc6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C7)",
+                    "pos": {
+                        "x": 146.722,
+                        "y": 111.658
+                    },
+                    "uuid": "41fa14d4-d056-45bb-b0ff-9a1dd2827fc6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (EN)",
+                    "pos": {
+                        "x": 144.436,
+                        "y": 122.834
+                    },
+                    "uuid": "bc7bbe02-3fdd-404b-841b-54e7369e8d62"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (EN)",
+                    "pos": {
+                        "x": 144.436,
+                        "y": 122.834
+                    },
+                    "uuid": "bc7bbe02-3fdd-404b-841b-54e7369e8d62"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C6)",
+                    "pos": {
+                        "x": 144.309,
+                        "y": 111.658
+                    },
+                    "uuid": "6e21baa1-f9d5-490f-99c2-f12ce2597037"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C6)",
+                    "pos": {
+                        "x": 144.309,
+                        "y": 111.658
+                    },
+                    "uuid": "6e21baa1-f9d5-490f-99c2-f12ce2597037"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (VCC)",
+                    "pos": {
+                        "x": 141.769,
+                        "y": 122.326
+                    },
+                    "uuid": "10129b27-0528-43b4-b7ef-325512c3baf6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (VCC)",
+                    "pos": {
+                        "x": 141.769,
+                        "y": 122.326
+                    },
+                    "uuid": "10129b27-0528-43b4-b7ef-325512c3baf6"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C5)",
+                    "pos": {
+                        "x": 141.642,
+                        "y": 111.658
+                    },
+                    "uuid": "e404c552-689e-4f22-83fe-ebc45b6f0a62"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C5)",
+                    "pos": {
+                        "x": 141.642,
+                        "y": 111.658
+                    },
+                    "uuid": "e404c552-689e-4f22-83fe-ebc45b6f0a62"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (GND)",
+                    "pos": {
+                        "x": 139.229,
+                        "y": 122.199
+                    },
+                    "uuid": "e3e9e0ae-bf91-48a2-aef9-4cee27565a5a"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (GND)",
+                    "pos": {
+                        "x": 139.229,
+                        "y": 122.199
+                    },
+                    "uuid": "e3e9e0ae-bf91-48a2-aef9-4cee27565a5a"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C4)",
+                    "pos": {
+                        "x": 139.229,
+                        "y": 111.658
+                    },
+                    "uuid": "be58a615-2f41-4dd5-ae51-c9f9de870779"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C4)",
+                    "pos": {
+                        "x": 139.229,
+                        "y": 111.658
+                    },
+                    "uuid": "be58a615-2f41-4dd5-ae51-c9f9de870779"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C3)",
+                    "pos": {
+                        "x": 136.562,
+                        "y": 111.658
+                    },
+                    "uuid": "93c592ee-7015-4609-b8ff-b40fd100d392"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C3)",
+                    "pos": {
+                        "x": 136.562,
+                        "y": 111.658
+                    },
+                    "uuid": "93c592ee-7015-4609-b8ff-b40fd100d392"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C2)",
+                    "pos": {
+                        "x": 134.149,
+                        "y": 111.658
+                    },
+                    "uuid": "30656700-974f-4548-a65d-f519f5cbb39b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C2)",
+                    "pos": {
+                        "x": 134.149,
+                        "y": 111.658
+                    },
+                    "uuid": "30656700-974f-4548-a65d-f519f5cbb39b"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C1)",
+                    "pos": {
+                        "x": 131.609,
+                        "y": 111.658
+                    },
+                    "uuid": "28cbd89c-7f26-416c-9741-760c5e866874"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C1)",
+                    "pos": {
+                        "x": 131.609,
+                        "y": 111.658
+                    },
+                    "uuid": "28cbd89c-7f26-416c-9741-760c5e866874"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0488 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C0)",
+                    "pos": {
+                        "x": 129.069,
+                        "y": 111.658
+                    },
+                    "uuid": "7b6cd408-d069-470d-bf8b-b467d0fa9de5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_thickness"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5608 mm)",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (C0)",
+                    "pos": {
+                        "x": 129.069,
+                        "y": 111.658
+                    },
+                    "uuid": "7b6cd408-d069-470d-bf8b-b467d0fa9de5"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Circle of R1 on F.Silkscreen",
+                    "pos": {
+                        "x": 108.954,
+                        "y": 86.271
+                    },
+                    "uuid": "10e38d00-150f-428b-9039-8089c9470f5d"
+                },
+                {
+                    "description": "Reference field of R2",
+                    "pos": {
+                        "x": 109.686528,
+                        "y": 84.527041
+                    },
+                    "uuid": "97afa7c5-e8c1-4d9e-90f8-1331b5efcd89"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Polygon of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 153.072,
+                        "y": 113.436
+                    },
+                    "uuid": "1f0494ef-9ed8-43aa-9b4b-f54507634271"
+                },
+                {
+                    "description": "Reference field of U1",
+                    "pos": {
+                        "x": 148.5,
+                        "y": 117.5
+                    },
+                    "uuid": "7011e715-2308-4aec-ad8c-e6138bed6cf1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (HC4067)",
+                    "pos": {
+                        "x": 142.15,
+                        "y": 114.325
+                    },
+                    "uuid": "de307fd7-4b59-4111-88a8-76d2266d5c1b"
+                },
+                {
+                    "description": "Footprint text of U1 (C5)",
+                    "pos": {
+                        "x": 141.642,
+                        "y": 111.658
+                    },
+                    "uuid": "e404c552-689e-4f22-83fe-ebc45b6f0a62"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of R12",
+                    "pos": {
+                        "x": 186.407286,
+                        "y": 84.139236
+                    },
+                    "uuid": "31287b4b-6888-41d2-9397-b9a85b1c692b"
+                },
+                {
+                    "description": "Circle of R11 on F.Silkscreen",
+                    "pos": {
+                        "x": 184.64,
+                        "y": 84.814
+                    },
+                    "uuid": "9a594824-f02f-4986-b7d8-e636aa4b7cbc"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (HC4067)",
+                    "pos": {
+                        "x": 142.15,
+                        "y": 114.325
+                    },
+                    "uuid": "de307fd7-4b59-4111-88a8-76d2266d5c1b"
+                },
+                {
+                    "description": "PTH pad C5 [/SEN6] of U1",
+                    "pos": {
+                        "x": 142.15,
+                        "y": 109.65
+                    },
+                    "uuid": "587a49b6-1bdd-4a2d-9e3d-f8fad1946fff"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Footprint text of U1 (Name)",
+                    "pos": {
+                        "x": 133.895,
+                        "y": 127.152
+                    },
+                    "uuid": "ca5a2142-5ca1-45cb-b2af-d373c26df1e2"
+                },
+                {
+                    "description": "PTH pad GND [GND] of U1",
+                    "pos": {
+                        "x": 139.61,
+                        "y": 125.35
+                    },
+                    "uuid": "4b92d0e1-dd60-4c23-a24a-465852cf4516"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of R12",
+                    "pos": {
+                        "x": 186.407286,
+                        "y": 84.139236
+                    },
+                    "uuid": "31287b4b-6888-41d2-9397-b9a85b1c692b"
+                },
+                {
+                    "description": "PTH pad 1 [+5V] of R11",
+                    "pos": {
+                        "x": 184.64,
+                        "y": 84.814
+                    },
+                    "uuid": "ed09e036-74b2-4270-adac-3ac6f2b43f60"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 187.075346,
+                        "y": 91.52509
+                    },
+                    "uuid": "e7d09a9a-6e35-4f94-a549-e8e2c946d40d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "ca93086f-ee94-48b3-a44d-a9fd2cef45eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 187.075346,
+                        "y": 91.52509
+                    },
+                    "uuid": "e7d09a9a-6e35-4f94-a549-e8e2c946d40d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "ca93086f-ee94-48b3-a44d-a9fd2cef45eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 187.075346,
+                        "y": 91.52509
+                    },
+                    "uuid": "e7d09a9a-6e35-4f94-a549-e8e2c946d40d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 187.075346,
+                        "y": 91.52509
+                    },
+                    "uuid": "e7d09a9a-6e35-4f94-a549-e8e2c946d40d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "ca93086f-ee94-48b3-a44d-a9fd2cef45eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "ca93086f-ee94-48b3-a44d-a9fd2cef45eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 192.441072,
+                        "y": 94.254447
+                    },
+                    "uuid": "c873d26d-4427-47e2-9b76-8e28ad265d14"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 192.441072,
+                        "y": 94.254447
+                    },
+                    "uuid": "c873d26d-4427-47e2-9b76-8e28ad265d14"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 192.441072,
+                        "y": 94.254447
+                    },
+                    "uuid": "c873d26d-4427-47e2-9b76-8e28ad265d14"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 192.441072,
+                        "y": 94.254447
+                    },
+                    "uuid": "c873d26d-4427-47e2-9b76-8e28ad265d14"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 192.441072,
+                        "y": 94.254447
+                    },
+                    "uuid": "c873d26d-4427-47e2-9b76-8e28ad265d14"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 187.611326,
+                        "y": 92.91966
+                    },
+                    "uuid": "7ff9123e-6538-451c-9ae5-e5420f213d34"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 189.625572,
+                        "y": 99.789523
+                    },
+                    "uuid": "2f3364db-326b-4e71-9036-0a685d71a5ec"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of OP12 on B.Silkscreen",
+                    "pos": {
+                        "x": 184.259847,
+                        "y": 97.060166
+                    },
+                    "uuid": "73004aac-da38-44f8-9966-2fdea7a1d727"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 185.012878,
+                        "y": 96.814922
+                    },
+                    "uuid": "8befa5e9-d827-481b-8bb3-d29582724a2c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of OP12",
+                    "pos": {
+                        "x": 192.69183,
+                        "y": 95.503935
+                    },
+                    "uuid": "296c05a3-b624-47a9-850b-c98b689972ef"
+                },
+                {
+                    "description": "NPTH pad of OP12",
+                    "pos": {
+                        "x": 190.998329,
+                        "y": 94.64251
+                    },
+                    "uuid": "d57ef708-7385-45aa-b512-1667cdb903d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

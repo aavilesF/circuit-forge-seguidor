@@ -1,0 +1,748 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-15T10:04:49",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.8",
+    "schematic_parity": [
+        {
+            "description": "Field 'Description' differs (PCB: '', Schematic: 'Development Kit')",
+            "items": [
+                {
+                    "description": "Footprint A1",
+                    "pos": {
+                        "x": 133.5,
+                        "y": 95.2
+                    },
+                    "uuid": "1d4e2d3f-303f-4491-9be0-313a7f0511ee"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-SENSOR_VN{slash}GPIO39{slash}ADC1_CH3-Pad3))",
+            "items": [
+                {
+                    "description": "PTH pad 3 [<no net>] of A1",
+                    "pos": {
+                        "x": 133.5,
+                        "y": 100.28
+                    },
+                    "uuid": "3cb8bd24-dcef-45d8-abfc-052b38bf618a"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-VDET_2{slash}GPIO35{slash}ADC1_CH7-Pad5))",
+            "items": [
+                {
+                    "description": "PTH pad 5 [<no net>] of A1",
+                    "pos": {
+                        "x": 133.5,
+                        "y": 105.36
+                    },
+                    "uuid": "0a1ef26f-05bb-47da-a57c-db1b915f0b21"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-32K_XP{slash}GPIO32{slash}ADC1_CH4-Pad6))",
+            "items": [
+                {
+                    "description": "PTH pad 6 [<no net>] of A1",
+                    "pos": {
+                        "x": 133.5,
+                        "y": 107.9
+                    },
+                    "uuid": "ede86ff4-4a19-4f92-ac0e-98c479c62021"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-MTDI{slash}GPIO12{slash}ADC2_CH5-Pad12))",
+            "items": [
+                {
+                    "description": "PTH pad 12 [<no net>] of A1",
+                    "pos": {
+                        "x": 133.5,
+                        "y": 123.14
+                    },
+                    "uuid": "79f1e55a-cab5-4b06-8231-f8544738b66a"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-MTDO{slash}GPIO15{slash}ADC2_CH3-Pad18))",
+            "items": [
+                {
+                    "description": "PTH pad 18 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 125.68
+                    },
+                    "uuid": "7d4e66c9-3905-4623-82f8-08baf797b88c"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-ADC2_CH2{slash}GPIO2-Pad19))",
+            "items": [
+                {
+                    "description": "PTH pad 19 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 123.14
+                    },
+                    "uuid": "ad931d1c-fdf8-48d2-b2d9-8c6d9efe86a6"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-GPIO5-Pad23))",
+            "items": [
+                {
+                    "description": "PTH pad 23 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 112.98
+                    },
+                    "uuid": "9ee12cc6-aefd-4dc1-9afe-185b0b4d85f7"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-GPIO18-Pad24))",
+            "items": [
+                {
+                    "description": "PTH pad 24 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 110.44
+                    },
+                    "uuid": "d47cb3c7-6b41-48ee-9fdd-ba89054fa8ea"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-U0RXD{slash}GPIO3-Pad27))",
+            "items": [
+                {
+                    "description": "PTH pad 27 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 102.82
+                    },
+                    "uuid": "ab192e6d-2033-4e05-a969-0ae35bde9d1e"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(A1-U0TXD{slash}GPIO1-Pad28))",
+            "items": [
+                {
+                    "description": "PTH pad 28 [<no net>] of A1",
+                    "pos": {
+                        "x": 158.9,
+                        "y": 100.28
+                    },
+                    "uuid": "25d528d1-d59a-4d74-8920-dc2b38f00a22"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 104.5,
+                        "y": 112.0
+                    },
+                    "uuid": "06fb48b8-0d64-4837-bfaa-76cfdf579e7b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C2",
+                    "pos": {
+                        "x": 115.5,
+                        "y": 112.0
+                    },
+                    "uuid": "ab622dd9-51d0-465b-b11f-eb2f04f5fdc9"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C3",
+                    "pos": {
+                        "x": 126.0,
+                        "y": 82.0
+                    },
+                    "uuid": "061716ca-f835-421f-bba7-a9c975563a2b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C4",
+                    "pos": {
+                        "x": 167.5,
+                        "y": 98.0
+                    },
+                    "uuid": "013f4cce-0bf0-4f80-af08-dc1091518f56"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C5",
+                    "pos": {
+                        "x": 179.5,
+                        "y": 98.0
+                    },
+                    "uuid": "d53f5976-2aa8-41c7-9388-da8be23ad1ac"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint D1",
+                    "pos": {
+                        "x": 164.5,
+                        "y": 122.5
+                    },
+                    "uuid": "2ef34a0c-b895-400d-88d1-3ce8399ab08f"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint D2",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 121.0
+                    },
+                    "uuid": "70b30dc5-6d7a-4997-8e5a-1edf82a0e9cc"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint F1",
+                    "pos": {
+                        "x": 108.1,
+                        "y": 129.0
+                    },
+                    "uuid": "98a65dfb-0126-4d67-819c-553bcd6652bb"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 103.5,
+                        "y": 136.0
+                    },
+                    "uuid": "8577724a-aac0-46bd-b356-05b0cf74ca05"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J2",
+                    "pos": {
+                        "x": 109.5,
+                        "y": 136.0
+                    },
+                    "uuid": "8c29d75c-5ce3-4751-ac78-ed563b3dd8cc"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J3",
+                    "pos": {
+                        "x": 187.5,
+                        "y": 93.0
+                    },
+                    "uuid": "17177a72-7d54-4f64-81c9-4d7b98b363f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J4",
+                    "pos": {
+                        "x": 192.5,
+                        "y": 93.0
+                    },
+                    "uuid": "91043736-55da-4b84-a59b-131e6ab6b3b4"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J5",
+                    "pos": {
+                        "x": 188.5,
+                        "y": 114.0
+                    },
+                    "uuid": "afdbbaaa-58d6-4b99-9271-7ab0828d0449"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J6",
+                    "pos": {
+                        "x": 128.0,
+                        "y": 104.0
+                    },
+                    "uuid": "552371b2-721b-4edf-9a80-dc236117f301"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint Q1",
+                    "pos": {
+                        "x": 170.5,
+                        "y": 107.5
+                    },
+                    "uuid": "7ec0cac1-4570-4457-9b6d-8f8a8605011b"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 126.0,
+                        "y": 72.0
+                    },
+                    "uuid": "a1866ad7-1ee3-40e3-b321-6d3e1d3a80b4"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R2",
+                    "pos": {
+                        "x": 126.0,
+                        "y": 77.0
+                    },
+                    "uuid": "6b075a10-cde4-4ddb-b1d2-8d7d6d317635"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 165.5,
+                        "y": 113.0
+                    },
+                    "uuid": "03ed5722-1521-4ca7-8d04-a4464f62d685"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R5",
+                    "pos": {
+                        "x": 165.5,
+                        "y": 117.0
+                    },
+                    "uuid": "52ceaa3f-f4a4-40fb-b34d-3e03f10c9675"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint SW2",
+                    "pos": {
+                        "x": 164.0,
+                        "y": 131.0
+                    },
+                    "uuid": "1ea03ded-af5d-496f-917c-1f3f49317dba"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint SW3",
+                    "pos": {
+                        "x": 151.5,
+                        "y": 74.0
+                    },
+                    "uuid": "12857caa-891c-4202-9153-1731154ba16d"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_keywords' in footprint",
+            "items": [
+                {
+                    "description": "Footprint SW4",
+                    "pos": {
+                        "x": 140.0,
+                        "y": 74.0
+                    },
+                    "uuid": "ea704b55-5d61-439d-8edd-9fa9ef266983"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U3-ULT-Pad6))",
+            "items": [
+                {
+                    "description": "PTH pad 6 [<no net>] of U3",
+                    "pos": {
+                        "x": 179.2,
+                        "y": 92.0
+                    },
+                    "uuid": "b6628239-10da-47b2-af46-a3e9b40cd66b"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        }
+    ],
+    "source": "principal.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Track has unconnected end",
+            "items": [
+                {
+                    "description": "Track [GND] on B.Cu, length 0.7071 mm",
+                    "pos": {
+                        "x": 136.0,
+                        "y": 127.5
+                    },
+                    "uuid": "6ac50607-d727-43a9-b7e5-982e90cbbaa1"
+                }
+            ],
+            "severity": "warning",
+            "type": "track_dangling"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Rectangle of U3 on F.Silkscreen",
+                    "pos": {
+                        "x": 164.5,
+                        "y": 93.5
+                    },
+                    "uuid": "88b7ff51-5455-4997-944d-7b8b07d879eb"
+                },
+                {
+                    "description": "Footprint text of U3 (CHECK POLARITY)",
+                    "pos": {
+                        "x": 180.0,
+                        "y": 90.675
+                    },
+                    "uuid": "e9cc04ab-1f4d-456c-9e9f-1415e7e1fb74"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of J4",
+                    "pos": {
+                        "x": 192.5,
+                        "y": 90.62
+                    },
+                    "uuid": "7326f9cb-a0ce-4574-ae03-2dc0afa74ca5"
+                },
+                {
+                    "description": "Footprint text of U3 (CHECK POLARITY)",
+                    "pos": {
+                        "x": 180.0,
+                        "y": 90.675
+                    },
+                    "uuid": "e9cc04ab-1f4d-456c-9e9f-1415e7e1fb74"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of J3",
+                    "pos": {
+                        "x": 187.5,
+                        "y": 90.62
+                    },
+                    "uuid": "8efa2d2b-d129-4e7a-9d05-fa60f3c0abbe"
+                },
+                {
+                    "description": "Footprint text of U3 (CHECK POLARITY)",
+                    "pos": {
+                        "x": 180.0,
+                        "y": 90.675
+                    },
+                    "uuid": "e9cc04ab-1f4d-456c-9e9f-1415e7e1fb74"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of R4 on F.Silkscreen",
+                    "pos": {
+                        "x": 166.04,
+                        "y": 114.37
+                    },
+                    "uuid": "1ec493a3-e57f-455e-bd43-f1551cbb9661"
+                },
+                {
+                    "description": "Reference field of R5",
+                    "pos": {
+                        "x": 169.31,
+                        "y": 114.63
+                    },
+                    "uuid": "bf6ecf12-c535-4483-adb4-42874b88425c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of D1 on F.Silkscreen",
+                    "pos": {
+                        "x": 169.91,
+                        "y": 125.4
+                    },
+                    "uuid": "6478897d-5650-493a-93b8-9ff483d3caed"
+                },
+                {
+                    "description": "Reference field of SW2",
+                    "pos": {
+                        "x": 169.83,
+                        "y": 125.59
+                    },
+                    "uuid": "d1cacafe-8a76-44dc-b95c-ef5134b08eae"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of D1 on F.Silkscreen",
+                    "pos": {
+                        "x": 179.41,
+                        "y": 125.4
+                    },
+                    "uuid": "b4fc4765-09c7-4887-b1e0-d8180686dd6e"
+                },
+                {
+                    "description": "Reference field of SW2",
+                    "pos": {
+                        "x": 169.83,
+                        "y": 125.59
+                    },
+                    "uuid": "d1cacafe-8a76-44dc-b95c-ef5134b08eae"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of U2 on F.Silkscreen",
+                    "pos": {
+                        "x": 101.95,
+                        "y": 104.42
+                    },
+                    "uuid": "9a703031-ec88-441b-844f-d9d807d69ba6"
+                },
+                {
+                    "description": "PTH pad 1 [/VBAT_SW] of U2",
+                    "pos": {
+                        "x": 102.95,
+                        "y": 103.515
+                    },
+                    "uuid": "f5210786-6641-41d2-8671-1c140ee4a5c9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of U2 on F.Silkscreen",
+                    "pos": {
+                        "x": 101.95,
+                        "y": 104.42
+                    },
+                    "uuid": "9a703031-ec88-441b-844f-d9d807d69ba6"
+                },
+                {
+                    "description": "PTH pad 1 [/VBAT_SW] of U2",
+                    "pos": {
+                        "x": 102.95,
+                        "y": 103.515
+                    },
+                    "uuid": "f5210786-6641-41d2-8671-1c140ee4a5c9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

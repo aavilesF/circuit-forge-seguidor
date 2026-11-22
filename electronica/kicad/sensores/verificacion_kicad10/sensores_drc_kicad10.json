@@ -1,0 +1,832 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-11T11:04:35",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "PTH inside courtyard",
+            "key": "pth_inside_courtyard"
+        },
+        {
+            "description": "NPTH inside courtyard",
+            "key": "npth_inside_courtyard"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.8",
+    "schematic_parity": [
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-C12-Pad21))",
+            "items": [
+                {
+                    "description": "PTH pad 21 [<no net>] of U1",
+                    "pos": {
+                        "x": 61.48,
+                        "y": 57.76
+                    },
+                    "uuid": "f5775aaa-17b0-4df2-a716-e1e1a8041348"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-C13-Pad22))",
+            "items": [
+                {
+                    "description": "PTH pad 22 [<no net>] of U1",
+                    "pos": {
+                        "x": 64.02,
+                        "y": 57.76
+                    },
+                    "uuid": "f95c064b-a2b8-4bbc-88f8-040df15813e1"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-C14-Pad23))",
+            "items": [
+                {
+                    "description": "PTH pad 23 [<no net>] of U1",
+                    "pos": {
+                        "x": 66.56,
+                        "y": 57.76
+                    },
+                    "uuid": "dfe2a9f4-61fc-447c-bab7-1b81c927e1ef"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad missing net given by schematic (unconnected-(U1-C15-Pad24))",
+            "items": [
+                {
+                    "description": "PTH pad 24 [<no net>] of U1",
+                    "pos": {
+                        "x": 69.1,
+                        "y": 57.76
+                    },
+                    "uuid": "825617bd-9d5c-407d-892f-c094847a9d4b"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H3",
+                    "pos": {
+                        "x": 94.0,
+                        "y": 79.0
+                    },
+                    "uuid": "8052de83-987e-4f3d-a792-1d0b0cc769d2"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H2",
+                    "pos": {
+                        "x": 6.0,
+                        "y": 79.0
+                    },
+                    "uuid": "9b782303-bad5-42ce-8a42-3a898feff001"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        },
+        {
+            "description": "Extra footprint",
+            "items": [
+                {
+                    "description": "Footprint H1",
+                    "pos": {
+                        "x": 50.0,
+                        "y": 30.0
+                    },
+                    "uuid": "f96bf5ce-e194-4f4f-96de-b01df940ca18"
+                }
+            ],
+            "severity": "warning",
+            "type": "extra_footprint"
+        }
+    ],
+    "source": "sensores.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 97.0,
+                        "y": 8.0
+                    },
+                    "uuid": "358c9a52-e77a-496c-96c6-6c14b79ed39c"
+                },
+                {
+                    "description": "Value field of H3 (AgujeroM3)",
+                    "pos": {
+                        "x": 94.0,
+                        "y": 79.0
+                    },
+                    "uuid": "91383c22-7d57-4940-9b56-95f01e7b818e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 3.0,
+                        "y": 83.0
+                    },
+                    "uuid": "3cac6313-bf6a-45ca-aebf-3e24e4813940"
+                },
+                {
+                    "description": "Value field of H2 (AgujeroM3)",
+                    "pos": {
+                        "x": 6.0,
+                        "y": 79.0
+                    },
+                    "uuid": "4fd34df2-d7c4-437d-82d8-284589a4e065"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R25",
+                    "pos": {
+                        "x": 80.0,
+                        "y": 64.0
+                    },
+                    "uuid": "0a08b65c-8b2f-4e84-bc47-b6dd30f5c22b"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R19",
+                    "pos": {
+                        "x": 53.75,
+                        "y": 46.0
+                    },
+                    "uuid": "0aa53ea2-d545-425a-abf7-e75b693d19f6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 8.75,
+                        "y": 38.54
+                    },
+                    "uuid": "0be56750-8fb8-442a-9ed1-fd1bc1d6af8a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R9",
+                    "pos": {
+                        "x": 68.75,
+                        "y": 38.54
+                    },
+                    "uuid": "16bdbf48-0a34-40cc-9efc-43568f258247"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'PinHeader_1x08_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 9.0,
+                        "y": 57.0
+                    },
+                    "uuid": "1b0d007a-b735-4cdd-91d5-4080840df63a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R2",
+                    "pos": {
+                        "x": 16.25,
+                        "y": 38.54
+                    },
+                    "uuid": "2ca99733-ec35-4359-a63c-7d87e0ef9198"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R12",
+                    "pos": {
+                        "x": 91.25,
+                        "y": 38.54
+                    },
+                    "uuid": "2e66d636-bc18-4cdc-8089-5779390a7aad"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R26",
+                    "pos": {
+                        "x": 86.0,
+                        "y": 64.0
+                    },
+                    "uuid": "383f8edc-6d03-4e6f-ad40-111958acddcb"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_Disc_D5.0mm_W2.5mm_P5.00mm' does not match copy in library 'Capacitor_THT'",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 80.0,
+                        "y": 72.0
+                    },
+                    "uuid": "45d535a7-a54b-40d2-ac31-e6de4cf4b35c"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R13",
+                    "pos": {
+                        "x": 8.75,
+                        "y": 46.0
+                    },
+                    "uuid": "4f1ca7ec-db22-4347-911b-234e8a5790e4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R11",
+                    "pos": {
+                        "x": 83.75,
+                        "y": 38.54
+                    },
+                    "uuid": "5a8a8e27-7879-4bac-9b33-c1404b123ab3"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R6",
+                    "pos": {
+                        "x": 46.25,
+                        "y": 38.54
+                    },
+                    "uuid": "5d1b516b-06be-49fb-95cc-52fd14b22cc6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R22",
+                    "pos": {
+                        "x": 76.25,
+                        "y": 46.0
+                    },
+                    "uuid": "5f167297-464e-41b0-90aa-ea4e5681c08e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 31.25,
+                        "y": 38.54
+                    },
+                    "uuid": "634c9f64-7cf6-490c-a4da-64a7ac511fc5"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R14",
+                    "pos": {
+                        "x": 16.25,
+                        "y": 46.0
+                    },
+                    "uuid": "65ed090f-b93d-44f3-b745-cd87aedbe782"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R7",
+                    "pos": {
+                        "x": 53.75,
+                        "y": 38.54
+                    },
+                    "uuid": "809242d9-b54a-436e-a3a7-42ec540a0292"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R21",
+                    "pos": {
+                        "x": 68.75,
+                        "y": 46.0
+                    },
+                    "uuid": "9284c2fd-1df3-4b5b-adb1-215f7a826811"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R16",
+                    "pos": {
+                        "x": 31.25,
+                        "y": 46.0
+                    },
+                    "uuid": "993226a9-8689-4141-97c4-e534ed3ff346"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R5",
+                    "pos": {
+                        "x": 38.75,
+                        "y": 38.54
+                    },
+                    "uuid": "9a630f96-d117-489f-a8e1-151ba5d33fef"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R3",
+                    "pos": {
+                        "x": 23.75,
+                        "y": 38.54
+                    },
+                    "uuid": "a82e573d-e0ef-495c-b82b-02b344dc19de"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R20",
+                    "pos": {
+                        "x": 61.25,
+                        "y": 46.0
+                    },
+                    "uuid": "aab8c206-c183-47f1-8ca0-22ed79d503b4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R8",
+                    "pos": {
+                        "x": 61.25,
+                        "y": 38.54
+                    },
+                    "uuid": "ae00280c-9a32-4a0f-b877-4b440b391679"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R15",
+                    "pos": {
+                        "x": 23.75,
+                        "y": 46.0
+                    },
+                    "uuid": "af704cef-339e-49b0-ad8a-bdc295953167"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R18",
+                    "pos": {
+                        "x": 46.25,
+                        "y": 46.0
+                    },
+                    "uuid": "b326463f-4081-429d-94c8-96339bbef3b4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R17",
+                    "pos": {
+                        "x": 38.75,
+                        "y": 46.0
+                    },
+                    "uuid": "cca757db-7ee9-4be4-afbf-74f0df49f12c"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R10",
+                    "pos": {
+                        "x": 76.25,
+                        "y": 38.54
+                    },
+                    "uuid": "ce93cbb9-6b03-4c05-8e37-3afbbf3fb254"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R23",
+                    "pos": {
+                        "x": 83.75,
+                        "y": 46.0
+                    },
+                    "uuid": "d378157f-4589-4ad1-84d4-ef5e422c6197"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical' does not match copy in library 'Resistor_THT'",
+            "items": [
+                {
+                    "description": "Footprint R24",
+                    "pos": {
+                        "x": 91.25,
+                        "y": 46.0
+                    },
+                    "uuid": "eb3baf46-bbd7-4dbd-a1ef-a629b611ee6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'",
+            "items": [
+                {
+                    "description": "Footprint OP10",
+                    "pos": {
+                        "x": 76.001563,
+                        "y": 17.117266
+                    },
+                    "uuid": "7a622038-b1d1-45b2-b0fa-66d31c4822c3"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'",
+            "items": [
+                {
+                    "description": "Footprint OP9",
+                    "pos": {
+                        "x": 68.659335,
+                        "y": 15.594145
+                    },
+                    "uuid": "a377c9dc-1f3e-40c8-808e-2a2da1fb2282"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "PCB text 'sensores - robot casero - doble cara casera - 11 nov 2026 (provisionales: ver pendientes)' on F.Silkscreen",
+                    "pos": {
+                        "x": 43.0,
+                        "y": 80.0
+                    },
+                    "uuid": "f9eef600-19f6-46c5-9eb3-a942bcce7f13"
+                },
+                {
+                    "description": "NPTH pad of H2",
+                    "pos": {
+                        "x": 6.0,
+                        "y": 79.0
+                    },
+                    "uuid": "5798a6fb-026e-4c1f-b08e-8505c7cca2f3"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Value field of H2 (AgujeroM3)",
+                    "pos": {
+                        "x": 6.0,
+                        "y": 79.0
+                    },
+                    "uuid": "4fd34df2-d7c4-437d-82d8-284589a4e065"
+                },
+                {
+                    "description": "NPTH pad of H2",
+                    "pos": {
+                        "x": 6.0,
+                        "y": 79.0
+                    },
+                    "uuid": "5798a6fb-026e-4c1f-b08e-8505c7cca2f3"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of U1",
+                    "pos": {
+                        "x": 31.0,
+                        "y": 73.0
+                    },
+                    "uuid": "956dcd75-8db2-4569-9713-b4aaacd8cc15"
+                },
+                {
+                    "description": "PTH pad 1 [+3V3] of U1",
+                    "pos": {
+                        "x": 31.0,
+                        "y": 73.0
+                    },
+                    "uuid": "b0c06c51-36a9-44e0-9a46-b22b5453a9a8"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 30.050001,
+                        "y": 75.38
+                    },
+                    "uuid": "930f49ee-fd3f-4b4e-84a1-d5caca7e09ec"
+                },
+                {
+                    "description": "PTH pad 1 [+3V3] of U1",
+                    "pos": {
+                        "x": 31.0,
+                        "y": 73.0
+                    },
+                    "uuid": "b0c06c51-36a9-44e0-9a46-b22b5453a9a8"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 30.050001,
+                        "y": 75.38
+                    },
+                    "uuid": "930f49ee-fd3f-4b4e-84a1-d5caca7e09ec"
+                },
+                {
+                    "description": "PTH pad 9 [/SEN1] of U1",
+                    "pos": {
+                        "x": 31.0,
+                        "y": 57.76
+                    },
+                    "uuid": "856429f9-9d03-4250-8590-1c80d2083ebe"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Value field of H3 (AgujeroM3)",
+                    "pos": {
+                        "x": 94.0,
+                        "y": 79.0
+                    },
+                    "uuid": "91383c22-7d57-4940-9b56-95f01e7b818e"
+                },
+                {
+                    "description": "NPTH pad of H3",
+                    "pos": {
+                        "x": 94.0,
+                        "y": 79.0
+                    },
+                    "uuid": "ac5d1b7a-c8a3-49f4-ad03-303064003936"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 70.05,
+                        "y": 55.38
+                    },
+                    "uuid": "a7b6d62a-4146-4de2-b471-f5378707a308"
+                },
+                {
+                    "description": "PTH pad 24 [<no net>] of U1",
+                    "pos": {
+                        "x": 69.1,
+                        "y": 57.76
+                    },
+                    "uuid": "825617bd-9d5c-407d-892f-c094847a9d4b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Value field of H1 (AgujeroM3)",
+                    "pos": {
+                        "x": 50.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cca84a2c-99ff-4b9b-bafb-e8d3c714bc4d"
+                },
+                {
+                    "description": "NPTH pad of H1",
+                    "pos": {
+                        "x": 50.0,
+                        "y": 30.0
+                    },
+                    "uuid": "7ed5b084-926f-4a9e-b330-8b99518cc70d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

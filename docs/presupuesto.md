@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Presupuesto
 
 **Estado:** ningún componente está definido ni comprado. Esta lista parte de la propuesta con ESP32 (ver `plan.md`), todavía sin aprobar.

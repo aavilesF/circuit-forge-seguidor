@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Contexto del proyecto para IAs y compañeros
 
 Resumen para que cualquier persona o IA que trabaje en este proyecto parta del mismo contexto. **Última actualización: 28 de octubre de 2026.** Quien cambie una decisión, un dato o el estado de una compra debe actualizar este archivo y `decisiones.md` en el mismo commit.

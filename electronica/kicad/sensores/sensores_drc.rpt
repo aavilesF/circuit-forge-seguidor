@@ -1,0 +1,48 @@
+** Drc report for /home/claude/circuit-forge-seguidor/electronica/kicad/sensores/sensores.kicad_pcb **
+** Created on 2026-11-11 11:01:51 **
+
+** Found 12 DRC violations **
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(43.0000 mm, 80.0000 mm): PCB Text 'sensores - robot casero - doble ca...' on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(94.0000 mm, 79.0000 mm): Value 'AgujeroM3' of H3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(6.0000 mm, 79.0000 mm): Value 'AgujeroM3' of H2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(31.0000 mm, 73.0000 mm): Reference 'U1'
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(30.0500 mm, 75.3800 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(70.0500 mm, 55.3800 mm): Line on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; Severity: warning
+    @(50.0000 mm, 30.0000 mm): Value 'AgujeroM3' of H1
+[lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
+    Local override; Severity: warning
+    @(53.7493 mm, 14.0639 mm): Footprint OP7
+[lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
+    Local override; Severity: warning
+    @(61.2304 mm, 14.5748 mm): Footprint OP8
+[lib_footprint_mismatch]: Footprint 'TCRT5000_THT' does not match copy in library 'robot_casero'.
+    Local override; Severity: warning
+    @(90.2900 mm, 21.6442 mm): Footprint OP12
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(97.0000 mm, 8.0000 mm): Line on Edge.Cuts
+    @(94.0000 mm, 79.0000 mm): Value 'AgujeroM3' of H3
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(3.0000 mm, 83.0000 mm): Line on Edge.Cuts
+    @(6.0000 mm, 79.0000 mm): Value 'AgujeroM3' of H2
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **

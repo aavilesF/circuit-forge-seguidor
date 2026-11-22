@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Modificaciones
 
 Aquí se guardan las **propuestas de cambio** de cada integrante. Sirve para que nadie edite directamente los documentos originales (`README.md` y `docs/`) y para que el equipo pueda revisar cada cambio antes de aceptarlo.

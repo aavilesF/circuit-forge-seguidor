@@ -1,3 +1,5 @@
+> **HISTÓRICO (rama anterior `engineering/robot-casero`). No es información vigente de V2.** Inventario, decisiones y pendientes vigentes: `v2/inventario.csv`, `v2/docs/decisiones.md`, `docs/pendientes-por-confirmar.md`. Estado de cada documento: `v2/docs/ESTADO-DOCUMENTOS.md`.
+
 # Guía de armado y pruebas
 
 Orden pensado para detectar errores **antes** de que quemen algo. Cada etapa tiene un criterio de aprobado. No pasar a la siguiente si falla.

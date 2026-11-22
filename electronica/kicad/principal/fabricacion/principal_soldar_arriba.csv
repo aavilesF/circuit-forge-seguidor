@@ -1,0 +1,6 @@
+pieza,pata,red,se_puede_soldar_arriba,como_se_suelda
+Q1,3,GND,sí,por las DOS caras
+R2,1,/VBAT_SENSE,sí,por las DOS caras
+R3,1,/DRV_SLEEP,sí,por las DOS caras
+R4,1,/FAN_PWM,sí,por las DOS caras
+R5,2,GND,sí,por las DOS caras

@@ -70,3 +70,4 @@ Testing/
 # compilados locales
 .build/
 __pycache__/
+.pio/
